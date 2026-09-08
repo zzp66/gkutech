@@ -1,0 +1,116 @@
+{%- doc -%}
+  Renders image or autoplay video for XTU Image Text (desktop + optional mobile).
+
+  @param {string} [media_type] - image | video | youtube
+  @param {image} [image] - Desktop image
+  @param {image} [image_mobile] - Mobile image
+  @param {video} [video] - Desktop video
+  @param {video} [video_mobile] - Mobile video
+  @param {object} [video_url] - Theme video_url setting
+  @param {string} [youtube_url] - Fallback paste URL
+  @param {string} [alt] - Alt text for images
+  @param {string} [placeholder] - placeholder_svg_tag name when empty
+  @param {boolean} [zoom] - Apply xtu-img-zoom__media class on images
+{%- enddoc -%}
+
+{% liquid
+  assign media_type = media_type | default: 'image'
+  assign media_alt = alt | default: ''
+  assign ph = placeholder | default: 'lifestyle-1'
+
+  assign has_mobile_image = false
+  if image_mobile != blank
+    assign has_mobile_image = true
+  endif
+
+  assign has_mobile_video = false
+  if video_mobile != blank
+    assign has_mobile_video = true
+  endif
+
+  assign img_class_desktop = 'xtu-image-text__image xtu-image-text__media-item xtu-image-text__media-item--desktop'
+  assign img_class_mobile = 'xtu-image-text__image xtu-image-text__media-item xtu-image-text__media-item--mobile'
+  if zoom
+    assign img_class_desktop = img_class_desktop | append: ' xtu-img-zoom__media'
+    assign img_class_mobile = img_class_mobile | append: ' xtu-img-zoom__media'
+  endif
+
+  assign ph_class_desktop = 'xtu-image-text__image xtu-image-text__media-item xtu-image-text__media-item--desktop xtu-image-text__placeholder'
+  if zoom
+    assign ph_class_desktop = ph_class_desktop | append: ' xtu-img-zoom__media'
+  endif
+%}
+
+{% if media_type == 'youtube' %}
+  {% render 'xtu-video-embed',
+    video_url: video_url,
+    youtube_url: youtube_url,
+    mode: 'ambient',
+    class: 'xtu-image-text__youtube xtu-image-text__media-item',
+    title: media_alt,
+    placeholder: ph,
+    placeholder_class: 'xtu-image-text__placeholder xtu-image-text__media-item'
+  %}
+{% elsif media_type == 'video' %}
+  {% if video != blank %}
+    {{
+      video
+      | video_tag:
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        controls: false,
+        class: 'xtu-image-text__video xtu-image-text__media-item xtu-image-text__media-item--desktop',
+        image_size: '1600x'
+    }}
+  {% endif %}
+  {% if has_mobile_video %}
+    {{
+      video_mobile
+      | video_tag:
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        controls: false,
+        class: 'xtu-image-text__video xtu-image-text__media-item xtu-image-text__media-item--mobile',
+        image_size: '1200x'
+    }}
+  {% endif %}
+  {% if video == blank and has_mobile_video == false %}
+    {{ ph | placeholder_svg_tag: 'xtu-image-text__placeholder xtu-image-text__media-item' }}
+  {% elsif video == blank and has_mobile_video %}
+    {{ ph | placeholder_svg_tag: 'xtu-image-text__placeholder xtu-image-text__media-item xtu-image-text__media-item--desktop' }}
+  {% endif %}
+{% else %}
+  {% if image != blank %}
+    {{
+      image
+      | image_url: width: 1600
+      | image_tag:
+        class: img_class_desktop,
+        loading: 'lazy',
+        widths: '400, 600, 800, 1000, 1200, 1600',
+        sizes: '(max-width: 749px) calc(100vw - 30px), min(50vw, 720px)',
+        alt: media_alt
+    }}
+  {% endif %}
+  {% if has_mobile_image %}
+    {{
+      image_mobile
+      | image_url: width: 1200
+      | image_tag:
+        class: img_class_mobile,
+        loading: 'lazy',
+        widths: '400, 600, 800, 1000, 1200',
+        sizes: 'calc(100vw - 30px)',
+        alt: media_alt
+    }}
+  {% endif %}
+  {% if image == blank and has_mobile_image == false %}
+    {{ ph | placeholder_svg_tag: ph_class_desktop }}
+  {% elsif image == blank and has_mobile_image %}
+    {{ ph | placeholder_svg_tag: ph_class_desktop }}
+  {% endif %}
+{% endif %}

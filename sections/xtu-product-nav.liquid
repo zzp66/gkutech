@@ -1,0 +1,343 @@
+{%- comment -%}
+  Sticky section nav with scroll spy（产品页 / 普通页 / 集合页等均可）。
+  Blocks: label + target（element id / shopify-section-* / CSS selector / data-xtu-nav）。
+{%- endcomment -%}
+
+{% liquid
+  assign alignment = section.settings.alignment | default: 'flex-start'
+  assign bg = section.settings.background_color | default: '#ffffff'
+  assign border_color = section.settings.border_color | default: '#dddddd'
+  assign active_color = section.settings.active_color | default: '#000000'
+  assign inactive_color = section.settings.inactive_color | default: '#B8B8BD'
+  assign offset = section.settings.sticky_offset | default: 0
+  assign spacing_top = section.settings.spacing_top | default: 40
+  assign spacing_top_mobile = section.settings.spacing_top_mobile | default: 24
+%}
+
+<script src="{{ 'xtu-product-nav.js' | asset_url }}" type="module"></script>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --xtu-pn-sticky-top: {{ offset }}px;
+    --xtu-pn-spacing-top: {{ spacing_top }}px;
+    --xtu-pn-spacing-top-mobile: {{ spacing_top_mobile }}px;
+    --xtu-pn-bg: {{ bg }};
+    --xtu-pn-border: {{ border_color }};
+    --xtu-pn-active: {{ active_color }};
+    --xtu-pn-inactive: {{ inactive_color }};
+    --xtu-pn-align: {{ alignment }};
+    top: {{ offset }}px;
+  }
+{% endstyle %}
+
+<nav
+  id="xtu-product-nav-{{ section.id }}"
+  class="xtu-product-nav"
+  data-xtu-product-nav
+  data-offset="{{ offset }}"
+  aria-label="{{ section.settings.aria_label | default: 'Product sections' | escape }}"
+>
+  <div class="xtu-product-nav__inner page-width">
+    <ul class="xtu-product-nav__list list-unstyled" role="list">
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+          {% liquid
+            assign label = block.settings.label
+            assign target = block.settings.target | strip
+          %}
+          {% if label != blank and target != blank %}
+            <li class="xtu-product-nav__item" {{ block.shopify_attributes }}>
+              <a
+                class="xtu-product-nav__link{% if forloop.first %} is-active{% endif %}"
+                href="#{{ target | remove_first: '#' | handleize }}"
+                data-xtu-product-nav-link
+                data-target="{{ target | escape }}"
+                {% if forloop.first %}
+                  aria-current="true"
+                {% endif %}
+              >
+                {{ label | escape }}
+              </a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% stylesheet %}
+  /*
+    Sticky MUST stay on the shopify-section (tall parent = #MainContent).
+    Spacing uses margin-top (does not stick). Only paint #MainContent white when
+    this nav is present — never .page-wrapper (would wash announcement / footer).
+  */
+  .page-wrapper:has(.xtu-product-nav-section) #MainContent {
+    background-color: #fff;
+  }
+
+  .shopify-section.xtu-product-nav-section {
+    position: sticky;
+    top: var(--xtu-pn-sticky-top, 0px);
+    z-index: var(--layer-sticky, 10);
+    margin-top: var(--xtu-pn-spacing-top, 40px);
+    background-color: var(--xtu-pn-bg, #fff);
+    border-bottom: 1px solid var(--xtu-pn-border, #dddddd);
+    isolation: isolate;
+  }
+
+  .xtu-product-nav {
+    width: 100%;
+    background: var(--xtu-pn-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-product-nav__inner {
+    display: flex;
+    justify-content: var(--xtu-pn-align, flex-start);
+    max-width: var(--page-width, var(--page-content-width, 1200px));
+    margin-inline: auto;
+    padding-inline: var(--page-margin, 40px);
+    box-sizing: border-box;
+  }
+
+  .xtu-product-nav__list {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: var(--xtu-pn-align, flex-start);
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    min-height: 52px;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .xtu-product-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .xtu-product-nav__item {
+    flex: 0 0 auto;
+  }
+
+  .xtu-product-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 14px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-pn-inactive, #b8b8bd);
+    text-decoration: none;
+    white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.2s ease;
+  }
+
+  .xtu-product-nav__link:hover,
+  .xtu-product-nav__link.is-active {
+    color: var(--xtu-pn-active, #000);
+  }
+
+  .xtu-product-nav__link:focus {
+    outline: none;
+  }
+
+  .xtu-product-nav__link:focus-visible {
+    outline: 2px solid var(--xtu-pn-active, #000);
+    outline-offset: 2px;
+  }
+
+  .xtu-product-nav__link:focus:not(.is-active):not(:focus-visible):not(:hover) {
+    color: var(--xtu-pn-inactive, #b8b8bd);
+  }
+
+  @media screen and (max-width: 749px) {
+    .shopify-section.xtu-product-nav-section {
+      margin-top: var(--xtu-pn-spacing-top-mobile, 24px);
+    }
+
+    .xtu-product-nav__inner {
+      padding-inline: var(--page-margin, 15px);
+    }
+
+    .xtu-product-nav__list {
+      gap: 24px;
+      min-height: 48px;
+      width: 100%;
+      justify-content: flex-start;
+      padding-inline-end: 24px;
+      box-sizing: border-box;
+    }
+
+    .xtu-product-nav__link {
+      font-size: var(--xtu-type-eyebrow, 0.75rem);
+      padding-block: 12px;
+      min-height: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xtu-product-nav__link {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Product Nav",
+  "tag": "section",
+  "class": "xtu-product-nav-section",
+  "disabled_on": {
+    "groups": ["header", "footer", "aside"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "可用于产品页、自定义页面、首页、集合页等。目标定位请填「稳定 section 键名」，不要依赖浏览器里带 template--数字 的完整 id（换主题/本地预览会变）。推荐写法：xtu_tab_product_slider_BB8FfH 或 shopify-section-xtu_tab_product_slider_BB8FfH。也可填 CSS 选择器，或目标区块上的 data-xtu-nav 值（如 overview）。"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "无障碍标签",
+      "default": "Page sections"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "对齐方式",
+      "options": [
+        { "value": "flex-start", "label": "左对齐" },
+        { "value": "center", "label": "居中" },
+        { "value": "flex-end", "label": "右对齐" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "间距"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "距上方内容（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "info": "Nav 未吸顶时与上方内容的间距。"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top_mobile",
+      "label": "距上方内容（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "info": "移动端未吸顶时与上方内容的间距。"
+    },
+    {
+      "type": "range",
+      "id": "sticky_offset",
+      "label": "吸顶额外偏移",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "info": "若页面 Header 吸顶，可加 Header 高度作偏移，避免锚点被挡住。"
+    },
+    {
+      "type": "header",
+      "content": "颜色"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "底部分割线",
+      "default": "#dddddd"
+    },
+    {
+      "type": "color",
+      "id": "active_color",
+      "label": "选中文字色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "inactive_color",
+      "label": "未选中文字色",
+      "default": "#B8B8BD"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "导航项",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "文案",
+          "default": "Overview"
+        },
+        {
+          "type": "text",
+          "id": "target",
+          "label": "目标定位",
+          "default": "main",
+          "info": "推荐填 section 键名（模板 JSON 里的 key），例如：main、xtu_tab_product_slider_BB8FfH。完整 shopify-section-template--数字__… 也可，但数字会随主题变化。"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Product Nav",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "label": "Overview",
+            "target": "main"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "label": "Comparison",
+            "target": "xtu_activity_slider_GXRgHe"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "label": "Specs",
+            "target": "xtu_tab_product_slider_BB8FfH"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

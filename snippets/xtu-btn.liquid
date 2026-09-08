@@ -1,0 +1,64 @@
+{% doc %}
+  XTU capsule button — site-wide CTA.
+
+  @param {string} label - Button label (required)
+  @param {string} [href] - Destination URL (renders as <a>; blank uses #)
+  @param {boolean} [show_arrow] - Show trailing chevron icon (default false)
+  @param {string} [bg] - Background color
+  @param {string} [color] - Text color
+  @param {string} [bg_hover] - Hover background color
+  @param {string} [color_hover] - Hover text color
+  @param {string} [class] - Extra class names
+  @param {string} [size] - Size variant: blank (default) or "sm"
+  @param {string} [attributes] - Extra HTML attributes string
+
+  @example
+  {% render 'xtu-btn',
+    label: 'Learn more',
+    href: product.url,
+    size: 'sm',
+    show_arrow: true,
+    bg: '#1590F2',
+    color: '#FFFFFF',
+    bg_hover: '#0070CA',
+    color_hover: '#FFFFFF'
+  %}
+{% enddoc %}
+
+{% if label != blank %}
+  {% liquid
+    assign btn_href = href | default: '#'
+    assign btn_bg = bg | default: '#1590F2'
+    assign btn_color = color | default: '#FFFFFF'
+    assign btn_bg_hover = bg_hover | default: '#0070CA'
+    assign btn_color_hover = color_hover | default: '#FFFFFF'
+    assign btn_class = 'xtu-btn'
+    if size == 'sm'
+      assign btn_class = btn_class | append: ' xtu-btn--sm'
+    endif
+    if class != blank
+      assign btn_class = btn_class | append: ' ' | append: class
+    endif
+  %}
+
+  <a
+    class="{{ btn_class }}"
+    href="{{ btn_href }}"
+    style="
+      --xtu-btn-bg: {{ btn_bg }};
+      --xtu-btn-color: {{ btn_color }};
+      --xtu-btn-bg-hover: {{ btn_bg_hover }};
+      --xtu-btn-color-hover: {{ btn_color_hover }};
+    "
+    {{ attributes }}
+  >
+    <span class="xtu-btn__label">{{ label | escape }}</span>
+    {% if show_arrow %}
+      <span class="xtu-btn__arrow" aria-hidden="true">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2.25 8.25 6 4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    {% endif %}
+  </a>
+{% endif %}

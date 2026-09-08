@@ -1,0 +1,881 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 1200
+  assign label_width = section.settings.label_width | default: 140
+  assign image_ratio = section.settings.image_ratio | default: '1 / 1'
+  assign ratio_auto = false
+  if image_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign btn_bg = section.settings.btn_bg | default: '#FFCC00'
+  assign btn_color = section.settings.btn_color | default: '#111111'
+  assign btn_bg_hover = section.settings.btn_bg_hover | default: '#F0B800'
+  assign btn_color_hover = section.settings.btn_color_hover | default: '#111111'
+  assign show_btn_arrow = section.settings.show_btn_arrow
+  assign link_color = section.settings.link_color | default: '#0070CA'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+
+  assign product_blocks = section.blocks | where: 'type', 'product'
+  assign product_count = product_blocks.size
+  if product_count > 3
+    assign product_count = 3
+  endif
+  assign col_count = product_count | plus: 1
+%}
+
+{% if product_count > 0 %}
+  <section
+    id="xtu-product-compare-{{ section.id }}"
+    class="xtu-product-compare xtu-product-compare--cols-{{ product_count }}{% if ratio_auto %} xtu-product-compare--ratio-auto{% endif %}"
+    data-xtu-product-compare
+    style="
+      --xtu-pc-bg: {{ background_color }};
+      --xtu-pc-content-bg: {{ content_background }};
+      --xtu-pc-content-width: {{ content_width }}px;
+      --xtu-pc-label-w: {{ label_width }}px;
+      --xtu-pc-cols: {{ col_count }};
+      --xtu-pc-products: {{ product_count }};
+      {% unless ratio_auto %}--xtu-pc-ratio: {{ image_ratio }};{% endunless %}
+      --xtu-pc-link: {{ link_color }};
+      --xtu-pc-heading-color: {{ heading_color }};
+      --xtu-pc-text-color: {{ text_color }};
+      --xtu-pc-muted-color: {{ muted_text_color }};
+      --xtu-pc-pt: {{ padding_top }}px;
+      --xtu-pc-pb: {{ padding_bottom }}px;
+      --xtu-pc-pt-m: {{ padding_top_mobile }}px;
+      --xtu-pc-pb-m: {{ padding_bottom_mobile }}px;
+    "
+  >
+    <div class="xtu-product-compare__inner">
+      {% if heading != blank %}
+        <h2 class="xtu-product-compare__heading" data-xtu-reveal="fade-up">{{ heading | escape }}</h2>
+      {% endif %}
+
+      <div class="xtu-product-compare__scroller" data-xtu-reveal="fade-up" data-xtu-pc-scroller>
+        <div
+          class="xtu-product-compare__grid"
+          style="grid-template-columns: var(--xtu-pc-label-w) repeat({{ product_count }}, minmax(180px, 1fr));"
+        >
+          <div class="xtu-product-compare__corner" aria-hidden="true"></div>
+
+          {% for block in product_blocks limit: 3 %}
+            {% liquid
+              assign card_product = block.settings.product
+              assign title = block.settings.title
+              assign subtitle = block.settings.subtitle
+              assign image = block.settings.image
+              assign image_mobile = block.settings.image_mobile
+              assign buy_label = block.settings.buy_label
+              assign buy_link = block.settings.buy_link
+              assign more_label = block.settings.more_label
+              assign more_link = block.settings.more_link
+
+              if title == blank and card_product != blank
+                assign title = card_product.title
+              endif
+              if image == blank and card_product != blank
+                assign image = card_product.featured_image
+              endif
+              if buy_link == blank and card_product != blank
+                assign buy_link = card_product.url
+              endif
+              if more_link == blank and card_product != blank
+                assign more_link = card_product.url
+              endif
+
+              assign ph = 'product-1'
+              assign ph_mod = forloop.index0 | modulo: 3
+              if ph_mod == 1
+                assign ph = 'product-2'
+              elsif ph_mod == 2
+                assign ph = 'product-3'
+              endif
+            %}
+
+            <div
+              class="xtu-product-compare__product"
+              {{ block.shopify_attributes }}
+            >
+              <div class="xtu-product-compare__media{% if image_mobile != blank %} xtu-product-compare__media--split{% endif %}">
+                {% if image != blank %}
+                  {{
+                    image
+                    | image_url: width: 800
+                    | image_tag:
+                      class: 'xtu-product-compare__image xtu-product-compare__image--desktop',
+                      loading: 'lazy',
+                      widths: '200, 320, 480, 640, 800',
+                      sizes: '(max-width: 749px) 45vw, 25vw',
+                      alt: title
+                  }}
+                {% else %}
+                  {{ ph | placeholder_svg_tag: 'xtu-product-compare__image xtu-product-compare__placeholder' }}
+                {% endif %}
+                {% if image_mobile != blank %}
+                  {{
+                    image_mobile
+                    | image_url: width: 640
+                    | image_tag:
+                      class: 'xtu-product-compare__image xtu-product-compare__image--mobile',
+                      loading: 'lazy',
+                      widths: '200, 320, 480, 640',
+                      sizes: '45vw',
+                      alt: title
+                  }}
+                {% endif %}
+              </div>
+
+              <h3 class="xtu-product-compare__title">
+                {%- if title != blank -%}{{ title | escape }}{%- endif -%}
+              </h3>
+
+              <p class="xtu-product-compare__subtitle">
+                {%- if subtitle != blank -%}{{ subtitle | escape }}{%- endif -%}
+              </p>
+
+              <div class="xtu-product-compare__product-body">
+                {% if buy_label != blank %}
+                  <div class="xtu-product-compare__buy">
+                    {% render 'xtu-btn',
+                      label: buy_label,
+                      href: buy_link,
+                      show_arrow: show_btn_arrow,
+                      bg: btn_bg,
+                      color: btn_color,
+                      bg_hover: btn_bg_hover,
+                      color_hover: btn_color_hover,
+                      size: 'sm',
+                      class: 'xtu-product-compare__btn'
+                    %}
+                  </div>
+                {% endif %}
+
+                {% if more_label != blank %}
+                  <a
+                    class="xtu-product-compare__more"
+                    href="{{ more_link | default: '#' }}"
+                  >
+                    <span>{{ more_label | escape }}</span>
+                    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M4.5 2.25 8.25 6 4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+
+          {% for block in section.blocks %}
+            {% if block.type == 'group' %}
+              {% if block.settings.title != blank %}
+                <div
+                  class="xtu-product-compare__group"
+                  style="grid-column: 1 / -1;"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.title | escape }}
+                </div>
+              {% endif %}
+
+            {% elsif block.type == 'row' %}
+              <div
+                class="xtu-product-compare__label"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </div>
+
+              {% for product_block in product_blocks limit: 3 %}
+                {% liquid
+                  assign value_text = ''
+                  if forloop.index == 1
+                    assign value_text = block.settings.value_1
+                  elsif forloop.index == 2
+                    assign value_text = block.settings.value_2
+                  elsif forloop.index == 3
+                    assign value_text = block.settings.value_3
+                  endif
+                %}
+                <div class="xtu-product-compare__value">
+                  {% if value_text != blank %}
+                    {{ value_text | escape | newline_to_br }}
+                  {% else %}
+                    <span class="xtu-product-compare__empty">—</span>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .xtu-product-compare {
+    padding: var(--xtu-pc-pt) 0 var(--xtu-pc-pb);
+    background: var(--xtu-pc-bg, #fff);
+  }
+
+  .xtu-product-compare__inner {
+    width: min(var(--xtu-pc-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-pc-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-product-compare__heading {
+    margin: 0 0 var(--xtu-space-40, 40px);
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--xtu-pc-heading-color, #000);
+  }
+
+  .xtu-product-compare__scroller {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .xtu-product-compare__grid {
+    display: grid;
+    align-items: stretch;
+    min-width: 100%;
+  }
+
+  .xtu-product-compare__corner,
+  .xtu-product-compare__label {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--xtu-pc-content-bg, #fff);
+  }
+
+  .xtu-product-compare__corner {
+    z-index: 4;
+    grid-row: span 4;
+  }
+
+  .xtu-product-compare__corner::after,
+  .xtu-product-compare__label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    bottom: 0;
+    width: 12px;
+    pointer-events: none;
+    background: linear-gradient(to right, color-mix(in srgb, var(--xtu-pc-text-color, #333) 12%, transparent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .xtu-product-compare.is-scrolled .xtu-product-compare__corner::after,
+  .xtu-product-compare.is-scrolled .xtu-product-compare__label::after {
+    opacity: 1;
+  }
+
+  .xtu-product-compare__product {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    align-items: stretch;
+    justify-items: center;
+    text-align: center;
+    padding: 0 16px 28px;
+    box-sizing: border-box;
+  }
+
+  .xtu-product-compare__media {
+    width: min(100%, 220px);
+    margin: 0 auto 20px;
+    aspect-ratio: var(--xtu-pc-ratio, 1 / 1);
+    overflow: hidden;
+    background: #f5f5f7;
+  }
+
+  .xtu-product-compare__image,
+  .xtu-product-compare__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .xtu-product-compare__image--mobile {
+    display: none;
+  }
+
+  .xtu-product-compare__placeholder {
+    object-fit: cover;
+    background: #e8eaed;
+  }
+
+  .xtu-product-compare__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-block-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-pc-heading-color, #000);
+    box-sizing: border-box;
+  }
+
+  .xtu-product-compare__subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding-top: var(--xtu-space-12, 12px);
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-pc-muted-color, #8e9297);
+    box-sizing: border-box;
+  }
+
+  .xtu-product-compare__product-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .xtu-product-compare__buy {
+    margin-top: 18px;
+  }
+
+  @supports not (grid-template-rows: subgrid) {
+    .xtu-product-compare__corner {
+      grid-row: auto;
+    }
+
+    .xtu-product-compare__product {
+      display: flex;
+      flex-direction: column;
+      grid-row: auto;
+    }
+
+    .xtu-product-compare__title {
+      min-height: calc(1.2em * 2);
+    }
+
+    .xtu-product-compare__subtitle {
+      min-height: calc(1.2em * 2);
+    }
+  }
+
+  .xtu-product-compare__btn {
+    min-width: 120px;
+  }
+
+  .xtu-product-compare__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 12px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-pc-link, #0070ca);
+    text-decoration: none;
+  }
+
+  .xtu-product-compare__more svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .xtu-product-compare__more:hover {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--xtu-pc-link, #0070ca) 55%, transparent);
+  }
+
+  .xtu-product-compare__group {
+    margin: 36px 0 8px;
+    padding: 0 0 4px;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-group-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-pc-heading-color, #000);
+  }
+
+  .xtu-product-compare__label,
+  .xtu-product-compare__value {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 14px 12px;
+    border-bottom: 1px solid color-mix(in srgb, var(--xtu-pc-text-color, #333) 18%, transparent);
+    box-sizing: border-box;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    line-height: 1.2;
+  }
+
+  .xtu-product-compare__label {
+    justify-content: flex-start;
+    font-weight: 600;
+    color: var(--xtu-pc-heading-color, #000);
+  }
+
+  .xtu-product-compare__value {
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    color: var(--xtu-pc-text-color, #333);
+  }
+
+  .xtu-product-compare__empty {
+    color: color-mix(in srgb, var(--xtu-pc-muted-color, #8e9297) 75%, transparent);
+  }
+
+  @media (max-width: 749px) {
+    .xtu-product-compare__media--split .xtu-product-compare__image--desktop {
+      display: none;
+    }
+
+    .xtu-product-compare__media--split .xtu-product-compare__image--mobile {
+      display: block;
+    }
+
+    .xtu-product-compare {
+      padding: var(--xtu-pc-pt-m) 0 var(--xtu-pc-pb-m);
+    }
+
+    .xtu-product-compare__heading {
+      margin-bottom: var(--xtu-space-20, 20px);
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-product-compare__grid {
+      grid-template-columns: var(--xtu-pc-label-w, 110px) repeat(var(--xtu-pc-products), minmax(160px, 70vw)) !important;
+    }
+
+    .xtu-product-compare__product {
+      padding: 0 12px 20px;
+    }
+
+    .xtu-product-compare__media {
+      width: min(100%, 160px);
+      margin-bottom: 14px;
+    }
+
+    .xtu-product-compare__title {
+      font-size: var(--xtu-type-block-title-m);
+    }
+
+    .xtu-product-compare__subtitle {
+      padding-top: var(--xtu-space-12, 12px);
+      font-size: var(--xtu-type-body-m);
+    }
+
+    .xtu-product-compare__group {
+      margin-top: 28px;
+      font-size: var(--xtu-type-group-title-m);
+    }
+
+    .xtu-product-compare__label,
+    .xtu-product-compare__value {
+      min-height: 48px;
+      padding: 12px;
+      font-size: var(--xtu-type-body-m);
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const roots = document.querySelectorAll('[data-xtu-product-compare]');
+
+    roots.forEach((root) => {
+      if (root.dataset.xtuPcReady === 'true') return;
+      root.dataset.xtuPcReady = 'true';
+
+      const scroller = root.querySelector('[data-xtu-pc-scroller]');
+      if (!scroller) return;
+
+      const sync = () => {
+        root.classList.toggle('is-scrolled', scroller.scrollLeft > 2);
+      };
+
+      scroller.addEventListener('scroll', sync, { passive: true });
+      sync();
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "XTU Product Compare",
+  "tag": "section",
+  "class": "section-xtu-product-compare",
+  "max_blocks": 40,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "info": "留空则不显示"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#000000",
+      "info": "大标题、产品名、分组标题"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文色",
+      "default": "#333333",
+      "info": "参数名、参数值；分割线随正文色自动调整"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次要文字色",
+      "default": "#8E9297",
+      "info": "副标题、空值占位"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "内容区最大宽度",
+      "min": 600,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "label_width",
+      "label": "参数名列宽",
+      "min": 90,
+      "max": 220,
+      "step": 10,
+      "unit": "px",
+      "default": 140,
+      "info": "移动端会作为粘性左侧列宽"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "产品图比例",
+      "options": [
+        { "value": "auto", "label": "自适应（按图片/视频比例）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "3 / 4", "label": "3:4" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "加购按钮"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "背景色",
+      "default": "#FFCC00"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "文字色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_hover",
+      "label": "Hover 背景色",
+      "default": "#F0B800"
+    },
+    {
+      "type": "color",
+      "id": "btn_color_hover",
+      "label": "Hover 文字色",
+      "default": "#111111"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_btn_arrow",
+      "label": "显示箭头",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "了解更多链接色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "对比产品",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "关联产品",
+          "info": "可选；用于自动回填图片、标题、链接"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "主图（PC）"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "主图（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题",
+          "default": "Product name"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "副标题",
+          "default": "Product highlight"
+        },
+        {
+          "type": "text",
+          "id": "buy_label",
+          "label": "加购按钮文案",
+          "default": "Buy now"
+        },
+        {
+          "type": "url",
+          "id": "buy_link",
+          "label": "加购按钮链接"
+        },
+        {
+          "type": "text",
+          "id": "more_label",
+          "label": "了解更多文案",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "more_link",
+          "label": "了解更多链接"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "参数分组",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "分组标题",
+          "default": "Camera"
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "name": "参数行",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "参数名",
+          "default": "Category"
+        },
+        {
+          "type": "textarea",
+          "id": "value_1",
+          "label": "产品 1 参数值",
+          "info": "对应第 1 个「对比产品」块"
+        },
+        {
+          "type": "textarea",
+          "id": "value_2",
+          "label": "产品 2 参数值",
+          "info": "对应第 2 个「对比产品」块"
+        },
+        {
+          "type": "textarea",
+          "id": "value_3",
+          "label": "产品 3 参数值",
+          "info": "对应第 3 个「对比产品」块"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Product Compare",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "title": "S7 Pro Max",
+            "subtitle": "4K flagship action camera",
+            "buy_label": "Buy now",
+            "more_label": "Learn more"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "S7 Pro",
+            "subtitle": "4K action camera",
+            "buy_label": "Buy now",
+            "more_label": "Learn more"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "title": "S7",
+            "subtitle": "Essential action camera",
+            "buy_label": "Buy now",
+            "more_label": "Learn more"
+          }
+        },
+        {
+          "type": "group",
+          "settings": {
+            "title": "Camera"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Category",
+            "value_1": "Action camera",
+            "value_2": "Action camera",
+            "value_3": "Action camera"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Availability",
+            "value_1": "On sale",
+            "value_2": "On sale",
+            "value_3": "On sale"
+          }
+        },
+        {
+          "type": "group",
+          "settings": {
+            "title": "General"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Weight",
+            "value_1": "145g",
+            "value_2": "138g",
+            "value_3": "132g"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Dimensions",
+            "value_1": "71 × 50 × 33 mm",
+            "value_2": "69 × 48 × 32 mm",
+            "value_3": "66 × 46 × 30 mm"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

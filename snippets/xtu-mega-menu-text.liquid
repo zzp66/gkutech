@@ -1,0 +1,100 @@
+{%- doc -%}
+  XTU Mega Menu — text mode（纯页面链接）。
+
+  Flat（仅二级）：贴一级导航下方的窄下拉，只列二级链接（不重复置灰一级标题）。
+  Grouped（三级）：多列；灰色标题为二级分组名（非一级导航）。
+
+  Desktop 由 header 加 menu-list__list-item--xtu-dropdown，下拉贴在对应一级项下。
+  Drawer 仍为垂直列表。
+
+  @param {object} parent_link
+  @param {string} id
+  @param {string} variant - desktop | drawer
+{%- enddoc -%}
+
+{% liquid
+  assign has_third_level = false
+  for child_link in parent_link.links
+    if child_link.links != blank
+      assign has_third_level = true
+      break
+    endif
+  endfor
+
+  assign link_count = parent_link.links.size
+  if link_count > 12
+    assign flat_column_count = 3
+  elsif link_count > 6
+    assign flat_column_count = 2
+  else
+    assign flat_column_count = 1
+  endif
+%}
+
+<div
+  class="xtu-mega-menu__text{% if has_third_level %} xtu-mega-menu__text--grouped{% else %} xtu-mega-menu__text--flat{% endif %}"
+  id="XtuMegaText-{{ id }}"
+>
+  {% if has_third_level %}
+    <ul class="xtu-mega-menu__text-columns list-unstyled">
+      {% for child_link in parent_link.links %}
+        <li class="xtu-mega-menu__text-column">
+          <p class="xtu-mega-menu__text-group-title">{{ child_link.title | escape }}</p>
+
+          {% if child_link.links != blank %}
+            <ul class="xtu-mega-menu__text-links list-unstyled">
+              {% for grandchild in child_link.links %}
+                <li>
+                  <a
+                    href="{{ grandchild.url }}"
+                    class="xtu-mega-menu__text-link{% if grandchild.current %} is-current{% endif %}"
+                    {% if grandchild.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ grandchild.title | escape }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <ul class="xtu-mega-menu__text-links list-unstyled">
+              <li>
+                <a
+                  href="{{ child_link.url }}"
+                  class="xtu-mega-menu__text-link{% if child_link.current %} is-current{% endif %}"
+                  {% if child_link.current %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  {{ child_link.title | escape }}
+                </a>
+              </li>
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div
+      class="xtu-mega-menu__text-flat"
+      style="--xtu-mega-text-flat-columns: {{ flat_column_count }};"
+    >
+      <ul class="xtu-mega-menu__text-links list-unstyled">
+        {% for child_link in parent_link.links %}
+          <li>
+            <a
+              href="{{ child_link.url }}"
+              class="xtu-mega-menu__text-link{% if child_link.current %} is-current{% endif %}"
+              {% if child_link.current %}
+                aria-current="page"
+              {% endif %}
+            >
+              {{ child_link.title | escape }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>

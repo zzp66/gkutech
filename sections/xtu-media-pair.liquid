@@ -1,0 +1,556 @@
+{%- comment -%}
+  XTU Media Pair — 居中大标题 + 双栏等分图文（上图下文）。
+
+  数据来源
+  - 标题/副标题、版心、边距、圆角、间距、媒体比例、颜色：section 设置。
+  - 每一栏：block「图文」——媒体类型（图片 / 上传视频）、块标题、多行说明、移动端图文顺序。
+  - 空图/空视频用 placeholder_svg_tag，保证 Theme Editor 可预览。
+
+  运营配置
+  1. Theme Editor 添加「XTU Media Pair」。
+  2. 填写大标题、副标题（可空）；添加最多 2 个「图文」block。
+  3. 每栏可选图片或上传视频（静音循环、无控件）；图片可另配移动端图。
+  4. 移动端可为每栏单独选择「上图下文」或「上文下图」。
+
+  前台
+  - PC：两栏平分一行，始终上媒体、下文案，文案居中。
+  - 移动端：上下平铺；顺序按 block 配置。
+  - 入场动效走 data-xtu-reveal。
+
+  相关：无独立 JS。
+{%- endcomment -%}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign media_radius = section.settings.media_radius | default: 16
+  assign media_ratio = section.settings.media_ratio | default: '16 / 9'
+  assign ratio_auto = false
+  if media_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign gap_desktop = section.settings.gap_desktop | default: 24
+  assign gap_mobile = section.settings.gap_mobile | default: 32
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign img_sizes = '(max-width: 749px) calc(100vw - 30px), min(580px, 46vw)'
+%}
+
+<section
+  id="xtu-media-pair-{{ section.id }}"
+  class="xtu-mpair{% if ratio_auto %} xtu-mpair--ratio-auto{% endif %}"
+  style="
+    --xtu-mpair-bg: {{ background_color }};
+    --xtu-mpair-content-bg: {{ content_background }};
+    --xtu-mpair-heading: {{ heading_color }};
+    --xtu-mpair-text: {{ text_color }};
+    --xtu-mpair-muted: {{ muted_text_color }};
+    --xtu-mpair-content-width: {{ content_width }}px;
+    --xtu-mpair-radius: {{ media_radius }}px;
+    {% unless ratio_auto %}--xtu-mpair-ratio: {{ media_ratio }};{% endunless %}
+    --xtu-mpair-gap: {{ gap_desktop }}px;
+    --xtu-mpair-gap-m: {{ gap_mobile }}px;
+    --xtu-mpair-pt: {{ padding_top }}px;
+    --xtu-mpair-pb: {{ padding_bottom }}px;
+    --xtu-mpair-pt-m: {{ padding_top_mobile }}px;
+    --xtu-mpair-pb-m: {{ padding_bottom_mobile }}px;
+  "
+>
+  <div class="xtu-mpair__inner">
+    {% if heading != blank or subheading != blank %}
+      <div class="xtu-mpair__header" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-mpair__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-mpair__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="xtu-mpair__grid" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% for block in section.blocks %}
+          {% if block.type == 'item' %}
+            {% liquid
+              assign mobile_layout = block.settings.mobile_layout | default: 'image-top'
+              assign media_type = block.settings.media_type | default: 'image'
+              assign image = block.settings.image
+              assign image_mobile = block.settings.image_mobile
+              assign video = block.settings.video
+              assign video_mobile = block.settings.video_mobile
+              assign item_title = block.settings.title
+              assign item_body = block.settings.body
+              assign alt_text = item_title | default: heading | default: 'Feature'
+              assign ph_mod = forloop.index0 | modulo: 2
+              assign placeholder_name = 'lifestyle-1'
+              if ph_mod == 1
+                assign placeholder_name = 'lifestyle-2'
+              endif
+            %}
+            <article
+              class="xtu-mpair__card xtu-mpair__card--{{ mobile_layout }}"
+              data-xtu-reveal-child
+              {{ block.shopify_attributes }}
+            >
+              <div
+                class="xtu-mpair__media{% if media_type == 'image' %} xtu-img-zoom{% endif %}"
+              >
+                {% render 'xtu-media',
+                  media_type: media_type,
+                  image: image,
+                  image_mobile: image_mobile,
+                  video: video,
+                  video_mobile: video_mobile,
+                  video_url: block.settings.video_url,
+                  youtube_url: block.settings.youtube_url,
+                  alt: alt_text,
+                  placeholder: placeholder_name,
+                  fill: true,
+                  zoom: true,
+                  youtube_mode: 'ambient',
+                  sizes_desktop: img_sizes,
+                  sizes_mobile: 'calc(100vw - 30px)'
+                %}
+              </div>
+
+              {% if item_title != blank or item_body != blank %}
+                <div class="xtu-mpair__copy">
+                  {% if item_title != blank %}
+                    <h3 class="xtu-mpair__title">{{ item_title | escape }}</h3>
+                  {% endif %}
+                  {% if item_body != blank %}
+                    <div class="xtu-mpair__body rte">{{ item_body }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-mpair {
+    padding: var(--xtu-mpair-pt, 80px) 0 var(--xtu-mpair-pb, 80px);
+    background: var(--xtu-mpair-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-mpair__inner {
+    width: min(var(--xtu-mpair-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-mpair-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-mpair__header {
+    margin-bottom: var(--xtu-space-40, 40px);
+    text-align: center;
+  }
+
+  .xtu-mpair__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-mpair-heading, #000);
+  }
+
+  .xtu-mpair__subheading {
+    margin: var(--xtu-space-16, 16px) auto 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-mpair-muted, #8e9297);
+  }
+
+  .xtu-mpair__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--xtu-mpair-gap-m, 32px);
+  }
+
+  .xtu-mpair__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .xtu-mpair__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--xtu-mpair-ratio, 16 / 9);
+    overflow: hidden;
+    border-radius: var(--xtu-mpair-radius, 16px);
+    background: #e8eaed;
+  }
+
+  .xtu-mpair--ratio-auto .xtu-mpair__media {
+    aspect-ratio: auto;
+    height: auto;
+    background: transparent;
+  }
+
+  .xtu-mpair--ratio-auto .xtu-mpair__media .xtu-media {
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .xtu-mpair__copy {
+    padding-top: var(--xtu-space-20, 20px);
+    text-align: center;
+  }
+
+  .xtu-mpair__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-block-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-mpair-heading, #000);
+  }
+
+  .xtu-mpair__body {
+    margin: var(--xtu-space-12, 12px) 0 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-mpair-text, #333);
+  }
+
+  .xtu-mpair__body > *:first-child {
+    margin-top: 0;
+  }
+
+  .xtu-mpair__body > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .xtu-mpair__body p {
+    margin: 0 0 var(--xtu-space-8, 8px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .xtu-mpair__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--xtu-mpair-gap, 24px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-mpair {
+      padding: var(--xtu-mpair-pt-m, 40px) 0 var(--xtu-mpair-pb-m, 40px);
+    }
+
+    .xtu-mpair__header {
+      margin-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-mpair__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-mpair__subheading {
+      margin-top: var(--xtu-space-12, 12px);
+      font-size: var(--xtu-type-section-subtitle-m);
+    }
+
+    .xtu-mpair__card--text-top {
+      flex-direction: column-reverse;
+    }
+
+    .xtu-mpair__card--text-top .xtu-mpair__copy {
+      padding-top: 0;
+      padding-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-mpair__title {
+      font-size: var(--xtu-type-block-title-m);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Media Pair",
+  "tag": "section",
+  "class": "section-xtu-media-pair",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "标题"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Leading Technology"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "副标题"
+    },
+    {
+      "type": "header",
+      "content": "布局"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "媒体比例",
+      "options": [
+        { "value": "auto", "label": "自适应（按媒体比例）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "3 / 4", "label": "3:4" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "3 / 2", "label": "3:2" },
+        { "value": "16 / 10", "label": "16:10" },
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "21 / 9", "label": "21:9" }
+      ],
+      "default": "16 / 9"
+    },
+    {
+      "type": "range",
+      "id": "media_radius",
+      "label": "媒体圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "栏间距（PC）",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "栏间距（移动端）",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "颜色与布局"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "副标题颜色",
+      "default": "#8E9297"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200,
+      "info": "范围 600–1600。"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "图文",
+      "settings": [
+        {
+          "type": "select",
+          "id": "mobile_layout",
+          "label": "移动端布局",
+          "options": [
+            { "value": "image-top", "label": "上图下文" },
+            { "value": "text-top", "label": "上文下图" }
+          ],
+          "default": "image-top"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "块标题",
+          "default": "NiteGuard™ Technology"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "说明",
+          "default": "<p>Record clear video even in very low-light conditions, so parking incidents stay visible overnight.</p>"
+        },
+        {
+          "type": "header",
+          "content": "媒体"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频（PC）",
+          "info": "静音循环播放，无控件。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "上传视频（移动端）",
+          "info": "可选。未配置时移动端使用 PC 视频。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Media Pair",
+      "settings": {
+        "heading": "Leading Technology",
+        "subheading": ""
+      },
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "NiteGuard™ Technology",
+            "body": "<p>F17 Elite's parking mode is designed to record clear video even in very low-light conditions, ensuring you capture critical details during nighttime incidents.</p>",
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "Full Night Color Cabin Vision",
+            "body": "<p>See cabin activity in full color after dark, so what happens inside the vehicle stays clear when you need to review it.</p>",
+            "media_type": "image"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

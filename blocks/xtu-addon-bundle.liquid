@@ -1,0 +1,520 @@
+{% doc %}
+  XTU Addon Bundle — complementary product checkboxes for PDP bundling.
+  Products come from Search & Discovery complementary recommendations.
+
+  @example
+  {% content_for 'block', type: 'xtu-addon-bundle', id: 'addons' %}
+{% enddoc %}
+
+<script src="{{ 'xtu-addon-bundle.js' | asset_url }}" type="module"></script>
+
+{% liquid
+  assign bs = block.settings
+  assign current_product = closest.product | default: product
+  assign max_products = bs.max_products | default: 4
+  assign heading = bs.heading
+  assign learn_more_label = bs.learn_more_label | default: 'Learn more'
+  assign accent = bs.accent_color | default: '#0070CA'
+  assign card_radius = bs.card_radius | default: 12
+%}
+
+<xtu-addon-bundle
+  id="xtu-addon-bundle-{{ block.id }}"
+  class="xtu-addon-bundle"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ max_products }}"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ current_product.id }}"
+  data-intent="complementary"
+  data-block-id="{{ block.id }}"
+  data-recommendations-performed="{{ recommendations.performed }}"
+  data-money-format="{{ shop.money_format | strip_html | escape }}"
+  data-currency="{{ localization.country.currency.iso_code | default: cart.currency.iso_code | escape }}"
+  style="
+    --xtu-addon-accent: {{ accent }};
+    --xtu-addon-radius: {{ card_radius }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% if heading != blank %}
+    <h3 class="xtu-addon-bundle__heading">{{ heading | escape }}</h3>
+  {% endif %}
+
+  <div class="xtu-addon-bundle__list" data-xtu-addon-list>
+    {%- if recommendations.performed or current_product == blank -%}
+      {% liquid
+        assign addon_products = recommendations.products
+
+        if current_product == blank
+          assign addon_products = null
+        elsif recommendations.performed and recommendations.products_count == 0
+          assign addon_products = null
+        endif
+      %}
+
+      {% if current_product == blank %}
+        {% for i in (1..2) %}
+          <div class="xtu-addon-card is-selected" aria-hidden="true">
+            <span class="xtu-addon-card__check" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 8.5 6.5 11.5 12.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="xtu-addon-card__media">
+              {{ 'product-1' | placeholder_svg_tag: 'xtu-addon-card__image xtu-addon-card__placeholder' }}
+            </div>
+            <div class="xtu-addon-card__info">
+              <p class="xtu-addon-card__title">Accessory product name</p>
+              <p class="xtu-addon-card__price">
+                <span class="xtu-addon-card__price-current">{{ 169900 | money }}</span>
+                <s class="xtu-addon-card__price-compare">{{ 189900 | money }}</s>
+              </p>
+              <span class="xtu-addon-card__more">{{ learn_more_label | escape }} ›</span>
+            </div>
+            <div class="xtu-addon-card__qty" aria-hidden="true">
+              <span class="xtu-addon-card__qty-btn">−</span>
+              <span class="xtu-addon-card__qty-value">1</span>
+              <span class="xtu-addon-card__qty-btn">+</span>
+            </div>
+          </div>
+        {% endfor %}
+      {% elsif addon_products != blank and addon_products.size > 0 %}
+        {% for addon in addon_products limit: max_products %}
+          {% liquid
+            assign variant = addon.selected_or_first_available_variant
+            if variant == blank
+              assign variant = addon.variants.first
+            endif
+            assign available = false
+            if variant != blank and variant.available
+              assign available = true
+            endif
+          %}
+          {% if variant != blank %}
+            <div
+              class="xtu-addon-card{% unless available %} is-disabled{% endunless %}"
+              data-xtu-addon-card
+              data-variant-id="{{ variant.id }}"
+              data-price="{{ variant.price }}"
+              data-available="{{ available }}"
+            >
+              <label class="xtu-addon-card__check-wrap">
+                <input
+                  type="checkbox"
+                  class="xtu-addon-card__input"
+                  data-xtu-addon-check
+                  {% unless available %}disabled{% endunless %}
+                  aria-label="{{ addon.title | escape }}"
+                >
+                <span class="xtu-addon-card__check" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.5 8.5 6.5 11.5 12.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="xtu-addon-card__media">
+                {% if addon.featured_image != blank %}
+                  {{
+                    addon.featured_image
+                    | image_url: width: 200
+                    | image_tag:
+                      class: 'xtu-addon-card__image',
+                      loading: 'lazy',
+                      widths: '80, 120, 160, 200',
+                      sizes: '64px',
+                      alt: addon.title
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'xtu-addon-card__image xtu-addon-card__placeholder' }}
+                {% endif %}
+              </div>
+
+              <div class="xtu-addon-card__info">
+                <p class="xtu-addon-card__title">{{ addon.title | escape }}</p>
+                <p class="xtu-addon-card__price">
+                  <span class="xtu-addon-card__price-current">{{ variant.price | money }}</span>
+                  {% if variant.compare_at_price > variant.price %}
+                    <s class="xtu-addon-card__price-compare">{{ variant.compare_at_price | money }}</s>
+                  {% endif %}
+                </p>
+                <a class="xtu-addon-card__more" href="{{ addon.url }}">
+                  {{ learn_more_label | escape }}
+                  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4.5 2.25 8.25 6 4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="xtu-addon-card__qty" data-xtu-addon-qty>
+                <button type="button" class="xtu-addon-card__qty-btn" data-xtu-addon-qty-dec aria-label="Decrease quantity" disabled>−</button>
+                <input
+                  type="number"
+                  class="xtu-addon-card__qty-value"
+                  data-xtu-addon-qty-input
+                  value="1"
+                  min="1"
+                  max="99"
+                  inputmode="numeric"
+                  aria-label="Quantity"
+                  disabled
+                >
+                <button type="button" class="xtu-addon-card__qty-btn" data-xtu-addon-qty-inc aria-label="Increase quantity" disabled>+</button>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {%- endif -%}
+  </div>
+</xtu-addon-bundle>
+
+{% stylesheet %}
+  .xtu-addon-bundle {
+    display: block;
+    width: 100%;
+    margin: 16px 0;
+  }
+
+  .xtu-addon-bundle[hidden],
+  .xtu-addon-bundle.is-empty:not([data-shopify-editor-block]) {
+    display: none;
+  }
+
+  .xtu-addon-bundle__heading {
+    margin: 0 0 14px;
+    font-family: var(--font-heading--family);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-foreground);
+  }
+
+  .xtu-addon-bundle__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .xtu-addon-card {
+    display: grid;
+    grid-template-columns: auto 64px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1.5px solid #d9d9d9;
+    border-radius: var(--xtu-addon-radius, 12px);
+    background: #ffffff;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+
+  .xtu-addon-card.is-selected {
+    border-color: #111;
+  }
+
+  .xtu-addon-card.is-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .xtu-addon-card__check-wrap {
+    position: relative;
+    display: inline-flex;
+    margin-top: 2px;
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  .xtu-addon-card__input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .xtu-addon-card__check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #c8c8c8;
+    border-radius: 4px;
+    background: #fff;
+    color: #fff;
+    box-sizing: border-box;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .xtu-addon-card__check svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+  }
+
+  .xtu-addon-card.is-selected .xtu-addon-card__check {
+    border-color: var(--xtu-addon-accent, #0070ca);
+    background: var(--xtu-addon-accent, #0070ca);
+  }
+
+  .xtu-addon-card.is-selected .xtu-addon-card__check svg {
+    opacity: 1;
+  }
+
+  .xtu-addon-card__media {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .xtu-addon-card__image,
+  .xtu-addon-card__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .xtu-addon-card__placeholder {
+    object-fit: cover;
+    background: #e8eaed;
+  }
+
+  .xtu-addon-card__info {
+    min-width: 0;
+  }
+
+  .xtu-addon-card__title {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-foreground);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .xtu-addon-card__price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    margin: 6px 0 0;
+    font-family: var(--font-body--family);
+    line-height: 1.2;
+  }
+
+  .xtu-addon-card__price-current {
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .xtu-addon-card__price-compare {
+    font-size: var(--xtu-type-eyebrow, 0.75rem);
+    font-weight: 400;
+    color: #9a9a9a;
+  }
+
+  .xtu-addon-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 6px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow, 0.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-addon-accent, #0070ca);
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .xtu-addon-card__more svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .xtu-addon-card__more:hover {
+    text-decoration: underline;
+  }
+
+  .xtu-addon-card__qty {
+    display: inline-flex;
+    align-items: stretch;
+    height: 32px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    pointer-events: auto;
+  }
+
+  .xtu-addon-card__qty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f7f7f7;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  .xtu-addon-card__qty-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .xtu-addon-card__qty-value {
+    width: 36px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-inline: 1px solid #e5e5e5;
+    border-radius: 0;
+    background: #fff;
+    text-align: center;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-foreground);
+    appearance: textfield;
+  }
+
+  .xtu-addon-card__qty-value::-webkit-outer-spin-button,
+  .xtu-addon-card__qty-value::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .xtu-addon-bundle {
+      margin: 8px 0;
+    }
+
+    .xtu-addon-bundle__heading {
+      margin-bottom: 10px;
+      font-size: 0.9375rem;
+    }
+
+    .xtu-addon-bundle__list {
+      gap: 8px;
+    }
+
+    .xtu-addon-card {
+      grid-template-columns: auto 52px minmax(0, 1fr);
+      grid-template-areas:
+        'check media info'
+        'check media qty';
+      gap: 10px 10px;
+      padding: 12px;
+    }
+
+    .xtu-addon-card__check-wrap {
+      grid-area: check;
+      align-self: start;
+      margin-top: 2px;
+    }
+
+    .xtu-addon-card__media {
+      grid-area: media;
+      align-self: start;
+      width: 52px;
+      height: 52px;
+    }
+
+    .xtu-addon-card__info {
+      grid-area: info;
+    }
+
+    .xtu-addon-card__title {
+      font-size: 0.8125rem;
+    }
+
+    .xtu-addon-card__price-current {
+      font-size: 0.8125rem;
+    }
+
+    .xtu-addon-card__more {
+      font-size: 0.6875rem;
+    }
+
+    .xtu-addon-card__qty {
+      grid-area: qty;
+      justify-self: start;
+      height: 28px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Addon Bundle",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "Up To 60% Off Add-Ons"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "最多显示数量",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "info": "互补产品请在 Search & Discovery 中为当前产品配置"
+    },
+    {
+      "type": "text",
+      "id": "learn_more_label",
+      "label": "了解更多文案",
+      "default": "Learn more"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "选中强调色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "卡片圆角",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Addon Bundle",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

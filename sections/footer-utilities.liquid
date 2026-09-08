@@ -1,0 +1,248 @@
+{% liquid
+  if section.settings.background_color != blank
+    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
+  endif
+
+  assign show_payment_icons = section.settings.show_payment_icons
+  assign utilities_class = 'utilities spacing-style'
+  if show_payment_icons and shop.enabled_payment_types.size > 0
+    assign utilities_class = utilities_class | append: ' utilities--with-payments'
+  else
+    assign utilities_class = utilities_class | append: ' utilities--blocks-' | append: section.blocks.size
+  endif
+%}
+
+<div
+  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+></div>
+<div
+  class="section section--{{ section.settings.section_width }}{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
+  {{ section.shopify_attributes }}
+>
+  <div
+    class="{{ utilities_class }}"
+    style="{% render 'spacing-style', settings: section.settings %} --border-width: {{ section.settings.divider_thickness }}px;{% if section.settings.divider_color != blank %} --divider-color: {{ section.settings.divider_color }};{% endif %} --gap: {{ section.settings.gap }}px;"
+    data-testid="footer-utilities"
+  >
+    <div class="utilities__main">
+      {% content_for 'blocks' %}
+    </div>
+
+    {% if show_payment_icons and shop.enabled_payment_types.size > 0 %}
+      <div class="utilities__payments">
+        <span class="visually-hidden">{{ 'blocks.payment_methods' | t }}</span>
+        <ul class="utilities__payment-list" role="list">
+          {% for type in shop.enabled_payment_types %}
+            <li class="utilities__payment-item">
+              {{ type | payment_type_svg_tag: class: 'utilities__payment-icon icon icon--full-color' }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .utilities {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+    text-wrap: nowrap;
+    border-top: var(--border-width) solid var(--divider-color, var(--color-border));
+    color: var(--color-foreground-muted);
+  }
+
+  .utilities__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  .utilities a,
+  .utilities button {
+    color: var(--color-utilities, var(--color-foreground-muted));
+  }
+
+  .utilities__payments {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .utilities__payment-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .utilities__payment-item {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  .utilities__payment-icon {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .utilities--with-payments {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--gap);
+    }
+
+    .utilities--with-payments .utilities__main {
+      align-items: flex-start;
+      justify-self: start;
+    }
+
+    .utilities--with-payments .utilities__payments {
+      justify-content: flex-end;
+      justify-self: end;
+    }
+
+    .utilities--with-payments .utilities__payment-list {
+      justify-content: flex-end;
+    }
+
+    .utilities:not(.utilities--with-payments) {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: start;
+    }
+
+    .utilities:not(.utilities--with-payments) .utilities__main {
+      align-items: flex-start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.policies_and_links",
+  "tag": "div",
+  "class": "footer-utilities",
+  "max_blocks": 3,
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "default": "{{ settings.color_palette.foreground }}"
+    },
+    {
+      "type": "range",
+      "id": "divider_thickness",
+      "label": "t:settings.divider_thickness",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "t:settings.divider_color",
+      "visible_if": "{{ section.settings.divider_thickness > 0 }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "显示支付图标",
+      "info": "显示在版权行右侧",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "footer-copyright"
+    },
+    {
+      "type": "footer-policy-list"
+    },
+    {
+      "type": "social-links"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.policies_and_links",
+      "category": "t:categories.footer",
+      "blocks": {
+        "copyright": {
+          "type": "footer-copyright"
+        }
+      },
+      "block_order": ["copyright"]
+    }
+  ]
+}
+{% endschema %}

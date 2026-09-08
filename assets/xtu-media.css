@@ -1,0 +1,89 @@
+/*
+  XTU shared media slot (snippets/xtu-media.liquid + xtu-video-embed.liquid).
+  Height from aspect-ratio; PC/mobile split at 749px; object-fit: cover.
+*/
+
+.xtu-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: var(--xtu-media-ratio, 16 / 9);
+  background: #e8eaed;
+}
+
+.xtu-media--auto {
+  aspect-ratio: auto;
+  height: auto;
+  background: transparent;
+}
+
+.xtu-media--fill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.xtu-media__item,
+.xtu-media__image,
+.xtu-media__video,
+.xtu-media__placeholder,
+.xtu-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.xtu-media--auto .xtu-media__item,
+.xtu-media--auto .xtu-media__image,
+.xtu-media--auto .xtu-media__video,
+.xtu-media--auto .xtu-media__placeholder,
+.xtu-media--auto video {
+  height: auto;
+  object-fit: contain;
+}
+
+.xtu-media__item--mobile {
+  display: none;
+}
+
+.xtu-media__placeholder {
+  background: #e8eaed;
+}
+
+.xtu-media__youtube,
+iframe.xtu-media__youtube {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.xtu-media:not(.xtu-media--auto) .xtu-media__youtube {
+  position: absolute;
+  inset: 0;
+}
+
+.xtu-media--auto .xtu-media__youtube {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.xtu-media--fill .xtu-media__youtube {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-media--split .xtu-media__item--desktop {
+    display: none;
+  }
+
+  .xtu-media--split .xtu-media__item--mobile {
+    display: block;
+  }
+}

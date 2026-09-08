@@ -1,0 +1,308 @@
+{% doc %}
+  XTU Feature Benefits — icon + text grid for services / brand selling points.
+
+  @example
+  {% content_for 'block', type: 'xtu-feature-benefits', id: 'benefits' %}
+{% enddoc %}
+
+{% liquid
+  assign bs = block.settings
+  assign heading = bs.heading
+  assign background = bs.background_color | default: '#F5F5F7'
+  assign heading_color = bs.heading_color | default: '#111111'
+  assign text_color = bs.text_color | default: '#111111'
+  assign icon_bg = bs.icon_background | default: '#FFFFFF'
+  assign radius = bs.corner_radius | default: 16
+  assign columns = bs.columns | default: '2'
+%}
+
+{% capture items_html %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+{% assign items_html = items_html | strip %}
+
+{% if heading != blank or items_html != blank %}
+  <div
+    class="xtu-feature-benefits xtu-feature-benefits--cols-{{ columns }}"
+    style="
+      --xtu-fb-bg: {{ background }};
+      --xtu-fb-heading: {{ heading_color }};
+      --xtu-fb-text: {{ text_color }};
+      --xtu-fb-icon-bg: {{ icon_bg }};
+      --xtu-fb-radius: {{ radius }}px;
+      --xtu-fb-pad: {{ bs.padding | default: 20 }}px;
+      --xtu-fb-gap: {{ bs.gap | default: 16 }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    {% if heading != blank %}
+      <div class="xtu-feature-benefits__header">
+        <h3 class="xtu-feature-benefits__heading">{{ heading | escape }}</h3>
+      </div>
+    {% endif %}
+
+    {% if items_html != blank %}
+      <div class="xtu-feature-benefits__grid">
+        {{ items_html }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .xtu-feature-benefits {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: var(--xtu-fb-pad, 20px);
+    border-radius: var(--xtu-fb-radius, 16px);
+    background: var(--xtu-fb-bg, #f5f5f7);
+    box-sizing: border-box;
+  }
+
+  .xtu-feature-benefits__header {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .xtu-feature-benefits__heading {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 -1px;
+    padding-bottom: 8px;
+    font-family: var(--font-heading--family);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-fb-heading, #111);
+  }
+
+  .xtu-feature-benefits__heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--xtu-fb-heading, #111);
+  }
+
+  .xtu-feature-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--xtu-fb-gap, 16px) 20px;
+  }
+
+  .xtu-feature-benefits--cols-1 .xtu-feature-benefits__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .xtu-feature-benefits__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .xtu-feature-benefits__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--xtu-fb-icon-bg, #fff);
+    overflow: hidden;
+  }
+
+  .xtu-feature-benefits__icon-img,
+  .xtu-feature-benefits__placeholder {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  .xtu-feature-benefits__placeholder {
+    color: #111;
+  }
+
+  .xtu-feature-benefits__label {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-fb-text, #111);
+  }
+
+  @media (max-width: 749px) {
+    .xtu-feature-benefits {
+      margin: 4px 0;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .xtu-feature-benefits__header {
+      margin-bottom: 12px;
+    }
+
+    .xtu-feature-benefits__heading {
+      padding-bottom: 6px;
+      font-size: 0.9375rem;
+    }
+
+    .xtu-feature-benefits__grid {
+      gap: 12px 10px;
+    }
+
+    .xtu-feature-benefits__item {
+      gap: 8px;
+    }
+
+    .xtu-feature-benefits__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .xtu-feature-benefits__icon-img,
+    .xtu-feature-benefits__placeholder {
+      width: 16px;
+      height: 16px;
+    }
+
+    .xtu-feature-benefits__label {
+      font-size: var(--xtu-type-eyebrow, 0.75rem);
+    }
+  }
+
+  @media (max-width: 359px) {
+    .xtu-feature-benefits--cols-2 .xtu-feature-benefits__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Feature Benefits",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_xtu-feature-benefit-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "Service & Benefits"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "列数",
+      "options": [
+        { "value": "1", "label": "1 列" },
+        { "value": "2", "label": "2 列" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文案色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "icon_background",
+      "label": "图标底色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "内边距",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "项间距",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Feature Benefits",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "_xtu-feature-benefit-item",
+          "settings": {
+            "label": "Price Guarantee"
+          }
+        },
+        {
+          "type": "_xtu-feature-benefit-item",
+          "settings": {
+            "label": "1-Day Delivery"
+          }
+        },
+        {
+          "type": "_xtu-feature-benefit-item",
+          "settings": {
+            "label": "Members' Benefits"
+          }
+        },
+        {
+          "type": "_xtu-feature-benefit-item",
+          "settings": {
+            "label": "5-Year Warranty"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

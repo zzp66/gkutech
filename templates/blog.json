@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "xtu-blog-list",
+      "blocks": {
+        "blog_guides": {
+          "type": "blog_category",
+          "settings": {
+            "blog": "guides",
+            "label": ""
+          }
+        },
+        "blog_news": {
+          "type": "blog_category",
+          "settings": {
+            "blog": "news",
+            "label": ""
+          }
+        },
+        "blog_review": {
+          "type": "blog_category",
+          "disabled": true,
+          "settings": {
+            "blog": "review",
+            "label": ""
+          }
+        }
+      },
+      "block_order": [
+        "blog_guides",
+        "blog_news",
+        "blog_review"
+      ],
+      "settings": {
+        "heading": "XTU's Blog",
+        "show_blog_tabs": true,
+        "show_tag_filter": true,
+        "tag_filter_heading": "Filter by tag",
+        "tag_filter_label": "All tags",
+        "articles_per_page_desktop": 9,
+        "articles_per_page_mobile": 8,
+        "card_ratio": "4 / 3",
+        "card_gap": 24,
+        "card_gap_mobile": 12,
+        "date_format": "%B %d, %Y",
+        "show_author": true,
+        "empty_text": "No articles found.",
+        "button_label": "Read More",
+        "show_button_arrow": false,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,372 @@
+{% liquid
+  assign show_author = section.settings.show_author
+  assign show_date = section.settings.show_date
+  assign date_format = section.settings.date_format | default: '%B %d, %Y'
+  assign content_width = section.settings.content_width | default: 1200
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: background_color
+  assign image_radius = section.settings.image_radius | default: 12
+  assign show_comments = section.settings.show_comments
+%}
+
+<section
+  id="xtu-article-{{ section.id }}"
+  class="xtu-article"
+  data-xtu-article
+  style="
+    --xtu-ar-bg: {{ background_color }};
+    --xtu-ar-content-bg: {{ content_background }};
+    --xtu-ar-content-width: {{ content_width }}px;
+    --xtu-ar-padding-top: {{ padding_top }}px;
+    --xtu-ar-padding-bottom: {{ padding_bottom }}px;
+    --xtu-ar-padding-top-mobile: {{ padding_top_mobile }}px;
+    --xtu-ar-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+    --xtu-ar-image-radius: {{ image_radius }}px;
+  "
+>
+  <div class="xtu-article__inner">
+    <header class="xtu-article__header">
+      <h1 class="xtu-article__title">{{ article.title | escape }}</h1>
+
+      {% if show_date or show_author %}
+        <div class="xtu-article__meta">
+          {% if show_date %}
+            <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+              {{ article.published_at | date: date_format }}
+            </time>
+          {% endif %}
+          {% if show_date and show_author and article.author != blank %}
+            <span class="xtu-article__meta-sep" aria-hidden="true">·</span>
+          {% endif %}
+          {% if show_author and article.author != blank %}
+            <span class="xtu-article__author">{{ article.author | escape }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if article.image != blank %}
+      {% liquid
+        assign cover_alt = article.image.alt
+        if cover_alt == blank
+          assign cover_alt = article.title
+        endif
+      %}
+      <figure class="xtu-article__media">
+        {{
+          article.image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'xtu-article__image',
+            loading: 'eager',
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '(max-width: 749px) calc(100vw - 30px), min(1200px, calc(100vw - 80px))',
+            alt: cover_alt
+        }}
+      </figure>
+    {% endif %}
+
+    <div class="xtu-article__body rte">
+      <rte-formatter>
+        {{ article.content }}
+      </rte-formatter>
+    </div>
+
+    {% if article.tags.size > 0 %}
+      <ul class="xtu-article__tags" role="list">
+        {% for tag in article.tags %}
+          <li>
+            <a class="xtu-article__tag" href="{{ blog.url }}/tagged/{{ tag | handle }}">
+              {{ tag | escape }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if show_comments and blog.comments_enabled? %}
+      <div class="xtu-article__comments">
+        <h2 class="xtu-article__comments-heading">
+          {{- 'blogs.article.comments_heading' | t: count: article.comments_count -}}
+        </h2>
+
+        {% if article.comments_count > 0 %}
+          <div class="xtu-article__comments-list">
+            {% paginate article.comments by 10 %}
+              {% for comment in article.comments %}
+                <article class="xtu-article__comment">
+                  <div class="xtu-article__comment-body">{{ comment.content }}</div>
+                  <div class="xtu-article__comment-meta">
+                    <span class="xtu-article__comment-author">{{ comment.author | escape }}</span>
+                    <span class="xtu-article__meta-sep" aria-hidden="true">·</span>
+                    <time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}">
+                      {{ comment.created_at | date: date_format }}
+                    </time>
+                  </div>
+                </article>
+              {% endfor %}
+
+              {% if paginate.pages > 1 %}
+                <div class="xtu-article__comments-pagination">
+                  {{ paginate | default_pagination }}
+                </div>
+              {% endif %}
+            {% endpaginate %}
+          </div>
+        {% endif %}
+
+        {% form 'new_comment', article %}
+          <div class="xtu-article__form">
+            <h2 class="xtu-article__form-heading">
+              {{- 'blogs.comment_form.heading' | t -}}
+            </h2>
+
+            {% if form.errors %}
+              <p class="xtu-article__form-message xtu-article__form-message--error" role="alert">
+                {{- 'blogs.comment_form.error' | t -}}
+              </p>
+              <ul class="xtu-article__form-errors">
+                {% for field in form.errors %}
+                  <li>
+                    {% if form.errors.translated_fields[field] contains 'author' %}
+                      {{ 'blogs.comment_form.name' | t }}
+                    {% elsif form.errors.translated_fields[field] contains 'body' %}
+                      {{ 'blogs.comment_form.message' | t }}
+                    {% else %}
+                      {{ form.errors.translated_fields[field] | capitalize }}
+                    {% endif %}
+                    {{ form.errors.messages[field] }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% elsif form.posted_successfully? %}
+              <p class="xtu-article__form-message xtu-article__form-message--success" role="alert">
+                {% liquid
+                  assign post_message = 'blogs.comment_form.success'
+                  if blog.moderated? and comment.status == 'unapproved'
+                    assign post_message = 'blogs.comment_form.success_moderated'
+                  endif
+                %}
+                {{ post_message | t }}
+              </p>
+            {% endif %}
+
+            <div class="xtu-article__form-grid">
+              <div class="xtu-article__field">
+                <label class="xtu-article__label" for="xtu-article-author-{{ section.id }}">
+                  {{ 'blogs.comment_form.name' | t }}
+                </label>
+                <input
+                  type="text"
+                  name="comment[author]"
+                  id="xtu-article-author-{{ section.id }}"
+                  class="xtu-article__input"
+                  autocomplete="name"
+                  value="{{ form.author }}"
+                  required
+                  {% if form.errors contains 'author' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+              </div>
+
+              <div class="xtu-article__field">
+                <label class="xtu-article__label" for="xtu-article-email-{{ section.id }}">
+                  {{ 'blogs.comment_form.email' | t }}
+                </label>
+                <input
+                  type="email"
+                  name="comment[email]"
+                  id="xtu-article-email-{{ section.id }}"
+                  class="xtu-article__input"
+                  autocomplete="email"
+                  value="{{ form.email }}"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  required
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+              </div>
+
+              <div class="xtu-article__field xtu-article__field--full">
+                <label class="xtu-article__label" for="xtu-article-body-{{ section.id }}">
+                  {{ 'blogs.comment_form.message' | t }}
+                </label>
+                <textarea
+                  rows="5"
+                  name="comment[body]"
+                  id="xtu-article-body-{{ section.id }}"
+                  class="xtu-article__input xtu-article__textarea"
+                  required
+                  {% if form.errors contains 'body' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >{{ form.body }}</textarea>
+              </div>
+            </div>
+
+            {% if blog.moderated? %}
+              <p class="xtu-article__form-note">
+                {{- 'blogs.comment_form.moderated' | t -}}
+              </p>
+            {% endif %}
+
+            <button
+              class="xtu-article__submit"
+              type="submit"
+              style="
+                --xtu-btn-bg: #1590F2;
+                --xtu-btn-color: #FFFFFF;
+                --xtu-btn-bg-hover: #0070CA;
+                --xtu-btn-color-hover: #FFFFFF;
+              "
+            >
+              {{ 'blogs.comment_form.post' | t }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "XTU Article",
+  "tag": "section",
+  "class": "xtu-article-section",
+  "enabled_on": {
+    "templates": ["article"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "标题与元信息"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "显示日期",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "显示作者",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "date_format",
+      "label": "日期格式",
+      "default": "%B %d, %Y",
+      "info": "Liquid 日期格式，如 %B %d, %Y"
+    },
+    {
+      "type": "header",
+      "content": "封面图"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "封面圆角",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "评论"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comments",
+      "label": "显示评论区",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "版块样式"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "内容区最大宽度",
+      "min": 900,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Article"
+    }
+  ]
+}
+{% endschema %}

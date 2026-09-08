@@ -1,0 +1,1005 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign enable_autoplay = section.settings.enable_autoplay
+  assign autoplay_delay = section.settings.autoplay_delay | default: 5 | times: 1000
+  assign show_button_arrow = section.settings.show_button_arrow
+  assign stage_height = section.settings.stage_height | default: 460
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign item_blocks = section.blocks | where: 'type', 'item'
+%}
+
+<script src="{{ 'xtu-discover-showcase.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="xtu-discover-showcase-{{ section.id }}"
+  class="xtu-discover-showcase"
+  data-xtu-discover-showcase
+  data-autoplay="{{ enable_autoplay }}"
+  data-autoplay-delay="{{ autoplay_delay }}"
+  style="
+    --xtu-ds-stage-height: {{ stage_height }}px;
+    --xtu-ds-padding-top: {{ padding_top }}px;
+    --xtu-ds-padding-bottom: {{ padding_bottom }}px;
+  "
+>
+  <div class="xtu-discover-showcase__stage-wrap" data-xtu-reveal="fade-up">
+    <div class="xtu-discover-showcase__stage">
+      <div class="xtu-discover-showcase__intro" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-discover-showcase__heading" data-xtu-reveal-child>
+            {{ heading | escape }}
+          </h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-discover-showcase__subheading" data-xtu-reveal-child>
+            {{ subheading | escape }}
+          </p>
+        {% endif %}
+
+        {% if item_blocks.size > 0 %}
+          <div
+            class="xtu-discover-showcase__tabs"
+            role="tablist"
+            aria-label="{{ heading | default: 'Product showcase' | escape }}"
+            data-xtu-reveal-child
+          >
+            {% for block in item_blocks %}
+              <button
+                type="button"
+                class="xtu-discover-showcase__tab{% if forloop.first %} is-active{% endif %}"
+                id="xtu-ds-tab-{{ section.id }}-{{ block.id }}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="xtu-ds-panel-{{ section.id }}-{{ block.id }}"
+                tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+                data-xtu-discover-tab
+              >
+                {{ block.settings.tab_label | default: block.settings.title | escape }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="xtu-discover-showcase__panels">
+        {% for block in item_blocks %}
+          {% liquid
+            assign card_product = block.settings.product
+            assign title = block.settings.title
+            if title == blank and card_product != blank
+              assign title = card_product.title
+            endif
+
+            assign product_image = block.settings.product_image
+            assign product_image_mobile = block.settings.product_image_mobile
+            if product_image == blank and card_product != blank
+              assign product_image = card_product.featured_image
+            endif
+
+            assign price_text = block.settings.price
+            if price_text == blank and card_product != blank
+              assign price_text = card_product.price | money
+            endif
+
+            assign compare_text = block.settings.compare_at_price
+            if compare_text == blank and card_product != blank and card_product.compare_at_price > card_product.price
+              assign compare_text = card_product.compare_at_price | money
+            endif
+
+            assign primary_label = block.settings.primary_label
+            assign primary_link = block.settings.primary_link
+            if primary_link == blank and card_product != blank
+              assign primary_link = card_product.url
+            endif
+
+            assign primary_bg = block.settings.primary_bg | default: '#111827'
+            assign primary_color = block.settings.primary_text_color | default: '#FFFFFF'
+            assign primary_bg_hover = block.settings.primary_bg_hover | default: '#000000'
+            assign primary_color_hover = block.settings.primary_text_color_hover | default: '#FFFFFF'
+
+            assign secondary_label = block.settings.secondary_label
+            assign secondary_link = block.settings.secondary_link
+            assign secondary_bg = block.settings.secondary_bg
+            if secondary_bg == blank
+              assign secondary_bg = 'transparent'
+            endif
+            assign secondary_color = block.settings.secondary_text_color | default: '#111827'
+            assign secondary_bg_hover = block.settings.secondary_bg_hover | default: '#111827'
+            assign secondary_color_hover = block.settings.secondary_text_color_hover | default: '#FFFFFF'
+          %}
+
+          <article
+            class="xtu-discover-showcase__panel{% if forloop.first %} is-active{% endif %}"
+            id="xtu-ds-panel-{{ section.id }}-{{ block.id }}"
+            role="tabpanel"
+            aria-labelledby="xtu-ds-tab-{{ section.id }}-{{ block.id }}"
+            data-xtu-discover-panel
+            {{ block.shopify_attributes }}
+            {% unless forloop.first %}
+              hidden
+              aria-hidden="true"
+            {% endunless %}
+          >
+            <div class="xtu-discover-showcase__bg{% if block.settings.background_image_mobile != blank %} xtu-discover-showcase__bg--split{% endif %}" aria-hidden="true">
+              {% if block.settings.background_image != blank %}
+                {{
+                  block.settings.background_image
+                  | image_url: width: 2400
+                  | image_tag:
+                    class: 'xtu-discover-showcase__bg-image xtu-discover-showcase__bg-image--desktop',
+                    loading: 'lazy',
+                    widths: '750, 1100, 1500, 2000, 2400',
+                    sizes: '100vw',
+                    alt: ''
+                }}
+              {% else %}
+                <div class="xtu-discover-showcase__bg-fallback"></div>
+              {% endif %}
+              {% if block.settings.background_image_mobile != blank %}
+                {{
+                  block.settings.background_image_mobile
+                  | image_url: width: 1500
+                  | image_tag:
+                    class: 'xtu-discover-showcase__bg-image xtu-discover-showcase__bg-image--mobile',
+                    loading: 'lazy',
+                    widths: '480, 750, 1100, 1500',
+                    sizes: '100vw',
+                    alt: ''
+                }}
+              {% endif %}
+            </div>
+
+            <div class="xtu-discover-showcase__content">
+              <div class="xtu-discover-showcase__media{% if product_image_mobile != blank %} xtu-discover-showcase__media--split{% endif %}">
+                {% if product_image != blank %}
+                  {{
+                    product_image
+                    | image_url: width: 1400
+                    | image_tag:
+                      class: 'xtu-discover-showcase__product-image xtu-discover-showcase__product-image--desktop',
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1000, 1400',
+                      sizes: '(min-width: 750px) 600px, 80vw',
+                      alt: title
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'xtu-discover-showcase__product-image xtu-discover-showcase__placeholder' }}
+                {% endif %}
+                {% if product_image_mobile != blank %}
+                  {{
+                    product_image_mobile
+                    | image_url: width: 1000
+                    | image_tag:
+                      class: 'xtu-discover-showcase__product-image xtu-discover-showcase__product-image--mobile',
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1000',
+                      sizes: '80vw',
+                      alt: title
+                  }}
+                {% endif %}
+              </div>
+
+              <div class="xtu-discover-showcase__info">
+                {% if title != blank %}
+                  <h3 class="xtu-discover-showcase__title">{{ title | escape }}</h3>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <p class="xtu-discover-showcase__desc">{{ block.settings.description | escape }}</p>
+                {% endif %}
+
+                {% if price_text != blank or compare_text != blank %}
+                  <div class="xtu-discover-showcase__price-row">
+                    {% if price_text != blank %}
+                      <span class="xtu-discover-showcase__price">{{ price_text | escape }}</span>
+                    {% endif %}
+                    {% if compare_text != blank %}
+                      <span class="xtu-discover-showcase__compare">{{ compare_text | escape }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if primary_label != blank or secondary_label != blank %}
+                  <div class="xtu-discover-showcase__actions">
+                    {% if primary_label != blank %}
+                      {% render 'xtu-btn',
+                        label: primary_label,
+                        href: primary_link,
+                        show_arrow: show_button_arrow,
+                        bg: primary_bg,
+                        color: primary_color,
+                        bg_hover: primary_bg_hover,
+                        color_hover: primary_color_hover,
+                        class: 'xtu-discover-showcase__btn'
+                      %}
+                    {% endif %}
+                    {% if secondary_label != blank %}
+                      {% render 'xtu-btn',
+                        label: secondary_label,
+                        href: secondary_link,
+                        show_arrow: show_button_arrow,
+                        bg: secondary_bg,
+                        color: secondary_color,
+                        bg_hover: secondary_bg_hover,
+                        color_hover: secondary_color_hover,
+                        class: 'xtu-discover-showcase__btn xtu-discover-showcase__btn--secondary'
+                      %}
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+
+      {% if item_blocks.size > 1 %}
+        <div class="xtu-discover-showcase__dots" role="tablist" aria-label="Showcase pagination">
+          {% for block in item_blocks %}
+            <button
+              type="button"
+              class="xtu-discover-showcase__dot{% if forloop.first %} is-active{% endif %}"
+              data-xtu-discover-dot
+              aria-label="{{ block.settings.tab_label | default: block.settings.title | default: 'Slide' | escape }} {{ forloop.index }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            ></button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-discover-showcase {
+    --xtu-ds-ease: var(--xtu-ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+    --xtu-ds-gap: 50px;
+    --xtu-ds-product-width: 600px;
+    --xtu-ds-overflow: 120px;
+    padding: var(--xtu-ds-padding-top, 80px) 0 var(--xtu-ds-padding-bottom, 80px);
+    background: #fff;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .xtu-discover-showcase__stage-wrap {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .xtu-discover-showcase__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #111827;
+  }
+
+  .xtu-discover-showcase__subheading {
+    margin: 12px 0 0;
+    font-family: var(--font-body--family);
+    font-size: clamp(var(--xtu-type-body, 0.875rem), 1.4vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #667085;
+  }
+
+  .xtu-discover-showcase__tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 100%;
+  }
+
+  .xtu-discover-showcase__tab {
+    min-height: 40px;
+    padding: 0 20px;
+    border: 0;
+    border-radius: 999px;
+    background: #eef0f3;
+    color: #4b5563;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    appearance: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s var(--xtu-ds-ease);
+  }
+
+  .xtu-discover-showcase__tab:hover {
+    background: #e4e7ec;
+    color: #111827;
+  }
+
+  .xtu-discover-showcase__tab.is-active {
+    background: #0070ca;
+    color: #fff;
+  }
+
+  .xtu-discover-showcase__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #111827;
+  }
+
+  .xtu-discover-showcase__desc {
+    margin: 12px 0 0;
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #4b5563;
+  }
+
+  .xtu-discover-showcase__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .xtu-discover-showcase__price {
+    font-family: var(--font-heading--family);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #0070ca;
+  }
+
+  .xtu-discover-showcase__compare {
+    font-family: var(--font-body--family);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #98a2b3;
+    text-decoration: line-through;
+  }
+
+  .xtu-discover-showcase__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .xtu-discover-showcase__btn--secondary.xtu-btn {
+    border: 1px solid color-mix(in srgb, var(--xtu-btn-color, #111827) 70%, transparent);
+  }
+
+  .xtu-discover-showcase__dots {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .xtu-discover-showcase__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: #d0d5dd;
+    cursor: pointer;
+    appearance: none;
+    transition: width 0.25s var(--xtu-ds-ease), background 0.25s ease;
+  }
+
+  .xtu-discover-showcase__dot.is-active {
+    width: 22px;
+    background: #0070ca;
+  }
+
+  .xtu-discover-showcase__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .xtu-discover-showcase__bg-image--mobile,
+  .xtu-discover-showcase__product-image--mobile {
+    display: none;
+  }
+
+  .xtu-discover-showcase__bg-fallback {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgb(255 255 255 / 0.85), transparent 70%),
+      linear-gradient(135deg, #d7dce3 0%, #f3f5f8 45%, #c9d0d9 100%);
+  }
+
+  .xtu-discover-showcase__placeholder {
+    background: rgb(255 255 255 / 0.35);
+  }
+
+  /* Desktop: intro above stage; product flush to bg bottom, protrudes above bg */
+  @media screen and (min-width: 750px) {
+    .xtu-discover-showcase__stage {
+      display: contents;
+    }
+
+    .xtu-discover-showcase__stage-wrap {
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      padding-top: 0;
+    }
+
+    .xtu-discover-showcase__intro {
+      order: 0;
+      position: relative;
+      z-index: 3;
+      width: min(var(--page-width), 100%);
+      margin: 0 auto 24px;
+      padding-inline: var(--page-margin);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .xtu-discover-showcase__panels {
+      order: 1;
+      position: relative;
+      width: 100%;
+      min-height: calc(var(--xtu-ds-stage-height, 460px) + var(--xtu-ds-overflow));
+      overflow: visible;
+      background: transparent;
+    }
+
+    .xtu-discover-showcase__dots {
+      display: none;
+    }
+
+    .xtu-discover-showcase__panel {
+      position: absolute;
+      inset: 0;
+      display: none;
+      overflow: visible;
+    }
+
+    .xtu-discover-showcase__panel.is-active {
+      display: block;
+    }
+
+    /* Bg band starts below overflow zone so product can sit on its bottom edge */
+    .xtu-discover-showcase__bg {
+      position: absolute;
+      top: var(--xtu-ds-overflow);
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .xtu-discover-showcase__content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: var(--xtu-ds-gap);
+      width: min(var(--page-width), 100%);
+      min-height: calc(var(--xtu-ds-stage-height, 460px) + var(--xtu-ds-overflow));
+      margin-inline: auto;
+      padding: 0 var(--page-margin) 0;
+      box-sizing: border-box;
+    }
+
+    .xtu-discover-showcase__media {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+
+    .xtu-discover-showcase__product-image {
+      display: block;
+      width: min(100%, var(--xtu-ds-product-width));
+      max-width: var(--xtu-ds-product-width);
+      height: auto;
+      max-height: calc(var(--xtu-ds-stage-height, 460px) + var(--xtu-ds-overflow));
+      object-fit: contain;
+      margin-top: 0;
+      vertical-align: bottom;
+    }
+
+    .xtu-discover-showcase__info {
+      flex: 0 1 28rem;
+      max-width: 28rem;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: var(--xtu-ds-stage-height, 460px);
+      margin-top: var(--xtu-ds-overflow);
+      padding-bottom: 0;
+      text-align: left;
+      box-sizing: border-box;
+    }
+  }
+
+  .xtu-discover-showcase__panel.is-enter .xtu-discover-showcase__bg {
+    animation: xtu-ds-bg-in 0.45s var(--xtu-ds-ease) both;
+  }
+
+  .xtu-discover-showcase__panel.is-enter .xtu-discover-showcase__content {
+    animation: xtu-ds-slide-in 0.75s var(--xtu-ds-ease) 0.12s both;
+  }
+
+  @keyframes xtu-ds-bg-in {
+    from {
+      opacity: 0.35;
+      transform: scale(1.02);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes xtu-ds-slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(45vw);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Mobile: full-bleed bg, content-driven height, intro + dots inside bg */
+  @media screen and (max-width: 749px) {
+    .xtu-discover-showcase__bg--split .xtu-discover-showcase__bg-image--desktop,
+    .xtu-discover-showcase__media--split .xtu-discover-showcase__product-image--desktop {
+      display: none;
+    }
+
+    .xtu-discover-showcase__bg--split .xtu-discover-showcase__bg-image--mobile,
+    .xtu-discover-showcase__media--split .xtu-discover-showcase__product-image--mobile {
+      display: block;
+    }
+
+    .xtu-discover-showcase {
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .xtu-discover-showcase__stage-wrap {
+      width: 100%;
+      padding: 0;
+    }
+
+    .xtu-discover-showcase__stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .xtu-discover-showcase__intro {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      margin: 0;
+      padding: 40px 16px 30px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .xtu-discover-showcase__tabs {
+      display: none;
+    }
+
+    .xtu-discover-showcase__panels {
+      position: static;
+      z-index: 1;
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      background: transparent;
+    }
+
+    .xtu-discover-showcase__panel {
+      display: none;
+    }
+
+    .xtu-discover-showcase__panel.is-active {
+      display: block;
+      position: static;
+    }
+
+    /* Cover entire stage (intro + content + dots), no solid fill peeking through */
+    .xtu-discover-showcase__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .xtu-discover-showcase__bg-image,
+    .xtu-discover-showcase__bg-fallback {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .xtu-discover-showcase__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 40px;
+      width: 100%;
+      min-height: 0;
+      margin: 0;
+      padding: 0 16px 8px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .xtu-discover-showcase__media {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .xtu-discover-showcase__product-image {
+      display: block;
+      width: 100%;
+      max-width: none;
+      max-height: none;
+      height: auto;
+      object-fit: contain;
+      margin-top: 0;
+    }
+
+    .xtu-discover-showcase__info {
+      max-width: none;
+      width: 100%;
+      text-align: center;
+      align-self: stretch;
+      padding-bottom: 0;
+    }
+
+    .xtu-discover-showcase__price-row,
+    .xtu-discover-showcase__actions {
+      justify-content: center;
+    }
+
+    .xtu-discover-showcase__dots {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      padding: 20px 16px 28px;
+      margin: 0;
+    }
+
+    .xtu-discover-showcase__panel.is-enter .xtu-discover-showcase__content {
+      animation-name: xtu-ds-slide-in-mobile;
+    }
+  }
+
+  @keyframes xtu-ds-slide-in-mobile {
+    from {
+      opacity: 0;
+      transform: translateX(28vw);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xtu-discover-showcase__panel.is-enter .xtu-discover-showcase__bg,
+    .xtu-discover-showcase__panel.is-enter .xtu-discover-showcase__content {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Discover Showcase",
+  "tag": "section",
+  "class": "xtu-discover-showcase-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "Discover Your Dash Cam"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "副标题",
+      "default": "Our Best Selling Dash Cams for Vehicles"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "启用自动切换",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "自动切换间隔",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_arrow",
+      "label": "按钮显示箭头图标",
+      "info": "启用后，本区块内所有主副按钮同步显示箭头",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "stage_height",
+      "label": "展示区高度",
+      "min": 360,
+      "max": 640,
+      "step": 10,
+      "unit": "px",
+      "default": 460
+    },
+    {
+      "type": "header",
+      "content": "边距（仅 PC）"
+    },
+    {
+      "type": "paragraph",
+      "content": "移动端通栏背景，上下边距由内容区内边距控制，不提供独立调节，避免露出纯色留白。"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "展示项",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab 标题",
+          "default": "F17 Elite"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "背景图（PC）"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_mobile",
+          "label": "背景图（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "产品图（PC）"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_mobile",
+          "label": "产品图（移动端）"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "关联产品",
+          "info": "可选；留空标题/价格/链接时可自动回填"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "产品标题",
+          "default": "F17 Elite 3-CH"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述文案",
+          "default": "Delivers bright, clear video, day or night"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "价格",
+          "default": "$259.99"
+        },
+        {
+          "type": "text",
+          "id": "compare_at_price",
+          "label": "划线价",
+          "default": "$349.99"
+        },
+        {
+          "type": "header",
+          "content": "主按钮"
+        },
+        {
+          "type": "text",
+          "id": "primary_label",
+          "label": "文案",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "primary_link",
+          "label": "链接"
+        },
+        {
+          "type": "color",
+          "id": "primary_bg",
+          "label": "背景色",
+          "default": "#111827"
+        },
+        {
+          "type": "color",
+          "id": "primary_text_color",
+          "label": "文字颜色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "primary_bg_hover",
+          "label": "Hover 背景色",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "primary_text_color_hover",
+          "label": "Hover 文字颜色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "副按钮"
+        },
+        {
+          "type": "text",
+          "id": "secondary_label",
+          "label": "文案",
+          "default": "All dash cam"
+        },
+        {
+          "type": "url",
+          "id": "secondary_link",
+          "label": "链接"
+        },
+        {
+          "type": "color",
+          "id": "secondary_bg",
+          "label": "背景色",
+          "info": "留空为透明"
+        },
+        {
+          "type": "color",
+          "id": "secondary_text_color",
+          "label": "文字颜色",
+          "default": "#111827"
+        },
+        {
+          "type": "color",
+          "id": "secondary_bg_hover",
+          "label": "Hover 背景色",
+          "default": "#111827"
+        },
+        {
+          "type": "color",
+          "id": "secondary_text_color_hover",
+          "label": "Hover 文字颜色",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Discover Showcase",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "tab_label": "F17 Elite",
+            "title": "F17 Elite 3-CH",
+            "description": "Delivers bright, clear video, day or night",
+            "price": "$259.99",
+            "compare_at_price": "$349.99",
+            "primary_label": "Shop now",
+            "secondary_label": "All dash cam"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "tab_label": "F77",
+            "title": "F77 2-CH",
+            "description": "Native 4K+HDR, double it",
+            "price": "$219.99",
+            "compare_at_price": "$399.99",
+            "primary_label": "Shop now",
+            "secondary_label": "All dash cam"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "tab_label": "F7NA",
+            "title": "F7NA 2-CH",
+            "description": "Compact body, clear night vision",
+            "price": "$189.99",
+            "compare_at_price": "$299.99",
+            "primary_label": "Shop now",
+            "secondary_label": "All dash cam"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "tab_label": "ZoomPixl",
+            "title": "ZoomPixl",
+            "description": "Zoom in on what matters most",
+            "price": "$249.99",
+            "compare_at_price": "$329.99",
+            "primary_label": "Shop now",
+            "secondary_label": "All dash cam"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

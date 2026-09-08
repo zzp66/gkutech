@@ -1,0 +1,62 @@
+{% doc %}
+  Outputs a JSON array of XTU Help Product entries for Help Center catalogs.
+  不使用 paginate：同页内容条目已占用唯一 paginate；产品目录按 50 条上限足够。
+  缩略图优先级：
+  1) Metaobject「侧栏主图」image（file_reference）— 商品未上架网店时也能显示
+  2) 关联商品 product 的 featured_media / featured_image / images.first
+  3) all_products[handle] 再取主图（仅缺图时）
+
+  @example
+  {% capture products_json %}{% render 'xtu-help-products-json' %}{% endcapture %}
+{% enddoc %}
+{% assign first_item = true %}
+{% for entry in metaobjects.xtu_help_product.values %}
+  {% liquid
+    assign p_title = entry.title.value | default: entry.title | strip
+    assign p_code = entry.code.value | default: entry.code | strip | downcase | handleize
+    assign p_sort = entry.sort_order.value | default: entry.sort_order | default: 0
+    assign p_image = ''
+    assign image_source = entry.image.value | default: entry.image
+
+    if image_source == blank
+      assign linked_product = entry.product.value
+      if linked_product != blank
+        if linked_product.featured_media != blank and linked_product.featured_media.preview_image != blank
+          assign image_source = linked_product.featured_media.preview_image
+        elsif linked_product.featured_image != blank
+          assign image_source = linked_product.featured_image
+        elsif linked_product.images != blank and linked_product.images.size > 0
+          assign image_source = linked_product.images.first
+        endif
+
+        # Metaobject product_reference 在商品未上架网店时 .value 为空；已上架但媒体未水合时再回退
+        if image_source == blank and linked_product.handle != blank
+          assign catalog_product = all_products[linked_product.handle]
+          if catalog_product != blank
+            if catalog_product.featured_media != blank and catalog_product.featured_media.preview_image != blank
+              assign image_source = catalog_product.featured_media.preview_image
+            elsif catalog_product.featured_image != blank
+              assign image_source = catalog_product.featured_image
+            elsif catalog_product.images != blank and catalog_product.images.size > 0
+              assign image_source = catalog_product.images.first
+            endif
+          endif
+        endif
+      endif
+    endif
+
+    if image_source != blank
+      assign p_image = image_source | image_url: width: 96
+    endif
+  %}
+  {% if p_code != blank and p_title != blank %}
+    {% unless first_item %},{% endunless %}
+    {% assign first_item = false %}
+    {
+      "code": {{ p_code | json }},
+      "title": {{ p_title | json }},
+      "sort": {{ p_sort | json }},
+      "image": {{ p_image | json }}
+    }
+  {% endif %}
+{% endfor %}

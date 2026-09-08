@@ -1,0 +1,643 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign media_radius = section.settings.media_radius | default: 16
+  assign gap_desktop = section.settings.gap_desktop | default: 16
+  assign gap_mobile = section.settings.gap_mobile | default: 8
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+%}
+
+<section
+  id="xtu-media-grid-{{ section.id }}"
+  class="xtu-media-grid"
+  style="
+    --xtu-mg-bg: {{ background_color }};
+    --xtu-mg-content-bg: {{ content_background }};
+    --xtu-mg-content-width: {{ content_width }}px;
+    --xtu-mg-radius: {{ media_radius }}px;
+    --xtu-mg-gap: {{ gap_desktop }}px;
+    --xtu-mg-gap-m: {{ gap_mobile }}px;
+    --xtu-mg-pt: {{ padding_top }}px;
+    --xtu-mg-pb: {{ padding_bottom }}px;
+    --xtu-mg-pt-m: {{ padding_top_mobile }}px;
+    --xtu-mg-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-mg-heading-color: {{ heading_color }};
+    --xtu-mg-text-color: {{ text_color }};
+    --xtu-mg-muted-color: {{ muted_text_color }};
+  "
+>
+  <div class="xtu-media-grid__inner">
+    {% if heading != blank or subheading != blank %}
+      <div class="xtu-media-grid__header" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-media-grid__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-media-grid__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="xtu-media-grid__rows" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% for block in section.blocks %}
+          {% if block.type == 'full_width' %}
+            {% liquid
+              assign ph_mod = forloop.index0 | modulo: 3
+              assign placeholder_name = 'lifestyle-1'
+              if ph_mod == 1
+                assign placeholder_name = 'lifestyle-2'
+              elsif ph_mod == 2
+                assign placeholder_name = 'image'
+              endif
+              assign sizes_desktop = 'min(var(--xtu-mg-content-width, 1200px), calc(100vw - var(--page-margin) * 2))'
+              assign sizes_mobile = 'calc(100vw - var(--page-margin) * 2)'
+            %}
+            <div
+              class="xtu-media-grid__row xtu-media-grid__row--full"
+              data-xtu-reveal-child
+              {{ block.shopify_attributes }}
+            >
+              <div class="xtu-media-grid__item xtu-media-grid__item--full xtu-img-zoom">
+                {% render 'xtu-media-grid-item',
+                  block: block,
+                  placeholder_name: placeholder_name,
+                  sizes_desktop: sizes_desktop,
+                  sizes_mobile: sizes_mobile
+                %}
+              </div>
+            </div>
+          {% elsif block.type == 'column' %}
+            {% liquid
+              assign prev_index = forloop.index0 | minus: 1
+              assign is_group_start = true
+              if prev_index >= 0
+                assign prev_block = section.blocks[prev_index]
+                if prev_block.type == 'column'
+                  assign is_group_start = false
+                endif
+              endif
+            %}
+            {% if is_group_start %}
+              {% liquid
+                assign group_start = forloop.index0
+                assign col_count = 0
+                assign scanning = false
+                for scan_block in section.blocks
+                  if forloop.index0 == group_start
+                    assign scanning = true
+                  endif
+                  if scanning
+                    if scan_block.type == 'column'
+                      assign col_count = col_count | plus: 1
+                    else
+                      assign scanning = false
+                    endif
+                  endif
+                endfor
+              %}
+              <div class="xtu-media-grid__row xtu-media-grid__row--columns">
+                {% assign rendered = 0 %}
+                {% for col_block in section.blocks %}
+                  {% if forloop.index0 >= group_start and rendered < col_count %}
+                    {% if col_block.type == 'column' %}
+                      {% liquid
+                        assign ph_mod = forloop.index0 | modulo: 3
+                        assign placeholder_name = 'lifestyle-1'
+                        if ph_mod == 1
+                          assign placeholder_name = 'lifestyle-2'
+                        elsif ph_mod == 2
+                          assign placeholder_name = 'image'
+                        endif
+                        assign sizes_desktop = '(max-width: 749px) 100vw, min(33vw, 480px)'
+                        assign sizes_mobile = 'calc(100vw - var(--page-margin) * 2)'
+                        assign rendered = rendered | plus: 1
+                      %}
+                      <div
+                        class="xtu-media-grid__item xtu-media-grid__item--column xtu-img-zoom"
+                        data-xtu-reveal-child
+                        {{ col_block.shopify_attributes }}
+                      >
+                        {% render 'xtu-media-grid-item',
+                          block: col_block,
+                          placeholder_name: placeholder_name,
+                          sizes_desktop: sizes_desktop,
+                          sizes_mobile: sizes_mobile
+                        %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-media-grid {
+    padding: var(--xtu-mg-pt, 80px) 0 var(--xtu-mg-pb, 80px);
+    background: var(--xtu-mg-bg, #fff);
+  }
+
+  .xtu-media-grid__inner {
+    width: min(var(--xtu-mg-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-mg-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-media-grid__header {
+    margin-bottom: var(--xtu-space-40, 40px);
+    text-align: center;
+  }
+
+  .xtu-media-grid__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-mg-heading-color, #000);
+  }
+
+  .xtu-media-grid__subheading {
+    margin: 16px auto 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-mg-muted-color, #8e9297);
+  }
+
+  .xtu-media-grid__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--xtu-mg-gap, 16px);
+  }
+
+  .xtu-media-grid__row {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .xtu-media-grid__row--columns {
+    gap: var(--xtu-mg-gap, 16px);
+    align-items: stretch;
+  }
+
+  .xtu-media-grid__item {
+    min-width: 0;
+  }
+
+  .xtu-media-grid__item--full {
+    width: 100%;
+  }
+
+  .xtu-media-grid__item--column {
+    flex: 1 1 0;
+  }
+
+  .xtu-media-grid__frame {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: var(--xtu-mg-radius, 16px);
+    background: #e8eaed;
+  }
+
+  .xtu-media-grid__frame:not(.xtu-media-grid__frame--auto) {
+    aspect-ratio: var(--xtu-mg-ratio, 16 / 10);
+  }
+
+  .xtu-media-grid__frame--auto {
+    aspect-ratio: auto;
+    height: auto;
+    background: transparent;
+  }
+
+  .xtu-media-grid__media,
+  .xtu-media-grid__placeholder {
+    display: block;
+    width: 100%;
+  }
+
+  .xtu-media-grid__frame:not(.xtu-media-grid__frame--auto) :is(.xtu-media-grid__media, .xtu-media-grid__placeholder) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .xtu-media-grid__frame--auto :is(.xtu-media-grid__image, .xtu-media-grid__video, .xtu-media-grid__placeholder) {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .xtu-media-grid__video {
+    pointer-events: none;
+  }
+
+  .xtu-media-grid__youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .xtu-media-grid__frame--auto .xtu-media-grid__youtube {
+    position: static;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .xtu-media-grid__placeholder {
+    background: #e8eaed;
+  }
+
+  .xtu-media-grid__media--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-media-grid {
+      padding: var(--xtu-mg-pt-m, 40px) 0 var(--xtu-mg-pb-m, 40px);
+    }
+
+    .xtu-media-grid__header {
+      margin-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-media-grid__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-media-grid__subheading {
+      margin-top: 12px;
+      font-size: var(--xtu-type-section-subtitle-m);
+    }
+
+    .xtu-media-grid__rows {
+      gap: var(--xtu-mg-gap-m, 8px);
+    }
+
+    .xtu-media-grid__row--columns {
+      flex-direction: column;
+      gap: var(--xtu-mg-gap-m, 8px);
+    }
+
+    .xtu-media-grid__item--column {
+      flex: none;
+      width: 100%;
+    }
+
+    .xtu-media-grid__frame:has(.xtu-media-grid__media--mobile) .xtu-media-grid__media--desktop {
+      display: none;
+    }
+
+    .xtu-media-grid__media--mobile {
+      display: block;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Media Grid",
+  "tag": "section",
+  "class": "section-xtu-media-grid",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "info": "留空则不显示"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "副标题",
+      "info": "留空则不显示"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次要文字色",
+      "default": "#8E9297",
+      "info": "副标题等弱化文案"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200,
+      "info": "PC 端内容区最大宽度，建议 900–1400。过小或过大会自动限制在 600–1600。"
+    },
+    {
+      "type": "range",
+      "id": "media_radius",
+      "label": "媒体圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Block 间距（PC）",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Block 间距（移动端）",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "full_width",
+      "name": "全宽",
+      "settings": [
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "留空则回退 PC 图",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频（PC）",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "上传视频（移动端）",
+          "info": "留空则回退 PC 视频；静音自动循环播放，无控件",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "select",
+          "id": "media_ratio",
+          "label": "媒体比例",
+          "options": [
+            { "value": "auto", "label": "自适应（按媒体比例）" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "3 / 2", "label": "3:2" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "16 / 9", "label": "16:9" },
+            { "value": "21 / 9", "label": "21:9" }
+          ],
+          "default": "16 / 10"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "图片替代文字",
+          "info": "仅图片生效；视频为装饰播放时可留空",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        }
+      ]
+    },
+    {
+      "type": "column",
+      "name": "等分列",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "连续添加多个「等分列」会在同一行内平分宽度；遇到「全宽」或换行后重新开始新行。移动端每个 block 独占一行。"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "留空则回退 PC 图",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频（PC）",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "上传视频（移动端）",
+          "info": "留空则回退 PC 视频；静音自动循环播放，无控件",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "select",
+          "id": "media_ratio",
+          "label": "媒体比例",
+          "options": [
+            { "value": "auto", "label": "自适应（按媒体比例）" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "3 / 2", "label": "3:2" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "16 / 9", "label": "16:9" },
+            { "value": "21 / 9", "label": "21:9" }
+          ],
+          "default": "4 / 3"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "图片替代文字",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Media Grid",
+      "blocks": [
+        {
+          "type": "full_width",
+          "settings": {
+            "media_ratio": "21 / 9"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "media_ratio": "4 / 3"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "media_ratio": "4 / 3"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "media_ratio": "4 / 3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,320 @@
+{% doc %}
+  XTU Expandable Description — product description with collapsed height + Learn more.
+
+  @example
+  {% content_for 'block', type: 'xtu-expandable-description', id: 'desc' %}
+{% enddoc %}
+
+{% liquid
+  assign bs = block.settings
+  assign text = bs.text
+  if text == blank and closest.product != blank
+    assign text = closest.product.description
+  endif
+  if request.visual_preview_mode and text == blank
+    assign text = collections.all.products.first.description
+  endif
+
+  assign collapsed_height = bs.collapsed_height | default: 200
+  assign expand_label = bs.expand_label | default: 'Learn more'
+  assign collapse_label = bs.collapse_label | default: 'Show less'
+  assign background = bs.background_color | default: '#F5F5F7'
+  assign text_color = bs.text_color | default: '#333333'
+  assign link_color = bs.link_color | default: '#0070CA'
+  assign radius = bs.corner_radius | default: 16
+  assign enable_collapse = bs.enable_collapse
+%}
+
+{% if text != blank %}
+  <xtu-expandable-description
+    class="xtu-expandable-description"
+    data-collapsed-height="{{ collapsed_height }}"
+    data-enabled="{{ enable_collapse }}"
+    style="
+      --xtu-ed-bg: {{ background }};
+      --xtu-ed-text: {{ text_color }};
+      --xtu-ed-link: {{ link_color }};
+      --xtu-ed-radius: {{ radius }}px;
+      --xtu-ed-height: {{ collapsed_height }}px;
+      --xtu-ed-pad: {{ bs.padding | default: 20 }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    <div class="xtu-expandable-description__panel">
+      <div class="xtu-expandable-description__body rte" data-xtu-ed-body>
+        {{ text }}
+      </div>
+      {% if enable_collapse %}
+        <button
+          type="button"
+          class="xtu-expandable-description__toggle"
+          data-xtu-ed-toggle
+          aria-expanded="false"
+          hidden
+          data-label-more="{{ expand_label | escape }}"
+          data-label-less="{{ collapse_label | escape }}"
+        >
+          <span data-xtu-ed-toggle-label>{{ expand_label | escape }}</span>
+          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2.5 4.5 6 8 9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      {% endif %}
+    </div>
+  </xtu-expandable-description>
+{% endif %}
+
+{% stylesheet %}
+  .xtu-expandable-description {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .xtu-expandable-description__panel {
+    padding: var(--xtu-ed-pad, 20px);
+    border-radius: var(--xtu-ed-radius, 16px);
+    background: var(--xtu-ed-bg, #f5f5f7);
+    box-sizing: border-box;
+  }
+
+  .xtu-expandable-description__body {
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-ed-text, #333);
+  }
+
+  .xtu-expandable-description.is-collapsed .xtu-expandable-description__body {
+    max-height: var(--xtu-ed-height, 200px);
+    overflow: hidden;
+  }
+
+  .xtu-expandable-description__body > *:first-child {
+    margin-top: 0;
+  }
+
+  .xtu-expandable-description__body > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .xtu-expandable-description__body p {
+    margin: 0 0 0.75em;
+    line-height: 1.2;
+  }
+
+  .xtu-expandable-description__body strong,
+  .xtu-expandable-description__body b {
+    font-weight: 600;
+  }
+
+  .xtu-expandable-description__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 12px 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-ed-link, #0070ca);
+    cursor: pointer;
+    appearance: none;
+  }
+
+  .xtu-expandable-description__toggle[hidden] {
+    display: none !important;
+  }
+
+  .xtu-expandable-description__toggle svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+  }
+
+  .xtu-expandable-description.is-expanded .xtu-expandable-description__toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .xtu-expandable-description__toggle:hover {
+    text-decoration: underline;
+  }
+
+  .xtu-expandable-description__toggle:focus-visible {
+    outline: 2px solid #0070ca;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 749px) {
+    .xtu-expandable-description {
+      margin: 4px 0;
+    }
+
+    .xtu-expandable-description__panel {
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .xtu-expandable-description__body {
+      font-size: 0.8125rem;
+    }
+
+    .xtu-expandable-description__toggle {
+      margin-top: 10px;
+      font-size: 0.8125rem;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    class XtuExpandableDescription extends HTMLElement {
+      connectedCallback() {
+        if (this.dataset.enabled !== 'true') return;
+
+        const body = this.querySelector('[data-xtu-ed-body]');
+        const toggle = this.querySelector('[data-xtu-ed-toggle]');
+        const labelEl = this.querySelector('[data-xtu-ed-toggle-label]');
+        if (!body || !toggle) return;
+
+        const limit = Number(this.dataset.collapsedHeight) || 200;
+        const needsToggle = body.scrollHeight > limit + 4;
+
+        if (!needsToggle) {
+          this.classList.remove('is-collapsed', 'is-expanded');
+          toggle.hidden = true;
+          return;
+        }
+
+        toggle.hidden = false;
+        this.classList.add('is-collapsed');
+        this.classList.remove('is-expanded');
+        toggle.setAttribute('aria-expanded', 'false');
+        if (labelEl) labelEl.textContent = toggle.dataset.labelMore || 'Learn more';
+
+        toggle.addEventListener('click', () => {
+          const expanded = this.classList.contains('is-expanded');
+          if (expanded) {
+            this.classList.remove('is-expanded');
+            this.classList.add('is-collapsed');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (labelEl) labelEl.textContent = toggle.dataset.labelMore || 'Learn more';
+          } else {
+            this.classList.add('is-expanded');
+            this.classList.remove('is-collapsed');
+            toggle.setAttribute('aria-expanded', 'true');
+            if (labelEl) labelEl.textContent = toggle.dataset.labelLess || 'Show less';
+          }
+        });
+      }
+    }
+
+    if (!customElements.get('xtu-expandable-description')) {
+      customElements.define('xtu-expandable-description', XtuExpandableDescription);
+    }
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "XTU Expand Description",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "描述内容",
+      "default": "<p>Product description goes here.</p>",
+      "info": "留空则使用当前产品描述"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_collapse",
+      "label": "启用展开收起",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "collapsed_height",
+      "label": "默认显示高度",
+      "min": 80,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 200,
+      "visible_if": "{{ block.settings.enable_collapse }}"
+    },
+    {
+      "type": "text",
+      "id": "expand_label",
+      "label": "展开按钮文案",
+      "default": "Learn more",
+      "visible_if": "{{ block.settings.enable_collapse }}"
+    },
+    {
+      "type": "text",
+      "id": "collapse_label",
+      "label": "收起按钮文案",
+      "default": "Show less",
+      "visible_if": "{{ block.settings.enable_collapse }}"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文字色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "按钮色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "内边距",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Expand Description",
+      "category": "Product",
+      "settings": {
+        "text": "{{ closest.product.description }}",
+        "enable_collapse": true,
+        "collapsed_height": 200
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,762 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 1200
+  assign gallery_ratio = section.settings.gallery_ratio | default: '16 / 10'
+  assign ratio_auto = false
+  if gallery_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign image_radius = section.settings.image_radius | default: 0
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign show_tab_underline = section.settings.show_tab_underline
+%}
+
+<section
+  id="xtu-tab-images-{{ section.id }}"
+  class="xtu-tab-images{% if ratio_auto %} xtu-tab-images--ratio-auto{% endif %}{% if show_tab_underline %} xtu-tab-images--tab-underline{% endif %}"
+  data-xtu-tab-images
+  style="
+    --xtu-ti-bg: {{ background_color }};
+    --xtu-ti-content-bg: {{ content_background }};
+    --xtu-ti-content-width: {{ content_width }}px;
+    --xtu-ti-ratio: {{ gallery_ratio }};
+    --xtu-ti-radius: {{ image_radius }}px;
+    --xtu-ti-pt: {{ padding_top }}px;
+    --xtu-ti-pb: {{ padding_bottom }}px;
+    --xtu-ti-pt-m: {{ padding_top_mobile }}px;
+    --xtu-ti-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-ti-heading-color: {{ heading_color }};
+    --xtu-ti-text-color: {{ text_color }};
+    --xtu-ti-muted-color: {{ muted_text_color }};
+  "
+>
+  <div class="xtu-tab-images__inner">
+    {% if heading != blank or subheading != blank %}
+      <div class="xtu-tab-images__header" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-tab-images__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-tab-images__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="xtu-tab-images__stage" data-xtu-reveal="fade-up">
+        <div class="xtu-tab-images__panels">
+          {% for block in section.blocks %}
+            {% liquid
+              assign image = block.settings.image
+              assign image_mobile = block.settings.image_mobile
+              assign media_type = block.settings.media_type | default: 'image'
+              assign video = block.settings.video
+              assign video_mobile = block.settings.video_mobile
+              assign video_url = block.settings.video_url
+              assign ph_mod = forloop.index0 | modulo: 3
+              assign placeholder_name = 'lifestyle-1'
+              if ph_mod == 1
+                assign placeholder_name = 'lifestyle-2'
+              elsif ph_mod == 2
+                assign placeholder_name = 'image'
+              endif
+            %}
+            <div
+              class="xtu-tab-images__panel{% if forloop.first %} is-active{% endif %}"
+              id="xtu-ti-panel-{{ section.id }}-{{ block.id }}"
+              role="tabpanel"
+              aria-labelledby="xtu-ti-tab-{{ section.id }}-{{ block.id }}"
+              data-xtu-ti-panel
+              {% unless forloop.first %}hidden{% endunless %}
+              {{ block.shopify_attributes }}
+            >
+              <div class="xtu-tab-images__frame{% if ratio_auto %} xtu-tab-images__frame--auto{% endif %}">
+                {% render 'xtu-tab-images-media',
+                  media_type: media_type,
+                  image: image,
+                  image_mobile: image_mobile,
+                  video: video,
+                  video_mobile: video_mobile,
+                  video_url: video_url,
+                  alt: block.settings.tab_label,
+                  placeholder: placeholder_name
+                %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div
+          class="xtu-tab-images__tabs"
+          role="tablist"
+          aria-label="{{ heading | default: 'Features' | escape }}"
+        >
+          {% for block in section.blocks %}
+            <button
+              type="button"
+              class="xtu-tab-images__tab{% if forloop.first %} is-active{% endif %}"
+              id="xtu-ti-tab-{{ section.id }}-{{ block.id }}"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="xtu-ti-panel-{{ section.id }}-{{ block.id }}"
+              tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+              data-xtu-ti-tab
+            >
+              {{ block.settings.tab_label | default: 'Tab' | escape }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-tab-images {
+    padding: var(--xtu-ti-pt) 0 var(--xtu-ti-pb);
+    background: var(--xtu-ti-bg, #fff);
+  }
+
+  .xtu-tab-images__inner {
+    width: min(var(--xtu-ti-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-ti-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-tab-images__header {
+    margin-bottom: var(--xtu-space-40, 40px);
+    text-align: center;
+  }
+
+  .xtu-tab-images__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-ti-heading-color, #000);
+  }
+
+  .xtu-tab-images__subheading {
+    margin: 16px auto 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-ti-muted-color, #8e9297);
+  }
+
+  .xtu-tab-images__panels {
+    position: relative;
+  }
+
+  .xtu-tab-images__panel {
+    display: none;
+  }
+
+  .xtu-tab-images__panel.is-active {
+    display: block;
+  }
+
+  .xtu-tab-images__panel[hidden] {
+    display: none !important;
+  }
+
+  .xtu-tab-images__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--xtu-ti-radius, 0);
+    aspect-ratio: var(--xtu-ti-ratio, 16 / 10);
+    background: #e8eaed;
+  }
+
+  .xtu-tab-images--ratio-auto .xtu-tab-images__frame--auto {
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .xtu-tab-images__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .xtu-tab-images--ratio-auto .xtu-tab-images__frame--auto .xtu-tab-images__media {
+    position: static;
+    width: 100%;
+  }
+
+  .xtu-tab-images__media-item--mobile {
+    display: none;
+  }
+
+  .xtu-tab-images__media--split .xtu-tab-images__media-item--mobile {
+    display: none;
+  }
+
+  .xtu-tab-images__image,
+  .xtu-tab-images__video,
+  .xtu-tab-images__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .xtu-tab-images--ratio-auto .xtu-tab-images__frame--auto :is(.xtu-tab-images__image, .xtu-tab-images__video) {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .xtu-tab-images__video {
+    pointer-events: none;
+  }
+
+  .xtu-tab-images__youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .xtu-tab-images--ratio-auto .xtu-tab-images__frame--auto .xtu-tab-images__youtube {
+    position: static;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .xtu-tab-images__placeholder {
+    background: #dfe3e8;
+  }
+
+  .xtu-tab-images__tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: safe center;
+    gap: var(--xtu-space-8, 8px);
+    width: 100%;
+    margin-top: 28px;
+    padding-inline: var(--xtu-space-8, 8px);
+    padding-bottom: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scrollbar-width: none;
+    scroll-padding-inline: var(--xtu-space-8, 8px);
+  }
+
+  .xtu-tab-images--tab-underline .xtu-tab-images__tabs {
+    padding-bottom: var(--xtu-space-8, 8px);
+    border-bottom: 1px solid color-mix(in srgb, var(--xtu-ti-text-color, #333) 18%, transparent);
+  }
+
+  .xtu-tab-images__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .xtu-tab-images__tab {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    appearance: none;
+    touch-action: manipulation;
+    -webkit-user-drag: none;
+    user-select: none;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .xtu-tab-images__tab:hover,
+  .xtu-tab-images__tab.is-active {
+    background-color: #0070ca;
+    color: #fff;
+  }
+
+  .xtu-tab-images__tab:focus-visible {
+    outline: 2px solid #0070ca;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 749px) {
+    .xtu-tab-images {
+      padding: var(--xtu-ti-pt-m) 0 var(--xtu-ti-pb-m);
+    }
+
+    .xtu-tab-images__header {
+      margin-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-tab-images__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-tab-images__subheading {
+      margin-top: 12px;
+      font-size: var(--xtu-type-section-subtitle-m);
+    }
+
+    .xtu-tab-images__media--split .xtu-tab-images__media-item--desktop {
+      display: none;
+    }
+
+    .xtu-tab-images__media--split .xtu-tab-images__media-item--mobile {
+      display: block;
+    }
+
+    .xtu-tab-images__tabs {
+      margin-top: 20px;
+      justify-content: flex-start;
+      scroll-snap-type: none;
+      padding-inline: var(--xtu-space-8, 8px);
+    }
+
+    .xtu-tab-images__tab {
+      padding: 8px 16px;
+      font-size: var(--xtu-type-body-m);
+      scroll-snap-align: start;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const roots = document.querySelectorAll('[data-xtu-tab-images]');
+
+    const playVideo = (video) => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+    };
+
+    const pauseVideo = (video) => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.pause();
+    };
+
+    const syncPanelVideos = (panel, active) => {
+      panel.querySelectorAll('video').forEach((video) => {
+        if (active) playVideo(video);
+        else pauseVideo(video);
+      });
+    };
+
+    const scrollTabToEdge = (tab, edge) => {
+      const list = tab.closest('.xtu-tab-images__tabs');
+      if (!(list instanceof HTMLElement)) return;
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const styles = getComputedStyle(list);
+      const padStart = parseFloat(styles.paddingInlineStart) || 0;
+      const padEnd = parseFloat(styles.paddingInlineEnd) || 0;
+      const maxScroll = Math.max(0, list.scrollWidth - list.clientWidth);
+      const tabsInList = Array.from(list.querySelectorAll('[data-xtu-ti-tab]'));
+      const isFirst = tabsInList[0] === tab;
+      const isLast = tabsInList[tabsInList.length - 1] === tab;
+
+      let targetLeft = 0;
+      if (edge === 'end') {
+        if (isLast) {
+          targetLeft = maxScroll;
+        } else {
+          targetLeft = tab.offsetLeft + tab.offsetWidth - list.clientWidth + padEnd;
+        }
+      } else if (!isFirst) {
+        targetLeft = tab.offsetLeft - padStart;
+      }
+
+      targetLeft = Math.max(0, Math.min(targetLeft, maxScroll));
+
+      list.scrollTo({
+        left: targetLeft,
+        behavior: reduced ? 'auto' : 'smooth',
+      });
+    };
+
+    roots.forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+      if (root.dataset.xtuTiReady === 'true') return;
+      root.dataset.xtuTiReady = 'true';
+
+      const tabs = Array.from(root.querySelectorAll('[data-xtu-ti-tab]'));
+      const panels = Array.from(root.querySelectorAll('[data-xtu-ti-panel]'));
+      const tabList = root.querySelector('.xtu-tab-images__tabs');
+      if (!tabs.length) return;
+
+      let activeIndex = Math.max(
+        0,
+        tabs.findIndex((tab) => tab.classList.contains('is-active'))
+      );
+
+      let touchStartX = null;
+      let touchStartY = null;
+
+      if (tabList instanceof HTMLElement) {
+        tabList.addEventListener(
+          'touchstart',
+          (event) => {
+            if (event.touches.length !== 1) return;
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+          },
+          { passive: true }
+        );
+
+        tabList.addEventListener(
+          'touchmove',
+          (event) => {
+            if (touchStartX == null || touchStartY == null || event.touches.length !== 1) return;
+            const dx = Math.abs(event.touches[0].clientX - touchStartX);
+            const dy = Math.abs(event.touches[0].clientY - touchStartY);
+            if (dx > dy && dx > 4) {
+              event.stopPropagation();
+            }
+          },
+          { passive: true }
+        );
+
+        tabList.addEventListener(
+          'touchend',
+          () => {
+            touchStartX = null;
+            touchStartY = null;
+          },
+          { passive: true }
+        );
+      }
+
+      const activate = (index, options = {}) => {
+        const prevIndex = activeIndex;
+        tabs.forEach((tab, i) => {
+          const on = i === index;
+          tab.classList.toggle('is-active', on);
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+          tab.tabIndex = on ? 0 : -1;
+        });
+
+        panels.forEach((panel, i) => {
+          const on = i === index;
+          panel.classList.toggle('is-active', on);
+          if (on) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+          syncPanelVideos(panel, on);
+        });
+
+        activeIndex = index;
+
+        if (options.skipScroll) return;
+
+        const activeTab = tabs[index];
+        if (!(activeTab instanceof HTMLElement)) return;
+
+        let edge = index < prevIndex ? 'end' : 'start';
+        if (prevIndex === tabs.length - 1 && index === 0) edge = 'start';
+        if (prevIndex === 0 && index === tabs.length - 1) edge = 'end';
+        scrollTabToEdge(activeTab, edge);
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activate(index));
+
+        tab.addEventListener('keydown', (event) => {
+          let next = null;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+            next = (index + 1) % tabs.length;
+          } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+            next = (index - 1 + tabs.length) % tabs.length;
+          } else if (event.key === 'Home') {
+            next = 0;
+          } else if (event.key === 'End') {
+            next = tabs.length - 1;
+          }
+          if (next === null) return;
+          event.preventDefault();
+          activate(next);
+          tabs[next].focus();
+        });
+      });
+
+      activate(activeIndex, { skipScroll: true });
+      const initialTab = tabs[activeIndex];
+      if (initialTab instanceof HTMLElement) {
+        scrollTabToEdge(initialTab, 'start');
+      }
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "XTU Tab Images",
+  "tag": "section",
+  "class": "section-xtu-tab-images",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Personalize Your Look"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "副标题",
+      "default": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you."
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次要文字色",
+      "default": "#8E9297",
+      "info": "副标题等次要文案；分割线随正文色自动调整"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tab_underline",
+      "label": "显示 Tab 底部分割线",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "内容区最大宽度",
+      "min": 600,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "select",
+      "id": "gallery_ratio",
+      "label": "图片比例",
+      "options": [
+            { "value": "auto", "label": "自适应（按媒体比例）" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "3 / 2", "label": "3:2" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "16 / 9", "label": "16:9" },
+            { "value": "21 / 9", "label": "21:9" }
+      ],
+      "default": "16 / 10"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "图片圆角",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab 名称",
+          "default": "Feature"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "留空则回退 PC 图",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "视频（PC）",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "视频（移动端）",
+          "info": "留空则回退 PC 视频；静音自动循环播放，无控件",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Tab Images",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Background Bokeh"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Face Retouch"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Portrait Mode"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Live Streaming"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Panorama"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

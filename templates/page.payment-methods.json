@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "xtu_faq_bt98tX": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_jtpxbR": {
+          "type": "item",
+          "settings": {
+            "question": "What payment methods does XTU accept?",
+            "answer": "<p>XTU accepts major credit and debit cards, including Visa, Mastercard, American Express, G-pay, and Discover. PayPal and other payment options may also be available depending on your location and order.<br/><br/></p>"
+          }
+        },
+        "item_gKCjYY": {
+          "type": "item",
+          "settings": {
+            "question": "Can I pay with PayPal?",
+            "answer": "<p>Yes. PayPal is available for eligible orders and destinations. You can select PayPal during checkout and complete your payment through PayPal.<br/><br/></p>"
+          }
+        },
+        "item_NJTzKX": {
+          "type": "item",
+          "settings": {
+            "question": "Can I pay with a credit card?",
+            "answer": "<p>Yes. XTU accepts major credit and debit cards. Available card networks may vary depending on your country or region.<br/></p>"
+          }
+        },
+        "item_ggUxyL": {
+          "type": "item",
+          "settings": {
+            "question": "Does XTU support Google Pay?",
+            "answer": "<p>Google Pay may be available depending on your location and checkout configuration. If available, it will appear as a payment option during checkout.<br/><br/></p>"
+          }
+        },
+        "item_3FdtjE": {
+          "type": "item",
+          "settings": {
+            "question": "Are all payment methods available worldwide?",
+            "answer": "<p>No. Payment methods may vary depending on your country, region, currency, and payment provider. The available options will be shown during checkout.<br/><br/></p>"
+          }
+        },
+        "item_3jECAd": {
+          "type": "item",
+          "settings": {
+            "question": "Is my payment information secure?",
+            "answer": "<p>XTU uses secure payment processing to help protect payment information during checkout. XTU does not directly store your complete credit card information on its servers.<br/><br/></p>"
+          }
+        },
+        "item_EnyXWd": {
+          "type": "item",
+          "settings": {
+            "question": "Why was my payment declined?",
+            "answer": "<p>A payment may be declined because of incorrect billing information, insufficient funds, card restrictions, bank security checks, or payment-provider verification. Check your payment information and contact your bank or payment provider if necessary.<br/><br/></p>"
+          }
+        },
+        "item_bVN3wB": {
+          "type": "item",
+          "settings": {
+            "question": "What should I do if my payment fails?",
+            "answer": "<p>First, check your billing and payment information. You can also try another available payment method. If the issue continues, contact XTU Customer Support at <a href=\"mailto:support@xtucam.com\">support@xtucam.com</a>.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_jtpxbR",
+        "item_gKCjYY",
+        "item_NJTzKX",
+        "item_ggUxyL",
+        "item_3FdtjE",
+        "item_3jECAd",
+        "item_EnyXWd",
+        "item_bVN3wB"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Payment FAQ",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "xtu_faq_bt98tX"
+  ]
+}

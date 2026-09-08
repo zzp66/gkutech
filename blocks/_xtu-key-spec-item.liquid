@@ -1,0 +1,40 @@
+{% doc %}
+  Single key-spec item for XTU Key Specs (value + label).
+{% enddoc %}
+
+{% liquid
+  assign value = block.settings.value
+  assign label = block.settings.label
+%}
+
+{% if value != blank or label != blank %}
+  <div class="xtu-key-specs__item" {{ block.shopify_attributes }}>
+    {% if value != blank %}
+      <p class="xtu-key-specs__value">{{ value | escape }}</p>
+    {% endif %}
+    {% if label != blank %}
+      <p class="xtu-key-specs__label">{{ label | escape }}</p>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "参数项",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "value",
+      "label": "数值 / 重点文案",
+      "default": "4000 W"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "说明文案",
+      "default": "Output"
+    }
+  ]
+}
+{% endschema %}

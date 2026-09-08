@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-d408a8f2": {
+      "type": "pf-d408a8f2",
+      "settings": {
+        "pf_dbb8c7c6_value": "Click To Download The Manual",
+        "pf_c6b95100_value": "S7&nbsp;Pro",
+        "pf_1c585ba3_value": "SV-TCQSW",
+        "pf_fbebc52e_value": "J9PLUS",
+        "pf_254f09be_value": "ZY-G9",
+        "pf_e33a3042_value": "Mic1",
+        "pf_10a94d3f_value": "J10",
+        "pf_f2e34cb9_value": "H10",
+        "pf_80c5f100_value": "J9",
+        "pf_8b145ffd_value": "S6",
+        "pf_9f2b95fe_value": "J7"
+      }
+    }
+  },
+  "order": [
+    "pf-d408a8f2"
+  ]
+}

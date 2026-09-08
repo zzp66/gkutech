@@ -1,0 +1,456 @@
+import { Component } from '@theme/component';
+import { ThemeEvents, QuantitySelectorUpdateEvent } from '@theme/events';
+import { morph } from '@theme/morph';
+import { onAnimationEnd } from '@theme/utilities';
+import { formatMoney } from '@theme/money-formatting';
+import { StandardEvents, ProductSelectEvent, CartLinesUpdateEvent, CartErrorEvent } from '@shopify/events';
+
+/**
+ * @typedef {Object} ProductVariant
+ * @property {string|number} [id] - Variant ID
+ * @property {string} [title] - Variant title
+ * @property {string} [name] - Variant name
+ * @property {boolean} [available] - Whether variant is available
+ * @property {Object} [featured_media] - Featured media object
+ * @property {Object} [featured_media.preview_image] - Preview image data
+ * @property {string} [featured_media.preview_image.src] - Image source URL
+ * @property {string} [featured_media.alt] - Alt text for the image
+ */
+
+/**
+ * @typedef {HTMLElement & {
+ *   source: Element,
+ *   destination: Element,
+ *   useSourceSize: string | boolean
+ * }} FlyToCart
+ */
+
+/**
+ * @typedef {Object} StickyAddToCartRefs
+ * @property {HTMLElement} stickyBar - The floating bar container
+ * @property {HTMLButtonElement} addToCartButton - Sticky bar's button
+ * @property {HTMLElement} quantityDisplay - Quantity display container
+ * @property {HTMLElement} quantityNumber - Quantity number element
+ * @property {HTMLImageElement} productImage - Product image element
+ */
+
+/**
+ * A custom element that manages a sticky add-to-cart bar.
+ * Shows when the main add-to-cart button is outside the viewport;
+ * hides when that button is visible, or when the site footer is on screen
+ * (so the bar does not cover footer navigation).
+ *
+ * @extends {Component<StickyAddToCartRefs>}
+ */
+class StickyAddToCartComponent extends Component {
+  requiredRefs = ['stickyBar', 'addToCartButton', 'quantityDisplay', 'quantityNumber'];
+
+  /** @type {IntersectionObserver | null} */
+  #buyButtonsIntersectionObserver = null;
+
+  /** @type {IntersectionObserver | null} */
+  #footerIntersectionObserver = null;
+
+  /** @type {number | undefined} */
+  #resetTimeout;
+
+  /** @type {boolean} */
+  #isStuck = false;
+
+  /** @type {number | null} */
+  #animationTimeout = null;
+
+  /** @type {AbortController} */
+  #abortController = new AbortController();
+
+  /** @type {HTMLButtonElement | null} */
+  #targetAddToCartButton = null;
+
+  /** @type {number} */
+  #currentQuantity = 1;
+
+  /** @type {number} */
+  #addonTotalCents = 0;
+
+  /** @type {number} */
+  #basePriceCents = 0;
+
+  /** @type {boolean} */
+  #addToCartInView = true;
+
+  /** @type {boolean} */
+  #footerInView = false;
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.#setupIntersectionObserver();
+
+    const { signal } = this.#abortController;
+    const target = this.closest('.shopify-section');
+    target?.addEventListener(StandardEvents.productSelect, this.#handleProductSelect, { signal });
+
+    document.addEventListener(StandardEvents.cartLinesUpdate, this.#handleCartAddComplete, { signal });
+    document.addEventListener(StandardEvents.cartError, this.#handleCartAddComplete, { signal });
+    document.addEventListener(ThemeEvents.quantitySelectorUpdate, this.#handleQuantityUpdate, { signal });
+    document.addEventListener('xtu:addon-bundle:update', this.#handleAddonBundleUpdate, { signal });
+
+    this.#getInitialQuantity();
+    this.#syncBasePriceFromDataset();
+    this.#updateTotalPrice();
+
+    // IntersectionObserver callbacks gate visibility on #isChatActive(), but
+    // if the shopper scrolls before the Inbox bundle has upgraded
+    // <shopify-chat>, the bar shows and nothing re-runs that check. Hide it
+    // once the element is defined so the bar doesn't overlap the chat UI.
+    customElements.whenDefined('shopify-chat').then(() => {
+      if (signal.aborted) return;
+      this.#syncStickyVisibility();
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#buyButtonsIntersectionObserver?.disconnect();
+    this.#footerIntersectionObserver?.disconnect();
+    this.#abortController.abort();
+    if (this.#animationTimeout) {
+      clearTimeout(this.#animationTimeout);
+    }
+  }
+
+  /**
+   * Observe the main ATC button and the site footer.
+   * Sticky bar shows only when ATC is off-screen and footer is not visible.
+   */
+  #setupIntersectionObserver() {
+    const productForm = this.#getProductForm();
+    if (!productForm) return;
+
+    this.#targetAddToCartButton = productForm.querySelector('[ref="addToCartButton"]');
+    if (!this.#targetAddToCartButton) return;
+
+    this.#buyButtonsIntersectionObserver = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      if (!entry) return;
+      this.#addToCartInView = entry.isIntersecting;
+      this.#syncStickyVisibility();
+    });
+
+    this.#buyButtonsIntersectionObserver.observe(this.#targetAddToCartButton);
+
+    const footer =
+      document.querySelector('footer') ??
+      document.querySelector('[id*="footer-group"]') ??
+      document.querySelector('.xtu-footer');
+
+    if (!footer) return;
+
+    // Expand root bottom slightly so the bar hides before covering footer content.
+    this.#footerIntersectionObserver = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry) return;
+        this.#footerInView = entry.isIntersecting;
+        this.#syncStickyVisibility();
+      },
+      {
+        rootMargin: '0px 0px 80px 0px',
+      }
+    );
+
+    this.#footerIntersectionObserver.observe(footer);
+  }
+
+  /**
+   * Apply sticky bar visibility from ATC + footer + chat state.
+   */
+  #syncStickyVisibility() {
+    if (this.#isChatActive() || this.#addToCartInView || this.#footerInView) {
+      this.#hideStickyBar();
+      return;
+    }
+
+    this.#showStickyBar();
+  }
+
+  // Public action handlers
+  /**
+   * Handles the add to cart button click in the sticky bar
+   */
+  handleAddToCartClick = async () => {
+    if (!this.#targetAddToCartButton) return;
+    this.#targetAddToCartButton.dataset.puppet = 'true';
+    this.#targetAddToCartButton.click();
+    const cartIcon = document.querySelector('.header-actions__cart-icon');
+
+    if (this.refs.addToCartButton.dataset.added !== 'true') {
+      this.refs.addToCartButton.dataset.added = 'true';
+    }
+
+    if (!cartIcon || !this.refs.addToCartButton || !this.refs.productImage) return;
+    if (this.#resetTimeout) clearTimeout(this.#resetTimeout);
+
+    const flyToCartElement = /** @type {FlyToCart} */ (document.createElement('fly-to-cart'));
+    const sourceStyles = getComputedStyle(this.refs.productImage);
+
+    flyToCartElement.classList.add('fly-to-cart--sticky');
+    flyToCartElement.style.setProperty('background-image', `url(${this.refs.productImage.src})`);
+    flyToCartElement.useSourceSize = 'true';
+    flyToCartElement.source = this.refs.productImage;
+    flyToCartElement.destination = cartIcon;
+
+    document.body.appendChild(flyToCartElement);
+
+    await onAnimationEnd([this.refs.addToCartButton, flyToCartElement]);
+    this.#resetTimeout = setTimeout(() => {
+      this.refs.addToCartButton.removeAttribute('data-added');
+    }, 800);
+  };
+
+  /**
+   * Handles product select events (variant selected and updated)
+   * @param {ProductSelectEvent} event - The product select event
+   */
+  #handleProductSelect = (event) => {
+    if (!(event.target instanceof Element) || event.target.closest('product-card')) return;
+
+    // Update variant ID from the event detail (variant:selected part)
+    const { optionValueId } = event.detail ?? {};
+    if (optionValueId) {
+      this.dataset.currentVariantId = optionValueId;
+    }
+
+    // Wait for the promise to resolve with variant update data
+    event.promise
+      .then(({ detail }) => {
+        if (!detail?.html) return;
+
+        const { html, productId, resource: variant } = detail;
+
+        if (productId && productId !== this.dataset.productId) return;
+
+        // Get the new sticky add to cart HTML from the server response
+        const newStickyAddToCart = /** @type {HTMLElement | null} */ (html.querySelector('sticky-add-to-cart'));
+        if (!newStickyAddToCart) return;
+
+        const newStickyBar = newStickyAddToCart.querySelector('[ref="stickyBar"]');
+        if (!newStickyBar) return;
+
+        // Store current visibility state before morphing
+        const currentStuck = this.refs.stickyBar.getAttribute('data-stuck') || 'false';
+        const variantAvailable = newStickyAddToCart.dataset.variantAvailable;
+
+        // Morph the entire sticky bar content
+        morph(this.refs.stickyBar, newStickyBar, { childrenOnly: true });
+
+        // Restore visibility state after morphing
+        this.refs.stickyBar.setAttribute('data-stuck', currentStuck);
+        this.dataset.variantAvailable = variantAvailable;
+
+        // Update the dataset attributes with new variant info
+        if (variant && variant.id) {
+          this.dataset.currentVariantId = variant.id;
+        }
+
+        if (typeof variant?.price === 'number') {
+          this.dataset.basePrice = String(variant.price);
+        } else if (newStickyAddToCart.dataset.basePrice) {
+          this.dataset.basePrice = newStickyAddToCart.dataset.basePrice;
+        }
+        this.#syncBasePriceFromDataset();
+        this.#updateTotalPrice();
+
+        // Re-cache the target add to cart button after morphing
+        const productForm = this.#getProductForm();
+        if (productForm) {
+          const nextButton = productForm.querySelector('[ref="addToCartButton"]');
+          if (nextButton && nextButton !== this.#targetAddToCartButton) {
+            if (this.#targetAddToCartButton) {
+              this.#buyButtonsIntersectionObserver?.unobserve(this.#targetAddToCartButton);
+            }
+            this.#targetAddToCartButton = nextButton;
+            this.#buyButtonsIntersectionObserver?.observe(nextButton);
+          } else {
+            this.#targetAddToCartButton = nextButton;
+          }
+        }
+
+        if (variant == null) {
+          this.#handleVariantUnavailable();
+        }
+        // Restore the current quantity display if needed
+        this.#updateButtonText();
+      })
+      .catch((error) => {
+        if (error?.name !== 'AbortError') console.warn('[sticky-add-to-cart] Event promise rejected:', error);
+      });
+  };
+
+  /**
+   * Updates the variant title based on selected options when the variant is unavailable
+   */
+  #handleVariantUnavailable = () => {
+    this.dataset.currentVariantId = '';
+    const variantTitleElement = this.querySelector('.sticky-add-to-cart__variant');
+    const productId = this.dataset.productId;
+    const variantPicker = document.querySelector(`variant-picker[data-product-id="${productId}"]`);
+    if (!variantTitleElement || !variantPicker) return;
+
+    const selectedOptions = Array.from(variantPicker.querySelectorAll('input:checked'))
+      .map((option) => /** @type {HTMLInputElement} */ (option).value)
+      .filter((value) => value !== '')
+      .join(' / ');
+    if (!selectedOptions) return;
+    variantTitleElement.textContent = selectedOptions;
+  };
+
+  /**
+   * Handles cart add complete (success or error) - resets puppet flag
+   * @param {CartLinesUpdateEvent | CartErrorEvent} event - The cart event
+   */
+  #handleCartAddComplete = (event) => {
+    // Reset the puppet flag only after the cart operation's promise settles,
+    // not when the event is first dispatched (before the HTTP request completes).
+    const resetPuppet = () => {
+      if (this.#targetAddToCartButton) {
+        this.#targetAddToCartButton.dataset.puppet = 'false';
+      }
+    };
+
+    // CartLinesUpdateEvent has a promise; CartErrorEvent does not (error already happened).
+    if ('promise' in event && event.promise instanceof Promise) {
+      event.promise.finally(resetPuppet);
+    } else {
+      resetPuppet();
+    }
+  };
+
+  /**
+   * Handles quantity selector update events
+   * @param {QuantitySelectorUpdateEvent} event - The quantity update event
+   */
+  #handleQuantityUpdate = (event) => {
+    // Only respond to product page quantity selector updates, not cart drawer
+    if (event.detail.cartLine) return;
+
+    this.#currentQuantity = event.detail.quantity;
+    this.#updateButtonText();
+    this.#updateTotalPrice();
+  };
+
+  /**
+   * @param {CustomEvent<{ totalCents?: number }>} event
+   */
+  #handleAddonBundleUpdate = (event) => {
+    this.#addonTotalCents = Number(event.detail?.totalCents) || 0;
+    this.#updateTotalPrice();
+  };
+
+  #syncBasePriceFromDataset = () => {
+    this.#basePriceCents = Number(this.dataset.basePrice) || 0;
+  };
+
+  #updateTotalPrice = () => {
+    const priceEl = this.querySelector('[data-testid="sticky-price-display"]');
+    if (!priceEl) return;
+
+    const moneyFormat = this.dataset.moneyFormat || '';
+    const currency = this.dataset.currency || '';
+    if (!moneyFormat) return;
+
+    const total = this.#basePriceCents * Math.max(1, this.#currentQuantity) + this.#addonTotalCents;
+    const formatted = formatMoney(total, moneyFormat, currency);
+
+    priceEl.replaceChildren();
+    const current = document.createElement('span');
+    current.className = 'price';
+    current.textContent = formatted;
+    priceEl.appendChild(current);
+  };
+
+  /**
+   * Shows the sticky bar with animation
+   */
+  #showStickyBar() {
+    const { stickyBar } = this.refs;
+    this.#isStuck = true;
+    stickyBar.dataset.stuck = 'true';
+  }
+
+  /**
+   * Hides the sticky bar with animation
+   */
+  #hideStickyBar() {
+    const { stickyBar } = this.refs;
+    this.#isStuck = false;
+    stickyBar.dataset.stuck = 'false';
+  }
+
+  // Helper methods
+  /**
+   * Checks whether the Shopify Chat is active on the page.
+   * When active, the sticky bar must stay hidden to avoid overlapping the chat UI.
+   *
+   * <shopify-chat> is rendered unconditionally by chat-drawer.liquid, but
+   * the "Ask anything" button only paints once the Inbox app has installed
+   * and upgraded the element. Gate on the registration of the custom element
+   * (the same signal chat-drawer.liquid uses via customElements.whenDefined)
+   * so the inert placeholder on shops without Inbox doesn't suppress the
+   * sticky bar.
+   *
+   * @returns {boolean}
+   */
+  #isChatActive() {
+    if (!customElements.get('shopify-chat')) return false;
+    return Boolean(document.querySelector('shopify-chat'));
+  }
+
+  /**
+   * Gets the product form element
+   * @returns {HTMLElement | null}
+   */
+  #getProductForm() {
+    const productId = this.dataset.productId;
+    if (!productId) return null;
+
+    const sectionElement = this.closest('.shopify-section');
+    if (!sectionElement) return null;
+
+    const sectionId = sectionElement.id.replace('shopify-section-', '');
+    return document.querySelector(
+      `#shopify-section-${sectionId} product-form-component[data-product-id="${productId}"]`
+    );
+  }
+
+  /**
+   * Gets the initial quantity from the data attribute
+   */
+  #getInitialQuantity() {
+    this.#currentQuantity = parseInt(this.dataset.initialQuantity || '1') || 1;
+    this.#updateButtonText();
+  }
+
+  /**
+   * Updates the button text to include quantity
+   */
+  #updateButtonText() {
+    const { addToCartButton, quantityDisplay, quantityNumber } = this.refs;
+
+    const available = !addToCartButton.disabled;
+
+    // Update the quantity number
+    quantityNumber.textContent = this.#currentQuantity.toString();
+
+    // Show/hide the quantity display based on availability and quantity
+    if (available && this.#currentQuantity > 1) {
+      quantityDisplay.style.display = 'inline';
+    } else {
+      quantityDisplay.style.display = 'none';
+    }
+  }
+}
+
+if (!customElements.get('sticky-add-to-cart')) {
+  customElements.define('sticky-add-to-cart', StickyAddToCartComponent);
+}

@@ -1,0 +1,116 @@
+{% doc %}
+  Renders image or autoplay video for XTU Tab Images (desktop + optional mobile).
+
+  @param {string} [media_type] - image | video | youtube
+  @param {image} [image] - Desktop image
+  @param {image} [image_mobile] - Mobile image (falls back to desktop)
+  @param {video} [video] - Desktop video
+  @param {video} [video_mobile] - Mobile video (falls back to desktop)
+  @param {object} [video_url] - Theme video_url setting
+  @param {string} [youtube_url] - Fallback paste URL
+  @param {string} [alt] - Alt text for images
+  @param {string} [placeholder] - placeholder_svg_tag name when empty
+
+  @example
+  {% render 'xtu-tab-images-media',
+    media_type: block.settings.media_type,
+    image: block.settings.image,
+    video: block.settings.video,
+    alt: block.settings.tab_label
+  %}
+{% enddoc %}
+
+{% liquid
+  assign media_type = media_type | default: 'image'
+  assign media_alt = alt | default: ''
+  assign ph = placeholder | default: 'lifestyle-1'
+
+  assign has_mobile_image = false
+  if image_mobile != blank
+    assign has_mobile_image = true
+  endif
+
+  assign has_mobile_video = false
+  if video_mobile != blank
+    assign has_mobile_video = true
+  endif
+
+  assign has_mobile_media = false
+  if has_mobile_image or has_mobile_video
+    assign has_mobile_media = true
+  endif
+%}
+
+<div class="xtu-tab-images__media{% if has_mobile_media %} xtu-tab-images__media--split{% endif %}">
+  {% if media_type == 'youtube' %}
+  {% render 'xtu-video-embed',
+    video_url: video_url,
+    youtube_url: youtube_url,
+    mode: 'ambient',
+    class: 'xtu-tab-images__youtube xtu-tab-images__media-item',
+    title: media_alt,
+    placeholder: ph,
+    placeholder_class: 'xtu-tab-images__placeholder xtu-tab-images__media-item'
+  %}
+{% elsif media_type == 'video' %}
+    {% if video != blank %}
+      {{
+        video
+        | video_tag:
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          class: 'xtu-tab-images__video xtu-tab-images__media-item xtu-tab-images__media-item--desktop',
+          image_size: '1600x'
+      }}
+    {% endif %}
+    {% if has_mobile_video %}
+      {{
+        video_mobile
+        | video_tag:
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          class: 'xtu-tab-images__video xtu-tab-images__media-item xtu-tab-images__media-item--mobile',
+          image_size: '1200x'
+      }}
+    {% endif %}
+    {% if video == blank and has_mobile_video == false %}
+      {{ ph | placeholder_svg_tag: 'xtu-tab-images__placeholder xtu-tab-images__media-item' }}
+    {% elsif video == blank and has_mobile_video %}
+      {{ ph | placeholder_svg_tag: 'xtu-tab-images__placeholder xtu-tab-images__media-item xtu-tab-images__media-item--desktop' }}
+    {% endif %}
+  {% else %}
+    {% if image != blank %}
+      {{
+        image
+        | image_url: width: 1600
+        | image_tag:
+          class: 'xtu-tab-images__image xtu-tab-images__media-item xtu-tab-images__media-item--desktop',
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200, 1600',
+          sizes: '(max-width: 749px) 100vw, min(var(--xtu-ti-content-width, 1200px), 100vw)',
+          alt: media_alt
+      }}
+    {% endif %}
+    {% if has_mobile_image %}
+      {{
+        image_mobile
+        | image_url: width: 1200
+        | image_tag:
+          class: 'xtu-tab-images__image xtu-tab-images__media-item xtu-tab-images__media-item--mobile',
+          loading: 'lazy',
+          widths: '360, 480, 640, 800, 1000, 1200',
+          sizes: '100vw',
+          alt: media_alt
+      }}
+    {% endif %}
+    {% if image == blank and has_mobile_image == false %}
+      {{ ph | placeholder_svg_tag: 'xtu-tab-images__image xtu-tab-images__media-item xtu-tab-images__media-item--desktop xtu-tab-images__placeholder' }}
+    {% elsif image == blank and has_mobile_image %}
+      {{ ph | placeholder_svg_tag: 'xtu-tab-images__image xtu-tab-images__media-item xtu-tab-images__media-item--desktop xtu-tab-images__placeholder' }}
+    {% endif %}
+  {% endif %}
+</div>

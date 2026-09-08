@@ -1,0 +1,175 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "xtu_footer_main": {
+      "type": "xtu-footer",
+      "blocks": {
+        "text_column_pxFrjC": {
+          "type": "text_column",
+          "settings": {
+            "heading": "Contact",
+            "text": "<p><strong>Customer Service:</strong><br/>support@xtucam.com</p><p><strong>Business Inquiries:</strong><br/>marketing.xtu@xtucam.com</p><p><strong>Phone Number:</strong><br/>Toll-Free: +(86) 14743425979</p>"
+          }
+        },
+        "menu_col_1": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Popular Products",
+            "menu": "hot-sale"
+          }
+        },
+        "menu_col_4": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Policy",
+            "menu": "policy-and-service"
+          }
+        },
+        "menu_column_YJQzjQ": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Service",
+            "menu": "customer-care"
+          }
+        },
+        "menu_column_AydDWe": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Official Store",
+            "menu": "where-to-buy"
+          }
+        },
+        "menu_column_JJ8iaQ": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Partnership",
+            "menu": "community-and-partnership"
+          }
+        },
+        "social_1": {
+          "type": "social_item",
+          "settings": {
+            "title": "facebook",
+            "icon": "shopify://shop_images/Facebook_Logo__2019.png",
+            "icon_hover": "shopify://shop_images/Facebook_Logo__2019.png",
+            "link": "https://www.facebook.com/xtucam"
+          }
+        },
+        "social_2": {
+          "type": "social_item",
+          "settings": {
+            "title": "Instagram",
+            "icon": "shopify://shop_images/ig.png",
+            "icon_hover": "shopify://shop_images/ig.png",
+            "link": "https://www.instagram.com/xtucam_official/"
+          }
+        },
+        "social_3": {
+          "type": "social_item",
+          "settings": {
+            "title": "X",
+            "icon": "shopify://shop_images/X_logo_2023__white.png",
+            "icon_hover": "shopify://shop_images/X_logo_2023__white.png",
+            "link": "https://x.com/XTUCAMJP"
+          }
+        },
+        "social_4": {
+          "type": "social_item",
+          "settings": {
+            "title": "TikTok",
+            "icon": "shopify://shop_images/images_681b464f-879c-4651-9ae3-7f1f9d99e99d.png",
+            "icon_hover": "shopify://shop_images/images_681b464f-879c-4651-9ae3-7f1f9d99e99d.png",
+            "link": "https://www.tiktok.com/@xtucam_shop"
+          }
+        },
+        "social_5": {
+          "type": "social_item",
+          "settings": {
+            "title": "Youtube",
+            "icon": "shopify://shop_images/images_3.png",
+            "icon_hover": "shopify://shop_images/images_3.png",
+            "link": "https://www.youtube.com/@XTUCAM"
+          }
+        },
+        "social_6": {
+          "type": "social_item",
+          "settings": {
+            "title": "Bilibili",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_column_pxFrjC",
+        "menu_col_1",
+        "menu_col_4",
+        "menu_column_YJQzjQ",
+        "menu_column_AydDWe",
+        "menu_column_JJ8iaQ",
+        "social_1",
+        "social_2",
+        "social_3",
+        "social_4",
+        "social_5",
+        "social_6"
+      ],
+      "name": "XTU Footer",
+      "settings": {
+        "subscribe_heading": "Subscribe",
+        "subscribe_description": "Get product launches and brand updates",
+        "email_placeholder": "Enter your email",
+        "subscribe_button_label": "Subscribe",
+        "background_color": "{{ settings.color_palette.foreground }}",
+        "text_color": "{{ settings.color_palette.background }}",
+        "muted_text_color": "{{ settings.color_palette.background }}",
+        "padding_top": 60,
+        "padding_bottom": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "footer_utilities_jLGE8U": {
+      "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_jweRK8": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": false,
+            "text_color": "{{ settings.color_palette.background }}",
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_jweRK8"
+      ],
+      "name": "t:names.utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "background_color": "{{ settings.color_palette.foreground }}",
+        "divider_thickness": 1,
+        "divider_color": "#e5e7eb",
+        "show_payment_icons": true,
+        "padding-block-start": 20,
+        "padding-block-end": 60
+      }
+    }
+  },
+  "order": [
+    "xtu_footer_main",
+    "footer_utilities_jLGE8U"
+  ]
+}

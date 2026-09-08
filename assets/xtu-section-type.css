@@ -1,0 +1,50 @@
+/**
+ * XTU 营销/产品内容 Section 统一排版与间距
+ * 字号 / 间距 / 圆角：以 2px 为步进（1px 描边除外）
+ * 标题字重 600 · 正文字重 400 · line-height 1.2
+ */
+
+:root {
+  /* 版块大标题（h2）PC clamp 24–32px · 移动 22px */
+  --xtu-type-section-title: clamp(1.5rem, 2.8vw, 2rem);
+  --xtu-type-section-title-m: 1.375rem;
+
+  /* 版块副标题 · 14px */
+  --xtu-type-section-subtitle: 0.875rem;
+  --xtu-type-section-subtitle-m: 0.875rem;
+
+  /* 块级标题（h3 / 产品名等）PC 28px · 移动 22px */
+  --xtu-type-block-title: 1.75rem;
+  --xtu-type-block-title-m: 1.375rem;
+
+  /* 分组标题 PC 20px · 移动 18px */
+  --xtu-type-group-title: 1.25rem;
+  --xtu-type-group-title-m: 1.125rem;
+
+  /* 正文 / 说明 / 副文案 · 14px */
+  --xtu-type-body: 0.875rem;
+  --xtu-type-body-m: 0.875rem;
+
+  /* 眉题 / 小标签 · 12px */
+  --xtu-type-eyebrow: 0.75rem;
+
+  /* 常用间距（2px 步进） */
+  --xtu-space-2: 2px;
+  --xtu-space-4: 4px;
+  --xtu-space-8: 8px;
+  --xtu-space-12: 12px;
+  --xtu-space-14: 14px;
+  --xtu-space-16: 16px;
+  --xtu-space-18: 18px;
+  --xtu-space-20: 20px;
+  --xtu-space-24: 24px;
+  --xtu-space-28: 28px;
+  --xtu-space-32: 32px;
+  --xtu-space-40: 40px;
+  --xtu-space-48: 48px;
+
+  /* 常用圆角（2px 步进） */
+  --xtu-radius-sm: 8px;
+  --xtu-radius-md: 12px;
+  --xtu-radius-lg: 16px;
+}

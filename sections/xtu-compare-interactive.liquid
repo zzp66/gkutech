@@ -1,0 +1,566 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign compare_collection = section.settings.collection
+  assign default_category = section.settings.default_category
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 1200
+  assign label_width = section.settings.label_width | default: 140
+  assign image_ratio = section.settings.image_ratio | default: '1 / 1'
+  assign ratio_auto = false
+  if image_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign btn_bg = section.settings.btn_bg | default: '#1590F2'
+  assign btn_color = section.settings.btn_color | default: '#FFFFFF'
+  assign btn_bg_hover = section.settings.btn_bg_hover | default: '#0070CA'
+  assign btn_color_hover = section.settings.btn_color_hover | default: '#FFFFFF'
+  assign show_btn_arrow = section.settings.show_btn_arrow
+  assign buy_label = section.settings.buy_label | default: 'Buy now'
+  assign more_label = section.settings.more_label | default: 'Learn more'
+  assign link_color = section.settings.link_color | default: '#0070CA'
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign empty_value = section.settings.empty_value | default: '—'
+%}
+
+{{ 'xtu-compare-interactive.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'xtu-compare-interactive.js' | asset_url }}" defer="defer"></script>
+
+{% capture catalog_json %}
+{
+  "emptyValue": {{ empty_value | json }},
+  "buyLabel": {{ buy_label | json }},
+  "moreLabel": {{ more_label | json }},
+  "showBtnArrow": {% if show_btn_arrow %}true{% else %}false{% endif %},
+  "btn": {
+    "bg": {{ btn_bg | json }},
+    "color": {{ btn_color | json }},
+    "bgHover": {{ btn_bg_hover | json }},
+    "colorHover": {{ btn_color_hover | json }}
+  },
+  "defaultCategory": {{ default_category | json }},
+  "categories": [
+    {% assign cat_first = true %}
+    {% for block in section.blocks %}
+      {% if block.type == 'category' and block.settings.id != blank %}
+        {% unless cat_first %},{% endunless %}
+        {% assign cat_first = false %}
+        {% assign cat_id = block.settings.id | strip | handleize %}
+        {
+          "id": {{ cat_id | json }},
+          "label": {{ block.settings.label | default: block.settings.id | json }}
+        }
+      {% endif %}
+    {% endfor %}
+  ],
+  "products": [
+    {% assign product_first = true %}
+    {% if compare_collection != blank %}
+      {% for product in compare_collection.products limit: 50 %}
+        {% liquid
+          assign override_title = blank
+          assign override_subtitle = blank
+          assign override_image = blank
+          assign override_buy = blank
+          assign override_more = blank
+          assign override_category = blank
+
+          for block in section.blocks
+            if block.type == 'pool_product' and block.settings.product != blank
+              if block.settings.product.id == product.id
+                assign override_title = block.settings.title
+                assign override_subtitle = block.settings.subtitle
+                assign override_image = block.settings.image
+                assign override_buy = block.settings.buy_link
+                assign override_more = block.settings.more_link
+                assign override_category = block.settings.category
+              endif
+            endif
+          endfor
+
+          assign p_title = override_title | default: product.title
+          assign p_subtitle = override_subtitle
+          if p_subtitle == blank
+            assign p_subtitle = product.metafields.custom.compare_subtitle.value | default: product.metafields.custom.compare_subtitle
+          endif
+          assign p_category = override_category | strip | handleize
+          if p_category == blank
+            assign p_category = product.metafields.custom.compare_category.value | default: product.metafields.custom.compare_category | strip | handleize
+          endif
+
+          assign p_image = blank
+          if override_image != blank
+            assign p_image = override_image | image_url: width: 800
+          elsif product.featured_image != blank
+            assign p_image = product.featured_image | image_url: width: 800
+          endif
+
+          assign p_buy = override_buy | default: product.url
+          assign p_more = override_more | default: product.url
+
+          assign specs_mf = product.metafields.custom.compare_specs
+          assign specs_output = '{}'
+          if specs_mf != blank and specs_mf.value != blank
+            assign specs_output = specs_mf.value | json
+          endif
+        %}
+        {% unless product_first %},{% endunless %}
+        {% assign product_first = false %}
+        {
+          "id": {{ product.handle | json }},
+          "handle": {{ product.handle | json }},
+          "category": {{ p_category | json }},
+          "title": {{ p_title | json }},
+          "subtitle": {{ p_subtitle | json }},
+          "image": {{ p_image | json }},
+          "buyUrl": {{ p_buy | json }},
+          "moreUrl": {{ p_more | json }},
+          "specs": {{ specs_output }}
+        }
+      {% endfor %}
+    {% endif %}
+
+    {% comment %} Pool-only products not in collection {% endcomment %}
+    {% for block in section.blocks %}
+      {% if block.type == 'pool_product' and block.settings.product != blank %}
+        {% liquid
+          assign pool_product = block.settings.product
+          assign already_in = false
+          if compare_collection != blank
+            for product in compare_collection.products limit: 50
+              if product.id == pool_product.id
+                assign already_in = true
+              endif
+            endfor
+          endif
+        %}
+        {% unless already_in %}
+          {% liquid
+            assign p_title = block.settings.title | default: pool_product.title
+            assign p_subtitle = block.settings.subtitle
+            if p_subtitle == blank
+              assign p_subtitle = pool_product.metafields.custom.compare_subtitle.value | default: pool_product.metafields.custom.compare_subtitle
+            endif
+            assign p_category = block.settings.category | strip | handleize
+            if p_category == blank
+              assign p_category = pool_product.metafields.custom.compare_category.value | default: pool_product.metafields.custom.compare_category | strip | handleize
+            endif
+            assign p_image = blank
+            if block.settings.image != blank
+              assign p_image = block.settings.image | image_url: width: 800
+            elsif pool_product.featured_image != blank
+              assign p_image = pool_product.featured_image | image_url: width: 800
+            endif
+            assign p_buy = block.settings.buy_link | default: pool_product.url
+            assign p_more = block.settings.more_link | default: pool_product.url
+            assign specs_mf = pool_product.metafields.custom.compare_specs
+            assign specs_output = '{}'
+            if specs_mf != blank and specs_mf.value != blank
+              assign specs_output = specs_mf.value | json
+            endif
+          %}
+          {% unless product_first %},{% endunless %}
+          {% assign product_first = false %}
+          {
+            "id": {{ pool_product.handle | json }},
+            "handle": {{ pool_product.handle | json }},
+            "category": {{ p_category | json }},
+            "title": {{ p_title | json }},
+            "subtitle": {{ p_subtitle | json }},
+            "image": {{ p_image | json }},
+            "buyUrl": {{ p_buy | json }},
+            "moreUrl": {{ p_more | json }},
+            "specs": {{ specs_output }}
+          }
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  ]
+}
+{% endcapture %}
+
+<section
+  id="xtu-compare-interactive-{{ section.id }}"
+  class="xtu-ci{% if ratio_auto %} xtu-ci--ratio-auto{% endif %}"
+  data-xtu-compare-interactive
+  style="
+    --xtu-ci-bg: {{ background_color }};
+    --xtu-ci-content-bg: {{ content_background }};
+    --xtu-ci-content-width: {{ content_width }}px;
+    --xtu-ci-label-w: {{ label_width }}px;
+    {% unless ratio_auto %}--xtu-ci-ratio: {{ image_ratio }};{% endunless %}
+    --xtu-ci-link: {{ link_color }};
+    --xtu-ci-pt: {{ padding_top }}px;
+    --xtu-ci-pb: {{ padding_bottom }}px;
+    --xtu-ci-pt-m: {{ padding_top_mobile }}px;
+    --xtu-ci-pb-m: {{ padding_bottom_mobile }}px;
+  "
+>
+  <script type="application/json" data-xtu-ci-catalog>
+    {{ catalog_json | strip }}
+  </script>
+
+  <div class="xtu-ci__inner">
+    {% if heading != blank %}
+      <h2 class="xtu-ci__heading">{{ heading | escape }}</h2>
+    {% endif %}
+
+    <div class="xtu-ci__categories" data-xtu-ci-categories hidden role="tablist" aria-label="Compare categories"></div>
+
+    <div class="xtu-ci__scroller" data-xtu-ci-scroller>
+      <div class="xtu-ci__grid" data-xtu-ci-grid>
+        <div class="xtu-ci__corner" aria-hidden="true"></div>
+
+        {% for i in (0..2) %}
+          <div class="xtu-ci__col" data-xtu-ci-col="{{ i }}">
+            <div class="xtu-ci__eq xtu-ci__eq--select" data-xtu-ci-eq="select">
+              <div class="xtu-ci__dropdown" data-xtu-ci-dropdown>
+              <button
+                type="button"
+                class="xtu-ci__trigger"
+                data-xtu-ci-trigger
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span class="xtu-ci__trigger-text">
+                  <span class="xtu-ci__trigger-title" data-xtu-ci-trigger-title>Select product</span>
+                  <span class="xtu-ci__trigger-sub" data-xtu-ci-trigger-sub></span>
+                </span>
+                <span class="xtu-ci__trigger-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+              <ul class="xtu-ci__menu" data-xtu-ci-menu role="listbox" hidden></ul>
+              </div>
+            </div>
+
+            <div class="xtu-ci__eq xtu-ci__eq--media" data-xtu-ci-eq="media">
+              <div class="xtu-ci__media">
+                <img class="xtu-ci__image" data-xtu-ci-image alt="" width="800" height="800" hidden>
+                {{ 'product-1' | placeholder_svg_tag: 'xtu-ci__image xtu-ci__placeholder' }}
+              </div>
+            </div>
+
+            <div class="xtu-ci__eq xtu-ci__eq--title" data-xtu-ci-eq="title">
+              <h3 class="xtu-ci__title" data-xtu-ci-title></h3>
+            </div>
+
+            <div class="xtu-ci__eq xtu-ci__eq--subtitle" data-xtu-ci-eq="subtitle">
+              <p class="xtu-ci__subtitle" data-xtu-ci-subtitle></p>
+            </div>
+
+            <div class="xtu-ci__eq xtu-ci__eq--actions" data-xtu-ci-eq="actions">
+              <div class="xtu-ci__actions">
+                <a
+                  class="xtu-btn xtu-btn--sm xtu-ci__buy"
+                  data-xtu-ci-buy
+                  href="#"
+                  style="
+                    --xtu-btn-bg: {{ btn_bg }};
+                    --xtu-btn-color: {{ btn_color }};
+                    --xtu-btn-bg-hover: {{ btn_bg_hover }};
+                    --xtu-btn-color-hover: {{ btn_color_hover }};
+                  "
+                >
+                  <span class="xtu-btn__label" data-xtu-ci-buy-label>{{ buy_label | escape }}</span>
+                </a>
+                <a class="xtu-ci__more" data-xtu-ci-more href="#">
+                  <span data-xtu-ci-more-label>{{ more_label | escape }}</span>
+                  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4.5 2.25 8.25 6 4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="xtu-ci__specs" data-xtu-ci-specs></div>
+      </div>
+    </div>
+
+    <p class="xtu-ci__empty" data-xtu-ci-empty hidden>
+      {{ section.settings.empty_text | default: 'No products available for comparison.' | escape }}
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "XTU Compare Interactive",
+  "tag": "section",
+  "class": "section-xtu-compare-interactive",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Product Compare"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "对比产品集合",
+      "info": "集合内产品需配置 metafield：custom.compare_category、custom.compare_specs。参数行仅由当前已选中的产品 JSON 并集生成；未选产品不影响表格；缺失值显示横线。"
+    },
+    {
+      "type": "text",
+      "id": "default_category",
+      "label": "默认品类 ID",
+      "info": "与「品类」区块 id 一致，如 action-camera；留空则用第一个品类",
+      "default": "action-camera"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "无产品提示",
+      "default": "No products available for comparison."
+    },
+    {
+      "type": "text",
+      "id": "empty_value",
+      "label": "参数缺省占位",
+      "default": "—"
+    },
+    {
+      "type": "header",
+      "content": "按钮文案"
+    },
+    {
+      "type": "text",
+      "id": "buy_label",
+      "label": "加购按钮文案",
+      "default": "Buy now"
+    },
+    {
+      "type": "text",
+      "id": "more_label",
+      "label": "了解更多文案",
+      "default": "Learn more"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_btn_arrow",
+      "label": "加购按钮显示箭头",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "内容区最大宽度",
+      "min": 600,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "label_width",
+      "label": "参数名列宽",
+      "min": 90,
+      "max": 220,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "产品图比例",
+      "options": [
+        { "value": "auto", "label": "自适应（按图片/视频比例）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "3 / 4", "label": "3:4" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "加购按钮颜色"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_hover",
+      "label": "Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "btn_color_hover",
+      "label": "Hover 文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "了解更多链接色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "品类",
+      "settings": [
+        {
+          "type": "text",
+          "id": "id",
+          "label": "品类 ID",
+          "info": "英文短横线，如 action-camera；须与产品 metafield custom.compare_category 一致",
+          "default": "action-camera"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab 文案",
+          "default": "Action Camera"
+        }
+      ]
+    },
+    {
+      "type": "pool_product",
+      "name": "产品覆盖",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "产品"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "品类 ID 覆盖",
+          "info": "留空则读产品 metafield"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "主图覆盖"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题覆盖"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "副标题"
+        },
+        {
+          "type": "url",
+          "id": "buy_link",
+          "label": "加购链接覆盖"
+        },
+        {
+          "type": "url",
+          "id": "more_link",
+          "label": "了解更多链接覆盖"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Compare Interactive",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "id": "action-camera",
+            "label": "Action Camera"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "id": "doorbell",
+            "label": "Doorbell"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

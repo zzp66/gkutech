@@ -1,0 +1,54 @@
+{% doc %}
+  Shared left/right Swiper navigation buttons (45px, icon centered).
+
+  @param {string} [prev_attributes] - Extra attributes for the previous button (e.g. data-xtu-hero-prev)
+  @param {string} [next_attributes] - Extra attributes for the next button
+  @param {string} [prev_class] - Extra class names for previous button
+  @param {string} [next_class] - Extra class names for next button
+  @param {string} [variant] - Optional surface variant: blank (on dark) or "on-light"
+  @param {boolean} [hide_mobile] - Hide arrows on mobile (default false; use true for peek carousels e.g. 1.1 / 2.1)
+  @param {string} [prev_label] - Accessible label for previous
+  @param {string} [next_label] - Accessible label for next
+
+  @example
+  {% render 'xtu-swiper-nav', prev_attributes: 'data-xtu-hero-prev', next_attributes: 'data-xtu-hero-next' %}
+{% enddoc %}
+
+{% liquid
+  assign prev_label = prev_label | default: 'Previous slide'
+  assign next_label = next_label | default: 'Next slide'
+  assign variant_class = ''
+  if variant == 'on-light'
+    assign variant_class = ' xtu-swiper-nav--on-light'
+  endif
+  assign mobile_class = ''
+  if hide_mobile
+    assign mobile_class = ' xtu-swiper-nav--hide-mobile'
+  endif
+%}
+
+<button
+  type="button"
+  class="xtu-swiper-nav xtu-swiper-nav--prev{{ variant_class }}{{ mobile_class }}{% if prev_class != blank %} {{ prev_class }}{% endif %}"
+  aria-label="{{ prev_label | escape }}"
+  {{ prev_attributes }}
+>
+  <span class="xtu-swiper-nav__icon" aria-hidden="true">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.25 3.75 6 9l5.25 5.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</button>
+
+<button
+  type="button"
+  class="xtu-swiper-nav xtu-swiper-nav--next{{ variant_class }}{{ mobile_class }}{% if next_class != blank %} {{ next_class }}{% endif %}"
+  aria-label="{{ next_label | escape }}"
+  {{ next_attributes }}
+>
+  <span class="xtu-swiper-nav__icon" aria-hidden="true">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.75 3.75 12 9l-5.25 5.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</button>

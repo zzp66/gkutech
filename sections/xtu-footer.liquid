@@ -1,0 +1,973 @@
+{% liquid
+  assign subscribe_heading = section.settings.subscribe_heading
+  assign subscribe_desc = section.settings.subscribe_description
+  assign subscribe_button = section.settings.subscribe_button_label
+  assign email_placeholder = section.settings.email_placeholder
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign bg_color = section.settings.background_color
+  assign text_color = section.settings.text_color
+  assign muted_color = section.settings.muted_text_color
+  assign menu_column_count = 0
+  for block in section.blocks
+    if block.type == 'menu_column' or block.type == 'text_column'
+      assign menu_column_count = menu_column_count | plus: 1
+    endif
+  endfor
+  if menu_column_count < 1
+    assign menu_column_count = 1
+  endif
+%}
+
+<section
+  id="xtu-footer-{{ section.id }}"
+  class="xtu-footer"
+  data-xtu-footer
+  style="
+    --xtu-footer-padding-top: {{ padding_top }}px;
+    --xtu-footer-padding-bottom: {{ padding_bottom }}px;
+    --xtu-footer-padding-top-mobile: {{ padding_top_mobile }}px;
+    --xtu-footer-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+    --xtu-footer-menu-cols: {{ menu_column_count }};
+    {% if bg_color != blank %}--xtu-footer-bg: {{ bg_color }};{% endif %}
+    {% if text_color != blank %}--xtu-footer-text: {{ text_color }};{% endif %}
+    {% if muted_color != blank %}--xtu-footer-muted: {{ muted_color }};{% endif %}
+  "
+>
+  <div class="xtu-footer__shell">
+    <div class="xtu-footer__layout">
+      <div class="xtu-footer__nav" data-xtu-footer-nav>
+        {% for block in section.blocks %}
+          {% if block.type == 'menu_column' %}
+            {% liquid
+              assign col_menu = block.settings.menu
+              assign col_heading = block.settings.heading
+              if col_menu != blank
+                if col_menu.links == blank and col_menu.handle != blank
+                  assign col_menu = linklists[col_menu.handle]
+                elsif col_menu.links == blank
+                  assign col_menu = linklists[col_menu]
+                endif
+              endif
+              if col_heading == blank and col_menu != blank
+                assign col_heading = col_menu.title
+              endif
+            %}
+            <details
+              class="xtu-footer__col"
+              data-xtu-footer-details
+              open
+              {{ block.shopify_attributes }}
+            >
+              <summary class="xtu-footer__col-summary">
+                <span class="xtu-footer__col-title">{{ col_heading | escape }}</span>
+                <span class="xtu-footer__col-icon" aria-hidden="true">
+                  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              <nav class="xtu-footer__col-links" {% if col_heading != blank %}aria-label="{{ col_heading | escape }}"{% endif %}>
+                {% if col_menu != blank and col_menu.links.size > 0 %}
+                  <ul class="xtu-footer__list">
+                    {% for link in col_menu.links %}
+                      <li>
+                        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </nav>
+            </details>
+          {% elsif block.type == 'text_column' %}
+            {% liquid
+              assign col_heading = block.settings.heading
+              assign col_text = block.settings.text
+            %}
+            <details
+              class="xtu-footer__col xtu-footer__col--text"
+              data-xtu-footer-details
+              open
+              {{ block.shopify_attributes }}
+            >
+              <summary class="xtu-footer__col-summary">
+                <span class="xtu-footer__col-title">{{ col_heading | escape }}</span>
+                <span class="xtu-footer__col-icon" aria-hidden="true">
+                  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              {% if col_text != blank %}
+                <div class="xtu-footer__richtext rte">
+                  {{ col_text }}
+                </div>
+              {% endif %}
+            </details>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <aside class="xtu-footer__aside">
+        <div class="xtu-footer__subscribe">
+          {% if subscribe_heading != blank %}
+            <h3 class="xtu-footer__subscribe-title">{{ subscribe_heading | escape }}</h3>
+          {% endif %}
+          {% if subscribe_desc != blank %}
+            <p class="xtu-footer__subscribe-desc">{{ subscribe_desc | escape }}</p>
+          {% endif %}
+
+          {% form 'customer', class: 'xtu-footer__form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter,xtu-footer">
+            <div class="xtu-footer__input-row">
+              <label class="visually-hidden" for="xtu-footer-email-{{ section.id }}">
+                {{ email_placeholder | default: 'Email' | escape }}
+              </label>
+              <input
+                id="xtu-footer-email-{{ section.id }}"
+                class="xtu-footer__email"
+                type="email"
+                name="contact[email]"
+                autocomplete="email"
+                autocorrect="off"
+                autocapitalize="off"
+                placeholder="{{ email_placeholder | escape }}"
+                required
+                {% if form.errors %}
+                  aria-invalid="true"
+                  aria-describedby="xtu-footer-msg-{{ section.id }}"
+                {% endif %}
+              >
+              <button class="xtu-footer__submit" type="submit">
+                {{ subscribe_button | escape }}
+              </button>
+            </div>
+
+            <div
+              id="xtu-footer-msg-{{ section.id }}"
+              class="xtu-footer__message"
+              aria-live="polite"
+            >
+              {% if form.posted_successfully? %}
+                <p class="xtu-footer__message--success">{{ 'blocks.email_signup.success' | t }}</p>
+              {% elsif form.errors %}
+                <p class="xtu-footer__message--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+              {% endif %}
+            </div>
+          {% endform %}
+        </div>
+
+        <div class="xtu-footer__social">
+          {% for block in section.blocks %}
+            {% if block.type == 'social_item' %}
+              {% liquid
+                assign s_title = block.settings.title
+                assign s_link = block.settings.link
+                assign s_icon = block.settings.icon
+                assign s_icon_hover = block.settings.icon_hover
+                assign s_qr = block.settings.qr_image
+                assign has_qr = false
+                if s_qr != blank
+                  assign has_qr = true
+                endif
+              %}
+              <div
+                class="xtu-footer__social-item{% if has_qr %} xtu-footer__social-item--qr{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                {% if s_link != blank %}
+                  <a
+                    class="xtu-footer__social-trigger"
+                    href="{{ s_link }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="{{ s_title | escape }}"
+                    aria-label="{{ s_title | escape }}"
+                  >
+                    {% if s_icon != blank %}
+                      {{
+                        s_icon
+                        | image_url: width: 80
+                        | image_tag:
+                          class: 'xtu-footer__social-icon xtu-footer__social-icon--default',
+                          loading: 'lazy',
+                          widths: '40, 80',
+                          alt: s_title
+                      }}
+                    {% endif %}
+                    {% if s_icon_hover != blank %}
+                      {{
+                        s_icon_hover
+                        | image_url: width: 80
+                        | image_tag:
+                          class: 'xtu-footer__social-icon xtu-footer__social-icon--hover',
+                          loading: 'lazy',
+                          widths: '40, 80',
+                          alt: s_title
+                      }}
+                    {% endif %}
+                  </a>
+                {% else %}
+                  <button
+                    type="button"
+                    class="xtu-footer__social-trigger"
+                    title="{{ s_title | escape }}"
+                    aria-label="{{ s_title | escape }}"
+                  >
+                    {% if s_icon != blank %}
+                      {{
+                        s_icon
+                        | image_url: width: 80
+                        | image_tag:
+                          class: 'xtu-footer__social-icon xtu-footer__social-icon--default',
+                          loading: 'lazy',
+                          widths: '40, 80',
+                          alt: s_title
+                      }}
+                    {% endif %}
+                    {% if s_icon_hover != blank %}
+                      {{
+                        s_icon_hover
+                        | image_url: width: 80
+                        | image_tag:
+                          class: 'xtu-footer__social-icon xtu-footer__social-icon--hover',
+                          loading: 'lazy',
+                          widths: '40, 80',
+                          alt: s_title
+                      }}
+                    {% endif %}
+                  </button>
+                {% endif %}
+
+                {% if has_qr %}
+                  <div class="xtu-footer__qr-pop" role="tooltip">
+                    {{
+                      s_qr
+                      | image_url: width: 240
+                      | image_tag:
+                        class: 'xtu-footer__qr-image',
+                        loading: 'lazy',
+                        widths: '160, 240',
+                        alt: s_title
+                    }}
+                    {% if s_title != blank %}
+                      <span class="xtu-footer__qr-label">{{ s_title | escape }}</span>
+                    {% endif %}
+                    {% if s_link != blank %}
+                      <a class="xtu-footer__qr-link" href="{{ s_link }}" target="_blank" rel="noopener noreferrer">
+                        {{ s_title | escape }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-footer {
+    --xtu-footer-bg: #f8f9fd;
+    --xtu-footer-text: #1a1c22;
+    --xtu-footer-muted: #8e9297;
+    --xtu-footer-border: #e5e7eb;
+    padding: var(--xtu-footer-padding-top, 80px) 0 var(--xtu-footer-padding-bottom, 80px);
+    background: var(--xtu-footer-bg);
+    color: var(--xtu-footer-text);
+  }
+
+  .xtu-footer__shell {
+    width: min(var(--page-width), 100%);
+    margin-inline: auto;
+    padding-inline: var(--page-margin);
+    box-sizing: border-box;
+  }
+
+  .xtu-footer__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.82fr) minmax(300px, 0.58fr);
+    gap: 40px 45px;
+    align-items: start;
+  }
+
+  .xtu-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(var(--xtu-footer-menu-cols, 5), minmax(0, 1fr));
+    gap: 30px;
+  }
+
+  .xtu-footer__col {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .xtu-footer__col-summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    min-height: calc(16px * 1.2);
+    cursor: default;
+  }
+
+  .xtu-footer__col-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .xtu-footer__col-title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-footer-text);
+  }
+
+  .xtu-footer__col-icon {
+    display: none;
+    width: 12px;
+    height: 12px;
+    color: var(--xtu-footer-muted);
+    transition: transform 0.25s ease;
+  }
+
+  .xtu-footer__col-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-footer__col[open] .xtu-footer__col-icon {
+    transform: rotate(180deg);
+  }
+
+  .xtu-footer__list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .xtu-footer__list a {
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--xtu-footer-muted) 72%, var(--xtu-footer-bg));
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .xtu-footer__list a:focus-visible {
+    color: var(--xtu-footer-text);
+    outline: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .xtu-footer__list a:hover {
+      color: var(--xtu-footer-text);
+    }
+  }
+
+  /* Rich text column (contact info, etc.) */
+  .xtu-footer__richtext {
+    margin: 10px 0 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--xtu-footer-muted) 72%, var(--xtu-footer-bg));
+  }
+
+  .xtu-footer__richtext > *:first-child {
+    margin-block-start: 0;
+  }
+
+  .xtu-footer__richtext > *:last-child {
+    margin-block-end: 0;
+  }
+
+  .xtu-footer__richtext :is(p, ul, ol) {
+    margin: 0 0 0.85em;
+  }
+
+  .xtu-footer__richtext :is(p, ul, ol):last-child {
+    margin-block-end: 0;
+  }
+
+  .xtu-footer__richtext :is(strong, b) {
+    font-weight: 600;
+    color: color-mix(in srgb, var(--xtu-footer-muted) 55%, var(--xtu-footer-text));
+  }
+
+  .xtu-footer__richtext a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .xtu-footer__richtext a:hover,
+  .xtu-footer__richtext a:focus-visible {
+    color: var(--xtu-footer-text);
+  }
+
+  .xtu-footer__richtext :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0 0 0.35em;
+    font-family: var(--font-heading--family);
+    font-size: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--xtu-footer-muted) 55%, var(--xtu-footer-text));
+  }
+
+  .xtu-footer__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    align-self: start;
+  }
+
+  .xtu-footer__subscribe {
+    margin: 0;
+    padding: 0;
+  }
+
+  .xtu-footer__subscribe-title {
+    margin: 0 0 10px;
+    padding: 0;
+    min-height: calc(16px * 1.2);
+    font-family: var(--font-heading--family);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-footer-text);
+  }
+
+  .xtu-footer__subscribe-desc {
+    margin: 0 0 22px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-footer-muted);
+  }
+
+  .xtu-footer__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .xtu-footer__input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 20px;
+    border: 1px solid #e4e7ed;
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  .xtu-footer__email {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #1a1c22;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .xtu-footer__email::placeholder {
+    color: #9aa0a8;
+    opacity: 1;
+  }
+
+  .xtu-footer__submit {
+    flex: 0 0 auto;
+    height: 38px;
+    margin: 0;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: #1a1c22;
+    color: #fff;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background 0.22s ease, transform 0.22s ease;
+  }
+
+  .xtu-footer__submit:hover {
+    background: #111318;
+    transform: none;
+  }
+
+  .xtu-footer__message {
+    min-height: 0;
+    margin-top: 8px;
+  }
+
+  .xtu-footer__message p {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow, 0.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .xtu-footer__message--success {
+    color: #059669;
+  }
+
+  .xtu-footer__message--error {
+    color: #dc2626;
+  }
+
+  .xtu-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .xtu-footer__social-item {
+    position: relative;
+  }
+
+  .xtu-footer__social-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    appearance: none;
+    text-decoration: none;
+  }
+
+  .xtu-footer__social-trigger:focus-visible {
+    outline: none;
+  }
+
+  .xtu-footer__social-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .xtu-footer__social-icon--hover {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .xtu-footer__social-trigger:hover .xtu-footer__social-icon--default {
+      display: none;
+    }
+
+    .xtu-footer__social-trigger:hover .xtu-footer__social-icon--hover {
+      display: block;
+    }
+
+    .xtu-footer__social-item--qr:hover .xtu-footer__qr-pop,
+    .xtu-footer__social-item--qr:focus-within .xtu-footer__qr-pop {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+    }
+  }
+
+  /* Mobile: no QR popup (desktop hover / focus only) */
+  @media screen and (max-width: 749px) {
+    .xtu-footer__qr-pop {
+      display: none;
+    }
+  }
+
+  .xtu-footer__qr-pop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 120px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgb(15 23 42 / 0.16);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, 6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .xtu-footer__qr-image {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .xtu-footer__qr-label,
+  .xtu-footer__qr-link {
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow, 0.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #111827;
+    text-align: center;
+  }
+
+  .xtu-footer__qr-link {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 1199px) {
+    .xtu-footer__layout {
+      grid-template-columns: minmax(0, 1.82fr) minmax(260px, 0.58fr);
+      gap: 32px 32px;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    .xtu-footer__layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-footer {
+      padding: var(--xtu-footer-padding-top-mobile, 40px) 0 var(--xtu-footer-padding-bottom-mobile, 40px);
+    }
+
+    .xtu-footer__nav {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .xtu-footer__col {
+      border-bottom: 1px solid var(--xtu-footer-border);
+    }
+
+    .xtu-footer__col-summary {
+      padding: 14px 0;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .xtu-footer__col-icon {
+      display: block;
+    }
+
+    .xtu-footer__col-links {
+      padding-bottom: 12px;
+    }
+
+    .xtu-footer__col--text .xtu-footer__richtext {
+      margin-top: 10px;
+      padding-bottom: 12px;
+    }
+
+    .xtu-footer__list {
+      margin-top: 0;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    /* Desktop: summary is non-interactive; open state controlled by markup + JS */
+    .xtu-footer__col-summary {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .xtu-footer__col-icon {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Footer",
+  "tag": "section",
+  "class": "xtu-footer-section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "邮件订阅"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_heading",
+      "label": "订阅标题",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_description",
+      "label": "订阅说明",
+      "default": "Get product launches and brand updates"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "邮箱占位文案",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_button_label",
+      "label": "订阅按钮文案",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "布局"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景色",
+      "default": "#F8F9FD"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "主文字颜色",
+      "default": "#1A1C22"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次级文字颜色",
+      "info": "菜单链接、说明文案等",
+      "default": "#8E9297"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "菜单列",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "列标题",
+          "default": "Menu"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "菜单"
+        }
+      ]
+    },
+    {
+      "type": "text_column",
+      "name": "文本列",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "列标题",
+          "default": "Contact"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本内容",
+          "default": "<p><strong>Customer Service:</strong><br/><a href=\"mailto:support@xtucam.com\">support@xtucam.com</a><br/>Response within 24 hours</p><p><strong>Business Inquiries:</strong><br/><a href=\"mailto:market@xtucam.com\">market@xtucam.com</a></p><p><strong>Phone Number:</strong><br/>Toll-Free: +(86) 14743425979<br/>Mon - Fri: 9:30 AM - 18:30 PM (BJT)</p>"
+        }
+      ]
+    },
+    {
+      "type": "social_item",
+      "name": "社交项",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "名称",
+          "default": "Social"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "默认图标"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_hover",
+          "label": "Hover 图标"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "外链（可选）"
+        },
+        {
+          "type": "image_picker",
+          "id": "qr_image",
+          "label": "二维码（可选）",
+          "info": "配置后 Hover/点击可弹出二维码"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Footer",
+      "blocks": [
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Popular products"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Online store"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Support"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Partnership"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "About us"
+          }
+        },
+        {
+          "type": "social_item",
+          "settings": {
+            "title": "WeChat"
+          }
+        },
+        {
+          "type": "social_item",
+          "settings": {
+            "title": "Weibo"
+          }
+        },
+        {
+          "type": "social_item",
+          "settings": {
+            "title": "Douyin"
+          }
+        },
+        {
+          "type": "social_item",
+          "settings": {
+            "title": "Xiaohongshu"
+          }
+        },
+        {
+          "type": "social_item",
+          "settings": {
+            "title": "Bilibili"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

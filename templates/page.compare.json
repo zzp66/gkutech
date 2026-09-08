@@ -1,0 +1,322 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "xtu_compare_interactive_64aXaM": {
+      "type": "xtu-compare-interactive",
+      "blocks": {
+        "category_hq6cek": {
+          "type": "category",
+          "settings": {
+            "id": "action-camera",
+            "label": "Action Camera"
+          }
+        },
+        "category_UtbQKg": {
+          "type": "category",
+          "settings": {
+            "id": "doorbell",
+            "label": "Doorbell"
+          }
+        }
+      },
+      "block_order": [
+        "category_hq6cek",
+        "category_UtbQKg"
+      ],
+      "disabled": true,
+      "name": "XTU Compare Interactive",
+      "settings": {
+        "heading": "Product Compare",
+        "collection": "action-camera",
+        "default_category": "action-camera",
+        "empty_text": "No products available for comparison.",
+        "empty_value": "—",
+        "buy_label": "Buy now",
+        "more_label": "Learn more",
+        "show_btn_arrow": false,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "content_width": 1200,
+        "label_width": 140,
+        "image_ratio": "1 / 1",
+        "btn_bg": "#1590f2",
+        "btn_color": "#ffffff",
+        "btn_bg_hover": "#0070ca",
+        "btn_color_hover": "#ffffff",
+        "link_color": "#0070ca",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_product_compare_WGzgFn": {
+      "type": "xtu-product-compare",
+      "blocks": {
+        "product_4JF6Le": {
+          "type": "product",
+          "settings": {
+            "product": "xtu-s7-pro-max-action-camera",
+            "title": "S7 Pro Max",
+            "subtitle": "The Ultimate All-Around Action Camera",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/xtu-s7-pro-max-action-camera",
+            "more_label": "Learn more",
+            "more_link": ""
+          }
+        },
+        "product_FWpABq": {
+          "type": "product",
+          "settings": {
+            "product": "xtu-s7-pro-4k-action-camera",
+            "title": "S7 Pro",
+            "subtitle": "High-Performance All-Around Action Camera",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/xtu-s7-pro-4k-action-camera",
+            "more_label": "Learn more",
+            "more_link": ""
+          }
+        },
+        "product_tjLEJD": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "title": "S7",
+            "subtitle": "Essential action camera",
+            "buy_label": "Buy now",
+            "buy_link": "",
+            "more_label": "Learn more",
+            "more_link": ""
+          }
+        },
+        "group_czWN7H": {
+          "type": "group",
+          "settings": {
+            "title": "Camera"
+          }
+        },
+        "row_wbneKT": {
+          "type": "row",
+          "settings": {
+            "label": "Category",
+            "value_1": "Action camera",
+            "value_2": "Action camera",
+            "value_3": "Action camera"
+          }
+        },
+        "row_FgczAB": {
+          "type": "row",
+          "settings": {
+            "label": "Sensor",
+            "value_1": "1/1.28\" RYYB CMOS",
+            "value_2": "1/2\" Sony IMX586 CMOS",
+            "value_3": "On sale"
+          }
+        },
+        "row_6hqWAN": {
+          "type": "row",
+          "settings": {
+            "label": "Photo Resolution",
+            "value_1": "50MP",
+            "value_2": "48MP",
+            "value_3": "66 × 46 × 30 mm"
+          }
+        },
+        "row_ghKndB": {
+          "type": "row",
+          "settings": {
+            "label": "Image Processor",
+            "value_1": "AI ISP with Enhanced Night Imaging",
+            "value_2": "AI ISP",
+            "value_3": ""
+          }
+        },
+        "row_nMG8tr": {
+          "type": "row",
+          "settings": {
+            "label": "Field of View",
+            "value_1": "158° Ultra-Wide",
+            "value_2": "152° Ultra-Wide",
+            "value_3": ""
+          }
+        },
+        "row_q3r3WL": {
+          "type": "row",
+          "settings": {
+            "label": "Stabilization",
+            "value_1": "SuperSmooth EIS 5.0",
+            "value_2": "SuperSmooth EIS 5.0",
+            "value_3": ""
+          }
+        },
+        "row_nGQbWy": {
+          "type": "row",
+          "settings": {
+            "label": "Dynamic Range",
+            "value_1": "Up to 14 Stops",
+            "value_2": "",
+            "value_3": ""
+          }
+        },
+        "row_Q4yyhn": {
+          "type": "row",
+          "settings": {
+            "label": "Rear Screen",
+            "value_1": "2.29\" Touchscreen",
+            "value_2": "2.29\" Touchscreen",
+            "value_3": ""
+          }
+        },
+        "row_QiPNRJ": {
+          "type": "row",
+          "settings": {
+            "label": "Front Screen",
+            "value_1": "1.4\"",
+            "value_2": "1.4\"",
+            "value_3": ""
+          }
+        },
+        "row_4PzGwy": {
+          "type": "row",
+          "settings": {
+            "label": "Time-Lapse",
+            "value_1": "Up to 6K Time-Lapse",
+            "value_2": "Supported",
+            "value_3": ""
+          }
+        },
+        "row_AVmUYE": {
+          "type": "row",
+          "settings": {
+            "label": "Color Filter Array",
+            "value_1": "RYYB",
+            "value_2": "Bayer",
+            "value_3": ""
+          }
+        },
+        "row_NtqMwL": {
+          "type": "row",
+          "settings": {
+            "label": "Fast Charging",
+            "value_1": "80% in approx. 46 min",
+            "value_2": "80% in approx. 46 min",
+            "value_3": ""
+          }
+        },
+        "row_4JpRcD": {
+          "type": "row",
+          "settings": {
+            "label": "Lens Aperture",
+            "value_1": "F2.8",
+            "value_2": "F2.8",
+            "value_3": ""
+          }
+        },
+        "row_ARAdDT": {
+          "type": "row",
+          "settings": {
+            "label": "Battery",
+            "value_1": "1800mAh / Up to 200 min",
+            "value_2": "1800mAh / Up to 200 min",
+            "value_3": ""
+          }
+        },
+        "row_aM3KhD": {
+          "type": "row",
+          "settings": {
+            "label": "Magnetic Quick Release",
+            "value_1": "Yes",
+            "value_2": "Yes",
+            "value_3": ""
+          }
+        },
+        "row_xprHB3": {
+          "type": "row",
+          "settings": {
+            "label": "Weight",
+            "value_1": "134g",
+            "value_2": "134g",
+            "value_3": "132g"
+          }
+        },
+        "row_GKrxXj": {
+          "type": "row",
+          "settings": {
+            "label": "Wi-Fi",
+            "value_1": "Wi-Fi 6",
+            "value_2": "Wi-Fi 6",
+            "value_3": ""
+          }
+        },
+        "row_AhXwU7": {
+          "type": "row",
+          "settings": {
+            "label": "Waterproof",
+            "value_1": "30m with waterproof case",
+            "value_2": "30m with waterproof case",
+            "value_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_4JF6Le",
+        "product_FWpABq",
+        "product_tjLEJD",
+        "group_czWN7H",
+        "row_wbneKT",
+        "row_FgczAB",
+        "row_6hqWAN",
+        "row_ghKndB",
+        "row_nMG8tr",
+        "row_q3r3WL",
+        "row_nGQbWy",
+        "row_Q4yyhn",
+        "row_QiPNRJ",
+        "row_4PzGwy",
+        "row_AVmUYE",
+        "row_NtqMwL",
+        "row_4JpRcD",
+        "row_ARAdDT",
+        "row_aM3KhD",
+        "row_xprHB3",
+        "row_GKrxXj",
+        "row_AhXwU7"
+      ],
+      "name": "XTU Product Compare",
+      "settings": {
+        "heading": "Compare and Buy",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "content_width": 1200,
+        "label_width": 140,
+        "image_ratio": "1 / 1",
+        "btn_bg": "#ffcc00",
+        "btn_color": "#111111",
+        "btn_bg_hover": "#f0b800",
+        "btn_color_hover": "#111111",
+        "show_btn_arrow": false,
+        "link_color": "#0070ca",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "xtu_compare_interactive_64aXaM",
+    "xtu_product_compare_WGzgFn"
+  ]
+}

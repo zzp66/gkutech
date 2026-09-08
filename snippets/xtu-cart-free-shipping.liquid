@@ -1,0 +1,350 @@
+{% doc %}
+  Cart drawer free-shipping progress bar.
+
+  Uses Theme settings:
+  - settings.xtu_cart_free_shipping_enable
+  - settings.xtu_cart_free_shipping_threshold (store currency major units)
+
+  @example
+  {% render 'xtu-cart-free-shipping' %}
+{% enddoc %}
+
+{%- liquid
+  assign enabled = settings.xtu_cart_free_shipping_enable
+  assign threshold_raw = settings.xtu_cart_free_shipping_threshold | strip | replace: ',', '' | replace: '$', '' | replace: '¥', '' | replace: '€', '' | replace: '£', ''
+
+  if enabled == false or threshold_raw == blank
+    assign show_bar = false
+  elsif cart.item_count > 0 and cart.requires_shipping == false
+    assign show_bar = false
+  else
+    assign show_bar = true
+  endif
+-%}
+
+{%- if show_bar -%}
+  {%- liquid
+    assign threshold_cents = threshold_raw | times: 100 | round
+    if threshold_cents <= 0
+      assign show_bar = false
+    endif
+  -%}
+{%- endif -%}
+
+{%- if show_bar -%}
+  {%- liquid
+    assign cart_total = cart.total_price
+    assign remaining = threshold_cents | minus: cart_total
+    if remaining < 0
+      assign remaining = 0
+    endif
+
+    # Integer percent: (cart_total * 100) / threshold. Caps at 100 when unlocked.
+    assign progress = 0
+    if threshold_cents > 0 and cart_total > 0
+      assign progress = cart_total | times: 100 | divided_by: threshold_cents
+      if progress > 100
+        assign progress = 100
+      endif
+    endif
+
+    assign unlocked = false
+    if cart.item_count > 0 and cart_total >= threshold_cents
+      assign unlocked = true
+      assign progress = 100
+      assign remaining = 0
+    endif
+
+    assign remaining_money = remaining | money | strip_html
+  -%}
+
+  <xtu-cart-free-shipping
+    class="xtu-fs{% if unlocked %} xtu-fs--unlocked{% endif %}"
+    data-hydration-key="xtu-cart-free-shipping"
+    data-progress="{{ progress }}"
+    data-unlocked="{% if unlocked %}true{% else %}false{% endif %}"
+    data-threshold="{{ threshold_cents }}"
+    data-total="{{ cart_total }}"
+    data-money-format="{{ shop.money_format | strip_html | escape }}"
+    aria-live="polite"
+  >
+    <template data-xtu-fs-message-progress>
+      {{- 'content.free_shipping_progress' | t: amount: '[[amount]]' -}}
+    </template>
+    <template data-xtu-fs-message-unlocked>
+      {{- 'content.free_shipping_unlocked' | t -}}
+    </template>
+
+    <div class="xtu-fs__inner">
+      <div class="xtu-fs__icon" aria-hidden="true">
+        <svg class="xtu-fs__svg xtu-fs__svg--truck" viewBox="0 0 24 24" fill="none" width="18" height="18">
+          <path
+            d="M3 7h11v8H3V7z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14 10h3.2L20 13.2V15h-6v-5z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <circle cx="7" cy="17.2" r="1.55" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="16.5" cy="17.2" r="1.55" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 11h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <svg class="xtu-fs__svg xtu-fs__svg--check" viewBox="0 0 24 24" fill="none" width="18" height="18">
+          <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.15"/>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path
+            d="M8 12.2l2.6 2.6L16.2 9"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <div class="xtu-fs__body">
+        <p class="xtu-fs__message">
+          {%- if unlocked -%}
+            {{ 'content.free_shipping_unlocked' | t }}
+          {%- else -%}
+            {{ 'content.free_shipping_progress' | t: amount: remaining_money }}
+          {%- endif -%}
+        </p>
+
+        <div
+          class="xtu-fs__track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="{{ progress }}"
+          aria-label="{{ 'content.free_shipping_progress' | t: amount: remaining_money }}"
+        >
+          <div class="xtu-fs__fill" style="width: {{ progress }}%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <span class="xtu-fs__burst" aria-hidden="true"></span>
+  </xtu-cart-free-shipping>
+{%- endif -%}
+
+{% stylesheet %}
+  xtu-cart-free-shipping.xtu-fs {
+    --xtu-fs-blue: #1590f2;
+    --xtu-fs-blue-deep: #0070ca;
+    --xtu-fs-blue-soft: #66b1ed;
+    --xtu-fs-track: #ebebeb;
+    --xtu-fs-text: #111;
+    --xtu-fs-success: #0070ca;
+
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    margin: 0 0 16px;
+    padding: 12px var(--cart-drawer-padding, 16px) 14px;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(180deg, #f7fbff 0%, #fff 100%);
+    overflow: hidden;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgb(21 144 242 / 0.1);
+    color: var(--xtu-fs-blue);
+    transition:
+      background 0.35s ease,
+      color 0.35s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  xtu-cart-free-shipping .xtu-fs__svg {
+    grid-area: 1 / 1;
+    display: block;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__svg--check {
+    display: none;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__svg--truck {
+    display: block;
+  }
+
+  xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__icon {
+    background: var(--xtu-fs-blue-deep);
+    color: #fff;
+  }
+
+  xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__svg--truck {
+    display: none;
+  }
+
+  xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__svg--check {
+    display: block;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__message {
+    margin: 0 0 8px;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-fs-text);
+  }
+
+  xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__message {
+    font-weight: 600;
+    color: var(--xtu-fs-success);
+  }
+
+  xtu-cart-free-shipping .xtu-fs__track {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--xtu-fs-track);
+    overflow: hidden;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__fill {
+    position: relative;
+    width: 0%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      var(--xtu-fs-blue-soft),
+      var(--xtu-fs-blue) 55%,
+      var(--xtu-fs-blue-deep)
+    );
+    box-shadow: 0 0 12px rgb(21 144 242 / 0.35);
+    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: width;
+  }
+
+  xtu-cart-free-shipping .xtu-fs__fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.55) 45%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    animation: xtu-fs-shine 2.4s ease-in-out infinite;
+  }
+
+  xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__fill {
+    background: linear-gradient(90deg, #66b1ed, #0070ca);
+  }
+
+  xtu-cart-free-shipping .xtu-fs__burst {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__icon {
+    animation: xtu-fs-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__burst {
+    opacity: 1;
+    background:
+      radial-gradient(circle at 18% 40%, rgb(21 144 242 / 0.45) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 28%, rgb(0 112 202 / 0.5) 0 2px, transparent 3px),
+      radial-gradient(circle at 62% 70%, rgb(102 177 237 / 0.55) 0 2px, transparent 3px),
+      radial-gradient(circle at 36% 72%, rgb(21 144 242 / 0.4) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle at 88% 58%, rgb(0 112 202 / 0.45) 0 1.5px, transparent 2.5px);
+    animation: xtu-fs-burst 0.9s ease-out forwards;
+  }
+
+  xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__message {
+    animation: xtu-fs-message 0.5s ease;
+  }
+
+  @keyframes xtu-fs-shine {
+    0%,
+    55% {
+      transform: translateX(-120%);
+    }
+    100% {
+      transform: translateX(140%);
+    }
+  }
+
+  @keyframes xtu-fs-pop {
+    0% {
+      transform: scale(0.85);
+    }
+    55% {
+      transform: scale(1.14);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes xtu-fs-burst {
+    0% {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+    35% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes xtu-fs-message {
+    0% {
+      opacity: 0.35;
+      transform: translateY(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    xtu-cart-free-shipping .xtu-fs__fill {
+      transition: none;
+    }
+
+    xtu-cart-free-shipping .xtu-fs__fill::after,
+    xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__icon,
+    xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__burst,
+    xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__message {
+      animation: none;
+    }
+  }
+{% endstylesheet %}

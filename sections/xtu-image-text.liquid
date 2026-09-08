@@ -1,0 +1,665 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign image_radius = section.settings.image_radius | default: 16
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign row_gap = section.settings.row_gap | default: 80
+  assign row_gap_mobile = section.settings.row_gap_mobile | default: 48
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign link_color = section.settings.link_color | default: '#0070CA'
+%}
+
+<section
+  id="xtu-image-text-{{ section.id }}"
+  class="xtu-image-text"
+  style="
+    --xtu-it-bg: {{ background_color }};
+    --xtu-it-content-bg: {{ content_background }};
+    --xtu-it-content-width: {{ content_width }}px;
+    --xtu-it-radius: {{ image_radius }}px;
+    --xtu-it-pt: {{ padding_top }}px;
+    --xtu-it-pb: {{ padding_bottom }}px;
+    --xtu-it-pt-m: {{ padding_top_mobile }}px;
+    --xtu-it-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-it-row-gap: {{ row_gap }}px;
+    --xtu-it-row-gap-m: {{ row_gap_mobile }}px;
+    --xtu-it-heading-color: {{ heading_color }};
+    --xtu-it-text-color: {{ text_color }};
+    --xtu-it-muted-color: {{ muted_text_color }};
+    --xtu-it-link-color: {{ link_color }};
+  "
+>
+  <div class="xtu-image-text__inner">
+    {% if heading != blank or subheading != blank %}
+      <div class="xtu-image-text__header" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-image-text__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-image-text__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="xtu-image-text__rows">
+        {% for block in section.blocks %}
+          {% liquid
+            assign desktop_layout = block.settings.desktop_layout | default: 'image-left'
+            assign mobile_layout = block.settings.mobile_layout | default: 'image-top'
+            assign image = block.settings.image
+            assign image_mobile = block.settings.image_mobile
+            assign media_type = block.settings.media_type | default: 'image'
+            assign video = block.settings.video
+            assign video_mobile = block.settings.video_mobile
+            assign video_url = block.settings.video_url
+            assign has_mobile_image = false
+            if image_mobile != blank
+              assign has_mobile_image = true
+            endif
+            assign has_mobile_video = false
+            if video_mobile != blank
+              assign has_mobile_video = true
+            endif
+            assign has_mobile_media = false
+            if has_mobile_image or has_mobile_video
+              assign has_mobile_media = true
+            endif
+            assign image_ratio = block.settings.image_ratio | default: '4 / 3'
+            assign ratio_auto = false
+            if image_ratio == 'auto'
+              assign ratio_auto = true
+            endif
+            assign eyebrow = block.settings.eyebrow
+            assign eyebrow_color = block.settings.eyebrow_color | default: '#0070CA'
+            assign block_heading = block.settings.heading
+            assign body = block.settings.body
+            assign ph_mod = forloop.index0 | modulo: 3
+            assign placeholder_name = 'lifestyle-1'
+            if ph_mod == 1
+              assign placeholder_name = 'lifestyle-2'
+            elsif ph_mod == 2
+              assign placeholder_name = 'image'
+            endif
+            assign alt_text = block_heading | default: eyebrow | default: heading
+          %}
+          <article
+            class="xtu-image-text__row xtu-image-text__row--desktop-{{ desktop_layout }} xtu-image-text__row--mobile-{{ mobile_layout }}"
+            style="--xtu-it-eyebrow: {{ eyebrow_color }};{% unless ratio_auto %} --xtu-it-ratio: {{ image_ratio }};{% endunless %}"
+            data-xtu-reveal="fade-up"
+            data-xtu-stagger
+            {{ block.shopify_attributes }}
+          >
+            <div
+              class="xtu-image-text__media{% if has_mobile_media %} xtu-image-text__media--split{% endif %}{% if media_type == 'video' or media_type == 'youtube' %} xtu-image-text__media--video{% else %} xtu-img-zoom{% endif %}{% if ratio_auto %} xtu-image-text__media--ratio-auto{% endif %}"
+              data-xtu-reveal-child
+            >
+              {% render 'xtu-image-text-media',
+                media_type: media_type,
+                image: image,
+                image_mobile: image_mobile,
+                video: video,
+                video_mobile: video_mobile,
+                video_url: video_url,
+                alt: alt_text,
+                placeholder: placeholder_name,
+                zoom: true
+              %}
+            </div>
+
+            <div class="xtu-image-text__copy" data-xtu-reveal-child>
+              {% if eyebrow != blank %}
+                <p class="xtu-image-text__eyebrow">{{ eyebrow | escape }}</p>
+              {% endif %}
+              {% if block_heading != blank %}
+                <h3 class="xtu-image-text__title">{{ block_heading | escape }}</h3>
+              {% endif %}
+              {% if body != blank %}
+                <div class="xtu-image-text__body rte">{{ body }}</div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-image-text {
+    padding: var(--xtu-it-pt, 80px) 0 var(--xtu-it-pb, 80px);
+    background: var(--xtu-it-bg, #fff);
+  }
+
+  .xtu-image-text__inner {
+    width: min(var(--xtu-it-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-it-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-image-text__header {
+    margin-bottom: var(--xtu-space-40, 40px);
+    text-align: center;
+  }
+
+  .xtu-image-text__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-it-heading-color, #000);
+  }
+
+  .xtu-image-text__subheading {
+    margin: 16px auto 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-it-muted-color, #8e9297);
+  }
+
+  .xtu-image-text__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--xtu-it-row-gap, 80px);
+  }
+
+  .xtu-image-text__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .xtu-image-text__media {
+    grid-area: media;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--xtu-it-radius, 16px);
+    background: #e8eaed;
+  }
+
+  .xtu-image-text__media:not(.xtu-image-text__media--ratio-auto) {
+    aspect-ratio: var(--xtu-it-ratio, 4 / 3);
+  }
+
+  .xtu-image-text__media--ratio-auto {
+    aspect-ratio: auto;
+    height: auto;
+    background: transparent;
+  }
+
+  .xtu-image-text__copy {
+    grid-area: copy;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .xtu-image-text__row--desktop-image-left {
+    grid-template-areas: 'media copy';
+  }
+
+  .xtu-image-text__row--desktop-text-left {
+    grid-template-areas: 'copy media';
+  }
+
+  .xtu-image-text__image,
+  .xtu-image-text__video,
+  .xtu-image-text__placeholder {
+    display: block;
+    width: 100%;
+  }
+
+  .xtu-image-text__media:not(.xtu-image-text__media--ratio-auto) :is(.xtu-image-text__image, .xtu-image-text__video, .xtu-image-text__placeholder) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .xtu-image-text__youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .xtu-image-text__media--ratio-auto .xtu-image-text__youtube {
+    position: static;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .xtu-image-text__media--ratio-auto :is(.xtu-image-text__image, .xtu-image-text__video) {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .xtu-image-text__video {
+    pointer-events: none;
+  }
+
+  .xtu-image-text__placeholder {
+    background: #e8eaed;
+  }
+
+  .xtu-image-text__media-item--mobile {
+    display: none;
+  }
+
+  .xtu-image-text__eyebrow {
+    margin: 0 0 12px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--xtu-it-eyebrow, #0070ca);
+  }
+
+  .xtu-image-text__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-block-title);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--xtu-it-heading-color, #000);
+  }
+
+  .xtu-image-text__body {
+    margin-top: 16px;
+    max-width: 36rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-it-text-color, #333);
+  }
+
+  .xtu-image-text__body > *:first-child {
+    margin-block-start: 0;
+  }
+
+  .xtu-image-text__body > *:last-child {
+    margin-block-end: 0;
+  }
+
+  .xtu-image-text__body :is(p, ul, ol) {
+    margin: 0 0 0.75em;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .xtu-image-text__body :is(p, ul, ol):last-child {
+    margin-bottom: 0;
+  }
+
+  .xtu-image-text__body a {
+    color: var(--xtu-it-link-color, #0070ca);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--xtu-it-link-color, #0070ca) 55%, transparent);
+    text-underline-offset: 2px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-image-text {
+      padding: var(--xtu-it-pt-m, 40px) 0 var(--xtu-it-pb-m, 40px);
+    }
+
+    .xtu-image-text__header {
+      margin-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-image-text__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-image-text__subheading {
+      margin-top: 12px;
+      font-size: var(--xtu-type-section-subtitle-m);
+    }
+
+    .xtu-image-text__rows {
+      gap: var(--xtu-it-row-gap-m, 48px);
+    }
+
+    .xtu-image-text__row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .xtu-image-text__row--mobile-image-top {
+      grid-template-areas:
+        'media'
+        'copy';
+    }
+
+    .xtu-image-text__row--mobile-text-top {
+      grid-template-areas:
+        'copy'
+        'media';
+    }
+
+    .xtu-image-text__title {
+      font-size: var(--xtu-type-block-title-m);
+    }
+
+    .xtu-image-text__body {
+      margin-top: 12px;
+      font-size: var(--xtu-type-body-m);
+    }
+
+    .xtu-image-text__media--split:has(.xtu-image-text__media-item--mobile) .xtu-image-text__media-item--desktop {
+      display: none;
+    }
+
+    .xtu-image-text__media-item--mobile {
+      display: block;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Image Text",
+  "tag": "section",
+  "class": "section-xtu-image-text",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "info": "留空则不显示"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "副标题",
+      "info": "留空则不显示"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次要文字色",
+      "default": "#8E9297",
+      "info": "副标题等弱化文案"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "链接色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200,
+      "info": "PC 端内容区最大宽度，建议 900–1400。过小或过大会自动限制在 600–1600。"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "图片圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Block 上下间距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "row_gap_mobile",
+      "label": "Block 上下间距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "图文行",
+      "settings": [
+        {
+          "type": "select",
+          "id": "desktop_layout",
+          "label": "PC 布局",
+          "options": [
+            { "value": "image-left", "label": "左图右文" },
+            { "value": "text-left", "label": "左文右图" }
+          ],
+          "default": "image-left"
+        },
+        {
+          "type": "select",
+          "id": "mobile_layout",
+          "label": "移动端布局",
+          "options": [
+            { "value": "image-top", "label": "上图下文" },
+            { "value": "text-top", "label": "上文下图" }
+          ],
+          "default": "image-top"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "留空则回退 PC 图",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "视频（PC）",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "视频（移动端）",
+          "info": "留空则回退 PC 视频；静音自动循环播放，无控件",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "媒体比例",
+          "options": [
+            { "value": "auto", "label": "自适应（按媒体比例）" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "3 / 2", "label": "3:2" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "16 / 9", "label": "16:9" },
+            { "value": "21 / 9", "label": "21:9" }
+          ],
+          "default": "4 / 3"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "眉题",
+          "default": "Our story"
+        },
+        {
+          "type": "color",
+          "id": "eyebrow_color",
+          "label": "眉题颜色",
+          "default": "#0070CA"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "标题",
+          "default": "A force for positivity"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "文案",
+          "default": "<p>Share the moments that matter. Capture every adventure with color, clarity, and confidence.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Image Text",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "text-left",
+            "mobile_layout": "image-top",
+            "eyebrow": "Our story",
+            "heading": "A force for positivity",
+            "body": "<p>Founded to help people capture and share the moments that matter, we design cameras that keep up with every adventure.</p>"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "eyebrow": "Our mission",
+            "heading": "Sharing experiences around the world",
+            "body": "<p>We believe sharing and reliving experiences makes life more meaningful. Our community around the world brings the brand to life.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

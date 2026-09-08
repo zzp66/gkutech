@@ -1,0 +1,23 @@
+{{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
+{{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-motion.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-swiper-nav.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-btn.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-section-type.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-media.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-ratio-auto.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-mega-menu.css' | asset_url | stylesheet_tag }}
+{{ 'xtu-product-card.css' | asset_url | stylesheet_tag }}
+{% if request.page_type == 'product' %}
+  {{ 'xtu-product-pdp.css' | asset_url | stylesheet_tag }}
+{% endif %}
+{% if request.page_type == 'collection' %}
+  {{ 'xtu-collection.css' | asset_url | stylesheet_tag }}
+{% endif %}
+{% if request.page_type == 'blog' %}
+  {{ 'xtu-blog-list.css' | asset_url | stylesheet_tag }}
+{% endif %}
+{% if request.page_type == 'article' %}
+  {{ 'xtu-article.css' | asset_url | stylesheet_tag }}
+{% endif %}

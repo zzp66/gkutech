@@ -1,0 +1,59 @@
+{%- doc -%}
+  Compact collection-card CTA (Insta360-style bottom button).
+  Uses product-form-component so cart drawer + section morph stay in sync.
+  @param {object} product - Product resource
+  @param {string} section_id - Section ID for product-form
+{%- enddoc -%}
+
+{% unless product == blank %}
+  {% liquid
+    assign variant = product.selected_or_first_available_variant
+    assign form_id = 'XtuCollectionCardForm-' | append: product.id
+    assign form_section_id = section_id
+  %}
+
+  <div class="xtu-collection-card__cta-wrap">
+    {% if product.available == false %}
+      <span class="xtu-collection-card__cta xtu-collection-card__cta--disabled" aria-disabled="true">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {% else %}
+      <product-form-component
+        data-section-id="{{ form_section_id }}"
+        data-product-id="{{ product.id }}"
+        on:submit="/handleSubmit"
+        class="xtu-collection-card__product-form"
+      >
+        <div
+          class="visually-hidden"
+          aria-live="assertive"
+          role="status"
+          aria-atomic="true"
+          ref="liveRegion"
+        ></div>
+        {%- form 'product', product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+          <input
+            type="hidden"
+            name="id"
+            ref="variantId"
+            value="{{ variant.id }}"
+            {% unless variant.available %}
+              disabled
+            {% endunless %}
+          >
+          <input type="hidden" name="quantity" value="1">
+          <button
+            type="submit"
+            name="add"
+            class="xtu-collection-card__cta"
+            {% unless variant.available %}
+              disabled
+            {% endunless %}
+          >
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        {%- endform -%}
+      </product-form-component>
+    {% endif %}
+  </div>
+{% endunless %}

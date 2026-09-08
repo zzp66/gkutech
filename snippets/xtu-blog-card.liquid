@@ -1,0 +1,79 @@
+{% doc %}
+  XTU blog article card — PLP-style hover card.
+
+  @param {object} article - Shopify article object (required)
+  @param {string} [button_label] - CTA label (default: Read More)
+  @param {boolean} [show_button_arrow] - Show chevron on CTA
+  @param {string} [date_format] - Liquid date format for published_at
+  @param {boolean} [show_author] - Show author name (default true)
+{% enddoc %}
+
+{% liquid
+  assign card_button_label = button_label | default: 'Read More'
+  assign card_date_format = date_format | default: '%B %d, %Y'
+  assign card_show_author = show_author
+  if card_show_author == nil
+    assign card_show_author = true
+  endif
+
+  assign excerpt_text = article.excerpt | strip_html
+  if excerpt_text == blank
+    assign excerpt_text = article.content | strip_html
+  endif
+%}
+
+<article class="xtu-blog-list__card">
+  <div class="xtu-blog-list__media xtu-img-zoom">
+    <a class="xtu-blog-list__media-link" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+      {% if article.image != blank %}
+        {{
+          article.image
+          | image_url: width: 900
+          | image_tag:
+            class: 'xtu-blog-list__image xtu-img-zoom__media',
+            loading: 'lazy',
+            widths: '400, 600, 800, 900',
+            sizes: '(max-width: 749px) 50vw, 33vw',
+            alt: article.title
+        }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'xtu-blog-list__placeholder xtu-img-zoom__media' }}
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="xtu-blog-list__body">
+    <h3 class="xtu-blog-list__title">
+      <a class="xtu-blog-list__title-link" href="{{ article.url }}">
+        {{ article.title | escape }}
+      </a>
+    </h3>
+
+    <div class="xtu-blog-list__meta">
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+        {{ article.published_at | date: card_date_format }}
+      </time>
+      {% if card_show_author and article.author != blank %}
+        <span class="xtu-blog-list__meta-sep" aria-hidden="true">·</span>
+        <span class="xtu-blog-list__author">{{ article.author | escape }}</span>
+      {% endif %}
+    </div>
+
+    {% if excerpt_text != blank %}
+      <p class="xtu-blog-list__excerpt">{{ excerpt_text | truncate: 160 }}</p>
+    {% endif %}
+
+    <div class="xtu-blog-list__cta">
+      {% render 'xtu-btn',
+        label: card_button_label,
+        href: article.url,
+        size: 'sm',
+        show_arrow: show_button_arrow,
+        bg: '#1590F2',
+        color: '#FFFFFF',
+        bg_hover: '#0070CA',
+        color_hover: '#FFFFFF'
+      %}
+    </div>
+  </div>
+</article>

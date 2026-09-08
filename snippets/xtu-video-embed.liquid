@@ -1,0 +1,82 @@
+{%- doc -%}
+  Embeds a YouTube or Vimeo player for XTU media slots.
+
+  @param {object} [video_url] - Theme `video_url` setting (has `.id` / `.type`)
+  @param {string} [youtube_url] - Fallback paste URL (youtube.com / youtu.be / Shorts / Vimeo)
+  @param {string} [mode] - `ambient` (muted autoplay loop) or `embed` (controls)
+  @param {string} [class] - iframe class list
+  @param {string} [title] - iframe title
+  @param {string} [placeholder] - placeholder_svg_tag name when URL is empty
+  @param {string} [placeholder_class] - classes on the placeholder SVG
+{%- enddoc -%}
+
+{% liquid
+  assign embed_mode = mode | default: 'embed'
+  assign embed_id = ''
+  assign embed_type = 'youtube'
+  assign iframe_class = class | default: 'xtu-media__youtube'
+  assign iframe_title = title | default: 'Video'
+  assign ph = placeholder | default: 'lifestyle-1'
+  assign ph_class = placeholder_class | default: 'xtu-media__placeholder xtu-media__item'
+
+  if video_url != blank and video_url.id != blank
+    assign embed_id = video_url.id
+    if video_url.type != blank
+      assign embed_type = video_url.type
+    endif
+  endif
+
+  assign source_url = youtube_url | strip
+  if embed_id == blank and source_url != blank
+    if source_url contains 'youtu.be/'
+      assign embed_id = source_url | split: 'youtu.be/' | last | split: '?' | first | split: '/' | first
+      assign embed_type = 'youtube'
+    elsif source_url contains 'youtube.com/shorts/'
+      assign embed_id = source_url | split: 'shorts/' | last | split: '?' | first | split: '/' | first
+      assign embed_type = 'youtube'
+    elsif source_url contains 'youtube.com/embed/'
+      assign embed_id = source_url | split: 'embed/' | last | split: '?' | first | split: '/' | first
+      assign embed_type = 'youtube'
+    elsif source_url contains 'youtube.com/' and source_url contains 'v='
+      assign embed_id = source_url | split: 'v=' | last | split: '&' | first
+      assign embed_type = 'youtube'
+    elsif source_url contains 'player.vimeo.com/video/'
+      assign embed_id = source_url | split: 'video/' | last | split: '?' | first | split: '/' | first
+      assign embed_type = 'vimeo'
+    elsif source_url contains 'vimeo.com/'
+      assign embed_id = source_url | split: 'vimeo.com/' | last | split: '?' | first | split: '/' | last
+      assign embed_type = 'vimeo'
+    endif
+  endif
+
+  assign embed_src = ''
+  if embed_id != blank
+    if embed_type == 'vimeo'
+      if embed_mode == 'ambient'
+        assign embed_src = 'https://player.vimeo.com/video/' | append: embed_id | append: '?autoplay=1&muted=1&loop=1&background=1'
+      else
+        assign embed_src = 'https://player.vimeo.com/video/' | append: embed_id | append: '?dnt=1'
+      endif
+    else
+      if embed_mode == 'ambient'
+        assign embed_src = 'https://www.youtube.com/embed/' | append: embed_id | append: '?autoplay=1&mute=1&loop=1&playlist=' | append: embed_id | append: '&controls=0&rel=0&modestbranding=1&playsinline=1'
+      else
+        assign embed_src = 'https://www.youtube.com/embed/' | append: embed_id | append: '?rel=0&modestbranding=1&playsinline=1'
+      endif
+    endif
+  endif
+%}
+
+{% if embed_src != blank %}
+  <iframe
+    class="{{ iframe_class | escape }}"
+    src="{{ embed_src | escape }}"
+    title="{{ iframe_title | escape }}"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+  ></iframe>
+{% elsif placeholder != blank %}
+  {{ ph | placeholder_svg_tag: ph_class }}
+{% endif %}

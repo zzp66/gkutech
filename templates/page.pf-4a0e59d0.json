@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-4a0e59d0": {
+      "type": "pf-4a0e59d0",
+      "disabled": true,
+      "settings": {
+        "pf_2c5830d3_value": "About XTU",
+        "pf_30d3bf8f_value": "XTU is deeply rooted in the integrated field of intelligent imaging and smart security. With intelligent imaging as its core technological foundation, we cover the full spectrum of scenarios including outdoor exploration, field monitoring and home protection, build a dual-core product matrix of \"Imaging Recording + Smart Security\", and provide one-stop full-scenario intelligent imaging and security solutions, striving to become a globally leading brand in intelligent imaging and security.<br><br>Upholding the brand essence of \"Live Your Dreams\", we are not merely a provider of intelligent imaging products, but also a companion for users on their dream-chasing journey and a guardian for families’ peaceful life. We connect the world through visual technology, empower people’s passion for exploration, safeguard domestic tranquility with smart security, ensuring that every passion leaves a tangible trace and every home enjoys lasting safety and peace of mind.\n<br>",
+        "pf_cce80c01_value": "Why Choose Us?",
+        "pf_e8b1e702_value": "<strong>1. Full-scenario Product Matrix</strong><br> \n\nBuild a core product matrix of action cameras, trail cameras and smart video doorbells to cover outdoor adventure, wildlife observation and home security in one stop, creating a full-link imaging solution for the dream-chasing life.<br><br><strong>2. Robust Core Technology</strong><br>With deep focus on smart imaging and security, we command core technologies including ultra-HD imaging, superior night vision, intelligent human detection, ultra-long endurance and harsh environment adaptation, building a professional technological edge.<br><br><strong>3.Scenario-specific Custom R&amp;D</strong>\n<br>Custom-built features for distinct scenarios: action cameras for stable, portable outdoor shooting;trail cameras for discreet wildlife capture;\nvideo doorbells for reliable home entry security—performance perfectly matched to niche needs.<br><br><strong>4. Strict Quality &amp; Durability</strong>\n<br>Built to global QC standards, our products are rugged, waterproof, dustproof and consistently reliable, effortlessly adapting to harsh outdoor conditions and heavy daily usage.<br>\n<br><strong>5. Full-cycle Service &amp; Support</strong>\n<br>A comprehensive global service system covering pre-sales, after-sales and technical support ensures efficient, hassle-free full-lifecycle service for global customers.<br><br>"
+      }
+    },
+    "xtu_activity_slider_FqD8fY": {
+      "type": "xtu-activity-slider",
+      "blocks": {
+        "card_HMBnRF": {
+          "type": "card",
+          "settings": {
+            "title": "Dive + Snorkel",
+            "link": ""
+          }
+        },
+        "card_tDmcqL": {
+          "type": "card",
+          "settings": {
+            "title": "Surf",
+            "link": ""
+          }
+        },
+        "card_g88nEW": {
+          "type": "card",
+          "settings": {
+            "title": "Travel + Adventure",
+            "link": ""
+          }
+        },
+        "card_qQyykk": {
+          "type": "card",
+          "settings": {
+            "title": "Kids + Pets",
+            "link": ""
+          }
+        },
+        "card_ReBngP": {
+          "type": "card",
+          "settings": {
+            "title": "Mountain Bike",
+            "link": ""
+          }
+        },
+        "card_r7G7jJ": {
+          "type": "card",
+          "settings": {
+            "title": "Hike + Camp",
+            "link": ""
+          }
+        },
+        "card_DDihGp": {
+          "type": "card",
+          "settings": {
+            "title": "Snow",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_HMBnRF",
+        "card_tDmcqL",
+        "card_g88nEW",
+        "card_qQyykk",
+        "card_ReBngP",
+        "card_r7G7jJ",
+        "card_DDihGp"
+      ],
+      "name": "XTU Activity Slider",
+      "settings": {
+        "heading": "Shop by Activity",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_image_overlay": false,
+        "mobile_per_view": "2.1",
+        "card_gap": 16,
+        "card_gap_mobile": 8,
+        "card_radius": 16,
+        "card_ratio": "1 / 1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "pf-4a0e59d0",
+    "xtu_activity_slider_FqD8fY"
+  ]
+}

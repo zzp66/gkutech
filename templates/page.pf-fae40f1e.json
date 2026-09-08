@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-fae40f1e": {
+      "type": "pf-fae40f1e",
+      "settings": {
+        "pf_d20e54ee_value": "Doorbell Camera",
+        "pf_f34f6469_value": "Action Camera",
+        "pf_6469d20e_value": "Trail Camera"
+      }
+    }
+  },
+  "order": [
+    "pf-fae40f1e"
+  ]
+}

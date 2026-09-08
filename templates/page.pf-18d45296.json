@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-18d45296": {
+      "type": "pf-18d45296",
+      "settings": {
+        "pf_f84c7144_value": "Send your friends a 10% discount off their purchase. Once they make a purchase, you’ll earn 10% for each order as well! This reward can be redeemed for coupons.",
+        "pf_4481a843_value": "XTUCAM has teamed up with \nUpPromote&nbsp;to offer a simple affiliate signup process to help you earn your commission as soon as possible. ",
+        "pf_20a992a8_value": "If visitors click the links banners from your website and purchase our products, you can get your money immediately.",
+        "pf_147b1a43_value": "Acquire our text links and banners on affiliate program. and place them on your website to promote our products.",
+        "pf_8dad8b67_value": "Click the \"Join ' button below to register an affiliate account on&nbsp;UpPromote",
+        "pf_30d7c02f_value": "Apply to XTUCAM's affiliate program. And you will get an approval email from us.",
+        "pf_21293a81_value": "Earn at least 10% commission for every successful referral.",
+        "pf_4a7bf504_value": "Partner with us and make money together.",
+        "pf_dec56a60_value": "How to Become our Affiliate",
+        "pf_67f5b5d5_value": "XTUCAM Affiliate Program",
+        "pf_d80006f6_value": "<b>High Commission</b>",
+        "pf_b632eaa3_value": "Up to 10% commission",
+        "pf_5a7cb91a_value": "UpPromote Affiliate",
+        "pf_21fc1c4a_value": "Program Benefits",
+        "pf_039d5798_value": "AFFILIATE LOGIN",
+        "pf_67f28b2d_value": "Referrals",
+        "pf_66b05d90_value": "Join Now",
+        "pf_c189a7bc_value": "Register",
+        "pf_32307ab1_value": "Promote",
+        "pf_c8f3ffaa_value": "Apply",
+        "pf_26376432_value": "Earn"
+      }
+    }
+  },
+  "order": [
+    "pf-18d45296"
+  ]
+}

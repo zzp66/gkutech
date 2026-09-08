@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "xtu_faq_xXRBXi": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_8TtzNa": {
+          "type": "item",
+          "settings": {
+            "question": "What personal information does XTU collect?",
+            "answer": "<p>XTU may collect information such as your name, email address, shipping and billing information, order information, account details, customer service communications, and certain technical information collected when you use our website.<br/><br/></p>"
+          }
+        },
+        "item_hNKLgn": {
+          "type": "item",
+          "settings": {
+            "question": "Does XTU store my credit card information?",
+            "answer": "<p>Payment information may be processed by third-party payment providers. XTU does not need to directly store complete payment card information when payment processing is handled by an authorized payment provider.</p>"
+          }
+        },
+        "item_4GkDMw": {
+          "type": "item",
+          "settings": {
+            "question": "How long is the warranty?",
+            "answer": "<p>Warranty coverage depends on your region and purchase channel. Contact support for details.</p>"
+          }
+        },
+        "item_QgxFnM": {
+          "type": "item",
+          "settings": {
+            "question": "Does XTU use cookies?",
+            "answer": "<p>Yes. XTU uses cookies and similar technologies to operate the website, remember preferences, analyze website usage, improve performance, support security, and measure advertising effectiveness.</p><p>For more information, see our Cookies Policy.</p>"
+          }
+        },
+        "item_zXE3kE": {
+          "type": "item",
+          "settings": {
+            "question": "Does XTU share my personal information?",
+            "answer": "<p>XTU may share personal information with service providers that help us operate our website, process payments, fulfill orders, provide customer support, analyze website performance, and perform other necessary business functions.<br/></p>"
+          }
+        },
+        "item_AMMWAk": {
+          "type": "item",
+          "settings": {
+            "question": "Can I request deletion of my personal information?",
+            "answer": "<p>Depending on your location and applicable law, you may have the right to request access, correction, deletion, restriction, or other actions regarding your personal information.</p><p>Contact XTU to submit a request.</p>"
+          }
+        },
+        "item_qPW9da": {
+          "type": "item",
+          "settings": {
+            "question": "How can I stop receiving marketing emails?",
+            "answer": "<p>You can unsubscribe using the unsubscribe link included in our marketing emails or contact XTU customer support.<br/><br/></p>"
+          }
+        },
+        "item_KbLcxb": {
+          "type": "item",
+          "settings": {
+            "question": "How does XTU protect my information?",
+            "answer": "<p>XTU uses reasonable technical, administrative, and organizational measures designed to protect personal information against unauthorized access, loss, misuse, or disclosure.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_8TtzNa",
+        "item_hNKLgn",
+        "item_4GkDMw",
+        "item_QgxFnM",
+        "item_zXE3kE",
+        "item_AMMWAk",
+        "item_qPW9da",
+        "item_KbLcxb"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Privacy Policy FAQs",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "xtu_faq_xXRBXi"
+  ]
+}

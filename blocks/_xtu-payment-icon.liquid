@@ -1,0 +1,44 @@
+{% doc %}
+  Nested payment icon image for XTU Payment Methods.
+{% enddoc %}
+
+{% if block.settings.image != blank %}
+  {% liquid
+    assign logo_alt = block.settings.label
+    if block.settings.image.alt != blank
+      assign logo_alt = block.settings.image.alt
+    endif
+  %}
+  <li class="xtu-payment-methods__item" {{ block.shopify_attributes }}>
+    {{
+      block.settings.image
+      | image_url: width: 160
+      | image_tag:
+        class: 'xtu-payment-methods__logo',
+        loading: 'lazy',
+        widths: '80, 120, 160',
+        sizes: '48px',
+        alt: logo_alt
+    }}
+  </li>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Payment Icon",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "支付图标"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "无障碍名称",
+      "default": "Payment"
+    }
+  ]
+}
+{% endschema %}

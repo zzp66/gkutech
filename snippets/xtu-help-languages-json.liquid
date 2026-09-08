@@ -1,0 +1,30 @@
+{% doc %}
+  Outputs JSON array of shared Help Center languages (XTU Help Language).
+  运营可在后台改 label / 上传 icon；未配 icon 时前台用内置旗帜。
+
+  @example
+  {% capture languages_json %}{% render 'xtu-help-languages-json' %}{% endcapture %}
+{% enddoc %}
+{% assign first_item = true %}
+{% for entry in metaobjects.xtu_help_language.values %}
+  {% liquid
+    assign lang_code = entry.code.value | default: entry.code | strip | downcase
+    assign lang_label = entry.label.value | default: entry.label | strip
+    assign lang_sort = entry.sort_order.value | default: entry.sort_order | default: 0
+    assign lang_icon = entry.icon.value | default: entry.icon
+    assign icon_url = blank
+    if lang_icon != blank
+      assign icon_url = lang_icon | image_url: width: 64
+    endif
+  %}
+  {% if lang_code != blank and lang_label != blank %}
+    {% unless first_item %},{% endunless %}
+    {% assign first_item = false %}
+    {
+      "code": {{ lang_code | json }},
+      "label": {{ lang_label | json }},
+      "icon": {{ icon_url | json }},
+      "sort": {{ lang_sort | json }}
+    }
+  {% endif %}
+{% endfor %}

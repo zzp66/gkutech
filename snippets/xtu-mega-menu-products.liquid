@@ -1,0 +1,130 @@
+{%- doc -%}
+  XTU Mega Menu — products mode (collection tabs + product cards).
+
+  @param {object} parent_link
+  @param {string} id
+  @param {boolean} eager_loading
+  @param {string} variant - desktop | drawer
+{%- enddoc -%}
+
+{% liquid
+  assign panel_variant = variant | default: 'desktop'
+  assign max_products = 4
+  assign max_products_drawer = 4
+  assign tab_index = 0
+
+  if panel_variant == 'drawer'
+    assign product_limit = max_products_drawer
+  else
+    assign product_limit = max_products
+  endif
+%}
+
+{%- capture image_sizes -%}
+  {%- render 'util-mega-menu-img-sizes-attr',
+    menu_content_type: 'featured_products',
+    settings: settings,
+    grid_columns: 8,
+    grid_columns_tablet: 4
+  -%}
+{%- endcapture -%}
+
+<div class="xtu-mega-menu__layout">
+  <nav
+    class="xtu-mega-menu__tabs"
+    role="tablist"
+    aria-label="{{ parent_link.title | escape }}"
+  >
+    {% for child_link in parent_link.links %}
+      {% liquid
+        assign is_collection_tab = false
+        assign tab_collection = nil
+
+        if child_link.type == 'collection_link'
+          assign is_collection_tab = true
+          assign tab_collection = child_link.object
+        elsif child_link.type == 'catalog_link' or child_link.type == 'collections_link'
+          assign is_collection_tab = true
+          assign tab_collection = collections.all
+        endif
+      %}
+
+      {% if is_collection_tab %}
+        <button
+          type="button"
+          class="xtu-mega-menu__tab{% if tab_index == 0 %} is-active{% endif %}"
+          role="tab"
+          id="XtuMegaTab-{{ id }}-{{ tab_index }}"
+          aria-controls="XtuMegaPanel-{{ id }}-{{ tab_index }}"
+          aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}"
+          data-xtu-mega-tab="{{ tab_index }}"
+        >
+          <span class="xtu-mega-menu__tab-label">{{ child_link.title | escape }}</span>
+        </button>
+        {% assign tab_index = tab_index | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="xtu-mega-menu__content">
+    {% assign panel_index = 0 %}
+    {% for child_link in parent_link.links %}
+      {% liquid
+        assign is_collection_tab = false
+        assign tab_collection = nil
+        assign tab_url = child_link.url
+
+        if child_link.type == 'collection_link'
+          assign is_collection_tab = true
+          assign tab_collection = child_link.object
+        elsif child_link.type == 'catalog_link' or child_link.type == 'collections_link'
+          assign is_collection_tab = true
+          assign tab_collection = collections.all
+        endif
+      %}
+
+      {% if is_collection_tab %}
+        <div
+          class="xtu-mega-menu__panel{% if panel_index == 0 %} is-active{% endif %}"
+          role="tabpanel"
+          id="XtuMegaPanel-{{ id }}-{{ panel_index }}"
+          aria-labelledby="XtuMegaTab-{{ id }}-{{ panel_index }}"
+          data-xtu-mega-panel="{{ panel_index }}"
+          {% unless panel_index == 0 %}
+            hidden
+          {% endunless %}
+        >
+          <ul class="xtu-mega-menu__products mega-menu__content-list mega-menu__content-list--products list-unstyled">
+            {% if eager_loading and tab_collection != blank %}
+              {% paginate tab_collection.products by product_limit %}
+                {% for product in tab_collection.products limit: product_limit %}
+                  <li class="mega-menu__content-list-item xtu-mega-menu__product-item">
+                    {% render 'resource-card',
+                      resource: product,
+                      resource_type: 'product',
+                      image_hover: true,
+                      image_aspect_ratio: '1',
+                      image_sizes: image_sizes,
+                      product_view_context: 'dialog',
+                      enable_view_transition: false
+                    %}
+                  </li>
+                {% endfor %}
+              {% endpaginate %}
+            {% endif %}
+          </ul>
+
+          <div class="xtu-mega-menu__footer">
+            {% render 'xtu-btn',
+              label: 'View More',
+              href: tab_url,
+              size: 'sm',
+              show_arrow: true
+            %}
+          </div>
+        </div>
+        {% assign panel_index = panel_index | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

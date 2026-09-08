@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-61b7cccd": {
+      "type": "pf-61b7cccd",
+      "disabled": true,
+      "settings": {
+        "pf_12505b56_placeholder": "Enter your name",
+        "pf_12505b56_label_text": "Your name",
+        "pf_19a6c968_label_text": "Your Message",
+        "pf_505b5619_label_text": "Your email",
+        "pf_5619a6c9_placeholder": "Enter your email",
+        "pf_5619a6c9_label_text": "Your email",
+        "pf_5a4cf6c5_value": "(+86) 186-6561-9325",
+        "pf_648f9a63_value": "Our Information",
+        "pf_68180a46_value": "SEND",
+        "pf_68180a46_placeholder": "Submit",
+        "pf_88b951b3_value": "Send Us Your Question",
+        "pf_a6ae3f03_value": "B10，RM 2703 EWTREDCETE，704\nPRINCE EDWARD RD EAST,SAN PO OG\nHONG KONG",
+        "pf_a6f46c8a_value": "CONTACT US",
+        "pf_c968180a_placeholder": "Enter your message",
+        "pf_c968180a_label_text": "Your Message",
+        "pf_da8c1250_label_text": "Your name",
+        "pf_e692d0f1_value": "Customer Service: support@xtucam.com",
+        "pf_e8216ec2_value": "Business Day,  \nMon-Fri\n9:30 AM-12 AM, 1:45 PM-6:30 PM(UTC+8)"
+      }
+    }
+  },
+  "order": [
+    "pf-61b7cccd"
+  ]
+}

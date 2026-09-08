@@ -1,0 +1,134 @@
+/* Shared Swiper / carousel side navigation buttons
+ *
+ * Light-surface standard (variant: on-light) — Tab Product Slider 为准，全站复用：
+ *   可点：浅灰底 + 深色 icon
+ *   Hover：品牌蓝 #0070CA + 白色 icon
+ *   不可点：浅灰底 + 低对比 icon
+ * Dark-surface default — Hero 等深色叠层：半透明白底；Hover / disabled 同品牌反馈规则
+ */
+
+.xtu-swiper-nav {
+  --xtu-swiper-nav-size: 45px;
+  --xtu-swiper-nav-icon-size: 18px;
+  --xtu-swiper-nav-bg: rgb(255 255 255 / 0.14);
+  --xtu-swiper-nav-bg-hover: #0070ca;
+  --xtu-swiper-nav-color: #fff;
+  --xtu-swiper-nav-color-hover: #fff;
+  --xtu-swiper-nav-bg-disabled: rgb(156 163 175 / 0.45);
+  --xtu-swiper-nav-color-disabled: rgb(255 255 255 / 0.55);
+  /* inset 由父级 --xtu-swiper-nav-inset 控制；未设置时 prev/next 使用 fallback */
+
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--xtu-swiper-nav-size);
+  height: var(--xtu-swiper-nav-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--xtu-swiper-nav-bg);
+  color: var(--xtu-swiper-nav-color);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transform: translateY(-50%);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.xtu-swiper-nav:hover:not(.swiper-button-disabled):not(:disabled) {
+  background: var(--xtu-swiper-nav-bg-hover);
+  color: var(--xtu-swiper-nav-color-hover);
+}
+
+.xtu-swiper-nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.xtu-swiper-nav.swiper-button-disabled,
+.xtu-swiper-nav:disabled {
+  background: var(--xtu-swiper-nav-bg-disabled);
+  color: var(--xtu-swiper-nav-color-disabled);
+  opacity: 1;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.xtu-swiper-nav--prev {
+  left: var(--xtu-swiper-nav-inset, 16px);
+}
+
+.xtu-swiper-nav--next {
+  right: var(--xtu-swiper-nav-inset, 16px);
+}
+
+.xtu-swiper-nav__icon {
+  display: block;
+  width: var(--xtu-swiper-nav-icon-size);
+  height: var(--xtu-swiper-nav-icon-size);
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+.xtu-swiper-nav__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 浅底区块标准态（以 Tab Product Slider 为准；勿在 section 内改色） */
+.xtu-swiper-nav--on-light {
+  --xtu-swiper-nav-bg: rgb(0 0 0 / 0.06);
+  --xtu-swiper-nav-bg-hover: #0070ca;
+  --xtu-swiper-nav-color: #111827;
+  --xtu-swiper-nav-color-hover: #fff;
+  --xtu-swiper-nav-bg-disabled: rgb(0 0 0 / 0.06);
+  --xtu-swiper-nav-color-disabled: rgb(0 0 0 / 0.28);
+}
+
+.xtu-swiper-nav--on-light:focus-visible {
+  outline-color: #111827;
+}
+
+/* 标题栏 / 工具栏内联摆放（非媒体叠层） */
+.xtu-swiper-nav-group {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.xtu-swiper-nav-group .xtu-swiper-nav {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-swiper-nav--prev {
+    left: var(--xtu-swiper-nav-inset, 8px);
+  }
+
+  .xtu-swiper-nav--next {
+    right: var(--xtu-swiper-nav-inset, 8px);
+  }
+
+  /* Peek carousels (e.g. 1.1 / 2.1 cards): hide arrows on mobile by default */
+  .xtu-swiper-nav--hide-mobile {
+    display: none !important;
+  }
+
+  .xtu-swiper-nav-group--hide-mobile {
+    display: none;
+  }
+}

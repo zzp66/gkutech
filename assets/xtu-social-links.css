@@ -1,0 +1,153 @@
+/* =============================================================================
+   XTU Social Links — Follow Us 社媒入口
+   配合 sections/xtu-social-links.liquid。
+   PC：单项宽度 = (版心 - 5×gap) / 6，flex 居中；移动端一行 2 个。
+   ============================================================================= */
+
+.xtu-sl {
+  --xtu-sl-content-width: 1200px;
+  --xtu-sl-gap: 24px;
+  --xtu-sl-gap-m: 16px;
+  --xtu-sl-icon: 64px;
+  --xtu-sl-icon-radius: 16px;
+  --xtu-sl-pt: 80px;
+  --xtu-sl-pb: 80px;
+  --xtu-sl-pt-m: 40px;
+  --xtu-sl-pb-m: 40px;
+
+  padding: var(--xtu-sl-pt) 0 var(--xtu-sl-pb);
+  background: var(--xtu-sl-bg, #fff);
+  box-sizing: border-box;
+}
+
+.xtu-sl__inner {
+  width: min(var(--xtu-sl-content-width), calc(100% - var(--page-margin) * 2));
+  margin-inline: auto;
+  background: var(--xtu-sl-content-bg, #fff);
+  box-sizing: border-box;
+}
+
+.xtu-sl__heading {
+  margin: 0 0 var(--xtu-space-40, 40px);
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-section-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-sl-heading, #000);
+  text-align: center;
+}
+
+.xtu-sl__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xtu-sl-gap);
+}
+
+.xtu-sl__item {
+  flex: 0 0 calc((100% - var(--xtu-sl-gap) * 5) / 6);
+  max-width: calc((100% - var(--xtu-sl-gap) * 5) / 6);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+a.xtu-sl__item {
+  cursor: pointer;
+}
+
+.xtu-sl__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--xtu-sl-icon);
+  height: var(--xtu-sl-icon);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--xtu-sl-icon-radius);
+  background: var(--xtu-sl-icon-bg, #0070ca);
+  transition: transform 0.25s ease;
+}
+
+.xtu-sl__item:hover .xtu-sl__icon,
+.xtu-sl__item:focus-visible .xtu-sl__icon {
+  transform: scale(1.06);
+}
+
+.xtu-sl__item:focus-visible {
+  outline: 2px solid var(--color-5, #0070ca);
+  outline-offset: 4px;
+}
+
+.xtu-sl__logo,
+.xtu-sl__placeholder {
+  display: block;
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.xtu-sl__placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgb(255 255 255 / 0.2);
+}
+
+.xtu-sl__name {
+  display: block;
+  margin: var(--xtu-space-16, 16px) 0 0;
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-group-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-sl-name, #000);
+}
+
+.xtu-sl__text {
+  display: block;
+  margin: var(--xtu-space-8, 8px) 0 0;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--xtu-sl-text, #333);
+  word-break: break-word;
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-sl {
+    --xtu-sl-gap: var(--xtu-sl-gap-m);
+    padding: var(--xtu-sl-pt-m) 0 var(--xtu-sl-pb-m);
+  }
+
+  .xtu-sl__heading {
+    margin-bottom: var(--xtu-space-20, 20px);
+    font-size: var(--xtu-type-section-title-m);
+  }
+
+  .xtu-sl__item {
+    flex-basis: calc((100% - var(--xtu-sl-gap)) / 2);
+    max-width: calc((100% - var(--xtu-sl-gap)) / 2);
+  }
+
+  .xtu-sl__name {
+    font-size: var(--xtu-type-group-title-m);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xtu-sl__icon {
+    transition: none;
+  }
+
+  .xtu-sl__item:hover .xtu-sl__icon,
+  .xtu-sl__item:focus-visible .xtu-sl__icon {
+    transform: none;
+  }
+}

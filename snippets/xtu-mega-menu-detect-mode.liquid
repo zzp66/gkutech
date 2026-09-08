@@ -1,0 +1,58 @@
+{%- doc -%}
+  Detect XTU mega menu mode for a parent link.
+
+  Sets liquid variables:
+  - xtu_mega_mode: 'products' | 'featured' | 'text'
+  - xtu_mega_has_collections: boolean
+
+  @param {object} parent_link - Top-level menu link with children
+{%- enddoc -%}
+
+{% liquid
+  assign xtu_mega_mode = 'text'
+
+  assign collection_links = parent_link.links | where: 'type', 'collection_link'
+  assign catalog_links = parent_link.links | where: 'type', 'catalog_link'
+  assign collections_list_links = parent_link.links | where: 'type', 'collections_link'
+
+  if collection_links.size > 0 or catalog_links.size > 0 or collections_list_links.size > 0
+    assign xtu_mega_mode = 'products'
+  else
+    assign xtu_mega_has_featured = false
+    assign mega_cards = metaobjects.xtu_mega_menu_card.values
+
+    if mega_cards != blank
+      for child_link in parent_link.links
+        capture child_path
+          render 'xtu-mega-menu-normalize-path', url: child_link.url
+        endcapture
+        assign child_path = child_path | strip
+
+        for card in mega_cards
+          assign card_path = card.menu_path.value | default: card.menu_path | strip
+          if card_path != blank
+            capture card_path_normalized
+              render 'xtu-mega-menu-normalize-path', url: card_path
+            endcapture
+            assign card_path_normalized = card_path_normalized | strip
+
+            if card_path_normalized == child_path
+              assign xtu_mega_has_featured = true
+              break
+            endif
+          endif
+        endfor
+
+        if xtu_mega_has_featured
+          break
+        endif
+      endfor
+    endif
+
+    if xtu_mega_has_featured
+      assign xtu_mega_mode = 'featured'
+    endif
+  endif
+
+  echo xtu_mega_mode
+%}

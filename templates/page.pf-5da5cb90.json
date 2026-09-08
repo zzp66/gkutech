@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-5da5cb90": {
+      "type": "pf-5da5cb90",
+      "settings": {
+        "pf_497bde03_value": "<strong>1️⃣ Purchase Offer</strong> → After purchasing the XTU S7 Pro → send order screenshot to <strong>marketing.xtu@xtucam.com</strong> → receive 50% OFF coupon for GKU D600 Pro Max<br><strong>2️⃣ Social Media Offer</strong> →  Share with <strong>#GKUXTUShare&nbsp;</strong> to Get 50% OFF → get 50% OFF reward<br>⚠️ Note: Orders canceled after receiving or using the coupon may affect eligibility for this offer.",
+        "pf_05bfd545_value": "🎥 4K 50FPS Recording<br>🌀 SuperSmooth 5.0 Stabilization<br>🌅 360° Horizon Lock<br>📷 Sony IMX586 48MP Sensor<br>⚡ WiFi 6 Fast Transfer<br>🧲 Magnetic Quick Release<br>📱 Dual-Screen Design<br>🌙 AI ISP Night Imaging<br>🔋 PD Fast Charging<br>🌊 Built for Outdoor Adventures",
+        "pf_4befbee8_value": "🎁 <strong>Special Bundle Offer</strong>——Purchase either the<strong> GKU D600 Pro Max or XTU S7 Pro </strong>and receive a <span style=\"color: rgb(253, 8, 8);\">50% OFF</span> coupon for the other product.",
+        "pf_035f50de_value": "The coupon applies to the corresponding paired product.\n<br>·Purchase D600 Pro Max → Receive a 50% OFF coupon for S7 Pro\n<br>·Purchase S7 Pro → Receive a 50% OFF coupon for D600 Pro Max",
+        "pf_0fb3fe32_value": "If you have any questions about the promotion or your order, feel free to contact our support team:\n<br>·GKU: support@gkutech.com\n<br>·XTU: support@xtucam.com",
+        "pf_e8715858_value": "🔥 <strong>XTU Summer Deals</strong>——Enjoy up to <span style=\"color: rgb(252, 8, 8);\">40% OFF</span> on selected products during our Summer Sale event.",
+        "pf_ab0be3ea_value": "After purchasing either the GKU D600 Pro Max or XTU S7 Pro, you will receive a 50% OFF coupon for the other product via email.",
+        "pf_c28bf272_value": "<span style=\"color: rgb(9, 164, 250);\">XTU</span>×<span style=\"color: rgb(248, 231, 28);\">GKU</span>&nbsp;Summer Sale🔆",
+        "pf_18bfa648_value": "Unless otherwise stated, the 50% OFF coupon cannot be combined with additional discount codes.",
+        "pf_e726bc2c_label": "Can the 50% OFF coupon be combined with other discount codes?",
+        "pf_9040149b_label": "Which product will I receive the 50% OFF coupon for?",
+        "pf_5cd83198_value": "🔍Watch &amp; Learn: D600 Pro Max &amp; XTU S7 Pro",
+        "pf_00fe4e14_value": "&nbsp;Share with #GKUXTUShare to Get 50% OFF",
+        "pf_d4f9e7f8_value": "🏕️ Summer Adventure Scenarios for S7 Pro",
+        "pf_5104b0c8_value": "👉 Grab Accessories for Your XTU S7 Pro",
+        "pf_a77cacd4_value": "🏕️ Why Choose S7 Pro Action Camera?",
+        "pf_eff4ff2a_value": "👉 Unboxing &amp; Quick Start Guide",
+        "pf_983f092e_value": "🌊 Ready for Your Next Adventure?",
+        "pf_ffaf2935_value": "📱 More Summer Fun on Our Socials",
+        "pf_ddbd6dd0_label": "How do I get the 50% OFF coupon?",
+        "pf_b95f303c_label": "How long is the coupon valid?",
+        "pf_3c566b52_label": "Where can I contact support?",
+        "pf_c8d12453_value": "GKU D600 Pro Max Dach Cam",
+        "pf_9174dd4f_value": "☀️ Summer Sale Overview",
+        "pf_8e1200fe_value": "XTU×GKU Summer Giveway",
+        "pf_910e418d_value": "XTU S7 Pro Action Cam",
+        "pf_52670ece_value": "View More Details   ",
+        "pf_e792de4e_value": "❓ Summer Sale FAQ",
+        "pf_5498843b_value": "Join Now",
+        "pf_69e39403_value": "Join Now",
+        "pf_715858c3_value": "40%",
+        "pf_efbee871_value": "50%"
+      }
+    }
+  },
+  "order": [
+    "pf-5da5cb90"
+  ]
+}

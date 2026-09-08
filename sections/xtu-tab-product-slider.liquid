@@ -1,0 +1,732 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign gap = section.settings.card_gap | default: 16
+  assign gap_mobile = section.settings.card_gap_mobile | default: 8
+  assign desktop_per_view = section.settings.desktop_per_view | default: 3
+  assign card_ratio = section.settings.card_ratio | default: '3 / 4'
+  assign ratio_auto = false
+  if card_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign card_radius = section.settings.card_radius | default: 16
+  assign enable_image_zoom = true
+  if section.settings.enable_image_zoom == false
+    assign enable_image_zoom = false
+  endif
+  assign show_arrows = section.settings.show_arrows
+  assign show_arrows_mobile = section.settings.show_arrows_mobile
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+%}
+
+<script src="{{ 'xtu-tab-product-slider.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="xtu-tab-product-slider-{{ section.id }}"
+  class="xtu-tab-product-slider{% if ratio_auto %} xtu-tab-product-slider--ratio-auto{% endif %}"
+  data-xtu-tab-product-slider
+  data-gap="{{ gap }}"
+  data-gap-mobile="{{ gap_mobile }}"
+  data-desktop-per-view="{{ desktop_per_view }}"
+  style="
+    --xtu-tps-gap: {{ gap }}px;
+    --xtu-tps-gap-mobile: {{ gap_mobile }}px;
+    {% unless ratio_auto %}--xtu-tps-ratio: {{ card_ratio }};{% endunless %}
+    --xtu-tps-radius: {{ card_radius }}px;
+    --xtu-tps-padding-top: {{ padding_top }}px;
+    --xtu-tps-padding-bottom: {{ padding_bottom }}px;
+    --xtu-tps-padding-top-mobile: {{ padding_top_mobile }}px;
+    --xtu-tps-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+  "
+>
+  <div class="xtu-tab-product-slider__intro" data-xtu-align>
+    {% if heading != blank %}
+      <h2
+        class="xtu-tab-product-slider__heading"
+        data-xtu-reveal="fade-up"
+      >
+        {{ heading | escape }}
+      </h2>
+    {% endif %}
+
+    {% assign tab_blocks = section.blocks | where: 'type', 'tab' %}
+    {% if tab_blocks.size > 0 or show_arrows %}
+      <div class="xtu-tab-product-slider__toolbar" data-xtu-reveal="fade-up">
+        {% if tab_blocks.size > 0 %}
+          <div
+            class="xtu-tab-product-slider__tabs"
+            role="tablist"
+            aria-label="{{ heading | default: 'Product categories' | escape }}"
+          >
+            {% for block in tab_blocks %}
+              <button
+                type="button"
+                class="xtu-tab-product-slider__tab{% if forloop.first %} is-active{% endif %}"
+                id="xtu-tps-tab-{{ section.id }}-{{ block.id }}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="xtu-tps-panel-{{ section.id }}-{{ block.id }}"
+                tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+                data-xtu-tab="{{ block.id }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.title | escape }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if show_arrows %}
+          <div class="xtu-swiper-nav-group{% unless show_arrows_mobile %} xtu-swiper-nav-group--hide-mobile{% endunless %}">
+            {% liquid
+              assign tps_hide_mobile = true
+              if show_arrows_mobile
+                assign tps_hide_mobile = false
+              endif
+            %}
+            {% render 'xtu-swiper-nav',
+              variant: 'on-light',
+              hide_mobile: tps_hide_mobile,
+              prev_attributes: 'data-xtu-tab-prev',
+              next_attributes: 'data-xtu-tab-next'
+            %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="xtu-tab-product-slider__panels">
+    {% for block in tab_blocks %}
+      {% assign tab_title = block.settings.title %}
+      <div
+        class="xtu-tab-product-slider__panel{% if forloop.first %} is-active{% endif %}"
+        id="xtu-tps-panel-{{ section.id }}-{{ block.id }}"
+        role="tabpanel"
+        aria-labelledby="xtu-tps-tab-{{ section.id }}-{{ block.id }}"
+        data-xtu-tab-panel="{{ block.id }}"
+        {% unless forloop.first %}
+          hidden
+        {% endunless %}
+      >
+        <div class="xtu-tab-product-slider__viewport">
+          <div class="swiper xtu-tab-product-slider__swiper" data-xtu-tab-swiper>
+            <div class="swiper-wrapper">
+              {% for card in section.blocks %}
+                {% if card.type == 'card' and card.settings.tab_name == tab_title %}
+                  {% liquid
+                    assign btn_bg = card.settings.button_background | default: '#ffffff'
+                    assign btn_color = card.settings.button_text_color | default: '#111827'
+                    assign btn_hover = card.settings.button_hover_background | default: '#f3f4f6'
+                  %}
+                  <article
+                    class="swiper-slide xtu-tab-product-slider__card"
+                    {{ card.shopify_attributes }}
+                  >
+                    <div class="xtu-tab-product-slider__media{% if enable_image_zoom %} xtu-img-zoom{% endif %}{% if card.settings.image_mobile != blank %} xtu-tab-product-slider__media--split{% endif %}">
+                      {% if card.settings.image != blank %}
+                        {{
+                          card.settings.image
+                          | image_url: width: 1200
+                          | image_tag:
+                            class: 'xtu-tab-product-slider__image xtu-tab-product-slider__image--desktop xtu-img-zoom__media',
+                            loading: 'lazy',
+                            widths: '400, 600, 800, 1000, 1200',
+                            sizes: '(min-width: 750px) 30vw, 85vw',
+                            alt: card.settings.title
+                        }}
+                      {% else %}
+                        {{ 'product-1' | placeholder_svg_tag: 'xtu-tab-product-slider__image xtu-img-zoom__media xtu-tab-product-slider__placeholder' }}
+                      {% endif %}
+                      {% if card.settings.image_mobile != blank %}
+                        {{
+                          card.settings.image_mobile
+                          | image_url: width: 1000
+                          | image_tag:
+                            class: 'xtu-tab-product-slider__image xtu-tab-product-slider__image--mobile xtu-img-zoom__media',
+                            loading: 'lazy',
+                            widths: '400, 600, 800, 1000',
+                            sizes: '85vw',
+                            alt: card.settings.title
+                        }}
+                      {% endif %}
+                      <div class="xtu-tab-product-slider__shade" aria-hidden="true"></div>
+                    </div>
+
+                    <div class="xtu-tab-product-slider__copy">
+                      {% if card.settings.title != blank %}
+                        <h3 class="xtu-tab-product-slider__title">
+                          {{ card.settings.title | escape }}
+                        </h3>
+                      {% endif %}
+                      {% if card.settings.subtitle != blank %}
+                        <p class="xtu-tab-product-slider__subtitle">
+                          {{ card.settings.subtitle | escape }}
+                        </p>
+                      {% endif %}
+                      {% if card.settings.button_label != blank %}
+                        <a
+                          class="xtu-tab-product-slider__btn"
+                          href="{{ card.settings.button_link | default: '#' }}"
+                          style="
+                            --xtu-tps-btn-bg: {{ btn_bg }};
+                            --xtu-tps-btn-color: {{ btn_color }};
+                            --xtu-tps-btn-hover-bg: {{ btn_hover }};
+                          "
+                        >
+                          {{ card.settings.button_label | escape }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </article>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-tab-product-slider {
+    position: relative;
+    padding: var(--xtu-tps-padding-top, 80px) 0 var(--xtu-tps-padding-bottom, 80px);
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .xtu-tab-product-slider__intro {
+    width: min(var(--page-width), 100%);
+    margin-inline: auto;
+    padding-inline: var(--page-margin);
+    box-sizing: border-box;
+  }
+
+  .xtu-tab-product-slider__heading {
+    margin: 0 0 var(--xtu-space-40, 40px);
+    font-family: var(--font-heading--family);
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em;
+    color: #111827;
+  }
+
+  .xtu-tab-product-slider__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .xtu-tab-product-slider__tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .xtu-tab-product-slider__tab {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: transparent;
+    color: #374151;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .xtu-tab-product-slider__tab.is-active {
+    background: #fff;
+    color: #111827;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+  }
+
+  .xtu-tab-product-slider__panels {
+    margin-top: 28px;
+  }
+
+  .xtu-tab-product-slider__panel[hidden] {
+    display: none !important;
+  }
+
+  .xtu-tab-product-slider__viewport {
+    position: relative;
+  }
+
+  .xtu-tab-product-slider__swiper {
+    overflow: visible;
+  }
+
+  .xtu-tab-product-slider__card {
+    position: relative;
+    width: var(--xtu-tps-card-width, 320px);
+    height: auto;
+    aspect-ratio: var(--xtu-tps-ratio, 3 / 4);
+    border-radius: var(--xtu-tps-radius, 16px);
+    background: #e5e7eb;
+    color: #fff;
+    isolation: isolate;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .xtu-tab-product-slider__swiper .swiper-slide {
+    height: auto;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  .xtu-tab-product-slider__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  .xtu-tab-product-slider__image,
+  .xtu-tab-product-slider__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .xtu-tab-product-slider__image--mobile {
+    display: none;
+  }
+
+  .xtu-tab-product-slider__placeholder {
+    background: #d1d5db;
+  }
+
+  .xtu-tab-product-slider__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.55) 0%,
+      rgb(0 0 0 / 0.18) 42%,
+      rgb(0 0 0 / 0) 68%
+    );
+    pointer-events: none;
+  }
+
+  .xtu-tab-product-slider__copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 28px;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .xtu-tab-product-slider__copy .xtu-tab-product-slider__btn {
+    pointer-events: auto;
+  }
+
+  .xtu-tab-product-slider__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .xtu-tab-product-slider__subtitle {
+    margin: 0;
+    max-width: 18rem;
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: var(--xtu-type-body, 0.875rem);
+    opacity: 0.92;
+  }
+
+  .xtu-tab-product-slider__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    height: 45px;
+    margin-top: 12px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--xtu-tps-btn-bg, #fff);
+    color: var(--xtu-tps-btn-color, #111827);
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background 0.3s var(--xtu-ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      transform 0.3s var(--xtu-ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  .xtu-tab-product-slider__btn:hover {
+    background: var(--xtu-tps-btn-hover-bg, #f3f4f6);
+    transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-tab-product-slider__media--split .xtu-tab-product-slider__image--desktop {
+      display: none;
+    }
+
+    .xtu-tab-product-slider__media--split .xtu-tab-product-slider__image--mobile {
+      display: block;
+    }
+
+    .xtu-tab-product-slider {
+      --xtu-tps-gap: var(--xtu-tps-gap-mobile, 8px);
+      padding: var(--xtu-tps-padding-top-mobile, 40px) 0 var(--xtu-tps-padding-bottom-mobile, 40px);
+    }
+
+    .xtu-tab-product-slider__heading {
+      margin-bottom: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-tab-product-slider__toolbar {
+      gap: 12px;
+    }
+
+    .xtu-tab-product-slider__tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .xtu-tab-product-slider__tab {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+      font-size: var(--xtu-type-body, 0.875rem);
+    }
+
+    .xtu-tab-product-slider__copy {
+      padding: 20px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Tab Product Slider",
+  "tag": "section",
+  "class": "xtu-tab-product-slider-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "区块标题",
+      "default": "Explore fan favorites"
+    },
+    {
+      "type": "range",
+      "id": "desktop_per_view",
+      "label": "桌面版心内卡片数",
+      "info": "按纯内容区（--page-content-width，不含左右安全边距）等分；右侧可露出下一张",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "卡片间距（桌面）",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "label": "卡片间距（移动端）",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "card_ratio",
+      "label": "卡片图片比例",
+      "info": "高度随卡片宽度按比例自适应，避免屏宽变化时被压缩变形",
+      "options": [
+        { "value": "auto", "label": "自适应（按图片/视频比例）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "3 / 4", "label": "3:4" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "4 / 3", "label": "4:3" }
+      ],
+      "default": "3 / 4"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "卡片圆角",
+      "info": "PC / 移动端统一",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_image_zoom",
+      "label": "卡片 Hover 图片放大",
+      "info": "关闭后鼠标悬停不再放大卡片图片",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "显示左右箭头",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "移动端显示左右箭头",
+      "info": "Peek 露出邻卡时默认关闭，可滑动浏览",
+      "default": false,
+      "visible_if": "{{ section.settings.show_arrows == true }}"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab 名称",
+          "default": "Earbuds"
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "name": "产品卡片",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "所属 Tab 名称",
+          "info": "需与对应 Tab 名称完全一致",
+          "default": "Earbuds"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "卡片图片（PC）"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "卡片图片（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题",
+          "default": "Liberty"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "副标题",
+          "default": "Uninterrupted audio wherever you go"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "按钮文案",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "按钮链接"
+        },
+        {
+          "type": "color",
+          "id": "button_background",
+          "label": "按钮背景色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "按钮字体颜色",
+          "default": "#111827"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_background",
+          "label": "按钮 Hover 背景色",
+          "default": "#F3F4F6"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Tab Product Slider",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Earbuds" } },
+        { "type": "tab", "settings": { "title": "Speakers" } },
+        { "type": "tab", "settings": { "title": "Headphones" } },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Earbuds",
+            "title": "Liberty",
+            "subtitle": "Uninterrupted audio wherever you go",
+            "button_label": "Shop Now",
+            "button_background": "#FFFFFF",
+            "button_text_color": "#111827",
+            "button_hover_background": "#F3F4F6"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Earbuds",
+            "title": "AeroClip",
+            "subtitle": "Open-ear comfort for all-day wear",
+            "button_label": "Shop Now",
+            "button_background": "#111827",
+            "button_text_color": "#FFFFFF",
+            "button_hover_background": "#374151"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Earbuds",
+            "title": "Sleep",
+            "subtitle": "Soft tips for deeper rest",
+            "button_label": "Shop Now",
+            "button_background": "#111827",
+            "button_text_color": "#FFFFFF",
+            "button_hover_background": "#374151"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Earbuds",
+            "title": "Sport X20",
+            "subtitle": "Secure fit for every workout",
+            "button_label": "Shop Now",
+            "button_background": "#FFFFFF",
+            "button_text_color": "#111827",
+            "button_hover_background": "#F3F4F6"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Speakers",
+            "title": "Motion Boom",
+            "subtitle": "Big sound for outdoor days",
+            "button_label": "Shop Now",
+            "button_background": "#FFFFFF",
+            "button_text_color": "#111827",
+            "button_hover_background": "#F3F4F6"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tab_name": "Headphones",
+            "title": "Space One",
+            "subtitle": "Quiet focus, all-day comfort",
+            "button_label": "Shop Now",
+            "button_background": "#111827",
+            "button_text_color": "#FFFFFF",
+            "button_hover_background": "#374151"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

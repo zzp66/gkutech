@@ -1,0 +1,122 @@
+{%- doc -%}
+  Renders one XTU Media Grid cell (image or autoplay video).
+
+  @param {object} block - Theme block with media settings
+  @param {string} [placeholder_name] - Shopify placeholder SVG name
+  @param {string} [sizes_desktop] - Responsive sizes for desktop image
+  @param {string} [sizes_mobile] - Responsive sizes for mobile image
+{%- enddoc -%}
+
+{% liquid
+  assign media_type = block.settings.media_type | default: 'image'
+  assign image = block.settings.image
+  assign image_mobile = block.settings.image_mobile
+  assign video = block.settings.video
+  assign video_mobile = block.settings.video_mobile
+  assign video_url = block.settings.video_url
+  assign youtube_url = block.settings.youtube_url
+  assign media_ratio = block.settings.media_ratio | default: '16 / 10'
+  assign ratio_auto = false
+  if media_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign alt_text = block.settings.alt | default: ''
+
+  assign has_mobile_image = false
+  if image_mobile != blank
+    assign has_mobile_image = true
+  endif
+
+  assign has_mobile_video = false
+  if video_mobile != blank
+    assign has_mobile_video = true
+  endif
+
+  assign has_mobile_media = false
+  if has_mobile_image or has_mobile_video
+    assign has_mobile_media = true
+  endif
+
+  assign sizes_desktop = sizes_desktop | default: '(max-width: 749px) 100vw, min(50vw, 720px)'
+  assign sizes_mobile = sizes_mobile | default: 'calc(100vw - var(--page-margin) * 2)'
+  assign placeholder_name = placeholder_name | default: 'lifestyle-1'
+%}
+
+<div
+  class="xtu-media-grid__frame{% if has_mobile_media %} xtu-media-grid__frame--split{% endif %}{% if ratio_auto %} xtu-media-grid__frame--auto{% endif %}"
+  {% unless ratio_auto %}style="--xtu-mg-ratio: {{ media_ratio }};"{% endunless %}
+>
+  {% if media_type == 'youtube' %}
+    {% render 'xtu-video-embed',
+      video_url: video_url,
+      youtube_url: youtube_url,
+      mode: 'ambient',
+      class: 'xtu-media-grid__youtube xtu-media-grid__media',
+      title: alt_text,
+      placeholder: placeholder_name,
+      placeholder_class: 'xtu-media-grid__placeholder xtu-media-grid__media'
+    %}
+  {% elsif media_type == 'video' %}
+    {% if video != blank %}
+      {{
+        video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--desktop',
+          image_size: '1600x'
+      }}
+    {% endif %}
+    {% if has_mobile_video %}
+      {{
+        video_mobile
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--mobile',
+          image_size: '1200x'
+      }}
+    {% endif %}
+    {% if video == blank and has_mobile_video == false %}
+      {{ placeholder_name | placeholder_svg_tag: 'xtu-media-grid__placeholder xtu-media-grid__media' }}
+    {% elsif video == blank and has_mobile_video %}
+      {{ placeholder_name | placeholder_svg_tag: 'xtu-media-grid__placeholder xtu-media-grid__media xtu-media-grid__media--desktop' }}
+    {% endif %}
+  {% else %}
+    {% if image != blank %}
+      {{
+        image
+        | image_url: width: 2000
+        | image_tag:
+          class: 'xtu-media-grid__image xtu-media-grid__media xtu-media-grid__media--desktop',
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200, 1600, 2000',
+          sizes: sizes_desktop,
+          alt: alt_text
+      }}
+    {% endif %}
+    {% if has_mobile_image %}
+      {{
+        image_mobile
+        | image_url: width: 1200
+        | image_tag:
+          class: 'xtu-media-grid__image xtu-media-grid__media xtu-media-grid__media--mobile',
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200',
+          sizes: sizes_mobile,
+          alt: alt_text
+      }}
+    {% endif %}
+    {% if image == blank and has_mobile_image == false %}
+      {{ placeholder_name | placeholder_svg_tag: 'xtu-media-grid__placeholder xtu-media-grid__media' }}
+    {% elsif image == blank and has_mobile_image %}
+      {{ placeholder_name | placeholder_svg_tag: 'xtu-media-grid__placeholder xtu-media-grid__media xtu-media-grid__media--desktop' }}
+    {% endif %}
+  {% endif %}
+</div>

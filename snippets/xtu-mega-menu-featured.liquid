@@ -1,0 +1,137 @@
+{%- doc -%}
+  XTU Mega Menu — featured mode (scene cards from metaobjects).
+
+  @param {object} parent_link
+  @param {string} id
+  @param {string} variant - desktop | drawer
+{%- enddoc -%}
+
+{% liquid
+  assign mega_cards = metaobjects.xtu_mega_menu_card.values
+  assign tab_index = 0
+%}
+
+<div class="xtu-mega-menu__layout">
+  <nav
+    class="xtu-mega-menu__tabs"
+    role="tablist"
+    aria-label="{{ parent_link.title | escape }}"
+  >
+    {% for child_link in parent_link.links %}
+      <button
+        type="button"
+        class="xtu-mega-menu__tab{% if tab_index == 0 %} is-active{% endif %}"
+        role="tab"
+        id="XtuMegaTab-{{ id }}-{{ tab_index }}"
+        aria-controls="XtuMegaPanel-{{ id }}-{{ tab_index }}"
+        aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}"
+        data-xtu-mega-tab="{{ tab_index }}"
+      >
+        <span class="xtu-mega-menu__tab-label">{{ child_link.title | escape }}</span>
+      </button>
+      {% assign tab_index = tab_index | plus: 1 %}
+    {% endfor %}
+  </nav>
+
+  <div class="xtu-mega-menu__content">
+    {% assign panel_index = 0 %}
+    {% for child_link in parent_link.links %}
+      {% liquid
+        capture child_path
+          render 'xtu-mega-menu-normalize-path', url: child_link.url
+        endcapture
+        assign child_path = child_path | strip
+        assign card_count = 0
+      %}
+
+      <div
+        class="xtu-mega-menu__panel{% if panel_index == 0 %} is-active{% endif %}"
+        role="tabpanel"
+        id="XtuMegaPanel-{{ id }}-{{ panel_index }}"
+        aria-labelledby="XtuMegaTab-{{ id }}-{{ panel_index }}"
+        data-xtu-mega-panel="{{ panel_index }}"
+        {% unless panel_index == 0 %}
+          hidden
+        {% endunless %}
+      >
+        <ul class="xtu-mega-menu__featured list-unstyled">
+          {% if mega_cards != blank %}
+            {% for card in mega_cards %}
+              {% liquid
+                assign card_path = card.menu_path.value | default: card.menu_path | strip
+                assign card_match = false
+
+                if card_path != blank
+                  capture card_path_normalized
+                    render 'xtu-mega-menu-normalize-path', url: card_path
+                  endcapture
+                  assign card_path_normalized = card_path_normalized | strip
+                  if card_path_normalized == child_path
+                    assign card_match = true
+                  endif
+                endif
+              %}
+
+              {% if card_match %}
+                {% liquid
+                  assign card_title = card.title.value | default: card.title
+                  assign card_description = card.description.value | default: card.description
+                  assign card_image = card.image.value | default: card.image
+                  assign card_link = card.link.value | default: card.link | default: child_link.url
+                  assign card_count = card_count | plus: 1
+                %}
+
+                <li class="xtu-mega-menu__featured-item">
+                  <a
+                    href="{{ card_link }}"
+                    class="xtu-mega-menu__featured-card"
+                  >
+                    <div class="xtu-mega-menu__featured-media">
+                      {% if card_image != blank %}
+                        {{
+                          card_image
+                          | image_url: width: 800
+                          | image_tag:
+                            class: 'xtu-mega-menu__featured-image',
+                            loading: 'lazy',
+                            widths: '400,600,800',
+                            sizes: '(min-width: 990px) 280px, 45vw',
+                            alt: card_title
+                        }}
+                      {% else %}
+                        {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-mega-menu__featured-placeholder' }}
+                      {% endif %}
+                    </div>
+                    <div class="xtu-mega-menu__featured-body">
+                      {% if card_title != blank %}
+                        <p class="xtu-mega-menu__featured-title">{{ card_title | escape }}</p>
+                      {% endif %}
+                      {% if card_description != blank %}
+                        <p class="xtu-mega-menu__featured-desc">{{ card_description | escape }}</p>
+                      {% endif %}
+                    </div>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% if card_count == 0 %}
+            <li class="xtu-mega-menu__featured-item xtu-mega-menu__featured-item--fallback">
+              <a
+                href="{{ child_link.url }}"
+                class="xtu-mega-menu__featured-card xtu-mega-menu__featured-card--fallback"
+              >
+                <div class="xtu-mega-menu__featured-body">
+                  <p class="xtu-mega-menu__featured-title">{{ child_link.title | escape }}</p>
+                  <p class="xtu-mega-menu__featured-desc">View</p>
+                </div>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% assign panel_index = panel_index | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>

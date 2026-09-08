@@ -1,0 +1,87 @@
+/**
+ * XTU ratio auto — intrinsic media height (width 100%, height from image/video).
+ * Use doubled selectors so section {% stylesheet %} blocks cannot re-apply fixed ratios.
+ */
+
+/* Drop fixed aspect-ratio on media containers */
+.xtu-media-grid__frame.xtu-media-grid__frame--auto,
+.xtu-image-text__media.xtu-image-text__media--ratio-auto,
+.xtu-product-compare--ratio-auto .xtu-product-compare__media,
+.xtu-ci--ratio-auto .xtu-ci__media,
+.xtu-blog-list--ratio-auto .xtu-blog-list__media,
+.xtu-activity-slider--ratio-auto .xtu-activity-slider__link,
+.xtu-tab-product-slider--ratio-auto .xtu-tab-product-slider__card,
+.xtu-story-slider--ratio-auto .xtu-story-slider__media,
+.xtu-mpair--ratio-auto .xtu-mpair__media {
+  aspect-ratio: auto;
+  height: auto;
+}
+
+.xtu-media-grid__frame.xtu-media-grid__frame--auto {
+  background: transparent;
+}
+
+/* Intrinsic media sizing — avoid cover crop / upscale blur */
+.xtu-media-grid__frame.xtu-media-grid__frame--auto :is(.xtu-media-grid__image, .xtu-media-grid__video, .xtu-media-grid__placeholder),
+.xtu-image-text__media.xtu-image-text__media--ratio-auto :is(.xtu-image-text__image, .xtu-image-text__video),
+.xtu-product-compare--ratio-auto .xtu-product-compare__image,
+.xtu-ci--ratio-auto .xtu-ci__image:not(.xtu-ci__placeholder),
+.xtu-blog-list--ratio-auto .xtu-blog-list__image,
+.xtu-activity-slider--ratio-auto .xtu-activity-slider__image,
+.xtu-tab-product-slider--ratio-auto .xtu-tab-product-slider__image,
+.xtu-story-slider--ratio-auto .xtu-story-slider__media :is(.xtu-story-slider__image, .xtu-story-slider__video) {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* Overlay cards: media in normal flow, overlays stay absolute on parent */
+.xtu-activity-slider--ratio-auto .xtu-activity-slider__media,
+.xtu-tab-product-slider--ratio-auto .xtu-tab-product-slider__media {
+  position: relative;
+  width: 100%;
+  inset: auto;
+}
+
+.xtu-tab-product-slider--ratio-auto .xtu-tab-product-slider__card {
+  display: block;
+}
+
+/* Featured products */
+@media (min-width: 750px) {
+  .xtu-featured-products--ratio-desktop-auto.xtu-featured-products--height-auto .xtu-featured-products__card {
+    aspect-ratio: auto;
+    display: block;
+  }
+
+  .xtu-featured-products--ratio-desktop-auto.xtu-featured-products--height-auto .xtu-featured-products__media {
+    position: relative;
+    width: 100%;
+    inset: auto;
+    aspect-ratio: auto;
+  }
+
+  .xtu-featured-products--ratio-desktop-auto.xtu-featured-products--height-auto .xtu-featured-products__image {
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 749px) {
+  .xtu-featured-products--ratio-mobile-auto .xtu-featured-products__card {
+    aspect-ratio: auto;
+    display: block;
+  }
+
+  .xtu-featured-products--ratio-mobile-auto .xtu-featured-products__media {
+    position: relative;
+    width: 100%;
+    inset: auto;
+    aspect-ratio: auto;
+  }
+
+  .xtu-featured-products--ratio-mobile-auto .xtu-featured-products__image {
+    height: auto;
+    object-fit: contain;
+  }
+}

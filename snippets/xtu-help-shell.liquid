@@ -1,0 +1,37 @@
+{% doc %}
+  Help Center 左栏 + 右栏骨架。产品列表与内容面板由 xtu-help.js 根据 catalog JSON 填充。
+
+  @param {string} heading - 版块标题
+  @param {string} [subheading] - 副标题
+  @param {string} catalog_json - 目录 JSON（含 type / products / items）
+  @param {string} [empty_text] - 空态文案
+  @param {string} [sidebar_label] - 侧栏标题
+
+  @example
+  {% render 'xtu-help-shell', heading: heading, catalog_json: catalog_json %}
+{% enddoc %}
+
+<div class="xtu-help__head" data-xtu-reveal="fade-up">
+  {% if heading != blank %}
+    <h2 class="xtu-help__heading">{{ heading | escape }}</h2>
+  {% endif %}
+  {% if subheading != blank %}
+    <p class="xtu-help__subheading">{{ subheading | escape }}</p>
+  {% endif %}
+</div>
+
+<div class="xtu-help__layout">
+  <aside class="xtu-help__sidebar" data-xtu-help-sidebar aria-label="Products">
+    <p class="xtu-help__sidebar-label">{{ sidebar_label | default: 'Products' | escape }}</p>
+    <div class="xtu-help__chips" data-xtu-help-chips></div>
+    <ul class="xtu-help__list" data-xtu-help-list></ul>
+  </aside>
+  <div class="xtu-help__main">
+    <div class="xtu-help__stage" data-xtu-help-stage></div>
+    <p class="xtu-help__empty" data-xtu-help-empty hidden>{{ empty_text | default: 'No content for this product yet.' | escape }}</p>
+  </div>
+</div>
+
+<script type="application/json" data-xtu-help-catalog>
+  {{ catalog_json }}
+</script>

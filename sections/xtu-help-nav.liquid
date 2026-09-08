@@ -1,0 +1,234 @@
+{%- comment -%}
+  XTU Help Center — 顶栏类型导航。
+
+  用途：Manual / Firmware / Software / Video Guide / FAQ 入口，挂在每个 Help 页面模板顶部。
+  数据来源：本 section 的链接、背景图、高度与显示开关。
+  运营：Theme Editor 改标题、背景图（PC/移动）、高度、入口显隐；当前页由 request.path 高亮。
+  前台：通栏背景 + 版心标题与 Tab；移动端 Tab 横向滑动。点击时 xtu-help.js 带上 ?s=。
+
+  相关：assets/xtu-help.css、assets/xtu-help.js
+{%- endcomment -%}
+
+{% liquid
+  assign path = request.path | downcase
+  assign page_handle = request.page.handle | default: '' | downcase
+  assign tpl_suffix = template.suffix | default: '' | downcase
+  assign heading = section.settings.kicker | default: 'Help Center'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign background_color = section.settings.background_color | default: '#F5F5F7'
+  assign banner_height = section.settings.banner_height | default: 280
+  assign banner_height_mobile = section.settings.banner_height_mobile | default: 200
+  assign show_overlay = section.settings.show_overlay
+  assign overlay_opacity = section.settings.overlay_opacity | default: 30
+  assign show_software = section.settings.show_software
+  assign image = section.settings.image
+  assign image_mobile = section.settings.image_mobile
+  if image_mobile == blank
+    assign image_mobile = image
+  endif
+  assign manual_url = section.settings.manual_url | default: '/pages/help-manual'
+  assign firmware_url = section.settings.firmware_url | default: '/pages/help-firmware'
+  assign software_url = section.settings.software_url | default: '/pages/help-software'
+  assign video_url = section.settings.video_url | default: '/pages/help-video-guide'
+  assign faq_url = section.settings.faq_url | default: '/pages/help-product-faq'
+
+  # Primary: template suffix (handles custom page handles like help-product-faq → page.help-faq)
+  assign manual_active = false
+  assign firmware_active = false
+  assign software_active = false
+  assign video_active = false
+  assign faq_active = false
+
+  case tpl_suffix
+    when 'help-manual'
+      assign manual_active = true
+    when 'help-firmware'
+      assign firmware_active = true
+    when 'help-software'
+      assign software_active = true
+    when 'help-video'
+      assign video_active = true
+    when 'help-faq'
+      assign faq_active = true
+  endcase
+
+  # Fallback: match configured link slug / page handle when suffix is blank or custom
+  unless manual_active or firmware_active or software_active or video_active or faq_active
+    assign manual_slug = manual_url | split: '/' | last | split: '?' | first | downcase
+    assign firmware_slug = firmware_url | split: '/' | last | split: '?' | first | downcase
+    assign software_slug = software_url | split: '/' | last | split: '?' | first | downcase
+    assign video_slug = video_url | split: '/' | last | split: '?' | first | downcase
+    assign faq_slug = faq_url | split: '/' | last | split: '?' | first | downcase
+
+    if manual_slug != blank and page_handle == manual_slug
+      assign manual_active = true
+    elsif firmware_slug != blank and page_handle == firmware_slug
+      assign firmware_active = true
+    elsif software_slug != blank and page_handle == software_slug
+      assign software_active = true
+    elsif video_slug != blank and page_handle == video_slug
+      assign video_active = true
+    elsif faq_slug != blank and page_handle == faq_slug
+      assign faq_active = true
+    elsif path contains '/help-manual'
+      assign manual_active = true
+    elsif path contains '/help-firmware'
+      assign firmware_active = true
+    elsif path contains '/help-software'
+      assign software_active = true
+    elsif path contains '/help-video'
+      assign video_active = true
+    elsif path contains '/help-faq' or path contains '/help-product-faq' or path contains 'product-faq'
+      assign faq_active = true
+    endif
+  endunless
+%}
+
+{{ 'xtu-help.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'xtu-help.js' | asset_url }}" defer="defer"></script>
+
+<nav
+  class="xtu-help-nav{% if image != blank %} xtu-help-nav--has-media{% endif %}"
+  aria-label="Help Center"
+  data-xtu-help-nav
+  style="
+    --xtu-help-nav-bg: {{ background_color }};
+    --xtu-help-nav-heading: {{ heading_color }};
+    --xtu-help-nav-min-h: {{ banner_height }}px;
+    --xtu-help-nav-min-h-m: {{ banner_height_mobile }}px;
+    --xtu-help-nav-overlay: {{ overlay_opacity | divided_by: 100.0 }};
+  "
+>
+  {% if image != blank %}
+    <picture class="xtu-help-nav__media">
+      {% if image_mobile != blank %}
+        <source
+          media="(max-width: 749px)"
+          srcset="{{ image_mobile | image_url: width: 1600 }}"
+        >
+      {% endif %}
+      {{
+        image
+        | image_url: width: 2880
+        | image_tag:
+          class: 'xtu-help-nav__media-img',
+          loading: 'eager',
+          widths: '800, 1200, 1600, 2000, 2880',
+          sizes: '100vw',
+          alt: heading
+      }}
+    </picture>
+  {% endif %}
+  {% if show_overlay and image != blank %}
+    <span class="xtu-help-nav__overlay" aria-hidden="true"></span>
+  {% endif %}
+
+  <div class="xtu-help-nav__inner">
+    {% if heading != blank %}
+      <h1 class="xtu-help-nav__title">{{ heading | escape }}</h1>
+    {% endif %}
+    <div class="xtu-help-nav__tabs" role="list">
+      <a
+        class="xtu-help-nav__tab{% if manual_active %} is-active{% endif %}"
+        href="{{ manual_url }}"
+        data-help-nav-link
+        role="listitem"
+        {% if manual_active %}aria-current="page"{% endif %}
+      >
+        <span class="xtu-help-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9.5A2.5 2.5 0 0 1 18 6.5V20H8.5A2.5 2.5 0 0 0 6 17.5V4Z" stroke="currentColor" stroke-width="1.6"/><path d="M6 17.5A2.5 2.5 0 0 1 8.5 20H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="xtu-help-nav__label">{{ section.settings.manual_label | default: 'Manual' | escape }}</span>
+      </a>
+      <a
+        class="xtu-help-nav__tab{% if firmware_active %} is-active{% endif %}"
+        href="{{ firmware_url }}"
+        data-help-nav-link
+        role="listitem"
+        {% if firmware_active %}aria-current="page"{% endif %}
+      >
+        <span class="xtu-help-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 16.5V18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span class="xtu-help-nav__label">{{ section.settings.firmware_label | default: 'Firmware' | escape }}</span>
+      </a>
+      {% if show_software %}
+        <a
+          class="xtu-help-nav__tab{% if software_active %} is-active{% endif %}"
+          href="{{ software_url }}"
+          data-help-nav-link
+          role="listitem"
+          {% if software_active %}aria-current="page"{% endif %}
+        >
+          <span class="xtu-help-nav__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M10 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <span class="xtu-help-nav__label">{{ section.settings.software_label | default: 'Software' | escape }}</span>
+        </a>
+      {% endif %}
+      <a
+        class="xtu-help-nav__tab{% if video_active %} is-active{% endif %}"
+        href="{{ video_url }}"
+        data-help-nav-link
+        role="listitem"
+        {% if video_active %}aria-current="page"{% endif %}
+      >
+        <span class="xtu-help-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5 15 12l-5 2.5v-5Z" fill="currentColor"/></svg>
+        </span>
+        <span class="xtu-help-nav__label">{{ section.settings.video_label | default: 'Video Guide' | escape }}</span>
+      </a>
+      <a
+        class="xtu-help-nav__tab{% if faq_active %} is-active{% endif %}"
+        href="{{ faq_url }}"
+        data-help-nav-link
+        role="listitem"
+        {% if faq_active %}aria-current="page"{% endif %}
+      >
+        <span class="xtu-help-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8.5 9.2A3.5 3.5 0 1 1 12 12.5v.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1" fill="currentColor"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <span class="xtu-help-nav__label">{{ section.settings.faq_label | default: 'FAQ' | escape }}</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "XTU Help Nav",
+  "tag": "section",
+  "class": "section-xtu-help-nav",
+  "enabled_on": { "templates": ["page"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "标题",
+      "default": "Help Center"
+    },
+    { "type": "color", "id": "heading_color", "label": "标题色", "default": "#000000" },
+    { "type": "header", "content": "背景" },
+    { "type": "color", "id": "background_color", "label": "版块背景色", "default": "#F5F5F7" },
+    { "type": "image_picker", "id": "image", "label": "背景图（PC）" },
+    { "type": "image_picker", "id": "image_mobile", "label": "背景图（移动端）", "info": "未上传时回退 PC 图。" },
+    { "type": "range", "id": "banner_height", "label": "最小高度（PC）", "min": 160, "max": 560, "step": 4, "unit": "px", "default": 280 },
+    { "type": "range", "id": "banner_height_mobile", "label": "最小高度（移动端）", "min": 120, "max": 400, "step": 4, "unit": "px", "default": 200 },
+    { "type": "checkbox", "id": "show_overlay", "label": "显示背景遮罩", "default": false, "info": "深色图上浅色标题时可开启。" },
+    { "type": "range", "id": "overlay_opacity", "label": "遮罩浓度", "min": 10, "max": 80, "step": 2, "unit": "%", "default": 30 },
+    { "type": "header", "content": "入口" },
+    { "type": "checkbox", "id": "show_software", "label": "显示 Software", "default": true, "info": "关闭后顶栏隐藏 Software Tab（各 Help 页面需分别保存，或改对应 page 模板）。" },
+    { "type": "text", "id": "manual_label", "label": "Manual 文案", "default": "Manual" },
+    { "type": "url", "id": "manual_url", "label": "Manual 链接" },
+    { "type": "text", "id": "firmware_label", "label": "Firmware 文案", "default": "Firmware" },
+    { "type": "url", "id": "firmware_url", "label": "Firmware 链接" },
+    { "type": "text", "id": "software_label", "label": "Software 文案", "default": "Software" },
+    { "type": "url", "id": "software_url", "label": "Software 链接" },
+    { "type": "text", "id": "video_label", "label": "Video 文案", "default": "Video Guide" },
+    { "type": "url", "id": "video_url", "label": "Video 链接" },
+    { "type": "text", "id": "faq_label", "label": "FAQ 文案", "default": "FAQ" },
+    { "type": "url", "id": "faq_url", "label": "FAQ 链接" }
+  ],
+  "presets": [{ "name": "XTU Help Nav" }]
+}
+{% endschema %}

@@ -1,0 +1,881 @@
+/**
+ * XTU Collection PLP — Insta360-inspired layout
+ * Scoped via stylesheet load on collection templates only.
+ */
+
+/* =============================================================================
+   Banner
+   ============================================================================= */
+
+.xtu-collection-banner {
+  --xtu-cb-padding-top: 60px;
+  --xtu-cb-padding-bottom: 60px;
+  --xtu-cb-banner-ratio: 21 / 9;
+
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding-block: var(--xtu-cb-padding-top) var(--xtu-cb-padding-bottom);
+  background: transparent;
+  color: var(--color-foreground, #111);
+  overflow: hidden;
+  border-block-end: 1px solid rgb(0 0 0 / 0.1);
+}
+
+/*
+ * Full-bleed collection hero.
+ * IMPORTANT: Do NOT use 100vw — Horizon scrolls inside .page-wrapper
+ * (overflow-y: auto), so 100vw overflows/clips and looks inset.
+ * Match XTU Hero: width 100% of #MainContent / .page-wrapper.
+ */
+.shopify-section.xtu-collection-banner-section,
+.xtu-collection-banner-section {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shopify-section.xtu-collection-banner-section:has(.xtu-collection-banner--has-media),
+.xtu-collection-banner-section:has(.xtu-collection-banner--has-media) {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
+.xtu-collection-banner--has-media {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: var(--xtu-cb-banner-ratio, 21 / 9);
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  border-block-end: 0;
+  box-sizing: border-box;
+  /* Fallback fill while image loads */
+  background-color: #111;
+}
+
+.xtu-collection-banner--ratio-auto.xtu-collection-banner--has-media {
+  aspect-ratio: auto;
+  min-height: 160px;
+}
+
+.xtu-collection-banner__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  /* CSS background is the paint layer — immune to global img { height:auto } */
+  background-color: #111;
+  background-image: var(--xtu-cb-banner-image);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  /*
+   * Many collection images are square product shots with a white matte.
+   * On a wide short banner, cover keeps those side mattes visible and looks
+   * “not full-bleed”. Slight overscan crops the matte so the scene bleeds.
+   */
+  transform: scale(1.2);
+  transform-origin: center center;
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-collection-banner__media {
+    background-image: var(--xtu-cb-banner-image-mobile, var(--xtu-cb-banner-image));
+  }
+}
+
+/* Keep <img> for SEO/a11y but hide visually — background handles display */
+.xtu-collection-banner__image {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.xtu-collection-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+
+.xtu-collection-banner__inner {
+  position: relative;
+  z-index: 2;
+  width: min(var(--page-width, 100%), 100%);
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--page-margin, 40px);
+  box-sizing: border-box;
+}
+
+.xtu-collection-banner--has-media .xtu-collection-banner__inner {
+  padding-block: 32px;
+}
+
+.xtu-collection-banner--center .xtu-collection-banner__content {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 40rem;
+}
+
+.xtu-collection-banner__title {
+  margin: 0;
+  font-family: var(--font-heading--family);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.xtu-collection-banner__desc {
+  margin-block-start: 12px;
+  max-width: 40rem;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: inherit;
+  opacity: 0.72;
+}
+
+.xtu-collection-banner__desc p {
+  margin: 0;
+}
+
+.xtu-collection-banner__desc p + p {
+  margin-block-start: 0.5em;
+}
+
+/* =============================================================================
+   Collection layout shell (keep Horizon 12-col grid; tighten facet span)
+   ============================================================================= */
+
+.product-grid-container .collection-wrapper {
+  --facets-vertical-col-width: 4;
+  row-gap: 0;
+  padding-block-start: 24px;
+}
+
+@media screen and (min-width: 990px) {
+  .product-grid-container .collection-wrapper {
+    --facets-vertical-col-width: 4;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  /* Count + sort sit above the product grid only (Insta360) */
+  .collection-wrapper:has(.facets--vertical) .facets.facets-controls-wrapper {
+    grid-column: var(--facets-vertical-col-width) / var(--full-width-column-number);
+    grid-row: 1;
+    align-self: end;
+    box-sizing: border-box;
+    padding-inline-start: 60px;
+  }
+
+  .collection-wrapper:has(.facets--vertical) .facets.facets-controls-wrapper .facets--filters-title {
+    display: none;
+  }
+
+  .collection-wrapper:has(.facets--vertical)
+    .facets-block-wrapper--vertical:not(.hidden):not(#filters-drawer) {
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+
+  .collection-wrapper:has(.facets--vertical)
+    .facets-block-wrapper--vertical:not(.hidden):not(#filters-drawer)
+    ~ .main-collection-grid {
+    grid-row: 2;
+    box-sizing: border-box;
+    padding-inline-start: 60px;
+  }
+
+  /* Keep mobile chrome out of the desktop grid track */
+  .collection-wrapper:has(.facets--vertical) .facets-toggle,
+  .collection-wrapper:has(.facets--vertical) .facets-mobile-wrapper {
+    display: none;
+  }
+}
+
+/* =============================================================================
+   Vertical facets (Insta360 left nav)
+   ============================================================================= */
+
+@media screen and (min-width: 750px) {
+  .facets-block-wrapper--vertical:not(#filters-drawer) {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    box-sizing: border-box;
+    color: #000;
+  }
+
+  .facets--vertical,
+  .facets--vertical .facets__form-wrapper {
+    padding-block: 0 !important;
+    color: #000 !important;
+  }
+
+  .facets--vertical .xtu-facets__heading {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--font-h5--size, 1.125rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #000;
+  }
+
+  .facets--vertical .facets__summary {
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #000 !important;
+    padding-block: 10px;
+    text-transform: none;
+    letter-spacing: 0;
+    --icon-opacity: 1;
+    opacity: 1 !important;
+  }
+
+  .facets--vertical .facets__filters-wrapper:hover .facets__summary,
+  .facets--vertical .facets__filters-wrapper:has(.facets__panel[open]) .facets__summary,
+  .facets--vertical .facets__filters-wrapper .facets__summary:hover,
+  .facets--vertical .facets__filters-wrapper .facets__panel[open] .facets__summary {
+    opacity: 1 !important;
+    color: #000 !important;
+  }
+
+  .facets--vertical .facets__summary .icon-caret,
+  .facets--vertical .facets__summary .svg-wrapper,
+  .facets--vertical .facets__summary svg {
+    color: #000 !important;
+    opacity: 1 !important;
+  }
+
+  .facets--vertical .facets__label,
+  .facets--vertical .facets__status,
+  .facets--vertical .facets__clear,
+  .facets--vertical .clear-filter,
+  .facets--vertical .facets__clear-all-link,
+  .facets--vertical .show-more__button,
+  .facets--vertical .show-more__label {
+    color: #000 !important;
+  }
+
+  .facets--vertical .facets__panel {
+    border: 0;
+    border-block-end: 1px solid #000;
+    margin: 0;
+  }
+
+  .facets--vertical .facets__panel:last-child {
+    border-block-end: 0;
+  }
+
+  .facets--vertical .facets__item::before,
+  .facets--vertical .sorting-filter::before {
+    border-top-color: #000 !important;
+  }
+
+  /* First filter: no top divider line */
+  .facets--vertical .facets__item:first-of-type::before,
+  .facets--vertical .facets__filters-wrapper > .facets__item:first-child::before {
+    content: none !important;
+    display: none !important;
+    border: 0 !important;
+  }
+
+  .facets--vertical .facets__inputs {
+    gap: 2px;
+    padding-block-end: 12px;
+  }
+
+  .facets--vertical .facets__inputs-wrapper {
+    gap: 2px;
+  }
+
+  /* Override theme desktop gap (--gap-sm ≈ 0.7rem) between filter options */
+  .facets--vertical .facets__inputs-wrapper .facets__inputs-list {
+    gap: 2px;
+  }
+
+  .facets--vertical .facets__inputs-list-item {
+    margin: 0;
+  }
+
+  /*
+   * Apply padding once on the row control — not also on nested label /
+   * .checkbox__label (that double-stacked and blew out In stock / Out of stock).
+   */
+  .facets--vertical .facets__inputs-list-item .checkbox,
+  .facets--vertical .facets__pill-label,
+  .facets--vertical .facets__swatch-label {
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000 !important;
+    padding-block: 4px;
+    border-radius: 8px;
+    transition: font-weight 0.2s ease;
+  }
+
+  .facets--vertical .facets__inputs-list-item label,
+  .facets--vertical .checkbox__label,
+  .facets--vertical .facets__inputs-list-item .checkbox .checkbox__label {
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000 !important;
+    padding-block: 0;
+  }
+
+  .facets--vertical .facets__inputs-list-item:hover .checkbox,
+  .facets--vertical .facets__inputs-list-item:hover label,
+  .facets--vertical .facets__pill-label:hover {
+    color: #000 !important;
+  }
+
+  .facets--vertical .facets__inputs-list-item:has(input:checked) .checkbox,
+  .facets--vertical .facets__inputs-list-item:has(input:checked) label,
+  .facets--vertical .facets__pill-input:checked + .facets__pill-label {
+    color: #000 !important;
+    font-weight: 600;
+  }
+
+  .facets--vertical input[type='checkbox'] {
+    accent-color: #000;
+  }
+
+  .facets--vertical .checkbox__input {
+    border-color: #000 !important;
+  }
+
+  .facets--vertical .facets__pill-label {
+    box-shadow: inset 0 0 0 1px #000 !important;
+    color: #000 !important;
+  }
+
+  .facets--vertical .price-facet__input,
+  .facets--vertical .price-facet__field .field__input,
+  .facets--vertical .field.price-facet__field .field__input {
+    color: #000 !important;
+    box-shadow: 0 0 0 var(--input-box-shadow-width, 1px) #000 !important;
+    padding: 0.5rem;
+  }
+
+  .facets--vertical .price-facet__input:focus,
+  .facets--vertical .price-facet__field .field__input:focus,
+  .facets--vertical .field.price-facet__field .field__input:focus-visible {
+    box-shadow: 0 0 0 calc(var(--input-box-shadow-width, 1px) + 0.5px) #000 !important;
+  }
+
+  .facets--vertical .price-facet__label,
+  .facets--vertical .price-facet__separator,
+  .facets--vertical .price-facet__highest-price {
+    color: #000 !important;
+  }
+
+  .facets--vertical .price-facet__label {
+    padding: 0.5rem;
+  }
+}
+
+/* Toolbar: count + sort (Insta360 top bar) */
+.facets-controls-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-block: 0 20px !important;
+  margin-block-end: 4px;
+  border-block-end: 1px solid rgb(0 0 0 / 0.06);
+}
+
+.facets-controls-wrapper .products-count-wrapper,
+.facets-controls-wrapper .products-count-wrapper span {
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #666;
+}
+
+.facets-controls-wrapper .sorting-filter-component,
+.facets-controls-wrapper .sorting,
+.facets-controls-wrapper .facets__label {
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #666;
+}
+
+.facets-controls-wrapper .sorting__select,
+.facets-controls-wrapper select,
+.facets-controls-wrapper .facets__status {
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+}
+
+/* Mobile filter toggle */
+.facets-toggle__button {
+  border-radius: 999px !important;
+  border: 1px solid rgb(0 0 0 / 0.12) !important;
+  background: #fff !important;
+  font-weight: 600;
+  line-height: 1.2;
+  min-height: 40px;
+  padding-inline: 16px;
+}
+
+.facets-toggle__button:hover {
+  border-color: #0070ca !important;
+  color: #0070ca;
+}
+
+/* =============================================================================
+   Filters drawer (mobile) — match PC vertical facet typography
+   ============================================================================= */
+
+#filters-drawer .facets--drawer,
+#filters-drawer .facets--drawer .facets__form-wrapper {
+  color: #000 !important;
+}
+
+#filters-drawer .theme-drawer__title,
+#filters-drawer .facets-mobile__title-wrapper .h3,
+#filters-drawer .theme-drawer__header {
+  font-family: var(--font-heading--family);
+  font-size: var(--font-h5--size, 1.125rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000 !important;
+}
+
+#filters-drawer .facets--drawer .facets__summary {
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000 !important;
+  padding-block: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+  --icon-opacity: 1;
+  opacity: 1 !important;
+}
+
+#filters-drawer .facets--drawer .facets__filters-wrapper:hover .facets__summary,
+#filters-drawer .facets--drawer .facets__filters-wrapper:has(.facets__panel[open]) .facets__summary,
+#filters-drawer .facets--drawer .facets__filters-wrapper .facets__summary:hover,
+#filters-drawer .facets--drawer .facets__filters-wrapper .facets__panel[open] .facets__summary {
+  opacity: 1 !important;
+  color: #000 !important;
+}
+
+#filters-drawer .facets--drawer .facets__summary .icon-caret,
+#filters-drawer .facets--drawer .facets__summary .svg-wrapper,
+#filters-drawer .facets--drawer .facets__summary svg {
+  color: #000 !important;
+  opacity: 1 !important;
+}
+
+#filters-drawer .facets--drawer .facets__label,
+#filters-drawer .facets--drawer .facets__status,
+#filters-drawer .facets--drawer .facets__clear,
+#filters-drawer .facets--drawer .clear-filter,
+#filters-drawer .facets--drawer .facets__clear-all-link,
+#filters-drawer .facets--drawer .show-more__button,
+#filters-drawer .facets--drawer .show-more__label {
+  color: #000 !important;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Filter group titles (Price / Availability…) — same weight as Sort */
+#filters-drawer .facets--drawer .facets__summary,
+#filters-drawer .facets--drawer .facets__summary .facets__label {
+  font-weight: 600 !important;
+}
+
+#filters-drawer .facets--drawer .facets__panel {
+  border: 0;
+  border-block-end: 1px solid #000;
+  margin: 0;
+}
+
+#filters-drawer .facets--drawer .facets__panel:last-child {
+  border-block-end: 0;
+}
+
+#filters-drawer .facets--drawer .facets__item::before,
+#filters-drawer .facets--drawer .sorting-filter::before {
+  border-top-color: #000 !important;
+}
+
+#filters-drawer .facets--drawer .facets__item:first-of-type::before,
+#filters-drawer .facets--drawer .facets__filters-wrapper > .facets__item:first-child::before {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+}
+
+#filters-drawer .facets--drawer .facets__inputs-list-item .checkbox,
+#filters-drawer .facets--drawer .facets__inputs-list-item label,
+#filters-drawer .facets--drawer .facets__pill-label,
+#filters-drawer .facets--drawer .checkbox__label,
+#filters-drawer .facets--drawer .facets__swatch-label {
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000 !important;
+  padding-block: 6px;
+}
+
+/* Tighten Availability options (In stock / Out of stock) — theme default mobile gap is 22px */
+#filters-drawer .facets--drawer .facets__inputs {
+  gap: 4px;
+}
+
+#filters-drawer .facets--drawer .facets__inputs-wrapper {
+  margin-block: 4px;
+}
+
+#filters-drawer .facets--drawer .facets__inputs-wrapper:not(:has(.facets__inputs-list)),
+#filters-drawer .facets--drawer .facets__inputs-wrapper .facets__inputs-list {
+  --facets-mobile-gap: 4px;
+  gap: 4px;
+}
+
+#filters-drawer .facets--drawer .facets__inputs-list-item {
+  margin: 0;
+}
+
+#filters-drawer .facets--drawer .facets__inputs-list-item:has(input:checked) .checkbox,
+#filters-drawer .facets--drawer .facets__inputs-list-item:has(input:checked) label,
+#filters-drawer .facets--drawer .facets__pill-input:checked + .facets__pill-label {
+  color: #000 !important;
+  font-weight: 600;
+}
+
+#filters-drawer .facets--drawer input[type='checkbox'] {
+  accent-color: #000;
+}
+
+#filters-drawer .facets--drawer .checkbox__input {
+  border-color: #000 !important;
+}
+
+#filters-drawer .facets--drawer .facets__pill-label {
+  box-shadow: inset 0 0 0 1px #000 !important;
+  color: #000 !important;
+}
+
+#filters-drawer .facets--drawer .price-facet__input,
+#filters-drawer .facets--drawer .price-facet__field .field__input,
+#filters-drawer .facets--drawer .field.price-facet__field .field__input {
+  color: #000 !important;
+  box-shadow: 0 0 0 var(--input-box-shadow-width, 1px) #000 !important;
+  padding: 0.5rem;
+}
+
+#filters-drawer .facets--drawer .price-facet__input:focus,
+#filters-drawer .facets--drawer .price-facet__field .field__input:focus,
+#filters-drawer .facets--drawer .field.price-facet__field .field__input:focus-visible {
+  box-shadow: 0 0 0 calc(var(--input-box-shadow-width, 1px) + 0.5px) #000 !important;
+}
+
+#filters-drawer .facets--drawer .price-facet__label,
+#filters-drawer .facets--drawer .price-facet__separator,
+#filters-drawer .facets--drawer .price-facet__highest-price {
+  color: #000 !important;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+#filters-drawer .facets--drawer .price-facet__label {
+  padding: 0.5rem;
+}
+
+#filters-drawer .facets--drawer .facets__drawer-actions,
+#filters-drawer .facets--drawer .facets__drawer-actions .button {
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+}
+
+/* Sort row / options — same size as filter items under Filter */
+#filters-drawer .sorting-filter__container .facets__label,
+#filters-drawer .sorting-filter__container .sorting-filter__select,
+#filters-drawer .facets--drawer .sorting-filter .facets__summary,
+#filters-drawer .facets--drawer .sorting-filter .facets__label,
+#filters-drawer .facets--drawer .sorting-filter .facets__status,
+#filters-drawer .facets--drawer .sorting-filter__label,
+#filters-drawer .facets--drawer .sorting-filter__option {
+  font-size: 0.875rem !important;
+  line-height: 1.2;
+  color: #000 !important;
+}
+
+#filters-drawer .sorting-filter__container .facets__label,
+#filters-drawer .facets--drawer .sorting-filter .facets__summary,
+#filters-drawer .facets--drawer .sorting-filter .facets__label {
+  font-weight: 600;
+}
+
+#filters-drawer .sorting-filter__container .sorting-filter__select,
+#filters-drawer .facets--drawer .sorting-filter__label {
+  font-weight: 400;
+}
+
+#filters-drawer .facets--drawer .sorting-filter__input:checked + .sorting-filter__checkmark + .sorting-filter__label {
+  font-weight: 600;
+}
+
+/* Drawer action buttons — capsule */
+#filters-drawer .facets__drawer-actions .facets__clear-all,
+#filters-drawer .facets__drawer-actions .facets__see-results,
+#filters-drawer .facets__drawer-actions .button,
+#filters-drawer .facets__drawer-actions .button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px !important;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  box-sizing: border-box;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#filters-drawer .facets__drawer-actions .facets__see-results,
+#filters-drawer .facets__drawer-actions .button:not(.button-secondary):not(.facets__clear-all) {
+  background: #1590f2 !important;
+  border: 0 !important;
+  color: #fff !important;
+}
+
+#filters-drawer .facets__drawer-actions .facets__see-results:hover,
+#filters-drawer .facets__drawer-actions .button:not(.button-secondary):not(.facets__clear-all):hover {
+  background: #0070ca !important;
+  color: #fff !important;
+}
+
+#filters-drawer .facets__drawer-actions .facets__clear-all,
+#filters-drawer .facets__drawer-actions .button-secondary {
+  background: transparent !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
+#filters-drawer .facets__drawer-actions .facets__clear-all:hover,
+#filters-drawer .facets__drawer-actions .button-secondary:hover {
+  background: #000 !important;
+  border-color: #000 !important;
+  color: #fff !important;
+}
+
+/* =============================================================================
+   Product grid — 3 columns on desktop
+   ============================================================================= */
+
+.main-collection-grid .product-grid {
+  --product-grid-gap: 16px;
+}
+
+@media screen and (min-width: 750px) {
+  .main-collection-grid .product-grid {
+    --product-grid-gap: 16px;
+  }
+
+  .main-collection-grid .product-grid.product-grid--grid {
+    --product-grid-columns-desktop: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =============================================================================
+   Pagination — align with collection PLP
+   ============================================================================= */
+
+.main-collection-grid .pagination {
+  --pagination-size: 40px;
+  --pagination-inset: 0;
+  --pagination-radius: 999;
+
+  justify-content: center;
+  margin-block-start: 40px;
+  margin-block-end: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.main-collection-grid .pagination__list {
+  gap: 8px;
+}
+
+.main-collection-grid .pagination__item {
+  width: var(--pagination-size);
+}
+
+.main-collection-grid .pagination__link {
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body, 0.875rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000;
+  border-radius: 999px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.main-collection-grid .pagination__link:focus-visible {
+  outline: 2px solid #0070ca;
+  outline-offset: 2px;
+}
+
+.main-collection-grid .pagination__link--page:not(.pagination__link--current),
+.main-collection-grid .pagination__link--arrow:not(.pagination__link--disabled) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+
+.main-collection-grid .pagination__link--page:hover:not(.pagination__link--current),
+.main-collection-grid .pagination__link--arrow:hover:not(.pagination__link--disabled) {
+  color: #fff;
+  background-color: #0070ca;
+  box-shadow: none;
+}
+
+.main-collection-grid .pagination__link--current {
+  color: #fff;
+  font-weight: 600;
+  background-color: #000;
+  cursor: default;
+}
+
+.main-collection-grid .pagination__link--gap {
+  color: #000;
+  opacity: 0.45;
+  box-shadow: none;
+  background: transparent;
+}
+
+.main-collection-grid .pagination__link--disabled {
+  opacity: 0.28;
+  color: #000;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.1);
+  background-color: transparent;
+}
+
+.main-collection-grid .pagination__link svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Kill theme hover/current pseudo backgrounds that fight our styles */
+.main-collection-grid .pagination__link::before,
+.main-collection-grid .pagination__list::before {
+  content: none !important;
+  display: none !important;
+}
+
+@media screen and (max-width: 749px) {
+  .main-collection-grid .pagination {
+    --pagination-size: 40px;
+    margin-block-start: 28px;
+  }
+
+  .main-collection-grid .pagination__list {
+    gap: 6px;
+  }
+}
+
+/* =============================================================================
+   Mobile — collection page chrome (card styles live in xtu-product-card.css)
+   ============================================================================= */
+
+@media screen and (max-width: 749px) {
+  .xtu-collection-banner:not(.xtu-collection-banner--has-media) .xtu-collection-banner__title {
+    font-size: 1.5rem;
+  }
+
+  .xtu-collection-banner__desc {
+    font-size: var(--xtu-type-body, 0.875rem);
+  }
+
+  .xtu-collection-banner--has-media .xtu-collection-banner__inner {
+    padding-block: 28px;
+  }
+
+  .product-grid-container .collection-wrapper {
+    padding-block-start: 12px;
+  }
+
+  /* Filter button: centered + 20px gap above product grid */
+  .collection-wrapper .facets-toggle {
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: var(--minimum-touch-target, 44px);
+    margin-block: 0 20px;
+    padding-block: 0;
+  }
+
+  .collection-wrapper .facets-toggle__wrapper {
+    margin-left: 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .collection-wrapper .facets-toggle .facets-mobile-wrapper:empty,
+  .collection-wrapper .facets-toggle .facets-mobile-wrapper:not(:has(*)) {
+    display: none;
+  }
+
+  .facets-controls-wrapper {
+    padding-block: 0 12px !important;
+  }
+}

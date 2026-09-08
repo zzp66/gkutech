@@ -1,0 +1,23 @@
+{%- doc -%}
+  Outputs the site content (版心) width in px from theme setting `page_width`.
+  Supports legacy select values: narrow / normal / wide.
+  @example
+  {% capture w %}{% render 'xtu-page-content-width' %}{% endcapture %}
+{%- enddoc -%}
+{%- liquid
+  assign raw = settings.page_width
+  if raw == 'narrow'
+    echo 1440
+  elsif raw == 'normal'
+    echo 1920
+  elsif raw == 'wide'
+    echo 2400
+  else
+    assign n = raw | plus: 0
+    if n < 320
+      echo 1440
+    else
+      echo n
+    endif
+  endif
+-%}

@@ -1,0 +1,647 @@
+{%- comment -%}
+  XTU FAQ Card Grid — 产品 FAQ 入口卡片栅格（图/视频 + 底部 CTA 按钮）。
+
+  数据来源
+  - 标题 / 配色 / 列数 / 圆角 / 边距：section 设置
+  - 卡片：block「FAQ 卡片」——媒体（PC/移动分图/视频/链接）、按钮文案与链接
+
+  运营配置
+  1. Theme Editor 添加「XTU FAQ Card Grid」
+  2. PC 列数选 3 或 4；移动端固定 2 列；圆角 PC 默认 16px / 移动 8px
+  3. 每个 block 选媒体类型后仅显示对应字段（visible_if）
+
+  前台
+  - 同行卡片等高；按钮区 subgrid 对齐（换行时取最高）
+  - 媒体区 aspect-ratio；圆角裁切；CTA 箭头指向右上
+
+  相关：snippets/xtu-media.liquid、assets/xtu-media.css
+{%- endcomment -%}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign columns_desktop = section.settings.columns_desktop | default: 3
+  assign gap_desktop = section.settings.gap_desktop | default: 16
+  assign gap_mobile = section.settings.gap_mobile | default: 8
+  assign card_radius = section.settings.card_radius | default: 16
+  assign card_radius_mobile = section.settings.card_radius_mobile | default: 8
+  assign media_ratio = section.settings.media_ratio | default: '4 / 3'
+  assign ratio_auto = false
+  if media_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign btn_bg = section.settings.button_bg | default: '#000000'
+  assign btn_color = section.settings.button_color | default: '#FFFFFF'
+  assign btn_bg_hover = section.settings.button_bg_hover | default: '#333333'
+  assign btn_color_hover = section.settings.button_color_hover | default: '#FFFFFF'
+  assign show_cursor_icon = section.settings.show_cursor_icon
+%}
+
+<section
+  id="xtu-faq-card-grid-{{ section.id }}"
+  class="xtu-faq-card-grid{% if ratio_auto %} xtu-faq-card-grid--ratio-auto{% endif %}"
+  style="
+    --xtu-fcg-bg: {{ background_color }};
+    --xtu-fcg-content-bg: {{ content_background }};
+    --xtu-fcg-content-width: {{ content_width }}px;
+    --xtu-fcg-heading: {{ heading_color }};
+    --xtu-fcg-text: {{ text_color }};
+    --xtu-fcg-muted: {{ muted_text_color }};
+    --xtu-fcg-cols: {{ columns_desktop }};
+    --xtu-fcg-gap: {{ gap_desktop }}px;
+    --xtu-fcg-gap-m: {{ gap_mobile }}px;
+    --xtu-fcg-radius: {{ card_radius }}px;
+    --xtu-fcg-radius-m: {{ card_radius_mobile }}px;
+    --xtu-fcg-ratio: {{ media_ratio }};
+    --xtu-fcg-pt: {{ padding_top }}px;
+    --xtu-fcg-pb: {{ padding_bottom }}px;
+    --xtu-fcg-pt-m: {{ padding_top_mobile }}px;
+    --xtu-fcg-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-fcg-btn-bg: {{ btn_bg }};
+    --xtu-fcg-btn-color: {{ btn_color }};
+    --xtu-fcg-btn-bg-hover: {{ btn_bg_hover }};
+    --xtu-fcg-btn-color-hover: {{ btn_color_hover }};
+  "
+>
+  <div class="xtu-faq-card-grid__inner">
+    {% if heading != blank or subheading != blank %}
+      <div class="xtu-faq-card-grid__header" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% if heading != blank %}
+          <h2 class="xtu-faq-card-grid__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+        {% endif %}
+        {% if subheading != blank %}
+          <p class="xtu-faq-card-grid__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <ul class="xtu-faq-card-grid__grid" data-xtu-reveal="fade-up" data-xtu-stagger>
+        {% for block in section.blocks %}
+          {% liquid
+            assign card_label = block.settings.button_label
+            assign card_href = block.settings.button_link
+            assign card_media_type = block.settings.media_type | default: 'image'
+            assign card_ratio = media_ratio
+            if block.settings.media_ratio != blank
+              assign card_ratio = block.settings.media_ratio
+            endif
+            assign card_ratio_auto = false
+            if card_ratio == 'auto'
+              assign card_ratio_auto = true
+            endif
+            assign card_alt = block.settings.image_alt | default: card_label
+            assign ph_mod = forloop.index0 | modulo: 3
+            assign placeholder_name = 'product-1'
+            if ph_mod == 1
+              assign placeholder_name = 'lifestyle-1'
+            elsif ph_mod == 2
+              assign placeholder_name = 'lifestyle-2'
+            endif
+            assign sizes_desktop = 'min(calc((min(var(--xtu-fcg-content-width, 1200px), 100vw - var(--page-margin) * 2) - var(--xtu-fcg-gap, 16px) * (var(--xtu-fcg-cols, 3) - 1)) / var(--xtu-fcg-cols, 3)), 480px)'
+            assign sizes_mobile = 'calc((100vw - var(--page-margin) * 2 - var(--xtu-fcg-gap-m, 8px)) / 2)'
+            assign btn_bg_block = block.settings.button_bg
+            assign btn_color_block = block.settings.button_color
+            assign btn_bg_hover_block = block.settings.button_bg_hover
+            assign btn_color_hover_block = block.settings.button_color_hover
+          %}
+          <li
+            class="xtu-faq-card-grid__item{% if card_ratio_auto %} xtu-faq-card-grid__item--ratio-auto{% endif %}"
+            style="{% unless card_ratio_auto %}--xtu-fcg-item-ratio: {{ card_ratio }};{% endunless %}"
+            data-xtu-reveal-child
+            {{ block.shopify_attributes }}
+          >
+            <article class="xtu-faq-card-grid__card">
+              <div class="xtu-faq-card-grid__media xtu-img-zoom">
+                {% render 'xtu-media',
+                  media_type: card_media_type,
+                  image: block.settings.image,
+                  image_mobile: block.settings.image_mobile,
+                  video: block.settings.video,
+                  video_mobile: block.settings.video_mobile,
+                  video_url: block.settings.video_url,
+                  youtube_url: block.settings.youtube_url,
+                  alt: card_alt,
+                  placeholder: placeholder_name,
+                  sizes_desktop: sizes_desktop,
+                  sizes_mobile: sizes_mobile,
+                  fill: true,
+                  zoom: true,
+                  class: 'xtu-faq-card-grid__media-inner'
+                %}
+              </div>
+
+              {% if card_label != blank %}
+                {% liquid
+                  assign cta_bg = btn_bg_block | default: btn_bg
+                  assign cta_color = btn_color_block | default: btn_color
+                  assign cta_bg_hover = btn_bg_hover_block | default: btn_bg_hover
+                  assign cta_color_hover = btn_color_hover_block | default: btn_color_hover
+                  assign cta_href = card_href | default: '#'
+                %}
+                <a
+                  class="xtu-faq-card-grid__cta"
+                  href="{{ cta_href }}"
+                  style="
+                    --xtu-fcg-btn-bg: {{ cta_bg }};
+                    --xtu-fcg-btn-color: {{ cta_color }};
+                    --xtu-fcg-btn-bg-hover: {{ cta_bg_hover }};
+                    --xtu-fcg-btn-color-hover: {{ cta_color_hover }};
+                  "
+                >
+                  <span class="xtu-faq-card-grid__cta-label">{{ card_label | escape }}</span>
+                  {% if show_cursor_icon %}
+                    <span class="xtu-faq-card-grid__cta-icon" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
+                        <path d="M4.5 11.5 11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  {% endif %}
+                </a>
+              {% endif %}
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-faq-card-grid {
+    padding: var(--xtu-fcg-pt) 0 var(--xtu-fcg-pb);
+    background: var(--xtu-fcg-bg, #fff);
+  }
+
+  .xtu-faq-card-grid__inner {
+    width: min(var(--xtu-fcg-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-fcg-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-faq-card-grid__header {
+    margin-bottom: var(--xtu-space-40);
+    text-align: center;
+  }
+
+  .xtu-faq-card-grid__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-fcg-heading, #000);
+  }
+
+  .xtu-faq-card-grid__subheading {
+    margin: var(--xtu-space-16) auto 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-fcg-muted, #8e9297);
+  }
+
+  .xtu-faq-card-grid__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--xtu-fcg-cols, 3), minmax(0, 1fr));
+    column-gap: var(--xtu-fcg-gap, 16px);
+    row-gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+  }
+
+  .xtu-faq-card-grid__item {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--xtu-fcg-radius, 16px);
+  }
+
+  @supports (grid-template-rows: subgrid) {
+    .xtu-faq-card-grid__item {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 2;
+      margin-bottom: var(--xtu-fcg-gap, 16px);
+    }
+
+    .xtu-faq-card-grid__card {
+      display: contents;
+    }
+
+    .xtu-faq-card-grid__cta {
+      height: 100%;
+      align-self: stretch;
+    }
+  }
+
+  @supports not (grid-template-rows: subgrid) {
+    .xtu-faq-card-grid__grid {
+      row-gap: var(--xtu-fcg-gap, 16px);
+    }
+
+    .xtu-faq-card-grid__item {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .xtu-faq-card-grid__card {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+      gap: 0;
+    }
+  }
+
+  .xtu-faq-card-grid__card {
+    gap: 0;
+  }
+
+  .xtu-faq-card-grid__media {
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+    aspect-ratio: var(--xtu-fcg-item-ratio, var(--xtu-fcg-ratio, 4 / 3));
+    background: var(--color-4, #f5f5f7);
+  }
+
+  .xtu-faq-card-grid__item--ratio-auto .xtu-faq-card-grid__media,
+  .xtu-faq-card-grid--ratio-auto .xtu-faq-card-grid__media {
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .xtu-faq-card-grid__media-inner {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-faq-card-grid__item--ratio-auto .xtu-faq-card-grid__media-inner,
+  .xtu-faq-card-grid--ratio-auto .xtu-faq-card-grid__media-inner {
+    position: static;
+    height: auto;
+  }
+
+  .xtu-faq-card-grid__media-inner :is(.xtu-media__image, .xtu-media__video, .xtu-media__placeholder) {
+    display: block;
+    vertical-align: top;
+  }
+
+  .xtu-faq-card-grid__item--ratio-auto .xtu-faq-card-grid__media-inner :is(.xtu-media__image, .xtu-media__video),
+  .xtu-faq-card-grid--ratio-auto .xtu-faq-card-grid__media-inner :is(.xtu-media__image, .xtu-media__video) {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .xtu-faq-card-grid__cta {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--xtu-space-8);
+    width: 100%;
+    min-height: 44px;
+    margin: 0;
+    padding: var(--xtu-space-12) var(--xtu-space-16);
+    border: 0;
+    background: var(--xtu-fcg-btn-bg, #000);
+    color: var(--xtu-fcg-btn-color, #fff);
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .xtu-faq-card-grid__cta:hover {
+    background: var(--xtu-fcg-btn-bg-hover, #333);
+    color: var(--xtu-fcg-btn-color-hover, #fff);
+  }
+
+  .xtu-faq-card-grid__cta-label {
+    min-width: 0;
+  }
+
+  .xtu-faq-card-grid__cta-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .xtu-faq-card-grid__cta-icon svg {
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-faq-card-grid {
+      padding: var(--xtu-fcg-pt-m) 0 var(--xtu-fcg-pb-m);
+    }
+
+    .xtu-faq-card-grid__header {
+      margin-bottom: var(--xtu-space-20);
+    }
+
+    .xtu-faq-card-grid__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-faq-card-grid__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--xtu-fcg-gap-m, 8px);
+      row-gap: 0;
+    }
+
+    @supports (grid-template-rows: subgrid) {
+      .xtu-faq-card-grid__item {
+        margin-bottom: var(--xtu-fcg-gap-m, 8px);
+      }
+    }
+
+    @supports not (grid-template-rows: subgrid) {
+      .xtu-faq-card-grid__grid {
+        row-gap: var(--xtu-fcg-gap-m, 8px);
+      }
+    }
+
+    .xtu-faq-card-grid__item {
+      border-radius: var(--xtu-fcg-radius-m, 8px);
+    }
+
+    .xtu-faq-card-grid__cta {
+      min-height: 40px;
+      padding: var(--xtu-space-12) var(--xtu-space-12);
+      font-size: var(--xtu-type-eyebrow);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU FAQ Card Grid",
+  "tag": "section",
+  "class": "section-xtu-faq-card-grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "大标题", "default": "Click to view product FAQS" },
+    { "type": "textarea", "id": "subheading", "label": "副标题" },
+    { "type": "color", "id": "background_color", "label": "版块背景色", "default": "#FFFFFF" },
+    { "type": "color", "id": "content_background", "label": "内容区背景色", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "标题颜色", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "正文颜色", "default": "#333333" },
+    { "type": "color", "id": "muted_text_color", "label": "副标题颜色", "default": "#8E9297" },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "PC 列数",
+      "options": [
+        { "value": "3", "label": "3 列" },
+        { "value": "4", "label": "4 列" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "默认媒体比例",
+      "options": [
+        { "value": "auto", "label": "Auto（按资源）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "3 / 4", "label": "3:4" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "16 / 10", "label": "16:10" },
+        { "value": "16 / 9", "label": "16:9" }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "卡片圆角（PC）",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_radius_mobile",
+      "label": "卡片圆角（移动端）",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "卡片间距（PC）",
+      "min": 8,
+      "max": 32,
+      "step": 8,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "卡片间距（移动端）",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    { "type": "header", "content": "按钮默认样式" },
+    { "type": "color", "id": "button_bg", "label": "按钮背景", "default": "#000000" },
+    { "type": "color", "id": "button_color", "label": "按钮文字", "default": "#FFFFFF" },
+    { "type": "color", "id": "button_bg_hover", "label": "按钮 Hover 背景", "default": "#333333" },
+    { "type": "color", "id": "button_color_hover", "label": "按钮 Hover 文字", "default": "#FFFFFF" },
+    {
+      "type": "checkbox",
+      "id": "show_cursor_icon",
+      "label": "按钮显示箭头图标",
+      "default": true
+    },
+    { "type": "header", "content": "上下边距" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_card",
+      "name": "FAQ 卡片",
+      "settings": [
+        { "type": "header", "content": "媒体" },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "图片 Alt",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频（PC）",
+          "info": "静音循环播放，无控件。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "上传视频（移动端）",
+          "info": "可选。未配置时移动端使用 PC 视频。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "text",
+          "id": "youtube_url",
+          "label": "视频链接（备用文本）",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "select",
+          "id": "media_ratio",
+          "label": "媒体比例（留空用版块默认）",
+          "options": [
+            { "value": "", "label": "跟随版块默认" },
+            { "value": "auto", "label": "Auto" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "16 / 9", "label": "16:9" }
+          ],
+          "default": ""
+        },
+        { "type": "header", "content": "按钮" },
+        { "type": "text", "id": "button_label", "label": "按钮文案", "default": "E200 FAQS" },
+        { "type": "url", "id": "button_link", "label": "按钮链接" },
+        { "type": "color", "id": "button_bg", "label": "按钮背景（覆盖默认）" },
+        { "type": "color", "id": "button_color", "label": "按钮文字（覆盖默认）" },
+        { "type": "color", "id": "button_bg_hover", "label": "按钮 Hover 背景（覆盖默认）" },
+        { "type": "color", "id": "button_color_hover", "label": "按钮 Hover 文字（覆盖默认）" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU FAQ Card Grid",
+      "settings": {
+        "heading": "Click to view product FAQS",
+        "columns_desktop": "3"
+      },
+      "blocks": [
+        { "type": "faq_card", "settings": { "button_label": "E200 FAQS" } },
+        { "type": "faq_card", "settings": { "button_label": "D600 FAQS" } },
+        { "type": "faq_card", "settings": { "button_label": "D600Pro FAQS" } },
+        { "type": "faq_card", "settings": { "button_label": "D600 Pro Max FAQS" } },
+        { "type": "faq_card", "settings": { "button_label": "D700 FAQS" } },
+        { "type": "faq_card", "settings": { "button_label": "D900 FAQS" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

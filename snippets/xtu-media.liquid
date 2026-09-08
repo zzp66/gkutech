@@ -1,0 +1,183 @@
+{%- doc -%}
+  Shared XTU media slot: PC/mobile image, PC/mobile uploaded video, or YouTube/Vimeo URL.
+  Height comes from the parent `aspect-ratio` (fill) or `--xtu-media-ratio` on this wrapper.
+
+  @param {string} [media_type] - image | video | youtube
+  @param {image} [image] - Desktop image
+  @param {image} [image_mobile] - Mobile image (falls back to desktop)
+  @param {video} [video] - Desktop uploaded video
+  @param {video} [video_mobile] - Mobile uploaded video (falls back to desktop)
+  @param {object} [video_url] - Theme `video_url` setting
+  @param {string} [youtube_url] - Fallback paste URL
+  @param {string} [alt] - Image alt
+  @param {string} [placeholder] - placeholder_svg_tag name
+  @param {string} [sizes_desktop] - Image sizes for PC
+  @param {string} [sizes_mobile] - Image sizes for mobile
+  @param {string} [class] - Extra classes on the wrapper
+  @param {boolean} [zoom] - Add xtu-img-zoom__media on images
+  @param {boolean} [fill] - Fill parent instead of applying own aspect-ratio
+  @param {boolean} [controls] - Show controls on uploaded video (default: muted loop, no controls)
+  @param {string} [youtube_mode] - ambient | embed
+  @param {string} [item_prefix] - Optional BEM prefix for item classes (e.g. xtu-mpair)
+{%- enddoc -%}
+
+{% liquid
+  assign media_type = media_type | default: 'image'
+  assign media_alt = alt | default: ''
+  assign ph = placeholder | default: 'lifestyle-1'
+  assign sizes_d = sizes_desktop | default: '(max-width: 749px) 100vw, min(50vw, 720px)'
+  assign sizes_m = sizes_mobile | default: 'calc(100vw - var(--page-margin) * 2)'
+  assign yt_mode = youtube_mode | default: 'embed'
+  assign prefix = item_prefix | default: '' | strip
+  assign has_mobile_image = false
+  if image_mobile != blank
+    assign has_mobile_image = true
+  endif
+  assign has_mobile_video = false
+  if video_mobile != blank
+    assign has_mobile_video = true
+  endif
+  assign has_split = false
+  if media_type == 'image' and has_mobile_image
+    assign has_split = true
+  endif
+  if media_type == 'video' and has_mobile_video
+    assign has_split = true
+  endif
+
+  assign item_base = 'xtu-media__item'
+  if prefix != blank
+    assign item_base = prefix | append: '__media-item'
+  endif
+  assign img_class = 'xtu-media__image ' | append: item_base
+  assign vid_class = 'xtu-media__video ' | append: item_base
+  assign ph_class = 'xtu-media__placeholder ' | append: item_base
+  if zoom
+    assign img_class = img_class | append: ' xtu-img-zoom__media'
+    assign ph_class = ph_class | append: ' xtu-img-zoom__media'
+  endif
+  assign img_desktop = img_class | append: ' xtu-media__item--desktop'
+  assign img_mobile = img_class | append: ' xtu-media__item--mobile'
+  assign vid_desktop = vid_class | append: ' xtu-media__item--desktop'
+  assign vid_mobile = vid_class | append: ' xtu-media__item--mobile'
+  assign wrap_class = 'xtu-media'
+  if fill
+    assign wrap_class = wrap_class | append: ' xtu-media--fill'
+  endif
+  if has_split
+    assign wrap_class = wrap_class | append: ' xtu-media--split'
+  endif
+  if class != blank
+    assign wrap_class = wrap_class | append: ' ' | append: class
+  endif
+%}
+
+<div class="{{ wrap_class | strip }}">
+  {% if media_type == 'youtube' %}
+    {% render 'xtu-video-embed',
+      video_url: video_url,
+      youtube_url: youtube_url,
+      mode: yt_mode,
+      class: 'xtu-media__youtube',
+      title: media_alt,
+      placeholder: ph,
+      placeholder_class: ph_class
+    %}
+  {% elsif media_type == 'video' %}
+    {% if video != blank %}
+      {% if controls %}
+        {{
+          video
+          | video_tag:
+            autoplay: false,
+            loop: false,
+            muted: false,
+            playsinline: true,
+            controls: true,
+            preload: 'metadata',
+            class: vid_desktop,
+            image_size: '1600x'
+        }}
+      {% else %}
+        {{
+          video
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            class: vid_desktop,
+            image_size: '1600x'
+        }}
+      {% endif %}
+    {% endif %}
+    {% if has_mobile_video %}
+      {% if controls %}
+        {{
+          video_mobile
+          | video_tag:
+            autoplay: false,
+            loop: false,
+            muted: false,
+            playsinline: true,
+            controls: true,
+            preload: 'metadata',
+            class: vid_mobile,
+            image_size: '1200x'
+        }}
+      {% else %}
+        {{
+          video_mobile
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            class: vid_mobile,
+            image_size: '1200x'
+        }}
+      {% endif %}
+    {% endif %}
+    {% if video == blank and has_mobile_video == false %}
+      {{ ph | placeholder_svg_tag: ph_class }}
+    {% elsif video == blank and has_mobile_video %}
+      {% assign ph_class_desktop = ph_class | append: ' xtu-media__item--desktop' %}
+      {{ ph | placeholder_svg_tag: ph_class_desktop }}
+    {% endif %}
+  {% else %}
+    {% if image != blank %}
+      {{
+        image
+        | image_url: width: 2000
+        | image_tag:
+          class: img_desktop,
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200, 1600, 2000',
+          sizes: sizes_d,
+          alt: media_alt
+      }}
+    {% endif %}
+    {% if has_mobile_image %}
+      {{
+        image_mobile
+        | image_url: width: 1200
+        | image_tag:
+          class: img_mobile,
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200',
+          sizes: sizes_m,
+          alt: media_alt
+      }}
+    {% endif %}
+    {% if image == blank and has_mobile_image == false %}
+      {{ ph | placeholder_svg_tag: ph_class }}
+    {% elsif image == blank and has_mobile_image %}
+      {% assign ph_class_desktop = ph_class | append: ' xtu-media__item--desktop' %}
+      {{ ph | placeholder_svg_tag: ph_class_desktop }}
+    {% endif %}
+  {% endif %}
+</div>

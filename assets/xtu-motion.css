@@ -1,0 +1,101 @@
+/* =============================================================================
+   XtuCam motion tokens
+   Storefront reveal: GSAP ScrollTrigger (xtu-reveal.js) — never opacity-hide.
+   Theme Editor: restore document scrolling so Shopify section:select works.
+   ============================================================================= */
+
+:root {
+  --xtu-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --xtu-reveal-duration: 0.9s;
+  --xtu-reveal-distance: 48px;
+}
+
+/* Fallback visible if JS fails — GSAP fromTo owns enter opacity/transform */
+[data-xtu-reveal],
+[data-xtu-reveal-child] {
+  opacity: 1;
+  transform: none;
+  will-change: transform, opacity;
+}
+
+/* -----------------------------------------------------------------------------
+   Theme Editor: undo Horizon page-wrapper scroll trap
+   base.css (≥990px) sets html/body overflow:hidden + .page-wrapper as scroller.
+   Shopify admin scrolls the window on section select — that does nothing while
+   the trap is active, so the preview looks blank / frozen. Restore document scroll.
+   ----------------------------------------------------------------------------- */
+@media screen and (min-width: 990px) {
+  html.shopify-design-mode:has(.page-wrapper),
+  html.shopify-design-mode:has(.page-wrapper) body {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-y: auto !important;
+    overscroll-behavior: auto !important;
+  }
+
+  html.shopify-design-mode .page-wrapper {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100dvh;
+    overflow: visible !important;
+    overflow-y: visible !important;
+    pointer-events: auto !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.shopify-design-mode,
+html.shopify-design-mode body {
+  overflow-x: clip;
+}
+
+html.shopify-design-mode[scroll-lock],
+html.shopify-design-mode[scroll-lock] .page-wrapper {
+  overflow: visible !important;
+  overflow-y: auto !important;
+}
+
+html.shopify-design-mode [data-xtu-reveal],
+html.shopify-design-mode [data-xtu-reveal-child],
+html.shopify-design-mode [data-xtu-stagger] > * {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+  transition: none !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  content-visibility: visible !important;
+}
+
+/* Shared image zoom-on-hover */
+.xtu-img-zoom {
+  --xtu-img-zoom-scale: 1.06;
+  --xtu-img-zoom-duration: 0.85s;
+  overflow: hidden;
+}
+
+.xtu-img-zoom__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform var(--xtu-img-zoom-duration) var(--xtu-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .xtu-img-zoom:hover .xtu-img-zoom__media,
+  .xtu-img-zoom:focus-within .xtu-img-zoom__media {
+    transform: scale(var(--xtu-img-zoom-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xtu-img-zoom__media {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,160 @@
+/* =============================================================================
+   XTU Image Marquee — 全宽无缝图片滚动
+   配合 sections/xtu-image-marquee.liquid、assets/xtu-image-marquee.js。
+   高度统一、宽度随图；Hover 放大并暂停；移动端降低高度与间距。
+   ============================================================================= */
+
+.xtu-im {
+  --xtu-im-h: 48px;
+  --xtu-im-h-m: 36px;
+  --xtu-im-gap: 48px;
+  --xtu-im-gap-m: 32px;
+  --xtu-im-pt: 40px;
+  --xtu-im-pb: 40px;
+  --xtu-im-pt-m: 24px;
+  --xtu-im-pb-m: 24px;
+  --xtu-im-duration: 30s;
+
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: var(--xtu-im-pt) 0 var(--xtu-im-pb);
+  background: var(--xtu-im-bg, #fff);
+  box-sizing: border-box;
+}
+
+.xtu-im__heading {
+  margin: 0 auto var(--xtu-space-24, 24px);
+  max-width: min(1200px, calc(100% - var(--page-margin) * 2));
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-section-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-im-heading, #000);
+  text-align: center;
+}
+
+.xtu-im__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.xtu-im__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  will-change: transform;
+  animation: xtu-im-rtl var(--xtu-im-duration) linear infinite;
+}
+
+.xtu-im__track--ltr {
+  animation-name: xtu-im-ltr;
+}
+
+.xtu-im__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--xtu-im-gap);
+  padding-inline-end: var(--xtu-im-gap);
+  box-sizing: content-box;
+}
+
+.xtu-im__item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: var(--xtu-im-h);
+  overflow: visible;
+  text-decoration: none;
+  color: inherit;
+}
+
+.xtu-im__item.xtu-img-zoom {
+  overflow: visible;
+}
+
+.xtu-im__image,
+.xtu-im__placeholder {
+  display: block;
+  height: var(--xtu-im-h);
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+.xtu-im__placeholder {
+  width: calc(var(--xtu-im-h) * 2);
+  background: #e8eaed;
+}
+
+.xtu-im__item.xtu-img-zoom .xtu-im__image,
+.xtu-im__item.xtu-img-zoom .xtu-im__placeholder {
+  width: auto;
+  height: var(--xtu-im-h);
+  object-fit: contain;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .xtu-im__viewport:has(.xtu-im__item:hover) .xtu-im__track,
+  .xtu-im__viewport:has(.xtu-im__item:focus-within) .xtu-im__track {
+    animation-play-state: paused;
+  }
+}
+
+.xtu-im__viewport:has(.xtu-im__item:active) .xtu-im__track {
+  animation-play-state: paused;
+}
+
+@keyframes xtu-im-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes xtu-im-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-im {
+    --xtu-im-h: var(--xtu-im-h-m);
+    --xtu-im-gap: var(--xtu-im-gap-m);
+    padding: var(--xtu-im-pt-m) 0 var(--xtu-im-pb-m);
+  }
+
+  .xtu-im__heading {
+    margin-bottom: var(--xtu-space-16, 16px);
+    font-size: var(--xtu-type-section-title-m);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xtu-im__track {
+    animation: none;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .xtu-im__group + .xtu-im__group {
+    display: none;
+  }
+
+  .xtu-im__group {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-inline: var(--page-margin);
+    padding-inline-end: var(--page-margin);
+    row-gap: var(--xtu-im-gap);
+  }
+}

@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "help-nav": {
+      "type": "xtu-help-nav",
+      "settings": {
+        "kicker": "Help Center",
+        "show_software": true,
+        "manual_label": "Manual",
+        "firmware_label": "Firmware",
+        "software_label": "Software",
+        "video_label": "Video Guide",
+        "faq_label": "FAQ"
+      }
+    },
+    "help-software": {
+      "type": "xtu-help-software",
+      "settings": {
+        "heading": "Software",
+        "subheading": "Apps and tools for XTU cameras.",
+        "sidebar_label": "Products",
+        "empty_text": "No software for this product yet.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "help-nav",
+    "help-software"
+  ]
+}

@@ -1,0 +1,333 @@
+{%- comment -%}
+  XTU Social Links — Follow Us 社媒入口。
+
+  数据来源：Theme Editor 本 section。
+  - 版块标题、版心、边距、图标尺寸。
+  - block「社媒」：logo、图标底色、名称、内容文案、跳转链接。
+
+  运营：添加「XTU Social Links」，按平台增加 block 并上传 logo。
+
+  前台
+  - PC：单项宽度按版心 6 等分，不足 6 个时整行居中。
+  - 移动端：一行 2 个。
+  - 有链接则整卡可点；无 logo 用占位，便于后台预览。
+
+  相关：assets/xtu-social-links.css
+{%- endcomment -%}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign name_color = section.settings.name_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign icon_size = section.settings.icon_size | default: 64
+  assign icon_sizes = icon_size | append: 'px'
+  assign icon_radius = section.settings.icon_radius | default: 16
+  assign gap = section.settings.gap | default: 24
+  assign gap_mobile = section.settings.gap_mobile | default: 16
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign open_new_tab = section.settings.open_new_tab
+%}
+
+{{ 'xtu-social-links.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="xtu-social-links-{{ section.id }}"
+  class="xtu-sl"
+  style="
+    --xtu-sl-bg: {{ background_color }};
+    --xtu-sl-content-bg: {{ content_background }};
+    --xtu-sl-content-width: {{ content_width }}px;
+    --xtu-sl-heading: {{ heading_color }};
+    --xtu-sl-name: {{ name_color }};
+    --xtu-sl-text: {{ text_color }};
+    --xtu-sl-icon: {{ icon_size }}px;
+    --xtu-sl-icon-radius: {{ icon_radius }}px;
+    --xtu-sl-gap: {{ gap }}px;
+    --xtu-sl-gap-m: {{ gap_mobile }}px;
+    --xtu-sl-pt: {{ padding_top }}px;
+    --xtu-sl-pb: {{ padding_bottom }}px;
+    --xtu-sl-pt-m: {{ padding_top_mobile }}px;
+    --xtu-sl-pb-m: {{ padding_bottom_mobile }}px;
+  "
+>
+  <div class="xtu-sl__inner" data-xtu-reveal="fade-up" data-xtu-stagger>
+    {% if heading != blank %}
+      <h2 class="xtu-sl__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="xtu-sl__list">
+        {% for block in section.blocks %}
+          {% if block.type == 'item' %}
+            {% liquid
+              assign logo = block.settings.logo
+              assign name = block.settings.name
+              assign text = block.settings.text
+              assign link = block.settings.link
+              assign icon_bg = block.settings.icon_background | default: '#0070CA'
+              assign alt_text = name | default: 'Social'
+            %}
+            {% if link != blank %}
+              <a
+                class="xtu-sl__item"
+                href="{{ link }}"
+                {% if open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                data-xtu-reveal-child
+                {{ block.shopify_attributes }}
+                style="--xtu-sl-icon-bg: {{ icon_bg }};"
+              >
+            {% else %}
+              <div
+                class="xtu-sl__item"
+                data-xtu-reveal-child
+                {{ block.shopify_attributes }}
+                style="--xtu-sl-icon-bg: {{ icon_bg }};"
+              >
+            {% endif %}
+                <span class="xtu-sl__icon" aria-hidden="true">
+                  {% if logo != blank %}
+                    {{
+                      logo
+                      | image_url: width: 200
+                      | image_tag:
+                        class: 'xtu-sl__logo',
+                        loading: 'lazy',
+                        widths: '80, 120, 160, 200',
+                        sizes: icon_sizes,
+                        alt: alt_text
+                    }}
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'xtu-sl__placeholder' }}
+                  {% endif %}
+                </span>
+                {% if name != blank %}
+                  <span class="xtu-sl__name">{{ name | escape }}</span>
+                {% endif %}
+                {% if text != blank %}
+                  <span class="xtu-sl__text">{{ text | escape }}</span>
+                {% endif %}
+            {% if link != blank %}
+              </a>
+            {% else %}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "XTU Social Links",
+  "tag": "section",
+  "class": "section-xtu-social-links",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Follow Us"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab",
+      "label": "链接在新标签打开",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "图标"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "图标尺寸",
+      "min": 48,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "icon_radius",
+      "label": "图标圆角",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "间距（PC）",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "间距（移动端）",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "颜色与布局"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "名称颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "内容文字色",
+      "default": "#333333"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200,
+      "info": "范围 600–1600。PC 按此宽度 6 等分。"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "社媒",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "社媒 Logo"
+        },
+        {
+          "type": "color",
+          "id": "icon_background",
+          "label": "图标背景色",
+          "default": "#0070CA"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "名称",
+          "default": "Instagram"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "内容",
+          "default": "@xtucam",
+          "info": "账号、网址等展示文案。"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "跳转链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Social Links",
+      "settings": {
+        "heading": "Follow Us"
+      },
+      "blocks": [
+        { "type": "item", "settings": { "name": "Website", "text": "www.xtucam.com", "icon_background": "#0D9488" } },
+        { "type": "item", "settings": { "name": "Facebook", "text": "XTU Action Cam", "icon_background": "#1877F2" } },
+        { "type": "item", "settings": { "name": "Instagram", "text": "@xtucam", "icon_background": "#E1306C" } },
+        { "type": "item", "settings": { "name": "YouTube", "text": "XTU Action Cam", "icon_background": "#FF0000" } },
+        { "type": "item", "settings": { "name": "TikTok", "text": "@xtucam", "icon_background": "#111111" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

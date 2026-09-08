@@ -1,0 +1,1311 @@
+{% liquid
+  assign autoplay_delay = section.settings.autoplay_delay | default: 5 | times: 1000
+  assign effect = section.settings.transition_effect | default: 'slide'
+  assign show_arrows = section.settings.show_arrows
+  assign show_arrows_mobile = section.settings.show_arrows_mobile
+  assign height_mode_desktop = section.settings.height_mode_desktop | default: 'fullscreen'
+  assign height_mode_mobile = section.settings.height_mode_mobile | default: 'fullscreen'
+  assign fixed_height_desktop = section.settings.fixed_height_desktop | default: 700
+  assign fixed_height_mobile = section.settings.fixed_height_mobile | default: 580
+%}
+
+<script src="{{ 'xtu-hero-banner.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="xtu-hero-banner-{{ section.id }}"
+  class="
+    xtu-hero-banner
+    xtu-hero-banner--d-{{ height_mode_desktop }}
+    xtu-hero-banner--m-{{ height_mode_mobile }}
+    {% if show_arrows %}xtu-hero-banner--has-arrows{% endif %}
+    {% if show_arrows and show_arrows_mobile %}xtu-hero-banner--arrows-mobile{% endif %}
+    {% if section.blocks.size > 1 %}xtu-hero-banner--has-pagination{% endif %}
+  "
+  data-xtu-hero-banner
+  data-autoplay="{{ section.settings.enable_autoplay }}"
+  data-autoplay-delay="{{ autoplay_delay }}"
+  data-effect="{{ effect }}"
+  style="
+    --xtu-hero-progress-duration: {{ autoplay_delay }}ms;
+    --xtu-hero-h-d: {{ fixed_height_desktop }}px;
+    --xtu-hero-h-m: {{ fixed_height_mobile }}px;
+  "
+>
+  <div class="swiper xtu-hero-banner__swiper" data-xtu-hero-swiper>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'slide' %}
+          {% liquid
+            assign slide_bg = block.settings.background_color | default: '#000000'
+            assign text_color = block.settings.text_color | default: '#ffffff'
+            assign text_align_h_desktop = block.settings.text_alignment_desktop
+            if text_align_h_desktop == blank
+              assign text_align_h_desktop = block.settings.text_alignment | default: 'center'
+            endif
+            assign text_align_v_desktop = block.settings.text_position_v_desktop | default: 'center'
+            assign text_position_mobile = block.settings.text_position_mobile | default: 'center'
+            assign overlay_opacity = block.settings.overlay_opacity | default: 30
+
+            assign eyebrow_color = block.settings.eyebrow_color | default: text_color
+            assign heading_color = block.settings.heading_color | default: text_color
+            assign subheading_color = block.settings.subheading_color | default: text_color
+            assign eyebrow_size_d = block.settings.eyebrow_size_desktop | default: 16
+            assign eyebrow_size_m = block.settings.eyebrow_size_mobile | default: 14
+            assign heading_size_d = block.settings.heading_size_desktop | default: 56
+            assign heading_size_m = block.settings.heading_size_mobile | default: 36
+            assign subheading_size_d = block.settings.subheading_size_desktop | default: 20
+            assign subheading_size_m = block.settings.subheading_size_mobile | default: 16
+
+            assign btn_bg = block.settings.button_bg | default: '#1590F2'
+            assign btn_border = block.settings.button_border | default: btn_bg
+            assign btn_text = block.settings.button_text_color | default: '#FFFFFF'
+            assign btn_bg_hover = block.settings.button_bg_hover | default: '#0070CA'
+            assign btn_border_hover = block.settings.button_border_hover | default: btn_bg_hover
+            assign btn_text_hover = block.settings.button_text_color_hover | default: '#FFFFFF'
+            assign btn_bg_m = block.settings.button_bg_mobile | default: btn_bg
+            assign btn_border_m = block.settings.button_border_mobile | default: btn_border
+            assign btn_text_m = block.settings.button_text_color_mobile | default: btn_text
+            assign btn_bg_hover_m = block.settings.button_bg_hover_mobile | default: btn_bg_hover
+            assign btn_border_hover_m = block.settings.button_border_hover_mobile | default: btn_border_hover
+            assign btn_text_hover_m = block.settings.button_text_color_hover_mobile | default: btn_text_hover
+
+            assign btn2_bg = block.settings.secondary_button_bg
+            if btn2_bg == blank
+              assign btn2_bg = 'transparent'
+            endif
+            assign btn2_border = block.settings.secondary_button_border
+            if btn2_border == blank
+              assign btn2_border = block.settings.secondary_button_text_color | default: text_color
+            endif
+            assign btn2_text = block.settings.secondary_button_text_color | default: text_color
+            assign btn2_bg_hover = block.settings.secondary_button_bg_hover | default: '#FFFFFF'
+            assign btn2_border_hover = block.settings.secondary_button_border_hover | default: btn2_bg_hover
+            assign btn2_text_hover = block.settings.secondary_button_text_color_hover | default: '#111111'
+            assign btn2_bg_m = block.settings.secondary_button_bg_mobile | default: btn2_bg
+            assign btn2_border_m = block.settings.secondary_button_border_mobile | default: btn2_border
+            assign btn2_text_m = block.settings.secondary_button_text_color_mobile | default: btn2_text
+            assign btn2_bg_hover_m = block.settings.secondary_button_bg_hover_mobile | default: btn2_bg_hover
+            assign btn2_border_hover_m = block.settings.secondary_button_border_hover_mobile | default: btn2_border_hover
+            assign btn2_text_hover_m = block.settings.secondary_button_text_color_hover_mobile | default: btn2_text_hover
+          %}
+          <div
+            class="swiper-slide xtu-hero-banner__slide"
+            data-bullet-title="{{ block.settings.bullet_title | escape }}"
+            style="
+              --xtu-hero-slide-bg: {{ slide_bg }};
+              --xtu-hero-text: {{ text_color }};
+              --xtu-hero-overlay: {{ overlay_opacity | divided_by: 100.0 }};
+              --xtu-hero-eyebrow: {{ eyebrow_color }};
+              --xtu-hero-heading: {{ heading_color }};
+              --xtu-hero-subheading: {{ subheading_color }};
+              --xtu-hero-eyebrow-size: {{ eyebrow_size_d }}px;
+              --xtu-hero-eyebrow-size-m: {{ eyebrow_size_m }}px;
+              --xtu-hero-heading-size: {{ heading_size_d }}px;
+              --xtu-hero-heading-size-m: {{ heading_size_m }}px;
+              --xtu-hero-subheading-size: {{ subheading_size_d }}px;
+              --xtu-hero-subheading-size-m: {{ subheading_size_m }}px;
+              --xtu-hero-btn-bg: {{ btn_bg }};
+              --xtu-hero-btn-border: {{ btn_border }};
+              --xtu-hero-btn-text: {{ btn_text }};
+              --xtu-hero-btn-bg-hover: {{ btn_bg_hover }};
+              --xtu-hero-btn-border-hover: {{ btn_border_hover }};
+              --xtu-hero-btn-text-hover: {{ btn_text_hover }};
+              --xtu-hero-btn-bg-m: {{ btn_bg_m }};
+              --xtu-hero-btn-border-m: {{ btn_border_m }};
+              --xtu-hero-btn-text-m: {{ btn_text_m }};
+              --xtu-hero-btn-bg-hover-m: {{ btn_bg_hover_m }};
+              --xtu-hero-btn-border-hover-m: {{ btn_border_hover_m }};
+              --xtu-hero-btn-text-hover-m: {{ btn_text_hover_m }};
+              --xtu-hero-btn2-bg: {{ btn2_bg }};
+              --xtu-hero-btn2-border: {{ btn2_border }};
+              --xtu-hero-btn2-text: {{ btn2_text }};
+              --xtu-hero-btn2-bg-hover: {{ btn2_bg_hover }};
+              --xtu-hero-btn2-border-hover: {{ btn2_border_hover }};
+              --xtu-hero-btn2-text-hover: {{ btn2_text_hover }};
+              --xtu-hero-btn2-bg-m: {{ btn2_bg_m }};
+              --xtu-hero-btn2-border-m: {{ btn2_border_m }};
+              --xtu-hero-btn2-text-m: {{ btn2_text_m }};
+              --xtu-hero-btn2-bg-hover-m: {{ btn2_bg_hover_m }};
+              --xtu-hero-btn2-border-hover-m: {{ btn2_border_hover_m }};
+              --xtu-hero-btn2-text-hover-m: {{ btn2_text_hover_m }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            {% liquid
+              assign video_desktop = block.settings.video
+              assign image_desktop = block.settings.image
+              assign video_mobile = block.settings.video_mobile
+              assign image_mobile = block.settings.image_mobile
+              assign youtube_url = block.settings.youtube_url | strip
+              assign has_mobile_media = false
+
+              if video_desktop == blank and image_desktop == blank
+                if video_mobile != blank
+                  assign video_desktop = video_mobile
+                elsif image_mobile != blank
+                  assign image_desktop = image_mobile
+                endif
+              elsif video_mobile != blank or image_mobile != blank
+                assign has_mobile_media = true
+              endif
+
+              assign slide_alt = block.settings.heading
+              if slide_alt == blank and image_desktop != blank
+                assign slide_alt = image_desktop.alt
+              endif
+              if slide_alt == blank and image_mobile != blank
+                assign slide_alt = image_mobile.alt
+              endif
+            %}
+            <div class="xtu-hero-banner__media{% if has_mobile_media %} xtu-hero-banner__media--has-mobile{% endif %}">
+              {% if youtube_url != blank and video_desktop == blank %}
+                {% render 'xtu-video-embed',
+                  youtube_url: youtube_url,
+                  mode: 'ambient',
+                  class: 'xtu-hero-banner__youtube xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop',
+                  title: slide_alt,
+                  placeholder: 'lifestyle-1',
+                  placeholder_class: 'xtu-hero-banner__placeholder xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop'
+                %}
+              {% elsif video_desktop != blank %}
+                {{
+                  video_desktop
+                  | video_tag:
+                    autoplay: true,
+                    loop: true,
+                    muted: true,
+                    controls: false,
+                    class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop'
+                }}
+              {% elsif image_desktop != blank %}
+                {{
+                  image_desktop
+                  | image_url: width: 2400
+                  | image_tag:
+                    class: 'xtu-hero-banner__image xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop',
+                    loading: 'eager',
+                    widths: '750, 1100, 1500, 2000, 2400',
+                    sizes: '100vw',
+                    alt: slide_alt
+                }}
+              {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-hero-banner__placeholder xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop' }}
+              {% endif %}
+
+              {% if has_mobile_media %}
+                {% if video_mobile != blank %}
+                  {{
+                    video_mobile
+                    | video_tag:
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      controls: false,
+                      class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--mobile'
+                  }}
+                {% elsif image_mobile != blank %}
+                  {{
+                    image_mobile
+                    | image_url: width: 1500
+                    | image_tag:
+                      class: 'xtu-hero-banner__image xtu-hero-banner__media-item xtu-hero-banner__media-item--mobile',
+                      loading: 'eager',
+                      widths: '480, 750, 1100, 1500',
+                      sizes: '100vw',
+                      alt: slide_alt
+                  }}
+                {% endif %}
+              {% endif %}
+              <div class="xtu-hero-banner__overlay" aria-hidden="true"></div>
+            </div>
+
+            <div class="xtu-hero-banner__content xtu-hero-banner__content--dh-{{ text_align_h_desktop }} xtu-hero-banner__content--dv-{{ text_align_v_desktop }} xtu-hero-banner__content--mv-{{ text_position_mobile }}">
+              <div
+                class="xtu-hero-banner__copy"
+                data-xtu-reveal="fade-up"
+                data-xtu-stagger
+              >
+                {% if block.settings.eyebrow != blank %}
+                  <p class="xtu-hero-banner__eyebrow" data-xtu-reveal-child>
+                    {{ block.settings.eyebrow | escape }}
+                  </p>
+                {% endif %}
+
+                {% if block.settings.heading != blank %}
+                  <h2 class="xtu-hero-banner__heading" data-xtu-reveal-child>
+                    {{ block.settings.heading | escape }}
+                  </h2>
+                {% endif %}
+
+                {% if block.settings.subheading != blank %}
+                  <p class="xtu-hero-banner__subheading" data-xtu-reveal-child>
+                    {{ block.settings.subheading | escape }}
+                  </p>
+                {% endif %}
+
+                {% if block.settings.button_label != blank or block.settings.secondary_button_label != blank %}
+                  <div class="xtu-hero-banner__actions" data-xtu-reveal-child>
+                    {% if block.settings.button_label != blank %}
+                      <a
+                        class="xtu-hero-banner__btn xtu-hero-banner__btn--primary"
+                        href="{{ block.settings.button_link | default: '#' }}"
+                      >
+                        {{ block.settings.button_label | escape }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.secondary_button_label != blank %}
+                      <a
+                        class="xtu-hero-banner__btn xtu-hero-banner__btn--secondary"
+                        href="{{ block.settings.secondary_button_link | default: '#' }}"
+                      >
+                        {{ block.settings.secondary_button_label | escape }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if section.blocks.size > 1 %}
+    {% if show_arrows %}
+      {% if show_arrows_mobile %}
+        {% render 'xtu-swiper-nav',
+          prev_attributes: 'data-xtu-hero-prev',
+          next_attributes: 'data-xtu-hero-next'
+        %}
+      {% else %}
+        {% render 'xtu-swiper-nav',
+          prev_attributes: 'data-xtu-hero-prev',
+          next_attributes: 'data-xtu-hero-next',
+          hide_mobile: true
+        %}
+      {% endif %}
+    {% endif %}
+
+    <div class="xtu-hero-banner__controls">
+      <div
+        class="xtu-hero-banner__pagination"
+        data-xtu-hero-pagination
+        role="tablist"
+        aria-label="Hero slides"
+      ></div>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .xtu-hero-banner {
+    --xtu-hero-text: #ffffff;
+    --xtu-hero-h-d: 700px;
+    --xtu-hero-h-m: 580px;
+    /* Safe area: gap below nav (~60px); under transparent header → header-group + gap */
+    --xtu-hero-nav-gap: 60px;
+    --xtu-hero-safe-top: var(--xtu-hero-nav-gap);
+    /* Safe area: clear pagination bar (bottom offset + bullet stack + gap) */
+    --xtu-hero-safe-bottom: 48px;
+    --xtu-hero-safe-bottom-pagination: 120px;
+    /* Safe area: clear side arrows (inset + 45px btn + gap) */
+    --xtu-hero-safe-inline: var(--page-margin);
+    --xtu-hero-safe-inline-nav: calc(
+      var(--xtu-swiper-nav-inset, 16px) + var(--xtu-swiper-nav-size, 45px) + 16px
+    );
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    color: var(--xtu-hero-text);
+    box-sizing: border-box;
+  }
+
+  /* Matches base.css: transparent header pulls first section under the nav */
+  body:has(.header[transparent]) .content-for-layout > .shopify-section:first-child .xtu-hero-banner {
+    /* 公告栏 + 导航栏 + 与导航间距(~60px) */
+    --xtu-hero-safe-top: calc(
+      var(--header-group-height, var(--header-height, 64px)) + var(--xtu-hero-nav-gap, 60px)
+    );
+  }
+
+  .xtu-hero-banner--has-pagination {
+    --xtu-hero-safe-bottom: var(--xtu-hero-safe-bottom-pagination);
+  }
+
+  .xtu-hero-banner--has-arrows {
+    --xtu-hero-safe-inline: max(var(--page-margin), var(--xtu-hero-safe-inline-nav));
+  }
+
+  /* Mobile height modes (default < 750px) */
+  .xtu-hero-banner--m-fullscreen {
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100svh;
+    max-height: 100dvh;
+  }
+
+  .xtu-hero-banner--m-fixed {
+    height: var(--xtu-hero-h-m, 580px);
+    max-height: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .xtu-hero-banner--d-fullscreen {
+      height: 100vh;
+      height: 100svh;
+      height: 100dvh;
+      max-height: 100vh;
+      max-height: 100svh;
+      max-height: 100dvh;
+    }
+
+    .xtu-hero-banner--d-fixed {
+      height: var(--xtu-hero-h-d, 700px);
+      max-height: none;
+    }
+  }
+
+  .xtu-hero-banner__swiper,
+  .xtu-hero-banner__swiper .swiper-wrapper,
+  .xtu-hero-banner__slide {
+    height: 100%;
+  }
+
+  .xtu-hero-banner__slide {
+    position: relative;
+    background: var(--xtu-hero-slide-bg, #000);
+  }
+
+  .xtu-hero-banner__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .xtu-hero-banner__image,
+  .xtu-hero-banner__video,
+  .xtu-hero-banner__placeholder,
+  .xtu-hero-banner__media-item,
+  .xtu-hero-banner__youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .xtu-hero-banner__youtube {
+    border: 0;
+    pointer-events: none;
+  }
+
+  .xtu-hero-banner__media-item--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-hero-banner__media--has-mobile .xtu-hero-banner__media-item--desktop {
+      display: none;
+    }
+
+    .xtu-hero-banner__media--has-mobile .xtu-hero-banner__media-item--mobile {
+      display: block;
+    }
+  }
+
+  .xtu-hero-banner__placeholder {
+    background: #1a1a1a;
+  }
+
+  .xtu-hero-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / var(--xtu-hero-overlay, 0.3));
+    pointer-events: none;
+  }
+
+  .xtu-hero-banner__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(var(--page-width), 100%);
+    margin-inline: auto;
+    padding: var(--xtu-hero-safe-top) var(--xtu-hero-safe-inline) var(--xtu-hero-safe-bottom);
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .xtu-hero-banner__content--dh-left {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .xtu-hero-banner__content--dh-center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .xtu-hero-banner__content--dh-right {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .xtu-hero-banner__content--dv-top {
+      align-items: flex-start;
+    }
+
+    .xtu-hero-banner__content--dv-center {
+      align-items: center;
+    }
+
+    .xtu-hero-banner__content--dv-bottom {
+      align-items: flex-end;
+    }
+
+    .xtu-hero-banner__content--dh-left .xtu-hero-banner__actions {
+      justify-content: flex-start;
+    }
+
+    .xtu-hero-banner__content--dh-center .xtu-hero-banner__actions {
+      justify-content: center;
+    }
+
+    .xtu-hero-banner__content--dh-right .xtu-hero-banner__actions {
+      justify-content: flex-end;
+    }
+  }
+
+  .xtu-hero-banner__copy {
+    max-width: 42rem;
+    color: var(--xtu-hero-text);
+  }
+
+  .xtu-hero-banner__eyebrow,
+  .xtu-hero-banner__subheading {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .xtu-hero-banner__eyebrow {
+    margin-bottom: 12px;
+    font-size: var(--xtu-hero-eyebrow-size, 16px);
+    color: var(--xtu-hero-eyebrow, var(--xtu-hero-text));
+  }
+
+  .xtu-hero-banner__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: var(--xtu-hero-heading-size, 56px);
+    letter-spacing: -0.02em;
+    color: var(--xtu-hero-heading, var(--xtu-hero-text));
+  }
+
+  .xtu-hero-banner__subheading {
+    margin-top: 14px;
+    font-size: var(--xtu-hero-subheading-size, 20px);
+    color: var(--xtu-hero-subheading, var(--xtu-hero-text));
+  }
+
+  .xtu-hero-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .xtu-hero-banner__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform 0.25s var(--xtu-ease-out, cubic-bezier(0.22, 1, 0.36, 1)), background 0.25s ease,
+      color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .xtu-hero-banner__btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .xtu-hero-banner__btn--primary {
+    background: var(--xtu-hero-btn-bg, #1590f2);
+    color: var(--xtu-hero-btn-text, #fff);
+    border-color: var(--xtu-hero-btn-border, var(--xtu-hero-btn-bg, #1590f2));
+  }
+
+  .xtu-hero-banner__btn--primary:hover {
+    background: var(--xtu-hero-btn-bg-hover, #0070ca);
+    color: var(--xtu-hero-btn-text-hover, #fff);
+    border-color: var(--xtu-hero-btn-border-hover, var(--xtu-hero-btn-bg-hover, #0070ca));
+  }
+
+  .xtu-hero-banner__btn--secondary {
+    background: var(--xtu-hero-btn2-bg, transparent);
+    color: var(--xtu-hero-btn2-text, var(--xtu-hero-text));
+    border-color: var(--xtu-hero-btn2-border, var(--xtu-hero-btn2-text, var(--xtu-hero-text)));
+  }
+
+  .xtu-hero-banner__btn--secondary:hover {
+    background: var(--xtu-hero-btn2-bg-hover, #fff);
+    color: var(--xtu-hero-btn2-text-hover, #111);
+    border-color: var(--xtu-hero-btn2-border-hover, var(--xtu-hero-btn2-bg-hover, #fff));
+  }
+
+  .xtu-hero-banner__controls {
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: calc(100% - 120px);
+    max-width: none;
+    transform: translateX(-50%);
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+
+  .xtu-hero-banner__pagination {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    margin-inline: auto;
+    overflow: visible;
+    pointer-events: auto;
+  }
+
+  /* Equal-width segments — active only toggles label + progress fill */
+  .xtu-hero-banner__bullet {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 120px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .xtu-hero-banner__bullet-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    overflow: hidden;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow, 0.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.3s ease;
+  }
+
+  .xtu-hero-banner__bullet.is-active .xtu-hero-banner__bullet-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .xtu-hero-banner__bullet-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.28);
+  }
+
+  .xtu-hero-banner__bullet.is-active .xtu-hero-banner__bullet-track {
+    background: rgb(255 255 255 / 0.32);
+  }
+
+  .xtu-hero-banner__bullet-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
+
+  .xtu-hero-banner__bullet.is-progressing .xtu-hero-banner__bullet-fill {
+    width: 100%;
+    transition: width var(--xtu-hero-progress-duration, 5000ms) linear;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-hero-banner {
+      --xtu-hero-nav-gap: 60px;
+      --xtu-hero-safe-top: var(--xtu-hero-nav-gap);
+      --xtu-hero-safe-bottom: 40px;
+      --xtu-hero-safe-bottom-pagination: 100px;
+      --xtu-hero-safe-inline-nav: calc(
+        var(--xtu-swiper-nav-inset, 8px) + var(--xtu-swiper-nav-size, 45px) + 12px
+      );
+    }
+
+    body:has(.header[transparent]) .content-for-layout > .shopify-section:first-child .xtu-hero-banner {
+      --xtu-hero-safe-top: calc(
+        var(--header-group-height, var(--header-height, 64px)) + var(--xtu-hero-nav-gap, 60px)
+      );
+    }
+
+    /* PC 开箭头但移动端隐藏时，恢复版心边距即可 */
+    .xtu-hero-banner--has-arrows:not(.xtu-hero-banner--arrows-mobile) {
+      --xtu-hero-safe-inline: var(--page-margin);
+    }
+
+    .xtu-hero-banner__content {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .xtu-hero-banner__content .xtu-hero-banner__actions {
+      justify-content: center;
+    }
+
+    .xtu-hero-banner__content--mv-top {
+      align-items: flex-start;
+    }
+
+    .xtu-hero-banner__content--mv-center {
+      align-items: center;
+    }
+
+    .xtu-hero-banner__content--mv-bottom {
+      align-items: flex-end;
+    }
+
+    .xtu-hero-banner__eyebrow {
+      font-size: var(--xtu-hero-eyebrow-size-m, 14px);
+    }
+
+    .xtu-hero-banner__heading {
+      font-size: var(--xtu-hero-heading-size-m, 36px);
+    }
+
+    .xtu-hero-banner__subheading {
+      font-size: var(--xtu-hero-subheading-size-m, 16px);
+    }
+
+    .xtu-hero-banner__btn--primary {
+      background: var(--xtu-hero-btn-bg-m, var(--xtu-hero-btn-bg, #1590f2));
+      color: var(--xtu-hero-btn-text-m, var(--xtu-hero-btn-text, #fff));
+      border-color: var(--xtu-hero-btn-border-m, var(--xtu-hero-btn-border, var(--xtu-hero-btn-bg, #1590f2)));
+    }
+
+    .xtu-hero-banner__btn--primary:hover {
+      background: var(--xtu-hero-btn-bg-hover-m, var(--xtu-hero-btn-bg-hover, #0070ca));
+      color: var(--xtu-hero-btn-text-hover-m, var(--xtu-hero-btn-text-hover, #fff));
+      border-color: var(--xtu-hero-btn-border-hover-m, var(--xtu-hero-btn-border-hover, var(--xtu-hero-btn-bg-hover, #0070ca)));
+    }
+
+    .xtu-hero-banner__btn--secondary {
+      background: var(--xtu-hero-btn2-bg-m, var(--xtu-hero-btn2-bg, transparent));
+      color: var(--xtu-hero-btn2-text-m, var(--xtu-hero-btn2-text, var(--xtu-hero-text)));
+      border-color: var(--xtu-hero-btn2-border-m, var(--xtu-hero-btn2-border, var(--xtu-hero-btn2-text, var(--xtu-hero-text))));
+    }
+
+    .xtu-hero-banner__btn--secondary:hover {
+      background: var(--xtu-hero-btn2-bg-hover-m, var(--xtu-hero-btn2-bg-hover, #fff));
+      color: var(--xtu-hero-btn2-text-hover-m, var(--xtu-hero-btn2-text-hover, #111));
+      border-color: var(--xtu-hero-btn2-border-hover-m, var(--xtu-hero-btn2-border-hover, var(--xtu-hero-btn2-bg-hover, #fff)));
+    }
+
+    .xtu-hero-banner__controls {
+      bottom: 20px;
+      width: calc(100% - 32px);
+    }
+
+    .xtu-hero-banner__pagination {
+      gap: 10px;
+    }
+
+    .xtu-hero-banner__bullet {
+      max-width: 72px;
+      height: 30px;
+    }
+
+    .xtu-hero-banner__bullet-label {
+      bottom: 12px;
+      font-size: var(--xtu-type-eyebrow, 0.75rem);
+    }
+
+    .xtu-hero-banner__bullet-track {
+      height: 2px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xtu-hero-banner__bullet-label,
+    .xtu-hero-banner__bullet.is-active .xtu-hero-banner__bullet-label {
+      transition: none !important;
+    }
+
+    .xtu-hero-banner__bullet-fill {
+      transition: none !important;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Hero Banner",
+  "tag": "section",
+  "class": "xtu-hero-banner-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "高度"
+    },
+    {
+      "type": "select",
+      "id": "height_mode_desktop",
+      "label": "PC 端高度模式",
+      "options": [
+        { "value": "fullscreen", "label": "全屏" },
+        { "value": "fixed", "label": "固定高度" }
+      ],
+      "default": "fullscreen"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_desktop",
+      "label": "PC 端固定高度",
+      "min": 400,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 700,
+      "visible_if": "{{ section.settings.height_mode_desktop == 'fixed' }}"
+    },
+    {
+      "type": "select",
+      "id": "height_mode_mobile",
+      "label": "移动端高度模式",
+      "options": [
+        { "value": "fullscreen", "label": "全屏" },
+        { "value": "fixed", "label": "固定高度" }
+      ],
+      "default": "fullscreen"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_mobile",
+      "label": "移动端固定高度",
+      "min": 300,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 580,
+      "visible_if": "{{ section.settings.height_mode_mobile == 'fixed' }}"
+    },
+    {
+      "type": "header",
+      "content": "轮播"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "启用自动播放",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "自动播放间隔",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "transition_effect",
+      "label": "切换效果",
+      "options": [
+        { "value": "slide", "label": "左右滑动" },
+        { "value": "fade", "label": "淡入淡出" }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "显示左右箭头",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "移动端显示左右箭头",
+      "info": "关闭后仅在桌面端显示箭头",
+      "default": true,
+      "visible_if": "{{ section.settings.show_arrows == true }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "幻灯片",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bullet_title",
+          "label": "分页标题",
+          "default": "S7 Pro Max"
+        },
+        {
+          "type": "header",
+          "content": "背景媒体"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "背景图片（PC）"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "背景图片（移动端）",
+          "info": "未设置时沿用 PC 端图片"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "背景视频（PC）",
+          "info": "若设置视频，将优先于图片"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "背景视频（移动端）",
+          "info": "未设置时沿用 PC 端视频/图片；有视频时优先于移动端图片"
+        },
+        {
+          "type": "text",
+          "id": "youtube_url",
+          "label": "背景视频链接",
+          "info": "YouTube / youtu.be。上传视频为空时作为背景播放（静音循环）。"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "备用背景色",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "遮罩透明度",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": "文案位置"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment_desktop",
+          "label": "PC 端水平位置",
+          "options": [
+            { "value": "left", "label": "左" },
+            { "value": "center", "label": "中" },
+            { "value": "right", "label": "右" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "text_position_v_desktop",
+          "label": "PC 端垂直位置",
+          "options": [
+            { "value": "top", "label": "上" },
+            { "value": "center", "label": "中" },
+            { "value": "bottom", "label": "下" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "text_position_mobile",
+          "label": "移动端垂直位置",
+          "info": "移动端文案水平居中",
+          "options": [
+            { "value": "top", "label": "上" },
+            { "value": "center", "label": "中" },
+            { "value": "bottom", "label": "下" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "文案"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "默认文案色",
+          "default": "#FFFFFF",
+          "info": "未单独设置眉题/标题/副标题颜色时使用"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "眉题",
+          "default": "Flagship action camera"
+        },
+        {
+          "type": "color",
+          "id": "eyebrow_color",
+          "label": "眉题颜色"
+        },
+        {
+          "type": "range",
+          "id": "eyebrow_size_desktop",
+          "label": "眉题字号（PC）",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "eyebrow_size_mobile",
+          "label": "眉题字号（移动端）",
+          "min": 10,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "标题",
+          "default": "S7 Pro Max"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "标题颜色"
+        },
+        {
+          "type": "range",
+          "id": "heading_size_desktop",
+          "label": "标题字号（PC）",
+          "min": 24,
+          "max": 96,
+          "step": 2,
+          "unit": "px",
+          "default": 56
+        },
+        {
+          "type": "range",
+          "id": "heading_size_mobile",
+          "label": "标题字号（移动端）",
+          "min": 20,
+          "max": 56,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "副标题",
+          "default": "AI True Color Imaging"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "副标题颜色"
+        },
+        {
+          "type": "range",
+          "id": "subheading_size_desktop",
+          "label": "副标题字号（PC）",
+          "min": 12,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "subheading_size_mobile",
+          "label": "副标题字号（移动端）",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "header",
+          "content": "主按钮"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "主按钮文案",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "主按钮链接"
+        },
+        {
+          "type": "header",
+          "content": "主按钮 · PC"
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "背景色",
+          "default": "#1590F2"
+        },
+        {
+          "type": "color",
+          "id": "button_border",
+          "label": "边框色",
+          "default": "#1590F2"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "文案色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_hover",
+          "label": "Hover 背景色",
+          "default": "#0070CA"
+        },
+        {
+          "type": "color",
+          "id": "button_border_hover",
+          "label": "Hover 边框色",
+          "default": "#0070CA"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_hover",
+          "label": "Hover 文案色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "主按钮 · 移动端"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_mobile",
+          "label": "背景色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "button_border_mobile",
+          "label": "边框色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_mobile",
+          "label": "文案色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_hover_mobile",
+          "label": "Hover 背景色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "button_border_hover_mobile",
+          "label": "Hover 边框色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_hover_mobile",
+          "label": "Hover 文案色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "header",
+          "content": "副按钮"
+        },
+        {
+          "type": "text",
+          "id": "secondary_button_label",
+          "label": "副按钮文案"
+        },
+        {
+          "type": "url",
+          "id": "secondary_button_link",
+          "label": "副按钮链接"
+        },
+        {
+          "type": "header",
+          "content": "副按钮 · PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_bg",
+          "label": "背景色",
+          "info": "留空为透明"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_border",
+          "label": "边框色",
+          "info": "留空沿用文案色"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_text_color",
+          "label": "文案色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_bg_hover",
+          "label": "Hover 背景色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_border_hover",
+          "label": "Hover 边框色",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_text_color_hover",
+          "label": "Hover 文案色",
+          "default": "#111111"
+        },
+        {
+          "type": "header",
+          "content": "副按钮 · 移动端"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_bg_mobile",
+          "label": "背景色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_border_mobile",
+          "label": "边框色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_text_color_mobile",
+          "label": "文案色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_bg_hover_mobile",
+          "label": "Hover 背景色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_border_hover_mobile",
+          "label": "Hover 边框色",
+          "info": "留空沿用 PC"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_text_color_hover_mobile",
+          "label": "Hover 文案色",
+          "info": "留空沿用 PC"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Hero Banner",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "S7 Pro Max",
+            "eyebrow": "Flagship action camera",
+            "heading": "S7 Pro Max",
+            "subheading": "AI True Color Imaging",
+            "button_label": "Learn more"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "Mini2 Pro",
+            "eyebrow": "4K thumb action camera",
+            "heading": "Mini2 Pro",
+            "subheading": "Small body, big vision",
+            "button_label": "Learn more"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

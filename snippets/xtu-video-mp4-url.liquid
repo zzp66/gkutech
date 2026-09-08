@@ -1,0 +1,42 @@
+{%- doc -%}
+  Returns a browser-playable MP4 URL from a Shopify video object. Skips HLS `.m3u8`.
+
+  @param {video} video - Uploaded Shopify video
+{%- enddoc -%}
+{%- liquid
+  assign out = blank
+  if video != blank
+    if video.sources != blank
+      for source in video.sources
+        assign source_format = source.format | default: '' | downcase
+        assign source_mime = source.mime_type | default: '' | downcase
+        assign source_href = source.url | default: ''
+        if source_href != blank
+          if source_format == 'mp4' or source_mime == 'video/mp4' or source_href contains '.mp4'
+            unless source_href contains '.m3u8'
+              assign out = source_href
+              break
+            endunless
+          endif
+        endif
+      endfor
+      if out == blank
+        for source in video.sources
+          assign source_href = source.url | default: ''
+          if source_href != blank
+            unless source_href contains '.m3u8'
+              assign out = source_href
+              break
+            endunless
+          endif
+        endfor
+      endif
+    endif
+    if out == blank and video.url != blank
+      unless video.url contains '.m3u8'
+        assign out = video.url
+      endunless
+    endif
+  endif
+  echo out
+-%}

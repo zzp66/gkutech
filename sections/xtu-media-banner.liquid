@@ -1,0 +1,748 @@
+{% liquid
+  assign media_type = section.settings.media_type | default: 'image'
+  assign width_mode = section.settings.width_mode | default: 'full'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign media_radius = section.settings.media_radius | default: 0
+  if width_mode == 'contained'
+    assign media_radius = section.settings.media_radius | default: 16
+  endif
+
+  assign image = section.settings.image
+  assign image_mobile = section.settings.image_mobile
+  assign video = section.settings.video
+  assign video_mobile = section.settings.video_mobile
+  assign youtube_url = section.settings.youtube_url | strip
+  assign video_url = section.settings.video_url
+  assign media_ratio = section.settings.media_ratio | default: '16 / 9'
+  assign ratio_auto = false
+  if media_ratio == 'auto'
+    assign ratio_auto = true
+  endif
+
+  assign heading = section.settings.heading
+  assign subtitle = section.settings.subtitle
+  assign text_h_desktop = section.settings.text_h_desktop | default: 'center'
+  assign text_v_desktop = section.settings.text_v_desktop | default: 'center'
+  assign text_h_mobile = section.settings.text_h_mobile | default: 'center'
+  assign text_v_mobile = section.settings.text_v_mobile | default: 'center'
+
+  assign title_size = section.settings.title_size | default: 32
+  assign title_size_mobile = section.settings.title_size_mobile | default: 22
+  assign subtitle_size = section.settings.subtitle_size | default: 14
+  assign subtitle_size_mobile = section.settings.subtitle_size_mobile | default: 14
+  assign title_color = section.settings.title_color | default: '#FFFFFF'
+  assign title_color_mobile = section.settings.title_color_mobile | default: '#FFFFFF'
+  assign subtitle_color = section.settings.subtitle_color | default: '#FFFFFF'
+  assign subtitle_color_mobile = section.settings.subtitle_color_mobile | default: '#FFFFFF'
+
+  assign enable_overlay = section.settings.enable_overlay
+  assign overlay_opacity = section.settings.overlay_opacity | default: 30
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign padding_top = section.settings.padding_top | default: 0
+  assign padding_bottom = section.settings.padding_bottom | default: 0
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 0
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 0
+
+  assign has_mobile_image = false
+  if image_mobile != blank
+    assign has_mobile_image = true
+  endif
+  assign has_mobile_video = false
+  if video_mobile != blank
+    assign has_mobile_video = true
+  endif
+
+  assign has_copy = false
+  if heading != blank or subtitle != blank
+    assign has_copy = true
+  endif
+
+  assign alt_text = heading | default: subtitle | default: 'Media banner'
+%}
+
+<section
+  id="xtu-media-banner-{{ section.id }}"
+  class="xtu-mb xtu-mb--{{ width_mode }} xtu-mb--{{ media_type }}{% if ratio_auto %} xtu-mb--ratio-auto{% endif %}"
+  style="
+    --xtu-mb-bg: {{ background_color }};
+    --xtu-mb-content-width: {{ content_width }}px;
+    --xtu-mb-radius: {{ media_radius }}px;
+    {% unless ratio_auto %}--xtu-mb-ratio: {{ media_ratio }};{% endunless %}
+    --xtu-mb-pt: {{ padding_top }}px;
+    --xtu-mb-pb: {{ padding_bottom }}px;
+    --xtu-mb-pt-m: {{ padding_top_mobile }}px;
+    --xtu-mb-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-mb-title-size: {{ title_size }}px;
+    --xtu-mb-title-size-m: {{ title_size_mobile }}px;
+    --xtu-mb-subtitle-size: {{ subtitle_size }}px;
+    --xtu-mb-subtitle-size-m: {{ subtitle_size_mobile }}px;
+    --xtu-mb-title-color: {{ title_color }};
+    --xtu-mb-title-color-m: {{ title_color_mobile }};
+    --xtu-mb-subtitle-color: {{ subtitle_color }};
+    --xtu-mb-subtitle-color-m: {{ subtitle_color_mobile }};
+    --xtu-mb-overlay: {{ overlay_opacity | divided_by: 100.0 }};
+  "
+>
+  <div class="xtu-mb__frame">
+    <div class="xtu-mb__media{% if media_type == 'image' and has_mobile_image %} xtu-mb__media--split{% endif %}{% if media_type == 'video' and has_mobile_video %} xtu-mb__media--split{% endif %}">
+      {% if media_type == 'image' %}
+        {% if image != blank %}
+          {{
+            image
+            | image_url: width: 2880
+            | image_tag:
+              class: 'xtu-mb__image xtu-mb__image--desktop',
+              widths: '750, 1100, 1500, 2000, 2400, 2880',
+              sizes: '(max-width: 749px) 100vw, 100vw',
+              loading: 'lazy',
+              alt: alt_text
+          }}
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-mb__image xtu-mb__image--desktop xtu-mb__placeholder' }}
+        {% endif %}
+
+        {% if has_mobile_image %}
+          {{
+            image_mobile
+            | image_url: width: 1600
+            | image_tag:
+              class: 'xtu-mb__image xtu-mb__image--mobile',
+              widths: '400, 600, 800, 1000, 1200, 1600',
+              sizes: '100vw',
+              loading: 'lazy',
+              alt: alt_text
+          }}
+        {% elsif image == blank %}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'xtu-mb__image xtu-mb__image--mobile xtu-mb__placeholder' }}
+        {% endif %}
+
+      {% elsif media_type == 'video' %}
+        {% if video != blank %}
+          {{
+            video
+            | video_tag:
+              class: 'xtu-mb__video xtu-mb__video--desktop',
+              controls: true,
+              autoplay: false,
+              loop: false,
+              muted: false,
+              playsinline: true,
+              preload: 'metadata'
+          }}
+        {% endif %}
+        {% if has_mobile_video %}
+          {{
+            video_mobile
+            | video_tag:
+              class: 'xtu-mb__video xtu-mb__video--mobile',
+              controls: true,
+              autoplay: false,
+              loop: false,
+              muted: false,
+              playsinline: true,
+              preload: 'metadata'
+          }}
+        {% endif %}
+        {% if video == blank and has_mobile_video == false %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-mb__image xtu-mb__placeholder' }}
+        {% elsif video == blank and has_mobile_video %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-mb__image xtu-mb__image--desktop xtu-mb__placeholder' }}
+        {% endif %}
+
+      {% elsif media_type == 'youtube' %}
+        {% render 'xtu-video-embed',
+          video_url: video_url,
+          youtube_url: youtube_url,
+          mode: 'embed',
+          class: 'xtu-mb__youtube',
+          title: alt_text,
+          placeholder: 'lifestyle-1',
+          placeholder_class: 'xtu-mb__image xtu-mb__placeholder'
+        %}
+      {% endif %}
+
+      {% if enable_overlay %}
+        <div class="xtu-mb__overlay" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+
+    {% if has_copy %}
+      <div
+        class="
+          xtu-mb__content
+          xtu-mb__content--h-{{ text_h_desktop }}
+          xtu-mb__content--v-{{ text_v_desktop }}
+          xtu-mb__content--mh-{{ text_h_mobile }}
+          xtu-mb__content--mv-{{ text_v_mobile }}
+        "
+      >
+        <div class="xtu-mb__copy" data-xtu-reveal="fade-up" data-xtu-stagger>
+          {% if heading != blank %}
+            <h2 class="xtu-mb__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+          {% endif %}
+          {% if subtitle != blank %}
+            <p class="xtu-mb__subtitle" data-xtu-reveal-child>{{ subtitle | escape }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-mb {
+    padding: var(--xtu-mb-pt, 0) 0 var(--xtu-mb-pb, 0);
+    background: var(--xtu-mb-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-mb__frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .xtu-mb--contained .xtu-mb__frame {
+    width: min(var(--xtu-mb-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    border-radius: var(--xtu-mb-radius, 16px);
+  }
+
+  .xtu-mb--full .xtu-mb__frame {
+    border-radius: 0;
+  }
+
+  .xtu-mb__media {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #1a1a1a;
+    aspect-ratio: var(--xtu-mb-ratio, 16 / 9);
+  }
+
+  .xtu-mb--ratio-auto .xtu-mb__media {
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  .xtu-mb__image,
+  .xtu-mb__placeholder,
+  .xtu-mb__video,
+  .xtu-mb__youtube {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-mb__image,
+  .xtu-mb__placeholder {
+    object-fit: cover;
+  }
+
+  .xtu-mb__placeholder {
+    background: #2a2a2a;
+  }
+
+  .xtu-mb__video {
+    object-fit: contain;
+    background: #000;
+  }
+
+  .xtu-mb__youtube {
+    border: 0;
+    position: absolute;
+    inset: 0;
+  }
+
+  .xtu-mb--youtube .xtu-mb__media {
+    position: relative;
+  }
+
+  .xtu-mb__image--mobile,
+  .xtu-mb__video--mobile {
+    display: none;
+  }
+
+  .xtu-mb__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgb(0 0 0 / var(--xtu-mb-overlay, 0.3));
+    pointer-events: none;
+  }
+
+  .xtu-mb__content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    box-sizing: border-box;
+    padding: var(--xtu-space-40, 40px) var(--page-margin, 40px);
+    pointer-events: none;
+  }
+
+  .xtu-mb--contained .xtu-mb__content {
+    padding: var(--xtu-space-32, 32px);
+  }
+
+  .xtu-mb__content--h-left {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .xtu-mb__content--h-center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .xtu-mb__content--h-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .xtu-mb__content--v-top {
+    align-items: flex-start;
+  }
+
+  .xtu-mb__content--v-center {
+    align-items: center;
+  }
+
+  .xtu-mb__content--v-bottom {
+    align-items: flex-end;
+  }
+
+  .xtu-mb__copy {
+    max-width: min(36rem, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--xtu-space-12, 12px);
+    pointer-events: auto;
+  }
+
+  .xtu-mb__content--h-center .xtu-mb__copy {
+    align-items: center;
+  }
+
+  .xtu-mb__content--h-right .xtu-mb__copy {
+    align-items: flex-end;
+  }
+
+  .xtu-mb__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-mb-title-size, 32px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-mb-title-color, #fff);
+  }
+
+  .xtu-mb__subtitle {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-mb-subtitle-size, 14px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-mb-subtitle-color, #fff);
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-mb {
+      padding: var(--xtu-mb-pt-m, 0) 0 var(--xtu-mb-pb-m, 0);
+    }
+
+    .xtu-mb--ratio-auto .xtu-mb__media {
+      aspect-ratio: auto;
+    }
+
+    .xtu-mb__media--split .xtu-mb__image--desktop,
+    .xtu-mb__media--split .xtu-mb__video--desktop {
+      display: none;
+    }
+
+    .xtu-mb__media--split .xtu-mb__image--mobile,
+    .xtu-mb__media--split .xtu-mb__video--mobile {
+      display: block;
+    }
+
+    .xtu-mb__content {
+      padding: var(--xtu-space-24, 24px) var(--page-margin, 15px);
+    }
+
+    .xtu-mb--contained .xtu-mb__content {
+      padding: var(--xtu-space-20, 20px);
+    }
+
+    .xtu-mb__content--mh-left {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .xtu-mb__content--mh-center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .xtu-mb__content--mh-right {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .xtu-mb__content--mv-top {
+      align-items: flex-start;
+    }
+
+    .xtu-mb__content--mv-center {
+      align-items: center;
+    }
+
+    .xtu-mb__content--mv-bottom {
+      align-items: flex-end;
+    }
+
+    .xtu-mb__content--mh-left .xtu-mb__copy {
+      align-items: flex-start;
+    }
+
+    .xtu-mb__content--mh-center .xtu-mb__copy {
+      align-items: center;
+    }
+
+    .xtu-mb__content--mh-right .xtu-mb__copy {
+      align-items: flex-end;
+    }
+
+    .xtu-mb__heading {
+      font-size: var(--xtu-mb-title-size-m, 22px);
+      color: var(--xtu-mb-title-color-m, #fff);
+    }
+
+    .xtu-mb__subtitle {
+      font-size: var(--xtu-mb-subtitle-size-m, 14px);
+      color: var(--xtu-mb-subtitle-color-m, #fff);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Media Banner",
+  "tag": "section",
+  "class": "section-xtu-media-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "媒体"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "媒体类型",
+      "options": [
+        { "value": "image", "label": "图片" },
+        { "value": "video", "label": "上传视频" },
+        { "value": "youtube", "label": "YouTube" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "select",
+      "id": "width_mode",
+      "label": "展示宽度",
+      "options": [
+        { "value": "full", "label": "全屏宽度" },
+        { "value": "contained", "label": "版心宽度" }
+      ],
+      "default": "full",
+      "info": "版心宽度默认 1200px，可在下方调整。"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "版心最大宽度（px）",
+      "default": 1200,
+      "info": "仅「版心宽度」模式生效。范围 600–1600。"
+    },
+    {
+      "type": "range",
+      "id": "media_radius",
+      "label": "媒体圆角（版心模式）",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "图片（PC）"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "图片（移动端）",
+      "info": "可选。未配置时移动端使用 PC 图。"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "媒体比例",
+      "options": [
+        { "value": "auto", "label": "自适应（按媒体比例）" },
+        { "value": "1 / 1", "label": "1:1" },
+        { "value": "4 / 5", "label": "4:5" },
+        { "value": "3 / 4", "label": "3:4" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "16 / 10", "label": "16:10" },
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "21 / 9", "label": "21:9" }
+      ],
+      "default": "16 / 9",
+      "info": "高度由宽度与比例推导，不再使用固定像素高度。"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "上传视频（PC）",
+      "info": "显示播放控件。",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "上传视频（移动端）",
+      "info": "可选。未配置时移动端使用 PC 视频。",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "text",
+      "id": "youtube_url",
+      "label": "YouTube 链接",
+      "info": "支持 youtube.com / youtu.be / Shorts。已有数据保留此字段。",
+      "visible_if": "{{ section.settings.media_type == 'youtube' }}"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "视频链接",
+      "accept": ["youtube", "vimeo"],
+      "info": "支持 YouTube / Vimeo。与上方文本链接任一有值即可。",
+      "visible_if": "{{ section.settings.media_type == 'youtube' }}"
+    },
+    {
+      "type": "header",
+      "content": "文案"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Media banner"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "副标题",
+      "default": "Supporting text"
+    },
+    {
+      "type": "select",
+      "id": "text_h_desktop",
+      "label": "水平位置（PC）",
+      "options": [
+        { "value": "left", "label": "左" },
+        { "value": "center", "label": "中" },
+        { "value": "right", "label": "右" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_v_desktop",
+      "label": "垂直位置（PC）",
+      "options": [
+        { "value": "top", "label": "上" },
+        { "value": "center", "label": "中" },
+        { "value": "bottom", "label": "下" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_h_mobile",
+      "label": "水平位置（移动端）",
+      "options": [
+        { "value": "left", "label": "左" },
+        { "value": "center", "label": "中" },
+        { "value": "right", "label": "右" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_v_mobile",
+      "label": "垂直位置（移动端）",
+      "options": [
+        { "value": "top", "label": "上" },
+        { "value": "center", "label": "中" },
+        { "value": "bottom", "label": "下" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "文字样式"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "大标题字号（PC）",
+      "min": 16,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "大标题字号（移动端）",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "副标题字号（PC）",
+      "min": 12,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "副标题字号（移动端）",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "大标题颜色（PC）",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_color_mobile",
+      "label": "大标题颜色（移动端）",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "副标题颜色（PC）",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color_mobile",
+      "label": "副标题颜色（移动端）",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "遮罩"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "启用图片/视频遮罩",
+      "default": false,
+      "info": "默认关闭。开启后可提升浅色媒体上的白字可读性。"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "遮罩强度",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "版块"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Media Banner",
+      "settings": {
+        "media_type": "image",
+        "width_mode": "full",
+        "heading": "Media banner",
+        "subtitle": "Supporting text",
+        "text_h_desktop": "center",
+        "text_v_desktop": "center"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+{%- doc -%}
+  Normalize a URL to a menu path for mega menu matching.
+
+  Outputs normalized path without leading/trailing slashes and query string.
+  Example: https://shop.com/pages/camping/ → pages/camping
+
+  @param {string} url - Full or relative URL to normalize
+{%- enddoc -%}
+
+{% liquid
+  assign raw = url | split: '?' | first | strip
+
+  if shop.url != blank
+    assign shop_url_stripped = shop.url | remove: 'https://' | remove: 'http://' | strip
+    assign raw_stripped = raw | remove: 'https://' | remove: 'http://' | strip
+    if raw_stripped contains shop_url_stripped
+      assign raw = raw_stripped | remove: shop_url_stripped
+    endif
+  endif
+
+  if raw contains shop.domain
+    assign domain_parts = raw | split: shop.domain
+    assign raw = domain_parts | last
+  endif
+
+  assign raw = raw | strip
+  if raw == '/'
+    assign raw = ''
+  endif
+
+  if raw != blank
+    assign first_char = raw | slice: 0, 1
+    if first_char == '/'
+      assign raw = raw | slice: 1, raw.size
+    endif
+
+    assign last_char = raw | slice: -1, 1
+    if last_char == '/'
+      assign raw_size = raw.size | minus: 1
+      assign raw = raw | slice: 0, raw_size
+    endif
+  endif
+
+  echo raw
+%}

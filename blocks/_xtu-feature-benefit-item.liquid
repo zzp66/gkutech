@@ -1,0 +1,55 @@
+{% doc %}
+  Single feature/benefit item (icon + label) for XTU Feature Benefits.
+{% enddoc %}
+
+{% liquid
+  assign label = block.settings.label
+  assign icon = block.settings.icon
+%}
+
+{% if label != blank or icon != blank %}
+  <div class="xtu-feature-benefits__item" {{ block.shopify_attributes }}>
+    <span class="xtu-feature-benefits__icon" aria-hidden="true">
+      {% if icon != blank %}
+        {{
+          icon
+          | image_url: width: 80
+          | image_tag:
+            class: 'xtu-feature-benefits__icon-img',
+            loading: 'lazy',
+            widths: '40, 60, 80',
+            sizes: '22px',
+            alt: label
+        }}
+      {% else %}
+        <svg class="xtu-feature-benefits__placeholder" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3 4.5 6.5v5.2c0 4.7 3.2 8.9 7.5 9.8 4.3-.9 7.5-5.1 7.5-9.8V6.5L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {% endif %}
+    </span>
+    {% if label != blank %}
+      <p class="xtu-feature-benefits__label">{{ label | escape }}</p>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "卖点项",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "图标"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "文案",
+      "default": "Price Guarantee"
+    }
+  ]
+}
+{% endschema %}

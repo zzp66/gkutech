@@ -1,0 +1,51 @@
+{%- doc -%}
+  XTU Mega Menu — auto-detect layout and render panel.
+
+  @param {object} parent_link - Top-level menu link with children
+  @param {string} id - Unique panel id prefix
+  @param {object} section - Section object for hydration
+  @param {boolean} [eager_loading] - Section Rendering API second pass
+  @param {number} [image_border_radius] - Product card corner radius
+  @param {string} [variant] - 'desktop' (default) or 'drawer'
+{%- enddoc -%}
+
+{% liquid
+  assign panel_variant = variant | default: 'desktop'
+  assign eager_loading = eager_loading | default: false
+  assign image_border_radius = image_border_radius | default: 8
+
+  capture xtu_mega_mode
+    render 'xtu-mega-menu-detect-mode', parent_link: parent_link
+  endcapture
+  assign xtu_mega_mode = xtu_mega_mode | strip
+%}
+
+<xtu-mega-menu
+  class="xtu-mega-menu xtu-mega-menu--{{ xtu_mega_mode }} xtu-mega-menu--{{ panel_variant }}"
+  data-xtu-mega-mode="{{ xtu_mega_mode }}"
+  id="XtuMegaMenu-{{ id }}"
+>
+  {% case xtu_mega_mode %}
+    {% when 'products' %}
+      {% render 'xtu-mega-menu-products',
+        parent_link: parent_link,
+        id: id,
+        section: section,
+        eager_loading: eager_loading,
+        image_border_radius: image_border_radius,
+        variant: panel_variant
+      %}
+    {% when 'featured' %}
+      {% render 'xtu-mega-menu-featured',
+        parent_link: parent_link,
+        id: id,
+        variant: panel_variant
+      %}
+    {% else %}
+      {% render 'xtu-mega-menu-text',
+        parent_link: parent_link,
+        id: id,
+        variant: panel_variant
+      %}
+  {% endcase %}
+</xtu-mega-menu>

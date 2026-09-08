@@ -1,0 +1,53 @@
+{% doc %}
+  Theme Drawer Infrastructure
+
+  Loads the theme-drawer Web Component and provides global drawer
+  coordination: state persistence (overlay mode — no page squeeze).
+  Rendered once from layout/theme.liquid.
+
+  Individual drawer snippets (e.g. chat-drawer) render their own
+  <theme-drawer> elements. Shared structural CSS is inlined here.
+
+  @example
+  {% render 'theme-drawer' %}
+{% enddoc %}
+
+{% render 'theme-drawer-styles' %}
+
+<script
+  type="module"
+  src="{{ 'theme-drawer.js' | asset_url }}"
+  fetchpriority="low"
+></script>
+
+<script>
+  /* Overlay mode: clear any leftover squeeze-session state so drawers do not
+     auto-reopen as a sidebar after navigation. */
+  (function () {
+    sessionStorage.removeItem('theme-drawer-open');
+    var pageWrapper = document.querySelector('.page-wrapper');
+    if (pageWrapper) pageWrapper.classList.remove('page-wrapper--drawer-open');
+  })();
+</script>
+
+<script
+  type="module"
+>
+  // Overlay mode — drawers float above the page; do not squeeze .page-wrapper.
+  document.addEventListener('theme-drawer:open', () => {
+    document.querySelector('.page-wrapper')?.classList.remove('page-wrapper--drawer-open');
+  });
+
+  document.addEventListener('theme-drawer:close', () => {
+    document.querySelector('.page-wrapper')?.classList.remove('page-wrapper--drawer-open');
+  });
+
+  // Clear persisted IDs so a future theme update that re-enables restore
+  // does not reopen a leftover overlay drawer after navigation.
+  function persistDrawerState() {
+    sessionStorage.removeItem('theme-drawer-open');
+  }
+
+  document.addEventListener('theme-drawer:open', persistDrawerState);
+  document.addEventListener('theme-drawer:close', persistDrawerState);
+</script>

@@ -1,0 +1,178 @@
+{% doc %}
+  XTU Key Specs — highlight numeric product parameters (large value + muted label).
+
+  @example
+  {% content_for 'block', type: 'xtu-key-specs', id: 'specs' %}
+{% enddoc %}
+
+{% liquid
+  assign bs = block.settings
+  assign value_color = bs.value_color | default: '#111111'
+  assign label_color = bs.label_color | default: '#8E9297'
+%}
+
+{% capture items_html %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+{% assign items_html = items_html | strip %}
+
+{% if items_html != blank %}
+  <div
+    class="xtu-key-specs"
+    style="
+      --xtu-ks-value: {{ value_color }};
+      --xtu-ks-label: {{ label_color }};
+      --xtu-ks-gap: {{ bs.gap | default: 16 }}px;
+      --xtu-ks-pt: {{ bs.padding_top | default: 8 }}px;
+      --xtu-ks-pb: {{ bs.padding_bottom | default: 8 }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    <div class="xtu-key-specs__grid">
+      {{ items_html }}
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .xtu-key-specs {
+    display: block;
+    width: 100%;
+    padding: var(--xtu-ks-pt, 8px) 0 var(--xtu-ks-pb, 8px);
+    box-sizing: border-box;
+  }
+
+  .xtu-key-specs__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: var(--xtu-ks-gap, 16px);
+  }
+
+  .xtu-key-specs__item {
+    min-width: 0;
+  }
+
+  .xtu-key-specs__value {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-ks-value, #111);
+    word-break: break-word;
+  }
+
+  .xtu-key-specs__label {
+    margin: 6px 0 0;
+    font-family: var(--font-body--family);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-ks-label, #8e9297);
+  }
+
+  @media (max-width: 749px) {
+    .xtu-key-specs {
+      padding-top: max(0px, calc(var(--xtu-ks-pt, 8px) - 2px));
+      padding-bottom: max(0px, calc(var(--xtu-ks-pb, 8px) - 2px));
+    }
+
+    .xtu-key-specs__grid {
+      gap: 10px;
+    }
+
+    .xtu-key-specs__value {
+      font-size: 1.0625rem;
+    }
+
+    .xtu-key-specs__label {
+      margin-top: 4px;
+      font-size: 0.6875rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Key Specs",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_xtu-key-spec-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "数值颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "文案颜色",
+      "default": "#8E9297"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "项间距",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Key Specs",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "_xtu-key-spec-item",
+          "settings": {
+            "value": "4-48 kWh",
+            "label": "Capacity"
+          }
+        },
+        {
+          "type": "_xtu-key-spec-item",
+          "settings": {
+            "value": "4000 W",
+            "label": "Output"
+          }
+        },
+        {
+          "type": "_xtu-key-spec-item",
+          "settings": {
+            "value": "10+",
+            "label": "Years of Use"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

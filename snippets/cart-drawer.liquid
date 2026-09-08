@@ -1,0 +1,552 @@
+{% doc %}
+  Renders reusable cart drawer markup for both initial page loads and Section Rendering API responses.
+
+  @param {boolean} [render_wrapper] - When true, wraps the drawer in the section wrapper that the Section Rendering API adds automatically.
+{% enddoc %}
+
+{%- liquid
+  assign render_wrapper = render_wrapper | default: true, allow_false: true
+-%}
+
+{%- if settings.cart_type == 'drawer' and template.name != 'cart' -%}
+  {% if render_wrapper %}
+    <div
+      id="shopify-section-cart-drawer-section"
+      class="shopify-section"
+    >
+  {% endif %}
+
+  <script
+    type="module"
+    src="{{ 'cart-drawer.js' | asset_url }}"
+    fetchpriority="low"
+  ></script>
+  <script
+    type="module"
+    src="{{ 'xtu-cart-free-shipping.js' | asset_url }}"
+    fetchpriority="low"
+  ></script>
+
+  {% capture empty_cart_drawer_content %}
+    <div
+      class="cart-drawer__content"
+      aria-label="{{ 'accessibility.cart' | t }}"
+    >
+      <h2
+        class="theme-drawer__title h4"
+        id="cart-drawer-heading"
+      >
+        {{ 'content.your_cart_is_empty' | t }}
+      </h2>
+
+      {% render 'xtu-cart-free-shipping' %}
+
+      <div class="cart-drawer__items">
+        {% render 'cart-products', force_empty: true, context: 'drawer' %}
+      </div>
+    </div>
+    {% endcapture %}
+
+  <theme-drawer
+    id="cart-drawer"
+    data-skip-node-update
+  >
+    <dialog
+      ref="panel"
+      class="theme-drawer__dialog color-custom-drawer"
+      aria-labelledby="cart-drawer-heading"
+      cart-summary-sticky="true"
+    >
+      <cart-drawer-component
+        {% if settings.auto_open_cart_drawer and template.name != 'cart' %}
+          auto-open
+        {% endif %}
+      >
+        <template id="empty-cart-template">
+          {{ empty_cart_drawer_content }}
+        </template>
+
+        <div
+          class="cart-drawer__inner{% if cart.empty? %} cart-drawer--empty{% endif %}"
+          data-hydration-key="cart-drawer-inner"
+        >
+          {%- if cart.empty? -%}
+            <div class="theme-drawer__header">
+              <button
+                on:click="#cart-drawer/close"
+                class="theme-drawer__close-button cart-drawer__close-button--empty"
+                type="button"
+                aria-label="{{ 'actions.close' | t }}"
+              >
+                <span class="svg-wrapper">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </span>
+              </button>
+            </div>
+          {%- else -%}
+            {% capture cart_badge_html %}
+              <span
+                class="theme-drawer__badge{% if cart.item_count == 0 %} visually-hidden{% endif %}"
+                aria-hidden="true"
+                {% if cart.item_count <= 99 %}
+                  data-maintain-ratio
+                {% endif %}
+              >
+                {{- cart.item_count -}}
+              </span>
+              {% if cart.item_count > 0 %}
+                <span class="visually-hidden">
+                  {{ 'accessibility.cart_count' | t }}: {{ cart.item_count }}
+                </span>
+              {% endif %}
+            {% endcapture %}
+            {% assign cart_drawer_title = 'content.cart_title' | t %}
+            {% render 'theme-drawer-header',
+              title: cart_drawer_title,
+              drawer_id: 'cart-drawer',
+              heading_id: 'cart-drawer-heading',
+              title_append: cart_badge_html
+            %}
+          {%- endif -%}
+
+          {% capture cart_items_children %}
+            {%- if cart.empty? -%}
+              {{ empty_cart_drawer_content }}
+            {%- else -%}
+              <scroll-hint
+                class="cart-drawer__content"
+                aria-label="{{ 'accessibility.cart' | t }}"
+                style="--header-height: 60px;"
+              >
+                {% render 'xtu-cart-free-shipping' %}
+
+                <scroll-hint class="cart-drawer__items">
+                  {% render 'cart-products', context: 'drawer' %}
+                </scroll-hint>
+
+                <div class="cart-drawer__summary">
+                  {% render 'cart-summary', section_id: 'cart-drawer-section' %}
+                </div>
+              </scroll-hint>
+            {%- endif -%}
+          {% endcapture %}
+          {% render 'cart-items-component',
+            children: cart_items_children,
+            is_drawer: true,
+            section_id: 'cart-drawer-section'
+          %}
+        </div>
+      </cart-drawer-component>
+    </dialog>
+  </theme-drawer>
+
+  {% if render_wrapper %}
+    </div>
+  {% endif %}
+{%- endif -%}
+
+{% stylesheet %}
+  cart-drawer-component {
+    --cart-drawer-padding: var(--theme-drawer-padding);
+    --font-paragraph--line-height: 1;
+    display: contents;
+  }
+
+  .cart-drawer__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cart-drawer__inner > .cart-items-component {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+  }
+
+  .cart-drawer__content {
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: var(--color-background);
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .cart-drawer__content > .xtu-fs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 16px;
+  }
+
+  .cart-drawer__items {
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--cart-drawer-padding);
+    overflow-y: auto;
+  }
+
+  .cart-drawer__items .cart-items__table-row {
+    padding-bottom: var(--gap-xl);
+    border-bottom: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    margin-bottom: var(--gap-xl);
+  }
+
+  .cart-drawer__items .cart-items__table-row:has(+ .cart-items__nested-line) {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .cart-drawer__items .cart-items__table-row:last-child {
+    border-bottom: none;
+    padding-block-end: 0;
+    margin-block-end: 0;
+  }
+
+  /* XTU drawer line item — match reference layout */
+  .cart-drawer__items .cart-items__table-row {
+    --cart-item-media-size: 72px;
+    grid-template-columns: var(--cart-item-media-size) minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'media details price'
+      'media quantity quantity';
+    column-gap: 12px;
+    row-gap: 4px;
+    align-items: start;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants {
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'media details price'
+      'media variants price'
+      'media quantity quantity';
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__details {
+    display: contents;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__product-info {
+    grid-area: details;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__variants-wrapper {
+    grid-area: variants;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__unit-price-wrapper {
+    display: none;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__quantity {
+    grid-area: quantity;
+  }
+
+  .cart-drawer__items .cart-items__table-row--full-width-variants .cart-items__price {
+    grid-area: price;
+  }
+
+  .cart-drawer__items .cart-items__media {
+    width: var(--cart-item-media-size);
+  }
+
+  .cart-drawer__items .cart-items__media-container {
+    width: var(--cart-item-media-size);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Drawer heading + line-item typography */
+  .theme-drawer__dialog.color-custom-drawer .theme-drawer__title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .cart-drawer__items .cart-items__details {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #8a8a8a;
+  }
+
+  .cart-drawer__items .cart-items__details .cart-items__title,
+  .cart-drawer__items .cart-items__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .cart-drawer__items .cart-items__variants-wrapper,
+  .cart-drawer__items .cart-items__variants,
+  .cart-drawer__items .cart-items__variant dd,
+  .cart-drawer__items .cart-items__properties,
+  .cart-drawer__items .cart-items__bundle {
+    color: #8a8a8a;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .cart-drawer__items .cart-items__variants-wrapper:empty {
+    display: none;
+  }
+
+  .cart-drawer__items .cart-items__price {
+    min-width: 0;
+    width: max-content;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+    text-align: end;
+  }
+
+  .cart-drawer__items .cart-items__price-compare {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #8a8a8a;
+  }
+
+  .cart-drawer__summary .cart-totals__total-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .cart-drawer__summary .cart-totals__total-label {
+      font-size: 1rem;
+    }
+  }
+
+  .cart-drawer__summary .cart-totals__discount-savings-label {
+    font-weight: 600;
+  }
+
+  .cart-drawer__summary .cart-primary-typography:not(.cart-totals__total-label, .cart-totals__discount-savings-label) {
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .cart-drawer__summary .cart-totals__total-value,
+  .cart-drawer__summary .cart__total-value {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .cart-drawer__items .cart-items__quantity {
+    width: 100%;
+    margin-block-start: 8px;
+  }
+
+  .cart-drawer__items .cart-items__quantity-controls {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cart-drawer__items .cart-items__quantity .quantity-selector {
+    --quantity-selector-width: 108px;
+    flex: 0 0 auto;
+    width: var(--quantity-selector-width);
+    height: 32px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #f5f5f5;
+    overflow: hidden;
+  }
+
+  .cart-drawer__items .cart-items__quantity .quantity-selector :is(.quantity-minus, .quantity-plus) {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+  }
+
+  .cart-drawer__items .cart-items__quantity .quantity-selector input {
+    max-width: calc(108px - 64px);
+    height: 32px;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .cart-drawer__items .cart-items__remove {
+    width: 32px;
+    height: 32px;
+    color: #8a8a8a;
+    flex-shrink: 0;
+  }
+
+  .cart-drawer__items .cart-items__unit-price-wrapper {
+    display: none;
+  }
+
+  .cart-drawer__close-button--empty {
+    margin-inline-start: auto;
+  }
+
+  /* XTU：抽屉内主按钮统一胶囊样式 */
+  .cart-drawer__inner .cart__checkout-button,
+  .cart-drawer__inner .cart-items__empty-button {
+    border-radius: 999px;
+    min-height: 44px;
+    height: auto;
+    padding-block: 0;
+    padding-inline: 22px;
+    line-height: 1.2;
+    transition:
+      transform 0.25s var(--xtu-ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      background-color 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .cart-drawer__inner .cart-items__empty-button {
+    font-weight: 400;
+  }
+
+  .cart-drawer__inner .cart__checkout-button {
+    background-color: #1590f2;
+    color: #ffffff;
+    border-color: transparent;
+    font-weight: 600;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cart-drawer__inner .cart__checkout-button:hover:not(:disabled) {
+      background-color: #0070ca;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .cart-drawer__inner .cart-items__empty-button:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .cart-drawer__summary .cart-discount__button {
+    border-radius: 999px;
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding-block: 0;
+  }
+
+  .cart-drawer__summary .cart-discount__input {
+    border-radius: 999px;
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding-block: 0;
+  }
+
+  .cart-drawer__inner shopify-accelerated-checkout-cart,
+  .cart-drawer__inner .additional-checkout-buttons {
+    --shopify-accelerated-checkout-button-border-radius: 999px;
+  }
+
+  .cart-drawer__summary {
+    --cart-drawer-summary-padding: var(--padding-md);
+
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-md);
+    padding: var(--cart-drawer-summary-padding);
+    margin-top: auto;
+    background-color: var(--color-background);
+    /* stylelint-disable-next-line color-named */
+    mask-image: linear-gradient(to bottom, transparent, black var(--cart-drawer-summary-padding));
+
+    @media screen and (min-width: 750px) {
+      --cart-drawer-summary-padding: var(--padding-lg);
+    }
+  }
+
+  .theme-drawer__dialog[cart-summary-sticky='false'] .cart-drawer__summary {
+    position: static;
+    mask-image: none;
+  }
+
+  .theme-drawer__dialog[cart-summary-sticky='false'] .cart-drawer__items {
+    overflow: unset;
+  }
+
+  .cart-actions__trigger {
+    padding-inline: 0;
+    padding-block: 8px;
+    line-height: 1.2;
+    min-height: 40px;
+  }
+
+  .cart-drawer__summary .cart__summary-totals:not(:has(.cart__subtotal-container:empty)) {
+    border-block-start: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    padding-block-start: var(--padding-md);
+  }
+
+  .cart-drawer__summary .cart-note {
+    margin-block-start: 0;
+  }
+
+  .cart-drawer--empty .cart-drawer__content {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .cart-drawer--empty .xtu-fs {
+    width: 100%;
+    max-width: 320px;
+    margin-block: 12px;
+    border-bottom: none;
+    background: linear-gradient(180deg, #f7fbff 0%, #fff 100%);
+    border-radius: 12px;
+    padding-inline: 14px;
+    text-align: start;
+  }
+
+  .cart-drawer--empty .cart-drawer__items {
+    padding-inline: 0;
+  }
+
+  cart-drawer-component:not(:has(.cart-form)) .cart-drawer__content {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  cart-drawer-component:not(:has(.cart-form)) .cart-drawer__items {
+    padding-inline: 0;
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    html:active-view-transition-type(empty-cart-drawer) {
+      .theme-drawer__close-button {
+        view-transition-name: cart-drawer-close-button;
+      }
+    }
+  }
+
+  :active-view-transition {
+    .cart-drawer__header,
+    .cart-drawer__content {
+      background: transparent;
+    }
+  }
+{% endstylesheet %}

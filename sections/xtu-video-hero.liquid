@@ -1,0 +1,708 @@
+{% liquid
+  assign bg_type = section.settings.bg_type | default: 'image'
+  assign bg_image = section.settings.bg_image
+  assign bg_image_mobile = section.settings.bg_image_mobile
+  assign bg_video = section.settings.bg_video
+  assign bg_video_mobile = section.settings.bg_video_mobile
+  assign bg_video_url = section.settings.bg_video_url
+  assign height_desktop = section.settings.height_desktop | default: 100
+  assign height_mobile = section.settings.height_mobile | default: 75
+  assign overlay_opacity = section.settings.overlay_opacity | default: 30
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign primary_label = section.settings.primary_label
+  assign primary_link = section.settings.primary_link
+  assign secondary_label = section.settings.secondary_label
+  assign video_source = section.settings.video_source | default: 'upload'
+  assign modal_video = section.settings.modal_video
+  assign modal_video_url = section.settings.modal_video_url
+  assign text_color = section.settings.text_color | default: '#FFFFFF'
+  assign text_position_desktop = section.settings.text_position_desktop | default: 'center'
+  assign text_position_mobile = section.settings.text_position_mobile | default: 'center'
+  assign btn_bg = section.settings.button_bg | default: '#FFFFFF'
+  assign btn_color = section.settings.button_color | default: '#111827'
+  assign btn_bg_hover = section.settings.button_bg_hover | default: '#F5F5F7'
+  assign btn_color_hover = section.settings.button_color_hover | default: '#111827'
+  assign btn2_bg = section.settings.secondary_button_bg | default: 'transparent'
+  assign btn2_color = section.settings.secondary_button_color | default: '#FFFFFF'
+  assign btn2_bg_hover = section.settings.secondary_button_bg_hover | default: '#FFFFFF'
+  assign btn2_color_hover = section.settings.secondary_button_color_hover | default: '#111827'
+
+  assign has_modal_video = false
+  if video_source == 'upload' and modal_video != blank
+    assign has_modal_video = true
+  elsif video_source == 'url' and modal_video_url != blank
+    assign has_modal_video = true
+  endif
+%}
+
+<script src="{{ 'xtu-video-hero.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="xtu-video-hero-{{ section.id }}"
+  class="xtu-video-hero"
+  data-xtu-video-hero
+  {% if video_source == 'url' and modal_video_url != blank %}
+    data-video-url="{{ modal_video_url | escape }}"
+  {% endif %}
+  style="
+    --xtu-vh-height-desktop: {{ height_desktop }}svh;
+    --xtu-vh-height-mobile: {{ height_mobile }}svh;
+    --xtu-vh-overlay: {{ overlay_opacity | divided_by: 100.0 }};
+    --xtu-vh-text: {{ text_color }};
+  "
+>
+  <div class="xtu-video-hero__media{% if bg_image_mobile != blank or bg_video_mobile != blank %} xtu-video-hero__media--split{% endif %}">
+    {% if bg_type == 'youtube' %}
+      {% render 'xtu-video-embed',
+        video_url: bg_video_url,
+        mode: 'ambient',
+        class: 'xtu-video-hero__youtube',
+        title: heading,
+        placeholder: 'lifestyle-1',
+        placeholder_class: 'xtu-video-hero__bg-image xtu-video-hero__placeholder'
+      %}
+    {% elsif bg_type == 'video' and bg_video != blank %}
+      {{
+        bg_video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          preload: 'auto',
+          class: 'xtu-video-hero__bg-video xtu-video-hero__bg-video--desktop'
+      }}
+      {% if bg_video_mobile != blank %}
+        {{
+          bg_video_mobile
+          | video_tag:
+            autoplay: true,
+            loop: true,
+            muted: true,
+            controls: false,
+            playsinline: true,
+            preload: 'auto',
+            class: 'xtu-video-hero__bg-video xtu-video-hero__bg-video--mobile'
+        }}
+      {% endif %}
+    {% elsif bg_image != blank %}
+      {{
+        bg_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'xtu-video-hero__bg-image xtu-video-hero__bg-image--desktop',
+          loading: 'eager',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          alt: heading
+      }}
+      {% if bg_image_mobile != blank %}
+        {{
+          bg_image_mobile
+          | image_url: width: 1500
+          | image_tag:
+            class: 'xtu-video-hero__bg-image xtu-video-hero__bg-image--mobile',
+            loading: 'eager',
+            widths: '480, 750, 1100, 1500',
+            sizes: '100vw',
+            alt: heading
+        }}
+      {% endif %}
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-video-hero__bg-image xtu-video-hero__placeholder' }}
+    {% endif %}
+    <div class="xtu-video-hero__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="xtu-video-hero__content xtu-video-hero__content--desktop-{{ text_position_desktop }} xtu-video-hero__content--mobile-{{ text_position_mobile }}">
+    <div class="xtu-video-hero__copy" data-xtu-reveal="fade-up" data-xtu-stagger>
+      {% if heading != blank %}
+        <h2 class="xtu-video-hero__heading" data-xtu-reveal-child>
+          {{ heading | escape }}
+        </h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <p class="xtu-video-hero__subheading" data-xtu-reveal-child>
+          {{ subheading | escape }}
+        </p>
+      {% endif %}
+
+      {% if primary_label != blank or secondary_label != blank %}
+        <div class="xtu-video-hero__actions" data-xtu-reveal-child>
+          {% if primary_label != blank %}
+            {% render 'xtu-btn',
+              label: primary_label,
+              href: primary_link,
+              bg: btn_bg,
+              color: btn_color,
+              bg_hover: btn_bg_hover,
+              color_hover: btn_color_hover
+            %}
+          {% endif %}
+
+          {% if secondary_label != blank and has_modal_video %}
+            <button
+              type="button"
+              class="xtu-video-hero__play-btn"
+              data-xtu-vh-play-trigger
+              style="
+                --xtu-vh-btn2-bg: {{ btn2_bg }};
+                --xtu-vh-btn2-color: {{ btn2_color }};
+                --xtu-vh-btn2-bg-hover: {{ btn2_bg_hover }};
+                --xtu-vh-btn2-color-hover: {{ btn2_color_hover }};
+              "
+            >
+              <span class="xtu-video-hero__play-label">{{ secondary_label | escape }}</span>
+              <span class="xtu-video-hero__play-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.5 3.5v9L13 8 5.5 3.5Z" fill="currentColor"/>
+                </svg>
+              </span>
+            </button>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if has_modal_video %}
+    <div
+      class="xtu-video-hero__modal xtu-modal"
+      data-xtu-vh-modal
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Video"
+    >
+      <button
+        type="button"
+        class="xtu-modal__close"
+        data-xtu-vh-modal-close
+        aria-label="Close"
+      >
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5 5 15M5 5l10 10" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="xtu-modal__body" data-xtu-vh-modal-content>
+        {% if video_source == 'upload' and modal_video != blank %}
+          {{
+            modal_video
+            | video_tag:
+              controls: true,
+              autoplay: false,
+              loop: false,
+              muted: false,
+              playsinline: true,
+              class: 'xtu-video-hero__modal-video',
+              preload: 'metadata',
+              data-xtu-vh-hosted: true
+          }}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .xtu-video-hero {
+    position: relative;
+    width: 100%;
+    height: var(--xtu-vh-height-desktop, 100svh);
+    overflow: hidden;
+    background: #000;
+    color: var(--xtu-vh-text, #fff);
+  }
+
+  .xtu-video-hero__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .xtu-video-hero__bg-image,
+  .xtu-video-hero__bg-video,
+  .xtu-video-hero__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .xtu-video-hero__youtube {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;
+  }
+
+  .xtu-video-hero__bg-image--mobile,
+  .xtu-video-hero__bg-video--mobile {
+    display: none;
+  }
+
+  .xtu-video-hero__placeholder {
+    background: #1a1a1a;
+  }
+
+  .xtu-video-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / var(--xtu-vh-overlay, 0.3));
+    pointer-events: none;
+  }
+
+  .xtu-video-hero__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: min(var(--page-width), 100%);
+    margin-inline: auto;
+    padding: calc(var(--header-group-height, 64px) + 40px) var(--page-margin) 64px;
+    box-sizing: border-box;
+  }
+
+  .xtu-video-hero__content--desktop-top { align-items: flex-start; }
+  .xtu-video-hero__content--desktop-center { align-items: center; }
+  .xtu-video-hero__content--desktop-bottom { align-items: flex-end; }
+
+  .xtu-video-hero__copy {
+    max-width: 48rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .xtu-video-hero__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: inherit;
+  }
+
+  .xtu-video-hero__subheading {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: inherit;
+    opacity: 0.88;
+    max-width: 36rem;
+  }
+
+  .xtu-video-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .xtu-video-hero__play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 22px;
+    border: 1.5px solid currentColor;
+    border-radius: 999px;
+    background: var(--xtu-vh-btn2-bg, transparent);
+    color: var(--xtu-vh-btn2-color, #fff);
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    appearance: none;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .xtu-video-hero__play-btn:hover {
+    background: var(--xtu-vh-btn2-bg-hover, #fff);
+    color: var(--xtu-vh-btn2-color-hover, #111);
+    border-color: var(--xtu-vh-btn2-bg-hover, #fff);
+  }
+
+  .xtu-video-hero__play-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .xtu-video-hero__play-icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .xtu-video-hero__play-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-video-hero__play-label {
+    display: inline-block;
+  }
+
+  /* ---- Modal (全站通用弹窗结构) ---- */
+  .xtu-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgb(0 0 0 / 0.78);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .xtu-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .xtu-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.12);
+    color: #fff;
+    cursor: pointer;
+    appearance: none;
+    transition: background 0.25s ease;
+  }
+
+  .xtu-modal__close:hover {
+    background: rgb(255 255 255 / 0.24);
+  }
+
+  .xtu-modal__close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .xtu-modal__close svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  .xtu-modal__body {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .xtu-video-hero__modal-video,
+  .xtu-video-hero__iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-video-hero__media--split .xtu-video-hero__bg-image--desktop,
+    .xtu-video-hero__media--split .xtu-video-hero__bg-video--desktop {
+      display: none;
+    }
+
+    .xtu-video-hero__media--split .xtu-video-hero__bg-image--mobile,
+    .xtu-video-hero__media--split .xtu-video-hero__bg-video--mobile {
+      display: block;
+    }
+
+    .xtu-video-hero {
+      height: var(--xtu-vh-height-mobile, 75svh);
+    }
+
+    .xtu-video-hero__content {
+      padding: calc(var(--header-group-height, 56px) + 24px) var(--page-margin) 48px;
+    }
+
+    .xtu-video-hero__content--mobile-top { align-items: flex-start; }
+    .xtu-video-hero__content--mobile-center { align-items: center; }
+    .xtu-video-hero__content--mobile-bottom { align-items: flex-end; }
+
+    .xtu-video-hero__heading {
+      font-size: clamp(1.5rem, 7vw, 2.25rem);
+    }
+
+    .xtu-modal {
+      padding: 16px;
+    }
+
+    .xtu-modal__close {
+      top: 10px;
+      right: 10px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Video Hero",
+  "tag": "section",
+  "class": "xtu-video-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "背景"
+    },
+    {
+      "type": "select",
+      "id": "bg_type",
+      "label": "背景类型",
+      "options": [
+        { "value": "image", "label": "图片" },
+        { "value": "video", "label": "上传视频" },
+        { "value": "youtube", "label": "视频链接" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "背景图片（PC）",
+      "visible_if": "{{ section.settings.bg_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "背景图片（移动端）",
+      "visible_if": "{{ section.settings.bg_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "bg_video",
+      "label": "背景视频（PC）",
+      "info": "自动循环静音播放",
+      "visible_if": "{{ section.settings.bg_type == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "bg_video_mobile",
+      "label": "背景视频（移动端）",
+      "visible_if": "{{ section.settings.bg_type == 'video' }}"
+    },
+    {
+      "type": "video_url",
+      "id": "bg_video_url",
+      "label": "背景视频链接",
+      "accept": ["youtube", "vimeo"],
+      "visible_if": "{{ section.settings.bg_type == 'youtube' }}"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "高度（PC，svh）",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "svh",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "高度（移动端，svh）",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "svh",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "遮罩透明度",
+      "info": "0 = 无遮罩；100 = 全黑",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "文案内容"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "The Original Action Camera"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "副标题 / 文案",
+      "default": "With 20+ years of innovation and stoke, we've changed how you capture the world."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文字颜色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "text_position_desktop",
+      "label": "内容位置（PC）",
+      "options": [
+        { "value": "top", "label": "居上" },
+        { "value": "center", "label": "居中" },
+        { "value": "bottom", "label": "居下" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_position_mobile",
+      "label": "内容位置（移动端）",
+      "options": [
+        { "value": "top", "label": "居上" },
+        { "value": "center", "label": "居中" },
+        { "value": "bottom", "label": "居下" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "主按钮"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "主按钮文案",
+      "default": "See the Lineup"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "主按钮链接"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "主按钮背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "主按钮文字色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "主按钮 Hover 背景",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "button_color_hover",
+      "label": "主按钮 Hover 文字",
+      "default": "#111827"
+    },
+    {
+      "type": "header",
+      "content": "副按钮（播放视频）"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "副按钮文案",
+      "info": "带播放 icon；点击弹窗播放视频",
+      "default": "Watch Video"
+    },
+    {
+      "type": "select",
+      "id": "video_source",
+      "label": "弹窗视频来源",
+      "options": [
+        { "value": "upload", "label": "Shopify 上传" },
+        { "value": "url", "label": "外部链接（YouTube / Vimeo）" }
+      ],
+      "default": "upload"
+    },
+    {
+      "type": "video",
+      "id": "modal_video",
+      "label": "弹窗视频（上传）",
+      "visible_if": "{{ section.settings.video_source == 'upload' }}"
+    },
+    {
+      "type": "text",
+      "id": "modal_video_url",
+      "label": "弹窗视频链接",
+      "info": "支持 YouTube / Vimeo 链接",
+      "visible_if": "{{ section.settings.video_source == 'url' }}"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_bg",
+      "label": "副按钮背景色",
+      "default": "#00000000"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_color",
+      "label": "副按钮文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_bg_hover",
+      "label": "副按钮 Hover 背景",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_color_hover",
+      "label": "副按钮 Hover 文字",
+      "default": "#111827"
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Video Hero",
+      "settings": {
+        "heading": "The Original Action Camera",
+        "subheading": "With 20+ years of innovation and stoke, we've changed how you capture the world.",
+        "primary_label": "See the Lineup",
+        "secondary_label": "Watch Video"
+      }
+    }
+  ]
+}
+{% endschema %}

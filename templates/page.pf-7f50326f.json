@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-7f50326f": {
+      "type": "pf-7f50326f",
+      "settings": {
+        "pf_f7d5bb37_value": "&nbsp; &nbsp; &nbsp;S7Pro&nbsp;Firmware",
+        "pf_b2aec528_value": "&nbsp;&nbsp;MINI2Pro&nbsp;Firmware",
+        "pf_2b6742f2_value": "S7Pro Max&nbsp;Firmware",
+        "pf_12038801_value": "Download Firmware",
+        "pf_8158b237_value": "Download Firmware",
+        "pf_b237ebaf_value": "Download Firmware"
+      }
+    }
+  },
+  "order": [
+    "pf-7f50326f"
+  ]
+}

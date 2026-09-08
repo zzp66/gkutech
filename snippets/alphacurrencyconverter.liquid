@@ -1,0 +1,373 @@
+<div class="alphabox bottom-left">
+	<select class="alphaselect" id="alphaselect" style="display:none;">
+            <option value="United States dollar" data-symbol="$"
+            data-code="USD" data-simple="US">
+             USD
+        </option>
+            <option value="Euro" data-symbol="€"
+            data-code="EUR" data-simple="EU">
+             EUR
+        </option>
+            <option value="British pound" data-symbol="£"
+            data-code="GBP" data-simple="GB">
+             GBP
+        </option>
+            <option value="Canadian dollar" data-symbol="$"
+            data-code="CAD" data-simple="CA">
+             CAD
+        </option>
+            <option value="Australian dollar" data-symbol="$"
+            data-code="AUD" data-simple="AU">
+             AUD
+        </option>
+        </select>
+</div>
+<script class="alphaCurrencyScript">
+        console.log('Alpha currency Converter');
+    var jqobj = {
+        key: "jQuery",
+        src: "https://code.jquery.com/jquery-2.2.4.min.js",
+    };
+    var files = [{
+        key: "Currency",
+        src: "https://cdn.shopify.com/s/javascripts/currencies.js",
+    },
+    {
+        key: "niceselect",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js",
+    }];
+  	var count = 0;  	
+  	var test  = setInterval(function(){
+        if (!window.hasOwnProperty(jqobj.key)) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = jqobj.src;
+            document.getElementsByClassName("alphaCurrencyScript")[0].insertAdjacentElement('beforeBegin', script);
+        }else{
+            count = 1;
+        }
+        if( count == 1){
+            clearInterval(test);
+        }
+      
+    },100);
+    var test2  = setInterval(function(){
+        if(count >=1){
+            files.forEach(function (element, index) {
+                var key = element.key;
+                loadJs(
+                key,
+                element.src,
+                document.getElementsByClassName("alphaCurrencyScript")[0],
+                "beforeBegin"
+            );
+            });
+            clearInterval(test2);
+        } 
+    },100);
+
+    var inter = setInterval(function(){
+        if (count == files.length+1) {
+            clearInterval(inter);
+            readyfunction();
+        }
+    }, 1000);
+    function readyfunction(){
+        $ = jQuery.noConflict();
+        $(document).ready(function (alphaQuery) {
+                        var url = "https://currencyconverter.arcafy.com/status/";
+            url += Shopify.shop;
+            alphaQuery.get(url,function(response){
+                if (response.status) {
+                    alpharun();            }
+            });
+            console.log("this is new snippet");
+            function alpharun() {
+                var styles = [
+                    "https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css",
+                    "{{ 'alphaCurrencyCss.css' | asset_url }}"
+                ];
+                styles.forEach(function (element, index) {
+                    loadCss(element);
+                });
+                var headStyles = `
+                    .alphabox .nice-select,.alphabox .nice-select .list{
+                        background-color: rgba(251, 251, 251, 1) !important;
+                    }
+                    .alphabox .nice-select,.alphabox .nice-select .current{
+                        color:rgba(0,0,0,1) !important;
+                    }
+                    .alphabox .nice-select .list li:hover{
+                        background-color:rgba(246,246,246,1) !important;
+                    }
+                `;
+                                                headStyles += `
+                    .alphanotification{
+                        background-color:rgba(184,27,27,1);
+                        color: rgba(255,255,255,1);
+                        padding:20px;
+                        text-align:center;
+                    }
+                `;
+                                loadStyles(headStyles);
+                if (!getCookie("user_geo_currency")) {
+                                            afterload();
+                                    } else {
+                    afterload();
+                }
+                                function afterload(
+                                        ) {
+                                            if (!getCookie("user_currency")) {
+                            setCookie("user_currency", "USD",20);
+                            setCookie("user_currency_default", "USD",20);
+                        }
+                                        //     new MutationObserver(function(mutationsList, observer) {
+                    //       for(let mutation of mutationsList) {
+                    //           if (mutation.type === 'childList') {
+                    //               for (const element of mutation.addedNodes) {
+                    //                   console.log(element)
+                    //                   if(element.parentElement.classList.contains('money') || element.classList.contains('money')){
+                    //                     price = getAmount(element.parentElement.innerHtml);
+                    //                     console.log(price)
+                    //                     str = str.replace(price, "");
+                    //                     str = str.trim(); 
+                    //                     console.log(str)
+                    //                     if(getCookie("user_currency_symbol") != str){
+                    //                       alphaSingleElementChange(getCookie("user_currency_default"),getCookie("user_currency"),str,alphaQuery(element.parentElement));
+                    //                     }
+                    //                   }
+                    //               }
+                    //           }
+                    //       }
+                    //   }).observe(document, { attributes: false, childList: true, subtree: true });
+                                            var rawnotification = `We process all orders in (( Alpha.currency )). While your cart is currently displayed in (( Alpha.selectedCurrency )) you will checkout using (( Alpha.currency )) at the most current exchange rate.`;
+                        var rawnotification1 = rawnotification.replace(/\(\( Alpha.shopName \)\)/g,Shopify.shop);
+                        rawnotification1 = rawnotification1.replace(/\(\( Alpha.currency \)\)/g, getCookie('user_currency_default'));
+                        rawnotification1 = rawnotification1.replace(/\(\( Alpha.selectedCurrency \)\)/g, `<span class="alphausercurrency">${getCookie("user_currency")}</span>`);
+                        var alphanotificationdiv = `
+                            <div class="alphanotification">
+                                ${rawnotification1}
+                            </div>
+                        `;
+                        var elementArray = [
+                            'form[action="/cart"].ajaxcart .ajaxcart__product .ajaxcart__row',
+                            'form[action="/cart"] .ajaxcart__row',
+                            'form[action="/cart"] .cart_item',
+                            'form[action="/checkout"] .last_cart_item',
+                            '.cart_list',
+                            'form[action="/checkout"]',
+                            'form[action="/cart"]',
+                        ];
+                        var except = [
+                            'form[action="/cart"].ajaxcart .ajaxcart__product .ajaxcart__row',
+                            'form[action="/cart"] .ajaxcart__row',
+                            'form[action="/cart"] .cart_item',
+                            'form[action="/checkout"] .last_cart_item',
+                            '.cart_list'
+                        ];
+                        addnotification();
+                        function addnotification() {
+                            alphaQuery(elementArray).each((index, element) => {
+                                alphaQuery(element).each((i,ele) => {
+                                    flag = false;
+                                    el = alphaQuery(ele);
+                                    if (el.find(".alphanotification").length > 0) {
+                                        flag = true;
+                                    }
+                                    if (!flag) {
+                                        if (except.includes(element)) {
+                                            if (alphaQuery(element).last().find(".alphanotification").length <= 0) {
+                                                if(alphaQuery(element).parents('form[action="/cart"]').find('.alphanotification').length <=0){
+                                                    var rawnotification2 = rawnotification.replace(/\(\( Alpha.shopName \)\)/g,Shopify.shop);
+                                                    rawnotification2 = rawnotification2.replace(/\(\( Alpha.currency \)\)/g, getCookie('user_currency_default'));
+                                                    rawnotification2 = rawnotification2.replace(/\(\( Alpha.selectedCurrency \)\)/g, `<span class="alphausercurrency">${getCookie("user_currency")}</span>`);
+                                                    var alphanotificationdiv2 = `
+                                                        <div class="alphanotification">
+                                                            ${rawnotification2}
+                                                        </div>
+                                                    `;
+                                                    alphaQuery(element).last().append(alphanotificationdiv2); 
+                                                }
+                                            }
+                                        }else {
+                                            var rawnotification2 = rawnotification.replace(/\(\( Alpha.shopName \)\)/g,Shopify.shop);
+                                            rawnotification2 = rawnotification2.replace(/\(\( Alpha.currency \)\)/g, getCookie('user_currency_default'));
+                                            rawnotification2 = rawnotification2.replace(/\(\( Alpha.selectedCurrency \)\)/g, `<span class="alphausercurrency">${getCookie("user_currency")}</span>`);
+                                            var alphanotificationdiv2 = `
+                                                <div class="alphanotification">
+                                                    ${rawnotification2}
+                                                </div>
+                                            `;
+                                            el.prepend(alphanotificationdiv2);
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                        alphaQuery(document).on("DOMNodeInserted",elementArray,function (e) {
+                            addnotification();
+                        });
+                                        alphaQuery("#alphaselect").val(alphaQuery(`#alphaselect option[data-code="${getCookie("user_currency")}"]`).val());
+                    if(alphaQuery( window ).width() >= 1024){
+                                                    alphaQuery(".alphaselect").niceSelect();
+                                            }else{
+                                                    alphaQuery(".alphaselect").niceSelect();
+                                            }                
+                                            var alphacode = alphaQuery(`#alphaselect option[data-code="${getCookie("user_currency")}"]`).data('simple');
+                        alphaQuery(".alphaselect .current").prepend(`<span class="fflag ff-default fflag-${alphacode} ff-wave ff-md"></span>`);	
+                        alphaQuery(".alphaselect .list li").each(function(index,element){	
+                            var elementcountry = alphaQuery(element).data('value');	
+                            alphacode = alphaQuery(`.alphaselect option[value="${elementcountry}"]`).data('simple');	
+                            alphaQuery(element).prepend(`<span class="fflag ff-default fflag-${alphacode} ff-wave ff-md"></span>`); 	
+                        });
+                                        alphaQuery(".alphabox").css({display:"block"});
+                    if (!getCookie("user_currency_symbol")) {
+                        setCookie("user_currency_symbol", alphaQuery("#alphaselect option:selected").data("symbol"),20);
+                    }
+                    var from = getCookie("user_currency_default");
+                    var to = getCookie("user_currency");
+                    alphaQuery("#alphaselect").val(alphaQuery(`#alphaselect option[data-code="${getCookie("user_currency")}"]`).attr('value'));
+                    var code = alphaQuery(`#alphaselect option[data-code="${getCookie("user_currency")}"]`).data("symbol");
+                    // if(getCookie('user_currency') == getCookie('user_currency_default'))
+                    // {
+                        alphachange(from, to, code);
+                    // }
+                                        alphaQuery(document).on("DOMNodeInserted", 'form[action="/cart"],form[action="/cart/add"],.product-recommendations,button[data-testid="Checkout-button"],.product-single__meta .product__price,.fancybox-wrap', function (e) {
+                        // if(getCookie('user_currency') == getCookie('user_currency_default'))
+                        // {
+                            alphaotherchange(e);
+                        // }
+                    });
+                    function alphaotherchange(e) {
+                        var from = getCookie("user_currency_default");
+                        var to = getCookie("user_currency");
+                        var code = getCookie("user_currency_symbol");
+                        alphaQuery(e.target)
+                        .find(".money")
+                        .each(function () {
+                            str = alphaQuery(this).html();
+                            price = getAmount(str);
+                            str = str.replace(price, "");
+                            str = str.trim();
+                            price = price.toString().replace(",","");
+                            price = Currency.convert(price, from, to);
+                            if (str != code) {
+                                                                    alphaQuery(this).html(code + " " + price.toFixed(2));
+                                                            }
+                        });
+                    }
+                    // function alphaSingleElementChange(from,to,code,element){
+                    // 	str = alphaQuery(element).html();
+                    //         price = getAmount(str);
+                    //         str = str.replace(price, "");
+                    //         str = str.trim();
+                    //         price = price.toString().replace(",","");
+                    //         price = Currency.convert(price, from, to);
+                    //         if (str != code) {
+                    //           if(price.toString().indexOf(".") >-1){
+                    //             price = parseInt(price)+".99";
+                    //           }
+                    //           alphaQuery(this).html(code + " " + price);
+                                // }
+                    // }
+                    // on load change currency
+                    alphaQuery("#alphaselect").on("change", function () {
+                        alphaQuery(".alphausercurrency").html(alphaQuery("#alphaselect option:selected").data("code"));
+                        var from = getCookie("user_currency");
+                        var to = alphaQuery("#alphaselect option:selected").data("code");
+                        var code = alphaQuery("#alphaselect option:selected").data("symbol");
+                        setCookie(
+                            "user_currency",
+                            alphaQuery("#alphaselect option:selected").data("code"),20
+                            );
+                        setCookie(
+                            "user_currency_symbol",
+                            alphaQuery("#alphaselect option:selected").data("symbol"),20
+                            );
+                        alphacode = alphaQuery(`#alphaselect option[data-code="${getCookie("user_currency")}"]`).data('simple');
+                                                    alphaQuery(".alphaselect .current").prepend(`<span class="fflag ff-default fflag-${alphacode} ff-wave ff-md"></span>`);
+                                                // if(getCookie('user_currency') == getCookie('user_currency_default'))
+                        // {
+                            alphachange(from, to, code);
+                        // }	
+                                            });
+                    function alphachange(from = undefined, to = undefined, code = undefined) {
+                        if (from != undefined && to != undefined && code != undefined) {
+                            alphaQuery(".money").each(function () {
+                                str = alphaQuery(this).html();
+                                price = getAmount(str);
+                                price = price.toString().replace(",","");
+                                price = Currency.convert(price, from, to);
+                                                                    alphaQuery(this).html(code + " " + price.toFixed(2));
+                                                            });
+                        }
+                    }
+                    function getAmount(str) {
+                        var amount = 0;
+                        if(str){
+                            var match = str.match(/\d/g);
+                            amount = parseFloat(str.substring(
+                                str.indexOf(match[0]),
+                                str.lastIndexOf(match[match.length-1]) + 1
+                            ).replace(",", ""));
+                        }
+                        return amount;
+                    }
+                }
+                function loadCss(url, element = document.head, position = "beforeend") {
+                    var link = document.createElement("link");
+                    link.setAttribute("rel","stylesheet");
+                    link.href = url;
+                    element.insertAdjacentElement(position, link);
+                }
+                function loadStyles(styles ,element = document.head, position = "beforeend") {
+                    var style = document.createElement("style");
+                    style.innerHTML = styles;
+                    element.insertAdjacentElement(position, style);
+                }
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                    var expires = "expires="+d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+                
+            }
+        });
+    }
+    function getCookie(name) {
+        var cookieArr = document.cookie.split(";");
+        for (var i = 0; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split("=");
+            if (name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+    function loadJs(key,url, element = document.body, position) {
+        if (!window.hasOwnProperty(key)) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            script.load = count++;
+            element.insertAdjacentElement(position, script);
+        }else{
+            count++;
+        }
+    }
+    
+    function changeCartCurrency() {
+        if(getCookie('user_currency') != null)
+        {
+          if(getCookie('user_currency') != getCookie('cart_currency'))
+          {
+            jQuery.post(window.Shopify.routes.root + 'cart/update.js', {
+                              currency: getCookie('user_currency')
+            });
+          }
+        }
+    }
+    
+    
+</script>

@@ -1,0 +1,956 @@
+{%- comment -%}
+  XTU Customer Reviews — 用户评价卡片横向轮播。
+
+  数据来源
+  - 标题/副标题、版心、边距、卡片圆角/间距/媒体比例、自动轮播：section 设置。
+  - 每条评价：block「评价」——媒体（图片/上传视频）、星级、产品名、日期、评价正文、作者、头像、认证标记。
+  - 空图/空视频用 placeholder_svg_tag；无头像时显示作者首字母。
+
+  运营配置
+  1. Theme Editor 添加「XTU Customer Reviews」。
+  2. 填写大标题、副标题；按需增删评价 block。
+  3. 媒体选图片或上传视频；视频仅在可见卡片内静音循环。
+  4. 可开关自动轮播与间隔秒数；移动端 peek 默认隐藏箭头。
+
+  前台
+  - PC（≥990）：版心内一行 4 卡；标题左、箭头右，同一行水平对齐（xtu-swiper-nav on-light）。
+  - 平板（750–989）：一行 2 卡。
+  - 移动端：1.1 peek，上媒下文（卡片本身即此结构）；箭头默认隐藏。
+  - 卡片高度按最高卡对齐，文案长短不一致时外框齐平。
+  - 自动轮播按设定秒数切卡，悬停暂停。
+
+  相关：assets/xtu-customer-reviews.js、snippets/xtu-swiper-nav.liquid
+{%- endcomment -%}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign card_background = section.settings.card_background | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign star_color = section.settings.star_color | default: '#F5B400'
+  assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign card_radius = section.settings.card_radius | default: 16
+  assign media_ratio = section.settings.media_ratio | default: '16 / 9'
+  assign card_gap = section.settings.card_gap | default: 16
+  assign card_gap_mobile = section.settings.card_gap_mobile | default: 8
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign show_arrows = section.settings.show_arrows
+  assign show_arrows_mobile = section.settings.show_arrows_mobile
+  assign mobile_per_view = section.settings.mobile_per_view | default: '1.1'
+  assign autoplay = section.settings.autoplay
+  assign autoplay_delay = section.settings.autoplay_delay | default: 4 | at_least: 2 | at_most: 10
+  assign autoplay_ms = autoplay_delay | times: 1000
+  assign verified_label = section.settings.verified_label | default: 'VERIFIED'
+  assign review_count = 0
+  for block in section.blocks
+    if block.type == 'review'
+      assign review_count = review_count | plus: 1
+    endif
+  endfor
+  assign show_header_nav = false
+  if show_arrows and review_count > 1
+    assign show_header_nav = true
+  endif
+%}
+
+<script src="{{ 'xtu-customer-reviews.js' | asset_url }}" defer="defer"></script>
+
+<section
+  id="xtu-customer-reviews-{{ section.id }}"
+  class="xtu-cr"
+  data-xtu-customer-reviews
+  data-gap="{{ card_gap }}"
+  data-gap-mobile="{{ card_gap_mobile }}"
+  data-mobile-per-view="{{ mobile_per_view }}"
+  data-autoplay="{% if autoplay %}true{% else %}false{% endif %}"
+  data-autoplay-delay="{{ autoplay_ms }}"
+  style="
+    --xtu-cr-bg: {{ background_color }};
+    --xtu-cr-content-bg: {{ content_background }};
+    --xtu-cr-card-bg: {{ card_background }};
+    --xtu-cr-heading: {{ heading_color }};
+    --xtu-cr-text: {{ text_color }};
+    --xtu-cr-muted: {{ muted_text_color }};
+    --xtu-cr-star: {{ star_color }};
+    --xtu-cr-content-width: {{ content_width }}px;
+    --xtu-cr-radius: {{ card_radius }}px;
+    --xtu-cr-ratio: {{ media_ratio }};
+    --xtu-cr-gap: {{ card_gap }}px;
+    --xtu-cr-gap-m: {{ card_gap_mobile }}px;
+    --xtu-cr-pt: {{ padding_top }}px;
+    --xtu-cr-pb: {{ padding_bottom }}px;
+    --xtu-cr-pt-m: {{ padding_top_mobile }}px;
+    --xtu-cr-pb-m: {{ padding_bottom_mobile }}px;
+  "
+>
+  <div class="xtu-cr__inner">
+    {% if heading != blank or subheading != blank or show_header_nav %}
+      <div
+        class="xtu-cr__header{% if show_header_nav %} xtu-cr__header--with-nav{% endif %}"
+        data-xtu-reveal="fade-up"
+        data-xtu-stagger
+      >
+        <div class="xtu-cr__header-row">
+          {% if heading != blank %}
+            <h2 class="xtu-cr__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+          {% endif %}
+
+          {% if show_header_nav %}
+            <div class="xtu-swiper-nav-group{% unless show_arrows_mobile %} xtu-swiper-nav-group--hide-mobile{% endunless %}">
+              {% render 'xtu-swiper-nav',
+                variant: 'on-light',
+                prev_attributes: 'data-xtu-cr-prev',
+                next_attributes: 'data-xtu-cr-next'
+              %}
+            </div>
+          {% endif %}
+        </div>
+        {% if subheading != blank %}
+          <p class="xtu-cr__subheading" data-xtu-reveal-child>{{ subheading | escape }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if review_count > 0 %}
+      <div class="xtu-cr__viewport" data-xtu-reveal="fade-up">
+        <div class="swiper xtu-cr__swiper" data-xtu-cr-swiper>
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == 'review' %}
+                {% liquid
+                  assign media_type = block.settings.media_type | default: 'image'
+                  assign image = block.settings.image
+                  assign image_mobile = block.settings.image_mobile
+                  assign video = block.settings.video
+                  assign video_mobile = block.settings.video_mobile
+                  assign video_url = block.settings.video_url
+                  assign youtube_url = block.settings.youtube_url
+                  assign rating = block.settings.rating | default: 5 | at_least: 1 | at_most: 5
+                  assign product_name = block.settings.product_name
+                  assign review_date = block.settings.date
+                  assign quote = block.settings.quote
+                  assign author = block.settings.author
+                  assign avatar = block.settings.avatar
+                  assign verified = block.settings.verified
+                  assign alt_text = product_name | default: author | default: heading | default: 'Customer review'
+                  assign ph_mod = forloop.index0 | modulo: 3
+                  assign placeholder_name = 'lifestyle-1'
+                  if ph_mod == 1
+                    assign placeholder_name = 'lifestyle-2'
+                  elsif ph_mod == 2
+                    assign placeholder_name = 'image'
+                  endif
+                  assign author_initial = ''
+                  if author != blank
+                    assign author_initial = author | slice: 0 | upcase
+                  endif
+                  assign avatar_alt = author | default: alt_text
+                %}
+                <article
+                  class="swiper-slide xtu-cr__slide"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="xtu-cr__card">
+                    <div class="xtu-cr__media{% if media_type == 'image' %} xtu-img-zoom{% endif %}">
+                      {% render 'xtu-media',
+                        media_type: media_type,
+                        image: image,
+                        image_mobile: image_mobile,
+                        video: video,
+                        video_mobile: video_mobile,
+                        video_url: video_url,
+                        youtube_url: youtube_url,
+                        alt: alt_text,
+                        placeholder: placeholder_name,
+                        fill: true,
+                        zoom: true,
+                        youtube_mode: 'ambient',
+                        sizes_desktop: '(max-width: 749px) 80vw, min(280px, 25vw)',
+                        sizes_mobile: '80vw'
+                      %}
+                    </div>
+
+                    <div class="xtu-cr__copy">
+                      <div
+                        class="xtu-cr__stars"
+                        role="img"
+                        aria-label="{{ rating }} out of 5 stars"
+                      >
+                        {% for i in (1..5) %}
+                          <span
+                            class="xtu-cr__star{% if i <= rating %} is-filled{% endif %}"
+                            aria-hidden="true"
+                          >
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2.6l2.62 6.36 6.88.58-5.22 4.52 1.58 6.72L12 17.48 6.14 20.78l1.58-6.72-5.22-4.52 6.88-.58L12 2.6Z"/>
+                            </svg>
+                          </span>
+                        {% endfor %}
+                      </div>
+
+                      {% if product_name != blank %}
+                        <h3 class="xtu-cr__product">{{ product_name | escape }}</h3>
+                      {% endif %}
+
+                      {% if review_date != blank %}
+                        <p class="xtu-cr__date">{{ review_date | escape }}</p>
+                      {% endif %}
+
+                      {% if quote != blank %}
+                        <p class="xtu-cr__quote">{{ quote | escape | newline_to_br }}</p>
+                      {% endif %}
+
+                      <div class="xtu-cr__footer">
+                        <div class="xtu-cr__author">
+                          {% if avatar != blank %}
+                            {{
+                              avatar
+                              | image_url: width: 96
+                              | image_tag:
+                                class: 'xtu-cr__avatar',
+                                widths: '48, 64, 96',
+                                sizes: '32px',
+                                loading: 'lazy',
+                                alt: avatar_alt
+                            }}
+                          {% elsif author_initial != blank %}
+                            <span class="xtu-cr__avatar xtu-cr__avatar--initial" aria-hidden="true">{{ author_initial | escape }}</span>
+                          {% endif %}
+                          {% if author != blank %}
+                            <span class="xtu-cr__name">{{ author | escape }}</span>
+                          {% endif %}
+                        </div>
+                        {% if verified %}
+                          <span class="xtu-cr__verified">{{ verified_label | escape }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      {% if review_count > 1 %}
+        <div class="xtu-cr__pager" data-xtu-cr-pager></div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-cr {
+    padding: var(--xtu-cr-pt, 80px) 0 var(--xtu-cr-pb, 80px);
+    background: var(--xtu-cr-bg, #fff);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .xtu-cr__inner {
+    width: min(var(--xtu-cr-content-width, 1200px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+    background: var(--xtu-cr-content-bg, #fff);
+    box-sizing: border-box;
+  }
+
+  .xtu-cr__header {
+    margin-bottom: var(--xtu-space-40, 40px);
+  }
+
+  .xtu-cr__header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--xtu-space-16, 16px);
+    min-height: 45px;
+  }
+
+  .xtu-cr__header-row .xtu-swiper-nav-group {
+    margin-left: auto;
+  }
+
+  .xtu-cr__heading {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    color: var(--xtu-cr-heading, #000);
+  }
+
+  .xtu-cr__subheading {
+    margin: var(--xtu-space-16, 16px) 0 0;
+    max-width: 42rem;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-section-subtitle);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: left;
+    color: var(--xtu-cr-muted, #8e9297);
+  }
+
+  .xtu-cr__viewport {
+    overflow: hidden;
+  }
+
+  .xtu-cr__swiper {
+    overflow: hidden;
+  }
+
+  .xtu-cr__swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .xtu-cr__swiper .swiper-slide,
+  .xtu-cr__slide {
+    display: flex;
+    height: auto !important;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+
+  .xtu-cr__card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: var(--xtu-cr-card-bg, #fff);
+    border: 1px solid var(--color-2, #dfdfdf);
+    border-radius: var(--xtu-cr-radius, 16px);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .xtu-cr__media {
+    position: relative;
+    flex: 0 0 auto;
+    aspect-ratio: var(--xtu-cr-ratio, 16 / 9);
+    background: #e8eaed;
+    overflow: hidden;
+  }
+
+  .xtu-cr__media .xtu-media {
+    height: 100%;
+  }
+
+  .xtu-cr__copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: var(--xtu-space-16, 16px) var(--xtu-space-16, 16px) var(--xtu-space-20, 20px);
+    box-sizing: border-box;
+  }
+
+  .xtu-cr__stars {
+    display: flex;
+    align-items: center;
+    gap: var(--xtu-space-4, 4px);
+    margin-bottom: var(--xtu-space-12, 12px);
+  }
+
+  .xtu-cr__star {
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: #e5e7eb;
+  }
+
+  .xtu-cr__star.is-filled {
+    color: var(--xtu-cr-star, #f5b400);
+  }
+
+  .xtu-cr__star svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-cr__product {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-group-title);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-cr-heading, #000);
+  }
+
+  .xtu-cr__date {
+    margin: var(--xtu-space-8, 8px) 0 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-cr-muted, #8e9297);
+  }
+
+  .xtu-cr__quote {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+    flex: 1 1 auto;
+    margin: var(--xtu-space-12, 12px) 0 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-cr-text, #333);
+  }
+
+  .xtu-cr__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--xtu-space-12, 12px);
+    margin-top: auto;
+    padding-top: var(--xtu-space-16, 16px);
+  }
+
+  .xtu-cr__author {
+    display: flex;
+    align-items: center;
+    gap: var(--xtu-space-8, 8px);
+    min-width: 0;
+  }
+
+  .xtu-cr__avatar {
+    display: block;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    object-fit: cover;
+    background: #e8eaed;
+  }
+
+  .xtu-cr__avatar--initial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #333;
+  }
+
+  .xtu-cr__name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-cr-heading, #000);
+  }
+
+  .xtu-cr__verified {
+    flex: 0 0 auto;
+    padding: var(--xtu-space-4, 4px) var(--xtu-space-8, 8px);
+    border-radius: var(--xtu-radius-sm, 8px);
+    background: #f0f0f0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-eyebrow);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+
+  .xtu-cr__pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--xtu-space-8, 8px);
+    margin-top: var(--xtu-space-24, 24px);
+  }
+
+  .xtu-cr__bullet {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: #d1d5db;
+    cursor: pointer;
+    appearance: none;
+    transition: background 0.2s ease;
+  }
+
+  .xtu-cr__bullet.is-active {
+    background: #000;
+  }
+
+  @media screen and (max-width: 749px) {
+    .xtu-cr {
+      padding: var(--xtu-cr-pt-m, 40px) 0 var(--xtu-cr-pb-m, 40px);
+    }
+
+    .xtu-cr__inner {
+      width: 100%;
+      max-width: none;
+      background: transparent;
+    }
+
+    .xtu-cr__header {
+      width: 100%;
+      margin-bottom: var(--xtu-space-20, 20px);
+      padding-inline: var(--page-margin);
+      box-sizing: border-box;
+    }
+
+    .xtu-cr__header-row {
+      min-height: 45px;
+      gap: var(--xtu-space-12, 12px);
+    }
+
+    .xtu-cr__heading {
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-cr__subheading {
+      margin-top: var(--xtu-space-12, 12px);
+      font-size: var(--xtu-type-section-subtitle-m);
+    }
+
+    .xtu-cr__viewport {
+      width: 100%;
+      padding-inline: var(--page-margin);
+      box-sizing: border-box;
+    }
+
+    .xtu-cr__copy {
+      padding: var(--xtu-space-16, 16px) var(--xtu-space-16, 16px) var(--xtu-space-20, 20px);
+    }
+
+    .xtu-cr__product {
+      font-size: var(--xtu-type-group-title-m);
+    }
+
+    .xtu-cr__pager {
+      margin-top: var(--xtu-space-20, 20px);
+      padding-inline: var(--page-margin);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Customer Reviews",
+  "tag": "section",
+  "class": "section-xtu-customer-reviews",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "header",
+      "content": "标题"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "副标题"
+    },
+    {
+      "type": "header",
+      "content": "轮播"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "显示左右箭头",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "移动端显示左右箭头",
+      "info": "Peek 露出邻卡时默认关闭，可滑动浏览。",
+      "default": false,
+      "visible_if": "{{ section.settings.show_arrows == true }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "启用自动轮播",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "自动轮播间隔",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4,
+      "visible_if": "{{ section.settings.autoplay == true }}"
+    },
+    {
+      "type": "select",
+      "id": "mobile_per_view",
+      "label": "移动端每行显示",
+      "options": [
+        { "value": "1.1", "label": "1.1" },
+        { "value": "1.2", "label": "1.2" },
+        { "value": "1.5", "label": "1.5" }
+      ],
+      "default": "1.1"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "媒体比例",
+          "options": [
+            { "value": "16 / 9", "label": "16:9" },
+            { "value": "16 / 10", "label": "16:10" },
+            { "value": "4 / 3", "label": "4:3" },
+            { "value": "1 / 1", "label": "1:1" },
+            { "value": "4 / 5", "label": "4:5" },
+            { "value": "3 / 4", "label": "3:4" }
+          ],
+      "default": "16 / 9"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "桌面卡片间距",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "label": "移动端卡片间距",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "卡片圆角",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "认证标签文案",
+      "default": "VERIFIED"
+    },
+    {
+      "type": "header",
+      "content": "颜色与布局"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "卡片背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次级文字颜色",
+      "default": "#8E9297"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "星级颜色",
+      "default": "#F5B400"
+    },
+    {
+      "type": "number",
+      "id": "content_width",
+      "label": "内容区最大宽度（px）",
+      "default": 1200,
+      "info": "范围 600–1600。"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "评价",
+      "settings": [
+        {
+          "type": "header",
+          "content": "媒体"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "媒体类型",
+          "options": [
+            { "value": "image", "label": "图片" },
+            { "value": "video", "label": "上传视频" },
+            { "value": "youtube", "label": "视频链接" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片（PC）",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "图片（移动端）",
+          "info": "可选。未配置时移动端使用 PC 图。",
+          "visible_if": "{{ block.settings.media_type == 'image' }}"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频（PC）",
+          "info": "仅在可见卡片内静音循环播放。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "上传视频（移动端）",
+          "info": "可选。未配置时移动端使用 PC 视频。",
+          "visible_if": "{{ block.settings.media_type == 'video' }}"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "视频链接",
+          "accept": ["youtube", "vimeo"],
+          "info": "支持 YouTube / Vimeo。",
+          "visible_if": "{{ block.settings.media_type == 'youtube' }}"
+        },
+        {
+          "type": "header",
+          "content": "评价内容"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "星级",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "产品名",
+          "default": "F8"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "日期",
+          "default": "2026-04-08"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "评价内容",
+          "default": "The parking mode captured everything clearly even at night. Setup was simple and the app playback is smooth."
+        },
+        {
+          "type": "header",
+          "content": "作者"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "作者",
+          "default": "Mittzi P."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "头像"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "显示认证标记",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Customer Reviews",
+      "settings": {
+        "heading": "Customer Reviews",
+        "subheading": ""
+      },
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "product_name": "F8",
+            "date": "2026-04-08",
+            "quote": "The parking mode captured everything clearly even at night. Setup was simple and the app playback is smooth.",
+            "author": "Mittzi P.",
+            "rating": 5,
+            "verified": true,
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "product_name": "A4",
+            "date": "2026-04-02",
+            "quote": "Crystal-clear footage on the highway. I finally have a camera I can trust for daily commuting.",
+            "author": "James L.",
+            "rating": 5,
+            "verified": true,
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "product_name": "F17 Elite",
+            "date": "2026-03-28",
+            "quote": "Night vision is excellent and the magnetic mount feels solid. Highly recommend for long trips.",
+            "author": "Sofia K.",
+            "rating": 5,
+            "verified": true,
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "product_name": "S12",
+            "date": "2026-03-19",
+            "quote": "Installation took minutes. The loop recording never skipped a beat during a week of parking.",
+            "author": "Ryan T.",
+            "rating": 4,
+            "verified": true,
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "product_name": "X2 Pro",
+            "date": "2026-03-11",
+            "quote": "Love the wide angle and the way incidents are highlighted in the timeline. Super easy to export clips.",
+            "author": "Elena M.",
+            "rating": 5,
+            "verified": true,
+            "media_type": "image"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

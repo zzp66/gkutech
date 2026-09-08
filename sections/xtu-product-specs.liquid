@@ -1,0 +1,546 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign content_background = section.settings.content_background | default: '#FFFFFF'
+  assign content_width = section.settings.content_width | default: 900
+  assign columns_desktop = section.settings.columns_desktop | default: '2'
+  assign initial_visible = section.settings.initial_visible | default: 6
+  assign view_more_label = section.settings.view_more_label | default: 'View More'
+  assign view_less_label = section.settings.view_less_label | default: 'View Less'
+  assign btn_bg = section.settings.btn_bg | default: '#FFFFFF'
+  assign btn_color = section.settings.btn_color | default: '#111111'
+  assign btn_border = section.settings.btn_border | default: '#111111'
+  assign btn_bg_hover = section.settings.btn_bg_hover | default: '#111111'
+  assign btn_color_hover = section.settings.btn_color_hover | default: '#FFFFFF'
+  assign padding_top = section.settings.padding_top | default: 80
+  assign padding_bottom = section.settings.padding_bottom | default: 80
+  assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign total_items = section.blocks.size
+  assign show_toggle = false
+  if total_items > initial_visible
+    assign show_toggle = true
+  endif
+%}
+
+<section
+  id="xtu-product-specs-{{ section.id }}"
+  class="xtu-product-specs xtu-product-specs--cols-{{ columns_desktop }}"
+  data-xtu-product-specs
+  style="
+    --xtu-ps-bg: {{ background_color }};
+    --xtu-ps-content-bg: {{ content_background }};
+    --xtu-ps-content-width: {{ content_width }}px;
+    --xtu-ps-pt: {{ padding_top }}px;
+    --xtu-ps-pb: {{ padding_bottom }}px;
+    --xtu-ps-pt-m: {{ padding_top_mobile }}px;
+    --xtu-ps-pb-m: {{ padding_bottom_mobile }}px;
+    --xtu-ps-btn-bg: {{ btn_bg }};
+    --xtu-ps-btn-color: {{ btn_color }};
+    --xtu-ps-btn-border: {{ btn_border }};
+    --xtu-ps-btn-bg-hover: {{ btn_bg_hover }};
+    --xtu-ps-btn-color-hover: {{ btn_color_hover }};
+    --xtu-ps-heading-color: {{ heading_color }};
+    --xtu-ps-text-color: {{ text_color }};
+  "
+>
+  <div class="xtu-product-specs__inner" data-xtu-reveal="fade-up" data-xtu-stagger>
+    {% if heading != blank %}
+      <h2 class="xtu-product-specs__heading" data-xtu-reveal-child>{{ heading | escape }}</h2>
+    {% endif %}
+
+    {% if total_items > 0 %}
+      <dl
+        class="xtu-product-specs__panel"
+        data-xtu-reveal-child
+        data-xtu-ps-list
+      >
+        {% for block in section.blocks %}
+          {% liquid
+            assign label = block.settings.label
+            assign value = block.settings.value
+            assign is_hidden = false
+            if show_toggle and forloop.index > initial_visible
+              assign is_hidden = true
+            endif
+          %}
+          {% if label != blank or value != blank %}
+            <div
+              class="xtu-product-specs__item{% if is_hidden %} is-collapsed{% endif %}"
+              {% if is_hidden %}hidden{% endif %}
+              data-xtu-ps-item
+              {{ block.shopify_attributes }}
+            >
+              {% if label != blank %}
+                <dt class="xtu-product-specs__label">{{ label | escape }}</dt>
+              {% else %}
+                <dt class="xtu-product-specs__label xtu-product-specs__label--empty" aria-hidden="true"></dt>
+              {% endif %}
+              {% if value != blank %}
+                <dd class="xtu-product-specs__value">{{ value | escape }}</dd>
+              {% else %}
+                <dd class="xtu-product-specs__value xtu-product-specs__value--empty" aria-hidden="true"></dd>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </dl>
+
+      {% if show_toggle %}
+        <div class="xtu-product-specs__actions" data-xtu-reveal-child>
+          <button
+            type="button"
+            class="xtu-product-specs__toggle"
+            data-xtu-ps-toggle
+            aria-expanded="false"
+            data-label-more="{{ view_more_label | escape }}"
+            data-label-less="{{ view_less_label | escape }}"
+          >
+            <span data-xtu-ps-toggle-label>{{ view_more_label | escape }}</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .xtu-product-specs {
+    padding: var(--xtu-ps-pt) 0 var(--xtu-ps-pb);
+    background: var(--xtu-ps-bg, #fff);
+  }
+
+  .xtu-product-specs__inner {
+    width: min(var(--xtu-ps-content-width, 900px), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+  }
+
+  .xtu-product-specs__heading {
+    margin: 0 0 var(--xtu-space-40, 40px);
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-section-title);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--xtu-ps-heading-color, #000);
+  }
+
+  .xtu-product-specs__panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: var(--xtu-ps-content-bg, #fff);
+  }
+
+  @media (min-width: 750px) {
+    .xtu-product-specs--cols-2 .xtu-product-specs__panel {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 48px;
+    }
+  }
+
+  .xtu-product-specs__item {
+    display: grid;
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    gap: 16px;
+    align-items: start;
+    margin: 0;
+    padding: 18px 12px;
+    border-bottom: 1px solid color-mix(in srgb, var(--xtu-ps-text-color, #333) 18%, transparent);
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+  }
+
+  .xtu-product-specs__item:hover {
+    background: color-mix(in srgb, var(--xtu-ps-text-color, #333) 5%, transparent);
+  }
+
+  .xtu-product-specs__item[hidden] {
+    display: none !important;
+  }
+
+  .xtu-product-specs__label {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--xtu-ps-heading-color, #000);
+  }
+
+  .xtu-product-specs__value {
+    margin: 0;
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--xtu-ps-text-color, #333);
+    word-break: break-word;
+  }
+
+  .xtu-product-specs__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  .xtu-product-specs__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 28px;
+    border: 1px solid var(--xtu-ps-btn-border, #111);
+    border-radius: 999px;
+    background: var(--xtu-ps-btn-bg, #fff);
+    color: var(--xtu-ps-btn-color, #111);
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body);
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    appearance: none;
+    transition:
+      background 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .xtu-product-specs__toggle:hover {
+      background: var(--xtu-ps-btn-bg-hover, #111);
+      color: var(--xtu-ps-btn-color-hover, #fff);
+      border-color: var(--xtu-ps-btn-bg-hover, #111);
+      transform: translateY(-1px);
+    }
+  }
+
+  .xtu-product-specs__toggle:focus-visible {
+    outline: 2px solid #0070ca;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 749px) {
+    .xtu-product-specs {
+      padding: var(--xtu-ps-pt-m) 0 var(--xtu-ps-pb-m);
+    }
+
+    .xtu-product-specs__heading {
+      margin-bottom: var(--xtu-space-20, 20px);
+      font-size: var(--xtu-type-section-title-m);
+    }
+
+    .xtu-product-specs__item {
+      grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+      gap: 12px;
+      padding: 16px 8px;
+    }
+
+    .xtu-product-specs__label,
+    .xtu-product-specs__value,
+    .xtu-product-specs__toggle {
+      font-size: var(--xtu-type-body-m);
+    }
+
+    .xtu-product-specs__actions {
+      margin-top: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xtu-product-specs__item,
+    .xtu-product-specs__toggle {
+      transition: none;
+    }
+
+    .xtu-product-specs__toggle:hover {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (() => {
+    const roots = document.querySelectorAll('[data-xtu-product-specs]');
+
+    roots.forEach((root) => {
+      if (root.dataset.xtuPsReady === 'true') return;
+      root.dataset.xtuPsReady = 'true';
+
+      const toggle = root.querySelector('[data-xtu-ps-toggle]');
+      if (!toggle) return;
+
+      const labelEl = toggle.querySelector('[data-xtu-ps-toggle-label]');
+      const items = root.querySelectorAll('[data-xtu-ps-item].is-collapsed');
+      const more = toggle.dataset.labelMore || 'View More';
+      const less = toggle.dataset.labelLess || 'View Less';
+
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        const next = !expanded;
+        toggle.setAttribute('aria-expanded', String(next));
+        if (labelEl) labelEl.textContent = next ? less : more;
+
+        items.forEach((item) => {
+          if (next) {
+            item.removeAttribute('hidden');
+          } else {
+            item.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "XTU Product Specs",
+  "tag": "section",
+  "class": "section-xtu-product-specs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "大标题",
+      "default": "Product Information"
+    },
+    {
+      "type": "header",
+      "content": "外观"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#000000",
+      "info": "大标题、参数名"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文色",
+      "default": "#333333",
+      "info": "参数值；分割线随正文色自动调整"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "内容区最大宽度",
+      "min": 600,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 900,
+      "info": "用于产品页等场景，避免内容过宽"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "PC 端列数",
+      "options": [
+        { "value": "1", "label": "1 列" },
+        { "value": "2", "label": "2 列" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "initial_visible",
+      "label": "默认显示条数",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 6,
+      "info": "超出部分需点击 View More 展开"
+    },
+    {
+      "type": "text",
+      "id": "view_more_label",
+      "label": "展开按钮文案",
+      "default": "View More"
+    },
+    {
+      "type": "text",
+      "id": "view_less_label",
+      "label": "收起按钮文案",
+      "default": "View Less"
+    },
+    {
+      "type": "header",
+      "content": "展开按钮颜色"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "文字色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "描边色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_hover",
+      "label": "Hover 背景色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_color_hover",
+      "label": "Hover 文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "边距"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "上边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "下边距（PC）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "上边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "下边距（移动端）",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "参数项",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "参数名（子项标题）",
+          "default": "Parameter"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "参数值（子项内容）",
+          "default": "Value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Product Specs",
+      "blocks": [
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Dash Cam Model",
+            "value": "F17 Elite"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Channels",
+            "value": "3-Channel (Front + Cabin + Rear)"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Sensor",
+            "value": "Sony STARVIS 2 IMX678 (Front)"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Video Resolution",
+            "value": "4K Front + 1080P Cabin + 1080P Rear"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Field of View",
+            "value": "170° Front / 160° Cabin / 140° Rear"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "GPS Tracking",
+            "value": "Built-in GPS"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Storage",
+            "value": "MicroSD up to 512GB"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "label": "Connectivity",
+            "value": "Wi-Fi / App Control"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

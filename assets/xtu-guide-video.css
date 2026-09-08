@@ -1,0 +1,317 @@
+/* =============================================================================
+   XTU Guide Video — 品类 Tab + 分页视频卡
+   配合 sections/xtu-guide-video.liquid、assets/xtu-guide-video.js。
+   PC 列数由 --xtu-gv-columns 控制；≤749px 强制 1 列。
+   ============================================================================= */
+
+.xtu-gv {
+  --xtu-gv-content-width: 1200px;
+  --xtu-gv-columns: 2;
+  --xtu-gv-pt: 80px;
+  --xtu-gv-pb: 80px;
+  --xtu-gv-pt-m: 40px;
+  --xtu-gv-pb-m: 40px;
+  --xtu-gv-radius: 16px;
+  --xtu-gv-gap: 24px;
+  --xtu-gv-gap-m: 16px;
+
+  padding: var(--xtu-gv-pt) 0 var(--xtu-gv-pb);
+  background: var(--xtu-gv-bg, #fff);
+  box-sizing: border-box;
+}
+
+.xtu-gv__inner {
+  width: min(var(--xtu-gv-content-width), calc(100% - var(--page-margin) * 2));
+  margin-inline: auto;
+  background: var(--xtu-gv-content-bg, #fff);
+  box-sizing: border-box;
+}
+
+.xtu-gv__header {
+  margin-bottom: var(--xtu-space-40, 40px);
+  text-align: center;
+}
+
+.xtu-gv__heading {
+  margin: 0;
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-section-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-gv-heading, #000);
+}
+
+.xtu-gv__subheading {
+  margin: var(--xtu-space-16, 16px) auto 0;
+  max-width: 42rem;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-section-subtitle);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--xtu-gv-muted, #8e9297);
+}
+
+.xtu-gv__tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  justify-content: safe center;
+  gap: var(--xtu-space-8, 8px);
+  width: 100%;
+  margin: 0 0 var(--xtu-space-28, 28px);
+  padding-inline: var(--xtu-space-8, 8px);
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  scroll-padding-inline: var(--xtu-space-8, 8px);
+}
+
+.xtu-gv__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.xtu-gv__tabs[hidden] {
+  display: none;
+}
+
+.xtu-gv__tab {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: var(--xtu-space-8, 8px) var(--xtu-space-20, 20px);
+  border: 1px solid var(--color-5, #0070ca);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-gv-heading, #000);
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.xtu-gv__tab:hover,
+.xtu-gv__tab.is-active {
+  border-color: var(--color-5, #0070ca);
+  background-color: var(--color-5, #0070ca);
+  color: #fff;
+}
+
+.xtu-gv__tab:focus-visible {
+  outline: 2px solid var(--color-5, #0070ca);
+  outline-offset: 2px;
+}
+
+.xtu-gv__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--xtu-gv-columns, 2), minmax(0, 1fr));
+  gap: var(--xtu-gv-gap, 24px);
+}
+
+.xtu-gv__card {
+  min-width: 0;
+}
+
+.xtu-gv__stage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--xtu-gv-radius, 12px);
+  background: #111;
+}
+
+.xtu-gv__cover {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #1a1a1a;
+  cursor: pointer;
+  appearance: none;
+}
+
+.xtu-gv__cover[hidden] {
+  display: none !important;
+}
+
+.xtu-gv__cover-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  background: #111111;
+}
+
+.xtu-gv__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.xtu-gv__play svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.xtu-gv__cover:hover .xtu-gv__play {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.xtu-gv__iframe,
+.xtu-gv__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.xtu-gv__video {
+  object-fit: contain;
+}
+
+.xtu-gv__title {
+  margin: var(--xtu-space-12, 12px) 0 0;
+  font-family: var(--font-heading--family);
+  font-size: var(--xtu-type-group-title);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-gv-heading, #000);
+}
+
+.xtu-gv__pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xtu-space-16, 16px);
+  margin-top: var(--xtu-space-32, 32px);
+}
+
+.xtu-gv__pager[hidden] {
+  display: none;
+}
+
+.xtu-gv__page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--xtu-space-16, 16px);
+  border: 1px solid var(--color-2, #dfdfdf);
+  border-radius: 999px;
+  background: #fff;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--xtu-gv-heading, #000);
+  cursor: pointer;
+  appearance: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.xtu-gv__page-btn:hover:not(:disabled) {
+  border-color: var(--color-5, #0070ca);
+  background: var(--color-5, #0070ca);
+  color: #fff;
+}
+
+.xtu-gv__page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.xtu-gv__page-label {
+  min-width: 64px;
+  text-align: center;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-1, #333);
+}
+
+.xtu-gv__empty {
+  margin: var(--xtu-space-24, 24px) 0 0;
+  text-align: center;
+  font-family: var(--font-body--family);
+  font-size: var(--xtu-type-body);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--xtu-gv-muted, #8e9297);
+}
+
+.xtu-gv__empty[hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .xtu-gv {
+    padding: var(--xtu-gv-pt-m) 0 var(--xtu-gv-pb-m);
+  }
+
+  .xtu-gv__header {
+    margin-bottom: var(--xtu-space-20, 20px);
+  }
+
+  .xtu-gv__heading {
+    font-size: var(--xtu-type-section-title-m);
+  }
+
+  .xtu-gv__subheading {
+    margin-top: var(--xtu-space-12, 12px);
+    font-size: var(--xtu-type-section-subtitle-m);
+  }
+
+  .xtu-gv__tabs {
+    justify-content: flex-start;
+    margin-bottom: var(--xtu-space-20, 20px);
+  }
+
+  .xtu-gv__tab {
+    padding: var(--xtu-space-8, 8px) var(--xtu-space-16, 16px);
+    font-size: var(--xtu-type-body-m);
+  }
+
+  .xtu-gv__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--xtu-gv-gap-m, 16px);
+  }
+
+  .xtu-gv__title {
+    font-size: var(--xtu-type-group-title-m);
+  }
+
+  .xtu-gv__pager {
+    margin-top: var(--xtu-space-24, 24px);
+  }
+}

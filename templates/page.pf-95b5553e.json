@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-95b5553e": {
+      "type": "pf-95b5553e",
+      "settings": {
+        "pf_f9302f3f_value": "<span style=\"color: rgb(6, 163, 253);\"></span><span style=\"color: rgb(7, 162, 250);\"></span>S7 Pro Guide Video",
+        "pf_e0f6b8c7_value": "Accessory Installation",
+        "pf_713e7cab_value": "APP Connection",
+        "pf_7cabe0f6_value": "User Guide",
+        "pf_371eab5c_value": "Japanese",
+        "pf_df92ee56_value": "Japanese",
+        "pf_e785ddbc_value": "Japanese",
+        "pf_00f5be37_value": "Italian",
+        "pf_32d6ae89_value": "Spanish",
+        "pf_560fe973_value": "Spanish",
+        "pf_76870e53_value": "Italian",
+        "pf_8f7940b3_value": "English",
+        "pf_94c0560f_value": "English",
+        "pf_a67ed893_value": "English",
+        "pf_e973d732_value": "Italian",
+        "pf_ec215c00_value": "Spanish",
+        "pf_0dcf8bf8_value": "German",
+        "pf_3bf54b4a_value": "French",
+        "pf_40b33bf5_value": "German",
+        "pf_7bf0cd7f_value": "French",
+        "pf_d8937bf0_value": "German",
+        "pf_f812b4df_value": "French"
+      }
+    }
+  },
+  "order": [
+    "pf-95b5553e"
+  ]
+}

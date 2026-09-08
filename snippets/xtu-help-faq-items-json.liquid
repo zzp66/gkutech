@@ -1,0 +1,76 @@
+{% doc %}
+  Help Center FAQ JSON items — 优先读 xtu_help_faq_set（合并结构），无 set 时回退 xtu_help_faq_item。
+
+  输出扁平 items[]，供 xtu-help.js 使用（含 langSort 供语言 Tab 排序）。
+{% enddoc %}
+{% liquid
+  assign first_item = true
+  assign has_faq_set = false
+  if metaobjects.xtu_help_faq_set != blank and metaobjects.xtu_help_faq_set.values_count > 0
+    assign has_faq_set = true
+  endif
+%}
+{% if has_faq_set %}
+  {% paginate metaobjects.xtu_help_faq_set.values by 250 %}
+    {% for entry in metaobjects.xtu_help_faq_set.values %}
+      {% liquid
+        assign product_code = entry.product_code.value | default: entry.product_code | strip | downcase | handleize
+        assign language = entry.language.value | default: entry.language | strip | downcase
+        assign language_label = entry.language_label.value | default: entry.language_label | strip
+        assign lang_sort = entry.lang_sort.value | default: entry.lang_sort | default: 1000
+        assign faq_items = entry.items.value | default: entry.items
+      %}
+      {% if product_code != blank and language != blank and faq_items != blank %}
+        {% for faq_row in faq_items %}
+          {% liquid
+            assign question = faq_row.question | default: faq_row['question'] | strip
+            assign answer_html = faq_row.answer | default: faq_row['answer'] | strip
+            assign row_sort = faq_row.sort | default: faq_row['sort'] | default: forloop.index
+          %}
+          {% if question != blank %}
+            {% unless first_item %},{% endunless %}
+            {% assign first_item = false %}
+            {
+              "productCode": {{ product_code | json }},
+              "language": {{ language | json }},
+              "languageLabel": {{ language_label | json }},
+              "langSort": {{ lang_sort | json }},
+              "question": {{ question | json }},
+              "answer": {{ answer_html | json }},
+              "sort": {{ row_sort | json }}
+            }
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %}
+{% else %}
+  {% paginate metaobjects.xtu_help_faq_item.values by 250 %}
+    {% for entry in metaobjects.xtu_help_faq_item.values %}
+      {% liquid
+        assign product_code = entry.product_code.value | default: entry.product_code | strip | downcase | handleize
+        assign language = entry.language.value | default: entry.language | strip | downcase
+        assign language_label = entry.language_label.value | default: entry.language_label | strip
+        assign question = entry.question.value | default: entry.question | strip
+        assign answer_html = blank
+        if entry.answer.value != blank
+          assign answer_html = entry.answer | metafield_tag
+        endif
+        assign v_sort = entry.sort_order.value | default: entry.sort_order | default: 0
+      %}
+      {% if product_code != blank and language != blank and question != blank %}
+        {% unless first_item %},{% endunless %}
+        {% assign first_item = false %}
+        {
+          "productCode": {{ product_code | json }},
+          "language": {{ language | json }},
+          "languageLabel": {{ language_label | json }},
+          "langSort": 1000,
+          "question": {{ question | json }},
+          "answer": {{ answer_html | json }},
+          "sort": {{ v_sort | json }}
+        }
+      {% endif %}
+    {% endfor %}
+  {% endpaginate %}
+{% endif %}

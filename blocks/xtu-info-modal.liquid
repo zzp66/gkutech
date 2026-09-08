@@ -1,0 +1,305 @@
+{% doc %}
+  XTU Info Modal — clickable row (icon + title + chevron) that opens a rich-text modal.
+
+  @example
+  {% content_for 'block', type: 'xtu-info-modal', id: 'support' %}
+{% enddoc %}
+
+{% liquid
+  assign bs = block.settings
+  assign modal_id = 'xtu-info-modal-' | append: block.id
+%}
+
+<dialog-component
+  class="xtu-info-modal"
+  {{ block.shopify_attributes }}
+>
+  <button
+    type="button"
+    class="xtu-info-row"
+    on:click="/showDialog"
+    aria-haspopup="dialog"
+  >
+    <span class="xtu-info-row__lead">
+      {% if bs.icon != blank %}
+        {{
+          bs.icon
+          | image_url: width: 80
+          | image_tag:
+            class: 'xtu-info-row__icon',
+            loading: 'lazy',
+            widths: '40, 60, 80',
+            sizes: '24px',
+            alt: bs.title
+        }}
+      {% else %}
+        <span class="xtu-info-row__icon xtu-info-row__icon--placeholder" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 14v-2a8 8 0 1 1 16 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4 14v2a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2ZM20 14v2a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      {% endif %}
+      <span class="xtu-info-row__title">{{ bs.title | escape }}</span>
+    </span>
+    <span class="xtu-info-row__chevron" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <dialog
+    ref="dialog"
+    id="{{ modal_id }}"
+    class="xtu-info-modal__dialog"
+    scroll-lock
+    aria-labelledby="{{ modal_id }}-title"
+  >
+    <button
+      type="button"
+      class="button button-unstyled xtu-info-modal__close"
+      ref="closeButton"
+      on:click="/closeDialog"
+      aria-label="{{ 'actions.close' | t }}"
+    >
+      <span class="visually-hidden">{{ 'actions.close' | t }}</span>
+      {{ 'icon-close.svg' | inline_asset_content }}
+    </button>
+    <div class="xtu-info-modal__panel">
+      <h2 id="{{ modal_id }}-title" class="xtu-info-modal__heading">
+        {{ bs.title | escape }}
+      </h2>
+      <div class="xtu-info-modal__content rte">
+        {{ bs.content }}
+      </div>
+    </div>
+  </dialog>
+</dialog-component>
+
+{% stylesheet %}
+  .xtu-info-modal {
+    display: block;
+    width: 100%;
+  }
+
+  /* 仅在相邻条款/支付区块之间显示分隔线 */
+  .group-block-content > .xtu-info-modal:has(+ .xtu-info-modal),
+  .group-block-content > .xtu-info-modal:has(+ .xtu-payment-methods) {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .xtu-info-row {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 14px 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: start;
+    color: #111;
+    font-family: var(--font-body--family);
+  }
+
+  .xtu-info-row:focus-visible {
+    outline: 2px solid var(--color-color5, #0070ca);
+    outline-offset: 2px;
+  }
+
+  .xtu-info-row__lead {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .xtu-info-row__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    object-fit: contain;
+  }
+
+  .xtu-info-row__icon--placeholder {
+    color: #111;
+  }
+
+  .xtu-info-row__icon--placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-info-row__title {
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .xtu-info-row__chevron {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    color: #111;
+  }
+
+  .xtu-info-row__chevron svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .xtu-info-modal__dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-width: 560px;
+    max-height: min(80dvh, 720px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .xtu-info-modal__dialog::backdrop {
+    background: rgb(0 0 0 / 0.78);
+  }
+
+  .xtu-info-modal__dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .xtu-info-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.45);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .xtu-info-modal__close:hover {
+    background: rgb(0 0 0 / 0.65);
+  }
+
+  .xtu-info-modal__close svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .xtu-info-modal__panel {
+    padding: 48px 28px 28px;
+    overflow: auto;
+    max-height: min(80dvh, 720px);
+  }
+
+  .xtu-info-modal__heading {
+    margin: 0 0 16px;
+    font-family: var(--font-heading--family);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111;
+  }
+
+  .xtu-info-modal__content {
+    font-family: var(--font-body--family);
+    font-size: var(--xtu-type-body, 0.875rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #333;
+  }
+
+  .xtu-info-modal__content :first-child {
+    margin-block-start: 0;
+  }
+
+  .xtu-info-modal__content :last-child {
+    margin-block-end: 0;
+  }
+
+  @media (max-width: 749px) {
+    .xtu-info-row {
+      padding: 12px 0;
+      gap: 10px;
+    }
+
+    .xtu-info-row__lead {
+      gap: 10px;
+    }
+
+    .xtu-info-row__icon {
+      width: 20px;
+      height: 20px;
+      flex-basis: 20px;
+    }
+
+    .xtu-info-row__title {
+      font-size: 0.8125rem;
+    }
+
+    .xtu-info-modal__panel {
+      padding: 40px 20px 20px;
+    }
+
+    .xtu-info-modal__heading {
+      font-size: 1.125rem;
+    }
+
+    .xtu-info-modal__content {
+      font-size: 0.8125rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "XTU Info Modal",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "左侧图标"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Global support"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "弹窗内容",
+      "default": "<p>Add your support details here.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "XTU Info Modal",
+      "category": "Product",
+      "settings": {
+        "title": "Global support",
+        "content": "<p>Add your support details here.</p>"
+      }
+    }
+  ]
+}
+{% endschema %}
