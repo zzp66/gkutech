@@ -115,14 +115,34 @@
     );
   }
 
+  /**
+   * Refine stage aspect-ratio from the currently visible image's natural size.
+   * Liquid already sets a server-side ratio; this corrects after load / breakpoint.
+   */
   function applyAutoRatio(stage) {
     var mobile = window.matchMedia('(max-width: 749px)').matches;
-    var img =
-      (mobile && stage.querySelector('.xtu-ics__media--after .xtu-ics__img--mobile')) ||
-      stage.querySelector('.xtu-ics__media--after .xtu-ics__img--desktop') ||
-      stage.querySelector('.xtu-ics__media--after .xtu-ics__img');
+    var after = stage.querySelector('.xtu-ics__media--after');
+    var img = null;
+    if (after) {
+      if (mobile) {
+        img =
+          after.querySelector('.xtu-ics__img--mobile') ||
+          after.querySelector('.xtu-ics__img--desktop') ||
+          after.querySelector('.xtu-ics__img');
+      } else {
+        img =
+          after.querySelector('.xtu-ics__img--desktop') ||
+          after.querySelector('.xtu-ics__img');
+      }
+    }
     if (!img || !img.naturalWidth || !img.naturalHeight) return;
-    stage.style.setProperty('--xtu-ics-ratio-auto', img.naturalWidth + ' / ' + img.naturalHeight);
+
+    var ratio = img.naturalWidth + ' / ' + img.naturalHeight;
+    if (mobile) {
+      stage.style.setProperty('--xtu-ics-ratio-mobile', ratio);
+    } else {
+      stage.style.setProperty('--xtu-ics-ratio', ratio);
+    }
     stage.dataset.ratioReady = 'true';
   }
 
@@ -149,6 +169,18 @@
           );
         }
       });
+
+      if (!stage._xtuIcsRatioMq) {
+        stage._xtuIcsRatioMq = window.matchMedia('(max-width: 749px)');
+        var onBreakpoint = function () {
+          applyAutoRatio(stage);
+        };
+        if (stage._xtuIcsRatioMq.addEventListener) {
+          stage._xtuIcsRatioMq.addEventListener('change', onBreakpoint);
+        } else if (stage._xtuIcsRatioMq.addListener) {
+          stage._xtuIcsRatioMq.addListener(onBreakpoint);
+        }
+      }
     }
   }
 

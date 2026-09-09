@@ -12,7 +12,7 @@
 
   前台
   - 拖动/触摸中间竖向滑块左右对比；支持键盘方向键微调。
-  - 媒体高度由 aspect-ratio 推导；空图用 placeholder 占位。
+  - 媒体高度由 aspect-ratio 推导（含「按图片自身比例」：用图片 aspect_ratio，禁止 aspect-ratio:auto 导致塌高）；空图用 placeholder 占位。
 
   相关：assets/xtu-image-compare-slider.js、assets/xtu-image-compare-slider.css
 {%- endcomment -%}
@@ -52,8 +52,23 @@
   assign alt_before = label_before | default: heading | default: 'Before'
   assign alt_after = label_after | default: heading | default: 'After'
   assign ratio_auto = false
+  assign ratio_css = media_ratio
+  assign ratio_css_mobile = blank
   if media_ratio == 'auto'
     assign ratio_auto = true
+    # Absolute media layers cannot size an aspect-ratio:auto stage — derive ratio from image.
+    if image_after != blank
+      assign ratio_css = image_after.aspect_ratio
+    elsif image_before != blank
+      assign ratio_css = image_before.aspect_ratio
+    else
+      assign ratio_css = '16 / 9'
+    endif
+    if image_after_mobile != blank
+      assign ratio_css_mobile = image_after_mobile.aspect_ratio
+    elsif image_before_mobile != blank
+      assign ratio_css_mobile = image_before_mobile.aspect_ratio
+    endif
   endif
   assign img_sizes = '(max-width: 749px) calc(100vw - 30px), min(1200px, 100vw - 80px)'
 %}
@@ -70,7 +85,8 @@
     --xtu-ics-bg: {{ background_color }};
     --xtu-ics-content-bg: {{ content_background }};
     --xtu-ics-content-width: {{ content_width }}px;
-    --xtu-ics-ratio: {{ media_ratio }};
+    --xtu-ics-ratio: {{ ratio_css }};
+    {% if ratio_css_mobile != blank %}--xtu-ics-ratio-mobile: {{ ratio_css_mobile }};{% endif %}
     --xtu-ics-radius: {{ media_radius }}px;
     --xtu-ics-split: {{ initial_position }}%;
     --xtu-ics-handle: {{ handle_color }};
