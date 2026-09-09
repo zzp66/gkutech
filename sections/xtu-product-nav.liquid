@@ -1,6 +1,9 @@
 {%- comment -%}
-  Sticky section nav with scroll spy（产品页 / 普通页 / 集合页等均可）。
-  Blocks: label + target（element id / shopify-section-* / CSS selector / data-xtu-nav）。
+  XTU Product Nav — 区块锚点导航 + scroll spy（产品页 / 普通页 / 集合页等均可）。
+
+  数据来源：Theme Editor blocks（label + target：section 键名 / shopify-section-* / CSS / data-xtu-nav）。
+  运营：配置导航文案与目标定位；吸顶额外偏移仅作 Header 之外的微调（Header 高度自动计入）。
+  前台：滚动到达后吸附在粘性 Header 下方；点击跳转与 spy 使用 assets/xtu-product-nav.js。
 {%- endcomment -%}
 
 {% liquid
@@ -26,7 +29,6 @@
     --xtu-pn-active: {{ active_color }};
     --xtu-pn-inactive: {{ inactive_color }};
     --xtu-pn-align: {{ alignment }};
-    top: {{ offset }}px;
   }
 {% endstyle %}
 
@@ -69,6 +71,9 @@
 {% stylesheet %}
   /*
     Sticky MUST stay on the shopify-section (tall parent = #MainContent).
+    Header sticky uses top:-1px (IntersectionObserver); nav must match that
+    offset or a 1px content seam shows while scrolling. ::before covers any
+    residual subpixel hairline under the header bottom edge.
     Spacing uses margin-top (does not stick). Only paint #MainContent white when
     this nav is present — never .page-wrapper (would wash announcement / footer).
   */
@@ -77,13 +82,31 @@
   }
 
   .shopify-section.xtu-product-nav-section {
+    --xtu-pn-header-offset: 0px;
     position: sticky;
-    top: var(--xtu-pn-sticky-top, 0px);
-    z-index: var(--layer-sticky, 10);
+    top: calc(var(--xtu-pn-header-offset) + var(--xtu-pn-sticky-top, 0px));
+    z-index: var(--layer-sticky, 8);
     margin-top: var(--xtu-pn-spacing-top, 40px);
     background-color: var(--xtu-pn-bg, #fff);
     border-bottom: 1px solid var(--xtu-pn-border, #dddddd);
     isolation: isolate;
+  }
+
+  .shopify-section.xtu-product-nav-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 2px;
+    background-color: var(--xtu-pn-bg, #fff);
+    pointer-events: none;
+  }
+
+  /* Match header-section sticky top:-1px so bottoms/tops meet with no gap */
+  body:has(#header-component[sticky='always']) .shopify-section.xtu-product-nav-section,
+  body:has(#header-component[sticky='scroll-up'][data-sticky-state='active']) .shopify-section.xtu-product-nav-section {
+    --xtu-pn-header-offset: calc(var(--header-height, 0px) - 1px);
   }
 
   .xtu-product-nav {
@@ -259,7 +282,7 @@
       "step": 2,
       "unit": "px",
       "default": 0,
-      "info": "若页面 Header 吸顶，可加 Header 高度作偏移，避免锚点被挡住。"
+      "info": "Header 粘性高度会自动计入；此处仅作额外微调（一般保持 0）。"
     },
     {
       "type": "header",

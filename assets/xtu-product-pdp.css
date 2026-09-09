@@ -104,12 +104,21 @@
     max-width: none;
   }
 
-  /* Sticky the media column (parent must span the tall grid row) */
+  /* Sticky the media column under sticky header when enabled */
   .product-information.xtu-product-pdp .product-information__media {
+    --xtu-pdp-media-sticky-top: 24px;
     position: sticky;
-    top: 24px;
+    top: var(--xtu-pdp-media-sticky-top);
     align-self: start;
     z-index: 1;
+  }
+
+  body:has(#header-component[sticky='always']) .product-information.xtu-product-pdp .product-information__media,
+  body:has(#header-component[sticky='scroll-up'][data-sticky-state='active'])
+    .product-information.xtu-product-pdp
+    .product-information__media {
+    /* Match header sticky top:-1px */
+    --xtu-pdp-media-sticky-top: calc(var(--header-height, 0px) - 1px + 24px);
   }
 
   .product-information.xtu-product-pdp .product-information__media .sticky-content,

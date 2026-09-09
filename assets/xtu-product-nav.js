@@ -1,6 +1,7 @@
 /**
  * XTU Product Nav — sticky anchors + scroll spy
  *
+ * Sticky sits under the sticky Header (`top` = --header-height + extra).
  * Horizon (≥990px) scrolls `.page-wrapper`, not `window`. Always scroll/listen
  * on the element that actually overflows (detect at click time — Theme Editor
  * may restore document scroll).
@@ -134,7 +135,8 @@ function getScrollMetrics(container) {
 }
 
 /**
- * Prefer the sticky shopify-section wrapper height when present.
+ * Sticky activation line = sticky `top` (header − 1px + extra) + nav height.
+ * Prefer reading computed `top` so it stays in sync with CSS header offset.
  * @param {HTMLElement} nav
  * @returns {number}
  */
@@ -142,7 +144,16 @@ function getStickyOffset(nav) {
   const extra = Number(nav.dataset.offset) || 0;
   const section = nav.closest('.shopify-section.xtu-product-nav-section');
   const el = section instanceof HTMLElement ? section : nav;
-  return Math.round(el.getBoundingClientRect().height) + extra;
+  const navHeight = Math.round(el.getBoundingClientRect().height);
+
+  let stickyTop = extra;
+  if (section instanceof HTMLElement) {
+    const top = parseFloat(getComputedStyle(section).top);
+    /* Allow negative fractional tops from calc(header - 1px); clamp only NaN */
+    if (!Number.isNaN(top)) stickyTop = Math.round(top);
+  }
+
+  return navHeight + stickyTop;
 }
 
 /**

@@ -29,14 +29,12 @@
     assign transparent_text_color_setting = section.settings.text_color_transparent_collection
   endif
 
-  # Product pages use document-flow header so the media gallery can sticky cleanly.
-  unless template.name == 'product'
-    if section.settings.enable_sticky_header == 'always'
-      assign sticky = 'always'
-    elsif section.settings.enable_sticky_header == 'scroll-up'
-      assign sticky = 'scroll-up'
-    endif
-  endunless
+  # Sticky header applies on all templates (including product) when Theme Editor enables it.
+  if section.settings.enable_sticky_header == 'always'
+    assign sticky = 'always'
+  elsif section.settings.enable_sticky_header == 'scroll-up'
+    assign sticky = 'scroll-up'
+  endif
 
   if transparent and sticky
     assign transparent = 'not-sticky'
