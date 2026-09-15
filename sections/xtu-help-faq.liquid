@@ -55,23 +55,7 @@
   id="xtu-help-faq-{{ section.id }}"
   class="xtu-help"
   data-xtu-help
-  style="
-    --xtu-help-bg: {{ background_color }};
-    --xtu-help-content-bg: {{ content_background }};
-    --xtu-help-content-width: {{ content_width }}px;
-    --xtu-help-pt: {{ padding_top }}px;
-    --xtu-help-pb: {{ padding_bottom }}px;
-    --xtu-help-pt-m: {{ padding_top_mobile }}px;
-    --xtu-help-pb-m: {{ padding_bottom_mobile }}px;
-    --xtu-help-heading: {{ heading_color }};
-    --xtu-help-muted: {{ muted_text_color }};
-    --xtu-help-text: {{ text_color }};
-    --xtu-help-accent: {{ accent_color }};
-    --xtu-help-sidebar-bg: {{ sidebar_background }};
-    --xtu-help-card-bg: {{ card_background }};
-    --xtu-help-border: {{ border_color }};
-    --xtu-help-faq-question-hover: {{ question_hover_color }};
-  "
+  style="{% render 'xtu-help-color-vars', section: section %}"
 >
   <div class="xtu-help__inner">
     {% render 'xtu-help-shell',
@@ -106,6 +90,23 @@
     { "type": "color", "id": "sidebar_background", "label": "侧栏背景色", "default": "#F5F5F7" },
     { "type": "color", "id": "card_background", "label": "卡片背景色", "default": "#FFFFFF" },
     { "type": "color", "id": "border_color", "label": "边框颜色", "default": "#DFDFDF" },
+    { "type": "header", "content": "按钮" },
+    { "type": "color", "id": "button_bg", "label": "按钮背景色", "default": "#1590F2", "info": "如 Download / Get app；默认跟随 Theme settings → XTU 通用颜色" },
+    { "type": "color", "id": "button_color", "label": "按钮文字色", "default": "#FFFFFF" },
+    { "type": "color", "id": "button_bg_hover", "label": "按钮 Hover 背景色", "default": "#0070CA" },
+    { "type": "color", "id": "button_color_hover", "label": "按钮 Hover 文字色", "default": "#FFFFFF" },
+    { "type": "header", "content": "细节色" },
+    { "type": "color", "id": "badge_bg", "label": "徽章背景色", "default": "#0070CA", "info": "如 Latest 标记" },
+    { "type": "color", "id": "badge_color", "label": "徽章文字色", "default": "#FFFFFF" },
+    { "type": "color", "id": "card_hover_bg", "label": "卡片 Hover 背景色", "default": "#ECECF0" },
+    { "type": "color", "id": "lang_tab_color_active", "label": "语言 Tab 激活文字色", "default": "#FFFFFF" },
+    { "type": "color", "id": "chip_bg", "label": "移动端产品 Chip 背景色", "default": "#FFFFFF" },
+    { "type": "color", "id": "chip_border", "label": "移动端产品 Chip 边框色", "default": "#E5E7EB" },
+    { "type": "color", "id": "chip_color_active", "label": "移动端 Chip 激活文字色", "default": "#FFFFFF" },
+    { "type": "color", "id": "surface_bg", "label": "图标/二维码底色", "default": "#FFFFFF" },
+    { "type": "color", "id": "icon_muted", "label": "次要图标色", "default": "#667085" },
+    { "type": "color", "id": "divider_color", "label": "分割线颜色", "default": "#E5E5E5" },
+
     {
       "type": "color",
       "id": "question_hover_color",

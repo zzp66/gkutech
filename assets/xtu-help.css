@@ -139,6 +139,14 @@
   max-width: 100%;
 }
 
+/* Section-level button colors cascade into shared xtu-btn */
+.xtu-help .xtu-btn {
+  --xtu-btn-bg: var(--xtu-help-btn-bg, #1590f2);
+  --xtu-btn-color: var(--xtu-help-btn-color, #ffffff);
+  --xtu-btn-bg-hover: var(--xtu-help-btn-bg-hover, #0070ca);
+  --xtu-btn-color-hover: var(--xtu-help-btn-color-hover, #ffffff);
+}
+
 .xtu-help__inner {
   width: min(var(--xtu-help-content-width, 1200px), calc(100% - var(--page-margin) * 2));
   max-width: 100%;
@@ -302,7 +310,7 @@
 }
 
 .xtu-help-card:hover {
-  background: #ececf0;
+  background: var(--xtu-help-card-hover-bg, #ececf0);
 }
 
 .xtu-help-card__label {
@@ -350,7 +358,7 @@ img.xtu-help-lang-icon {
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: #667085;
+  color: var(--xtu-help-icon-muted, #667085);
 }
 
 .xtu-help-lang-icon--globe svg {
@@ -397,7 +405,7 @@ img.xtu-help-lang-icon {
 .xtu-help-lang-tab.is-active {
   border-color: var(--xtu-help-accent, #0070ca);
   background: var(--xtu-help-accent, #0070ca);
-  color: #ffffff;
+  color: var(--xtu-help-lang-tab-color-active, #ffffff);
 }
 
 .xtu-help-lang-tab__label {
@@ -443,7 +451,7 @@ img.xtu-help-lang-icon {
 .xtu-help-faq__tab.is-active {
   border-color: var(--xtu-help-accent, #0070ca);
   background: var(--xtu-help-accent, #0070ca);
-  color: #ffffff;
+  color: var(--xtu-help-lang-tab-color-active, #ffffff);
 }
 
 .xtu-help-faq__lang[hidden],
@@ -486,8 +494,8 @@ img.xtu-help-lang-icon {
   height: 24px;
   padding: 0 var(--xtu-space-12);
   border-radius: 999px;
-  background: var(--xtu-help-accent, #0070ca);
-  color: #ffffff;
+  background: var(--xtu-help-badge-bg, var(--xtu-help-accent, #0070ca));
+  color: var(--xtu-help-badge-color, #ffffff);
   font-size: var(--xtu-type-eyebrow);
   font-weight: 600;
   line-height: 1.2;
@@ -540,7 +548,7 @@ img.xtu-help-lang-icon {
   flex: 0 0 auto;
   border-radius: var(--xtu-radius-sm);
   object-fit: cover;
-  background: #ffffff;
+  background: var(--xtu-help-surface-bg, #ffffff);
 }
 
 .xtu-help-sw__title {
@@ -572,7 +580,7 @@ img.xtu-help-lang-icon {
   margin-top: var(--xtu-space-16);
   border-radius: var(--xtu-radius-sm);
   object-fit: contain;
-  background: #ffffff;
+  background: var(--xtu-help-surface-bg, #ffffff);
 }
 
 .xtu-help-sw__actions {
@@ -602,7 +610,7 @@ img.xtu-help-lang-icon {
 .xtu-help-video__stage {
   position: relative;
   aspect-ratio: var(--xtu-help-video-ratio, 16 / 9);
-  background: #111111;
+  background: var(--xtu-help-video-stage-bg, #111111);
   overflow: hidden;
 }
 
@@ -641,12 +649,12 @@ img.xtu-help-lang-icon {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  background: #111111;
+  background: var(--xtu-help-video-stage-bg, #111111);
 }
 
 .xtu-help-video__placeholder {
   display: block;
-  background: #222222;
+  background: var(--xtu-help-video-placeholder-bg, #222222);
 }
 
 .xtu-help-video__stage iframe,
@@ -658,7 +666,7 @@ img.xtu-help-lang-icon {
   height: 100%;
   border: 0;
   object-fit: contain;
-  background: #000000;
+  background: var(--xtu-help-video-player-bg, #000000);
 }
 
 .xtu-help-video__play {
@@ -674,8 +682,8 @@ img.xtu-help-lang-icon {
   width: 56px;
   height: 56px;
   border-radius: 999px;
-  background: rgb(0 0 0 / 0.55);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--xtu-help-video-play-bg, #000000) 55%, transparent);
+  color: var(--xtu-help-video-play-color, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -718,14 +726,14 @@ img.xtu-help-lang-icon {
   height: 44px;
   border: 0;
   border-radius: 999px;
-  background: rgb(0 0 0 / 0.06);
-  color: #111827;
+  background: var(--xtu-help-video-nav-bg, #f0f0f0);
+  color: var(--xtu-help-video-nav-color, #111827);
   cursor: pointer;
 }
 
 .xtu-help-video__btn:hover:not(:disabled) {
   background: var(--xtu-help-accent, #0070ca);
-  color: #ffffff;
+  color: var(--xtu-help-video-nav-color-hover, #ffffff);
 }
 
 .xtu-help-video__btn:disabled {
@@ -734,7 +742,7 @@ img.xtu-help-lang-icon {
 }
 
 .xtu-help-faq__item {
-  border-bottom: 1px solid rgb(0 0 0 / 0.12);
+  border-bottom: 1px solid var(--xtu-help-divider, #e5e5e5);
 }
 
 .xtu-help-faq__item:last-child {
@@ -758,7 +766,7 @@ img.xtu-help-lang-icon {
 
 @media (hover: hover) and (pointer: fine) {
   .xtu-help-faq__question:hover {
-    color: var(--xtu-help-accent, #0070ca);
+    color: var(--xtu-help-faq-question-hover, var(--xtu-help-accent, #0070ca));
   }
 }
 
@@ -851,9 +859,9 @@ img.xtu-help-lang-icon {
     flex: 0 0 auto;
     height: 36px;
     padding: 0 var(--xtu-space-16);
-    border: 1px solid rgb(0 0 0 / 0.1);
+    border: 1px solid var(--xtu-help-chip-border, #e5e7eb);
     border-radius: 999px;
-    background: #ffffff;
+    background: var(--xtu-help-chip-bg, #ffffff);
     font-size: var(--xtu-type-body);
     font-weight: 600;
     line-height: 1.2;
@@ -864,7 +872,7 @@ img.xtu-help-lang-icon {
   .xtu-help__chip.is-active {
     border-color: var(--xtu-help-accent, #0070ca);
     background: var(--xtu-help-accent, #0070ca);
-    color: #ffffff;
+    color: var(--xtu-help-chip-color-active, #ffffff);
   }
 
   .xtu-help-lang-tabs {

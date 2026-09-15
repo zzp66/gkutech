@@ -1,0 +1,90 @@
+{%- doc -%}
+  Help Center 内容 section 共用 CSS 变量（从 section.settings 读取）。
+  输出可放入 style="" 的属性声明；按钮色写入 --xtu-btn-*，供区内 xtu-btn 继承。
+
+  @param {object} section - 当前 section
+{%- enddoc -%}
+{%- liquid
+  assign s = section.settings
+  assign background_color = s.background_color | default: '#FFFFFF'
+  assign content_background = s.content_background | default: '#FFFFFF'
+  assign heading_color = s.heading_color | default: '#000000'
+  assign muted_text_color = s.muted_text_color | default: '#8E9297'
+  assign text_color = s.text_color | default: '#333333'
+  assign accent_color = s.accent_color | default: '#0070CA'
+  assign sidebar_background = s.sidebar_background | default: '#F5F5F7'
+  assign card_background = s.card_background | default: '#FFFFFF'
+  assign border_color = s.border_color | default: '#DFDFDF'
+  assign content_width = s.content_width | default: 1200 | at_least: 600 | at_most: 1600
+  assign padding_top = s.padding_top | default: 80
+  assign padding_bottom = s.padding_bottom | default: 80
+  assign padding_top_mobile = s.padding_top_mobile | default: 40
+  assign padding_bottom_mobile = s.padding_bottom_mobile | default: 40
+
+  assign button_bg = s.button_bg | default: settings.xtu_btn_bg | default: '#1590F2'
+  assign button_color = s.button_color | default: settings.xtu_btn_color | default: '#FFFFFF'
+  assign button_bg_hover = s.button_bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+  assign button_color_hover = s.button_color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
+
+  assign badge_bg = s.badge_bg | default: accent_color
+  assign badge_color = s.badge_color | default: '#FFFFFF'
+  assign card_hover_bg = s.card_hover_bg | default: '#ECECF0'
+  assign lang_tab_color_active = s.lang_tab_color_active | default: '#FFFFFF'
+  assign chip_bg = s.chip_bg | default: '#FFFFFF'
+  assign chip_border = s.chip_border | default: '#E5E7EB'
+  assign chip_color_active = s.chip_color_active | default: '#FFFFFF'
+  assign surface_bg = s.surface_bg | default: '#FFFFFF'
+  assign icon_muted = s.icon_muted | default: '#667085'
+  assign divider_color = s.divider_color | default: '#E5E5E5'
+  assign question_hover_color = s.question_hover_color | default: accent_color
+
+  assign video_stage_bg = s.video_stage_bg | default: '#111111'
+  assign video_placeholder_bg = s.video_placeholder_bg | default: '#222222'
+  assign video_player_bg = s.video_player_bg | default: '#000000'
+  assign video_play_bg = s.video_play_bg | default: '#000000'
+  assign video_play_color = s.video_play_color | default: '#FFFFFF'
+  assign video_nav_bg = s.video_nav_bg | default: '#F0F0F0'
+  assign video_nav_color = s.video_nav_color | default: '#111827'
+  assign video_nav_color_hover = s.video_nav_color_hover | default: '#FFFFFF'
+-%}
+--xtu-help-bg: {{ background_color }};
+--xtu-help-content-bg: {{ content_background }};
+--xtu-help-content-width: {{ content_width }}px;
+--xtu-help-pt: {{ padding_top }}px;
+--xtu-help-pb: {{ padding_bottom }}px;
+--xtu-help-pt-m: {{ padding_top_mobile }}px;
+--xtu-help-pb-m: {{ padding_bottom_mobile }}px;
+--xtu-help-heading: {{ heading_color }};
+--xtu-help-muted: {{ muted_text_color }};
+--xtu-help-text: {{ text_color }};
+--xtu-help-accent: {{ accent_color }};
+--xtu-help-sidebar-bg: {{ sidebar_background }};
+--xtu-help-card-bg: {{ card_background }};
+--xtu-help-border: {{ border_color }};
+--xtu-help-btn-bg: {{ button_bg }};
+--xtu-help-btn-color: {{ button_color }};
+--xtu-help-btn-bg-hover: {{ button_bg_hover }};
+--xtu-help-btn-color-hover: {{ button_color_hover }};
+--xtu-btn-bg: {{ button_bg }};
+--xtu-btn-color: {{ button_color }};
+--xtu-btn-bg-hover: {{ button_bg_hover }};
+--xtu-btn-color-hover: {{ button_color_hover }};
+--xtu-help-badge-bg: {{ badge_bg }};
+--xtu-help-badge-color: {{ badge_color }};
+--xtu-help-card-hover-bg: {{ card_hover_bg }};
+--xtu-help-lang-tab-color-active: {{ lang_tab_color_active }};
+--xtu-help-chip-bg: {{ chip_bg }};
+--xtu-help-chip-border: {{ chip_border }};
+--xtu-help-chip-color-active: {{ chip_color_active }};
+--xtu-help-surface-bg: {{ surface_bg }};
+--xtu-help-icon-muted: {{ icon_muted }};
+--xtu-help-divider: {{ divider_color }};
+--xtu-help-faq-question-hover: {{ question_hover_color }};
+--xtu-help-video-stage-bg: {{ video_stage_bg }};
+--xtu-help-video-placeholder-bg: {{ video_placeholder_bg }};
+--xtu-help-video-player-bg: {{ video_player_bg }};
+--xtu-help-video-play-bg: {{ video_play_bg }};
+--xtu-help-video-play-color: {{ video_play_color }};
+--xtu-help-video-nav-bg: {{ video_nav_bg }};
+--xtu-help-video-nav-color: {{ video_nav_color }};
+--xtu-help-video-nav-color-hover: {{ video_nav_color_hover }};
