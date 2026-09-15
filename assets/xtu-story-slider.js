@@ -2,9 +2,15 @@
  * XTU Story Slider
  * Desktop: left-align to page content, 4 equal cards + right peek; both sides peek after scroll
  * Mobile: 1.1 peek with page margins
+ *
+ * Multi-instance safe: section may include this script more than once; boot only once.
+ * One section failing must not block other instances on the same page.
  */
 (function () {
   'use strict';
+
+  if (window.__xtuStorySliderInit) return;
+  window.__xtuStorySliderInit = true;
 
   var instances = new WeakMap();
 
@@ -123,25 +129,40 @@
         video.addEventListener('pause', function () {
           if (video.paused) card.classList.remove('is-playing');
         });
-      });
-      video.addEventListener('play', function () {
-        card.classList.add('is-playing');
+        video.addEventListener('play', function () {
+          card.classList.add('is-playing');
+        });
       });
     });
   }
 
   function destroy(root) {
     var inst = instances.get(root);
-    if (!inst) return;
-    if (inst.swiper && typeof inst.swiper.destroy === 'function') {
-      inst.swiper.destroy(true, true);
+    if (inst) {
+      if (inst.swiper && typeof inst.swiper.destroy === 'function') {
+        try {
+          inst.swiper.destroy(true, true);
+        } catch (err) {
+          /* ignore */
+        }
+      }
+      if (inst.onResize) window.removeEventListener('resize', inst.onResize);
+      instances.delete(root);
     }
-    if (inst.onResize) window.removeEventListener('resize', inst.onResize);
-    instances.delete(root);
+
+    // Clear any orphan Swiper left by a previous (duplicate) script boot
+    var container = root && root.querySelector ? root.querySelector('[data-xtu-story-swiper]') : null;
+    if (container && container.swiper && typeof container.swiper.destroy === 'function') {
+      try {
+        container.swiper.destroy(true, true);
+      } catch (err) {
+        /* ignore */
+      }
+    }
   }
 
   function initRoot(root) {
-    if (!root) return;
+    if (!(root instanceof HTMLElement)) return;
     destroy(root);
 
     var container = root.querySelector('[data-xtu-story-swiper]');
@@ -152,6 +173,8 @@
     var prevEl = root.querySelector('[data-xtu-story-prev]');
     var nextEl = root.querySelector('[data-xtu-story-next]');
     var inset = readInset(root);
+    var slideCount = container.querySelectorAll('.swiper-slide').length;
+    if (slideCount < 1) return;
 
     var swiper = new window.Swiper(container, {
       slidesPerView: 1.1,
@@ -161,13 +184,13 @@
       slidesOffsetAfter: inset,
       speed: 550,
       watchOverflow: true,
-      grabCursor: true,
+      grabCursor: slideCount > 1,
       mousewheel: {
         forceToAxis: true,
         releaseOnEdges: true,
       },
       navigation:
-        prevEl && nextEl
+        prevEl && nextEl && slideCount > 1
           ? {
               prevEl: prevEl,
               nextEl: nextEl,
@@ -213,7 +236,13 @@
     var roots = (scope || document).querySelectorAll('[data-xtu-story-slider]');
     Array.prototype.forEach.call(roots, function (root) {
       waitForSwiper(function () {
-        initRoot(root);
+        try {
+          initRoot(root);
+        } catch (err) {
+          if (typeof console !== 'undefined' && console.error) {
+            console.error('[xtu-story-slider] init failed', err);
+          }
+        }
       });
     });
   }
@@ -235,7 +264,7 @@
       var inst = instances.get(root);
       if (inst && inst.swiper && !inst.swiper.destroyed) {
         try {
-          inst.swiper.update();
+          applyInset(inst.swiper, root);
         } catch (_) {}
       }
     });
@@ -246,9 +275,12 @@
   });
 
   document.addEventListener('shopify:section:unload', function (event) {
-    var root = event.target.querySelector('[data-xtu-story-slider]') || event.target;
-    if (root && root.hasAttribute && root.hasAttribute('data-xtu-story-slider')) {
-      destroy(root);
+    var root = event.target.querySelector
+      ? event.target.querySelector('[data-xtu-story-slider]')
+      : null;
+    if (!root && event.target && event.target.hasAttribute && event.target.hasAttribute('data-xtu-story-slider')) {
+      root = event.target;
     }
+    if (root) destroy(root);
   });
 })();
