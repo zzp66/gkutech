@@ -1,0 +1,248 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "blocks_EwjznG": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d149a36_YUfQG7": {
+          "type": "ai_gen_block_d149a36",
+          "settings": {
+            "eyebrow": "GKU POLICY",
+            "title": "Warranty Policy",
+            "policy_content": "<p><strong>Last Updated: September 2026</strong></p><p>At GKU, we stand behind the quality and reliability of our products.</p><p>Eligible GKU dash cams include a <strong>1-year standard manufacturer's warranty</strong> from the original date of purchase. Customers who successfully register an eligible dash cam through the GKU website may receive an <strong>additional 1-year warranty extension</strong>, providing up to <strong>2 years of total manufacturer warranty coverage</strong>.</p><p>This warranty covers eligible defects in materials or workmanship that occur during normal use, subject to the terms, conditions, and exclusions described below.</p><p><strong>1-Year Standard Warranty · Free 1-Year Extension · Up to 2 Years of Coverage</strong></p><p><strong>Click </strong><a href=\"https://warranty.gkutech.com/ad/shc/bxfh2plrsgDeepCk51FyU\" target=\"_blank\" title=\"https://warranty.gkutech.com/ad/shc/bxfh2plrsgDeepCk51FyU\"><strong>Here</strong></a><strong> To Register Your Product </strong></p><h2>1. Warranty Coverage at a Glance</h2><h3>GKU Dash Cams</h3><p>Eligible GKU dash cams are covered by a <strong>12-month standard manufacturer's warranty</strong> from the original date of purchase.</p><p>After successful product registration, eligible dash cam main units may receive an additional <strong>12 months of warranty coverage</strong>, providing up to <strong>24 months of total coverage</strong> from the original purchase date.</p><h3>GKU Accessories</h3><p>Eligible GKU accessories are generally covered by a <strong>90-day manufacturer's warranty</strong> from the original date of purchase unless otherwise stated on the applicable product page or required by applicable law.</p><p>Accessory warranty coverage may vary by product type, purchase channel, or region.</p><h5>Important</h5><p>The warranty period begins on the <strong>original purchase date</strong> shown on valid proof of purchase.</p><p>Registering your product does not restart the warranty period.</p><p>For example, an eligible dash cam with a 12-month standard warranty and a 12-month registered extension may receive up to 24 months of total coverage calculated from the original purchase date.</p><h2>2. Free 1-Year Warranty Extension</h2><h3>Register Your GKU Dash Cam</h3><p>Customers who purchase an eligible GKU dash cam through the GKU Official Store or an authorized GKU sales channel may apply for a free additional year of manufacturer warranty coverage by successfully registering the product.</p><p>To register your product, please prepare:</p><ul><li>Order number</li><li>Product model</li><li>Purchase platform or retailer</li><li>Purchase date</li><li>Valid proof of purchase</li><li>Other product information requested on the registration page</li></ul><p>Once successfully registered, an eligible GKU dash cam main unit may receive up to <strong>24 months of total manufacturer warranty coverage</strong> from the original purchase date.</p><p>The warranty extension generally applies to the <strong>eligible dash cam main unit</strong> unless otherwise stated.</p><p><strong>Register Your Product</strong></p><h2>3. What Does the GKU Warranty Cover?</h2><p>The GKU manufacturer's warranty covers confirmed defects in materials or workmanship that occur during normal installation and use within the applicable warranty period.</p><p>Examples of potentially covered issues may include:</p><ul><li>Manufacturing defects confirmed by GKU Support</li><li>Hardware failures occurring under normal use</li><li>Product malfunctions caused by eligible manufacturing or material defects</li><li>Other defects determined by GKU Support to be covered under the applicable manufacturer warranty</li></ul><p>Warranty eligibility is determined after GKU Support reviews the order information, product condition, supporting evidence, troubleshooting results, and other relevant information.</p><h2>4. What Is Not Covered?</h2><p>The GKU manufacturer's warranty does not cover damage, failure, or performance issues caused by circumstances unrelated to an eligible manufacturing defect.</p><p>Examples include:</p><ul><li>Improper installation or incorrect use</li><li>Misuse, abuse, or neglect</li><li>Accidents, drops, collisions, or impact damage</li><li>Liquid or water damage</li><li>Unauthorized modification, disassembly, or repair</li><li>Intentional damage</li><li>Normal wear and tear</li><li>Cosmetic deterioration that does not affect normal product function</li><li>Damage caused by incompatible accessories, power supplies, cables, memory cards, or external equipment</li><li>Damage caused by improper voltage or electrical conditions</li><li>Damage caused by failure to follow product instructions</li><li>Lost or stolen products</li><li>Products with removed, altered, or unreadable identification information where identification is required for warranty verification</li><li>Products without valid proof of purchase where proof of purchase is required to verify warranty eligibility</li><li>Products purchased through unauthorized channels where manufacturer warranty coverage cannot be verified</li></ul><p>These exclusions apply to the GKU manufacturer's warranty to the extent permitted by applicable law and do not exclude or limit statutory consumer rights that cannot legally be excluded or restricted.</p><h2>5. Proof of Purchase</h2><p>Valid proof of purchase may be required to confirm warranty eligibility and determine the applicable warranty period.</p><p>Acceptable proof of purchase may include:</p><ul><li>GKU Official Store order confirmation</li><li>Amazon or other authorized marketplace order information</li><li>Receipt or invoice from an authorized GKU retailer</li><li>Other documentation accepted by GKU Support</li></ul><p>Your proof of purchase should clearly identify the purchase date, product, and seller where possible.</p><p>If you cannot locate your order number, contact GKU Support and provide as much information as possible, including:</p><ul><li>Purchaser name</li><li>Email address used for the order</li><li>Purchase platform</li><li>Approximate purchase date</li><li>Product model</li></ul><p>Our team will try to assist in locating or verifying your purchase, but valid proof of purchase may still be required for warranty service.</p><h2>6. How to Make a Warranty Claim</h2><p>If you experience a problem with your GKU product, please contact GKU Support before returning, replacing, disassembling, or attempting to repair the product.</p><h3>Step 1 — Contact GKU Support</h3><p>Email <a href=\"mailto:support@gkutech.com\"><strong>support@gkutech.com</strong></a> and briefly explain the issue you are experiencing.</p><h3>Step 2 — Provide Your Order Information</h3><p>Please include:</p><ul><li>Order number</li><li>Purchase platform</li><li>Product model</li><li>Purchase date</li><li>Country or region</li></ul><h3>Step 3 — Provide Supporting Evidence</h3><p>To help our technical team identify the issue, please provide where applicable:</p><ul><li>Detailed description of the problem</li><li>Clear photos</li><li>Video showing the issue</li><li>Dash cam firmware version</li><li>GKU app version</li><li>Memory card information</li><li>Power or wiring method</li><li>Relevant error messages</li></ul><h3>Step 4 — Complete Troubleshooting</h3><p>GKU Support may ask you to perform reasonable troubleshooting steps to help determine whether the issue is related to product settings, installation, firmware, memory card compatibility, power supply, accessories, or a hardware defect.</p><h3>Step 5 — Warranty Resolution</h3><p>If the issue is confirmed to be covered under the applicable warranty, GKU will provide an appropriate warranty solution based on the nature of the issue, product, location, and available service options.</p><p>This may include, where appropriate:</p><ul><li>Technical assistance</li><li>Replacement parts</li><li>Repair</li><li>Product replacement</li><li>Another appropriate warranty solution</li></ul><p>The specific remedy may vary depending on the product, issue, region, inventory, and applicable law.</p><h2>7. Returns and Warranty Claims Are Different</h2><p>The GKU <strong>Return & Refund Policy</strong> and <strong>Manufacturer's Warranty Policy</strong> are separate policies.</p><h3>Within the Return Period</h3><p>If you are requesting a return or refund within the applicable return period after delivery, please review the GKU Return & Refund Policy.</p><h3>After the Return Period</h3><p>If the applicable return period has ended but your product is still within its manufacturer warranty period, contact GKU Support for warranty assistance.</p><p>A product issue occurring after the return period does not automatically qualify for a refund. The issue will be handled according to the applicable warranty terms and technical assessment.</p><h2>8. Do Not Return Products Without Authorization</h2><p>Please do not send a product back to GKU without first contacting GKU Support.</p><p>If a return, repair, or replacement is required, our support team will provide the appropriate instructions and, where applicable, the designated return address.</p><p>Products sent without prior authorization may be delayed or may not be correctly identified and processed.</p><h2>9. Replacement Products and Parts</h2><p>If GKU determines that a replacement product or replacement part is appropriate under the warranty, the replacement may be new or functionally equivalent, subject to product availability and applicable law.</p><p>Unless otherwise required by applicable law, receiving a replacement product or part does not restart or extend the original warranty period.</p><p>The replacement product or part will remain covered for the remainder of the applicable original warranty period.</p><h2>10. Warranty Service Availability</h2><p>GKU provides manufacturer warranty service for eligible products purchased through the GKU Official Store or authorized GKU sales channels in regions where GKU officially sells and supports its products.</p><p>Warranty service is subject to:</p><ul><li>Applicable warranty period</li><li>Product eligibility</li><li>Valid proof of purchase</li><li>Purchase channel</li><li>Purchase region</li><li>Product condition</li><li>Technical assessment</li><li>Terms and exclusions in this Warranty Policy</li></ul><p>The specific method of warranty service may vary depending on the country or region.</p><p>If you are unsure whether your product, purchase channel, or region is eligible for GKU manufacturer warranty service, please contact GKU Support before submitting a claim.</p><h2>11. International Warranty Service</h2><p>Warranty service availability may vary by country or region.</p><p>Products purchased in one country or region may not always be eligible for the same service method in another country or region because of differences in product availability, logistics, local service capabilities, and applicable regulations.</p><p>GKU Support will review international warranty requests individually and provide an appropriate solution where warranty service is available.</p><p>Customers should contact GKU Support before sending products internationally for warranty service.</p><h2>12. Consumer Rights & Applicable Law</h2><p>The GKU manufacturer's warranty is provided in addition to any statutory consumer rights and remedies available under applicable law.</p><p>Nothing in this Warranty Policy is intended to exclude, restrict, waive, or limit any consumer rights or remedies that cannot lawfully be excluded or limited.</p><p>This Warranty Policy and GKU's manufacturer warranty are governed by the laws of the Hong Kong Special Administrative Region (Hong Kong SAR), except where otherwise required by applicable law.</p><p>Customers purchasing GKU products outside Hong Kong SAR may also be entitled to mandatory consumer protections under the laws applicable to their country or region.</p><p>Where mandatory local consumer protection laws provide rights or remedies that differ from or exceed the GKU manufacturer warranty described here, those mandatory legal requirements will apply to the extent required by law.</p><p>The GKU manufacturer warranty does not replace any statutory warranty, guarantee, conformity right, or other mandatory consumer protection applicable to your purchase.</p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#fff001",
+            "link_color": "#fff001"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d149a36_YUfQG7"
+      ],
+      "name": "Refund policy content",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_fEqQg9": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_tKP3MM": {
+          "type": "item",
+          "settings": {
+            "question": "How long is the GKU dash cam warranty?",
+            "answer": "<p>Eligible GKU dash cams include a 1-year standard manufacturer's warranty from the original purchase date.</p><p>Eligible dash cams that are successfully registered may receive an additional 1-year warranty extension, providing up to 2 years of total manufacturer warranty coverage.</p>"
+          }
+        },
+        "item_rJ44rF": {
+          "type": "item",
+          "settings": {
+            "question": "When does my warranty begin?",
+            "answer": "<p>The warranty begins on the original purchase date shown on your valid proof of purchase.</p>"
+          }
+        },
+        "item_aYjnBK": {
+          "type": "item",
+          "settings": {
+            "question": "Does registering my product give me another two years?",
+            "answer": "<p>No. Registration provides an additional 12 months for eligible dash cams, resulting in up to 24 months of total coverage from the original purchase date.</p>"
+          }
+        },
+        "item_QbNjrG": {
+          "type": "item",
+          "settings": {
+            "question": "Does registration restart the warranty period?",
+            "answer": "<p>No. The warranty period is always calculated from the original purchase date.</p>"
+          }
+        },
+        "item_ghYkbP": {
+          "type": "item",
+          "settings": {
+            "question": "Does the warranty extension cover accessories?",
+            "answer": "<p>Unless otherwise stated, the additional warranty extension applies to the eligible dash cam main unit. Accessories are subject to their applicable warranty terms.</p>"
+          }
+        },
+        "item_rp774a": {
+          "type": "item",
+          "settings": {
+            "question": "Are GKU accessories covered by warranty?",
+            "answer": "<p>Eligible GKU accessories are generally covered by a 90-day manufacturer's warranty unless otherwise stated on the applicable product page or required by applicable law.</p>"
+          }
+        },
+        "item_EFCTFb": {
+          "type": "item",
+          "settings": {
+            "question": "Is accidental damage covered?",
+            "answer": "<p>No. Accidental damage, impact damage, liquid damage, misuse, and other damage unrelated to an eligible manufacturing defect are generally not covered by the GKU manufacturer's warranty.</p>"
+          }
+        },
+        "item_KM9qdd": {
+          "type": "item",
+          "settings": {
+            "question": "Do I need proof of purchase?",
+            "answer": "<p>Valid proof of purchase may be required to verify product eligibility and determine the applicable warranty period.</p>"
+          }
+        },
+        "item_pURpWi": {
+          "type": "item",
+          "settings": {
+            "question": "What information should I provide when making a claim?",
+            "answer": "<p>Please provide your order number, purchase platform, product model, purchase date, detailed description of the issue, and clear photos or videos where applicable.</p><p>Information about your firmware, app version, memory card, and wiring or power setup may also help our technical team diagnose the issue.</p>"
+          }
+        },
+        "item_9mYzwq": {
+          "type": "item",
+          "settings": {
+            "question": "Should I return my dash cam immediately if there is a problem?",
+            "answer": "<p>No. Please contact GKU Support first. Our team will help troubleshoot the issue and provide return, repair, or replacement instructions if required.</p>"
+          }
+        },
+        "item_LhwHcf": {
+          "type": "item",
+          "settings": {
+            "question": "What if I am still within 30 days of delivery?",
+            "answer": "<p>Please review the GKU Return & Refund Policy. The return period and manufacturer's warranty are separate policies.</p>"
+          }
+        },
+        "item_CHaRnd": {
+          "type": "item",
+          "settings": {
+            "question": "What happens if my product is replaced under warranty?",
+            "answer": "<p>Unless otherwise required by applicable law, a replacement does not restart the original warranty period. The replacement remains covered for the remainder of the applicable original warranty period.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_tKP3MM",
+        "item_rJ44rF",
+        "item_aYjnBK",
+        "item_QbNjrG",
+        "item_ghYkbP",
+        "item_rp774a",
+        "item_EFCTFb",
+        "item_KM9qdd",
+        "item_pURpWi",
+        "item_9mYzwq",
+        "item_LhwHcf",
+        "item_CHaRnd"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Warranty FAQs",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 8,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "blocks_EwjznG",
+    "xtu_faq_fEqQg9"
+  ]
+}

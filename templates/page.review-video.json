@@ -64,21 +64,77 @@
         "category_Am49gp": {
           "type": "category",
           "settings": {
-            "id": "e200",
-            "label": "E200"
+            "id": "D600 Pro Max",
+            "label": "D600 Pro Max"
           }
         },
         "category_8MdqLd": {
           "type": "category",
           "settings": {
-            "id": "e300",
-            "label": "E300"
+            "id": "D600 Pro",
+            "label": "D600 Pro"
+          }
+        },
+        "category_P3niLk": {
+          "type": "category",
+          "settings": {
+            "id": "D600",
+            "label": "D600"
+          }
+        },
+        "category_NTWhUG": {
+          "type": "category",
+          "settings": {
+            "id": "D700",
+            "label": "D700"
+          }
+        },
+        "category_ryiV9B": {
+          "type": "category",
+          "settings": {
+            "id": "E200",
+            "label": "E200"
+          }
+        },
+        "category_NyWY8H": {
+          "type": "category",
+          "settings": {
+            "id": "D1000",
+            "label": "D1000"
+          }
+        },
+        "category_E8Wj3K": {
+          "type": "category",
+          "settings": {
+            "id": "D900",
+            "label": "D900"
+          }
+        },
+        "category_dcfRyX": {
+          "type": "category",
+          "settings": {
+            "id": "D200",
+            "label": "D200"
+          }
+        },
+        "category_mj74dp": {
+          "type": "category",
+          "settings": {
+            "id": "D300",
+            "label": "D300"
           }
         }
       },
       "block_order": [
         "category_Am49gp",
-        "category_8MdqLd"
+        "category_8MdqLd",
+        "category_P3niLk",
+        "category_NTWhUG",
+        "category_ryiV9B",
+        "category_NyWY8H",
+        "category_E8Wj3K",
+        "category_dcfRyX",
+        "category_mj74dp"
       ],
       "name": "XTU Guide Video",
       "settings": {

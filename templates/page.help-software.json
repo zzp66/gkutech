@@ -13,19 +13,30 @@
       "type": "xtu-help-nav",
       "settings": {
         "kicker": "Help Center",
+        "heading_color": "#000000",
+        "background_color": "#f5f5f7",
+        "banner_height": 280,
+        "banner_height_mobile": 200,
+        "show_overlay": false,
+        "overlay_opacity": 30,
         "show_software": true,
         "manual_label": "Manual",
+        "manual_url": "",
         "firmware_label": "Firmware",
+        "firmware_url": "",
         "software_label": "Software",
+        "software_url": "",
         "video_label": "Video Guide",
-        "faq_label": "FAQ"
+        "video_url": "",
+        "faq_label": "FAQ",
+        "faq_url": ""
       }
     },
     "help-software": {
       "type": "xtu-help-software",
       "settings": {
-        "heading": "Software",
-        "subheading": "Apps and tools for XTU cameras.",
+        "heading": "GKU Software & Apps",
+        "subheading": "Access official GKU apps and software for dash cam control, video playback, GPS data, and device management.",
         "sidebar_label": "Products",
         "empty_text": "No software for this product yet.",
         "background_color": "#ffffff",

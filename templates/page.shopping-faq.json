@@ -78,14 +78,15 @@
       "block_order": [
         "paragraph_y4gYTK"
       ],
+      "disabled": true,
       "name": "XTU Rich Content",
       "settings": {
         "heading": "",
         "subheading": "",
         "heading_align": "center",
-        "background_color": "#FFFFFF",
-        "content_background": "#FFFFFF",
-        "link_color": "#0070CA",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "link_color": "#0070ca",
         "content_width": 1200,
         "padding_top": 0,
         "padding_bottom": 16,
@@ -139,6 +140,7 @@
         "item_YRYHzh",
         "item_RxYitD"
       ],
+      "disabled": true,
       "name": "XTU Product Nav",
       "settings": {
         "aria_label": "Page sections",
@@ -148,469 +150,44 @@
         "sticky_offset": 0,
         "background_color": "#ffffff",
         "border_color": "#dddddd",
-        "active_color": "#098FEF",
+        "active_color": "#098fef",
         "inactive_color": "{{ settings.color_palette.foreground }}"
       }
     },
-    "xtu_faq_TgYaEL": {
-      "type": "xtu-faq",
+    "blocks_fDndry": {
+      "type": "_blocks",
       "blocks": {
-        "item_VQiN6n": {
-          "type": "item",
+        "ai_gen_block_d02fef5_hqzkDC": {
+          "type": "ai_gen_block_d02fef5",
           "settings": {
-            "question": "How do I create an XTU account?",
-            "answer": "<p>Creating an XTU account is quick and easy.</p><p>Click <a href=\"https://shopify.com/authentication/50136547494/login?analytics_trace_id=65e9fe45-0101-49e2-9634-c46a40308c34&client_id=2d1093e8-43e7-4c91-bc17-ce639c21f482&locale=en-US&redirect_uri=%2Fauthentication%2F50136547494%2Foauth%2Fauthorize%3Fanalytics_trace_id%3D65e9fe45-0101-49e2-9634-c46a40308c34%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwLXd3dy14dHVjYW0tY29tLm15c2hvcGlmeS5jb20iLCJmbGFncyI6W10sImV4cCI6MTc4ODI1MDYxMywibmJmIjoxNzg3NjQ1ODEzfQ.EnYkNZ0MqBYvkWrMrXDus7sVWJ3qyh1pJn1dntKvPe8%26client_id%3D2d1093e8-43e7-4c91-bc17-ce639c21f482%26locale%3Den-US%26nonce%3D52dd7c3a-a409-43b9-a0aa-a58b3bf32dd3%26redirect_uri%3Dhttps%253A%252F%252Fshopify.com%252F50136547494%252Faccount%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNG3XOSaXrkrNOODBHiSM2j\" target=\"_blank\" title=\"https://shopify.com/authentication/50136547494/login?analytics_trace_id=65e9fe45-0101-49e2-9634-c46a40308c34&client_id=2d1093e8-43e7-4c91-bc17-ce639c21f482&locale=en-US&redirect_uri=%2Fauthentication%2F50136547494%2Foauth%2Fauthorize%3Fanalytics_trace_id%3D65e9fe45-0101-49e2-9634-c46a40308c34%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwLXd3dy14dHVjYW0tY29tLm15c2hvcGlmeS5jb20iLCJmbGFncyI6W10sImV4cCI6MTc4ODI1MDYxMywibmJmIjoxNzg3NjQ1ODEzfQ.EnYkNZ0MqBYvkWrMrXDus7sVWJ3qyh1pJn1dntKvPe8%26client_id%3D2d1093e8-43e7-4c91-bc17-ce639c21f482%26locale%3Den-US%26nonce%3D52dd7c3a-a409-43b9-a0aa-a58b3bf32dd3%26redirect_uri%3Dhttps%253A%252F%252Fshopify.com%252F50136547494%252Faccount%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNG3XOSaXrkrNOODBHiSM2j\"><strong>Sign</strong></a><strong> In</strong> on the XTU website and follow the instructions to create your account using your email address.</p><p>An XTU account allows you to manage your orders, view order history, track purchases, and access other account-related features.</p><p>You can also check out as a guest if guest checkout is available for your order.</p>"
-          }
-        },
-        "item_HP4M49": {
-          "type": "item",
-          "settings": {
-            "question": "Do I Need an Account to Place an Order?",
-            "answer": "<p>No. You may be able to place an order as a guest without creating an XTU account.</p><p>However, creating an XTU account allows you to easily view your order history, track your purchases, manage your account information, and receive important order updates.</p>"
-          }
-        },
-        "item_HByFxp": {
-          "type": "item",
-          "settings": {
-            "question": "How Do I Place an Order on XTU?",
-            "answer": "<p>To place an order:</p><ol><li>Select the product you want to purchase.</li><li>Choose the available options, such as product version or accessories.</li><li>Click <strong>Add to Cart</strong> or <strong>Buy It Now</strong>.</li><li>Review your order and shipping information.</li><li>Select an available payment method.</li><li>Complete your payment.</li><li>Wait for your order confirmation email.</li></ol><p>Once your payment has been successfully confirmed, we will begin processing your order.</p>"
-          }
-        },
-        "item_7p6kDc": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Change My Order After Placing It?",
-            "answer": "<p>If your order has not yet been processed or shipped, we may be able to help you change certain order details.</p><p>Please contact XTU Customer Support as soon as possible and provide your order number and the changes you would like to make.</p><p>Once an order has been shipped, we may not be able to make changes.</p><p><strong>Email:</strong> <a href=\"mailto:support@xtucam.com\">support@xtucam.com</a></p><p>or click chat to contact website service.</p>"
-          }
-        },
-        "item_yReTq8": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Cancel My XTU Order?",
-            "answer": "<p>You may request to cancel your order before it has been shipped.</p><p>Please contact us as soon as possible with your order number.</p><p>If your order has already been shipped, cancellation may no longer be possible. In this case, you may need to follow our return and refund process after receiving the order.</p><p>For more information, please see our <strong>Return & Refund Policy</strong>.</p>"
-          }
-        },
-        "item_6hJcaJ": {
-          "type": "item",
-          "settings": {
-            "question": "How Can I Use a Discount Code?",
-            "answer": "<p>If you have an XTU discount or promotional code, enter it in the <strong>Discount Code</strong> or <strong>Promo Code</strong> field during checkout and apply it before completing your payment.</p><p>Please make sure:</p><ul><li>The discount code has not expired.</li><li>The code is entered correctly.</li><li>Your order meets any applicable promotional requirements.</li><li>The code is valid for the products you are purchasing.</li></ul><p>Some promotions may not be combined with other discounts or offers.</p><p>If your discount code does not work, please contact XTU Customer Support before completing your order.</p>"
-          }
-        },
-        "item_rycYdT": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Use More Than One Discount Code on the Same Order?",
-            "answer": "<p>Unless otherwise stated in the promotion terms, only one promotional or discount code can generally be applied to an order.</p><p>Some automatic promotions, product discounts, or sitewide offers may be combined where specifically permitted.</p><p>Please check the terms of the promotion before placing your order.</p>"
-          }
-        },
-        "item_raBYXL": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Get a Discount for Bulk or Wholesale Orders?",
-            "answer": "<p>Yes. XTU may offer special pricing or purchasing options for eligible bulk, business, or wholesale orders.</p><p>If you are interested in purchasing multiple XTU products, please contact our team with:</p><ul><li>Products you are interested in</li><li>Quantity required</li><li>Destination country</li><li>Intended use</li></ul><p>Our team will review your request and provide available purchasing options.</p><p>For wholesale, click <a href=\"https://xtucam.com/pages/wholesale-business\" target=\"_blank\" title=\"https://xtucam.com/pages/wholesale-business\">here</a></p>"
-          }
-        },
-        "item_wqTnLW": {
-          "type": "item",
-          "settings": {
-            "question": "How Can I Check My Order Status?",
-            "answer": "<p>If you have an XTU account, sign in to view your order history and available order information.</p><p>You can also check your order confirmation and shipping emails for updates.</p><p>Once your order has been shipped, we will provide tracking information so you can follow the delivery status.</p><p>If you cannot find your order information, please contact us with your order number and email address.</p>"
-          }
-        },
-        "item_JkTCmj": {
-          "type": "item",
-          "settings": {
-            "question": "I Did Not Receive My Order Confirmation Email. What Should I Do?",
-            "answer": "<p>After placing an order, you should normally receive an order confirmation email.</p><p>If you do not receive it, please:</p><ol><li>Check your spam or junk email folder.</li><li>Confirm that the email address entered during checkout is correct.</li><li>Check whether your payment was successfully completed.</li><li>Wait a few minutes and check your inbox again.</li></ol><p>If you still cannot find your confirmation email, contact XTU Customer Support with your name, email address, and order details.</p>"
-          }
-        },
-        "item_Vgk4NH": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Change My Shipping Address After Placing an Order?",
-            "answer": "<p>Please contact us as soon as possible if you need to change your shipping address.</p><p>We may be able to update the address if your order has not yet been shipped.</p><p>Once the package has been handed over to the shipping carrier, we may not be able to change the delivery address.</p><p>Any additional costs caused by an incorrect or incomplete address may be the customer's responsibility.</p>"
-          }
-        },
-        "item_kHyPHf": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Add Items to an Existing Order?",
-            "answer": "<p>Once an order has been placed, we may not be able to add additional products to the same order.</p><p>If your order has not yet been processed, please contact us as soon as possible. Depending on the order status, we may be able to cancel the original order so you can place a new order with all the products you need.</p>"
-          }
-        },
-        "item_FUy8cQ": {
-          "type": "item",
-          "settings": {
-            "question": "Why Was My Order Automatically Cancelled?",
-            "answer": "<p>An order may be cancelled in certain circumstances, including:</p><ul><li>Payment authorization failure</li><li>Incorrect or incomplete order information</li><li>Product availability issues</li><li>Shipping restrictions</li><li>Suspected fraudulent transactions</li><li>Other circumstances that prevent us from safely processing the order</li></ul><p>If your order is cancelled, we will contact you when appropriate and process any eligible refund according to the original payment method.</p>"
-          }
-        },
-        "item_aqWnjx": {
-          "type": "item",
-          "settings": {
-            "question": "Is My Personal Information Secure?",
-            "answer": "<p>XTU takes reasonable measures to protect your personal and order information.</p><p>Your information is used to process orders, provide customer support, deliver products, and improve your shopping experience.</p><p>For more information about how we collect and use personal information, please refer to our <strong>Privacy Policy</strong>.</p>"
-          }
-        },
-        "item_eQBdqg": {
-          "type": "item",
-          "settings": {
-            "question": "How Can I Contact XTU Customer Support?",
-            "answer": "<p>If you have questions about your order, account, payment, shipping, or products, you can contact XTU Customer Support.</p><p><strong>Email:</strong> <a href=\"mailto:support@xtucam.com\">support@xtucam.com</a></p><p>Website ONLINE Chat is also available.</p><p>When contacting us about an existing order, please include your <strong>order number</strong> so we can assist you more quickly.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_VQiN6n",
-        "item_HP4M49",
-        "item_HByFxp",
-        "item_7p6kDc",
-        "item_yReTq8",
-        "item_6hJcaJ",
-        "item_rycYdT",
-        "item_raBYXL",
-        "item_wqTnLW",
-        "item_JkTCmj",
-        "item_Vgk4NH",
-        "item_kHyPHf",
-        "item_FUy8cQ",
-        "item_aqWnjx",
-        "item_eQBdqg"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "Ordering & Account",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 20,
-        "padding_bottom": 80,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_faq_XETYNK": {
-      "type": "xtu-faq",
-      "blocks": {
-        "item_g3KXkA": {
-          "type": "item",
-          "settings": {
-            "question": "What Payment Methods Does XTU Accept?",
-            "answer": "<p>XTU offers several secure and convenient payment methods. Depending on your country, currency, device, and checkout availability, you may be able to pay using:</p><ul><li>Visa</li><li>Mastercard</li><li>American Express</li><li>Discover</li><li>PayPal</li><li>Google Pay</li></ul><p>The payment methods available for your specific order will be displayed at checkout.</p>"
-          }
-        },
-        "item_aDxrPg": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU Accept PayPal?",
-            "answer": "<p>Yes. XTU accepts <strong>PayPal</strong> for eligible orders and destinations.</p><p>PayPal allows you to complete your purchase using your PayPal balance or a supported payment card linked to your PayPal account.</p><p>When you select PayPal at checkout, you may be redirected to PayPal to securely complete your payment.</p><p>If PayPal is not displayed at checkout, it may not be available for your current country, currency, product, or order.</p>"
-          }
-        },
-        "item_YJaMrV": {
-          "type": "item",
-          "settings": {
-            "question": "Can I Pay with Google Pay?",
-            "answer": "<p>Yes. <strong>Google Pay</strong> is available for eligible XTU orders where supported.</p><p>You can use Google Pay with a supported device, browser, Google account, and payment card.</p><p>If Google Pay is available for your order, it will be displayed as a payment option during checkout.</p><p>Payment options may vary depending on your country, device, browser, currency, and other checkout conditions.</p>"
-          }
-        },
-        "item_RNVRnE": {
-          "type": "item",
-          "settings": {
-            "question": "Is My Payment Information Secure?",
-            "answer": "<p>Yes. XTU takes payment security seriously. Payments are processed through secure payment systems and payment providers designed to protect your payment information during checkout. XTU does not directly store your complete credit or debit card details on our servers. For additional security, your bank or payment provider may require verification before your payment can be completed. We recommend using only trusted devices and secure internet connections when making a payment.<br/><br/></p>"
-          }
-        },
-        "item_x7PtV3": {
-          "type": "item",
-          "settings": {
-            "question": "Why Was My Payment Declined?",
-            "answer": "<p>A payment may be declined for several reasons, including:</p><ul><li>Incorrect card or billing information</li><li>Insufficient funds or available credit</li><li>Expired or blocked payment card</li><li>Bank or card issuer restrictions</li><li>Payment verification failure</li><li>Country or regional payment restrictions</li><li>Security or fraud-prevention checks</li><li>Temporary issues with the payment provider</li></ul><p>If your payment is declined, please check your payment information and try again.</p><p>You can also try another available payment method, such as PayPal, Google Pay, or another supported card.</p><p>If the problem continues, please contact your bank or payment provider first. You can also contact XTU Customer Support for assistance.</p><p><strong>Email:</strong> <a href=\"mailto:support@xtucam.com\">support@xtucam.com</a></p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_g3KXkA",
-        "item_aDxrPg",
-        "item_YJaMrV",
-        "item_RNVRnE",
-        "item_x7PtV3"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "Payment",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_faq_afjj37": {
-      "type": "xtu-faq",
-      "blocks": {
-        "item_JQbjEE": {
-          "type": "item",
-          "settings": {
-            "question": "Which Countries Does XTU Ship To?",
-            "answer": "<p>XTU ships to selected countries and regions across North America, Europe, Asia-Pacific, and Southeast Asia.</p><p>Our shipping coverage may include:</p><ul><li><strong>North America:</strong> United States, Canada</li><li><strong>Europe:</strong> United Kingdom, Germany, France, Italy, Spain, Netherlands, and other eligible European countries</li><li><strong>Asia-Pacific:</strong> Japan, South Korea, Australia, and New Zealand</li><li><strong>Southeast Asia:</strong> Singapore, Malaysia, Thailand, Vietnam, Indonesia, and the Philippines</li></ul><p>Available shipping destinations may vary depending on the product, warehouse availability, carrier, and local import regulations.</p><p>The shipping options available for your specific address will be displayed at checkout.</p>"
-          }
-        },
-        "item_zy6PGN": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU Offer DDP Shipping?",
-            "answer": "<p>Yes. XTU supports <strong>DDP (Delivered Duty Paid) shipping</strong> for eligible destinations.</p><p>With DDP shipping, applicable import duties, taxes, and customs clearance charges are generally handled through the shipping service, providing a more convenient and hassle-free delivery experience.</p><p>DDP availability may vary depending on your destination, product, fulfillment warehouse, shipping carrier, and local customs requirements.</p><p>When DDP is available for your order, the applicable shipping option will be displayed at checkout.</p>"
-          }
-        },
-        "item_ReQ6MR": {
-          "type": "item",
-          "settings": {
-            "question": "Which Countries Support DDP Shipping?",
-            "answer": "<p>XTU supports DDP shipping to selected destinations.</p><p>DDP availability may include major markets such as:</p><ul><li>United States</li><li>Canada</li><li>United Kingdom</li><li>Germany</li><li>France</li><li>Italy</li><li>Spain</li><li>Australia</li><li>Japan</li><li>South Korea</li><li>Singapore</li><li>Malaysia</li><li>Thailand</li><li>Vietnam</li><li>Philippines</li></ul><p>However, DDP availability is not guaranteed for every product or address within these countries.</p><p>The available shipping methods are determined based on the destination, product type, fulfillment warehouse, carrier, and current logistics conditions.</p><p><strong>The final DDP availability and shipping cost will be confirmed at checkout.</strong></p>"
-          }
-        },
-        "item_An6MNn": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU Ship from Local Warehouses?",
-            "answer": "<p>Yes. XTU operates multiple fulfillment locations to serve customers in different markets.</p><p>When local inventory is available, <strong>XTU prioritizes fulfillment from a warehouse near your delivery address</strong> whenever possible.</p><p>Local warehouse fulfillment can help reduce international transit time and provide a faster and more convenient delivery experience.</p><p>However, local inventory availability varies by product and may change over time.</p><p>Countries with local warehouse: America, European Countries, Japan, Australia, UK, Canada.</p>"
-          }
-        },
-        "item_paLgen": {
-          "type": "item",
-          "settings": {
-            "question": "What Happens If My Package Is Delayed?",
-            "answer": "<p>Delivery delays can occur due to circumstances beyond XTU's control, including:</p><ul><li>Customs clearance</li><li>Severe weather</li><li>Carrier delays</li><li>Public holidays</li><li>High-volume shopping periods</li><li>Transportation restrictions</li><li>Temporary warehouse shortages</li><li>Cross-warehouse fulfillment</li><li>Incorrect or incomplete delivery information</li></ul><p>If your package is significantly delayed, please contact XTU Customer Support with your order number and tracking information.</p><p>We will help you check the latest shipping status with the carrier.</p>"
-          }
-        },
-        "item_bda9Rg": {
-          "type": "item",
-          "settings": {
-            "question": "Will I Have to Pay Customs or Import Taxes?",
-            "answer": "<p>No. </p><p>For eligible orders shipped using <strong>DDP (Delivered Duty Paid)</strong>, applicable import duties, taxes, and customs clearance charges are generally handled through the DDP shipping service.</p><p>For orders shipped using a non-DDP service, we will discuss with the customer before shipping.</p>"
-          }
-        },
-        "item_JazymB": {
-          "type": "item",
-          "settings": {
-            "question": "How long does delivery take?",
-            "answer": "<p>Estimated delivery times are:</p><p><strong>Express Shipping:</strong> 3–5 business days<br/><strong>Standard Shipping:</strong> 5–15 business days</p><p>Delivery times may vary depending on your location, warehouse availability, customs, and carrier conditions.</p>"
-          }
-        },
-        "item_w4WXh4": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU offers free shipping?",
-            "answer": "<p>Yes. <strong>Standard Shipping is free on orders of $49.99 or more</strong> where available.</p><p>Actual shipping options and fees will be shown at checkout.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_JQbjEE",
-        "item_zy6PGN",
-        "item_ReQ6MR",
-        "item_An6MNn",
-        "item_paLgen",
-        "item_bda9Rg",
-        "item_JazymB",
-        "item_w4WXh4"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "Shipping & Delivery",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_faq_HeFV8t": {
-      "type": "xtu-faq",
-      "blocks": {
-        "item_TYBd9A": {
-          "type": "item",
-          "settings": {
-            "question": "Why hasn't my tracking information updated?",
-            "answer": "<p>Carrier tracking may occasionally take time to refresh.</p><p>If there has been no update for several business days, please contact <a href=\"mailto:support@xtucam.com\"><strong>support@xtucam.com</strong></a> with your order number and tracking number.</p>"
-          }
-        },
-        "item_P3fwiL": {
-          "type": "item",
-          "settings": {
-            "question": "Is this waterproof?",
-            "answer": "<p>Please check the product specifications for waterproof rating and recommended usage.</p>"
-          }
-        },
-        "item_E7Qjtg": {
-          "type": "item",
-          "settings": {
-            "question": "My package says “Delivered,” but I can't find it. What should I do?",
-            "answer": "<p>Please check around the delivery location and contact the carrier first.</p><p>If you still cannot locate the package, contact <a href=\"mailto:support@xtucam.com\"><strong>support@xtucam.com</strong></a> and we’ll help investigate.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_TYBd9A",
-        "item_P3fwiL",
-        "item_E7Qjtg"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "Tracking",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_faq_eYencV": {
-      "type": "xtu-faq",
-      "blocks": {
-        "item_tM79Th": {
-          "type": "item",
-          "settings": {
-            "question": "Can I return my order?",
-            "answer": "<p>Eligible orders purchased from the official XTU website may be returned according to our<a href=\"https://xtucam.com/pages/return-and-refund\" target=\"_blank\" title=\"https://xtucam.com/pages/return-and-refund\"> <strong>Return & Refund Policy</strong></a>.</p><p>Please contact <a href=\"mailto:support@xtucam.com\"><strong>support@xtucam.com</strong></a> before sending any item back.</p>"
-          }
-        },
-        "item_8GGkJP": {
-          "type": "item",
-          "settings": {
-            "question": "What if my product arrives damaged or incorrect?",
-            "answer": "<p>Please contact us with your <strong>order number, photos, or videos</strong> showing the issue.</p><p>Our support team will review the case and provide the appropriate solution.</p>"
-          }
-        },
-        "item_j38jCw": {
-          "type": "item",
-          "settings": {
-            "question": "How long does a refund take?",
-            "answer": "<p>Once an eligible return has been received and inspected, we will process the refund to your original payment method.</p><p>The time it takes to appear in your account depends on your bank or payment provider.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_tM79Th",
-        "item_8GGkJP",
-        "item_j38jCw"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "Can I return my order?",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "section_JXatKQ": {
-      "type": "section",
-      "blocks": {
-        "text_iqY3LF": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Need More Help?</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
+            "subtitle": "",
+            "body": "<p>Find answers to common questions about ordering, payment, shipping, delivery, returns, refunds, warranty, discounts, and shopping at GKU.</p>",
             "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_WrdbbE": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>For order, shipping, return, or product-related questions:</p><p><strong>Customer Service:</strong><br/><a href=\"mailto:support@xtucam.com\">support@xtucam.com</a></p><p><strong>Business Inquiries:</strong><br/><a href=\"mailto:marketing.xtu@xtucam.com\">marketing.xtu@xtucam.com</a></p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "desktop_width_percent": 100,
+            "subtitle_size": 18,
+            "body_size": 16,
+            "spacing": 12,
+            "subtitle_color": "#333333",
+            "text_color": "#333333"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_iqY3LF",
-        "text_WrdbbE"
+        "ai_gen_block_d02fef5_hqzkDC"
       ],
-      "name": "t:names.rich_text_section",
+      "name": "副标题和正文",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 23,
+        "gap": 12,
         "section_width": "page-width",
-        "section_height": "small",
+        "section_height": "",
         "section_height_custom": 50,
         "background_media": "none",
         "background_color": "",
@@ -628,17 +205,1947 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "section_fGz3RT": {
+      "type": "section",
+      "blocks": {
+        "group_TULn8V": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_YkQ4h3": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "eye",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_9pgw97": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_VcYCLr": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Ordering & Account</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_pPjb8x": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Orders, changes, cancellations and account questions.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_VcYCLr",
+                "text_pPjb8x"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_YkQ4h3",
+            "group_9pgw97"
+          ]
+        },
+        "group_H8wJ7g": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_xXqkRh": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "heart",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_tMm3rt": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_gbh6He": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Payment</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_RgQ89E": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Payment methods, payment security and declined payments.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_gbh6He",
+                "text_RgQ89E"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_xXqkRh",
+            "group_tMm3rt"
+          ]
+        },
+        "group_Riy3gd": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_rWx9Jj": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "silhouette",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_LnkgBa": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_Md9ebY": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Shipping & Delivery</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_wykhJH": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Shipping fees, delivery times, tracking and international shipping.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_Md9ebY",
+                "text_wykhJH"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_rWx9Jj",
+            "group_LnkgBa"
+          ]
+        }
+      },
+      "block_order": [
+        "group_TULn8V",
+        "group_H8wJ7g",
+        "group_Riy3gd"
+      ],
+      "name": "t:names.icons_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_kHKiLR": {
+      "type": "section",
+      "blocks": {
+        "group_iDCEQQ": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_HfqBqX": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "eye",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_WnN8nK": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_DzEHzy": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Returns & Refunds</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_78AxXV": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Returns, refunds, damaged products and incorrect orders.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_DzEHzy",
+                "text_78AxXV"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_HfqBqX",
+            "group_WnN8nK"
+          ]
+        },
+        "group_CbrVnd": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_xzi9aM": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "heart",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_xYkWYy": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_ntjjMx": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Warranty</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_Kpr9RQ": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Warranty coverage, product registration and warranty claims.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_ntjjMx",
+                "text_Kpr9RQ"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_xzi9aM",
+            "group_xYkWYy"
+          ]
+        },
+        "group_UPD8Wz": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_he7bJy": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "silhouette",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_JRyNAe": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_wXB3ak": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Discounts & Promotions</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_zXMC4W": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Discount codes, special offers and verified discounts.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_wXB3ak",
+                "text_zXMC4W"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_he7bJy",
+            "group_JRyNAe"
+          ]
+        }
+      },
+      "block_order": [
+        "group_iDCEQQ",
+        "group_CbrVnd",
+        "group_UPD8Wz"
+      ],
+      "name": "t:names.icons_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_eM6Gn8": {
+      "type": "section",
+      "blocks": {
+        "group_J9LBPK": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_r9fUeV": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "eye",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_L8baYn": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_bK4ERm": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Product Support</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_k7JAmR": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Product FAQs, manuals, firmware and troubleshooting.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_bK4ERm",
+                "text_k7JAmR"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_r9fUeV",
+            "group_L8baYn"
+          ]
+        },
+        "group_UgXzJN": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_qpVT99": {
+              "type": "icon",
+              "disabled": true,
+              "settings": {
+                "icon": "heart",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false,
+                "icon_color": ""
+              },
+              "blocks": {}
+            },
+            "group_b3XWFr": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_PnakFN": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Contact GKU</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_3yb3KA": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Get help from the GKU customer support team.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_PnakFN",
+                "text_3yb3KA"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_qpVT99",
+            "group_b3XWFr"
+          ]
+        }
+      },
+      "block_order": [
+        "group_J9LBPK",
+        "group_UgXzJN"
+      ],
+      "name": "t:names.icons_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_faq_eYencV": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_tM79Th": {
+          "type": "item",
+          "settings": {
+            "question": "How do I place an order on the GKU website?",
+            "answer": "<p>Choose the GKU dash cam or accessory you want, select the available options, and click <strong>Add to Cart</strong> or <strong>Buy Now</strong>. Enter your shipping and payment information at checkout and complete your purchase. Once your order is successfully placed, you will receive an order confirmation email.</p>"
+          }
+        },
+        "item_8GGkJP": {
+          "type": "item",
+          "settings": {
+            "question": "Do I need an account to place an order?",
+            "answer": "<p>No. You can place an order without creating an account where guest checkout is available. Creating a GKU account, however, can make it easier to manage your order information and future purchases.</p>"
+          }
+        },
+        "item_j38jCw": {
+          "type": "item",
+          "settings": {
+            "question": "Can I change my order after placing it?",
+            "answer": "<p>Please contact GKU Support as soon as possible if you need to change your order. We will try to accommodate your request before the order enters fulfillment. Once an order has been processed or shipped, changes may no longer be possible.</p>"
+          }
+        },
+        "item_XLPN9M": {
+          "type": "item",
+          "settings": {
+            "question": "Can I change my shipping address after placing an order?",
+            "answer": "<p>Please contact GKU Support immediately if you notice an incorrect or incomplete shipping address. We will try to update it before fulfillment begins, but address changes cannot be guaranteed once the order has been processed or shipped.</p>"
+          }
+        },
+        "item_iwzyCt": {
+          "type": "item",
+          "settings": {
+            "question": "Can I cancel my GKU order?",
+            "answer": "<p>Orders may generally be cancelled before they have been processed or shipped. Contact GKU Support as soon as possible. Once an order has entered fulfillment or has been handed to the carrier, cancellation may no longer be possible.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_tM79Th",
+        "item_8GGkJP",
+        "item_j38jCw",
+        "item_XLPN9M",
+        "item_iwzyCt"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Ordering & Account",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 24,
+        "padding_bottom": 28,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "xtu_faq_i7KEyP": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_UMChqL": {
+          "type": "item",
+          "settings": {
+            "question": "What payment methods does GKU accept?",
+            "answer": "<p>GKU accepts supported major payment methods, including eligible credit cards and PayPal where available. Available payment methods may vary by country or region, so please refer to the options displayed at checkout.</p>"
+          }
+        },
+        "item_L7kUYQ": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU accept PayPal?",
+            "answer": "<p>Yes. PayPal is available for eligible orders. Select PayPal during checkout and follow the instructions to complete your payment.</p>"
+          }
+        },
+        "item_pGJF9M": {
+          "type": "item",
+          "settings": {
+            "question": "Is my payment information secure?",
+            "answer": "<p>GKU uses secure checkout technology and trusted payment service providers to process online payments. For more information about how personal information is handled, please review the GKU Privacy Policy.</p>"
+          }
+        },
+        "item_r86fPc": {
+          "type": "item",
+          "settings": {
+            "question": "Why was my payment declined?",
+            "answer": "<p>A payment may be declined because of incorrect card information, insufficient funds, billing-address mismatches, bank security restrictions, international transaction restrictions, or payment-provider risk controls. Check your information and try again, contact your bank, or use another available payment method.</p>"
+          }
+        },
+        "item_bNY3Wk": {
+          "type": "item",
+          "settings": {
+            "question": "What currency will I be charged in?",
+            "answer": "<p>The currency shown at checkout will generally be used to process your order. Your bank or payment provider may apply currency conversion or international transaction fees where applicable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_UMChqL",
+        "item_L7kUYQ",
+        "item_pGJF9M",
+        "item_r86fPc",
+        "item_bNY3Wk"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Payment",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 12,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_FkpnX6": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_CELKjj": {
+          "type": "item",
+          "settings": {
+            "question": "Which countries does GKU ship to?",
+            "answer": "<p>GKU ships to supported countries and regions worldwide, subject to product availability and available logistics services. Enter your delivery address at checkout to see the shipping options currently available for your order.</p>"
+          }
+        },
+        "item_h4xLqJ": {
+          "type": "item",
+          "settings": {
+            "question": "How long does GKU take to process an order?",
+            "answer": "<p>Most GKU orders are processed within <strong>1–2 business days</strong> after payment confirmation. Processing may take longer during holidays, major promotions, new product launches, or periods of unusually high order volume.</p>"
+          }
+        },
+        "item_FnXGw4": {
+          "type": "item",
+          "settings": {
+            "question": "How long does GKU shipping take?",
+            "answer": "<p>Estimated delivery times depend on the destination and shipping method. Express shipping typically takes approximately <strong>3–7 business days</strong>, while standard shipping typically takes approximately <strong>5–10 business days</strong> after the order has shipped. Delivery times are estimates and may be affected by customs, weather, carrier delays, or holidays.</p>"
+          }
+        },
+        "item_fXCRr9": {
+          "type": "item",
+          "settings": {
+            "question": "How much does GKU shipping cost?",
+            "answer": "<p>Shipping costs depend on the product, order value, destination, and available shipping method. The applicable shipping fee will be displayed at checkout before you complete your purchase.</p>"
+          }
+        },
+        "item_JJUqjD": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer free shipping?",
+            "answer": "<p>Free standard shipping may be available for eligible orders that meet the applicable order-value requirement. Availability can vary by product and destination. Please check the shipping options displayed at checkout.</p>"
+          }
+        },
+        "item_VFf48w": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU ship from local warehouses?",
+            "answer": "<p>Whenever possible, GKU may fulfill orders from local or regional warehouses based on your destination and available inventory. This can help provide faster and more efficient delivery.</p>"
+          }
+        },
+        "item_8Gmzhw": {
+          "type": "item",
+          "settings": {
+            "question": "What happens if the nearest GKU warehouse is out of stock?",
+            "answer": "<p>If the product is unavailable at the nearest warehouse, GKU may fulfill your order from another available warehouse or shipping origin. This may result in a longer delivery time.</p>"
+          }
+        },
+        "item_zBHpUT": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer international shipping?",
+            "answer": "<p>Yes, international shipping is available to supported destinations. Shipping options, fees, delivery times, customs requirements, and product availability may vary by country or region.</p>"
+          }
+        },
+        "item_AQEbcL": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer DDP shipping?",
+            "answer": "<p>DDP (Delivered Duty Paid) shipping may be available for selected destinations, products, and shipping methods. Availability can vary depending on current logistics services. Please check the available options at checkout or contact GKU Support for confirmation.</p>"
+          }
+        },
+        "item_q7ygyw": {
+          "type": "item",
+          "settings": {
+            "question": "Will I have to pay customs duties or import taxes?",
+            "answer": "<p>International orders may be subject to customs duties, import taxes, or clearance fees depending on the destination. Where DDP shipping is available, applicable duties and taxes may be handled as part of the shipping arrangement. Otherwise, the recipient may be responsible for charges required by local authorities.</p>"
+          }
+        },
+        "item_NBpnw6": {
+          "type": "item",
+          "settings": {
+            "question": "How can I track my GKU order?",
+            "answer": "<p>Once your order has shipped, you will receive a shipping confirmation email with available tracking information. Tracking may take some time to become active after the carrier receives your package.</p>"
+          }
+        },
+        "item_k9zJRc": {
+          "type": "item",
+          "settings": {
+            "question": "My tracking says delivered, but I can't find my package. What should I do?",
+            "answer": "<p>Check entrances, mailrooms, reception areas, garages, and other possible delivery locations. You may also want to ask household members, neighbors, or building staff. If the package is still missing after 24 hours, contact GKU Support with your order number and tracking number for assistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_CELKjj",
+        "item_h4xLqJ",
+        "item_FnXGw4",
+        "item_fXCRr9",
+        "item_JJUqjD",
+        "item_VFf48w",
+        "item_8Gmzhw",
+        "item_zBHpUT",
+        "item_AQEbcL",
+        "item_q7ygyw",
+        "item_NBpnw6",
+        "item_k9zJRc"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Shipping & Delivery",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 28,
+        "padding_bottom": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_cpaDnR": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_cdRqUi": {
+          "type": "item",
+          "settings": {
+            "question": "What is GKU's return policy?",
+            "answer": "<p>GKU accepts eligible returns in accordance with the current GKU Return & Refund Policy. Eligibility may depend on the purchase date, product condition, reason for return, purchase channel, and other applicable conditions.</p>"
+          }
+        },
+        "item_WKRptn": {
+          "type": "item",
+          "settings": {
+            "question": "How do I request a return?",
+            "answer": "<p>Contact GKU Support before returning your product. Please provide your order number, product model, reason for return, and supporting photos or videos where applicable. Our team will review your request and provide return instructions if approved.</p>"
+          }
+        },
+        "item_bCeAiD": {
+          "type": "item",
+          "settings": {
+            "question": "Can I return a product without contacting GKU first?",
+            "answer": "<p>No. Please contact GKU Support before sending any product back. Unauthorized returns may be delayed or may not be correctly identified and processed.</p>"
+          }
+        },
+        "item_pD7rDt": {
+          "type": "item",
+          "settings": {
+            "question": "How will I receive my refund?",
+            "answer": "<p>Approved refunds are generally issued to the original payment method used for the purchase. The time required for the refund to appear in your account may vary depending on your bank, card issuer, or payment provider.</p>"
+          }
+        },
+        "item_8dLfQN": {
+          "type": "item",
+          "settings": {
+            "question": "What should I do if my GKU product arrives damaged?",
+            "answer": "<p>Contact GKU Support as soon as reasonably possible. Please provide your order number and clear photos or videos of the shipping package, shipping label, product packaging, and damaged product. Keep the original packaging until your case has been reviewed.</p>"
+          }
+        },
+        "item_bYAtDY": {
+          "type": "item",
+          "settings": {
+            "question": "What should I do if I receive the wrong product?",
+            "answer": "<p>Contact GKU Support with your order number and photos of the product and package you received. Our team will review the issue and provide the appropriate next steps.<br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_cdRqUi",
+        "item_WKRptn",
+        "item_bCeAiD",
+        "item_pD7rDt",
+        "item_8dLfQN",
+        "item_bYAtDY"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Returns & Refunds",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 32,
+        "padding_bottom": 24,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_zmJJ6h": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_qBggkp": {
+          "type": "item",
+          "settings": {
+            "question": "How long is the GKU dash cam warranty?",
+            "answer": "<p>Eligible GKU dash cams include a <strong>1-year standard manufacturer's warranty</strong> from the original purchase date. Eligible products may receive an additional <strong>1-year warranty extension after successful registration</strong>, providing up to <strong>2 years of total manufacturer warranty coverage</strong>.</p>"
+          }
+        },
+        "item_4FCiqP": {
+          "type": "item",
+          "settings": {
+            "question": "How do I extend my GKU warranty?",
+            "answer": "<p>Register your eligible GKU dash cam through the GKU Product Registration page. After successful registration, eligible dash cam main units may receive an additional 12 months of manufacturer warranty coverage.</p>"
+          }
+        },
+        "item_d9gEzf": {
+          "type": "item",
+          "settings": {
+            "question": "When does my GKU warranty begin?",
+            "answer": "<p>The warranty begins on the original purchase date shown on valid proof of purchase. Product registration extends eligible coverage but does not restart the warranty period.</p>"
+          }
+        },
+        "item_jT3bgU": {
+          "type": "item",
+          "settings": {
+            "question": "What does the GKU warranty cover?",
+            "answer": "<p>The GKU manufacturer's warranty covers eligible defects in materials or workmanship that occur during normal use within the applicable warranty period. Please review the full GKU Warranty Policy for coverage, exclusions, and claim requirements.</p>"
+          }
+        },
+        "item_acdcqJ": {
+          "type": "item",
+          "settings": {
+            "question": "Is accidental or liquid damage covered by the GKU warranty?",
+            "answer": "<p>Accidental damage, impact damage, liquid damage, misuse, unauthorized modification, and other damage unrelated to an eligible manufacturing defect are generally not covered by the manufacturer's warranty.</p>"
+          }
+        },
+        "item_Qz6KWA": {
+          "type": "item",
+          "settings": {
+            "question": "How do I make a GKU warranty claim?",
+            "answer": "<p>Contact GKU Support with your order number, product model, purchase information, a description of the issue, and supporting photos or videos where applicable. Our support team may guide you through troubleshooting before determining the appropriate warranty solution.</p>"
+          }
+        },
+        "item_49wwYK": {
+          "type": "item",
+          "settings": {
+            "question": "Is the return period the same as the warranty period?",
+            "answer": "<p>No. The Return & Refund Policy applies to eligible return and refund requests within the applicable return period, while the <a href=\"/pages/warranty-policy\" target=\"_blank\" title=\"Warranty Policy\">Warranty Policy</a> covers eligible manufacturing defects during the applicable manufacturer warranty period.</p>"
+          }
+        },
+        "item_8C8Gnq": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I download the app?",
+            "answer": "<p>Search for the official XTU app in the App Store or Google Play.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_qBggkp",
+        "item_4FCiqP",
+        "item_d9gEzf",
+        "item_jT3bgU",
+        "item_acdcqJ",
+        "item_Qz6KWA",
+        "item_49wwYK",
+        "item_8C8Gnq"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Warranty & Product Registration",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 24,
+        "padding_bottom": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_hQz4T8": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_VAhEUE": {
+          "type": "item",
+          "settings": {
+            "question": "How do I use a GKU discount code?",
+            "answer": "<p>Enter your valid discount code in the promotional code field during checkout and apply it before completing payment. If the code is valid and your order meets the promotion requirements, the discount will be reflected in your order total.</p>"
+          }
+        },
+        "item_fGxxiz": {
+          "type": "item",
+          "settings": {
+            "question": "Why isn't my GKU discount code working?",
+            "answer": "<p>The code may have expired, apply only to selected products or customers, require a minimum purchase amount, have already been used, or be incompatible with another promotion. Please review the terms of the applicable offer.</p>"
+          }
+        },
+        "item_7XThTm": {
+          "type": "item",
+          "settings": {
+            "question": "Can I use more than one discount code?",
+            "answer": "<p>Discount codes may not always be combined. Whether multiple promotions can be used together depends on the terms and checkout rules of the specific offers.</p>"
+          }
+        },
+        "item_YWga9e": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer student, teacher, military, or key worker discounts?",
+            "answer": "<p>GKU may offer verified discounts to eligible groups through selected discount programs. Visit the GKU verified discount page to check current eligibility and available offers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_VAhEUE",
+        "item_fGxxiz",
+        "item_7XThTm",
+        "item_YWga9e"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Discounts & Promotions",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_q33taz": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_UCbNdH": {
+          "type": "item",
+          "settings": {
+            "question": "How do I choose the right GKU dash cam?",
+            "answer": "<p>Consider the camera coverage you need, video resolution, night-driving performance, parking protection, connectivity, GPS, and your typical driving scenario. Visit the GKU Dash Cam Buying Guide or browse our dash cam collections to compare available options.</p>"
+          }
+        },
+        "item_g8pgnj": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I find FAQs for my specific GKU dash cam?",
+            "answer": "<p>Visit the GKU Product FAQ section and select your model. Product-specific FAQs cover topics such as installation, Wi-Fi, the GKU GO app, GPS, parking mode, memory cards, recording, and troubleshooting.</p>"
+          }
+        },
+        "item_UNNCEH": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I download a GKU user manual?",
+            "answer": "<p>Visit the GKU User Manual page and select your dash cam model to access the appropriate setup and operating instructions.</p>"
+          }
+        },
+        "item_kWfra3": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I find GKU firmware updates?",
+            "answer": "<p>Available firmware updates can be found in the GKU Firmware section. Always select the correct product model and follow the provided update instructions carefully.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_UCbNdH",
+        "item_g8pgnj",
+        "item_UNNCEH",
+        "item_kWfra3"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Product & Shopping Help",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 24,
+        "padding_bottom": 28,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_yaKdBc": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_mP8zrJ": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer wholesale or bulk pricing?",
+            "answer": "<p>Yes. GKU welcomes inquiries from distributors, retailers, fleet operators, corporate buyers, automotive businesses, and other eligible partners. Visit the GKU Wholesale & Business Solutions page to request a business quotation.</p>"
+          }
+        },
+        "item_7WrwCM": {
+          "type": "item",
+          "settings": {
+            "question": "Can I purchase GKU dash cams for a fleet or corporate project?",
+            "answer": "<p>Yes. GKU supports selected fleet, corporate, and bulk-purchase projects. Contact our business team with your target products, estimated quantity, destination, and project requirements to discuss available solutions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_mP8zrJ",
+        "item_7WrwCM"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Wholesale & Business Orders",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 20,
+        "padding_bottom": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_6emVyL": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_fAPg7H": {
+          "type": "item",
+          "settings": {
+            "question": "How can I contact GKU Customer Support?",
+            "answer": "<p>If you need help with an order, payment, shipping, return, warranty, or product issue, contact GKU Support at <a><strong>support@gkutech.com</strong></a> or through the official contact options listed on the GKU website. When contacting us about an existing order, please include your order number and product model whenever possible.</p>"
+          }
+        },
+        "item_GhmeEp": {
+          "type": "item",
+          "settings": {
+            "question": "What information should I provide when contacting GKU Support?",
+            "answer": "<p>For order-related questions, provide your order number, purchaser name, and email address. For product-related issues, also include your product model, a description of the problem, and clear photos or videos where applicable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_fAPg7H",
+        "item_GhmeEp"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Contact GKU",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "{{ settings.color_palette.color7 }}",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 20,
+        "padding_bottom": 48,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
     "main",
     "xtu_rich_content_EYeeW4",
     "xtu_product_nav_FkHtUt",
-    "xtu_faq_TgYaEL",
-    "xtu_faq_XETYNK",
-    "xtu_faq_afjj37",
-    "xtu_faq_HeFV8t",
+    "blocks_fDndry",
+    "section_fGz3RT",
+    "section_kHKiLR",
+    "section_eM6Gn8",
     "xtu_faq_eYencV",
-    "section_JXatKQ"
+    "xtu_faq_i7KEyP",
+    "xtu_faq_FkpnX6",
+    "xtu_faq_cpaDnR",
+    "xtu_faq_zmJJ6h",
+    "xtu_faq_hQz4T8",
+    "xtu_faq_q33taz",
+    "xtu_faq_yaKdBc",
+    "xtu_faq_6emVyL"
   ]
 }

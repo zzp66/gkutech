@@ -1,0 +1,59 @@
+{% doc %}
+  @prompt
+    生成文案正文文案模块放退款政策
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-refund-policy-{{ ai_gen_id }} { display: block; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; margin: 0 auto; padding: {{ block.settings.padding_top }}px {{ block.settings.padding_horizontal }}px {{ block.settings.padding_bottom }}px; color: {{ block.settings.text_color }}; background-color: {{ block.settings.background_color }}; box-sizing: border-box; }
+  .ai-refund-policy-{{ ai_gen_id }}__inner { width: 100%; max-width: {{ block.settings.content_max_width }}px; margin: 0 auto; }
+  .ai-refund-policy-{{ ai_gen_id }}__eyebrow { margin: 0 0 12px; color: {{ block.settings.accent_color }}; font-size: 12px; font-weight: 600; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+  .ai-refund-policy-{{ ai_gen_id }}__title { margin: 0 0 24px; color: {{ block.settings.heading_color }}; font-size: {{ block.settings.heading_size }}px; font-weight: 600; line-height: 1.2; }
+  .ai-refund-policy-{{ ai_gen_id }}__content { font-size: {{ block.settings.body_size }}px; line-height: 1.75; }
+  .ai-refund-policy-{{ ai_gen_id }}__content p { margin: 0 0 18px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content h2, .ai-refund-policy-{{ ai_gen_id }}__content h3, .ai-refund-policy-{{ ai_gen_id }}__content h4 { margin: 30px 0 12px; color: {{ block.settings.heading_color }}; font-weight: 600; line-height: 1.35; }
+  .ai-refund-policy-{{ ai_gen_id }}__content h2 { font-size: 24px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content h3 { font-size: 20px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content h4 { font-size: 17px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content ul, .ai-refund-policy-{{ ai_gen_id }}__content ol { margin: 0 0 20px; padding-left: 24px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content li { margin-bottom: 8px; }
+  .ai-refund-policy-{{ ai_gen_id }}__content a { color: {{ block.settings.link_color }}; text-decoration: underline; text-underline-offset: 2px; }
+  @media screen and (max-width: 749px) { .ai-refund-policy-{{ ai_gen_id }} { width: 100%; padding: {{ block.settings.mobile_padding_top }}px {{ block.settings.mobile_padding_horizontal }}px {{ block.settings.mobile_padding_bottom }}px; } .ai-refund-policy-{{ ai_gen_id }}__title { font-size: {{ block.settings.heading_size | times: 0.8 }}px; } }
+{% endstyle %}
+<div class="ai-refund-policy-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-refund-policy-{{ ai_gen_id }}__inner">
+    {% if block.settings.eyebrow != blank %}<p class="ai-refund-policy-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+    {% if block.settings.title != blank %}<h1 class="ai-refund-policy-{{ ai_gen_id }}__title">{{ block.settings.title | escape }}</h1>{% endif %}
+    <div class="ai-refund-policy-{{ ai_gen_id }}__content">{{ block.settings.policy_content }}</div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Refund policy content",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Customer care" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Refund and return policy" },
+    { "type": "richtext", "id": "policy_content", "label": "Policy content", "default": "<p>We want you to feel confident when shopping with us. If your order does not meet your expectations, please review the conditions below before requesting a return or refund.</p><h2>Eligibility</h2><p>Items must be unused, in their original condition, and returned with the original packaging and proof of purchase. Some products may be excluded from return for hygiene, personalization, or other legal reasons.</p><h2>How to request a return</h2><p>Please contact our customer service team with your order number, the reason for the request, and clear photos when applicable. We will provide the next steps after reviewing your request.</p><h2>Refunds</h2><p>Once the returned item has been received and inspected, we will notify you of the approval status. Approved refunds are issued to the original payment method. Processing times may vary by payment provider.</p><p>For questions about this policy, please contact our customer service team.</p>" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "content_max_width", "label": "Content max width", "min": 600, "max": 1400, "step": 50, "unit": "px", "default": 900 },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 24, "max": 72, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "body_size", "label": "Body size", "min": 12, "max": 20, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 120, "step": 10, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom spacing", "min": 0, "max": 120, "step": 10, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_horizontal", "label": "Side spacing", "min": 0, "max": 80, "step": 5, "unit": "px", "default": 25 },
+    { "type": "range", "id": "mobile_padding_top", "label": "Mobile top spacing", "min": 0, "max": 80, "step": 10, "unit": "px", "default": 40 },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile bottom spacing", "min": 0, "max": 80, "step": 10, "unit": "px", "default": 40 },
+    { "type": "range", "id": "mobile_padding_horizontal", "label": "Mobile side spacing", "min": 0, "max": 40, "step": 5, "unit": "px", "default": 20 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#333333" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Eyebrow", "default": "#016D8E" },
+    { "type": "color", "id": "link_color", "label": "Links", "default": "#016D8E" }
+  ],
+  "presets": [{ "name": "Refund policy content" }],
+  "tag": null,
+  "class": "refund-policy-content-block"
+}
+{% endschema %}

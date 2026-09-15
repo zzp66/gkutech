@@ -65,7 +65,7 @@
         "text_jGkWFC": {
           "type": "text",
           "settings": {
-            "text": "<h2>About XTU</h2>",
+            "text": "<h2>About GKU</h2>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -90,7 +90,7 @@
         "text_kjLpAe": {
           "type": "text",
           "settings": {
-            "text": "<p>Capture Every Adventure. Preserve Every Moment.</p>",
+            "text": "<h3>Nonstop Record, Nonstop Protect. </h3>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -120,8 +120,8 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/1_7bb25806-237c-4d74-8cf3-efca567a519a.png",
         "media_type_2": "image",
+        "image_2": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_04_33_45_PM_83c96438-2dcd-4b5c-a6c7-95284fa60777.png",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -157,7 +157,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>XTU: Live Your Dream</h2>",
+            "text": "<h2>Who Are We</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -183,7 +183,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p></p><p>A Global Leader in Action Cameras & Imaging</p><p><br/></p>",
+            "text": "<p>GKU — A Global Leader in Smart Automotive Imaging & Driving Protection.<br/></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -209,7 +209,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>XTU is a global smart imaging brand dedicated to helping people capture adventures, explore nature, and protect what matters most.<br/><br/>Rooted in intelligent imaging and smart security technologies, XTU develops innovative camera solutions across three key areas: outdoor adventure, wildlife monitoring, and smart home protection.<br/><br/>From action cameras that record unforgettable journeys, to trail cameras that reveal the wonders of nature, and smart doorbells that enhance home security, XTU empowers people to see more, capture more, and stay connected wherever they are.</p>",
+            "text": "<p>Established in 2015, GKU specializes in dashboard cameras. Based in Nanshan, Shenzhen with a Hong Kong subsidiary, the brand leverages cross-border regional strengths to expand globally and deliver premium automotive imaging products worldwide.<br/></p><p>Established in 2015, GKU specializes in dashboard cameras. Based in Nanshan, Shenzhen with a Hong Kong subsidiary, the brand leverages cross-border regional strengths to expand globally and deliver premium automotive imaging products worldwide.<br/></p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "center",
@@ -235,9 +235,9 @@
           "type": "ai_gen_block_763f870",
           "name": "标题和跳转按钮",
           "settings": {
-            "title": "Explore XTU Cameras",
+            "title": "Explore All GKU Cameras",
             "button_label": "Know More",
-            "button_link": "shopify://collections/xtu-cameras",
+            "button_link": "shopify://collections/dash-cam",
             "desktop_width_percent": 100,
             "alignment": "center",
             "title_size": 32,
@@ -247,8 +247,8 @@
             "border_radius": 14,
             "background_color": "#f8f9fd",
             "text_color": "#000000",
-            "button_color": "#000000",
-            "button_text_color": "#ffffff",
+            "button_color": "#fff001",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_border_color": "#000000",
             "focus_color": "#0070ca",
             "button_border_width": 0,
@@ -302,12 +302,12 @@
             "desktop_layout": "text-left",
             "mobile_layout": "image-top",
             "media_type": "image",
-            "image": "shopify://shop_images/21b105be014c5fdfd768e2ece16454eb_516b68cf-35ce-4a7e-8989-e03997f0b9c8.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_04_40_09_PM_13f0d6dc-d1c8-473a-af8c-b78c2c96027f.png",
             "video_url": "",
             "image_ratio": "4 / 3",
             "eyebrow": "Our Mission",
-            "eyebrow_color": "#0070ca",
-            "heading": "Imagery Connects the World; Visual Tech Empowers Life.",
+            "eyebrow_color": "#fff001",
+            "heading": "To empower drivers worldwide with clearer, smarter, and more reliable imaging technology.",
             "body": ""
           }
         },
@@ -317,12 +317,12 @@
             "desktop_layout": "image-left",
             "mobile_layout": "image-top",
             "media_type": "image",
-            "image": "shopify://shop_images/2_784a2511-d1cf-4632-b263-d0b6d586b832.png",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_8_2026_04_56_14_PM_7c24a617-3225-4a99-b71f-0efab77019a9.png",
             "video_url": "",
             "image_ratio": "4 / 3",
             "eyebrow": "Our vision",
-            "eyebrow_color": "#0070ca",
-            "heading": "To Be A Global Leader in Smart Imaging & Security.",
+            "eyebrow_color": "#fff001",
+            "heading": "To Be a Leader in Smart Automotive Imaging Industry.",
             "body": ""
           }
         }
@@ -494,6 +494,7 @@
       "block_order": [
         "group_htVNFH"
       ],
+      "disabled": true,
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
@@ -526,7 +527,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/1b4938e058f0d84e58e8b2acb48133b1_69baf781-4903-4afc-b521-c318e9967779.jpg",
             "video_url": "",
             "title": "Dive + Snorkel",
             "link": ""
@@ -536,7 +536,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/5c631c5abc0577c58d215a3e7dbf2686_98b72a95-07bf-4a82-99f1-7f6e06ae7b1b.jpg",
             "video_url": "",
             "title": "Surf",
             "link": ""
@@ -546,7 +545,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/43_83151959-fb37-4c1b-885e-b61a0393dd2b.png",
             "video_url": "",
             "title": "Travel + Adventure",
             "link": ""
@@ -556,7 +554,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/0224194e0da61830c5de325f79abc304_23b30880-d22a-4043-be9f-fd11f9759ce2.jpg",
             "video_url": "",
             "title": "Kids + Pets",
             "link": ""
@@ -566,7 +563,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/084d450833fdd4d7f3f06ee7b97dd41c_007ba07e-492b-4324-94d4-77a91817ab4a.jpg",
             "video_url": "",
             "title": "Mountain Bike",
             "link": ""
@@ -576,7 +572,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/3885e79f546bc6fed856587e8b3c9ad7_1dc2f140-b6bc-4bee-9760-496afbc9c590.jpg",
             "video_url": "",
             "title": "Hike + Camp",
             "link": ""
@@ -586,7 +581,6 @@
           "type": "card",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/5a3f216be2e6337746175d9f2392409f_303e1fcd-41cd-4794-b9b3-3e6aa1c69b5c.jpg",
             "video_url": "",
             "title": "Snow",
             "link": ""
@@ -602,6 +596,7 @@
         "card_6AbH3Y",
         "card_fzcjqd"
       ],
+      "disabled": true,
       "name": "XTU Activity Slider",
       "settings": {
         "heading": "Shop by Activity",
@@ -625,41 +620,41 @@
         "item_HTcATK": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/fb_51205da8-69ee-4a2e-8f34-84f914b66fca.png",
+            "logo": "shopify://shop_images/Facebook_Logo__2019.png",
             "icon_background": "{{ settings.color_palette.background }}",
-            "name": "Website",
-            "text": "@xtucam",
-            "link": "https://www.facebook.com/xtucam"
+            "name": "Facebook",
+            "text": "@gkutech",
+            "link": "https://www.facebook.com/gkutech"
           }
         },
         "item_J3NQNX": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/x_6a522596-aaaa-41b5-a5d1-c88dc217ee9a.jpg",
+            "logo": "shopify://shop_images/X_logo_2023__white.png",
             "icon_background": "{{ settings.color_palette.foreground }}",
             "name": "Twitter",
-            "text": "XTUCAMJP",
-            "link": "https://x.com/XTUCAMJP"
+            "text": "@GKU_dashcam",
+            "link": "https://x.com/GKU_dashcam"
           }
         },
         "item_Pdnqnz": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/ig_8a278f99-dd0c-4b99-9088-195075b514ed.png",
+            "logo": "shopify://shop_images/ig.png",
             "icon_background": "{{ settings.color_palette.color6 }}",
             "name": "Instagram",
-            "text": "@xtucam_official",
-            "link": "https://www.instagram.com/xtucam_official/"
+            "text": "gku_dashcam",
+            "link": "https://www.instagram.com/gku_dashcam/"
           }
         },
         "item_rWQ9P9": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/images.jpg",
-            "icon_background": "#ff0000",
+            "logo": "shopify://shop_images/images_1.png",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "YouTube",
-            "text": "XTUCAM",
-            "link": "https://www.youtube.com/@XTUCAM"
+            "text": "@gku_dashcam",
+            "link": "https://www.youtube.com/@gku_dashcam"
           }
         },
         "item_m89Mtc": {
@@ -668,8 +663,8 @@
             "logo": "shopify://shop_images/images.png",
             "icon_background": "{{ settings.color_palette.background }}",
             "name": "TikTok",
-            "text": "@xtucam_shop",
-            "link": "https://www.tiktok.com/@xtucam_shop"
+            "text": "@gkudashcam_shop",
+            "link": "https://www.tiktok.com/@gkudashcam_shop"
           }
         }
       },
@@ -707,7 +702,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>Operated by:</strong> Shenzhen Yutu Technology Co., Ltd.<br/><br/><strong>Business:</strong> Smart imaging products and camera solutions<br/><br/><strong>Customer Support: </strong><a href=\"mailto:support@xtucam.com\">support@xtucam.com</a></p><p><strong>Business Inquiries: </strong><a href=\"mailto:marketing.xtu@xtucam.com\">marketing.xtu@xtucam.com</a></p>",
+            "text": "<h2><strong>Contact Us</strong></h2><p><strong>Customer Support: </strong><a href=\"/pages/contact-us\" target=\"_blank\" title=\"Contact Us\">support@gkutech.com</a></p><p><strong>Business Inquiries: </strong>marketing.gku@gkutech.com</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",

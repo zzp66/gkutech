@@ -13,19 +13,30 @@
       "type": "xtu-help-nav",
       "settings": {
         "kicker": "Help Center",
+        "heading_color": "#000000",
+        "background_color": "#f5f5f7",
+        "banner_height": 280,
+        "banner_height_mobile": 200,
+        "show_overlay": false,
+        "overlay_opacity": 30,
         "show_software": true,
         "manual_label": "Manual",
+        "manual_url": "",
         "firmware_label": "Firmware",
+        "firmware_url": "",
         "software_label": "Software",
+        "software_url": "",
         "video_label": "Video Guide",
-        "faq_label": "FAQ"
+        "video_url": "",
+        "faq_label": "FAQ",
+        "faq_url": ""
       }
     },
     "help-video": {
       "type": "xtu-help-video",
       "settings": {
-        "heading": "Video Guide",
-        "subheading": "Watch setup and how-to videos.",
+        "heading": "GKU Dash Cam Video Guides",
+        "subheading": "Watch step-by-step video guides for setup, installation, features, and troubleshooting.",
         "sidebar_label": "Products",
         "empty_text": "No videos for this product yet.",
         "columns_desktop": 2,

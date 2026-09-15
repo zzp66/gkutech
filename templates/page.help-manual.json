@@ -35,8 +35,8 @@
     "help-manual": {
       "type": "xtu-help-manual",
       "settings": {
-        "heading": "Manual",
-        "subheading": "Find and download the latest product manuals.",
+        "heading": "GKU Dash Cam User Manuals",
+        "subheading": "Find and download user manuals for GKU dash cams and accessories.",
         "sidebar_label": "Products",
         "empty_text": "No manuals for this product yet.",
         "background_color": "#ffffff",

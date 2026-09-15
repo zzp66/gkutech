@@ -1,0 +1,1438 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "hero_NBkdmw": {
+      "type": "hero",
+      "blocks": {
+        "text_jGkWFC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GKU Community Challenge #CaughtOnGKU</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kjLpAe": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Caught It? Share It. Win.</h3>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_jGkWFC",
+        "text_kjLpAe"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "video",
+        "video_1": "shopify://files/videos/Banner视频.mp4",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "background_color": "",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_AwNjn3": {
+      "type": "section",
+      "blocks": {
+        "text_7TR7hk": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Activity 1：<br/>#CaughtOnGKU Social Challenge</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pEtNja": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Caught something unforgettable on the road? Share your dash cam footage with <strong>#CaughtOnGKU</strong> for a chance to win GKU rewards.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6FzPPT": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><br/>Your Dash Cam Caught It. Now Share It.<br/></p><p>Close calls. Crazy drivers. Unexpected weather. Beautiful roads. Once-in-a-lifetime moments.</p><p>If your dash cam caught something worth watching, share it with <strong>#CaughtOnGKU</strong>.</p><p><strong>Any dash cam brand is welcome.</strong></p><p>Post your original footage on Instagram, TikTok, YouTube Shorts, Facebook or X, tag GKU and use <strong>#CaughtOnGKU</strong> for a chance to win monthly rewards.</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "balance",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_7TR7hk",
+        "text_pEtNja",
+        "text_6FzPPT"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_social_links_Jr7A88": {
+      "type": "xtu-social-links",
+      "blocks": {
+        "item_bNTbkU": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/Facebook_Logo__2019.png",
+            "icon_background": "{{ settings.color_palette.color4 }}",
+            "name": "Facebook",
+            "text": "@gkutech",
+            "link": "https://www.facebook.com/gkutech"
+          }
+        },
+        "item_FTcGCz": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/DM_20260827164844_005.jpg",
+            "icon_background": "{{ settings.color_palette.foreground }}",
+            "name": "X",
+            "text": "@GKU_dashcam",
+            "link": "https://x.com/GKU_dashcam"
+          }
+        },
+        "item_JmTach": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/ig.png",
+            "icon_background": "#e1306c",
+            "name": "Instagram",
+            "text": "@gku_dashcam",
+            "link": "https://www.instagram.com/gku_dashcam/"
+          }
+        },
+        "item_FpdxJ3": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/images_3.png",
+            "icon_background": "{{ settings.color_palette.color4 }}",
+            "name": "YouTube",
+            "text": "@gku_dashcam",
+            "link": "https://www.youtube.com/@gku_dashcam"
+          }
+        },
+        "item_XmFXR3": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/images.png",
+            "icon_background": "{{ settings.color_palette.background }}",
+            "name": "TikTok",
+            "text": "@gkudashcam_shop",
+            "link": "https://www.tiktok.com/@gkudashcam_shop"
+          }
+        }
+      },
+      "block_order": [
+        "item_bNTbkU",
+        "item_FTcGCz",
+        "item_JmTach",
+        "item_FpdxJ3",
+        "item_XmFXR3"
+      ],
+      "name": "XTU Social Links",
+      "settings": {
+        "heading": "Our Official Socials",
+        "open_new_tab": true,
+        "icon_size": 64,
+        "icon_radius": 16,
+        "gap": 14,
+        "gap_mobile": 10,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "name_color": "#000000",
+        "text_color": "#333333",
+        "content_width": 1200,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_bento_grid_UUEzB7": {
+      "type": "xtu-bento-grid",
+      "blocks": {
+        "tile_EejpGa": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/✔Nearly hitting very obvious police car--Necessary-Rip-6192.mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "1",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_MqMdrh": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/8月7日.mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "2",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_dmGQrR": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ff6a00",
+            "text_align": "left",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/0810.mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "3",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 1,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 2,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 1
+          }
+        },
+        "tile_iW7Hde": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/8月18日 (1).mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "3",
+            "col_span_desktop": 1,
+            "row_start_desktop": "2",
+            "row_span_desktop": 3,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_3RRxaL": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/Banner视频.mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "2",
+            "col_span_desktop": 1,
+            "row_start_desktop": "3",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 2,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_RBf3Hh": {
+          "type": "tile",
+          "settings": {
+            "title": "",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "video",
+            "video": "shopify://files/videos/8月7日(1).mp4",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "auto",
+            "col_span_desktop": 1,
+            "row_start_desktop": "auto",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 1
+          }
+        }
+      },
+      "block_order": [
+        "tile_EejpGa",
+        "tile_MqMdrh",
+        "tile_dmGQrR",
+        "tile_iW7Hde",
+        "tile_3RRxaL",
+        "tile_RBf3Hh"
+      ],
+      "name": "XTU Bento Grid",
+      "settings": {
+        "heading": "What We Need",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "content_width": 1200,
+        "card_radius": 16,
+        "show_image_overlay": false,
+        "columns_desktop": 3,
+        "row_height_desktop": 200,
+        "gap_desktop": 16,
+        "columns_mobile": 2,
+        "row_height_mobile": 180,
+        "gap_mobile": 8,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_process_steps_PRJUFH": {
+      "type": "xtu-process-steps",
+      "blocks": {
+        "step_anaHGJ": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "01 — Post",
+            "body": "<p>Share your original dash cam footage on an eligible social platform.</p>"
+          }
+        },
+        "step_CVrrmb": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "02 — Tag",
+            "body": "<p>Add <strong>#CaughtOnGKU</strong> and tag the official GKU account.</p>"
+          }
+        },
+        "step_GGUdi6": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "03 — Share",
+            "body": "<p>Let people discover your road moment.</p>"
+          }
+        },
+        "step_4gmqyK": {
+          "type": "step",
+          "disabled": true,
+          "settings": {
+            "icon_style": "dollar",
+            "title": "Track & Earn",
+            "body": "<p>Monitor performance in real time and get paid through our transparent commission system.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_anaHGJ",
+        "step_CVrrmb",
+        "step_GGUdi6",
+        "step_4gmqyK"
+      ],
+      "name": "XTU Process Steps",
+      "settings": {
+        "heading": "How to Enter?",
+        "subheading": "3 Simple Steps to Enter. Monthly winners are selected based on originality, content quality, relevance, authentic engagement and organic reach.",
+        "show_line": true,
+        "icon_size": 48,
+        "column_gap": 32,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "icon_color": "#000000",
+        "line_color": "#dfdfdf",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "1789019712ace5dc4d": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_4e648b0_bNPBAF": {
+          "type": "ai_gen_block_4e648b0",
+          "settings": {
+            "eyebrow": "Share and Win",
+            "heading": "Prizes",
+            "body": "",
+            "desktop_width_percent": 100,
+            "content_width": 800,
+            "text_alignment": "center",
+            "padding_vertical": 10,
+            "padding_horizontal": 20,
+            "mobile_padding_vertical": 40,
+            "mobile_padding_horizontal": 20,
+            "heading_size": 48,
+            "body_size": 16,
+            "background_color": "#f8f9fd",
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "accent_color": "#0070ca"
+          },
+          "blocks": {}
+        },
+        "image_U44n7Y": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/714e8cba-0e22-4d82-90ac-04752a583741.png",
+            "link": "",
+            "image_ratio": "landscape",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_4e648b0_bNPBAF",
+        "image_U44n7Y"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "section_p8ggWa": {
+      "type": "section",
+      "blocks": {
+        "group_DCp6iC": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_niFKqn": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>1ST PRIZE<br/></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_btk9Yi": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>$200 GKU Gift Card</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_niFKqn",
+            "text_btk9Yi"
+          ]
+        },
+        "group_JQajrP": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_n4QGXW": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>3RD PRIZE</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Bg9X4U": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>50% OFF GKU Coupon</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_n4QGXW",
+            "text_Bg9X4U"
+          ]
+        },
+        "group_4kd469": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_64TNCj": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>2ND PRIZE<br/></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kGzniA": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>Any GKU Dash Cam</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_64TNCj",
+            "text_kGzniA"
+          ]
+        }
+      },
+      "block_order": [
+        "group_DCp6iC",
+        "group_JQajrP",
+        "group_4kd469"
+      ],
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_faq_8azJwd": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_9QVAJB": {
+          "type": "item",
+          "settings": {
+            "question": "How are winners selected?",
+            "answer": "<p>Winners are selected based on content quality, originality, relevance to #CaughtOnGKU, authentic engagement, and organic reach. Higher views and authentic engagement may improve your chances of winning, but they do not determine the winner alone. Artificially boosted views, likes, comments, followers, or paid engagement may result in disqualification.</p>"
+          }
+        },
+        "item_ptYhkj": {
+          "type": "item",
+          "settings": {
+            "question": "When will the winners be announced?",
+            "answer": "<p>Winners are selected at the end of each month during the campaign. GKU will contact selected winners through the contact information or social account associated with their entry.</p>"
+          }
+        },
+        "item_XaipDA": {
+          "type": "item",
+          "settings": {
+            "question": "Do I have to use a GKU dash cam?",
+            "answer": "<p>No. The #CaughtOnGKU Social Challenge welcomes original footage recorded with any dash cam brand.</p>"
+          }
+        },
+        "item_HGBkpV": {
+          "type": "item",
+          "settings": {
+            "question": "Which platforms can I use?",
+            "answer": "<p>You may post on Instagram, TikTok, YouTube, Facebook, or X. Use #CaughtOnGKU and tag the official GKU account for that platform.</p>"
+          }
+        },
+        "item_nUbrTC": {
+          "type": "item",
+          "settings": {
+            "question": "What kind of footage can I enter?",
+            "answer": "<p>Original close calls, road incidents, night driving, weather, unexpected moments, scenic drives, and other compelling road moments are welcome.</p>"
+          }
+        },
+        "item_MHHjtz": {
+          "type": "item",
+          "settings": {
+            "question": "Can the same video be entered more than once?",
+            "answer": "<p>Submit each original road moment once. Reposted, copied, or misleading entries may be excluded from judging.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_9QVAJB",
+        "item_ptYhkj",
+        "item_XaipDA",
+        "item_HGBkpV",
+        "item_nUbrTC",
+        "item_MHHjtz"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 16,
+        "padding_bottom": 12,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "section_aBa8fx": {
+      "type": "section",
+      "blocks": {
+        "text_qPkWE3": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Activity 02 <br/>GKU Footage Rewards Program</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_mifnUJ": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h4>Your Footage Could Pay for Your Dash Cam.</h4><h4></h4><p><strong>3 SELECTED VIDEOS<br/>↓<br/>GET YOUR GKU DASH CAM REFUNDED</strong></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_CTjj4U": {
+          "type": "button",
+          "name": "t:names.button",
+          "disabled": true,
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
+            "link_text_color": "",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_qPkWE3",
+        "text_mifnUJ",
+        "button_CTjj4U"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_process_steps_xHRtpx": {
+      "type": "xtu-process-steps",
+      "blocks": {
+        "step_b7CgQK": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "Steps 01. Buy GKU Dash Cams",
+            "body": "<p>Buy a dash cam you like at gku official stores</p>"
+          }
+        },
+        "step_Pracnf": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "Step 02. Submit Your Footage",
+            "body": "<p>Use the dashcam in real life and submit the footage to gku via email: marketing.gku@gkutech.com</p>"
+          }
+        },
+        "step_ctCzPq": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "Steps 03. Reach Three Selections",
+            "body": "<p>Keep sharing until <strong>three </strong>different eligible videos are selected or shared via our official social media.<br/><br/></p>"
+          }
+        },
+        "step_UqkfcU": {
+          "type": "step",
+          "settings": {
+            "icon_style": "check",
+            "title": "Steps 04. Claim Your Refund",
+            "body": "<p>Once all three selected videos are used by GKU, we’ll verify your purchase and refund the actual purchase price of your camera.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_b7CgQK",
+        "step_Pracnf",
+        "step_ctCzPq",
+        "step_UqkfcU"
+      ],
+      "name": "XTU Process Steps",
+      "settings": {
+        "heading": "How to get refunded?",
+        "subheading": "",
+        "show_line": true,
+        "icon_size": 46,
+        "column_gap": 32,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "icon_color": "#000000",
+        "line_color": "#dfdfdf",
+        "content_width": 1200,
+        "padding_top": 14,
+        "padding_bottom": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_feature_slider_Hxahfc": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_fJWqVH": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Close Calls",
+            "body": "<p>Near misses, sudden braking and unexpected road situations.<br/></p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_40_15_PM.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_63Hm4n": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Night Driving",
+            "body": "<p>Clear nighttime footage, city lights and challenging low-light scenes.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_48_16_PM.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_Gp8cVz": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Weather",
+            "body": "<p>Rain, snow, fog and other challenging driving conditions.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_50_34_PM.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_hfTMRE": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Unexpected Moments",
+            "body": "<p>Anything unusual, funny or surprising caught on the road.<br/></p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_51_58_PM.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_pqdbdU": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Scenic Drives",
+            "body": "<p>Beautiful highways, mountain roads, coastlines and road trips.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_53_09_PM.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_cWJkni": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Real Road Stories",
+            "body": "<p>Meaningful moments that other drivers will want to watch and share.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_02_55_06_PM.png",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fJWqVH",
+        "slide_63Hm4n",
+        "slide_Gp8cVz",
+        "slide_hfTMRE",
+        "slide_pqdbdU",
+        "slide_cWJkni"
+      ],
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "What We're Looking For",
+        "subheading": "Close Calls|Night Driving|Weather|Unexpected Moments|Scenic Drives|Real Road Stories",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 16,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_nCz9r8": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_DjGhde": {
+          "type": "item",
+          "settings": {
+            "question": "Do I have to use a GKU dash cam?",
+            "answer": "<p>Yes. Activity 02 footage must be recorded with the eligible GKU dash cam connected to your refund claim.</p>"
+          }
+        },
+        "item_MQQUbX": {
+          "type": "item",
+          "settings": {
+            "question": "What video quality is required?",
+            "answer": "<p>1080P or higher is recommended. Clear SD-card original files are preferred whenever possible.</p>"
+          }
+        },
+        "item_CxMWqP": {
+          "type": "item",
+          "settings": {
+            "question": "Is the GKU watermark required?",
+            "answer": "<p>Yes. Include an exported copy showing the GKU watermark. TikTok, Instagram, or other platform watermarks are not accepted.</p>"
+          }
+        },
+        "item_PgmYLD": {
+          "type": "item",
+          "settings": {
+            "question": "Can I submit more than one video?",
+            "answer": "<p>Yes. The three videos counted toward the refund must feature three different valid events or scenes.</p>"
+          }
+        },
+        "item_RtJb4b": {
+          "type": "item",
+          "settings": {
+            "question": "How will I know if my footage has been selected?",
+            "answer": "<p>GKU may reply to your post or contact you through your tagged social account. However, footage counts as officially selected only after confirmation from an official GKU email.</p>"
+          }
+        },
+        "item_qgMXWM": {
+          "type": "item",
+          "settings": {
+            "question": "Where will selected footage be featured?",
+            "answer": "<p>Selected footage may be shared across GKU’s official social media channels and featured in a future footage gallery on the GKU website.</p>"
+          }
+        },
+        "item_maL7Dd": {
+          "type": "item",
+          "settings": {
+            "question": "How should I send large files?",
+            "answer": "<p>Upload large files to Google Drive, Dropbox, OneDrive, or WeTransfer, enable download access, and email the shareable link to GKU.</p>"
+          }
+        },
+        "item_FGA4p8": {
+          "type": "item",
+          "settings": {
+            "question": "When will I receive my dash cam refund?",
+            "answer": "<p>Once three different eligible videos have been officially selected and used by <a href=\"https://www.gkutech.com/\" target=\"_blank\">GKU</a>, we will confirm your refund eligibility and begin processing the refund. One refund is available per person and device; gifted products and review samples are not eligible.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_DjGhde",
+        "item_MQQUbX",
+        "item_CxMWqP",
+        "item_PgmYLD",
+        "item_RtJb4b",
+        "item_qgMXWM",
+        "item_maL7Dd",
+        "item_FGA4p8"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 12,
+        "padding_bottom": 16,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_NBkdmw",
+    "section_AwNjn3",
+    "xtu_social_links_Jr7A88",
+    "xtu_bento_grid_UUEzB7",
+    "xtu_process_steps_PRJUFH",
+    "1789019712ace5dc4d",
+    "section_p8ggWa",
+    "xtu_faq_8azJwd",
+    "section_aBa8fx",
+    "xtu_process_steps_xHRtpx",
+    "xtu_feature_slider_Hxahfc",
+    "xtu_faq_nCz9r8"
+  ]
+}

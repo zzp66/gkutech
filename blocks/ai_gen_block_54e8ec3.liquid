@@ -1,0 +1,219 @@
+{% doc %}
+  @prompt
+    加一个直接向我们发邮件的按钮
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-email-button-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-email-button-{{ ai_gen_id }}__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    border: {{ block.settings.border_width }}px solid {{ block.settings.button_border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    background-color: {{ block.settings.button_background_color }};
+    color: {{ block.settings.button_text_color }};
+    font-family: inherit;
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .ai-email-button-{{ ai_gen_id }}__link:hover {
+    background-color: {{ block.settings.hover_background_color }};
+    color: {{ block.settings.hover_text_color }};
+    border-color: {{ block.settings.hover_border_color }};
+  }
+
+  .ai-email-button-{{ ai_gen_id }}__link:focus-visible {
+    outline: 3px solid {{ block.settings.focus_color }};
+    outline-offset: 3px;
+  }
+
+  .ai-email-button-{{ ai_gen_id }}__icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-email-button-{{ ai_gen_id }}__link {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<email-button-{{ ai_gen_id }} class="ai-email-button-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.email_address != blank %}
+    <a
+      class="ai-email-button-{{ ai_gen_id }}__link"
+      href="mailto:{{ block.settings.email_address | escape }}"
+      aria-label="{{ block.settings.button_label | escape }}"
+    >
+      <svg class="ai-email-button-{{ ai_gen_id }}__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 5.5h18v13H3v-13Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>{{ block.settings.button_label }}</span>
+    </a>
+  {% else %}
+    <div class="ai-email-button-{{ ai_gen_id }}__link" role="status">
+      {{ block.settings.empty_state_text }}
+    </div>
+  {% endif %}
+</email-button-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!customElements.get('email-button-{{ ai_gen_id }}')) {
+      class EmailButton{{ ai_gen_id }} extends HTMLElement {
+        connectedCallback() {
+          this.setAttribute('data-ready', 'true');
+        }
+      }
+
+      customElements.define('email-button-{{ ai_gen_id }}', EmailButton{{ ai_gen_id }});
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Email button",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Email us"
+    },
+    {
+      "type": "text",
+      "id": "empty_state_text",
+      "label": "Empty state text",
+      "default": "Add an email address to activate this button"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hover_background_color",
+      "label": "Hover background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "hover_border_color",
+      "label": "Hover border",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "Focus outline",
+      "default": "#0070CA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email button"
+    }
+  ],
+  "tag": null,
+  "class": "email-button-block"
+}
+{% endschema %}

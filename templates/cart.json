@@ -68,7 +68,7 @@
       "settings": {
         "section_width": "page-width",
         "background_color": "{{ settings.color_palette.background }}",
-        "text_color": "",
+        "text_color": "{{ settings.color_palette.foreground }}",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -253,7 +253,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "all",
+        "collection": "gku-dash-cam-accessories-hardwire-kits-mounts-memory-cards",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,

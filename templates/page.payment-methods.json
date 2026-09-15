@@ -50,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 40,
@@ -58,79 +59,148 @@
         "padding-block-end": 80
       }
     },
-    "xtu_faq_bt98tX": {
+    "blocks_afaq9H": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d149a36_WE3zyz": {
+          "type": "ai_gen_block_d149a36",
+          "settings": {
+            "eyebrow": "GKU POLICY",
+            "title": "Payment Methods",
+            "policy_content": "<p>GKU offers secure and convenient payment options to make your shopping experience simple and reliable.</p><p>Depending on your country or region, device, browser, currency, and order eligibility, available payment methods may include major credit and debit cards, PayPal, Google Pay, and other payment options displayed at checkout.</p><p><strong>The payment methods shown during checkout are the payment options currently available for your order.</strong></p><h2>Accepted Payment Methods</h2><p>GKU accepts major payment methods for eligible online orders, including:</p><ul><li>Visa</li><li>Mastercard</li><li>American Express</li><li>Discover</li><li>PayPal</li><li>Google Pay</li><li>Other payment methods displayed at checkout</li></ul><p>Payment method availability may vary by country or region, device, browser, currency, and payment provider.</p><p>Please refer to the options displayed at checkout for the most accurate payment methods available for your order.</p><h2><br/>Pay with Credit or Debit Card</h2><p>You can pay for eligible GKU orders using supported major credit or debit cards.</p><p>At checkout:</p><ol><li>Select your preferred card payment method.</li><li>Enter the required card and billing information.</li><li>Review your order details.</li><li>Complete any security verification requested by your bank or card issuer.</li><li>Confirm your payment and place your order.</li></ol><p>Your payment may be subject to authorization and security verification by your bank, card issuer, or payment provider.</p><p>If your payment is successfully authorized, you will receive an order confirmation from GKU.</p><h2><br/>Pay with PayPal</h2><p>PayPal is available as a payment option for eligible GKU orders.</p><p>When you select PayPal at checkout, you may be redirected to PayPal to securely complete your payment.</p><p>You can sign in to your PayPal account and select an eligible payment method available through PayPal.</p><p>After your payment is successfully completed, you will be redirected back to GKU and your order will be processed according to our normal order processing procedures.</p><p>Payment options available through PayPal may vary depending on your country or region and PayPal's applicable services.<br/></p><h2>Pay with Google Pay</h2><p>Google Pay is available for eligible GKU orders on supported devices, browsers, and markets.</p><p>If Google Pay is available for your order, it will appear as a payment option during checkout.</p><p>With Google Pay, you can use an eligible payment method saved to your Google Wallet to complete your purchase quickly and securely without manually entering your payment details each time.<br/></p><h3>How to Pay with Google Pay</h3><ol><li>Add your eligible payment method to Google Wallet.</li><li>Select <strong>Google Pay</strong> at GKU checkout when available.</li><li>Choose your preferred eligible payment method.</li><li>Confirm your payment.</li><li>Return to GKU after the transaction is completed.</li></ol><p>Google Pay availability may vary depending on your country or region, device, browser, payment provider, and other eligibility requirements.</p><p>If Google Pay does not appear during checkout, please select another available payment method.<br/></p><h2>Secure Checkout</h2><p>Protecting customer payment information is important to GKU.</p><p>Payments are processed through secure payment systems and payment service providers.</p><p>Depending on the payment method you select, your payment information may be processed directly by the relevant payment provider, card network, bank, digital wallet provider, or financial institution.</p><p>GKU does not necessarily receive or store your complete payment card details when payment information is processed directly by an authorized payment service provider.</p><p>Your bank, card issuer, or payment provider may also require additional identity or security verification before approving a transaction.</p><p>For more information about how GKU handles personal information, please review our <a href=\"https://www.gkutech.com/pages/privacy-policy\"><strong>Privacy Policy</strong>.</a></p><p> </p><h2>Payment Authorization</h2><p>When you place an order, your bank or payment provider may perform an authorization check to confirm that your payment method is valid and sufficient funds or credit are available.</p><p>Your order will be confirmed after the applicable payment has been successfully authorized or completed.</p><p>In some cases, a pending authorization may temporarily appear on your account even if an order is not successfully completed.</p><p>The time required for a pending authorization to be released depends on your bank, card issuer, or payment provider.</p><h2>Why Was My Payment Declined?</h2><p>A payment may be declined for several reasons, including:</p><ul><li>Incorrect card or payment information</li><li>Incorrect billing information</li><li>Insufficient funds or available credit</li><li>Expired card</li><li>Bank security restrictions</li><li>Online or international transaction restrictions</li><li>Payment provider verification requirements</li><li>Fraud prevention or security checks</li><li>Temporary payment processing issues</li></ul><p>If your payment is declined, please check that your payment and billing information is correct.</p><p>You can also:</p><ul><li>Try the payment again</li><li>Use another available payment method</li><li>Contact your bank or card issuer</li><li>Contact your payment provider</li><li>Contact GKU Customer Support if the issue continues</li></ul><p>For security and privacy reasons, GKU may not always be able to determine the exact reason why a transaction was declined by a bank, card issuer, Google Pay, PayPal, or another payment provider.</p><h2>Currency & International Payments</h2><p>Product prices and available currencies may vary depending on your selected country or region.</p><p>For international transactions, your bank, card issuer, digital wallet, or payment provider may apply:</p><ul><li>Currency conversion rates</li><li>Foreign transaction fees</li><li>International payment fees</li><li>Other applicable charges</li></ul><p>Any such charges are determined by your financial institution or payment provider and are separate from charges collected directly by GKU.</p><h2>Taxes, Duties & Shipping Charges</h2><p>Applicable taxes, shipping charges, customs duties, and other charges may vary depending on your order and delivery destination.</p><p>Where applicable, charges collected directly by GKU will be displayed during checkout before you complete your purchase.</p><p>For eligible Southeast Asian destinations, GKU may offer <strong>DDP (Delivered Duty Paid) shipping</strong>. When an eligible DDP shipping method is selected, applicable import duties, customs clearance fees, and taxes are handled according to the selected shipping arrangement.</p><p>For complete information about shipping, delivery, DDP availability, customs, duties, and taxes, please review our <a href=\"https://www.gkutech.com/pages/shipping-policy\" target=\"_blank\"><strong>Shipping Policy</strong></a>.</p><h2>Payment & Order Confirmation</h2><p>After your payment has been successfully completed, GKU will send an order confirmation to the email address associated with your order.</p><p>Please review your order confirmation carefully.</p><p>If you notice incorrect information or need assistance with your order, contact GKU Customer Support as soon as possible.</p><h2>Refunds</h2><p>Approved refunds are generally issued to the <strong>original payment method</strong> used for the purchase.</p><p>For example, if an eligible order was paid using a credit card, PayPal, or Google Pay, the approved refund will generally be processed back through the applicable original payment method.</p><p>After GKU initiates a refund, additional processing time may be required by your bank, card issuer, digital wallet, PayPal, or other payment provider before the funds appear in your account.</p><p>For complete information about returns and refunds, please review our <a href=\"https://www.gkutech.com/pages/return-and-refund-policy\" target=\"_blank\"><strong>Return & Refund Policy</strong></a>.</p><h2>Contact GKU Customer Support</h2><p>If you experience a payment or checkout issue, please contact GKU Customer Support.</p><p><strong>Email:</strong> <a href=\"mailto:support@gkutech.com\">support@gkutech.com</a><br/><strong>WhatsApp:</strong> +86 14776315502<br/><strong>Service Hours:</strong> Mon - Fri: 9:30 AM - 22：00 PM (BJT)</p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#FFF001",
+            "link_color": "#FFF001"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d149a36_WE3zyz"
+      ],
+      "name": "Refund policy content",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_EM6wUi": {
       "type": "xtu-faq",
       "blocks": {
-        "item_jtpxbR": {
+        "item_GpFYRg": {
           "type": "item",
           "settings": {
-            "question": "What payment methods does XTU accept?",
-            "answer": "<p>XTU accepts major credit and debit cards, including Visa, Mastercard, American Express, G-pay, and Discover. PayPal and other payment options may also be available depending on your location and order.<br/><br/></p>"
+            "question": "What payment methods does GKU accept?",
+            "answer": "<p>GKU accepts major payment methods including Visa, Mastercard, American Express, Discover, PayPal, and Google Pay for eligible orders.</p><p>Additional payment methods may be available depending on your country or region.</p><p>The payment methods displayed at checkout are the payment options currently available for your order.</p>"
           }
         },
-        "item_gKCjYY": {
+        "item_DwGDFh": {
           "type": "item",
           "settings": {
-            "question": "Can I pay with PayPal?",
-            "answer": "<p>Yes. PayPal is available for eligible orders and destinations. You can select PayPal during checkout and complete your payment through PayPal.<br/><br/></p>"
+            "question": "Does GKU accept Google Pay?",
+            "answer": "<p>Yes. Google Pay is available for eligible GKU orders on supported devices, browsers, and markets.</p><p>If Google Pay is available for your order, it will appear as a payment option at checkout.</p>"
           }
         },
-        "item_NJTzKX": {
+        "item_fAkbeK": {
           "type": "item",
           "settings": {
-            "question": "Can I pay with a credit card?",
-            "answer": "<p>Yes. XTU accepts major credit and debit cards. Available card networks may vary depending on your country or region.<br/></p>"
+            "question": "Does GKU accept PayPal?",
+            "answer": "<p>Yes. PayPal is available for eligible GKU orders. Select PayPal during checkout and follow the instructions provided to complete your payment.</p>"
           }
         },
-        "item_ggUxyL": {
+        "item_KfjQN7": {
           "type": "item",
           "settings": {
-            "question": "Does XTU support Google Pay?",
-            "answer": "<p>Google Pay may be available depending on your location and checkout configuration. If available, it will appear as a payment option during checkout.<br/><br/></p>"
+            "question": "Can I pay with a credit or debit card?",
+            "answer": "<p>Yes. GKU accepts supported major credit and debit cards for eligible online orders.</p><p>Available card types may vary depending on your country, region, and payment provider.</p>"
           }
         },
-        "item_3FdtjE": {
+        "item_T9P8fz": {
           "type": "item",
           "settings": {
-            "question": "Are all payment methods available worldwide?",
-            "answer": "<p>No. Payment methods may vary depending on your country, region, currency, and payment provider. The available options will be shown during checkout.<br/><br/></p>"
+            "question": "Is it safe to pay on the GKU website?",
+            "answer": "<p>GKU uses secure checkout and works with payment service providers to process online transactions.</p><p>Your bank, card issuer, Google Pay, PayPal, or other payment provider may also perform additional security verification before approving your payment.</p>"
           }
         },
-        "item_3jECAd": {
+        "item_w3DeFB": {
           "type": "item",
           "settings": {
-            "question": "Is my payment information secure?",
-            "answer": "<p>XTU uses secure payment processing to help protect payment information during checkout. XTU does not directly store your complete credit card information on its servers.<br/><br/></p>"
+            "question": "Why was my GKU payment declined?",
+            "answer": "<p>Payments may be declined because of incorrect payment information, insufficient funds, bank restrictions, international payment restrictions, security verification, or other requirements determined by your bank or payment provider.</p><p>Please verify your information, try another available payment method, or contact your bank or payment provider for assistance.</p>"
           }
         },
-        "item_EnyXWd": {
+        "item_kYVJ8z": {
           "type": "item",
           "settings": {
-            "question": "Why was my payment declined?",
-            "answer": "<p>A payment may be declined because of incorrect billing information, insufficient funds, card restrictions, bank security checks, or payment-provider verification. Check your payment information and contact your bank or payment provider if necessary.<br/><br/></p>"
+            "question": "Will I be charged an international transaction fee?",
+            "answer": "<p>Your bank or payment provider may charge foreign transaction fees, currency conversion fees, or other charges depending on your account and the currency used for the transaction.</p><p>These fees are determined by your financial institution or payment provider and are not controlled by <a href=\"https://www.gkutech.com/\" target=\"_blank\" title=\"https://www.gkutech.com/\">GKU</a>.</p>"
           }
         },
-        "item_bVN3wB": {
+        "item_Mr3bgW": {
           "type": "item",
           "settings": {
-            "question": "What should I do if my payment fails?",
-            "answer": "<p>First, check your billing and payment information. You can also try another available payment method. If the issue continues, contact XTU Customer Support at <a href=\"mailto:support@xtucam.com\">support@xtucam.com</a>.<br/><br/></p>"
+            "question": "When will I be charged?",
+            "answer": "<p>Payment authorization or collection generally occurs when you complete your order, subject to the payment method and payment provider used.</p>"
+          }
+        },
+        "item_PQCCBf": {
+          "type": "item",
+          "settings": {
+            "question": "How will I receive my refund?",
+            "answer": "<p>Approved refunds are generally returned through the original payment method used for the purchase.</p><p>After GKU initiates the refund, additional processing time may be required by your bank or payment provider.</p>"
           }
         }
       },
       "block_order": [
-        "item_jtpxbR",
-        "item_gKCjYY",
-        "item_NJTzKX",
-        "item_ggUxyL",
-        "item_3FdtjE",
-        "item_3jECAd",
-        "item_EnyXWd",
-        "item_bVN3wB"
+        "item_GpFYRg",
+        "item_DwGDFh",
+        "item_fAkbeK",
+        "item_KfjQN7",
+        "item_T9P8fz",
+        "item_w3DeFB",
+        "item_kYVJ8z",
+        "item_Mr3bgW",
+        "item_PQCCBf"
       ],
       "name": "XTU FAQ",
       "settings": {
-        "heading": "Payment FAQ",
+        "heading": "GKU Payment FAQs",
         "background_color": "#FFFFFF",
         "content_background": "#F5F5F7",
         "heading_color": "#000000",
@@ -139,8 +209,8 @@
         "content_width": 900,
         "content_radius": 16,
         "open_first": true,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 20,
+        "padding_bottom": 24,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -148,6 +218,7 @@
   },
   "order": [
     "main",
-    "xtu_faq_bt98tX"
+    "blocks_afaq9H",
+    "xtu_faq_EM6wUi"
   ]
 }

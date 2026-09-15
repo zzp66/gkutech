@@ -1,0 +1,977 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_NBkdmw": {
+      "type": "hero",
+      "blocks": {
+        "text_jGkWFC": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>Return and Refund Policy</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kjLpAe": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Capture Every Adventure. Preserve Every Moment.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_jGkWFC",
+        "text_kjLpAe"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/ChatGPT_Image_Sep_10_2026_04_00_34_PM.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "background_color": "",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "17890274111845b692": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d149a36_88E9A7": {
+          "type": "ai_gen_block_d149a36",
+          "settings": {
+            "eyebrow": "Customer care",
+            "title": "Refund and Return Policy",
+            "policy_content": "<p>Shop with confidence at GKU. This Return & Refund Policy explains our <strong>30-day return policy</strong>, return eligibility, return shipping costs, refund processing times, order cancellations, defective product support, and how to request a return.</p><p>Eligible products may be returned within <strong>30 days of delivery</strong>, subject to the conditions outlined below. Return requirements and shipping responsibilities may vary depending on whether the return is due to a product quality issue or a personal/non-quality reason.</p><p>GKU handles returns, refunds, and after-sales support in accordance with this policy and applicable laws and regulations. Nothing in this policy is intended to exclude, restrict, or limit any mandatory consumer rights or remedies available under applicable law.</p><p>Please contact <strong>GKU Customer Support at </strong><a href=\"mailto:support@gkutech.com\"><strong>support@gkutech.com</strong></a> before returning any product. Returns sent without prior authorization may be delayed or may not be processed correctly.</p><h4><strong>01. Key return information</strong></h4><p>Contact us before returning any item. Packages sent without prior authorization may not be identified or processed correctly.<br/><br/><strong>30 days</strong><br/>Return requests must be submitted within 30 days of delivery.</p><p><strong>3 business days</strong><br/>After the returned product reaches our designated return warehouse, we will inspect the product and initiate an approved refund within 3 business days.</p><p><strong>1+1 years warranty</strong><br/>Eligible GKU dash cams include a 1-year manufacturer's warranty, with an additional 1-year warranty extension available after eligible product registration. The 30-day return period and GKU manufacturer warranty are separate policies.</p><h4><strong>02. </strong>What can be returned?</h4><p>To qualify for a return, your request must generally be submitted within 30 days of delivery and meet the applicable return conditions described below. Return requirements differ depending on whether the return is for a personal/non-quality reason or a confirmed product defect.</p><h4>a./ Returns for Personal or Non-Quality Reasons</h4><p>If you wish to return a product because you changed your mind, ordered the wrong item, no longer need the product, or for another non-quality reason, you may submit a return request within 30 days of delivery.</p><p>Returned products should be in their original condition and, where reasonably possible, include the original packaging, accessories, manuals, cables, mounting components, and other items supplied with the product.</p><p>Products that have been damaged, altered, improperly installed, misused, or returned with missing components may be subject to a deduction from the refund or may not qualify for a full refund, to the extent permitted by applicable law.</p><p><strong>Notes: It is better to cancel the order before shipping.</strong></p><p>For returns that are not caused by a confirmed product defect:</p><ul><li>The customer is generally responsible for return shipping costs.</li><li>Original shipping charges are generally non-refundable after the order has shipped, except where otherwise required by applicable law.</li><li>The product should be securely packaged to prevent damage during return shipping.</li><li>A trackable shipping method is strongly recommended.</li><li>GKU Customer Support must be contacted before the product is returned.</li></ul><p>Nothing in this section limits any mandatory cancellation, return, or refund rights available to consumers under applicable law.</p><h4>b./ Returns for Defective or Faulty Products</h4><p>If your GKU product arrives defective, develops a confirmed manufacturing fault, or does not function as intended under normal use, please contact GKU Customer Support for troubleshooting and assistance.</p><p>Please provide your order number and, where applicable, photos or videos showing the issue.</p><p>Our support team may ask you to complete reasonable troubleshooting steps to help determine the cause of the problem.</p><p>If GKU confirms that the issue is caused by a manufacturing defect, we will provide an appropriate solution in accordance with this policy and applicable law. Depending on the circumstances, this may include:</p><ul><li>Technical troubleshooting</li><li>Replacement parts</li><li>Product replacement</li><li>Return and refund</li><li>Another appropriate after-sales solution</li></ul><p>Where GKU requires the defective product to be returned, we will provide return instructions and advise you regarding approved return shipping costs.</p><p>Do not return a product before receiving return instructions from GKU Customer Support.</p><h4>Items That May Not Qualify for a Full Refund:</h4><p>To the extent permitted by applicable law, a product may not qualify for a full refund if the product has been:</p><ul><li>Damaged through improper installation</li><li>Damaged through misuse or neglect</li><li>Involved in an accident</li><li>Modified or repaired without authorization</li><li>Intentionally damaged</li><li>Returned with significant components or accessories missing</li><li>Damaged due to improper handling</li><li>Subject to ordinary wear and tear unrelated to a product defect</li></ul><p>Any reduction or refusal of a refund will be assessed based on the condition of the returned product, the reason for the return, and applicable law.</p><p>These exclusions do not limit any statutory consumer rights or remedies that cannot lawfully be excluded or restricted.</p><h3><br/>03. How to request a return</h3><p>Please follow the steps below to help us process your return efficiently.</p><p><br/><strong>Step 1: Contact GKU Support</strong></p><p>Email <a href=\"mailto:support@gkutech.com\">support@gkutech.com</a> within 30 days of delivery. </p><p>Please include:</p><ul><li>Your order number</li><li>Product model</li><li>Reason for the return</li><li>A brief description of the issue</li></ul><p>Photos or videos if the product is defective or damaged</p><p><strong>Step 2: Wait for return authorization</strong><br/><br/>Our support team will review your request.</p><p>For product-related issues, we may first provide troubleshooting assistance to determine whether the issue can be resolved without a return.</p><p>If a return is approved, GKU will provide the appropriate return warehouse address and return instructions.</p><p><strong>Step 3: Pack and ship the product</strong><br/>Securely package the product to prevent damage during transportation.</p><p>Where applicable, include the original accessories, cables, mounts, manuals, and other included components.</p><p>We strongly recommend using a trackable shipping service and keeping your shipping receipt and tracking number until your return has been completed.</p><p><strong>Step 4: Warehouse inspection</strong></p><p>After the returned product arrives at our designated return warehouse, our team will inspect the product.</p><p>For approved returns, GKU will initiate the applicable refund within <strong>3 business days after receipt and inspection</strong>.</p><p>We will notify you when the return review and refund process has been completed.</p><p><strong>Important:</strong> Do not return a product without contacting GKU Customer Support first. The correct return address may be different from the original shipping address shown on your package.</p><p><strong>Please do not return a package without contacting us first.</strong> The return address may differ from the original shipping address. Unauthorized returns may be delayed, misdirected, or impossible to identify.<br/><br/>Return Shipping Costs is coverred by GKU when confirmed Product Defects</p><h3><br/>04 Refund Processing & Refund Times</h3><p><br/><strong>What happens after delivery?</strong></p><p>Once your returned product reaches the designated GKU return warehouse, it will be inspected. If the return is approved, GKU will initiate the refund within <strong>3 business days after receipt and inspection</strong>. Approved refunds are generally issued to the <strong>original payment method</strong> used for the order.<br/><br/><strong>When will the money appear?</strong></p><p>After GKU initiates the refund, the time required for the funds to appear in your account depends on your bank, card issuer, payment provider, or financial institution. Processing times outside GKU's systems may vary.</p><p>If you have not received an approved refund after a reasonable processing period, please contact your payment provider first and then contact GKU Customer Support if additional assistance is required.</p><h3>05. Need to cancel an order?</h3><p><br/>Contact us as soon as possible. Warehouse processing can begin shortly after an order is placed.<br/><br/>If you need to cancel an order, please contact <a href=\"mailto:support@gkutech.com\"><strong>support@gkutech.com</strong></a> as soon as possible and provide your order number.</p><p>GKU will make reasonable efforts to cancel the order before shipment. However, warehouse processing may begin shortly after an order is placed, and cancellation cannot be guaranteed once fulfillment has started.</p><p>If the order has already shipped, it can no longer be cancelled and must follow the applicable return process described in this policy.</p><p>Any refund for an successfully cancelled order will be processed to the applicable payment method.</p><p></p><h3>06. After-sales support<br/></h3><p>Need help after 30 days?</p><p>The <strong>30-day return period</strong> and GKU's manufacturer warranty are separate.</p><h4>-Product Issues After 30 Days</h4><p>If you experience a product issue after the 30-day return period has ended, please contact GKU Customer Support for after-sales assistance.</p><p>Eligible GKU dash cams include a <strong>1-year manufacturer's warranty</strong>, and eligible customers may receive an additional <strong>1-year warranty extension</strong> after successful product registration, providing up to 2 years of total manufacturer warranty coverage from the original purchase date.</p><p>Please review our <a href=\"https://www.gkutech.com/pages/warranty-policy\" target=\"_blank\"><strong>Warranty Policy</strong></a> for warranty eligibility, coverage, exclusions, registration requirements, and claim procedures.</p><h3>07. Consumer Rights & Applicable Law</h3><p><br/>GKU provides this Return & Refund Policy in accordance with applicable laws and regulations. Nothing in this policy is intended to exclude, restrict, waive, or limit any mandatory consumer rights or remedies available under applicable law. Depending on your country or region, you may have additional statutory rights relating to:</p><ul><li>Order cancellations</li><li>Returns</li><li>Refunds</li><li>Defective products</li><li>Product conformity</li><li>Consumer guarantees</li><li>Other consumer protections</li></ul><p>Where mandatory local consumer protection laws provide rights or remedies that differ from or exceed the terms described in this policy, those mandatory legal requirements will apply to the extent required by applicable law.</p><p>This Return & Refund Policy should be read together with the GKU <a href=\"https://www.gkutech.com/pages/gku-terms-of-service\" target=\"_blank\"><strong>Terms of Service</strong></a>, <a href=\"https://www.gkutech.com/pages/shipping-policy\" target=\"_blank\"><strong>Shipping Policy</strong></a>, and <a href=\"https://www.gkutech.com/pages/warranty-policy\" target=\"_blank\"><strong>Warranty Policy</strong></a>.</p><h3>Need help with a return?</h3><p>Support: support@gkutech.com</p><p>Business: marketing.gku@gkutech.com</p><p>Whatsapp: +8614776315502</p><p>Mon - Fri: 9:30 AM - 22：00 PM (BJT)<br/></p><p></p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#FFF001",
+            "link_color": "#FFF001"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d149a36_88E9A7"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_xq8BRt": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_eMCDrh": {
+          "type": "item",
+          "settings": {
+            "question": "Can I return an opened or used GKU product?",
+            "answer": "<p>For non-quality returns, the condition of the product will be considered when determining return eligibility and the applicable refund.</p><p>Products should be returned in their original condition and, where reasonably possible, with the original packaging and included accessories.</p><p>Contact GKU Customer Support before returning the product so our team can review your request.</p>"
+          }
+        },
+        "item_LgeEch": {
+          "type": "item",
+          "settings": {
+            "question": "What should I do if my product is defective?",
+            "answer": "<p>Contact <a href=\"mailto:support@gkutech.com\">support@gkutech.com</a> with your order number and photos or video showing the issue. Our support team will troubleshoot first. If a manufacturing defect is confirmed, we will arrange a replacement or cover the approved return shipping cost.</p>"
+          }
+        },
+        "item_NwLTkW": {
+          "type": "item",
+          "settings": {
+            "question": "How is approved return shipping reimbursed for a quality issue?",
+            "answer": "<p>When instructed by GKU Support, the customer may need to pay the approved return shipping cost first. Keep the shipping receipt and tracking information. After the required proof is reviewed, GKU will reimburse the approved amount via PayPal.<br/><br/></p>"
+          }
+        },
+        "item_bjwzkW": {
+          "type": "item",
+          "settings": {
+            "question": "Who pays for return shipping?",
+            "answer": "<p>For personal or non-quality returns, the customer is generally responsible for return shipping.</p><p>If GKU confirms a manufacturing defect and requires the product to be returned, GKU will cover or reimburse the approved return shipping cost according to the instructions provided by GKU Customer Support.</p>"
+          }
+        },
+        "item_nkfEYV": {
+          "type": "item",
+          "settings": {
+            "question": "Can I return a GKU product purchased from Amazon or another retailer?",
+            "answer": "<p>Returns and refunds for products purchased through third-party marketplaces or retailers may be subject to the original seller's return policy.</p><p>For eligible warranty-related product issues, you may contact GKU Customer Support for assistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_eMCDrh",
+        "item_LgeEch",
+        "item_NwLTkW",
+        "item_bjwzkW",
+        "item_nkfEYV"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 32,
+        "padding_bottom": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "section_AwNjn3": {
+      "type": "section",
+      "blocks": {
+        "text_7TR7hk": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>XTU: Live Your Dream</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pEtNja": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>A smart imaging brand that helps people capture, explore, and protect what matters most.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6FzPPT": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>XTU is a global smart imaging brand dedicated to helping people capture adventures, explore nature, and protect what matters most.<br/><br/>Rooted in intelligent imaging and smart security technologies, XTU develops innovative camera solutions across three key areas: outdoor adventure, wildlife monitoring, and smart home protection.<br/><br/>From action cameras that record unforgettable journeys, to trail cameras that reveal the wonders of nature, and smart doorbells that enhance home security, XTU empowers people to see more, capture more, and stay connected wherever they are.</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "balance",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_7TR7hk",
+        "text_pEtNja",
+        "text_6FzPPT"
+      ],
+      "disabled": true,
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_image_text_L3TBxn": {
+      "type": "xtu-image-text",
+      "blocks": {
+        "row_cqTVzy": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "text-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our Mission",
+            "eyebrow_color": "#0070ca",
+            "heading": "Imagery Connects the World; Visual Tech Empowers Life.",
+            "body": ""
+          }
+        },
+        "row_Hry37X": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our vision",
+            "eyebrow_color": "#0070ca",
+            "heading": "To Be A Global Leader in Smart Imaging & Security.",
+            "body": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_cqTVzy",
+        "row_Hry37X"
+      ],
+      "disabled": true,
+      "name": "XTU Image Text",
+      "settings": {
+        "heading": "Our Story",
+        "subheading": "",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "image_radius": 16,
+        "row_gap": 80,
+        "row_gap_mobile": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_activity_slider_t6n7VC": {
+      "type": "xtu-activity-slider",
+      "blocks": {
+        "card_iJhfXp": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Dive + Snorkel",
+            "link": ""
+          }
+        },
+        "card_jY7FGP": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Surf",
+            "link": ""
+          }
+        },
+        "card_tc6wQL": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Travel + Adventure",
+            "link": ""
+          }
+        },
+        "card_n94T8m": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Kids + Pets",
+            "link": ""
+          }
+        },
+        "card_LCh9NA": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Mountain Bike",
+            "link": ""
+          }
+        },
+        "card_6AbH3Y": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Hike + Camp",
+            "link": ""
+          }
+        },
+        "card_fzcjqd": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Snow",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_iJhfXp",
+        "card_jY7FGP",
+        "card_tc6wQL",
+        "card_n94T8m",
+        "card_LCh9NA",
+        "card_6AbH3Y",
+        "card_fzcjqd"
+      ],
+      "disabled": true,
+      "name": "XTU Activity Slider",
+      "settings": {
+        "heading": "Shop by Activity",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_image_overlay": false,
+        "mobile_per_view": "2.1",
+        "card_gap": 16,
+        "card_gap_mobile": 8,
+        "card_radius": 16,
+        "card_ratio": "1 / 1",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "section_p8ggWa": {
+      "type": "section",
+      "blocks": {
+        "group_DCp6iC": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_niFKqn": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Intentional design</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_btk9Yi": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_niFKqn",
+            "text_btk9Yi"
+          ]
+        },
+        "group_4kd469": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_64TNCj": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Quality first</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kGzniA": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_64TNCj",
+            "text_kGzniA"
+          ]
+        },
+        "group_JQajrP": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_n4QGXW": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Customer care</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Bg9X4U": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We're always on your side: keeping our loyal customers happy is our top priority and number one goal.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_n4QGXW",
+            "text_Bg9X4U"
+          ]
+        }
+      },
+      "block_order": [
+        "group_DCp6iC",
+        "group_4kd469",
+        "group_JQajrP"
+      ],
+      "disabled": true,
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_feature_slider_Hxahfc": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_fJWqVH": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Auto Event Detection",
+            "body": "<p>Automatically records 15 seconds before and 30 seconds after an incident is detected, capturing a complete event timeline.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_63Hm4n": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Time-lapse Recording",
+            "body": "<p>Capture long parking sessions in a compact clip without filling up your storage.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_Gp8cVz": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Low Bitrate Mode",
+            "body": "<p>Keep recording overnight with efficient compression that preserves key details.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_hfTMRE": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Motion Detection",
+            "body": "<p>Wake the camera when movement is detected around your vehicle and save the clip automatically.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_pqdbdU": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Parking Guard",
+            "body": "<p>Monitor your vehicle while parked and review incidents as soon as you return.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fJWqVH",
+        "slide_63Hm4n",
+        "slide_Gp8cVz",
+        "slide_hfTMRE",
+        "slide_pqdbdU"
+      ],
+      "disabled": true,
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "Advanced Parking Mode",
+        "subheading": "",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 16,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "hero_NBkdmw",
+    "17890274111845b692",
+    "xtu_faq_xq8BRt",
+    "main",
+    "section_AwNjn3",
+    "xtu_image_text_L3TBxn",
+    "xtu_activity_slider_t6n7VC",
+    "section_p8ggWa",
+    "xtu_feature_slider_Hxahfc"
+  ]
+}

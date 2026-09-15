@@ -35,8 +35,8 @@
     "help-faq": {
       "type": "xtu-help-faq",
       "settings": {
-        "heading": "FAQ",
-        "subheading": "Answers to the most common questions.",
+        "heading": "GKU Dash Cam FAQs",
+        "subheading": "Find answers to common questions about GKU dash cams, installation, recording, apps, and troubleshooting.",
         "sidebar_label": "Products",
         "empty_text": "No FAQs for this product yet.",
         "open_first": false,
@@ -45,7 +45,7 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
-        "question_hover_color": "{{ settings.color_palette.color7 }}",
+        "question_hover_color": "#C9BE11",
         "content_width": 1200,
         "padding_top": 80,
         "padding_bottom": 80,

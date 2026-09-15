@@ -578,7 +578,7 @@
                 "text_3gzpxJ": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Email: support@xtucam.com</p><p>marketing.xtu@xtucam.com<br/><br/></p>",
+                    "text": "<p>Email: support@gkutech.com</p><p>marketing.gku@gkutech.com<br/><br/></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -654,51 +654,51 @@
         "item_AL9NFw": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/fb_51205da8-69ee-4a2e-8f34-84f914b66fca.png",
+            "logo": "shopify://shop_images/fb.png",
             "icon_background": "{{ settings.color_palette.background }}",
             "name": "Facebook",
-            "text": "@xtucam",
-            "link": "https://www.facebook.com/xtucam"
+            "text": "@gkutech",
+            "link": "https://www.facebook.com/gkutech"
           }
         },
         "item_gcNULa": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/ig_8a278f99-dd0c-4b99-9088-195075b514ed.png",
+            "logo": "shopify://shop_images/ig_4431bb34-14f3-4564-b505-24ee01553790.png",
             "icon_background": "{{ settings.color_palette.color4 }}",
             "name": "Instagram",
-            "text": "@xtucam_official",
-            "link": "https://www.instagram.com/xtucam_official/"
+            "text": "@gku_dashcam",
+            "link": "https://www.instagram.com/gku_dashcam/"
           }
         },
         "item_zcwc8E": {
           "type": "item",
           "settings": {
             "logo": "shopify://shop_images/images.jpg",
-            "icon_background": "#ca0000",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "YouTube",
-            "text": "@XTUCAM",
-            "link": "https://www.youtube.com/@XTUCAM"
+            "text": "@gku_dashcam",
+            "link": "https://www.youtube.com/@gku_dashcam"
           }
         },
         "item_7yrWgD": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/tk_dd475111-d2fa-489c-8757-3fee55819c4f.png",
-            "icon_background": "#111111",
+            "logo": "shopify://shop_images/images_40dcc5f6-aa75-4ee5-9faf-56e7d2b3d7bd.png",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "TikTok",
-            "text": "@xtucam_shop",
-            "link": "https://www.tiktok.com/@xtucam_shop"
+            "text": "@gkudashcam_shop",
+            "link": "https://www.tiktok.com/@gkudashcam_shop"
           }
         },
         "item_cRJMH9": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/x_6a522596-aaaa-41b5-a5d1-c88dc217ee9a.jpg",
+            "logo": "shopify://shop_images/x.jpg",
             "icon_background": "{{ settings.color_palette.foreground }}",
             "name": "Twiiter",
-            "text": "@XTUCAMJP",
-            "link": "https://x.com/XTUCAMJP"
+            "text": "@GKU_dashcam",
+            "link": "https://x.com/GKU_dashcam"
           }
         }
       },
@@ -857,9 +857,9 @@
         "ai_gen_block_763f870_UyAjAK": {
           "type": "ai_gen_block_763f870",
           "settings": {
-            "title": "View All the Products",
-            "button_label": "Niew Now",
-            "button_link": "shopify://collections/all-products",
+            "title": "View All the Dash Cams",
+            "button_label": "View Now",
+            "button_link": "shopify://collections/dash-cam",
             "desktop_width_percent": 100,
             "alignment": "center",
             "title_size": 32,

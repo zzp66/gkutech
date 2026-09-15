@@ -50,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 40,
@@ -57,9 +58,289 @@
         "padding-block-start": 60,
         "padding-block-end": 80
       }
+    },
+    "blocks_TrnDLA": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d149a36_eb4969": {
+          "type": "ai_gen_block_d149a36",
+          "settings": {
+            "eyebrow": "GKU BUSINESS",
+            "title": "Wholesale Business",
+            "policy_content": "<h2>Partner with GKU for Smarter Automotive Imaging</h2><p>GKU provides flexible wholesale and business solutions for distributors, retailers, fleet operators, automotive businesses, corporate buyers, and professional partners worldwide.</p><p>From 4K front and rear dash cams to multi-channel and connected vehicle camera solutions, GKU offers a growing product portfolio designed for different markets, vehicles, and business applications.</p><p>Whether you're looking to purchase GKU dash cams in bulk, expand your automotive product portfolio, equip a commercial fleet, or explore a long-term distribution partnership, our business team is ready to support your needs.</p><p>Business Inquiry: marketing.gku@gkutech.com</p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#FFF001",
+            "link_color": "#FFF001"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_54e8ec3_DCPpax": {
+          "type": "ai_gen_block_54e8ec3",
+          "settings": {
+            "email_address": "marketing.gku@gkutech.com",
+            "button_label": "Request a Wholesale Quote",
+            "empty_state_text": "Add an email address to activate this button",
+            "desktop_width_percent": 100,
+            "text_size": 16,
+            "border_radius": 16,
+            "border_width": 0,
+            "button_background_color": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
+            "button_border_color": "#000000",
+            "hover_background_color": "#333333",
+            "hover_text_color": "#FFFFFF",
+            "hover_border_color": "#333333",
+            "focus_color": "#0070CA"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_d149a36_m7Caxe": {
+          "type": "ai_gen_block_d149a36",
+          "name": "Refund policy content",
+          "settings": {
+            "eyebrow": "",
+            "title": "",
+            "policy_content": "<h2>Who We Work With<br/></h2><p>GKU works with businesses across the automotive, consumer electronics, retail, fleet, and corporate sectors.</p><h3>-Distributors & Importers</h3><p>Bring GKU dash cams to your local market through regional distribution and long-term business partnerships. We welcome qualified partners with established sales channels and market experience.</p><h3>-Online & Offline Retailers</h3><p>Add GKU dash cams and accessories to your e-commerce store, electronics retail business, automotive shop, or other retail channels.</p><h3>-Fleet & Commercial Operators</h3><p>Explore reliable dash cam solutions for company vehicles, delivery fleets, taxis, rideshare vehicles, commercial transportation, and other professional driving applications.</p><h3>-Corporate & Bulk Buyers</h3><p>Purchase GKU products in volume for employee rewards, corporate gifting, promotional programs, company vehicles, and other organizational needs.</p><h3>-Automotive Dealers & Installers</h3><p>Expand your automotive services with GKU dash cams, hardwire kits, mounts, rear cameras, and other installation accessories.</p><h3>-OEM & Custom Projects</h3><p>Discuss selected customization opportunities for products, packaging, branding, accessories, and project-specific requirements.</p><h2>Why Partner with GKU?</h2><h3>-Comprehensive Dash Cam Portfolio</h3><p>Access a growing range of 4K, front and rear, multi-channel, 4G-connected, and smart dash cam solutions designed for different customers and driving scenarios.</p><h3>-Flexible Wholesale Solutions</h3><p>Wholesale pricing and order quantities can be tailored according to product, purchasing volume, destination, market, and partnership requirements.</p><h3>-Global Business Support</h3><p>Work directly with the GKU team on product selection, order planning, logistics, marketing resources, and long-term business opportunities.</p><h3>-Marketing & Sales Resources</h3><p>Eligible partners can access product images, specifications, videos, promotional materials, and other resources to support local marketing and sales.</p><h3>-Customization Opportunities</h3><p>Selected projects may support customized packaging, branding, product configurations, accessories, inserts, and other requirements depending on project scope and order quantity.</p><h3>-Long-Term Partnership</h3><p>GKU welcomes lasting relationships with distributors, retailers, fleet operators, automotive businesses, and corporate customers looking to grow together.</p><h2>Dash Cam Solutions for Different Business Needs</h2><p>Different businesses require different vehicle camera solutions. GKU offers a flexible product portfolio for a wide range of commercial applications.</p><h3>-Retail & E-Commerce</h3><p>Offer customers GKU dash cams and accessories across online stores, consumer electronics channels, automotive retailers, and marketplaces.</p><p><strong>Recommended Solutions:</strong> 4K Dash Cams · Front & Rear Dash Cams · Dash Cam Accessories</p><h3>-Fleet & Commercial Vehicles</h3><p>Improve vehicle visibility and maintain reliable driving records with dash cam solutions designed for company and commercial vehicles.</p><p><strong>Recommended Solutions:</strong> Front & Rear Dash Cams · Multi-Channel Dash Cams · 4G Dash Cams</p><h3>-Taxi & Rideshare</h3><p>Capture the road, cabin, and rear of the vehicle with multi-channel dash cam systems suitable for taxis, rideshare drivers, and professional drivers.</p><p><strong>Recommended Solutions:</strong> 3-Channel Dash Cams · Front & Cabin Recording</p><h3>-Remote Vehicle Monitoring</h3><p>Explore connected dash cam solutions designed to support remote monitoring and enhanced vehicle protection.</p><p><strong>Recommended Solutions:</strong> 4G LTE Dash Cams · Parking Protection · GPS</p><h3>-Corporate Gifting</h3><p>Choose practical automotive technology for employee rewards, corporate gifting, promotional campaigns, and customer appreciation programs.</p><p><strong>Available Options:</strong> Bulk Purchasing · Customized Packaging · Branding Options</p><h3>-Automotive Dealers & Installers</h3><p>Add dash cams and installation accessories to your automotive product and service portfolio.</p><p><strong>Recommended Solutions:</strong> Dash Cams · Hardwire Kits · Mounts · Rear Cameras · Memory Cards</p><h2>Corporate Gifting & Bulk Orders</h2><h3>Make GKU Part of Your Next Corporate Program</h3><p>Looking for dash cams for employee rewards, corporate gifting, promotional programs, customer incentives, or large-volume purchases?</p><p>GKU supports selected corporate and bulk-order projects with volume pricing and customization options.</p><p>Depending on order quantity and project requirements, available services may include:</p><ul><li>Customized packaging</li><li>Company logo applications</li><li>Custom labels or stickers</li><li>Gift cards and inserts</li><li>Product bundles</li><li>Selected packaging modifications</li><li>Bulk shipping arrangements</li></ul><p>Tell us your estimated quantity, destination, required delivery date, and customization needs, and our business team will help prepare a solution for your project.</p><h2>Wholesale & Distribution Opportunities</h2><h2>-Grow Your Market with GKU</h2><p>GKU welcomes qualified distributors, importers, retailers, and automotive partners interested in developing long-term business relationships.</p><p>Distribution opportunities may vary by country, region, product category, and existing market coverage.</p><p>When contacting us about a distribution partnership, please provide information about:</p><ul><li>Your company</li><li>Country or target market</li><li>Current sales channels</li><li>Automotive or electronics industry experience</li><li>Estimated purchasing volume</li><li>Products of interest</li><li>Online and offline distribution capabilities</li></ul><p>Our business team will review your information and discuss available partnership opportunities.</p><p><strong>Apply to Become a GKU Distributor</strong></p><h2>How to Start a GKU Business Partnership</h2><h3>1. Tell Us About Your Business</h3><p>Share your company information, market, sales channels, target products, estimated order quantity, and business requirements.</p><h3>2. Receive a Business Proposal</h3><p>Our team will review your requirements and discuss applicable pricing, minimum order quantities, product availability, customization options, and shipping arrangements.</p><h3>3. Confirm Your Order</h3><p>Finalize your products, quantities, pricing, payment terms, packaging requirements, and delivery arrangements.</p><h3>4. Grow with GKU</h3><p>Eligible long-term partners can receive ongoing product, marketing, sales, and business support as the partnership develops.</p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#016D8E",
+            "link_color": "#016D8E"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_763f870_jBEEND": {
+          "type": "ai_gen_block_763f870",
+          "name": "标题和跳转按钮",
+          "settings": {
+            "title": "Request a Wholesale Quote",
+            "button_label": "",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "alignment": "center",
+            "title_size": 32,
+            "mobile_title_size": 26,
+            "vertical_padding": 40,
+            "horizontal_padding": 30,
+            "border_radius": 14,
+            "background_color": "#f8f9fd",
+            "text_color": "#000000",
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#000000",
+            "focus_color": "#0070ca",
+            "button_border_width": 0,
+            "button_radius": 16
+          },
+          "blocks": {}
+        },
+        "contact_form_zbPcnU": {
+          "type": "contact-form",
+          "name": "t:names.contact_form",
+          "settings": {
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "background_color": "",
+            "input_style": "custom",
+            "input_background_color": "{{ settings.color_palette.color6 }}",
+            "input_text_color": "{{ settings.color_palette.foreground }}",
+            "input_border_color": "{{ settings.color_palette.foreground }}",
+            "border_width": 1,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Submit",
+                "style_class": "button",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d149a36_eb4969",
+        "ai_gen_block_54e8ec3_DCPpax",
+        "ai_gen_block_d149a36_m7Caxe",
+        "ai_gen_block_763f870_jBEEND",
+        "contact_form_zbPcnU"
+      ],
+      "name": "Refund policy content",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_QdbgGc": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_jVRKcz": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU offer wholesale pricing?",
+            "answer": "<p>Yes. GKU offers business pricing for eligible wholesale and bulk orders. Pricing depends on the product, order quantity, destination, and partnership requirements. Contact our business team for a tailored quotation.</p>"
+          }
+        },
+        "item_Fe7pdt": {
+          "type": "item",
+          "settings": {
+            "question": "What is the minimum order quantity for GKU wholesale orders?",
+            "answer": "<p>Minimum order quantities may vary by product, market, customization requirements, and project type. Please provide your target products and estimated quantity when requesting a quote.</p>"
+          }
+        },
+        "item_Ugtbf7": {
+          "type": "item",
+          "settings": {
+            "question": "Can I become a GKU distributor?",
+            "answer": "<p>GKU welcomes inquiries from qualified distributors and retail partners in supported markets. Please provide information about your company, target market, sales channels, industry experience, and expected purchasing volume for evaluation.</p>"
+          }
+        },
+        "item_Dd4dDz": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU support OEM or private-label projects?",
+            "answer": "<p>Selected OEM and customization opportunities may be available depending on the product, order quantity, technical requirements, and project scope. Contact our business team to discuss your specific requirements.</p>"
+          }
+        },
+        "item_z9c9nA": {
+          "type": "item",
+          "settings": {
+            "question": "Can GKU provide customized packaging?",
+            "answer": "<p>Selected wholesale, corporate, and bulk-order projects may support customized packaging, labels, inserts, branding, or other presentation options depending on quantity and project requirements.</p>"
+          }
+        },
+        "item_6qdnDW": {
+          "type": "item",
+          "settings": {
+            "question": "Does GKU support corporate gifting?",
+            "answer": "<p>Yes. GKU welcomes corporate gifting and bulk-purchase inquiries for employee rewards, customer gifts, promotional campaigns, incentive programs, and other organizational needs.</p>"
+          }
+        },
+        "item_PpNjyW": {
+          "type": "item",
+          "settings": {
+            "question": "Can I purchase GKU dash cams for my fleet?",
+            "answer": "<p>Yes. Businesses and fleet operators can contact GKU to discuss dash cam solutions for company vehicles, delivery vehicles, taxis, rideshare vehicles, and other commercial applications.</p>"
+          }
+        },
+        "item_PNy74g": {
+          "type": "item",
+          "settings": {
+            "question": "Can GKU ship wholesale orders internationally?",
+            "answer": "<p>International B2B shipping may be available depending on the destination, product, quantity, and logistics requirements. Shipping methods, costs, lead times, and applicable terms will be confirmed as part of your business quotation.</p>"
+          }
+        },
+        "item_CGFYRy": {
+          "type": "item",
+          "settings": {
+            "question": "How long does a bulk order take?",
+            "answer": "<p>Lead times vary depending on the product, quantity, inventory availability, customization requirements, destination, and shipping method. Our business team will provide an estimated production and delivery schedule during the quotation process.</p>"
+          }
+        },
+        "item_6t7pUV": {
+          "type": "item",
+          "settings": {
+            "question": "How can I request a wholesale quote?",
+            "answer": "<p>Complete the GKU business inquiry form with your company information, target products, estimated quantity, destination, and project requirements. Our business team will review your inquiry and contact you with applicable options.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_jVRKcz",
+        "item_Fe7pdt",
+        "item_Ugtbf7",
+        "item_Dd4dDz",
+        "item_z9c9nA",
+        "item_6qdnDW",
+        "item_PpNjyW",
+        "item_PNy74g",
+        "item_CGFYRy",
+        "item_6t7pUV"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070CA",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "blocks_TrnDLA",
+    "xtu_faq_QdbgGc"
   ]
 }

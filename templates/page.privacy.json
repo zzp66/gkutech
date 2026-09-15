@@ -50,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 40,
@@ -58,96 +59,70 @@
         "padding-block-end": 80
       }
     },
-    "xtu_faq_xXRBXi": {
-      "type": "xtu-faq",
+    "blocks_PLftat": {
+      "type": "_blocks",
       "blocks": {
-        "item_8TtzNa": {
-          "type": "item",
+        "ai_gen_block_d149a36_NfNhYH": {
+          "type": "ai_gen_block_d149a36",
           "settings": {
-            "question": "What personal information does XTU collect?",
-            "answer": "<p>XTU may collect information such as your name, email address, shipping and billing information, order information, account details, customer service communications, and certain technical information collected when you use our website.<br/><br/></p>"
-          }
-        },
-        "item_hNKLgn": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU store my credit card information?",
-            "answer": "<p>Payment information may be processed by third-party payment providers. XTU does not need to directly store complete payment card information when payment processing is handled by an authorized payment provider.</p>"
-          }
-        },
-        "item_4GkDMw": {
-          "type": "item",
-          "settings": {
-            "question": "How long is the warranty?",
-            "answer": "<p>Warranty coverage depends on your region and purchase channel. Contact support for details.</p>"
-          }
-        },
-        "item_QgxFnM": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU use cookies?",
-            "answer": "<p>Yes. XTU uses cookies and similar technologies to operate the website, remember preferences, analyze website usage, improve performance, support security, and measure advertising effectiveness.</p><p>For more information, see our Cookies Policy.</p>"
-          }
-        },
-        "item_zXE3kE": {
-          "type": "item",
-          "settings": {
-            "question": "Does XTU share my personal information?",
-            "answer": "<p>XTU may share personal information with service providers that help us operate our website, process payments, fulfill orders, provide customer support, analyze website performance, and perform other necessary business functions.<br/></p>"
-          }
-        },
-        "item_AMMWAk": {
-          "type": "item",
-          "settings": {
-            "question": "Can I request deletion of my personal information?",
-            "answer": "<p>Depending on your location and applicable law, you may have the right to request access, correction, deletion, restriction, or other actions regarding your personal information.</p><p>Contact XTU to submit a request.</p>"
-          }
-        },
-        "item_qPW9da": {
-          "type": "item",
-          "settings": {
-            "question": "How can I stop receiving marketing emails?",
-            "answer": "<p>You can unsubscribe using the unsubscribe link included in our marketing emails or contact XTU customer support.<br/><br/></p>"
-          }
-        },
-        "item_KbLcxb": {
-          "type": "item",
-          "settings": {
-            "question": "How does XTU protect my information?",
-            "answer": "<p>XTU uses reasonable technical, administrative, and organizational measures designed to protect personal information against unauthorized access, loss, misuse, or disclosure.<br/><br/></p>"
-          }
+            "eyebrow": "GKU POLICY",
+            "title": "Privacy Policy",
+            "policy_content": "<p><strong>Last Updated: September 2, 2026</strong></p><p>GKU (\"GKU,\" \"we,\" \"us,\" or \"our\") respects your privacy and is committed to protecting your personal information.</p><p>This Privacy Policy explains how we collect, use, disclose, store, and otherwise process personal information when you visit the GKU website, create an account, place an order, contact customer support, participate in promotions, subscribe to marketing communications, or otherwise interact with our products and services.</p><p>We process personal information in accordance with applicable privacy and data protection laws and regulations.</p><p>Depending on where you live, you may have additional privacy rights under the laws of your country or region.</p><p>This Privacy Policy should be read together with our <a href=\"https://www.gkutech.com/pages/privacy-policy\" target=\"_blank\"><strong>Cookie Policy</strong></a>, <a href=\"https://www.gkutech.com/pages/gku-terms-of-service\" target=\"_blank\"><strong>Terms of Service</strong></a>, and other applicable GKU policies.</p><h2>1. Personal Information We Collect</h2><p>The personal information we collect depends on how you interact with GKU.</p><p>We may collect the following categories of information.</p><h3>-Account & Contact Information</h3><p>When you create an account, place an order, contact us, or otherwise interact with GKU, we may collect information such as:</p><ul><li>Name</li><li>Email address</li><li>Telephone number</li><li>Account information</li><li>Billing address</li><li>Shipping address</li><li>Country or region</li><li>Communication preferences<br/></li></ul><h3>-Order & Transaction Information</h3><p>When you purchase a product, we may collect or process information relating to your transaction, including:</p><ul><li>Products ordered</li><li>Order number</li><li>Order value</li><li>Billing information</li><li>Shipping information</li><li>Payment status</li><li>Transaction information</li><li>Returns and refunds</li><li>Warranty or after-sales service information</li></ul><p>Payment information may be processed by our payment service providers. GKU does not necessarily receive or store complete payment card details where payment processing is handled directly by a third-party payment provider.<br/></p><h3>-Device & Website Information</h3><p>When you visit our website, certain information may be collected automatically, including:</p><ul><li>IP address</li><li>Browser type</li><li>Device type</li><li>Operating system</li><li>Time zone</li><li>Cookie information</li><li>Pages viewed</li><li>Products viewed</li><li>Referring pages or websites</li><li>Search activity</li><li>Website interactions</li><li>General usage information</li></ul><p>This information may be collected through cookies, pixels, tags, log files, local storage, web beacons, and similar technologies.</p><p>Please review our <a href=\"https://www.gkutech.com/pages/cookies-policy\" target=\"_blank\"><strong>Cookie Policy</strong></a> for more information.</p><h3>-Customer Support Information</h3><p>When you contact GKU Customer Support, we may collect information such as:</p><ul><li>Name</li><li>Email address</li><li>Telephone number</li><li>Order number</li><li>Product model</li><li>Product serial number where applicable</li><li>Description of the issue</li><li>Photos or videos you provide</li><li>Device, firmware, app, wiring, or memory card information where relevant</li><li>Communication history</li></ul><p>We use this information to provide customer service, technical support, warranty assistance, and other after-sales services.</p><h3>-Marketing & Communication Information</h3><p>If you subscribe to GKU marketing communications or participate in promotions, we may collect information such as:</p><ul><li>Email address</li><li>Telephone number</li><li>Marketing preferences</li><li>Promotion or campaign participation</li><li>Communication interactions</li></ul><p>Where required by applicable law, marketing communications will only be sent with the appropriate consent or other lawful basis.</p><h2>2. How We Collect Personal Information</h2><p>We may collect personal information:</p><h3>Directly From You</h3><p>For example, when you:</p><ul><li>Place an order</li><li>Create an account</li><li>Complete a form</li><li>Subscribe to marketing communications</li><li>Register a product</li><li>Contact customer support</li><li>Request warranty service</li><li>Request a return or refund<br/></li><li>Participate in a promotion or survey</li></ul><h3>Automatically</h3><p>Certain technical and usage information may be collected automatically when you use our website through cookies and similar technologies.</p><h3>From Service Providers and Business Partners</h3><p>Where permitted by applicable law, we may receive information from service providers or business partners that help us operate our website, process transactions, deliver orders, prevent fraud, provide analytics, conduct marketing, or support customers.<br/></p><h2>3. How We Use Personal Information</h2><p>We may use personal information to:</p><ul><li>Operate and maintain the GKU website</li><li>Provide products and services</li><li>Create and manage customer accounts</li><li>Process and fulfill orders</li><li>Process payments</li><li>Arrange shipping and delivery</li><li>Provide order confirmations and updates</li><li>Process returns and refunds</li><li>Provide warranty and after-sales support</li><li>Respond to customer inquiries</li><li>Provide technical support</li><li>Prevent fraud and unauthorized transactions</li><li>Protect the security of our website and services</li><li>Improve our products, website, and customer experience</li><li>Analyze website performance and usage</li><li>Measure marketing performance</li><li>Personalize website experiences where appropriate</li><li>Send marketing communications where permitted</li><li>Administer promotions, surveys, or other programs</li><li>Maintain business and transaction records</li><li>Comply with applicable laws and regulations</li><li>Establish, exercise, or defend legal claims</li></ul><p>We will not use personal information for purposes that are incompatible with the purposes described in this <a href=\"https://www.gkutech.com/pages/privacy-policy\" target=\"_blank\">Privacy Policy</a> unless permitted or required by applicable law.</p><h2>4. Legal Bases for Processing</h2><p>Where applicable law requires us to identify a legal basis for processing personal information, we may rely on one or more of the following:</p><h3>-Performance of a Contract</h3><p>We may process information when necessary to fulfill an order, provide a product or service, process a return, or otherwise perform our contractual obligations.</p><h3>-Consent</h3><p>We may process information based on your consent, including for certain marketing, advertising, analytics, or cookie-related activities where required by law.</p><p>Where processing is based on consent, you may withdraw your consent where permitted by applicable law.</p><h3>-Legitimate Interests</h3><p>We may process information where necessary for legitimate business interests, provided those interests are not overridden by applicable rights and freedoms.</p><p>These interests may include:</p><ul><li>Improving our website</li><li>Providing customer service</li><li>Preventing fraud</li><li>Protecting website security</li><li>Understanding business performance</li><li>Improving products and services</li></ul><h3>-Legal Obligations</h3><p>We may process personal information where necessary to comply with applicable laws, regulations, court orders, tax requirements, accounting requirements, or other legal obligations.</p><p>Other lawful bases may apply where permitted by applicable law.</p><h2>5. How We Share Personal Information</h2><p>We do not disclose personal information except as described in this Privacy Policy or as otherwise permitted or required by applicable law.</p><p>We may share relevant personal information with service providers and other parties that help us operate our business.</p><p>These may include:</p><h3>-E-Commerce & Website Service Providers</h3><p>We use third-party technology and service providers to operate and maintain our online store and website.</p><p>For example, our online store is powered by Shopify.</p><h3>-Payment Service Providers</h3><p>Payment and transaction information may be processed by payment providers, banks, card networks, digital wallet providers, fraud prevention services, or other financial service providers.</p><h3>-Shipping & Logistics Providers</h3><p>We may provide necessary information such as your name, address, telephone number, and order details to shipping carriers, warehouses, fulfillment partners, customs service providers, and logistics partners to deliver your order.</p><h3>-Analytics & Technology Providers</h3><p>We may use analytics and technology providers to understand website performance, improve our services, identify technical issues, and understand how customers interact with our website.</p><h3>-Advertising & Marketing Providers</h3><p>Where permitted by applicable law and subject to applicable consent requirements, we may work with advertising and marketing providers to:</p><ul><li>Measure campaign performance</li><li>Understand website conversions</li><li>Reach relevant audiences</li><li>Improve advertising effectiveness</li></ul><h3>-Customer Support Providers</h3><p>We may use service providers to help manage customer communications, technical support, returns, warranty requests, and other customer service functions.</p><h3>-Professional Advisers</h3><p>Where necessary, we may disclose information to professional advisers such as lawyers, accountants, auditors, insurers, and consultants.</p><h3>-Legal & Regulatory Authorities</h3><p>We may disclose personal information when reasonably necessary to:</p><ul><li>Comply with applicable laws or regulations</li><li>Respond to lawful government or regulatory requests</li><li>Respond to court orders or legal proceedings</li><li>Protect our legal rights</li><li>Prevent fraud or unlawful activity</li><li>Protect the safety or security of GKU, our customers, or others</li></ul><h2>6. Cookies, Analytics & Advertising</h2><p>GKU uses cookies and similar technologies to operate our website, remember preferences, understand website performance, and support analytics and advertising activities.</p><p>Depending on your location and applicable law, certain non-essential cookies may only be activated after you provide the appropriate consent.</p><p>Cookies and similar technologies may be used for:</p><ul><li>Essential website functionality</li><li>Shopping cart and checkout</li><li>Security</li><li>Preference management</li><li>Website analytics</li><li>Performance measurement</li><li>Advertising measurement</li><li>Marketing and personalization</li></ul><p>For more information about the types of cookies we use and how to manage your preferences, please review our <a href=\"https://www.gkutech.com/pages/cookies-policy\" target=\"_blank\"><strong>Cookie Policy</strong></a>.</p><h2>7. Marketing Communications</h2><p>Where permitted by applicable law, GKU may send you information about:</p><ul><li>New products</li><li>Special offers</li><li>Promotions</li><li>Product updates</li><li>Events</li><li>Other GKU news</li></ul><p>You may unsubscribe from marketing emails at any time by using the unsubscribe option included in the communication.</p><p>Where text or SMS marketing is offered, you may be able to opt out by following the instructions provided in the applicable message.</p><p>Opting out of marketing communications will not prevent us from sending necessary transactional or service-related communications, such as:</p><ul><li>Order confirmations</li><li>Shipping updates</li><li>Security notices</li><li>Warranty communications</li><li>Return or refund updates</li><li>Customer service messages</li></ul><h2>8. Behavioral & Personalized Advertising</h2><p>Where permitted by applicable law, and subject to consent requirements where applicable, GKU and our advertising partners may use certain information to measure advertising performance and provide more relevant advertising.</p><p>This may involve information about:</p><ul><li>Website visits</li><li>Product views</li><li>Add-to-cart activity</li><li>Checkout activity</li><li>Purchases</li><li>Advertising interactions</li></ul><p>You may be able to manage advertising and tracking preferences through our cookie or privacy preference tools, your browser settings, and settings provided by relevant advertising platforms.</p><p>Please review our <strong>Cookie Policy</strong> for additional information.</p><h2>9. Data Retention</h2><p>We retain personal information only for as long as reasonably necessary for the purposes for which it was collected, including to:</p><ul><li>Complete transactions</li><li>Provide customer service</li><li>Provide warranty support</li><li>Maintain appropriate business records</li><li>Prevent fraud</li><li>Resolve disputes</li><li>Enforce agreements</li><li>Meet tax, accounting, legal, and regulatory requirements</li></ul><p>The appropriate retention period may vary depending on:</p><ul><li>The type of information</li><li>The purpose for which it was collected</li><li>Our contractual obligations</li><li>Warranty requirements</li><li>Applicable legal or regulatory requirements</li><li>The need to establish, exercise, or defend legal claims</li></ul><p>When personal information is no longer reasonably required, we may delete, anonymize, or otherwise handle it in accordance with applicable law.</p><h2>10. Data Security</h2><p>We use reasonable administrative, technical, and organizational measures designed to protect personal information against:</p><ul><li>Unauthorized access</li><li>Unauthorized disclosure</li><li>Loss</li><li>Misuse</li><li>Alteration</li><li>Destruction</li></ul><p>However, no method of electronic transmission, online transaction, or data storage can be guaranteed to be completely secure.</p><p>Customers are also responsible for protecting their account credentials and should not share passwords or other account access information with unauthorized persons.</p><h2>11. International Data Transfers</h2><p>GKU serves customers in multiple countries and regions.</p><p>As a result, personal information may be processed or stored in countries or regions other than the country in which you live.</p><p>Where required by applicable law, we will take appropriate measures relating to international transfers of personal information.</p><p>Depending on the circumstances, these measures may include contractual, organizational, technical, or other safeguards recognized under applicable law.</p><h2>12. Your Privacy Rights</h2><p>Depending on where you live and applicable law, you may have certain rights regarding your personal information.</p><p>These may include the right to:</p><ul><li>Request access to personal information</li><li>Request correction of inaccurate or incomplete information</li><li>Request deletion of certain personal information</li><li>Request restriction of certain processing</li><li>Object to certain processing</li><li>Withdraw consent where processing is based on consent</li><li>Request data portability where applicable</li><li>Manage certain marketing or advertising preferences</li><li>Submit a complaint to an applicable data protection or regulatory authority</li></ul><p>These rights are not absolute and may be subject to exceptions or limitations under applicable law.</p><p>To submit a privacy request, please contact GKU using the information provided in the <a href=\"/pages/contact-us\" target=\"_blank\" title=\"Contact Us\"><strong>Contact Us</strong></a> section below.</p><p>We may need to verify your identity before completing certain privacy requests.</p><h2>13. Regional Privacy Rights</h2><p>Privacy and data protection requirements vary by country and region.</p><p>If you reside in a jurisdiction that provides additional mandatory privacy rights, those rights will apply to the extent required by applicable law.</p><p>Nothing in this Privacy Policy is intended to exclude, restrict, waive, or limit any privacy or data protection right that cannot lawfully be excluded or restricted.</p><p>Where applicable local law provides rights or protections that differ from or exceed this Privacy Policy, the mandatory requirements of applicable local law will apply.</p><h2>14. Children's Privacy</h2><p>The GKU website and online store are not intended to knowingly collect personal information from children in violation of applicable law.</p><p>If we become aware that personal information relating to a child has been collected or processed in circumstances that do not comply with applicable legal requirements, we will take appropriate steps in accordance with applicable law.</p><p>If you believe that a child has provided personal information to GKU improperly, please contact us.</p><h2>15. Automated Decision-Making & Fraud Prevention</h2><p>We and our service providers may use automated technologies to help detect, prevent, and investigate potentially fraudulent, suspicious, or unauthorized transactions.</p><p>These systems may analyze information relating to transactions, devices, accounts, payment activity, or other relevant factors.</p><p>Where applicable law provides rights relating to decisions based solely on automated processing that produce legal or similarly significant effects, we will respect those rights to the extent required by law.</p><h2>16. Third-Party Websites & Services</h2><p>The GKU website may contain links to third-party websites, applications, platforms, or services.</p><p>GKU is not responsible for the privacy practices of independent third parties.</p><p>When you leave the GKU website or interact directly with a third-party service, the collection and processing of your information may be governed by that third party's privacy policy and terms.</p><p>We encourage you to review the privacy policies of third-party services before providing personal information.</p><h2>17. Sale or Transfer of Business</h2><p>If GKU or relevant parts of our business are involved in a merger, acquisition, financing, restructuring, sale of assets, or similar business transaction, personal information may be transferred as part of that transaction where permitted by applicable law.</p><p>Any such information will remain subject to applicable privacy and data protection requirements.</p><h2>18. Changes to This Privacy Policy</h2><p>We may update this Privacy Policy from time to time to reflect changes in:</p><ul><li>Applicable laws and regulations</li><li>Our business operations</li><li>Website functionality</li><li>Products and services</li><li>Technologies</li><li>Service providers</li><li>Privacy practices</li></ul><p>When this Privacy Policy is updated, we will revise the <strong>Last Updated</strong> date at the top of this page.</p><p>Where required by applicable law, we may provide additional notice regarding material changes.</p><p>We encourage you to review this Privacy Policy periodically.</p><h2>19. Contact GKU</h2><p>If you have questions about this Privacy Policy, how GKU handles personal information, or if you would like to submit a privacy-related request, please contact us:</p><p><strong>Email:</strong> support@gkutech.com<br/><strong>WhatsApp:</strong> +86 14776315502<br/><strong>Service Hours:</strong> Monday–Friday, 9:30–22:00 (BJT / UTC+8)</p><p>When submitting a privacy request, please provide sufficient information for us to understand and respond to your request. We may request additional information where reasonably necessary to verify your identity or protect your information.</p><h2>Related GKU Policies</h2><p>For additional information, please review:</p><ul><li><a href=\"https://www.gkutech.com/pages/cookies-policy\"><strong>Cookie Policy</strong></a></li><li><a href=\"https://www.gkutech.com/pages/gku-terms-of-service\"><strong>Terms of Service</strong></a></li><li><a href=\"https://www.gkutech.com/pages/shipping-policy\"><strong>Shipping Policy</strong></a></li><li><a href=\"https://www.gkutech.com/pages/return-and-refund-policy\"><strong>Return & Refund Policy</strong></a></li><li><a href=\"https://www.gkutech.com/pages/warranty-policy\"><strong>Warranty Policy</strong></a></li><li><a href=\"https://www.gkutech.com/pages/contact-us\"><strong>Contact Us</strong></a></li></ul>",
+            "desktop_width_percent": 100,
+            "content_max_width": 900,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#FFF001",
+            "link_color": "#FFF001"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "item_8TtzNa",
-        "item_hNKLgn",
-        "item_4GkDMw",
-        "item_QgxFnM",
-        "item_zXE3kE",
-        "item_AMMWAk",
-        "item_qPW9da",
-        "item_KbLcxb"
+        "ai_gen_block_d149a36_NfNhYH"
       ],
-      "name": "XTU FAQ",
+      "name": "Refund policy content",
       "settings": {
-        "heading": "Privacy Policy FAQs",
-        "background_color": "#FFFFFF",
-        "content_background": "#F5F5F7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070CA",
-        "content_width": 900,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
     "main",
-    "xtu_faq_xXRBXi"
+    "blocks_PLftat"
   ]
 }

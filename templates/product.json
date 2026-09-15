@@ -116,6 +116,13 @@
               },
               "blocks": {}
             },
+            "klip_coupons_klip_app_section_product_KrQYmx": {
+              "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
+              "settings": {
+                "margin_top": 10,
+                "margin_bottom": 10
+              }
+            },
             "xtu_key_specs": {
               "type": "xtu-key-specs",
               "name": "XTU Key Specs",
@@ -254,6 +261,7 @@
             "xtu_addon_bundle": {
               "type": "xtu-addon-bundle",
               "name": "XTU Addon Bundle",
+              "disabled": true,
               "settings": {
                 "heading": "Up To 60% Off Add-Ons",
                 "max_products": 5,
@@ -344,6 +352,7 @@
           "block_order": [
             "text_xrnftG",
             "price_tVjtKg",
+            "klip_coupons_klip_app_section_product_KrQYmx",
             "xtu_key_specs",
             "text_aEtTtq",
             "xtu_feature_benefits",
@@ -421,6 +430,7 @@
         "item_dwBHWi",
         "item_MUMPVp"
       ],
+      "disabled": true,
       "settings": {
         "aria_label": "Product sections",
         "alignment": "center",

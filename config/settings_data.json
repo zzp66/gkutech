@@ -9,11 +9,11 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/XTU-_1_c1566b0e-0204-4f96-a548-57749c2bacdd.png",
-    "logo_inverse": "shopify://shop_images/3_ed809f97-cd8a-42e6-aa08-2fa413d34e91.png",
+    "logo": "shopify://shop_images/GKU_41c480a2-40c1-442f-a934-1c7352fa5b7b.png",
+    "logo_inverse": "shopify://shop_images/GKU_2c190874-d2c0-47f5-8cc4-e1a409fb1e1a.png",
     "logo_height": 40,
     "logo_height_mobile": 40,
-    "favicon": "shopify://shop_images/XTU.jpg",
+    "favicon": "shopify://shop_images/6511_37898963-c593-4633-8d97-21729eeaedca.jpg",
     "page_text_color": "{{ settings.color_palette.foreground }}",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n6",
@@ -143,6 +143,28 @@
           "agent_activator_font_size": 14,
           "agent_border_radius": 16
         }
+      },
+      "pagefly-ai-page-builder": {
+        "type": "shopify://apps/pagefly-ai-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {}
+      },
+      "246135896087123374": {
+        "type": "shopify://apps/1clickpopup/blocks/main/233742b9-16cb-4f75-9de7-3fe92c29fdff",
+        "disabled": false,
+        "settings": {}
+      },
+      "914574027208035924": {
+        "type": "shopify://apps/camouflage-hide-variants/blocks/hide-oos-variants/12f79890-9cb9-4b70-ac12-64dd825d687e",
+        "disabled": false,
+        "settings": {
+          "theme_name": "",
+          "selector_type": "",
+          "hide_oos_variants": false,
+          "strikethrough_oos_variants": false,
+          "other_file_name": "",
+          "reverse_options": false
+        }
       }
     },
     "color_palette": {
@@ -154,7 +176,11 @@
       "color4": "#f5f5f7",
       "color5": "#0070ca",
       "color6": "#f8f9fd",
-      "color7": "#1590F2"
+      "color7": "#FFF002",
+      "color8": "#9ce13e",
+      "color9": "#016d8e",
+      "color10": "#535f11",
+      "color11": "#7753a8"
     }
   },
   "presets": {

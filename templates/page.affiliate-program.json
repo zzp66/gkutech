@@ -52,7 +52,7 @@
       ],
       "settings": {
         "content_direction": "column",
-        "gap": 40,
+        "gap": 21,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 60,
         "padding-block-end": 80
@@ -117,10 +117,10 @@
         "text_djWf4z",
         "text_nbnGgz"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/about_us_8e3578b3-5146-4f28-b1f2-d96578ef3c0f.png",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -158,7 +158,7 @@
           "settings": {
             "icon_style": "user",
             "title": "Sign Up",
-            "body": "<p>Join the XTU Affiliate Program by applying through Impact or Awin.</p>"
+            "body": "<p>Join the GKU Affiliate Program by applying through Impact.</p>"
           }
         },
         "step_iKr6cj": {
@@ -174,7 +174,7 @@
           "settings": {
             "icon_style": "plane",
             "title": "Start Promoting",
-            "body": "<p>Share XTU products across social media, YouTube, blogs, or newsletters.</p>"
+            "body": "<p>Share GKU products across social media, YouTube, blogs, or newsletters.</p>"
           }
         },
         "step_gnFPBr": {
@@ -217,17 +217,17 @@
       "type": "xtu-affiliate-banner",
       "name": "XTU Affiliate Banner",
       "settings": {
-        "badge": "shopify://shop_images/XTU.jpg",
+        "badge": "shopify://shop_images/GKU_41c480a2-40c1-442f-a934-1c7352fa5b7b.png",
         "badge_size": 80,
-        "heading": "XTU Affiliate Program",
+        "heading": "GKU Affiliate Program",
         "subheading": "Share to Earn",
         "button_label": "APPLY NOW",
-        "button_link": "https://app.impact.com/campaign-promo-signup/xtucam.brand?execution=e2s1&",
+        "button_link": "https://app.impact.com/campaign-promo-signup/gkutech.brand?execution=e7s1&",
         "button_new_tab": true,
         "show_button_arrow": false,
-        "button_bg": "#ffd400",
+        "button_bg": "#fff001",
         "button_color": "#000000",
-        "button_bg_hover": "#f5b400",
+        "button_bg_hover": "#fff001",
         "button_color_hover": "#000000",
         "agreement_label": "",
         "agreement_link": "",
@@ -265,7 +265,7 @@
         "ai_gen_block_4e4e897_L9YgAz": {
           "type": "ai_gen_block_4e4e897",
           "settings": {
-            "title": "Who Can Join the XTU Affiliate Program?",
+            "title": "Who Can Join the GKU Affiliate Program?",
             "desktop_width_percent": 100,
             "alignment": "center",
             "text_color": "#000000",
@@ -358,7 +358,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>YouTube Creators<br/></p>",
+                "text": "<p>YouTube Auto&Tech Creators</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -384,7 +384,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Camera reviews, comparisons, motorcycle POV tests, outdoor videos and tutorials.</p>",
+                "text": "<p>YouTube creators producing dash cam reviews, real-world driving tests, installation guides, night footage tests, parking mode demonstrations, and head-to-head product comparisons.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -456,7 +456,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Tech & Camera Bloggers</p>",
+                "text": "<p>Tech & Automotive Publishers</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -482,7 +482,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Product reviews, buying guides, comparisons and photography or videography content.</p>",
+                "text": "<p>Automotive websites, car blogs, tech publications, and driving-focused media covering dash cams, vehicle technology, road safety, car accessories, and smart driving solutions.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -554,7 +554,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Outdoor Creators</p>",
+                "text": "<p>Social Medias & Driving Creators</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -580,7 +580,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Motorcycling, cycling, skiing, hiking, camping, fishing and adventure content.</p>",
+                "text": "<p>TikTok, Instagram, Facebook, and other social creators sharing driving experiences, road incidents, car technology, vehicle accessories, rideshare content, road trips, and everyday car ownership.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -691,7 +691,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Social Media Creators</p>",
+                "text": "<p>Automotive Shopping & Comparison Sites</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -717,7 +717,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>TikTok, Instagram, Facebook and other social communities.</p>",
+                "text": "<p>Product discovery and comparison platforms that help drivers compare dash cams by resolution, number of cameras, night vision, GPS, Wi-Fi, parking features, price, and driving use case.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -789,7 +789,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Deal & Coupon Publishers</p>",
+                "text": "<p>Deal, Coupon & Shopping Platforms</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -815,7 +815,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Help shoppers discover relevant XTU promotions and product offers.</p>",
+                "text": "<p>Deal websites, coupon communities, shopping publishers, and price-focused platforms helping drivers discover GKU dash cam promotions, seasonal offers, and limited-time deals.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -887,7 +887,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Affiliate & Review Websites</p>",
+                "text": "<p>Automotive Shopping & Comparison Sites</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -913,7 +913,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Camera, electronics and consumer-tech recommendation websites.</p>",
+                "text": "<p>Product discovery and comparison platforms that help drivers compare dash cams by resolution, number of cameras, night vision, GPS, Wi-Fi, parking features, price, and driving use case.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -998,14 +998,14 @@
         "item_4n6eVy": {
           "type": "item",
           "settings": {
-            "question": "What is the XTU Affiliate Program?",
-            "answer": "<p>The XTU Affiliate Program allows approved creators, publishers and partners to earn commission by referring eligible customers to XTU through tracked affiliate links.<br/></p>"
+            "question": "What is the GKU Affiliate Program?",
+            "answer": "<p>The GKU Affiliate Program allows approved creators, publishers and partners to earn commission by referring eligible customers to GKU through tracked affiliate links.<br/></p>"
           }
         },
         "item_YLL7NE": {
           "type": "item",
           "settings": {
-            "question": "Who can apply to become an XTU affiliate?",
+            "question": "Who can apply to become an GKU affiliate?",
             "answer": "<p>Content creators, YouTubers, bloggers, publishers, review websites, social media creators and other relevant partners may apply. Applications are reviewed before approval.<br/></p>"
           }
         },
@@ -1013,20 +1013,20 @@
           "type": "item",
           "settings": {
             "question": "How much commission can I earn?",
-            "answer": "<p>Commission rates may vary by affiliate network, market or campaign. Please review the current terms displayed during your application through Impact or Awin.</p>"
+            "answer": "<p>Commission rates may vary by affiliate network, market or campaign. Please review the current terms displayed during your application through Impact.</p>"
           }
         },
         "item_gMhzzh": {
           "type": "item",
           "settings": {
-            "question": "How do I join the XTU Affiliate Program?",
-            "answer": "<p>Apply through one of XTU's supported affiliate networks. Once approved, you can access available tracking links and promotional resources and begin referring customers.</p>"
+            "question": "How do I join the GKU Affiliate Program?",
+            "answer": "<p>Apply through one of GKU's supported affiliate networks. Once approved, you can access available tracking links and promotional resources and begin referring customers.</p>"
           }
         },
         "item_z7MaFg": {
           "type": "item",
           "settings": {
-            "question": "Do I need to own an XTU product to become an affiliate?",
+            "question": "Do I need to own an GKU product to become an affiliate?",
             "answer": "<p>Product ownership is not necessarily required to apply. However, partners should create accurate, useful and responsible promotional content about the products they recommend.</p>"
           }
         },
@@ -1034,7 +1034,7 @@
           "type": "item",
           "settings": {
             "question": "Can YouTubers and social media creators join?",
-            "answer": "<p>Yes. Relevant YouTube, TikTok, Instagram and other social media creators may apply to the XTU Affiliate Program.</p>"
+            "answer": "<p>Yes. Relevant YouTube, TikTok, Instagram and other social media creators may apply to the GKU Affiliate Program.</p>"
           }
         },
         "item_bT9Hpx": {
@@ -1056,7 +1056,7 @@
       ],
       "name": "XTU FAQ",
       "settings": {
-        "heading": "XTU Affiliate Program FAQs",
+        "heading": "GKU Affiliate Program FAQs",
         "background_color": "#ffffff",
         "content_background": "#f5f5f7",
         "heading_color": "#000000",
@@ -1137,6 +1137,7 @@
             "product_list_button_4CzwLr": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
+              "disabled": true,
               "settings": {
                 "label": "View all",
                 "open_in_new_tab": true,
@@ -1252,7 +1253,7 @@
       },
       "name": "t:names.products_carousel",
       "settings": {
-        "collection": "deals-of-the-day",
+        "collection": "dash-cam",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
         "max_products": 6,
@@ -1277,7 +1278,7 @@
         "ai_gen_block_763f870_mLe7bU": {
           "type": "ai_gen_block_763f870",
           "settings": {
-            "title": "Know More About Our All Products",
+            "title": "Know More About Our All Dash Cams",
             "button_label": "View Now",
             "button_link": "shopify://collections",
             "desktop_width_percent": 100,

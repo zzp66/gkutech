@@ -35,8 +35,8 @@
     "help-firmware": {
       "type": "xtu-help-firmware",
       "settings": {
-        "heading": "XTU Firmware Downloads & Updates",
-        "subheading": "Keep your XTU camera up to date with the latest official firmware. Select your product model below to download firmware updates, view release notes, and follow step-by-step installation instructions.",
+        "heading": "GKU Dash Cam Firmware",
+        "subheading": "Download the latest firmware updates for compatible GKU dash cams.",
         "sidebar_label": "Products",
         "empty_text": "No firmware for this product yet.",
         "background_color": "#ffffff",

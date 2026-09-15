@@ -18,21 +18,21 @@
           "type": "text_column",
           "settings": {
             "heading": "Contact",
-            "text": "<p><strong>Customer Service:</strong><br/>support@xtucam.com</p><p><strong>Business Inquiries:</strong><br/>marketing.xtu@xtucam.com</p><p><strong>Phone Number:</strong><br/>Toll-Free: +(86) 14743425979</p>"
+            "text": "<p>Support: support@gkutech.com</p><p>Business: marketing.gku@gkutech.com</p><p>Whatsapp: +8614776315502</p><p>Mon - Fri: 9:30 AM - 22：00 PM (BJT)</p>"
           }
         },
         "menu_col_1": {
           "type": "menu_column",
           "settings": {
-            "heading": "Popular Products",
-            "menu": "hot-sale"
+            "heading": "Support",
+            "menu": "support-1"
           }
         },
         "menu_col_4": {
           "type": "menu_column",
           "settings": {
             "heading": "Policy",
-            "menu": "policy-and-service"
+            "menu": "policy"
           }
         },
         "menu_column_YJQzjQ": {
@@ -42,26 +42,17 @@
             "menu": "customer-care"
           }
         },
-        "menu_column_AydDWe": {
-          "type": "menu_column",
-          "settings": {
-            "heading": "Official Store",
-            "menu": "where-to-buy"
-          }
-        },
         "menu_column_JJ8iaQ": {
           "type": "menu_column",
           "settings": {
             "heading": "Partnership",
-            "menu": "community-and-partnership"
+            "menu": "support"
           }
         },
         "social_1": {
           "type": "social_item",
           "settings": {
             "title": "facebook",
-            "icon": "shopify://shop_images/Facebook_Logo__2019.png",
-            "icon_hover": "shopify://shop_images/Facebook_Logo__2019.png",
             "link": "https://www.facebook.com/xtucam"
           }
         },
@@ -69,8 +60,6 @@
           "type": "social_item",
           "settings": {
             "title": "Instagram",
-            "icon": "shopify://shop_images/ig.png",
-            "icon_hover": "shopify://shop_images/ig.png",
             "link": "https://www.instagram.com/xtucam_official/"
           }
         },
@@ -78,8 +67,6 @@
           "type": "social_item",
           "settings": {
             "title": "X",
-            "icon": "shopify://shop_images/X_logo_2023__white.png",
-            "icon_hover": "shopify://shop_images/X_logo_2023__white.png",
             "link": "https://x.com/XTUCAMJP"
           }
         },
@@ -87,8 +74,6 @@
           "type": "social_item",
           "settings": {
             "title": "TikTok",
-            "icon": "shopify://shop_images/images_681b464f-879c-4651-9ae3-7f1f9d99e99d.png",
-            "icon_hover": "shopify://shop_images/images_681b464f-879c-4651-9ae3-7f1f9d99e99d.png",
             "link": "https://www.tiktok.com/@xtucam_shop"
           }
         },
@@ -96,8 +81,6 @@
           "type": "social_item",
           "settings": {
             "title": "Youtube",
-            "icon": "shopify://shop_images/images_3.png",
-            "icon_hover": "shopify://shop_images/images_3.png",
             "link": "https://www.youtube.com/@XTUCAM"
           }
         },
@@ -114,7 +97,6 @@
         "menu_col_1",
         "menu_col_4",
         "menu_column_YJQzjQ",
-        "menu_column_AydDWe",
         "menu_column_JJ8iaQ",
         "social_1",
         "social_2",

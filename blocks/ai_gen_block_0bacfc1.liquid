@@ -1,0 +1,270 @@
+{% doc %}
+  @prompt
+    加一个按钮，并提醒客户折扣码享受6折
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-discount-button-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__message {
+    margin: 0;
+    font-family: inherit;
+    font-size: {{ block.settings.message_size }}px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__code {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 7px;
+    border: 1px dashed {{ block.settings.text_color }};
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 22px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: 1px solid {{ block.settings.button_color }};
+    border-radius: {{ block.settings.button_radius }}px;
+    font-family: inherit;
+    font-size: {{ block.settings.button_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__link:hover {
+    opacity: 0.82;
+  }
+
+  .ai-discount-button-{{ ai_gen_id }}__link:focus-visible {
+    outline: 3px solid {{ block.settings.focus_color }};
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-discount-button-{{ ai_gen_id }}__inner {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .ai-discount-button-{{ ai_gen_id }}__link {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<discount-reminder-{{ ai_gen_id }}
+  class="ai-discount-button-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-discount-button-{{ ai_gen_id }}__inner">
+    <p class="ai-discount-button-{{ ai_gen_id }}__message">
+      {{ block.settings.message | escape }}
+      {% if block.settings.discount_code != blank %}
+        <span class="ai-discount-button-{{ ai_gen_id }}__code">{{ block.settings.discount_code | escape }}</span>
+      {% endif %}
+    </p>
+    {% if block.settings.button_link != blank %}
+      <a
+        class="ai-discount-button-{{ ai_gen_id }}__link"
+        href="{{ block.settings.button_link }}"
+        {% if block.settings.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+        {{ block.settings.button_label | escape }}
+      </a>
+    {% endif %}
+  </div>
+</discount-reminder-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!customElements.get('discount-reminder-{{ ai_gen_id }}')) {
+      customElements.define('discount-reminder-{{ ai_gen_id }}', class extends HTMLElement {});
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "折扣提示按钮",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "提示文字",
+      "default": "使用折扣码享受6折优惠"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "折扣码",
+      "default": "SAVE40"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "按钮文字",
+      "default": "立即购买"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "按钮链接"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab",
+      "label": "在新标签页打开",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "桌面宽度",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "样式"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景",
+      "default": "#f8f9fd"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "文字",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "边框",
+      "default": "#dfdfdf"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "按钮背景",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "按钮文字",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "焦点轮廓",
+      "default": "#0070ca"
+    },
+    {
+      "type": "range",
+      "id": "message_size",
+      "label": "提示字号",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "按钮字号",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "内边距",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "容器圆角",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "按钮圆角",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "边框宽度",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "折扣提示按钮"
+    }
+  ],
+  "tag": null,
+  "class": "discount-reminder-block"
+}
+{% endschema %}

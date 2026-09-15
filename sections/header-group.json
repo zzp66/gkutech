@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to XTU. Free Shipping on orders over $49.99.",
+            "text": "Welcome to GKU. Free Shipping on orders over $49.99.",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -36,7 +36,7 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "background_color": "{{ settings.color_palette.color7 }}",
+        "background_color": "{{ settings.color_palette.foreground }}",
         "divider_width": 0,
         "divider_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 12,

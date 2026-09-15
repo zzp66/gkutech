@@ -50,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 40,
@@ -58,319 +59,157 @@
         "padding-block-end": 80
       }
     },
-    "section_RhaNRc": {
-      "type": "section",
+    "blocks_jnMGBC": {
+      "type": "_blocks",
       "blocks": {
-        "group_LFJFPp": {
-          "type": "group",
-          "name": "t:names.column",
+        "ai_gen_block_d149a36_J7bHth": {
+          "type": "ai_gen_block_d149a36",
           "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "eyebrow": "GKU Policy",
+            "title": "Shipping Policy",
+            "policy_content": "<p>Find everything you need to know about <strong>GKU shipping and delivery</strong>, including order processing times, shipping costs, estimated delivery times, supported destinations, order tracking, customs, taxes, and delivery support.</p><h2>1. Order Processing Time</h2><p>Most GKU orders are processed within <strong>1–2 business days</strong> after payment has been successfully confirmed.</p><p>Orders placed on weekends or public holidays will normally be processed on the next business day.</p><p>Processing may take longer during:</p><ul><li>Major promotional events or holiday periods</li><li>New product launches</li><li>Periods of unusually high order volume</li><li>Inventory transfers between warehouses</li><li>Address or payment verification</li></ul><p>Once your order has shipped, you will receive a shipping confirmation email containing your tracking information.</p><p><strong>Order processing time is separate from the estimated shipping time.</strong></p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 1300,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 20,
+            "padding_bottom": 0,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#FFF001",
+            "link_color": "#FFF001"
           },
-          "blocks": {
-            "text_nwtdPp": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>Secure Payment<br/></p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_tPXxjt": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Your payment information is protected through secure payment processing.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_nwtdPp",
-            "text_tPXxjt"
-          ]
+          "blocks": {}
         },
-        "group_MgAafC": {
-          "type": "group",
-          "name": "t:names.column",
+        "ai_gen_block_22dbe0b_agdbbp": {
+          "type": "ai_gen_block_22dbe0b",
           "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "heading": "2. Dash Cam Shipping",
+            "description": "The following shipping rates generally apply to eligible dash cam orders:",
+            "headers": "Order Value,Shipping Method,Shipping Fee,Estimated Delivery",
+            "rows": "Under $49.99,Express Shipping,$4.99,3–7 business days\n$49.99 or more,Express Shipping,$1.99,3–7 business days\nUnder $49.99,Standard Shipping,$2.99,5–10 business days\n$49.99 or more,Standard Shipping,FREE,5–10 business days",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_size": 24,
+            "border_radius": 8,
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "background_color": "#ffffff",
+            "header_background_color": "#FFF001",
+            "header_text_color": "{{ settings.color_palette.foreground }}",
+            "alternate_row_color": "#f5f5f7",
+            "border_color": "#dfdfdf"
           },
-          "blocks": {
-            "text_AEB7aB": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>24/7 Customer Support</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_V7n3Kb": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Our support team is available to assist with shipping, delivery, and order-related issues.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_AEB7aB",
-            "text_V7n3Kb"
-          ]
+          "blocks": {}
         },
-        "group_VpwNeK": {
-          "type": "group",
-          "name": "t:names.column",
+        "ai_gen_block_96c4908_M8T8p8": {
+          "type": "ai_gen_block_96c4908",
           "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "content": "<p><strong>Available shipping methods may vary by destination, product, and warehouse. Final shipping options and charges will be confirmed at checkout.</strong></p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 1600,
+            "alignment": "left",
+            "font_size": 14,
+            "text_color": "#000000",
+            "link_color": "#0070ca",
+            "background_color": "#ffffff",
+            "padding_vertical": 25,
+            "padding_horizontal": 25,
+            "mobile_padding_vertical": 20,
+            "mobile_padding_horizontal": 15
           },
-          "blocks": {
-            "text_b9ynmU": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>Payment Method</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_Djd6GV": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>We support payment methods including Visa, Master, Google Pay, ApplePay & more</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
+          "blocks": {}
+        },
+        "ai_gen_block_22dbe0b_q6feXr": {
+          "type": "ai_gen_block_22dbe0b",
+          "name": "信息表格",
+          "settings": {
+            "heading": "3. Accessories Shipping",
+            "description": "The following standard shipping rates generally apply to eligible GKU accessories, including memory cards, hardwire kits, mounts, replacement cameras, and power cables:",
+            "headers": "Order Value,Shipping Method,Shipping Fee,Estimated Delivery",
+            "rows": "Under $19.99,Standard Shipping,$4.99,5–10 business days\n$20–$39.99,Standard Shipping,$2.99,5–10 business days\n$40 or more,Standard Shipping,FREE,5–10 business days",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_size": 24,
+            "border_radius": 8,
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "background_color": "#ffffff",
+            "header_background_color": "#FFF001",
+            "header_text_color": "{{ settings.color_palette.foreground }}",
+            "alternate_row_color": "#f5f5f7",
+            "border_color": "#dfdfdf"
           },
-          "block_order": [
-            "text_b9ynmU",
-            "text_Djd6GV"
-          ]
+          "blocks": {}
+        },
+        "ai_gen_block_96c4908_3T4ng8": {
+          "type": "ai_gen_block_96c4908",
+          "name": "正文段落",
+          "settings": {
+            "content": "<p><strong>Some replacement parts and accessories may need to be transferred from another warehouse or shipped from another country or region. This may extend the estimated delivery time.</strong></p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 1600,
+            "alignment": "left",
+            "font_size": 14,
+            "text_color": "#000000",
+            "link_color": "#0070ca",
+            "background_color": "#ffffff",
+            "padding_vertical": 25,
+            "padding_horizontal": 25,
+            "mobile_padding_vertical": 20,
+            "mobile_padding_horizontal": 15
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_d149a36_qiiDEK": {
+          "type": "ai_gen_block_d149a36",
+          "name": "Refund policy content",
+          "settings": {
+            "eyebrow": "",
+            "title": "",
+            "policy_content": "<h2>4. Where Does GKU Ship?</h2><p>GKU ships to supported countries and regions worldwide, subject to product availability, local delivery services, and checkout eligibility.</p><p>Shipping availability may vary by product. The most accurate way to confirm whether we can ship a specific GKU product to your address is to enter your delivery information during checkout.</p><p>Orders may be fulfilled from different warehouses depending on your destination and available inventory.</p><h2>5. Local Warehouse Fulfillment</h2><p>Whenever possible, GKU may fulfill orders from a local or regional warehouse to provide faster and more efficient delivery.</p><p>Warehouse selection is determined automatically based on factors including:</p><ul><li>Delivery destination</li><li>Product availability</li><li>Inventory levels</li><li>Logistics capacity</li><li>Shipping method</li></ul><p>Customers generally cannot manually select a fulfillment warehouse.</p><p>If the product you ordered is unavailable at the nearest warehouse, GKU may arrange fulfillment from another available warehouse or shipping origin. This may result in a longer delivery time.</p><h2>6. International Shipping, Customs & Import Duties</h2><p>International orders may be subject to customs procedures, import duties, taxes, or other charges depending on the destination country or region.</p><p>Where <strong>DDP (Delivered Duty Paid)</strong> shipping is available and selected or included for an eligible order, applicable import duties and taxes are generally handled as part of the shipping arrangement.</p><p>Where DDP is not available, the recipient may be responsible for applicable customs duties, import taxes, clearance fees, or other charges required by local authorities.</p><p>DDP availability may vary depending on the destination, product, shipping method, and current logistics services.</p><p>Any applicable charges or shipping options presented at checkout should be reviewed before completing your purchase.</p><h2>7. Southeast Asia Shipping</h2><p>GKU supports delivery to selected Southeast Asian markets where logistics services are available.</p><p>Depending on the destination and product, shipping may be available to markets such as:</p><ul><li>Singapore</li><li>Malaysia</li><li>Thailand</li><li>Indonesia</li><li>Philippines</li><li>Vietnam</li></ul><p>Available shipping methods, delivery times, and DDP availability may vary by destination and are subject to the options displayed at checkout.</p><p>If your country or region is not currently available for a specific product, please contact GKU Support before placing your order.</p><h2>8. Estimated Delivery Times</h2><p>Estimated delivery times begin <strong>after your order has been processed and shipped</strong>.</p><p>Typical delivery estimates are:</p><p><strong>Express Shipping:</strong> 3–7 business days<br/><strong>Standard Shipping:</strong> 5–10 business days</p><p>These timeframes are estimates rather than guaranteed delivery dates.</p><p>Delivery may be affected by factors outside GKU's reasonable control, including:</p><ul><li>Customs inspections</li><li>Severe weather</li><li>Carrier disruptions</li><li>Public holidays</li><li>Peak shopping seasons</li><li>Remote delivery locations</li><li>Incorrect or incomplete delivery information</li><li>International logistics disruptions</li></ul><h2>9. Order Tracking</h2><p>Once your order has shipped, GKU will send a shipping confirmation email with available tracking information.</p><p>Tracking information may take some time to become active after the carrier receives the shipment.</p><p>If your tracking information has not updated for several business days, please contact GKU Support and provide:</p><ul><li>Your order number</li><li>Your name</li><li>Your tracking number</li></ul><p>Our support team will help review the shipment status where possible.</p><h2>10. Incorrect or Incomplete Shipping Address</h2><p>Customers are responsible for providing a complete and accurate shipping address when placing an order.</p><p>Please carefully check your:</p><ul><li>Recipient name</li><li>Street address</li><li>Apartment or unit number</li><li>City</li><li>State or province</li><li>Postal or ZIP code</li><li>Country</li><li>Telephone number</li></ul><p>If you notice an error after placing your order, contact GKU Support as soon as possible.</p><p>We cannot guarantee that an address can be changed after an order has entered processing or has already shipped.</p><p>If a shipment is returned because of an incorrect, incomplete, or undeliverable address provided by the customer, additional shipping charges may apply before the order can be shipped again.</p><h2>11. Delayed Shipments</h2><p>Carrier delays may occasionally occur because of weather, customs inspections, peak periods, transportation disruptions, or other circumstances outside our reasonable control.</p><p>If your tracking information has not updated for several business days or your order is significantly beyond the estimated delivery window, please contact GKU Support.</p><p>We will review the available tracking information and, where appropriate, assist with a carrier inquiry.</p><h2>12. Tracking Shows Delivered, but I Cannot Find My Package</h2><p>If tracking shows that your package has been delivered but you cannot locate it, please first:</p><ol><li>Check around the delivery location, including entrances, mailrooms, reception areas, garages, and other safe locations.</li><li>Ask household members, neighbors, building staff, or reception personnel whether they accepted the package.</li><li>Check the tracking information for delivery notes or proof of delivery.</li><li>Contact the carrier for additional delivery details.</li></ol><p>Carriers may occasionally mark a shipment as delivered shortly before the final delivery is completed.</p><p>If the package is still missing after <strong>24 hours</strong>, contact GKU Support with your order number and tracking number. We will review the available delivery information and assist with a carrier inquiry where appropriate.</p><h2>13. Lost Packages</h2><p>If a shipment appears to have been lost in transit, please contact GKU Support.</p><p>We will review the tracking information and may open an investigation with the shipping carrier.</p><p>Depending on the circumstances and investigation results, GKU will provide an appropriate resolution in accordance with applicable policies and consumer protection laws.</p><h2>14. Damaged Packages</h2><p>If your order arrives damaged, please contact GKU Support as soon as reasonably possible.</p><p>To help us review the issue, please provide:</p><ul><li>Your order number</li><li>Photos of the outer shipping package</li><li>Photos of the shipping label</li><li>Photos or video showing the damaged product</li><li>A brief description of the damage</li></ul><p>Please keep the original packaging until the case has been reviewed.</p><p>Our support team will provide the appropriate next steps based on the circumstances.</p><h2>15. Split Shipments</h2><p>Orders containing multiple products may occasionally be shipped separately because items are stored in different warehouses or require different logistics arrangements.</p><p>If your order is divided into multiple shipments, you may receive separate tracking numbers.</p><p>Receiving one package does not necessarily mean that the remaining items in your order are missing.</p><h2>16. Order Changes & Cancellations</h2><p>If you need to change or cancel an order, please contact GKU Support as soon as possible.</p><p>We will try to accommodate your request if the order has not yet been processed or shipped.</p><p>Once an order has entered fulfillment or has been handed to the carrier, we may be unable to change the shipping address or cancel the shipment.</p><p>If you no longer need the product after it has shipped, please refer to the <strong>GKU Return & Refund Policy</strong> after delivery.</p><h2>17. Shipping Restrictions</h2><p>Certain products, destinations, remote areas, or address types may be subject to shipping restrictions.</p><p>Available shipping services may also change depending on carrier availability, customs regulations, inventory, or other logistics conditions.</p><p>If no shipping option appears at checkout for your address, please contact GKU Support for assistance.</p><h2>18. Contact GKU Support</h2><p>If you have questions about shipping, tracking, delivery times, or an existing order, please contact:</p><p><strong>Email:</strong> support@gkutech.com<br/><strong>WhatsApp:</strong> +86 147 7631 5502<br/><strong>Customer Support:</strong> Monday–Friday, 9:30 –22:00  (BJT / UTC+8)</p><p>When contacting us about an existing order, please include your <strong>order number</strong> so we can assist you more efficiently.</p>",
+            "desktop_width_percent": 100,
+            "content_max_width": 1400,
+            "heading_size": 48,
+            "body_size": 14,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_horizontal": 25,
+            "mobile_padding_top": 40,
+            "mobile_padding_bottom": 40,
+            "mobile_padding_horizontal": 20,
+            "background_color": "#FFFFFF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "accent_color": "#016D8E",
+            "link_color": "#016D8E"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "group_LFJFPp",
-        "group_MgAafC",
-        "group_VpwNeK"
+        "ai_gen_block_d149a36_J7bHth",
+        "ai_gen_block_22dbe0b_agdbbp",
+        "ai_gen_block_96c4908_M8T8p8",
+        "ai_gen_block_22dbe0b_q6feXr",
+        "ai_gen_block_96c4908_3T4ng8",
+        "ai_gen_block_d149a36_qiiDEK"
       ],
-      "name": "t:names.multicolumn",
+      "name": "Refund policy content",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
-        "vertical_alignment": "flex-start",
+        "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
+        "gap": 12,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
@@ -387,8 +226,8 @@
         "border_opacity": 100,
         "border_color": "",
         "border_radius": 0,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "xtu_social_links_774P97": {
@@ -397,41 +236,51 @@
         "item_6WefVK": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/fb_51205da8-69ee-4a2e-8f34-84f914b66fca.png",
+            "logo": "shopify://shop_images/fb.png",
             "icon_background": "{{ settings.color_palette.background }}",
             "name": "Facebook",
-            "text": "xtucam",
-            "link": "https://www.facebook.com/xtucam"
+            "text": "@gkutech",
+            "link": "https://www.facebook.com/gkutech"
           }
         },
         "item_Ctafyp": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/ig_8a278f99-dd0c-4b99-9088-195075b514ed.png",
-            "icon_background": "#e1306c",
+            "logo": "shopify://shop_images/ig_4431bb34-14f3-4564-b505-24ee01553790.png",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "Instagram",
-            "text": "@xtucam_official",
-            "link": "https://www.instagram.com/xtucam_official/"
+            "text": "@gku_dashcam",
+            "link": "https://www.instagram.com/gku_dashcam/"
           }
         },
         "item_HY6WPd": {
           "type": "item",
           "settings": {
             "logo": "shopify://shop_images/images.jpg",
-            "icon_background": "#ff0000",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "YouTube",
-            "text": "XTUCAM",
-            "link": "https://www.youtube.com/@XTUCAM"
+            "text": "@gku_dashcam",
+            "link": "https://www.youtube.com/@gku_dashcam"
           }
         },
         "item_yjpWDr": {
           "type": "item",
           "settings": {
-            "logo": "shopify://shop_images/images.png",
-            "icon_background": "#111111",
+            "logo": "shopify://shop_images/images_40dcc5f6-aa75-4ee5-9faf-56e7d2b3d7bd.png",
+            "icon_background": "{{ settings.color_palette.background }}",
             "name": "TikTok",
-            "text": "xtucam_shop",
-            "link": "https://www.tiktok.com/@xtucam_shop"
+            "text": "@gkudashcam_shop",
+            "link": "https://www.tiktok.com/@gkudashcam_shop"
+          }
+        },
+        "item_Ry6RNN": {
+          "type": "item",
+          "settings": {
+            "logo": "shopify://shop_images/X_logo_2023__white.png",
+            "icon_background": "{{ settings.color_palette.foreground }}",
+            "name": "X",
+            "text": "@GKU_dashcam",
+            "link": "https://x.com/GKU_dashcam"
           }
         }
       },
@@ -439,7 +288,8 @@
         "item_6WefVK",
         "item_Ctafyp",
         "item_HY6WPd",
-        "item_yjpWDr"
+        "item_yjpWDr",
+        "item_Ry6RNN"
       ],
       "name": "XTU Social Links",
       "settings": {
@@ -449,8 +299,8 @@
         "icon_radius": 16,
         "gap": 24,
         "gap_mobile": 16,
-        "background_color": "#FFFFFF",
-        "content_background": "#FFFFFF",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
         "heading_color": "#000000",
         "name_color": "#000000",
         "text_color": "#333333",
@@ -464,7 +314,7 @@
   },
   "order": [
     "main",
-    "section_RhaNRc",
+    "blocks_jnMGBC",
     "xtu_social_links_774P97"
   ]
 }

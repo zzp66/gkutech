@@ -16,14 +16,14 @@
           "type": "blog_category",
           "settings": {
             "blog": "guides",
-            "label": ""
+            "label": "Buying Guides"
           }
         },
         "blog_news": {
           "type": "blog_category",
           "settings": {
-            "blog": "news",
-            "label": ""
+            "blog": "gku-news-insights",
+            "label": "Latest News"
           }
         },
         "blog_review": {
@@ -41,7 +41,7 @@
         "blog_review"
       ],
       "settings": {
-        "heading": "XTU's Blog",
+        "heading": "GKU's Blog",
         "show_blog_tabs": true,
         "show_tag_filter": true,
         "tag_filter_heading": "Filter by tag",
