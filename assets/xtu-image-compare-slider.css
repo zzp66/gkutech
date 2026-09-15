@@ -61,15 +61,11 @@
   touch-action: none;
 }
 
-.xtu-ics--ratio-auto .xtu-ics__stage {
-  aspect-ratio: auto;
-}
-
-.xtu-ics--ratio-auto .xtu-ics__stage[data-ratio-ready='true'] .xtu-ics__img--desktop,
-.xtu-ics--ratio-auto .xtu-ics__stage[data-ratio-ready='true'] .xtu-ics__placeholder {
-  height: auto;
-  aspect-ratio: var(--xtu-ics-ratio-auto, 16 / 9);
-}
+/*
+  Auto ratio: media layers are absolute, so stage MUST keep a real aspect-ratio
+  (from Liquid image.aspect_ratio / JS natural size). Never use aspect-ratio:auto
+  here — height collapses to 0 and images disappear.
+*/
 
 .xtu-ics__media {
   position: absolute;
@@ -94,6 +90,11 @@
   pointer-events: none;
   -webkit-user-drag: none;
   user-select: none;
+}
+
+.xtu-ics--ratio-auto .xtu-ics__img,
+.xtu-ics--ratio-auto .xtu-ics__placeholder {
+  object-fit: contain;
 }
 
 .xtu-ics__img--mobile {
@@ -205,6 +206,10 @@
 
   .xtu-ics__heading {
     font-size: var(--xtu-type-section-title-m);
+  }
+
+  .xtu-ics--ratio-auto .xtu-ics__stage {
+    aspect-ratio: var(--xtu-ics-ratio-mobile, var(--xtu-ics-ratio, 16 / 9));
   }
 
   .xtu-ics__media--split .xtu-ics__img--desktop {
