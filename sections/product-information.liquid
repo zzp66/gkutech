@@ -27,6 +27,26 @@
 {% render 'deferred-media-product-model-styles' %}
 {% render 'deferred-media-video-styles' %}
 
+{% liquid
+  assign xtu_atc_bg = section.settings.atc_bg | default: settings.xtu_atc_bg | default: '#1590F2'
+  assign xtu_atc_color = section.settings.atc_color | default: settings.xtu_atc_color | default: '#FFFFFF'
+  assign xtu_atc_bg_hover = section.settings.atc_bg_hover | default: settings.xtu_atc_bg_hover | default: '#0070CA'
+  assign xtu_atc_color_hover = section.settings.atc_color_hover | default: settings.xtu_atc_color_hover | default: '#FFFFFF'
+  assign xtu_atc_bg_disabled = section.settings.atc_bg_disabled | default: settings.xtu_atc_bg_disabled | default: '#E8E8ED'
+  assign xtu_atc_color_disabled = section.settings.atc_color_disabled | default: settings.xtu_atc_color_disabled | default: '#8E8E93'
+%}
+{% style %}
+  body:has(.xtu-product-pdp),
+  .xtu-product-pdp {
+    --xtu-atc-bg: {{ xtu_atc_bg }};
+    --xtu-atc-color: {{ xtu_atc_color }};
+    --xtu-atc-bg-hover: {{ xtu_atc_bg_hover }};
+    --xtu-atc-color-hover: {{ xtu_atc_color_hover }};
+    --xtu-atc-bg-disabled: {{ xtu_atc_bg_disabled }};
+    --xtu-atc-color-disabled: {{ xtu_atc_color_disabled }};
+  }
+{% endstyle %}
+
 {% if section.settings.enable_sticky_add_to_cart %}
   {% render 'fly-to-cart-styles' %}
 
@@ -444,21 +464,21 @@
   }
 
   body:has(.xtu-product-pdp) .sticky-add-to-cart__button {
-    --button-background-color: #1590f2;
-    --button-color: #ffffff;
+    --button-background-color: var(--xtu-atc-bg, #1590f2);
+    --button-color: var(--xtu-atc-color, #ffffff);
     --button-border-color: transparent;
-    --color-primary-button-background: #1590f2;
-    --color-primary-button-text: #ffffff;
+    --color-primary-button-background: var(--xtu-atc-bg, #1590f2);
+    --color-primary-button-text: var(--xtu-atc-color, #ffffff);
     --color-primary-button-border: transparent;
-    --color-primary-button-hover-background: #0070ca;
-    --color-primary-button-hover-text: #ffffff;
+    --color-primary-button-hover-background: var(--xtu-atc-bg-hover, #0070ca);
+    --color-primary-button-hover-text: var(--xtu-atc-color-hover, #ffffff);
     --color-primary-button-hover-border: transparent;
     min-width: 160px;
     border-radius: 999px;
     font-weight: 600;
     line-height: 1.2;
-    background-color: #1590f2;
-    color: #ffffff;
+    background-color: var(--xtu-atc-bg, #1590f2);
+    color: var(--xtu-atc-color, #ffffff);
     border-color: transparent;
     transition:
       color 0.25s ease,
@@ -470,12 +490,12 @@
 
   @media (hover: hover) and (pointer: fine) {
     body:has(.xtu-product-pdp) .sticky-add-to-cart__button:hover:not(:disabled) {
-      --button-background-color: #0070ca;
-      --button-color: #ffffff;
+      --button-background-color: var(--xtu-atc-bg-hover, #0070ca);
+      --button-color: var(--xtu-atc-color-hover, #ffffff);
       --button-border-color: transparent;
-      background-color: #0070ca;
-      color: #ffffff;
-      box-shadow: 0 6px 18px rgb(0 112 202 / 0.35);
+      background-color: var(--xtu-atc-bg-hover, #0070ca);
+      color: var(--xtu-atc-color-hover, #ffffff);
+      box-shadow: 0 6px 18px color-mix(in srgb, var(--xtu-atc-bg-hover, #0070ca) 35%, transparent);
       transform: translateY(-1px);
     }
 
@@ -599,6 +619,50 @@
       "id": "background_color",
       "label": "t:settings.background_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "加购按钮颜色"
+    },
+    {
+      "type": "paragraph",
+      "content": "覆盖主题设置「XTU 通用颜色 → 加购按钮」。作用于详情区 Add to cart 与吸底加购栏。留空则用主题默认。"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg",
+      "label": "背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "atc_color",
+      "label": "文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg_hover",
+      "label": "Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "atc_color_hover",
+      "label": "Hover 文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg_disabled",
+      "label": "不可用背景色",
+      "default": "#E8E8ED"
+    },
+    {
+      "type": "color",
+      "id": "atc_color_disabled",
+      "label": "不可用文字色",
+      "default": "#8E8E93"
     },
     {
       "type": "header",

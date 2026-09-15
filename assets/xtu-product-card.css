@@ -322,8 +322,8 @@
   border: 0;
   border-radius: 999px;
   box-sizing: border-box;
-  background: #1590f2;
-  color: #fff;
+  background: var(--xtu-atc-bg, #1590f2);
+  color: var(--xtu-atc-color, #fff);
   font-family: var(--font-body--family);
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 600;
@@ -340,20 +340,21 @@
 
 @media (hover: hover) and (pointer: fine) {
   .xtu-collection-card__cta:not(.xtu-collection-card__cta--disabled):hover {
-    background: #0070ca;
+    background: var(--xtu-atc-bg-hover, #0070ca);
+    color: var(--xtu-atc-color-hover, #fff);
     transform: translateY(-1px);
   }
 }
 
 .xtu-collection-card__cta:focus-visible {
-  outline: 2px solid #0070ca;
+  outline: 2px solid var(--xtu-atc-bg-hover, #0070ca);
   outline-offset: 2px;
 }
 
 .xtu-collection-card__cta--disabled,
 .xtu-collection-card__cta:disabled {
-  background: #e8e8ed;
-  color: #8e8e93;
+  background: var(--xtu-atc-bg-disabled, #e8e8ed);
+  color: var(--xtu-atc-color-disabled, #8e8e93);
   cursor: not-allowed;
   transform: none;
   pointer-events: none;

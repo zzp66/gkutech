@@ -106,6 +106,50 @@
       },
       {
         "type": "header",
+        "content": "加购按钮"
+      },
+      {
+        "type": "paragraph",
+        "content": "集合页产品卡 CTA、产品详情页 Add to cart、吸底加购栏。PDP 的 Product Information / Add to cart 块可再覆盖。"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_bg",
+        "label": "背景色",
+        "default": "#1590F2"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_color",
+        "label": "文字色",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_bg_hover",
+        "label": "Hover 背景色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_color_hover",
+        "label": "Hover 文字色",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_bg_disabled",
+        "label": "不可用背景色",
+        "default": "#E8E8ED"
+      },
+      {
+        "type": "color",
+        "id": "xtu_atc_color_disabled",
+        "label": "不可用文字色",
+        "default": "#8E8E93"
+      },
+      {
+        "type": "header",
         "content": "轮播箭头 · 浅底"
       },
       {

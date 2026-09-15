@@ -681,22 +681,22 @@
 
 .xtu-product-pdp .product-details .product-form-buttons .button:not(.quantity-minus):not(.quantity-plus),
 .xtu-product-pdp .product-details .add-to-cart-button {
-  --button-background-color: #1590f2;
-  --button-color: #ffffff;
+  --button-background-color: var(--xtu-atc-bg, #1590f2);
+  --button-color: var(--xtu-atc-color, #ffffff);
   --button-border-color: transparent;
-  --color-primary-button-background: #1590f2;
-  --color-primary-button-text: #ffffff;
+  --color-primary-button-background: var(--xtu-atc-bg, #1590f2);
+  --color-primary-button-text: var(--xtu-atc-color, #ffffff);
   --color-primary-button-border: transparent;
-  --color-primary-button-hover-background: #0070ca;
-  --color-primary-button-hover-text: #ffffff;
+  --color-primary-button-hover-background: var(--xtu-atc-bg-hover, #0070ca);
+  --color-primary-button-hover-text: var(--xtu-atc-color-hover, #ffffff);
   --color-primary-button-hover-border: transparent;
   min-height: 48px;
   border-radius: 999px;
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 600;
   line-height: 1.2;
-  background-color: #1590f2;
-  color: #ffffff;
+  background-color: var(--xtu-atc-bg, #1590f2);
+  color: var(--xtu-atc-color, #ffffff);
   border-color: transparent;
   overflow: visible;
   transition:
@@ -712,17 +712,24 @@
 }
 
 .xtu-product-pdp .product-details .add-to-cart-button[data-added='true'] .add-to-cart__added {
-  color: #ffffff;
+  color: var(--xtu-atc-color, #ffffff);
+}
+
+.xtu-product-pdp .product-details .add-to-cart-button:disabled {
+  background-color: var(--xtu-atc-bg-disabled, #e8e8ed);
+  color: var(--xtu-atc-color-disabled, #8e8e93);
+  box-shadow: none;
+  transform: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .xtu-product-pdp .product-details .add-to-cart-button:hover:not(:disabled) {
-    --button-background-color: #0070ca;
-    --button-color: #ffffff;
+    --button-background-color: var(--xtu-atc-bg-hover, #0070ca);
+    --button-color: var(--xtu-atc-color-hover, #ffffff);
     --button-border-color: transparent;
-    background-color: #0070ca;
-    color: #ffffff;
-    box-shadow: 0 6px 18px rgb(0 112 202 / 0.35);
+    background-color: var(--xtu-atc-bg-hover, #0070ca);
+    color: var(--xtu-atc-color-hover, #ffffff);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--xtu-atc-bg-hover, #0070ca) 35%, transparent);
     transform: translateY(-1px);
   }
 

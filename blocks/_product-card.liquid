@@ -42,7 +42,19 @@
   {% endif %}
   {% content_for 'blocks', closest.product: product %}
   {% if xtu_plp_card %}
-    {% render 'xtu-collection-card-cta', product: product, section_id: section.id %}
+    <div
+      class="xtu-collection-card__cta-wrap"
+      style="
+        --xtu-atc-bg: {{ block.settings.atc_bg | default: settings.xtu_atc_bg | default: '#1590F2' }};
+        --xtu-atc-color: {{ block.settings.atc_color | default: settings.xtu_atc_color | default: '#FFFFFF' }};
+        --xtu-atc-bg-hover: {{ block.settings.atc_bg_hover | default: settings.xtu_atc_bg_hover | default: '#0070CA' }};
+        --xtu-atc-color-hover: {{ block.settings.atc_color_hover | default: settings.xtu_atc_color_hover | default: '#FFFFFF' }};
+        --xtu-atc-bg-disabled: {{ block.settings.atc_bg_disabled | default: settings.xtu_atc_bg_disabled | default: '#E8E8ED' }};
+        --xtu-atc-color-disabled: {{ block.settings.atc_color_disabled | default: settings.xtu_atc_color_disabled | default: '#8E8E93' }};
+      "
+    >
+      {% render 'xtu-collection-card-cta', product: product, section_id: section.id %}
+    </div>
   {% endif %}
 {% endcapture %}
 
@@ -122,6 +134,50 @@
       "id": "background_color",
       "label": "t:settings.background_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "加购按钮颜色"
+    },
+    {
+      "type": "paragraph",
+      "content": "集合页 / 搜索 / 推荐产品卡底部 CTA。默认跟随主题「XTU 通用颜色 → 加购按钮」。"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg",
+      "label": "背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "atc_color",
+      "label": "文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg_hover",
+      "label": "Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "atc_color_hover",
+      "label": "Hover 文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "atc_bg_disabled",
+      "label": "不可用背景色",
+      "default": "#E8E8ED"
+    },
+    {
+      "type": "color",
+      "id": "atc_color_disabled",
+      "label": "不可用文字色",
+      "default": "#8E8E93"
     },
     {
       "type": "header",
