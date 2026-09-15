@@ -6,6 +6,10 @@
   @param {boolean} [show_button_arrow] - Show chevron on CTA
   @param {string} [date_format] - Liquid date format for published_at
   @param {boolean} [show_author] - Show author name (default true)
+  @param {string} [button_bg] - CTA background
+  @param {string} [button_color] - CTA text color
+  @param {string} [button_bg_hover] - CTA hover background
+  @param {string} [button_color_hover] - CTA hover text color
 {% enddoc %}
 
 {% liquid
@@ -15,6 +19,10 @@
   if card_show_author == nil
     assign card_show_author = true
   endif
+  assign card_button_bg = button_bg | default: settings.xtu_btn_bg | default: '#1590F2'
+  assign card_button_color = button_color | default: settings.xtu_btn_color | default: '#FFFFFF'
+  assign card_button_bg_hover = button_bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+  assign card_button_color_hover = button_color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
 
   assign excerpt_text = article.excerpt | strip_html
   if excerpt_text == blank
@@ -69,10 +77,10 @@
         href: article.url,
         size: 'sm',
         show_arrow: show_button_arrow,
-        bg: '#1590F2',
-        color: '#FFFFFF',
-        bg_hover: '#0070CA',
-        color_hover: '#FFFFFF'
+        bg: card_button_bg,
+        color: card_button_color,
+        bg_hover: card_button_bg_hover,
+        color_hover: card_button_color_hover
       %}
     </div>
   </div>

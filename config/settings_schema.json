@@ -70,6 +70,95 @@
     ]
   },
   {
+    "name": "XTU 通用颜色",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "全站共用组件的默认颜色。Section / Header 内单独配置会覆盖此处。"
+      },
+      {
+        "type": "header",
+        "content": "胶囊按钮"
+      },
+      {
+        "type": "color",
+        "id": "xtu_btn_bg",
+        "label": "背景色",
+        "default": "#1590F2"
+      },
+      {
+        "type": "color",
+        "id": "xtu_btn_color",
+        "label": "文字色",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "xtu_btn_bg_hover",
+        "label": "Hover 背景色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "xtu_btn_color_hover",
+        "label": "Hover 文字色",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "轮播箭头 · 浅底"
+      },
+      {
+        "type": "paragraph",
+        "content": "用于营销区块标题栏左右箭头（on-light）。"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_on_light_bg",
+        "label": "背景色",
+        "default": "#F0F0F0"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_on_light_color",
+        "label": "图标色",
+        "default": "#111827"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_on_light_bg_hover",
+        "label": "Hover 背景色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_on_light_color_hover",
+        "label": "Hover 图标色",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "轮播箭头 · 深底"
+      },
+      {
+        "type": "paragraph",
+        "content": "用于 Hero 等深色叠层箭头的 Hover 态。"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_bg_hover",
+        "label": "Hover 背景色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "xtu_swiper_nav_color_hover",
+        "label": "Hover 图标色",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
     "name": "t:names.typography",
     "settings": [
       {

@@ -7,12 +7,20 @@
   @param {boolean} [eager_loading] - Section Rendering API second pass
   @param {number} [image_border_radius] - Product card corner radius
   @param {string} [variant] - 'desktop' (default) or 'drawer'
+  @param {string} [button_bg] - View More button background
+  @param {string} [button_color] - View More button text
+  @param {string} [button_bg_hover] - View More hover background
+  @param {string} [button_color_hover] - View More hover text
 {%- enddoc -%}
 
 {% liquid
   assign panel_variant = variant | default: 'desktop'
   assign eager_loading = eager_loading | default: false
   assign image_border_radius = image_border_radius | default: 8
+  assign mega_btn_bg = button_bg | default: settings.xtu_btn_bg | default: '#1590F2'
+  assign mega_btn_color = button_color | default: settings.xtu_btn_color | default: '#FFFFFF'
+  assign mega_btn_bg_hover = button_bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+  assign mega_btn_color_hover = button_color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
 
   capture xtu_mega_mode
     render 'xtu-mega-menu-detect-mode', parent_link: parent_link
@@ -33,7 +41,11 @@
         section: section,
         eager_loading: eager_loading,
         image_border_radius: image_border_radius,
-        variant: panel_variant
+        variant: panel_variant,
+        button_bg: mega_btn_bg,
+        button_color: mega_btn_color,
+        button_bg_hover: mega_btn_bg_hover,
+        button_color_hover: mega_btn_color_hover
       %}
     {% when 'featured' %}
       {% render 'xtu-mega-menu-featured',

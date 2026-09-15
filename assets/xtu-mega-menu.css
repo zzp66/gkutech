@@ -302,7 +302,7 @@
 }
 
 .menu-drawer details[open] > summary.menu-drawer__menu-item--mainlist {
-  color: #0070ca;
+  color: var(--xtu-mega-tab-accent, #0070ca);
 }
 
 .menu-drawer .menu-drawer__menu-item--mainlist .menu-drawer__accordion-icon,
@@ -454,8 +454,8 @@
 
 .xtu-mega-menu__tab:hover,
 .xtu-mega-menu__tab.is-active {
-  background: rgb(0 112 202 / 0.08);
-  color: #0070ca;
+  background: color-mix(in srgb, var(--xtu-mega-tab-accent, #0070ca) 8%, transparent);
+  color: var(--xtu-mega-tab-accent, #0070ca);
   font-weight: 600;
 }
 
@@ -638,11 +638,11 @@
 }
 
 .xtu-mega-menu__text-link:hover {
-  color: #0070ca;
+  color: var(--xtu-mega-link-hover, var(--xtu-mega-tab-accent, #0070ca));
 }
 
 .xtu-mega-menu__text-link.is-current {
-  color: #0070ca;
+  color: var(--xtu-mega-link-hover, var(--xtu-mega-tab-accent, #0070ca));
   font-weight: 600;
 }
 
@@ -791,8 +791,8 @@
 }
 
 .xtu-mega-menu--drawer .xtu-mega-menu__tab.is-active {
-  background: #0070ca;
-  color: #fff;
+  background: var(--xtu-mega-tab-accent, #0070ca);
+  color: var(--xtu-mega-tab-color-on-accent, #fff);
 }
 
 .xtu-mega-menu--drawer .xtu-mega-menu__products {
@@ -840,8 +840,8 @@
   }
 
   .xtu-mega-menu__tab.is-active {
-    background: #0070ca;
-    color: #fff;
+    background: var(--xtu-mega-tab-accent, #0070ca);
+    color: var(--xtu-mega-tab-color-on-accent, #fff);
   }
 
   .xtu-mega-menu--products .xtu-mega-menu__products {

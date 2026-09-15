@@ -19,6 +19,10 @@
   endif
   assign max_featured_items = 4
   assign image_border_radius = block_settings.image_border_radius
+  assign mega_btn_bg = block_settings.xtu_mega_btn_bg
+  assign mega_btn_color = block_settings.xtu_mega_btn_color
+  assign mega_btn_bg_hover = block_settings.xtu_mega_btn_bg_hover
+  assign mega_btn_color_hover = block_settings.xtu_mega_btn_color_hover
 
   if block_settings.menu_style == 'featured_collections'
     assign ratio = block_settings.featured_collections_aspect_ratio
@@ -155,7 +159,11 @@
                           section: section,
                           eager_loading: eager_loading,
                           image_border_radius: image_border_radius,
-                          variant: 'drawer'
+                          variant: 'drawer',
+                          button_bg: mega_btn_bg,
+                          button_color: mega_btn_color,
+                          button_bg_hover: mega_btn_bg_hover,
+                          button_color_hover: mega_btn_color_hover
                         %}
                       {% else %}
                       {% liquid
@@ -228,7 +236,11 @@
                       section: section,
                       eager_loading: eager_loading,
                       image_border_radius: image_border_radius,
-                      variant: 'drawer'
+                      variant: 'drawer',
+                      button_bg: mega_btn_bg,
+                      button_color: mega_btn_color,
+                      button_bg_hover: mega_btn_bg_hover,
+                      button_color_hover: mega_btn_color_hover
                     %}
                   {% else %}
                   {% liquid
@@ -355,7 +367,11 @@
                             section: section,
                             eager_loading: eager_loading,
                             image_border_radius: image_border_radius,
-                            variant: 'drawer'
+                            variant: 'drawer',
+                            button_bg: mega_btn_bg,
+                            button_color: mega_btn_color,
+                            button_bg_hover: mega_btn_bg_hover,
+                            button_color_hover: mega_btn_color_hover
                           %}
                         {% else %}
                         {% liquid

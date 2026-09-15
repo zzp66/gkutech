@@ -9,6 +9,10 @@
 {% liquid
   assign block_settings = block.settings
   assign effective_submenu_color = block_settings.background_color | default: settings.page_background_color
+  assign use_xtu_mega = false
+  if block_settings.menu_style == 'xtu_auto'
+    assign use_xtu_mega = true
+  endif
 %}
 
 {% case variant %}
@@ -170,7 +174,11 @@
                       section: section,
                       eager_loading: eager_loading,
                       image_border_radius: image_border_radius,
-                      variant: 'desktop'
+                      variant: 'desktop',
+                      button_bg: block_settings.xtu_mega_btn_bg,
+                      button_color: block_settings.xtu_mega_btn_color,
+                      button_bg_hover: block_settings.xtu_mega_btn_bg_hover,
+                      button_color_hover: block_settings.xtu_mega_btn_color_hover
                     %}
                   {% else %}
                     <div
@@ -267,6 +275,15 @@
   .header__underlay {
     --color-submenu: rgb({{effective_submenu_color.rgb}});
   }
+
+  {% if use_xtu_mega %}
+    #header-component,
+    .menu-drawer {
+      --xtu-mega-tab-accent: {{ block_settings.xtu_mega_tab_accent | default: '#0070CA' }};
+      --xtu-mega-tab-color-on-accent: {{ block_settings.xtu_mega_tab_color_on_accent | default: '#FFFFFF' }};
+      --xtu-mega-link-hover: {{ block_settings.xtu_mega_link_hover | default: '#0070CA' }};
+    }
+  {% endif %}
 {% endstyle %}
 {% stylesheet %}
   .header__drawer {
@@ -1047,6 +1064,62 @@
         }
       ],
       "default": "xtu_auto"
+    },
+    {
+      "type": "header",
+      "content": "XTU 超级菜单颜色",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_tab_accent",
+      "label": "Tab 激活强调色",
+      "info": "桌面：文字色 + 浅底；移动端/抽屉：实心背景",
+      "default": "#0070CA",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_tab_color_on_accent",
+      "label": "胶囊 Tab 激活文字色",
+      "info": "移动端/抽屉实心 Tab 上的文字色",
+      "default": "#FFFFFF",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_link_hover",
+      "label": "文字链接 Hover / 当前色",
+      "default": "#0070CA",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_btn_bg",
+      "label": "View More 背景色",
+      "default": "#1590F2",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_btn_color",
+      "label": "View More 文字色",
+      "default": "#FFFFFF",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_btn_bg_hover",
+      "label": "View More Hover 背景色",
+      "default": "#0070CA",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
+    },
+    {
+      "type": "color",
+      "id": "xtu_mega_btn_color_hover",
+      "label": "View More Hover 文字色",
+      "default": "#FFFFFF",
+      "visible_if": "{{ block.settings.menu_style == 'xtu_auto' }}"
     },
     {
       "type": "select",

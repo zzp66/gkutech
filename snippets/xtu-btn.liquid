@@ -4,7 +4,7 @@
   @param {string} label - Button label (required)
   @param {string} [href] - Destination URL (renders as <a>; blank uses #)
   @param {boolean} [show_arrow] - Show trailing chevron icon (default false)
-  @param {string} [bg] - Background color
+  @param {string} [bg] - Background color (falls back to Theme settings → XTU 通用颜色)
   @param {string} [color] - Text color
   @param {string} [bg_hover] - Hover background color
   @param {string} [color_hover] - Hover text color
@@ -28,10 +28,10 @@
 {% if label != blank %}
   {% liquid
     assign btn_href = href | default: '#'
-    assign btn_bg = bg | default: '#1590F2'
-    assign btn_color = color | default: '#FFFFFF'
-    assign btn_bg_hover = bg_hover | default: '#0070CA'
-    assign btn_color_hover = color_hover | default: '#FFFFFF'
+    assign btn_bg = bg | default: settings.xtu_btn_bg | default: '#1590F2'
+    assign btn_color = color | default: settings.xtu_btn_color | default: '#FFFFFF'
+    assign btn_bg_hover = bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+    assign btn_color_hover = color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
     assign btn_class = 'xtu-btn'
     if size == 'sm'
       assign btn_class = btn_class | append: ' xtu-btn--sm'

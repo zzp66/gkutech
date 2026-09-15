@@ -11,9 +11,7 @@
   --xtu-swiper-nav-size: 45px;
   --xtu-swiper-nav-icon-size: 18px;
   --xtu-swiper-nav-bg: rgb(255 255 255 / 0.14);
-  --xtu-swiper-nav-bg-hover: #0070ca;
   --xtu-swiper-nav-color: #fff;
-  --xtu-swiper-nav-color-hover: #fff;
   --xtu-swiper-nav-bg-disabled: rgb(156 163 175 / 0.45);
   --xtu-swiper-nav-color-disabled: rgb(255 255 255 / 0.55);
   /* inset 由父级 --xtu-swiper-nav-inset 控制；未设置时 prev/next 使用 fallback */
@@ -44,8 +42,8 @@
 }
 
 .xtu-swiper-nav:hover:not(.swiper-button-disabled):not(:disabled) {
-  background: var(--xtu-swiper-nav-bg-hover);
-  color: var(--xtu-swiper-nav-color-hover);
+  background: var(--xtu-swiper-nav-bg-hover, #0070ca);
+  color: var(--xtu-swiper-nav-color-hover, #fff);
 }
 
 .xtu-swiper-nav:focus-visible {
@@ -86,16 +84,16 @@
 
 /* 浅底区块标准态（以 Tab Product Slider 为准；勿在 section 内改色） */
 .xtu-swiper-nav--on-light {
-  --xtu-swiper-nav-bg: rgb(0 0 0 / 0.06);
-  --xtu-swiper-nav-bg-hover: #0070ca;
-  --xtu-swiper-nav-color: #111827;
-  --xtu-swiper-nav-color-hover: #fff;
-  --xtu-swiper-nav-bg-disabled: rgb(0 0 0 / 0.06);
+  --xtu-swiper-nav-bg: var(--xtu-swiper-nav-on-light-bg, #f0f0f0);
+  --xtu-swiper-nav-bg-hover: var(--xtu-swiper-nav-on-light-bg-hover, #0070ca);
+  --xtu-swiper-nav-color: var(--xtu-swiper-nav-on-light-color, #111827);
+  --xtu-swiper-nav-color-hover: var(--xtu-swiper-nav-on-light-color-hover, #fff);
+  --xtu-swiper-nav-bg-disabled: var(--xtu-swiper-nav-on-light-bg, #f0f0f0);
   --xtu-swiper-nav-color-disabled: rgb(0 0 0 / 0.28);
 }
 
 .xtu-swiper-nav--on-light:focus-visible {
-  outline-color: #111827;
+  outline-color: var(--xtu-swiper-nav-on-light-color, #111827);
 }
 
 /* 标题栏 / 工具栏内联摆放（非媒体叠层） */

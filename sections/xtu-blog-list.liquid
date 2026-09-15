@@ -30,6 +30,10 @@
   assign tab_color = section.settings.tab_color | default: '#4B5563'
   assign tab_bg_active = section.settings.tab_bg_active | default: '#0070CA'
   assign tab_color_active = section.settings.tab_color_active | default: '#FFFFFF'
+  assign button_bg = section.settings.button_bg | default: settings.xtu_btn_bg | default: '#1590F2'
+  assign button_color = section.settings.button_color | default: settings.xtu_btn_color | default: '#FFFFFF'
+  assign button_bg_hover = section.settings.button_bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+  assign button_color_hover = section.settings.button_color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
   assign card_background = section.settings.card_background | default: '#FFFFFF'
   assign border_color = section.settings.border_color | default: '#E5E7EB'
   assign placeholder_bg = section.settings.placeholder_bg | default: '#F5F5F7'
@@ -172,7 +176,11 @@
                   button_label: button_label,
                   show_button_arrow: show_button_arrow,
                   show_author: show_author,
-                  date_format: date_format
+                  date_format: date_format,
+                  button_bg: button_bg,
+                  button_color: button_color,
+                  button_bg_hover: button_bg_hover,
+                  button_color_hover: button_color_hover
                 %}
               </div>
             {% endfor %}
@@ -356,6 +364,30 @@
       "id": "show_button_arrow",
       "label": "显示箭头",
       "default": false
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "按钮背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "按钮文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "按钮 Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "button_color_hover",
+      "label": "按钮 Hover 文字色",
+      "default": "#FFFFFF"
     },
     {
       "type": "header",

@@ -3,11 +3,6 @@
  * Use via {% render 'xtu-btn', ... %}
  */
 .xtu-btn {
-  --xtu-btn-bg: #1590f2;
-  --xtu-btn-color: #ffffff;
-  --xtu-btn-bg-hover: #0070ca;
-  --xtu-btn-color-hover: #ffffff;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +12,8 @@
   border: 0;
   border-radius: 999px;
   box-sizing: border-box;
-  background: var(--xtu-btn-bg);
-  color: var(--xtu-btn-color);
+  background: var(--xtu-btn-bg, #1590f2);
+  color: var(--xtu-btn-color, #ffffff);
   font-family: var(--font-body--family);
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 400;
@@ -63,8 +58,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .xtu-btn:hover {
-    background: var(--xtu-btn-bg-hover);
-    color: var(--xtu-btn-color-hover);
+    background: var(--xtu-btn-bg-hover, #0070ca);
+    color: var(--xtu-btn-color-hover, #ffffff);
     transform: translateY(-1px);
   }
 }

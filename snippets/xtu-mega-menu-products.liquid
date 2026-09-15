@@ -5,6 +5,10 @@
   @param {string} id
   @param {boolean} eager_loading
   @param {string} variant - desktop | drawer
+  @param {string} [button_bg]
+  @param {string} [button_color]
+  @param {string} [button_bg_hover]
+  @param {string} [button_color_hover]
 {%- enddoc -%}
 
 {% liquid
@@ -12,6 +16,10 @@
   assign max_products = 4
   assign max_products_drawer = 4
   assign tab_index = 0
+  assign mega_btn_bg = button_bg | default: settings.xtu_btn_bg | default: '#1590F2'
+  assign mega_btn_color = button_color | default: settings.xtu_btn_color | default: '#FFFFFF'
+  assign mega_btn_bg_hover = button_bg_hover | default: settings.xtu_btn_bg_hover | default: '#0070CA'
+  assign mega_btn_color_hover = button_color_hover | default: settings.xtu_btn_color_hover | default: '#FFFFFF'
 
   if panel_variant == 'drawer'
     assign product_limit = max_products_drawer
@@ -119,7 +127,11 @@
               label: 'View More',
               href: tab_url,
               size: 'sm',
-              show_arrow: true
+              show_arrow: true,
+              bg: mega_btn_bg,
+              color: mega_btn_color,
+              bg_hover: mega_btn_bg_hover,
+              color_hover: mega_btn_color_hover
             %}
           </div>
         </div>

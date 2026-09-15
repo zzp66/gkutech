@@ -693,6 +693,18 @@
     --cart-secondary-font-family: var(--font-{{ settings.cart_price_font }}--family);
     --cart-secondary-font-style: var(--font-{{ settings.cart_price_font }}--style);
     --cart-secondary-font-weight: var(--font-{{ settings.cart_price_font }}--weight);
+
+    /* XTU shared component colors (Theme settings → XTU 通用颜色) */
+    --xtu-btn-bg: {{ settings.xtu_btn_bg | default: '#1590F2' }};
+    --xtu-btn-color: {{ settings.xtu_btn_color | default: '#FFFFFF' }};
+    --xtu-btn-bg-hover: {{ settings.xtu_btn_bg_hover | default: '#0070CA' }};
+    --xtu-btn-color-hover: {{ settings.xtu_btn_color_hover | default: '#FFFFFF' }};
+    --xtu-swiper-nav-bg-hover: {{ settings.xtu_swiper_nav_bg_hover | default: '#0070CA' }};
+    --xtu-swiper-nav-color-hover: {{ settings.xtu_swiper_nav_color_hover | default: '#FFFFFF' }};
+    --xtu-swiper-nav-on-light-bg: {{ settings.xtu_swiper_nav_on_light_bg | default: '#F0F0F0' }};
+    --xtu-swiper-nav-on-light-color: {{ settings.xtu_swiper_nav_on_light_color | default: '#111827' }};
+    --xtu-swiper-nav-on-light-bg-hover: {{ settings.xtu_swiper_nav_on_light_bg_hover | default: '#0070CA' }};
+    --xtu-swiper-nav-on-light-color-hover: {{ settings.xtu_swiper_nav_on_light_color_hover | default: '#FFFFFF' }};
   }
 {% endstyle %}
 
