@@ -307,6 +307,7 @@
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
         "link_color": "#0070ca",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "image_radius": 16,
         "row_gap": 80,
@@ -405,6 +406,10 @@
         "card_gap_mobile": 8,
         "card_radius": 16,
         "card_ratio": "1 / 1",
+        "background_color": "#ffffff",
+        "heading_color": "#111827",
+        "placeholder_bg": "#e8eaed",
+        "overlay_text_color": "#ffffff",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -822,6 +827,9 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "pagination_color": "#d1d5db",
+        "pagination_color_active": "#000000",
         "content_width": 1200,
         "padding_top": 80,
         "padding_bottom": 80,
@@ -835,7 +843,7 @@
         "text_V6epTX": {
           "type": "text",
           "settings": {
-            "text": "<h2>New arrivals</h2>",
+            "text": "<h2>Weekly Flash Sale</h2>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -846,7 +854,7 @@
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "text_color": "",
+            "text_color": "{{ settings.color_palette.background }}",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -860,18 +868,18 @@
         "text_DcWb7r": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "rte",
+            "text": "<p>New deal every week. Limited time, special savings.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "text_color": "",
+            "text_color": "{{ settings.color_palette.background }}",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -886,12 +894,12 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop now",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "{{ settings.color_palette.background }}",
+            "label": "Shop the Deal",
+            "link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "open_in_new_tab": true,
+            "style_class": "button-custom",
+            "custom_button_background": "{{ settings.color_palette.color7 }}",
+            "custom_button_text": "{{ settings.color_palette.foreground }}",
             "custom_button_border": "{{ settings.color_palette.background }}",
             "link_text_color": "",
             "width": "fit-content",
@@ -940,38 +948,26 @@
         "padding-block-end": 40
       }
     },
+    "custom_liquid_N6KnM3": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"gku-pr-section\">\n  <div class=\"gku-pr-inner\">\n\n    <h2 class=\"gku-pr-title\">AS SEEN IN</h2>\n\n    <div class=\"gku-pr-marquee\">\n      <div class=\"gku-pr-track\" id=\"gkuPrTrack\">\n\n        <!-- 第一组 -->\n        <div class=\"gku-pr-group\">\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.evo.co.uk/features/208898/evo-summer-essentials-guide\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on evo\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/evo-logo-white-on-black-1800px.png?v=1789200260\"\n              alt=\"evo\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.autoexpress.co.uk/features/360610/auto-express-summer-essentials-2026\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on Auto Express\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/images_3_31b7fbba-07de-4f07-972b-4a78340d73bb.png?v=1789200349\"\n              alt=\"Auto Express\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.totalkitcar.com/2026/06/11/advanced-dash-cam/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on TotalKitCar\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/toalkitcar.png?v=1788938579\"\n              alt=\"TotalKitCar\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.thesun.co.uk/motors/36206593/car-drivers-amazon-gku-dash-cam-slashed/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on The Sun\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/images_6a852614-8417-41d8-b1c3-85b11a24ed1a.png?v=1789196186\"\n              alt=\"The Sun\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://global.techradar.com/it-it/vehicle-tech/dash-cams/black-friday-gku-d1000-e-la-dash-cam-a-3-canali-scontata-fino-al-57-per-cento\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on TechRadar\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_002.webp?v=1786092209\"\n              alt=\"TechRadar\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.china-gadgets.de/gku-d600-pro-test/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on China-Gadgets\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_003.png?v=1786092222\"\n              alt=\"China-Gadgets\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.smarthomeassistent.de/gku-d900-dashcam-test-4k-frontkamera-25k-rueckkamera-im-alltag/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on SmarthomeAssistent\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_004.png?v=1786092166\"\n              alt=\"SmarthomeAssistent\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://the-gadgeteer.com/2025/07/24/gku-d1000-3-channel-4k-dash-cam-review-4k-3-lens-2-cool/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on The Gadgeteer\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_006.png?v=1786092220\"\n              alt=\"The Gadgeteer\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.neozone.org/bon-plan/black-friday-2025-profitez-de-remises-exclusives-sur-les-dashcams-gku-4k/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on NeozOne\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_005_1df78369-664d-4f5b-9242-08559dcfc21c.jpg?v=1786092303\"\n              alt=\"NeozOne\">\n          </a>\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n</section>\n\n<style>\n.gku-pr-section {\n  width: 100%;\n  padding: 48px 0;\n  background: #ffffff;\n}\n\n.gku-pr-inner {\n  width: min(100% - 40px, 1320px);\n  margin: 0 auto;\n}\n\n.gku-pr-title {\n  margin: 0 0 34px;\n  text-align: center;\n  font-size: 30px;\n  line-height: 1.2;\n  font-weight: 800;\n  letter-spacing: 4px;\n  color: #111111;\n}\n\n.gku-pr-marquee {\n  width: 100%;\n  overflow: hidden;\n  position: relative;\n}\n\n.gku-pr-track {\n  display: flex;\n  align-items: center;\n  width: max-content;\n  animation: gku-pr-scroll 34s linear infinite;\n}\n\n.gku-pr-group {\n  display: flex;\n  align-items: center;\n  gap: 56px;\n  flex-shrink: 0;\n  padding-right: 56px;\n}\n\n.gku-pr-logo {\n  width: 170px;\n  height: 70px;\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-decoration: none;\n}\n\n.gku-pr-logo img {\n  display: block;\n  width: auto;\n  height: auto;\n  max-width: 155px;\n  max-height: 44px;\n  object-fit: contain;\n  opacity: 1;\n  transition: transform .25s ease, opacity .25s ease;\n}\n\n.gku-pr-logo:hover img {\n  transform: scale(1.06);\n}\n\n.gku-pr-marquee:hover .gku-pr-track {\n  animation-play-state: paused;\n}\n\n@keyframes gku-pr-scroll {\n  from {\n    transform: translateX(0);\n  }\n  to {\n    transform: translateX(-50%);\n  }\n}\n\n@media screen and (max-width: 749px) {\n  .gku-pr-section {\n    padding: 34px 0;\n  }\n\n  .gku-pr-inner {\n    width: min(100% - 24px, 1320px);\n  }\n\n  .gku-pr-title {\n    margin-bottom: 24px;\n    font-size: 22px;\n    letter-spacing: 3px;\n  }\n\n  .gku-pr-group {\n    gap: 34px;\n    padding-right: 34px;\n  }\n\n  .gku-pr-logo {\n    width: 125px;\n    height: 58px;\n  }\n\n  .gku-pr-logo img {\n    max-width: 118px;\n    max-height: 34px;\n  }\n\n  .gku-pr-track {\n    animation-duration: 26s;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .gku-pr-track {\n    animation: none;\n  }\n\n  .gku-pr-marquee {\n    overflow-x: auto;\n  }\n}\n</style>\n\n<script>\n(function () {\n  const track = document.getElementById('gkuPrTrack');\n  if (!track || track.dataset.ready === 'true') return;\n\n  const firstGroup = track.querySelector('.gku-pr-group');\n  if (!firstGroup) return;\n\n  const secondGroup = firstGroup.cloneNode(true);\n  secondGroup.setAttribute('aria-hidden', 'true');\n  track.appendChild(secondGroup);\n\n  track.dataset.ready = 'true';\n})();\n</script>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "xtu_rich_content_YVNm4r": {
       "type": "xtu-rich-content",
       "blocks": {
-        "paragraph_c93zAf": {
-          "type": "paragraph",
-          "settings": {
-            "text": "Add a paragraph of supporting copy.",
-            "align": "left",
-            "font_size": 14,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "image_DywaQU": {
-          "type": "image",
-          "settings": {
-            "media_ratio": "auto",
-            "alt": "",
-            "image_width": 100,
-            "align": "center",
-            "image_radius": 16,
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_VQczih": {
+        "richtext_8UaKTz": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
-            "body": "<p>Add rich text here. Select words to add a <a href=\"#\">link</a>.</p>",
-            "align": "left",
+            "body": "<p><strong>D600 Pro Max40% OFF · THIS WEEK ONLY</strong></p>",
+            "align": "center",
             "font_size": 14,
             "font_size_mobile": 14,
             "text_color": "#333333",
@@ -981,47 +977,118 @@
         }
       },
       "block_order": [
-        "paragraph_c93zAf",
-        "image_DywaQU",
-        "richtext_VQczih"
+        "richtext_8UaKTz"
       ],
       "name": "XTU Rich Content",
       "settings": {
-        "heading": "Section title",
-        "subheading": "Supporting subtitle",
-        "heading_align": "left",
-        "background_color": "#FFFFFF",
-        "content_background": "#FFFFFF",
-        "link_color": "#0070CA",
+        "heading": "GKU Limited-Time Deals Are Here",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "{{ settings.color_palette.foreground }}",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
         "content_width": 1200,
         "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_bottom": 0,
         "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "custom_liquid_zYRa6N": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"gku-weeklybar-wrap\">\n  <div class=\"gku-weeklybar\" data-end=\"2026-09-21T23:59:59\">\n\n    <!-- 产品图 -->\n    <div class=\"gku-weeklybar__product\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/D600PM_900640d0-87c2-4f43-9442-17c7603b6400.png?v=1789463977\"\n        alt=\"GKU D600 Pro Max\"\n      >\n    </div>\n\n    <!-- 秒杀信息 -->\n    <div class=\"gku-weeklybar__info\">\n      <div class=\"gku-weeklybar__eyebrow\">\n        WEEKLY FLASH SALE\n      </div>\n\n      <h2 class=\"gku-weeklybar__title\">\n        D600 Pro Max\n      </h2>\n\n      <div class=\"gku-weeklybar__offer\">\n        <span class=\"gku-weeklybar__discount\">40% OFF</span>\n        <span class=\"gku-weeklybar__only\">THIS WEEK ONLY</span>\n      </div>\n    </div>\n\n    <!-- 倒计时 -->\n    <div class=\"gku-weeklybar__countdown\">\n\n      <div class=\"gku-weeklybar__ends\">\n        SALE ENDS IN\n      </div>\n\n      <div class=\"gku-weeklybar__timer\">\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-days>00</span>\n          <small>DAYS</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-hours>00</span>\n          <small>HRS</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-minutes>00</span>\n          <small>MIN</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-seconds>00</span>\n          <small>SEC</small>\n        </div>\n\n      </div>\n\n    </div>\n\n    <!-- 按钮 -->\n    <div class=\"gku-weeklybar__action\">\n      <a\n        href=\"https://www.gkutech.com/products/gku-d600-pro-max-starvis-2-dual-dash-cam\"\n        class=\"gku-weeklybar__btn\"\n      >\n        SHOP THE DEAL\n      </a>\n    </div>\n\n  </div>\n</div>\n\n<style>\n.gku-weeklybar-wrap {\n  width: 100%;\n  max-width: 1320px;\n  margin: 28px auto;\n  padding: 0 20px;\n  box-sizing: border-box;\n}\n\n.gku-weeklybar {\n  position: relative;\n  width: 100%;\n  min-height: 185px;\n\n  display: grid;\n  grid-template-columns: 250px minmax(280px, 1fr) 390px 155px;\n  align-items: center;\n  gap: 28px;\n\n  padding: 14px 30px 14px 18px;\n  box-sizing: border-box;\n\n  overflow: hidden;\n\n  border: 1px solid #e5e7eb;\n  border-radius: 22px;\n\n  background:\n    linear-gradient(\n      105deg,\n      #ffffff 0%,\n      #f8f9fb 70%,\n      #fff5b5 100%\n    );\n}\n\n/* 黄色装饰线 */\n.gku-weeklybar::before {\n  content: \"\";\n  position: absolute;\n\n  left: 0;\n  top: 0;\n  bottom: 0;\n\n  width: 7px;\n\n  background: #f4d427;\n}\n\n\n/* 产品图 */\n\n.gku-weeklybar__product {\n  height: 155px;\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.gku-weeklybar__product img {\n  display: block;\n\n  width: 100%;\n  max-width: 235px;\n  max-height: 150px;\n\n  object-fit: contain;\n\n  filter: drop-shadow(\n    0 14px 20px rgba(0,0,0,0.15)\n  );\n}\n\n\n/* 中间信息 */\n\n.gku-weeklybar__info {\n  min-width: 0;\n}\n\n.gku-weeklybar__eyebrow {\n  margin-bottom: 8px;\n\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 2px;\n\n  color: #b28c00;\n}\n\n.gku-weeklybar__title {\n  margin: 0 0 12px;\n\n  font-size: 30px;\n  line-height: 1.1;\n  font-weight: 800;\n\n  color: #111111;\n}\n\n.gku-weeklybar__offer {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n\n  flex-wrap: wrap;\n}\n\n.gku-weeklybar__discount {\n  display: inline-flex;\n  align-items: center;\n\n  padding: 8px 14px;\n\n  border-radius: 8px;\n\n  background: #f4d427;\n  color: #111111;\n\n  font-size: 22px;\n  line-height: 1;\n  font-weight: 900;\n}\n\n.gku-weeklybar__only {\n  font-size: 11px;\n  font-weight: 800;\n  letter-spacing: 1px;\n\n  color: #777777;\n}\n\n\n/* 倒计时 */\n\n.gku-weeklybar__countdown {\n  padding-left: 28px;\n\n  border-left: 1px solid #dedfe3;\n}\n\n.gku-weeklybar__ends {\n  margin-bottom: 12px;\n\n  font-size: 11px;\n  font-weight: 800;\n  letter-spacing: 1.4px;\n\n  color: #777777;\n}\n\n.gku-weeklybar__timer {\n  display: flex;\n  align-items: center;\n}\n\n.gku-weeklybar__time {\n  min-width: 55px;\n\n  text-align: center;\n}\n\n.gku-weeklybar__time span {\n  display: block;\n\n  font-size: 30px;\n  line-height: 1;\n  font-weight: 800;\n\n  color: #111111;\n}\n\n.gku-weeklybar__time small {\n  display: block;\n\n  margin-top: 7px;\n\n  font-size: 9px;\n  letter-spacing: .8px;\n\n  color: #888888;\n}\n\n.gku-weeklybar__colon {\n  margin: -13px 6px 0;\n\n  font-size: 22px;\n  font-weight: 700;\n\n  color: #d0a600;\n}\n\n\n/* 按钮 */\n\n.gku-weeklybar__action {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.gku-weeklybar__btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n\n  min-width: 140px;\n\n  padding: 14px 20px;\n\n  border-radius: 999px;\n\n  background: #111111;\n  color: #ffffff;\n\n  text-decoration: none;\n\n  font-size: 12px;\n  font-weight: 800;\n\n  white-space: nowrap;\n\n  transition: all .2s ease;\n}\n\n.gku-weeklybar__btn:hover {\n  background: #f4d427;\n  color: #111111;\n\n  transform: translateY(-2px);\n}\n\n\n/* 中等屏幕 */\n\n@media screen and (max-width: 1100px) {\n\n  .gku-weeklybar {\n    grid-template-columns: 200px 1fr 330px;\n  }\n\n  .gku-weeklybar__action {\n    grid-column: 2 / 4;\n    justify-content: flex-start;\n  }\n\n}\n\n\n/* 手机和平板 */\n\n@media screen and (max-width: 749px) {\n\n  .gku-weeklybar-wrap {\n    padding: 0 12px;\n  }\n\n  .gku-weeklybar {\n    grid-template-columns: 120px 1fr;\n\n    gap: 16px;\n\n    padding: 18px;\n\n    border-radius: 18px;\n  }\n\n  .gku-weeklybar__product {\n    height: 110px;\n  }\n\n  .gku-weeklybar__product img {\n    max-width: 120px;\n    max-height: 105px;\n  }\n\n  .gku-weeklybar__title {\n    font-size: 22px;\n  }\n\n  .gku-weeklybar__discount {\n    font-size: 18px;\n  }\n\n  .gku-weeklybar__countdown {\n    grid-column: 1 / -1;\n\n    padding: 16px 0 0;\n\n    border-left: 0;\n    border-top: 1px solid #e1e3e7;\n\n    text-align: center;\n  }\n\n  .gku-weeklybar__timer {\n    justify-content: center;\n  }\n\n  .gku-weeklybar__action {\n    grid-column: 1 / -1;\n\n    justify-content: center;\n  }\n\n  .gku-weeklybar__btn {\n    width: 100%;\n  }\n\n}\n\n</style>\n\n<script>\n(function () {\n\n  const sections =\n    document.querySelectorAll('.gku-weeklybar');\n\n  sections.forEach((section) => {\n\n    const end =\n      new Date(section.dataset.end).getTime();\n\n    function updateCountdown() {\n\n      let distance =\n        end - Date.now();\n\n      if (distance < 0) {\n        distance = 0;\n      }\n\n      const days =\n        Math.floor(distance / 86400000);\n\n      const hours =\n        Math.floor(\n          (distance % 86400000) / 3600000\n        );\n\n      const minutes =\n        Math.floor(\n          (distance % 3600000) / 60000\n        );\n\n      const seconds =\n        Math.floor(\n          (distance % 60000) / 1000\n        );\n\n      section\n        .querySelector('[data-days]')\n        .textContent =\n        String(days).padStart(2, '0');\n\n      section\n        .querySelector('[data-hours]')\n        .textContent =\n        String(hours).padStart(2, '0');\n\n      section\n        .querySelector('[data-minutes]')\n        .textContent =\n        String(minutes).padStart(2, '0');\n\n      section\n        .querySelector('[data-seconds]')\n        .textContent =\n        String(seconds).padStart(2, '0');\n    }\n\n    updateCountdown();\n\n    setInterval(updateCountdown, 1000);\n\n  });\n\n})();\n</script>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_image_text_r9UH7M": {
+      "type": "xtu-image-text",
+      "blocks": {
+        "row_qnUVYa": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "media_type": "video",
+            "video": "shopify://files/videos/2026-08-26 15.07.54.mp4",
+            "image_ratio": "auto",
+            "eyebrow": "D600 Pro Max REAL-WORLD FOOTAGE",
+            "eyebrow_color": "#BDA805",
+            "heading": "See what the D600 Pro Max captures",
+            "body": "<p>Real footage from the road, showing the clarity, detail, and everyday protection of the GKU D600 Pro Max.</p><p>• 4K Front + 1080P Rear<br/><br/>• Sony STARVIS 2<br/><br/>• 5.8GHz Wi‑Fi 6<br/><br/>• Built-in GPS<br/><br/>• Voice Control<br/><br/>• 24/7 Parking Monitoring*</p><p><a href=\"/products/gku-d600-pro-max-starvis-2-dual-dash-cam\" target=\"_blank\" title=\"GKU D600 Pro Max 4K+1080P Dash Cam Front and Rear, STARVIS 2 Sensor, Fastest 5.8GHz WiFi 6.0, Voice Control, 3 &quot;IPS Car Camera with GPS\"><strong>Learn More →</strong></a></p>"
+          }
+        },
+        "row_9gnw7y": {
+          "type": "row",
+          "disabled": true,
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our mission",
+            "eyebrow_color": "#0070CA",
+            "heading": "Sharing experiences around the world",
+            "body": "<p>We believe sharing and reliving experiences makes life more meaningful. Our community around the world brings the brand to life.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_qnUVYa",
+        "row_9gnw7y"
+      ],
+      "name": "XTU Image Text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "background_color": "#FFFFFF",
+        "content_background": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8E9297",
+        "link_color": "#0070CA",
+        "placeholder_bg": "#E8EAED",
+        "content_width": 1200,
+        "image_radius": 16,
+        "row_gap": 80,
+        "row_gap_mobile": 48,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 40
       }
     },
     "xtu_tab_product_slider_TtW8cE": {
       "type": "xtu-tab-product-slider",
       "blocks": {
-        "tab_RJgW7d": {
+        "tab_LbmYG8": {
           "type": "tab",
           "settings": {
-            "title": "Earbuds"
+            "title": "Cabin Coverage"
           }
         },
-        "tab_zCjg34": {
-          "type": "tab",
+        "card_JNTPRw": {
+          "type": "card",
           "settings": {
-            "title": "Speakers"
+            "tab_name": "Cabin Coverage",
+            "title": "Liberty",
+            "subtitle": "Uninterrupted audio wherever you go",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_background": "#ffffff",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
           }
         },
-        "tab_ijYich": {
-          "type": "tab",
-          "settings": {
-            "title": "Headphones"
-          }
-        },
-        "card_cg9JaB": {
+        "card_A9ngYJ": {
           "type": "card",
           "settings": {
             "tab_name": "Earbuds",
@@ -1034,41 +1101,137 @@
             "button_hover_background": "#f3f4f6"
           }
         },
+        "tab_dgWjnX": {
+          "type": "tab",
+          "settings": {
+            "title": "Compact Size"
+          }
+        },
+        "tab_RJgW7d": {
+          "type": "tab",
+          "settings": {
+            "title": "Maximum Detail"
+          }
+        },
+        "card_EeKeN8": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Maximum Detail",
+            "image": "shopify://shop_images/E200_b5c3805e-5f69-4f63-b437-a24bc88aaac4.jpg",
+            "title": "E200",
+            "subtitle": "4K + 4K · STARVIS 2 + HDR · Wi-Fi 6",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "button_background": "#ffffff",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_BXfBnX": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Maximum Detail",
+            "image": "shopify://shop_images/C300.jpg",
+            "title": "C300",
+            "subtitle": "4K + 1080P + 4K · 3-Channel · GPS + Voice Control",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_background": "#ffffff",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "tab_zCjg34": {
+          "type": "tab",
+          "settings": {
+            "title": "Touch-Screen Control"
+          }
+        },
+        "card_wFzqYT": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Touch-Screen Control",
+            "image": "shopify://shop_images/D700_df291889-5e89-4751-9363-1f03a84af3ef.jpg",
+            "title": "D700",
+            "subtitle": "4K + 1080P · 3.18″ Touch Screen · Built-in GPS",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "tab_ijYich": {
+          "type": "tab",
+          "settings": {
+            "title": "Night Driving"
+          }
+        },
+        "card_nxGaKa": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Night Driving",
+            "image": "shopify://shop_images/E200_b5c3805e-5f69-4f63-b437-a24bc88aaac4.jpg",
+            "title": "E200",
+            "subtitle": "4K + 4K · STARVIS 2 + HDR · Wi-Fi 6",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "button_background": "#ffffff",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_ewcrAJ": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Night Driving",
+            "title": "D600 Pro Max",
+            "subtitle": "4K + 1080P · STARVIS 2 · Wi-Fi 6 + GPS",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
         "card_NgHrB3": {
           "type": "card",
           "settings": {
-            "tab_name": "Earbuds",
-            "title": "AeroClip",
-            "subtitle": "Open-ear comfort for all-day wear",
+            "tab_name": "Compact Size",
+            "image": "shopify://shop_images/D600Pro_34700191-1783-49a4-b1b2-769a42dbcc6c.jpg",
+            "title": "D600 Pro",
+            "subtitle": "4K + 1080P · Built-in GPS · 5.8GHz Wi-Fi",
             "button_label": "Shop Now",
-            "button_link": "",
-            "button_background": "#111827",
-            "button_text_color": "#ffffff",
+            "button_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_hover_background": "#374151"
           }
         },
         "card_6pM3VC": {
           "type": "card",
           "settings": {
-            "tab_name": "Earbuds",
-            "title": "Sleep",
-            "subtitle": "Soft tips for deeper rest",
+            "tab_name": "Compact Size",
+            "image": "shopify://shop_images/D600Pro_46da31c3-d680-459d-a4d7-f3301ea79f44.jpg",
+            "title": "D600",
+            "subtitle": "4K + 1080P · 5GHz Wi-Fi · WDR",
             "button_label": "Shop Now",
-            "button_link": "",
-            "button_background": "#111827",
-            "button_text_color": "#ffffff",
+            "button_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_hover_background": "#374151"
           }
         },
         "card_nRBV4Q": {
           "type": "card",
           "settings": {
-            "tab_name": "Earbuds",
-            "title": "Sport X20",
-            "subtitle": "Secure fit for every workout",
+            "tab_name": "Compact Size",
+            "image": "shopify://shop_images/D200_d38bb076-27c8-4362-9852-3a5aea024146.jpg",
+            "title": "D200",
+            "subtitle": "Compact Design · 5.8GHz Wi-Fi · WDR",
             "button_label": "Shop Now",
             "button_link": "",
-            "button_background": "#ffffff",
+            "button_background": "{{ settings.color_palette.color7 }}",
             "button_text_color": "#111827",
             "button_hover_background": "#f3f4f6"
           }
@@ -1101,10 +1264,18 @@
         }
       },
       "block_order": [
+        "tab_LbmYG8",
+        "card_JNTPRw",
+        "card_A9ngYJ",
+        "tab_dgWjnX",
         "tab_RJgW7d",
+        "card_EeKeN8",
+        "card_BXfBnX",
         "tab_zCjg34",
+        "card_wFzqYT",
         "tab_ijYich",
-        "card_cg9JaB",
+        "card_nxGaKa",
+        "card_ewcrAJ",
         "card_NgHrB3",
         "card_6pM3VC",
         "card_nRBV4Q",
@@ -1113,15 +1284,86 @@
       ],
       "name": "XTU Tab Product Slider",
       "settings": {
-        "heading": "Explore fan favorites",
+        "heading": "Shop by the features that matter most to you.",
         "desktop_per_view": 3,
         "card_gap": 16,
         "card_gap_mobile": 8,
-        "card_ratio": "3 / 4",
+        "card_ratio": "1 / 1",
         "card_radius": 16,
         "enable_image_zoom": true,
         "show_arrows": true,
         "show_arrows_mobile": false,
+        "background_color": "#ffffff",
+        "heading_color": "#111827",
+        "tab_rail_bg": "#f3f4f6",
+        "tab_color": "#374151",
+        "tab_bg_active": "#ffffff",
+        "tab_color_active": "#111827",
+        "placeholder_bg": "#e5e7eb",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_rich_content_kyaTfc": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "paragraph_U3RgBB": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Real footage captured on the road with the GKU D600 Pro Max. From bright daylight to changing road conditions, see the clarity and detail it delivers in everyday driving.",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_83JNr6": {
+          "type": "image",
+          "settings": {
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_X8NeUh": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p>Add rich text here. Select words to add a <a href=\"#\">link</a>.</p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_U3RgBB",
+        "image_83JNr6",
+        "richtext_X8NeUh"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "See the D600 Pro Max in action",
+        "subheading": "REAL-WORLD FOOTAGE",
+        "heading_align": "center",
+        "background_color": "#FFFFFF",
+        "content_background": "#FFFFFF",
+        "heading_color": "#000000",
+        "muted_text_color": "#8E9297",
+        "placeholder_bg": "#E8EAED",
+        "media_bg": "#111111",
+        "link_color": "#0070CA",
+        "content_width": 1200,
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -1138,7 +1380,11 @@
     "section_p8ggWa",
     "xtu_feature_slider_Hxahfc",
     "hero_nTfEYz",
+    "custom_liquid_N6KnM3",
     "xtu_rich_content_YVNm4r",
-    "xtu_tab_product_slider_TtW8cE"
+    "custom_liquid_zYRa6N",
+    "xtu_image_text_r9UH7M",
+    "xtu_tab_product_slider_TtW8cE",
+    "xtu_rich_content_kyaTfc"
   ]
 }
