@@ -38,7 +38,7 @@
   font-size: var(--xtu-type-section-title);
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-foreground, #000);
+  color: var(--xtu-ics-heading, #000);
 }
 
 .xtu-ics__subheading {
@@ -47,7 +47,7 @@
   font-size: var(--xtu-type-section-subtitle);
   font-weight: 400;
   line-height: 1.2;
-  color: var(--color-1, #333);
+  color: var(--xtu-ics-muted, #333);
 }
 
 .xtu-ics__stage {
@@ -56,17 +56,20 @@
   width: 100%;
   aspect-ratio: var(--xtu-ics-ratio, 16 / 9);
   border-radius: var(--xtu-ics-radius, 16px);
-  background: var(--color-4, #f5f5f7);
+  background: var(--xtu-ics-placeholder-bg, #f5f5f7);
   user-select: none;
   touch-action: none;
 }
 
-/*
-  Auto ratio: media layers are absolute, so stage MUST keep a real aspect-ratio
-  (from Liquid image.aspect_ratio / JS natural size). Never use aspect-ratio:auto
-  here — height collapses to 0 and images disappear.
-  object-fit:contain is applied below after the default cover rule.
-*/
+.xtu-ics--ratio-auto .xtu-ics__stage {
+  aspect-ratio: auto;
+}
+
+.xtu-ics--ratio-auto .xtu-ics__stage[data-ratio-ready='true'] .xtu-ics__img--desktop,
+.xtu-ics--ratio-auto .xtu-ics__stage[data-ratio-ready='true'] .xtu-ics__placeholder {
+  height: auto;
+  aspect-ratio: var(--xtu-ics-ratio-auto, 16 / 9);
+}
 
 .xtu-ics__media {
   position: absolute;
@@ -93,17 +96,12 @@
   user-select: none;
 }
 
-.xtu-ics--ratio-auto .xtu-ics__img,
-.xtu-ics--ratio-auto .xtu-ics__placeholder {
-  object-fit: contain;
-}
-
 .xtu-ics__img--mobile {
   display: none;
 }
 
 .xtu-ics__placeholder {
-  background: var(--color-4, #f5f5f7);
+  background: var(--xtu-ics-placeholder-bg, #f5f5f7);
 }
 
 .xtu-ics__label {
@@ -112,12 +110,12 @@
   z-index: 3;
   padding: var(--xtu-space-8, 8px) var(--xtu-space-12, 12px);
   border-radius: var(--xtu-radius-sm, 8px);
-  background: rgb(0 0 0 / 0.56);
+  background: color-mix(in srgb, var(--xtu-ics-label-bg, #000) 56%, transparent);
   font-family: var(--font-body--family);
   font-size: var(--xtu-type-eyebrow);
   font-weight: 600;
   line-height: 1.2;
-  color: #fff;
+  color: var(--xtu-ics-label-color, #fff);
   pointer-events: none;
 }
 
@@ -207,10 +205,6 @@
 
   .xtu-ics__heading {
     font-size: var(--xtu-type-section-title-m);
-  }
-
-  .xtu-ics--ratio-auto .xtu-ics__stage {
-    aspect-ratio: var(--xtu-ics-ratio-mobile, var(--xtu-ics-ratio, 16 / 9));
   }
 
   .xtu-ics__media--split .xtu-ics__img--desktop {

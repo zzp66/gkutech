@@ -85,7 +85,7 @@
 
 .xtu-im__placeholder {
   width: calc(var(--xtu-im-h) * 2);
-  background: #e8eaed;
+  background: var(--xtu-im-placeholder-bg, #e8eaed);
 }
 
 .xtu-im__item.xtu-img-zoom .xtu-im__image,

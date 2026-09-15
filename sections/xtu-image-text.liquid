@@ -15,6 +15,7 @@
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
   assign link_color = section.settings.link_color | default: '#0070CA'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
 %}
 
 <section
@@ -35,6 +36,7 @@
     --xtu-it-text-color: {{ text_color }};
     --xtu-it-muted-color: {{ muted_text_color }};
     --xtu-it-link-color: {{ link_color }};
+    --xtu-it-placeholder-bg: {{ placeholder_bg }};
   "
 >
   <div class="xtu-image-text__inner">
@@ -188,7 +190,7 @@
     position: relative;
     overflow: hidden;
     border-radius: var(--xtu-it-radius, 16px);
-    background: #e8eaed;
+    background: var(--xtu-it-placeholder-bg, #e8eaed);
   }
 
   .xtu-image-text__media:not(.xtu-image-text__media--ratio-auto) {
@@ -253,7 +255,7 @@
   }
 
   .xtu-image-text__placeholder {
-    background: #e8eaed;
+    background: var(--xtu-it-placeholder-bg, #e8eaed);
   }
 
   .xtu-image-text__media-item--mobile {
@@ -437,6 +439,12 @@
       "id": "link_color",
       "label": "链接色",
       "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "媒体占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "number",

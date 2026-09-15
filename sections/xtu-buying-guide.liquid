@@ -1,6 +1,6 @@
 {%- comment -%}
   XTU Buying Guide — 通栏选购指南：背景图/视频 + 文案与双 CTA。
-  数据：Theme Editor（PC/移动分图或视频、占位模式、按钮与边距）。
+  数据：Theme Editor（PC/移动分图或视频、占位模式、按钮与边距、颜色）。
   前台：PC/移动可分别选择「素材比例」或「固定高度」占位；文案叠在媒体上。
   相关：xtu-img-zoom、xtu-reveal。
 {%- endcomment -%}
@@ -40,6 +40,16 @@
   elsif media_height_mobile > 900
     assign media_height_mobile = 900
   endif
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign card_background = section.settings.card_background | default: '#F5F5F7'
+  assign eyebrow_color = section.settings.eyebrow_color | default: '#7A8599'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign button_bg = section.settings.button_bg | default: '#22242A'
+  assign button_bg_hover = section.settings.button_bg_hover | default: '#1A1C21'
+  assign button_color = section.settings.button_color | default: '#FFFFFF'
+  assign link_color = section.settings.link_color | default: '#667085'
+  assign link_color_hover = section.settings.link_color_hover | default: '#111827'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
@@ -50,6 +60,16 @@
   id="xtu-buying-guide-{{ section.id }}"
   class="xtu-buying-guide xtu-buying-guide--pc-{{ media_sizing }} xtu-buying-guide--m-{{ media_sizing_mobile }}"
   style="
+    --xtu-bg-bg: {{ background_color }};
+    --xtu-bg-card-bg: {{ card_background }};
+    --xtu-bg-eyebrow: {{ eyebrow_color }};
+    --xtu-bg-heading: {{ heading_color }};
+    --xtu-bg-btn-bg: {{ button_bg }};
+    --xtu-bg-btn-bg-hover: {{ button_bg_hover }};
+    --xtu-bg-btn-color: {{ button_color }};
+    --xtu-bg-link: {{ link_color }};
+    --xtu-bg-link-hover: {{ link_color_hover }};
+    --xtu-bg-placeholder-bg: {{ placeholder_bg }};
     --xtu-bg-media-height: {{ media_height }}px;
     --xtu-bg-media-height-mobile: {{ media_height_mobile }}px;
     --xtu-bg-padding-top: {{ padding_top }}px;
@@ -179,7 +199,7 @@
 {% stylesheet %}
   .xtu-buying-guide {
     padding: var(--xtu-bg-padding-top, 80px) 0 var(--xtu-bg-padding-bottom, 80px);
-    background: #fff;
+    background: var(--xtu-bg-bg, #FFFFFF);
   }
 
   .xtu-buying-guide__card {
@@ -188,7 +208,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 0;
-    background: #f5f5f7;
+    background: var(--xtu-bg-card-bg, #F5F5F7);
   }
 
   .xtu-buying-guide__media {
@@ -217,7 +237,7 @@
   }
 
   .xtu-buying-guide__placeholder {
-    background: #e8eaed;
+    background: var(--xtu-bg-placeholder-bg, #E8EAED);
   }
 
   .xtu-buying-guide__wash {
@@ -257,7 +277,7 @@
     font-size: 1.125rem;
     font-weight: 400;
     line-height: 1.2;
-    color: #7a8599;
+    color: var(--xtu-bg-eyebrow, #7A8599);
   }
 
   .xtu-buying-guide__heading {
@@ -267,7 +287,7 @@
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: #111827;
+    color: var(--xtu-bg-heading, #111827);
   }
 
   .xtu-buying-guide__actions {
@@ -286,8 +306,8 @@
     height: 38px;
     padding: 0 20px;
     border-radius: 999px;
-    background: #22242a;
-    color: #fff;
+    background: var(--xtu-bg-btn-bg, #22242A);
+    color: var(--xtu-bg-btn-color, #FFFFFF);
     font-family: var(--font-body--family);
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
@@ -297,7 +317,7 @@
   }
 
   .xtu-buying-guide__btn:hover {
-    background: #1a1c21;
+    background: var(--xtu-bg-btn-bg-hover, #1A1C21);
     transform: translateY(-1px);
   }
 
@@ -306,13 +326,13 @@
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
     line-height: 1.2;
-    color: #667085;
+    color: var(--xtu-bg-link, #667085);
     text-decoration: none;
     transition: color 0.22s ease;
   }
 
   .xtu-buying-guide__link:hover {
-    color: #111827;
+    color: var(--xtu-bg-link-hover, #111827);
   }
 
   /* PC：素材比例 — 宽 100%，高度随媒体自适应 */
@@ -609,6 +629,70 @@
       "unit": "px",
       "default": 350,
       "visible_if": "{{ section.settings.media_sizing_mobile == 'fixed' }}"
+    },
+    {
+      "type": "header",
+      "content": "颜色"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "卡片背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "副标题颜色",
+      "default": "#7A8599"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "主按钮背景色",
+      "default": "#22242A"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "主按钮 Hover 背景色",
+      "default": "#1A1C21"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "主按钮文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "次按钮文字色",
+      "default": "#667085"
+    },
+    {
+      "type": "color",
+      "id": "link_color_hover",
+      "label": "次按钮 Hover 文字色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "header",

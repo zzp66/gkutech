@@ -33,6 +33,9 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
+  assign pagination_color = section.settings.pagination_color | default: '#D1D5DB'
+  assign pagination_color_active = section.settings.pagination_color_active | default: '#000000'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign card_radius = section.settings.card_radius | default: 16
   assign media_width = section.settings.media_width | default: 60 | at_least: 40 | at_most: 70
@@ -76,6 +79,9 @@
     --xtu-fsl-heading: {{ heading_color }};
     --xtu-fsl-text: {{ text_color }};
     --xtu-fsl-muted: {{ muted_text_color }};
+    --xtu-fsl-placeholder-bg: {{ placeholder_bg }};
+    --xtu-fsl-pagination: {{ pagination_color }};
+    --xtu-fsl-pagination-active: {{ pagination_color_active }};
     --xtu-fsl-content-width: {{ content_width }}px;
     --xtu-fsl-radius: {{ card_radius }}px;
     --xtu-fsl-media-width: {{ media_width }}%;
@@ -440,7 +446,7 @@
     max-width: var(--xtu-fsl-media-width, 60%);
     min-width: 0;
     overflow: hidden;
-    background: #e8eaed;
+    background: var(--xtu-fsl-placeholder-bg, #e8eaed);
   }
 
   .xtu-fsl__image,
@@ -465,7 +471,7 @@
   }
 
   .xtu-fsl__placeholder {
-    background: #e8eaed;
+    background: var(--xtu-fsl-placeholder-bg, #e8eaed);
     aspect-ratio: 16 / 9;
   }
 
@@ -546,7 +552,7 @@
     padding: 0;
     border: 0;
     border-radius: 2px;
-    background: #d1d5db;
+    background: var(--xtu-fsl-pagination, #d1d5db);
     opacity: 1;
     cursor: pointer;
     appearance: none;
@@ -554,7 +560,7 @@
   }
 
   .xtu-fsl__pager .xtu-fsl__bullet.is-active {
-    background: #000;
+    background: var(--xtu-fsl-pagination-active, #000);
   }
 
   @media screen and (min-width: 750px) and (max-width: 989px) {
@@ -753,6 +759,24 @@
       "id": "muted_text_color",
       "label": "副标题颜色",
       "default": "#8E9297"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "分页指示器颜色",
+      "default": "#D1D5DB"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color_active",
+      "label": "分页指示器激活色",
+      "default": "#000000"
     },
     {
       "type": "number",

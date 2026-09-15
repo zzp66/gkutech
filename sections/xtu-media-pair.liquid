@@ -28,6 +28,7 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign media_radius = section.settings.media_radius | default: 16
   assign media_ratio = section.settings.media_ratio | default: '16 / 9'
@@ -53,6 +54,7 @@
     --xtu-mpair-heading: {{ heading_color }};
     --xtu-mpair-text: {{ text_color }};
     --xtu-mpair-muted: {{ muted_text_color }};
+    --xtu-mpair-placeholder-bg: {{ placeholder_bg }};
     --xtu-mpair-content-width: {{ content_width }}px;
     --xtu-mpair-radius: {{ media_radius }}px;
     {% unless ratio_auto %}--xtu-mpair-ratio: {{ media_ratio }};{% endunless %}
@@ -196,7 +198,7 @@
     aspect-ratio: var(--xtu-mpair-ratio, 16 / 9);
     overflow: hidden;
     border-radius: var(--xtu-mpair-radius, 16px);
-    background: #e8eaed;
+    background: var(--xtu-mpair-placeholder-bg, #e8eaed);
   }
 
   .xtu-mpair--ratio-auto .xtu-mpair__media {
@@ -394,6 +396,12 @@
       "id": "muted_text_color",
       "label": "副标题颜色",
       "default": "#8E9297"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "number",

@@ -11,6 +11,13 @@
   assign show_arrows = section.settings.show_arrows
   assign show_arrows_mobile = section.settings.show_arrows_mobile
   assign show_button_arrow = section.settings.show_button_arrow
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
+  assign play_bg = section.settings.play_bg | default: '#FFFFFF'
+  assign play_color = section.settings.play_color | default: '#111827'
+  assign play_bg_hover = section.settings.play_bg_hover | default: '#F5F5F7'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
@@ -26,6 +33,13 @@
   data-gap="{{ gap }}"
   data-gap-mobile="{{ gap_mobile }}"
   style="
+    --xtu-ss-bg: {{ background_color }};
+    --xtu-ss-heading: {{ heading_color }};
+    --xtu-ss-placeholder-bg: {{ placeholder_bg }};
+    --xtu-ss-play-bg: {{ play_bg }};
+    --xtu-ss-play-color: {{ play_color }};
+    --xtu-ss-play-bg-hover: {{ play_bg_hover }};
+    --xtu-ss-accent: {{ accent_color }};
     --xtu-ss-gap: {{ gap }}px;
     --xtu-ss-gap-mobile: {{ gap_mobile }}px;
     --xtu-ss-radius: {{ card_radius }}px;
@@ -301,7 +315,7 @@
   .xtu-story-slider {
     --xtu-ss-inset: var(--util-page-margin-offset, var(--page-margin));
     padding: var(--xtu-ss-padding-top, 80px) 0 var(--xtu-ss-padding-bottom, 80px);
-    background: #fff;
+    background: var(--xtu-ss-bg, #FFFFFF);
     overflow: hidden;
   }
 
@@ -327,7 +341,7 @@
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-align: left;
-    color: #111827;
+    color: var(--xtu-ss-heading, #111827);
   }
 
   .xtu-story-slider__viewport {
@@ -349,7 +363,7 @@
     height: auto;
     border-radius: var(--xtu-ss-radius, 16px);
     overflow: hidden;
-    background: #e8eaed;
+    background: var(--xtu-ss-placeholder-bg, #E8EAED);
     isolation: isolate;
     box-sizing: border-box;
   }
@@ -359,7 +373,7 @@
     width: 100%;
     aspect-ratio: var(--xtu-ss-ratio, 3 / 4);
     overflow: hidden;
-    background: #e8eaed;
+    background: var(--xtu-ss-placeholder-bg, #E8EAED);
   }
 
   .xtu-story-slider__image,
@@ -406,8 +420,8 @@
     padding: 0;
     border: 0;
     border-radius: 999px;
-    background: #fff;
-    color: #111827;
+    background: var(--xtu-ss-play-bg, #FFFFFF);
+    color: var(--xtu-ss-play-color, #111827);
     cursor: pointer;
     appearance: none;
     transform: translate(-50%, -50%);
@@ -419,12 +433,12 @@
   }
 
   .xtu-story-slider__play:hover {
-    background: #f5f5f7;
+    background: var(--xtu-ss-play-bg-hover, #F5F5F7);
     transform: translate(-50%, -50%) scale(1.04);
   }
 
   .xtu-story-slider__play:focus-visible {
-    outline: 2px solid #0070ca;
+    outline: 2px solid var(--xtu-ss-accent, #0070CA);
     outline-offset: 3px;
   }
 
@@ -499,7 +513,7 @@
   }
 
   a.xtu-story-slider__product:focus-visible {
-    outline: 2px solid #0070ca;
+    outline: 2px solid var(--xtu-ss-accent, #0070CA);
     outline-offset: 2px;
   }
 
@@ -658,6 +672,52 @@
             { "value": "2 / 3", "label": "2:3" }
       ],
       "default": "3 / 4"
+    },
+    {
+      "type": "header",
+      "content": "颜色"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
+    },
+    {
+      "type": "color",
+      "id": "play_bg",
+      "label": "播放按钮背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "play_color",
+      "label": "播放按钮图标色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "play_bg_hover",
+      "label": "播放按钮 Hover 背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色",
+      "default": "#0070CA"
     },
     {
       "type": "header",

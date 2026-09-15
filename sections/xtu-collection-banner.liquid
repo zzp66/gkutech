@@ -29,6 +29,14 @@
   assign padding_top = section.settings.padding_top | default: 60
   assign padding_bottom = section.settings.padding_bottom | default: 60
   assign page_background = section.settings.page_background | default: '#f8f9fd'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#000000'
+  assign muted_text_color = section.settings.muted_text_color | default: '#666666'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign border_color = section.settings.border_color | default: '#000000'
+  assign button_bg = section.settings.button_bg | default: '#1590F2'
+  assign button_bg_hover = section.settings.button_bg_hover | default: '#0070CA'
+  assign button_color = section.settings.button_color | default: '#FFFFFF'
   assign has_media = false
   if image != blank
     assign has_media = true
@@ -47,6 +55,14 @@
 {% style %}
   body:has(#xtu-collection-banner-{{ section.id }}) {
     --xtu-collection-page-bg: {{ page_background }};
+    --xtu-plp-heading: {{ heading_color }};
+    --xtu-plp-text: {{ text_color }};
+    --xtu-plp-muted: {{ muted_text_color }};
+    --xtu-plp-accent: {{ accent_color }};
+    --xtu-plp-border: {{ border_color }};
+    --xtu-plp-btn-bg: {{ button_bg }};
+    --xtu-plp-btn-bg-hover: {{ button_bg_hover }};
+    --xtu-plp-btn-color: {{ button_color }};
     background-color: var(--xtu-collection-page-bg);
   }
 
@@ -93,6 +109,8 @@
   style="
     --xtu-cb-padding-top: {{ padding_top }}px;
     --xtu-cb-padding-bottom: {{ padding_bottom }}px;
+    --xtu-cb-heading: {{ heading_color }};
+    --xtu-cb-text: {{ text_color }};
     {% unless ratio_auto %}--xtu-cb-banner-ratio: {{ banner_ratio }};{% endunless %}
   "
 >
@@ -220,6 +238,58 @@
       "label": "集合页背景色",
       "info": "可从调色板选择，或自定义颜色",
       "default": "#F8F9FD"
+    },
+    {
+      "type": "header",
+      "content": "文字与筛选色"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次要文字色",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "边框颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "按钮背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "按钮 Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "按钮文字色",
+      "default": "#FFFFFF"
     },
     {
       "type": "range",

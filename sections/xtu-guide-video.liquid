@@ -32,6 +32,12 @@
   assign content_background = section.settings.content_background | default: '#FFFFFF'
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign tab_bg_active = section.settings.tab_bg_active | default: '#0070CA'
+  assign tab_color_active = section.settings.tab_color_active | default: '#FFFFFF'
+  assign pagination_border = section.settings.pagination_border | default: '#DFDFDF'
+  assign pagination_bg_active = section.settings.pagination_bg_active | default: '#0070CA'
+  assign media_bg = section.settings.media_bg | default: '#111111'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign columns_desktop = section.settings.columns_desktop | default: 2
   assign per_page = section.settings.per_page | default: 6
@@ -157,6 +163,12 @@
     --xtu-gv-content-bg: {{ content_background }};
     --xtu-gv-heading: {{ heading_color }};
     --xtu-gv-muted: {{ muted_text_color }};
+    --xtu-gv-accent: {{ accent_color }};
+    --xtu-gv-tab-bg-active: {{ tab_bg_active }};
+    --xtu-gv-tab-color-active: {{ tab_color_active }};
+    --xtu-gv-page-border: {{ pagination_border }};
+    --xtu-gv-page-bg-active: {{ pagination_bg_active }};
+    --xtu-gv-media-bg: {{ media_bg }};
     --xtu-gv-content-width: {{ content_width }}px;
     --xtu-gv-columns: {{ columns_desktop }};
     --xtu-gv-radius: {{ card_radius }}px;
@@ -291,6 +303,42 @@
       "id": "muted_text_color",
       "label": "副标题颜色",
       "default": "#8E9297"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_active",
+      "label": "Tab 选中背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "tab_color_active",
+      "label": "Tab 选中文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "pagination_border",
+      "label": "分页边框色",
+      "default": "#DFDFDF"
+    },
+    {
+      "type": "color",
+      "id": "pagination_bg_active",
+      "label": "分页 Hover/激活背景",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "视频区背景色",
+      "default": "#111111"
     },
     {
       "type": "number",

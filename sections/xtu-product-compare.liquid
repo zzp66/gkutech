@@ -18,6 +18,8 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign card_background = section.settings.card_background | default: '#F5F5F7'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
@@ -48,6 +50,8 @@
       --xtu-pc-heading-color: {{ heading_color }};
       --xtu-pc-text-color: {{ text_color }};
       --xtu-pc-muted-color: {{ muted_text_color }};
+      --xtu-pc-card-bg: {{ card_background }};
+      --xtu-pc-placeholder-bg: {{ placeholder_bg }};
       --xtu-pc-pt: {{ padding_top }}px;
       --xtu-pc-pb: {{ padding_bottom }}px;
       --xtu-pc-pt-m: {{ padding_top_mobile }}px;
@@ -260,7 +264,7 @@
     position: sticky;
     left: 0;
     z-index: 3;
-    background: var(--xtu-pc-content-bg, #fff);
+    background: var(--xtu-pc-card-bg, #f5f5f7);
   }
 
   .xtu-product-compare__corner {
@@ -303,7 +307,7 @@
     margin: 0 auto 20px;
     aspect-ratio: var(--xtu-pc-ratio, 1 / 1);
     overflow: hidden;
-    background: #f5f5f7;
+    background: var(--xtu-pc-card-bg, #f5f5f7);
   }
 
   .xtu-product-compare__image,
@@ -320,7 +324,7 @@
 
   .xtu-product-compare__placeholder {
     object-fit: cover;
-    background: #e8eaed;
+    background: var(--xtu-pc-placeholder-bg, #e8eaed);
   }
 
   .xtu-product-compare__title {
@@ -574,6 +578,18 @@
       "label": "次要文字色",
       "default": "#8E9297",
       "info": "副标题、空值占位"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "粘性列 / 媒体背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "range",

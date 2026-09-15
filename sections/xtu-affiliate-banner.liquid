@@ -39,6 +39,7 @@
   assign content_background = section.settings.content_background | default: '#FFFFFF'
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#000000'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
@@ -58,6 +59,7 @@
     --xtu-ab-content-bg: {{ content_background }};
     --xtu-ab-heading: {{ heading_color }};
     --xtu-ab-text: {{ text_color }};
+    --xtu-ab-placeholder-bg: {{ placeholder_bg }};
     --xtu-ab-link: {{ agreement_color }};
     --xtu-ab-content-width: {{ content_width }}px;
     --xtu-ab-badge: {{ badge_size }}px;
@@ -171,7 +173,7 @@
 
   .xtu-ab__placeholder {
     border-radius: 999px;
-    background: #e8eaed;
+    background: var(--xtu-ab-placeholder-bg, #e8eaed);
   }
 
   .xtu-ab__copy {
@@ -405,6 +407,12 @@
       "id": "text_color",
       "label": "副标题颜色",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "number",

@@ -11,6 +11,10 @@
   assign show_arrows = section.settings.show_arrows
   assign show_arrows_mobile = section.settings.show_arrows_mobile
   assign show_image_overlay = section.settings.show_image_overlay
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
+  assign overlay_text_color = section.settings.overlay_text_color | default: '#FFFFFF'
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
@@ -28,6 +32,10 @@
   data-gap-mobile="{{ gap_mobile }}"
   data-mobile-per-view="{{ mobile_per_view }}"
   style="
+    --xtu-as-bg: {{ background_color }};
+    --xtu-as-heading: {{ heading_color }};
+    --xtu-as-placeholder-bg: {{ placeholder_bg }};
+    --xtu-as-overlay-text: {{ overlay_text_color }};
     --xtu-as-gap: {{ gap }}px;
     --xtu-as-gap-mobile: {{ gap_mobile }}px;
     --xtu-as-radius: {{ card_radius }}px;
@@ -182,7 +190,7 @@
 {% stylesheet %}
   .xtu-activity-slider {
     padding: var(--xtu-as-padding-top, 80px) 0 var(--xtu-as-padding-bottom, 80px);
-    background: #fff;
+    background: var(--xtu-as-bg, #FFFFFF);
     overflow: hidden;
   }
 
@@ -207,7 +215,7 @@
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-align: left;
-    color: #111827;
+    color: var(--xtu-as-heading, #111827);
   }
 
   .xtu-activity-slider__viewport {
@@ -233,8 +241,8 @@
     border-radius: var(--xtu-as-radius, 16px);
     overflow: hidden;
     text-decoration: none;
-    color: #fff;
-    background: #e8eaed;
+    color: var(--xtu-as-overlay-text, #FFFFFF);
+    background: var(--xtu-as-placeholder-bg, #E8EAED);
   }
 
   .xtu-activity-slider__media {
@@ -282,7 +290,7 @@
     letter-spacing: 0.04em;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--xtu-as-overlay-text, #FFFFFF);
     text-shadow: 0 1px 8px rgb(0 0 0 / 0.35);
   }
 
@@ -433,6 +441,34 @@
         { "value": "4 / 5", "label": "4:5" }
       ],
       "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "颜色"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text_color",
+      "label": "叠字文字色",
+      "default": "#FFFFFF"
     },
     {
       "type": "header",

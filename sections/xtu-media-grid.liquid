@@ -14,6 +14,7 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
 %}
 
 <section
@@ -33,6 +34,7 @@
     --xtu-mg-heading-color: {{ heading_color }};
     --xtu-mg-text-color: {{ text_color }};
     --xtu-mg-muted-color: {{ muted_text_color }};
+    --xtu-mg-placeholder-bg: {{ placeholder_bg }};
   "
 >
   <div class="xtu-media-grid__inner">
@@ -217,7 +219,7 @@
     overflow: hidden;
     width: 100%;
     border-radius: var(--xtu-mg-radius, 16px);
-    background: #e8eaed;
+    background: var(--xtu-mg-placeholder-bg, #e8eaed);
   }
 
   .xtu-media-grid__frame:not(.xtu-media-grid__frame--auto) {
@@ -265,7 +267,7 @@
   }
 
   .xtu-media-grid__placeholder {
-    background: #e8eaed;
+    background: var(--xtu-mg-placeholder-bg, #e8eaed);
   }
 
   .xtu-media-grid__media--mobile {
@@ -370,6 +372,12 @@
       "label": "次要文字色",
       "default": "#8E9297",
       "info": "副标题等弱化文案"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "number",

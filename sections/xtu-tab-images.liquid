@@ -17,6 +17,11 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
+  assign tab_rail_bg = section.settings.tab_rail_bg | default: '#DFE3E8'
+  assign tab_color = section.settings.tab_color | default: '#000000'
+  assign tab_bg_active = section.settings.tab_bg_active | default: '#0070CA'
+  assign tab_color_active = section.settings.tab_color_active | default: '#FFFFFF'
   assign show_tab_underline = section.settings.show_tab_underline
 %}
 
@@ -37,6 +42,11 @@
     --xtu-ti-heading-color: {{ heading_color }};
     --xtu-ti-text-color: {{ text_color }};
     --xtu-ti-muted-color: {{ muted_text_color }};
+    --xtu-ti-placeholder-bg: {{ placeholder_bg }};
+    --xtu-ti-tab-rail-bg: {{ tab_rail_bg }};
+    --xtu-ti-tab-color: {{ tab_color }};
+    --xtu-ti-tab-bg-active: {{ tab_bg_active }};
+    --xtu-ti-tab-color-active: {{ tab_color_active }};
   "
 >
   <div class="xtu-tab-images__inner">
@@ -178,7 +188,7 @@
     overflow: hidden;
     border-radius: var(--xtu-ti-radius, 0);
     aspect-ratio: var(--xtu-ti-ratio, 16 / 10);
-    background: #e8eaed;
+    background: var(--xtu-ti-placeholder-bg, #e8eaed);
   }
 
   .xtu-tab-images--ratio-auto .xtu-tab-images__frame--auto {
@@ -237,7 +247,7 @@
   }
 
   .xtu-tab-images__placeholder {
-    background: #dfe3e8;
+    background: var(--xtu-ti-tab-rail-bg, #dfe3e8);
   }
 
   .xtu-tab-images__tabs {
@@ -284,7 +294,7 @@
     font-size: var(--xtu-type-body);
     font-weight: 600;
     line-height: 1.2;
-    color: #000;
+    color: var(--xtu-ti-tab-color, #000);
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
@@ -299,12 +309,12 @@
 
   .xtu-tab-images__tab:hover,
   .xtu-tab-images__tab.is-active {
-    background-color: #0070ca;
-    color: #fff;
+    background-color: var(--xtu-ti-tab-bg-active, #0070ca);
+    color: var(--xtu-ti-tab-color-active, #fff);
   }
 
   .xtu-tab-images__tab:focus-visible {
-    outline: 2px solid #0070ca;
+    outline: 2px solid var(--xtu-ti-tab-bg-active, #0070ca);
     outline-offset: 2px;
   }
 
@@ -541,7 +551,7 @@
     },
     {
       "type": "header",
-      "content": "外观"
+      "content": "颜色"
     },
     {
       "type": "color",
@@ -573,6 +583,41 @@
       "label": "次要文字色",
       "default": "#8E9297",
       "info": "副标题等次要文案；分割线随正文色自动调整"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
+    },
+    {
+      "type": "color",
+      "id": "tab_rail_bg",
+      "label": "占位图底色",
+      "default": "#DFE3E8",
+      "info": "空媒体 SVG 占位的底色"
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Tab 文字色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_active",
+      "label": "Tab 选中背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "tab_color_active",
+      "label": "Tab 选中文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "外观"
     },
     {
       "type": "checkbox",

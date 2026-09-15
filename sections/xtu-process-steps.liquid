@@ -28,6 +28,7 @@
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
   assign icon_color = section.settings.icon_color | default: '#000000'
   assign line_color = section.settings.line_color | default: '#DFDFDF'
+  assign link_color = section.settings.link_color | default: '#0070CA'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign icon_size = section.settings.icon_size | default: 48
   assign icon_sizes = icon_size | append: 'px'
@@ -56,6 +57,7 @@
     --xtu-ps-muted: {{ muted_text_color }};
     --xtu-ps-icon: {{ icon_color }};
     --xtu-ps-line: {{ line_color }};
+    --xtu-ps-link: {{ link_color }};
     --xtu-ps-content-width: {{ content_width }}px;
     --xtu-ps-icon-size: {{ icon_size }}px;
     --xtu-ps-gap: {{ column_gap }}px;
@@ -283,7 +285,7 @@
   }
 
   .xtu-ps__body a {
-    color: var(--color-5, #0070ca);
+    color: var(--xtu-ps-link, #0070ca);
   }
 
   @media screen and (max-width: 989px) {
@@ -427,6 +429,12 @@
       "id": "line_color",
       "label": "连线颜色",
       "default": "#DFDFDF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "正文链接色",
+      "default": "#0070CA"
     },
     {
       "type": "number",

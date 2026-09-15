@@ -10,6 +10,17 @@
   assign bg_color = section.settings.background_color
   assign text_color = section.settings.text_color
   assign muted_color = section.settings.muted_text_color
+  assign border_color = section.settings.border_color | default: '#E5E7EB'
+  assign input_bg = section.settings.input_bg | default: '#FFFFFF'
+  assign input_border = section.settings.input_border | default: '#E4E7ED'
+  assign input_placeholder = section.settings.input_placeholder | default: '#9AA0A8'
+  assign submit_bg = section.settings.submit_bg | default: '#1A1C22'
+  assign submit_color = section.settings.submit_color | default: '#FFFFFF'
+  assign submit_bg_hover = section.settings.submit_bg_hover | default: '#111318'
+  assign success_color = section.settings.success_color | default: '#059669'
+  assign error_color = section.settings.error_color | default: '#DC2626'
+  assign popover_bg = section.settings.popover_bg | default: '#FFFFFF'
+  assign popover_text = section.settings.popover_text | default: '#111827'
   assign menu_column_count = 0
   for block in section.blocks
     if block.type == 'menu_column' or block.type == 'text_column'
@@ -34,6 +45,17 @@
     {% if bg_color != blank %}--xtu-footer-bg: {{ bg_color }};{% endif %}
     {% if text_color != blank %}--xtu-footer-text: {{ text_color }};{% endif %}
     {% if muted_color != blank %}--xtu-footer-muted: {{ muted_color }};{% endif %}
+    --xtu-footer-border: {{ border_color }};
+    --xtu-footer-input-bg: {{ input_bg }};
+    --xtu-footer-input-border: {{ input_border }};
+    --xtu-footer-input-placeholder: {{ input_placeholder }};
+    --xtu-footer-submit-bg: {{ submit_bg }};
+    --xtu-footer-submit-color: {{ submit_color }};
+    --xtu-footer-submit-bg-hover: {{ submit_bg_hover }};
+    --xtu-footer-success: {{ success_color }};
+    --xtu-footer-error: {{ error_color }};
+    --xtu-footer-popover-bg: {{ popover_bg }};
+    --xtu-footer-popover-text: {{ popover_text }};
   "
 >
   <div class="xtu-footer__shell">
@@ -277,6 +299,16 @@
     --xtu-footer-text: #1a1c22;
     --xtu-footer-muted: #8e9297;
     --xtu-footer-border: #e5e7eb;
+    --xtu-footer-input-bg: #fff;
+    --xtu-footer-input-border: #e4e7ed;
+    --xtu-footer-input-placeholder: #9aa0a8;
+    --xtu-footer-submit-bg: #1a1c22;
+    --xtu-footer-submit-color: #fff;
+    --xtu-footer-submit-bg-hover: #111318;
+    --xtu-footer-success: #059669;
+    --xtu-footer-error: #dc2626;
+    --xtu-footer-popover-bg: #fff;
+    --xtu-footer-popover-text: #111827;
     padding: var(--xtu-footer-padding-top, 80px) 0 var(--xtu-footer-padding-bottom, 80px);
     background: var(--xtu-footer-bg);
     color: var(--xtu-footer-text);
@@ -480,9 +512,9 @@
     width: 100%;
     box-sizing: border-box;
     padding: 5px 5px 5px 20px;
-    border: 1px solid #e4e7ed;
+    border: 1px solid var(--xtu-footer-input-border);
     border-radius: 999px;
-    background: #fff;
+    background: var(--xtu-footer-input-bg);
   }
 
   .xtu-footer__email {
@@ -493,7 +525,7 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: #1a1c22;
+    color: var(--xtu-footer-text);
     font-family: var(--font-body--family);
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
@@ -505,7 +537,7 @@
   }
 
   .xtu-footer__email::placeholder {
-    color: #9aa0a8;
+    color: var(--xtu-footer-input-placeholder);
     opacity: 1;
   }
 
@@ -516,8 +548,8 @@
     padding: 0 22px;
     border: 0;
     border-radius: 999px;
-    background: #1a1c22;
-    color: #fff;
+    background: var(--xtu-footer-submit-bg);
+    color: var(--xtu-footer-submit-color);
     font-family: var(--font-body--family);
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
@@ -527,7 +559,7 @@
   }
 
   .xtu-footer__submit:hover {
-    background: #111318;
+    background: var(--xtu-footer-submit-bg-hover);
     transform: none;
   }
 
@@ -545,11 +577,11 @@
   }
 
   .xtu-footer__message--success {
-    color: #059669;
+    color: var(--xtu-footer-success);
   }
 
   .xtu-footer__message--error {
-    color: #dc2626;
+    color: var(--xtu-footer-error);
   }
 
   .xtu-footer__social {
@@ -632,7 +664,7 @@
     min-width: 120px;
     padding: 10px;
     border-radius: 12px;
-    background: #fff;
+    background: var(--xtu-footer-popover-bg);
     box-shadow: 0 12px 28px rgb(15 23 42 / 0.16);
     opacity: 0;
     visibility: hidden;
@@ -654,7 +686,7 @@
     font-size: var(--xtu-type-eyebrow, 0.75rem);
     font-weight: 400;
     line-height: 1.2;
-    color: #111827;
+    color: var(--xtu-footer-popover-text);
     text-align: center;
   }
 
@@ -786,6 +818,80 @@
       "label": "次级文字颜色",
       "info": "菜单链接、说明文案等",
       "default": "#8E9297"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "边框色",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "header",
+      "content": "订阅输入框"
+    },
+    {
+      "type": "color",
+      "id": "input_bg",
+      "label": "输入框背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_border",
+      "label": "输入框边框色",
+      "default": "#E4E7ED"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder",
+      "label": "占位文字颜色",
+      "default": "#9AA0A8"
+    },
+    {
+      "type": "color",
+      "id": "submit_bg",
+      "label": "提交按钮背景色",
+      "default": "#1A1C22"
+    },
+    {
+      "type": "color",
+      "id": "submit_color",
+      "label": "提交按钮文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "submit_bg_hover",
+      "label": "提交按钮 Hover 背景色",
+      "default": "#111318"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "成功提示色",
+      "default": "#059669"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "错误提示色",
+      "default": "#DC2626"
+    },
+    {
+      "type": "header",
+      "content": "社交弹层"
+    },
+    {
+      "type": "color",
+      "id": "popover_bg",
+      "label": "弹层背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "popover_text",
+      "label": "弹层文字色",
+      "default": "#111827"
     },
     {
       "type": "header",

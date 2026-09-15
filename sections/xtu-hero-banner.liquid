@@ -7,6 +7,10 @@
   assign height_mode_mobile = section.settings.height_mode_mobile | default: 'fullscreen'
   assign fixed_height_desktop = section.settings.fixed_height_desktop | default: 700
   assign fixed_height_mobile = section.settings.fixed_height_mobile | default: 580
+  assign pagination_label_color = section.settings.pagination_label_color | default: '#FFFFFF'
+  assign pagination_track_color = section.settings.pagination_track_color | default: '#FFFFFF'
+  assign pagination_fill_color = section.settings.pagination_fill_color | default: '#FFFFFF'
+  assign media_bg = section.settings.media_bg | default: '#000000'
 %}
 
 <script src="{{ 'xtu-hero-banner.js' | asset_url }}" defer="defer"></script>
@@ -29,6 +33,10 @@
     --xtu-hero-progress-duration: {{ autoplay_delay }}ms;
     --xtu-hero-h-d: {{ fixed_height_desktop }}px;
     --xtu-hero-h-m: {{ fixed_height_mobile }}px;
+    --xtu-hero-pagination-label: {{ pagination_label_color }};
+    --xtu-hero-pagination-track: {{ pagination_track_color }};
+    --xtu-hero-pagination-fill: {{ pagination_fill_color }};
+    --xtu-hero-media-bg: {{ media_bg }};
   "
 >
   <div class="swiper xtu-hero-banner__swiper" data-xtu-hero-swiper>
@@ -317,7 +325,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #000;
+    background: var(--xtu-hero-media-bg, #000);
     color: var(--xtu-hero-text);
     box-sizing: border-box;
   }
@@ -418,7 +426,7 @@
   }
 
   .xtu-hero-banner__placeholder {
-    background: #1a1a1a;
+    background: color-mix(in srgb, var(--xtu-hero-media-bg, #000) 90%, white);
   }
 
   .xtu-hero-banner__overlay {
@@ -625,7 +633,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     text-align: left;
-    color: #fff;
+    color: var(--xtu-hero-pagination-label, #fff);
     opacity: 0;
     visibility: hidden;
     transform: translateY(4px);
@@ -650,11 +658,11 @@
     height: 3px;
     overflow: hidden;
     border-radius: 999px;
-    background: rgb(255 255 255 / 0.28);
+    background: color-mix(in srgb, var(--xtu-hero-pagination-track, #fff) 28%, transparent);
   }
 
   .xtu-hero-banner__bullet.is-active .xtu-hero-banner__bullet-track {
-    background: rgb(255 255 255 / 0.32);
+    background: color-mix(in srgb, var(--xtu-hero-pagination-track, #fff) 32%, transparent);
   }
 
   .xtu-hero-banner__bullet-fill {
@@ -662,7 +670,7 @@
     width: 0;
     height: 100%;
     border-radius: inherit;
-    background: #fff;
+    background: var(--xtu-hero-pagination-fill, #fff);
     transition: width 0.3s ease;
   }
 
@@ -884,6 +892,40 @@
       "info": "关闭后仅在桌面端显示箭头",
       "default": true,
       "visible_if": "{{ section.settings.show_arrows == true }}"
+    },
+    {
+      "type": "header",
+      "content": "媒体"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "媒体背景色",
+      "default": "#000000",
+      "info": "根容器与占位信箱背景；各 slide 仍可用独立背景色。"
+    },
+    {
+      "type": "header",
+      "content": "分页颜色"
+    },
+    {
+      "type": "color",
+      "id": "pagination_label_color",
+      "label": "分页标题颜色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "pagination_track_color",
+      "label": "分页轨道颜色",
+      "default": "#FFFFFF",
+      "info": "轨道使用半透明叠色（color-mix），不透明度由样式固定。"
+    },
+    {
+      "type": "color",
+      "id": "pagination_fill_color",
+      "label": "分页进度填充色",
+      "default": "#FFFFFF"
     }
   ],
   "blocks": [

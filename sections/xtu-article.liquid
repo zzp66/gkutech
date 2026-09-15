@@ -9,6 +9,16 @@
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
   assign background_color = section.settings.background_color | default: '#FFFFFF'
   assign content_background = section.settings.content_background | default: background_color
+  assign heading_color = section.settings.heading_color | default: '#111111'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign muted_text_color = section.settings.muted_text_color | default: '#6B7280'
+  assign link_color = section.settings.link_color | default: '#0070CA'
+  assign link_color_hover = section.settings.link_color_hover | default: '#1590F2'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign border_color = section.settings.border_color | default: '#E5E7EB'
+  assign code_background = section.settings.code_background | default: '#F5F5F7'
+  assign chip_bg = section.settings.chip_bg | default: '#EEF0F3'
+  assign chip_color = section.settings.chip_color | default: '#4B5563'
   assign image_radius = section.settings.image_radius | default: 12
   assign show_comments = section.settings.show_comments
 %}
@@ -20,6 +30,16 @@
   style="
     --xtu-ar-bg: {{ background_color }};
     --xtu-ar-content-bg: {{ content_background }};
+    --xtu-ar-heading: {{ heading_color }};
+    --xtu-ar-text: {{ text_color }};
+    --xtu-ar-muted: {{ muted_text_color }};
+    --xtu-ar-link: {{ link_color }};
+    --xtu-ar-link-hover: {{ link_color_hover }};
+    --xtu-ar-accent: {{ accent_color }};
+    --xtu-ar-border: {{ border_color }};
+    --xtu-ar-code-bg: {{ code_background }};
+    --xtu-ar-chip-bg: {{ chip_bg }};
+    --xtu-ar-chip-color: {{ chip_color }};
     --xtu-ar-content-width: {{ content_width }}px;
     --xtu-ar-padding-top: {{ padding_top }}px;
     --xtu-ar-padding-bottom: {{ padding_bottom }}px;
@@ -311,6 +331,66 @@
       "id": "content_background",
       "label": "内容区背景色",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次级文字颜色",
+      "default": "#6B7280"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "链接颜色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "link_color_hover",
+      "label": "链接 Hover 颜色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "边框色",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "code_background",
+      "label": "代码块背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "chip_bg",
+      "label": "标签背景色",
+      "default": "#EEF0F3"
+    },
+    {
+      "type": "color",
+      "id": "chip_color",
+      "label": "标签文字色",
+      "default": "#4B5563"
     },
     {
       "type": "range",

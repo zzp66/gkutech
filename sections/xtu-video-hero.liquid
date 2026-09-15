@@ -27,6 +27,7 @@
   assign btn2_color = section.settings.secondary_button_color | default: '#FFFFFF'
   assign btn2_bg_hover = section.settings.secondary_button_bg_hover | default: '#FFFFFF'
   assign btn2_color_hover = section.settings.secondary_button_color_hover | default: '#111827'
+  assign media_bg = section.settings.media_bg | default: '#000000'
 
   assign has_modal_video = false
   if video_source == 'upload' and modal_video != blank
@@ -50,6 +51,7 @@
     --xtu-vh-height-mobile: {{ height_mobile }}svh;
     --xtu-vh-overlay: {{ overlay_opacity | divided_by: 100.0 }};
     --xtu-vh-text: {{ text_color }};
+    --xtu-vh-media-bg: {{ media_bg }};
   "
 >
   <div class="xtu-video-hero__media{% if bg_image_mobile != blank or bg_video_mobile != blank %} xtu-video-hero__media--split{% endif %}">
@@ -212,7 +214,7 @@
     width: 100%;
     height: var(--xtu-vh-height-desktop, 100svh);
     overflow: hidden;
-    background: #000;
+    background: var(--xtu-vh-media-bg, #000);
     color: var(--xtu-vh-text, #fff);
   }
 
@@ -245,7 +247,7 @@
   }
 
   .xtu-video-hero__placeholder {
-    background: #1a1a1a;
+    background: color-mix(in srgb, var(--xtu-vh-media-bg, #000) 90%, white);
   }
 
   .xtu-video-hero__overlay {
@@ -418,7 +420,7 @@
     aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
-    background: #000;
+    background: var(--xtu-vh-media-bg, #000);
   }
 
   .xtu-video-hero__modal-video,
@@ -520,6 +522,13 @@
       "label": "背景视频链接",
       "accept": ["youtube", "vimeo"],
       "visible_if": "{{ section.settings.bg_type == 'youtube' }}"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "媒体背景色",
+      "default": "#000000",
+      "info": "信箱黑边与占位背景。"
     },
     {
       "type": "range",

@@ -18,6 +18,7 @@
   --xtu-vs-pb-m: 0px;
   --xtu-vs-overlay: 0;
   --xtu-vs-text: #ffffff;
+  --xtu-vs-media-bg: #111111;
   --xtu-swiper-nav-inset: 16px;
 
   grid-column: 1 / -1;
@@ -53,7 +54,7 @@
   width: 100%;
   aspect-ratio: var(--xtu-vs-ratio, 16 / 9);
   border-radius: var(--xtu-vs-radius, 16px);
-  background: #111111;
+  background: var(--xtu-vs-media-bg, #111);
 }
 
 .xtu-vs__media {
@@ -70,7 +71,7 @@
   height: 100%;
   object-fit: cover;
   border: 0;
-  background: #111111;
+  background: var(--xtu-vs-media-bg, #111);
 }
 
 .xtu-vs__video--mobile {

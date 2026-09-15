@@ -14,6 +14,12 @@
   --xtu-gv-radius: 16px;
   --xtu-gv-gap: 24px;
   --xtu-gv-gap-m: 16px;
+  --xtu-gv-accent: #0070ca;
+  --xtu-gv-tab-bg-active: #0070ca;
+  --xtu-gv-tab-color-active: #ffffff;
+  --xtu-gv-page-border: #dfdfdf;
+  --xtu-gv-page-bg-active: #0070ca;
+  --xtu-gv-media-bg: #111111;
 
   padding: var(--xtu-gv-pt) 0 var(--xtu-gv-pb);
   background: var(--xtu-gv-bg, #fff);
@@ -83,7 +89,7 @@
   flex: 0 0 auto;
   margin: 0;
   padding: var(--xtu-space-8, 8px) var(--xtu-space-20, 20px);
-  border: 1px solid var(--color-5, #0070ca);
+  border: 1px solid var(--xtu-gv-accent, #0070ca);
   border-radius: 999px;
   background: transparent;
   font-family: var(--font-body--family);
@@ -103,13 +109,13 @@
 
 .xtu-gv__tab:hover,
 .xtu-gv__tab.is-active {
-  border-color: var(--color-5, #0070ca);
-  background-color: var(--color-5, #0070ca);
-  color: #fff;
+  border-color: var(--xtu-gv-tab-bg-active, #0070ca);
+  background-color: var(--xtu-gv-tab-bg-active, #0070ca);
+  color: var(--xtu-gv-tab-color-active, #fff);
 }
 
 .xtu-gv__tab:focus-visible {
-  outline: 2px solid var(--color-5, #0070ca);
+  outline: 2px solid var(--xtu-gv-accent, #0070ca);
   outline-offset: 2px;
 }
 
@@ -129,7 +135,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: var(--xtu-gv-radius, 12px);
-  background: #111;
+  background: var(--xtu-gv-media-bg, #111);
 }
 
 .xtu-gv__cover {
@@ -140,7 +146,7 @@
   height: 100%;
   padding: 0;
   border: 0;
-  background: #1a1a1a;
+  background: var(--xtu-gv-media-bg, #111);
   cursor: pointer;
   appearance: none;
 }
@@ -155,7 +161,7 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  background: #111111;
+  background: var(--xtu-gv-media-bg, #111);
 }
 
 .xtu-gv__play {
@@ -188,7 +194,7 @@
   width: 100%;
   height: 100%;
   border: 0;
-  background: #000;
+  background: var(--xtu-gv-media-bg, #000);
 }
 
 .xtu-gv__video {
@@ -223,7 +229,7 @@
   min-width: 44px;
   min-height: 44px;
   padding: 0 var(--xtu-space-16, 16px);
-  border: 1px solid var(--color-2, #dfdfdf);
+  border: 1px solid var(--xtu-gv-page-border, #dfdfdf);
   border-radius: 999px;
   background: #fff;
   font-family: var(--font-body--family);
@@ -240,9 +246,9 @@
 }
 
 .xtu-gv__page-btn:hover:not(:disabled) {
-  border-color: var(--color-5, #0070ca);
-  background: var(--color-5, #0070ca);
-  color: #fff;
+  border-color: var(--xtu-gv-page-bg-active, #0070ca);
+  background: var(--xtu-gv-page-bg-active, #0070ca);
+  color: var(--xtu-gv-tab-color-active, #fff);
 }
 
 .xtu-gv__page-btn:disabled {

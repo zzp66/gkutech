@@ -13,9 +13,20 @@
   --xtu-bl-padding-bottom: 80px;
   --xtu-bl-padding-top-mobile: 40px;
   --xtu-bl-padding-bottom-mobile: 40px;
+  --xtu-bl-heading: #111111;
+  --xtu-bl-text: #4b5563;
+  --xtu-bl-muted: #6b7280;
+  --xtu-bl-accent: #0070ca;
+  --xtu-bl-tab-bg: #eef0f3;
+  --xtu-bl-tab-color: #4b5563;
+  --xtu-bl-tab-bg-active: #0070ca;
+  --xtu-bl-tab-color-active: #ffffff;
+  --xtu-bl-card-bg: #ffffff;
+  --xtu-bl-border: #e5e7eb;
+  --xtu-bl-placeholder: #f5f5f7;
 
   background: var(--xtu-bl-bg, var(--color-background, #fff));
-  color: var(--color-foreground, #111);
+  color: var(--xtu-bl-heading, #111);
   box-sizing: border-box;
 }
 
@@ -54,7 +65,7 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-align: center;
-  color: var(--color-foreground, #111);
+  color: var(--xtu-bl-heading);
 }
 
 .xtu-blog-list__tabs-bar {
@@ -101,8 +112,8 @@
   padding: 0 20px;
   border: 0;
   border-radius: 999px;
-  background: #eef0f3;
-  color: #4b5563;
+  background: var(--xtu-bl-tab-bg);
+  color: var(--xtu-bl-tab-color);
   font-family: var(--font-body--family);
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 400;
@@ -116,18 +127,18 @@
 }
 
 .xtu-blog-list__tab:hover {
-  background: #e4e7ec;
-  color: #111827;
+  background: color-mix(in srgb, var(--xtu-bl-tab-bg) 88%, var(--xtu-bl-heading));
+  color: var(--xtu-bl-heading);
 }
 
 .xtu-blog-list__tab.is-active {
-  background: #0070ca;
-  color: #fff;
+  background: var(--xtu-bl-tab-bg-active);
+  color: var(--xtu-bl-tab-color-active);
 }
 
 .xtu-blog-list__tab.is-active:hover {
-  background: #0070ca;
-  color: #fff;
+  background: var(--xtu-bl-tab-bg-active);
+  color: var(--xtu-bl-tab-color-active);
 }
 
 .xtu-blog-list__filter {
@@ -144,7 +155,7 @@
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 400;
   line-height: 1.2;
-  color: #6b7280;
+  color: var(--xtu-bl-muted);
   white-space: nowrap;
 }
 
@@ -161,10 +172,10 @@
   width: 100%;
   min-height: 40px;
   padding: 0 40px 0 16px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--xtu-bl-border);
   border-radius: 999px;
-  background: #fff;
-  color: #111827;
+  background: var(--xtu-bl-card-bg);
+  color: var(--xtu-bl-heading);
   font-family: var(--font-body--family);
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 400;
@@ -176,11 +187,11 @@
 }
 
 .xtu-blog-list__tag-select:hover {
-  border-color: #0070ca;
+  border-color: var(--xtu-bl-accent);
 }
 
 .xtu-blog-list__tag-select:focus-visible {
-  outline: 2px solid #0070ca;
+  outline: 2px solid var(--xtu-bl-accent);
   outline-offset: 2px;
 }
 
@@ -190,7 +201,7 @@
   display: inline-flex;
   width: 12px;
   height: 12px;
-  color: #6b7280;
+  color: var(--xtu-bl-muted);
   pointer-events: none;
 }
 
@@ -221,7 +232,7 @@
   height: 100%;
   padding: 24px;
   border-radius: var(--xtu-bl-card-radius);
-  background: #fff;
+  background: var(--xtu-bl-card-bg);
   box-sizing: border-box;
   transition:
     box-shadow 0.25s ease,
@@ -239,7 +250,7 @@
   position: relative;
   aspect-ratio: var(--xtu-bl-ratio);
   border-radius: var(--xtu-bl-image-radius);
-  background: #f5f5f7;
+  background: var(--xtu-bl-placeholder);
   overflow: hidden;
 }
 
@@ -260,7 +271,7 @@
 }
 
 .xtu-blog-list__placeholder {
-  background: #f5f5f7;
+  background: var(--xtu-bl-placeholder);
 }
 
 .xtu-blog-list__body {
@@ -277,7 +288,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-foreground, #111);
+  color: var(--xtu-bl-heading);
 }
 
 .xtu-blog-list__title-link {
@@ -298,11 +309,11 @@
   font-size: var(--xtu-type-eyebrow, 0.75rem);
   font-weight: 400;
   line-height: 1.2;
-  color: #6b7280;
+  color: var(--xtu-bl-muted);
 }
 
 .xtu-blog-list__meta-sep {
-  color: #d1d5db;
+  color: color-mix(in srgb, var(--xtu-bl-muted) 45%, transparent);
 }
 
 .xtu-blog-list__excerpt {
@@ -315,7 +326,7 @@
   font-size: var(--xtu-type-body, 0.875rem);
   font-weight: 400;
   line-height: 1.2;
-  color: #4b5563;
+  color: var(--xtu-bl-text);
 }
 
 .xtu-blog-list__cta {
@@ -330,7 +341,7 @@
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
-  color: #6b7280;
+  color: var(--xtu-bl-muted);
 }
 
 .xtu-blog-list__pagination {

@@ -16,6 +16,7 @@
   assign heading = section.settings.heading
   assign background_color = section.settings.background_color | default: '#FFFFFF'
   assign heading_color = section.settings.heading_color | default: '#000000'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
   assign image_height = section.settings.image_height | default: 48
   assign image_height_mobile = section.settings.image_height_mobile | default: 36
   assign gap = section.settings.gap | default: 48
@@ -46,6 +47,7 @@
   style="
     --xtu-im-bg: {{ background_color }};
     --xtu-im-heading: {{ heading_color }};
+    --xtu-im-placeholder-bg: {{ placeholder_bg }};
     --xtu-im-h: {{ image_height }}px;
     --xtu-im-h-m: {{ image_height_mobile }}px;
     --xtu-im-gap: {{ gap }}px;
@@ -239,6 +241,12 @@
       "id": "heading_color",
       "label": "标题颜色",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "range",

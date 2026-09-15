@@ -19,6 +19,13 @@
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign tab_rail_bg = section.settings.tab_rail_bg | default: '#F3F4F6'
+  assign tab_color = section.settings.tab_color | default: '#374151'
+  assign tab_bg_active = section.settings.tab_bg_active | default: '#FFFFFF'
+  assign tab_color_active = section.settings.tab_color_active | default: '#111827'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E5E7EB'
 %}
 
 <script src="{{ 'xtu-tab-product-slider.js' | asset_url }}" defer="defer"></script>
@@ -39,6 +46,13 @@
     --xtu-tps-padding-bottom: {{ padding_bottom }}px;
     --xtu-tps-padding-top-mobile: {{ padding_top_mobile }}px;
     --xtu-tps-padding-bottom-mobile: {{ padding_bottom_mobile }}px;
+    --xtu-tps-bg: {{ background_color }};
+    --xtu-tps-heading-color: {{ heading_color }};
+    --xtu-tps-tab-rail-bg: {{ tab_rail_bg }};
+    --xtu-tps-tab-color: {{ tab_color }};
+    --xtu-tps-tab-bg-active: {{ tab_bg_active }};
+    --xtu-tps-tab-color-active: {{ tab_color_active }};
+    --xtu-tps-placeholder-bg: {{ placeholder_bg }};
   "
 >
   <div class="xtu-tab-product-slider__intro" data-xtu-align>
@@ -195,7 +209,7 @@
   .xtu-tab-product-slider {
     position: relative;
     padding: var(--xtu-tps-padding-top, 80px) 0 var(--xtu-tps-padding-bottom, 80px);
-    background: #fff;
+    background: var(--xtu-tps-bg, #fff);
     overflow: hidden;
   }
 
@@ -213,7 +227,7 @@
     line-height: 1.2;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     letter-spacing: -0.02em;
-    color: #111827;
+    color: var(--xtu-tps-heading-color, #111827);
   }
 
   .xtu-tab-product-slider__toolbar {
@@ -230,7 +244,7 @@
     gap: 4px;
     padding: 4px;
     border-radius: 999px;
-    background: #f3f4f6;
+    background: var(--xtu-tps-tab-rail-bg, #f3f4f6);
     max-width: 100%;
     min-width: 0;
   }
@@ -242,7 +256,7 @@
     padding: 12px 18px;
     border-radius: 999px;
     background: transparent;
-    color: #374151;
+    color: var(--xtu-tps-tab-color, #374151);
     font-family: var(--font-body--family);
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
@@ -252,8 +266,8 @@
   }
 
   .xtu-tab-product-slider__tab.is-active {
-    background: #fff;
-    color: #111827;
+    background: var(--xtu-tps-tab-bg-active, #fff);
+    color: var(--xtu-tps-tab-color-active, #111827);
     box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
   }
 
@@ -279,7 +293,7 @@
     height: auto;
     aspect-ratio: var(--xtu-tps-ratio, 3 / 4);
     border-radius: var(--xtu-tps-radius, 16px);
-    background: #e5e7eb;
+    background: var(--xtu-tps-placeholder-bg, #e5e7eb);
     color: #fff;
     isolation: isolate;
     box-sizing: border-box;
@@ -313,7 +327,7 @@
   }
 
   .xtu-tab-product-slider__placeholder {
-    background: #d1d5db;
+    background: var(--xtu-tps-placeholder-bg, #e5e7eb);
   }
 
   .xtu-tab-product-slider__shade {
@@ -521,6 +535,52 @@
       "info": "Peek 露出邻卡时默认关闭，可滑动浏览",
       "default": false,
       "visible_if": "{{ section.settings.show_arrows == true }}"
+    },
+    {
+      "type": "header",
+      "content": "颜色"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "tab_rail_bg",
+      "label": "Tab 轨道背景色",
+      "default": "#F3F4F6"
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Tab 文字色",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_active",
+      "label": "Tab 选中背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tab_color_active",
+      "label": "Tab 选中文字色",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E5E7EB"
     },
     {
       "type": "header",

@@ -16,6 +16,12 @@
   assign heading = section.settings.kicker | default: 'Help Center'
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign background_color = section.settings.background_color | default: '#F5F5F7'
+  assign tab_bg = section.settings.tab_bg | default: '#FFFFFF'
+  assign tab_color = section.settings.tab_color | default: '#111111'
+  assign tab_border = section.settings.tab_border | default: '#E5E7EB'
+  assign tab_bg_active = section.settings.tab_bg_active | default: '#0070CA'
+  assign tab_color_active = section.settings.tab_color_active | default: '#FFFFFF'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
   assign banner_height = section.settings.banner_height | default: 280
   assign banner_height_mobile = section.settings.banner_height_mobile | default: 200
   assign show_overlay = section.settings.show_overlay
@@ -94,6 +100,12 @@
   style="
     --xtu-help-nav-bg: {{ background_color }};
     --xtu-help-nav-heading: {{ heading_color }};
+    --xtu-help-nav-tab-bg: {{ tab_bg }};
+    --xtu-help-nav-tab-color: {{ tab_color }};
+    --xtu-help-nav-tab-border: {{ tab_border }};
+    --xtu-help-nav-tab-bg-active: {{ tab_bg_active }};
+    --xtu-help-nav-tab-color-active: {{ tab_color_active }};
+    --xtu-help-nav-accent: {{ accent_color }};
     --xtu-help-nav-min-h: {{ banner_height }}px;
     --xtu-help-nav-min-h-m: {{ banner_height_mobile }}px;
     --xtu-help-nav-overlay: {{ overlay_opacity | divided_by: 100.0 }};
@@ -210,6 +222,13 @@
     { "type": "color", "id": "heading_color", "label": "标题色", "default": "#000000" },
     { "type": "header", "content": "背景" },
     { "type": "color", "id": "background_color", "label": "版块背景色", "default": "#F5F5F7" },
+    { "type": "header", "content": "Tab 颜色" },
+    { "type": "color", "id": "tab_bg", "label": "Tab 背景色", "default": "#FFFFFF" },
+    { "type": "color", "id": "tab_color", "label": "Tab 文字色", "default": "#111111" },
+    { "type": "color", "id": "tab_border", "label": "Tab 边框色", "default": "#E5E7EB" },
+    { "type": "color", "id": "tab_bg_active", "label": "Tab 激活背景色", "default": "#0070CA" },
+    { "type": "color", "id": "tab_color_active", "label": "Tab 激活文字色", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent_color", "label": "强调色", "default": "#0070CA", "info": "Tab Hover 描边等反馈色" },
     { "type": "image_picker", "id": "image", "label": "背景图（PC）" },
     { "type": "image_picker", "id": "image_mobile", "label": "背景图（移动端）", "info": "未上传时回退 PC 图。" },
     { "type": "range", "id": "banner_height", "label": "最小高度（PC）", "min": 160, "max": 560, "step": 4, "unit": "px", "default": 280 },

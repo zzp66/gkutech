@@ -22,6 +22,17 @@
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
   assign background_color = section.settings.background_color | default: settings.color_palette.background
   assign content_background = section.settings.content_background | default: background_color
+  assign heading_color = section.settings.heading_color | default: '#111111'
+  assign text_color = section.settings.text_color | default: '#4B5563'
+  assign muted_text_color = section.settings.muted_text_color | default: '#6B7280'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign tab_bg = section.settings.tab_bg | default: '#EEF0F3'
+  assign tab_color = section.settings.tab_color | default: '#4B5563'
+  assign tab_bg_active = section.settings.tab_bg_active | default: '#0070CA'
+  assign tab_color_active = section.settings.tab_color_active | default: '#FFFFFF'
+  assign card_background = section.settings.card_background | default: '#FFFFFF'
+  assign border_color = section.settings.border_color | default: '#E5E7EB'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#F5F5F7'
   assign gap = section.settings.card_gap | default: 24
   assign gap_mobile = section.settings.card_gap_mobile | default: 12
   assign show_blog_tabs = section.settings.show_blog_tabs
@@ -48,6 +59,17 @@
   style="
     --xtu-bl-bg: {{ background_color }};
     --xtu-bl-content-bg: {{ content_background }};
+    --xtu-bl-heading: {{ heading_color }};
+    --xtu-bl-text: {{ text_color }};
+    --xtu-bl-muted: {{ muted_text_color }};
+    --xtu-bl-accent: {{ accent_color }};
+    --xtu-bl-tab-bg: {{ tab_bg }};
+    --xtu-bl-tab-color: {{ tab_color }};
+    --xtu-bl-tab-bg-active: {{ tab_bg_active }};
+    --xtu-bl-tab-color-active: {{ tab_color_active }};
+    --xtu-bl-card-bg: {{ card_background }};
+    --xtu-bl-border: {{ border_color }};
+    --xtu-bl-placeholder: {{ placeholder_bg }};
     --xtu-bl-content-width: {{ content_width }}px;
     --xtu-bl-padding-top: {{ padding_top }}px;
     --xtu-bl-padding-bottom: {{ padding_bottom }}px;
@@ -350,6 +372,72 @@
       "id": "content_background",
       "label": "内容区背景色",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#4B5563"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "次级文字颜色",
+      "default": "#6B7280"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg",
+      "label": "Tab 背景色",
+      "default": "#EEF0F3"
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Tab 文字色",
+      "default": "#4B5563"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_active",
+      "label": "Tab 选中背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "tab_color_active",
+      "label": "Tab 选中文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "卡片背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "边框色",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位图背景色",
+      "default": "#F5F5F7"
     },
     {
       "type": "range",

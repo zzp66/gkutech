@@ -22,6 +22,7 @@
 
 {% liquid
   assign background_color = section.settings.background_color | default: '#000000'
+  assign media_bg = section.settings.media_bg | default: '#111111'
   assign media_ratio = section.settings.media_ratio | default: '16 / 9'
   assign desktop_view = section.settings.desktop_view | default: '70'
   assign mobile_view = section.settings.mobile_view | default: '88'
@@ -97,6 +98,7 @@
   data-autoplay="{{ autoplay_delay }}"
   style="
     --xtu-vs-bg: {{ background_color }};
+    --xtu-vs-media-bg: {{ media_bg }};
     --xtu-vs-slide-max: {{ slide_max_width }}px;
     --xtu-vs-slide-pct-d: {{ desktop_pct }}%;
     --xtu-vs-slide-pct-m: {{ mobile_pct }}%;
@@ -501,6 +503,13 @@
       "label": "版块背景色",
       "default": "#000000",
       "info": "左右 peek 缝隙后露出的底色。"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "媒体背景色",
+      "default": "#111111",
+      "info": "视频卡片与封面占位背景。"
     },
     {
       "type": "range",

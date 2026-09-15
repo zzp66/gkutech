@@ -32,6 +32,13 @@
   assign text_color = section.settings.text_color | default: '#333333'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
   assign star_color = section.settings.star_color | default: '#F5B400'
+  assign star_empty_color = section.settings.star_empty_color | default: '#E5E7EB'
+  assign border_color = section.settings.border_color | default: '#DFDFDF'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
+  assign pagination_color = section.settings.pagination_color | default: '#D1D5DB'
+  assign pagination_color_active = section.settings.pagination_color_active | default: '#000000'
+  assign badge_bg = section.settings.badge_bg | default: '#F0F0F0'
+  assign badge_color = section.settings.badge_color | default: '#6B7280'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign card_radius = section.settings.card_radius | default: 16
   assign media_ratio = section.settings.media_ratio | default: '16 / 9'
@@ -79,6 +86,13 @@
     --xtu-cr-text: {{ text_color }};
     --xtu-cr-muted: {{ muted_text_color }};
     --xtu-cr-star: {{ star_color }};
+    --xtu-cr-star-empty: {{ star_empty_color }};
+    --xtu-cr-border: {{ border_color }};
+    --xtu-cr-placeholder-bg: {{ placeholder_bg }};
+    --xtu-cr-pagination: {{ pagination_color }};
+    --xtu-cr-pagination-active: {{ pagination_color_active }};
+    --xtu-cr-badge-bg: {{ badge_bg }};
+    --xtu-cr-badge-color: {{ badge_color }};
     --xtu-cr-content-width: {{ content_width }}px;
     --xtu-cr-radius: {{ card_radius }}px;
     --xtu-cr-ratio: {{ media_ratio }};
@@ -329,7 +343,7 @@
     height: 100%;
     min-height: 100%;
     background: var(--xtu-cr-card-bg, #fff);
-    border: 1px solid var(--color-2, #dfdfdf);
+    border: 1px solid var(--xtu-cr-border, #dfdfdf);
     border-radius: var(--xtu-cr-radius, 16px);
     overflow: hidden;
     box-sizing: border-box;
@@ -339,7 +353,7 @@
     position: relative;
     flex: 0 0 auto;
     aspect-ratio: var(--xtu-cr-ratio, 16 / 9);
-    background: #e8eaed;
+    background: var(--xtu-cr-placeholder-bg, #e8eaed);
     overflow: hidden;
   }
 
@@ -367,7 +381,7 @@
     display: block;
     width: 16px;
     height: 16px;
-    color: #e5e7eb;
+    color: var(--xtu-cr-star-empty, #e5e7eb);
   }
 
   .xtu-cr__star.is-filled {
@@ -436,7 +450,7 @@
     flex: 0 0 auto;
     border-radius: 999px;
     object-fit: cover;
-    background: #e8eaed;
+    background: var(--xtu-cr-placeholder-bg, #e8eaed);
   }
 
   .xtu-cr__avatar--initial {
@@ -447,7 +461,7 @@
     font-size: var(--xtu-type-eyebrow);
     font-weight: 600;
     line-height: 1.2;
-    color: #333;
+    color: var(--xtu-cr-text, #333);
   }
 
   .xtu-cr__name {
@@ -466,14 +480,14 @@
     flex: 0 0 auto;
     padding: var(--xtu-space-4, 4px) var(--xtu-space-8, 8px);
     border-radius: var(--xtu-radius-sm, 8px);
-    background: #f0f0f0;
+    background: var(--xtu-cr-badge-bg, #f0f0f0);
     font-family: var(--font-body--family);
     font-size: var(--xtu-type-eyebrow);
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #6b7280;
+    color: var(--xtu-cr-badge-color, #6b7280);
   }
 
   .xtu-cr__pager {
@@ -493,14 +507,14 @@
     padding: 0;
     border: 0;
     border-radius: 2px;
-    background: #d1d5db;
+    background: var(--xtu-cr-pagination, #d1d5db);
     cursor: pointer;
     appearance: none;
     transition: background 0.2s ease;
   }
 
   .xtu-cr__bullet.is-active {
-    background: #000;
+    background: var(--xtu-cr-pagination-active, #000);
   }
 
   @media screen and (max-width: 749px) {
@@ -722,6 +736,48 @@
       "id": "star_color",
       "label": "星级颜色",
       "default": "#F5B400"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "空星颜色",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "卡片边框色",
+      "default": "#DFDFDF"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "分页指示器颜色",
+      "default": "#D1D5DB"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color_active",
+      "label": "分页指示器激活色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "认证徽章背景色",
+      "default": "#F0F0F0"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "认证徽章文字色",
+      "default": "#6B7280"
     },
     {
       "type": "number",

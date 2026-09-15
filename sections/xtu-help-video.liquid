@@ -20,6 +20,10 @@
   assign heading_color = section.settings.heading_color | default: '#000000'
   assign muted_text_color = section.settings.muted_text_color | default: '#8E9297'
   assign text_color = section.settings.text_color | default: '#333333'
+  assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign sidebar_background = section.settings.sidebar_background | default: '#F5F5F7'
+  assign card_background = section.settings.card_background | default: '#FFFFFF'
+  assign border_color = section.settings.border_color | default: '#DFDFDF'
   assign content_width = section.settings.content_width | default: 1200 | at_least: 600 | at_most: 1600
   assign columns_desktop = section.settings.columns_desktop | default: 2
   assign per_page = section.settings.per_page | default: 8
@@ -134,6 +138,10 @@
     --xtu-help-heading: {{ heading_color }};
     --xtu-help-muted: {{ muted_text_color }};
     --xtu-help-text: {{ text_color }};
+    --xtu-help-accent: {{ accent_color }};
+    --xtu-help-sidebar-bg: {{ sidebar_background }};
+    --xtu-help-card-bg: {{ card_background }};
+    --xtu-help-border: {{ border_color }};
   "
 >
   <div class="xtu-help__inner">
@@ -167,6 +175,10 @@
     { "type": "color", "id": "heading_color", "label": "标题色", "default": "#000000" },
     { "type": "color", "id": "text_color", "label": "正文色", "default": "#333333" },
     { "type": "color", "id": "muted_text_color", "label": "次要文字色", "default": "#8E9297" },
+    { "type": "color", "id": "accent_color", "label": "强调色", "default": "#0070CA" },
+    { "type": "color", "id": "sidebar_background", "label": "侧栏背景色", "default": "#F5F5F7" },
+    { "type": "color", "id": "card_background", "label": "卡片背景色", "default": "#FFFFFF" },
+    { "type": "color", "id": "border_color", "label": "边框颜色", "default": "#DFDFDF" },
     { "type": "number", "id": "content_width", "label": "内容区最大宽度（px）", "default": 1200, "info": "范围 600–1600。" },
     { "type": "header", "content": "边距" },
     { "type": "range", "id": "padding_top", "label": "上边距（PC）", "min": 0, "max": 140, "step": 2, "unit": "px", "default": 80 },

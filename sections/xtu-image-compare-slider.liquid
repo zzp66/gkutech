@@ -12,7 +12,7 @@
 
   前台
   - 拖动/触摸中间竖向滑块左右对比；支持键盘方向键微调。
-  - 媒体高度由 aspect-ratio 推导（含「按图片自身比例」：用图片 aspect_ratio，禁止 aspect-ratio:auto 导致塌高）；空图用 placeholder 占位。
+  - 媒体高度由 aspect-ratio 推导；空图用 placeholder 占位。
 
   相关：assets/xtu-image-compare-slider.js、assets/xtu-image-compare-slider.css
 {%- endcomment -%}
@@ -30,6 +30,11 @@
   assign label_after = section.settings.label_after
   assign handle_color = section.settings.handle_color | default: '#FFFFFF'
   assign handle_accent = section.settings.handle_accent | default: '#333333'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign muted_text_color = section.settings.muted_text_color | default: '#333333'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#F5F5F7'
+  assign label_bg = section.settings.label_bg | default: '#000000'
+  assign label_color = section.settings.label_color | default: '#FFFFFF'
   assign padding_top = section.settings.padding_top | default: 80
   assign padding_bottom = section.settings.padding_bottom | default: 80
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
@@ -52,23 +57,8 @@
   assign alt_before = label_before | default: heading | default: 'Before'
   assign alt_after = label_after | default: heading | default: 'After'
   assign ratio_auto = false
-  assign ratio_css = media_ratio
-  assign ratio_css_mobile = blank
   if media_ratio == 'auto'
     assign ratio_auto = true
-    # Absolute media layers cannot size an aspect-ratio:auto stage — derive ratio from image.
-    if image_after != blank
-      assign ratio_css = image_after.aspect_ratio
-    elsif image_before != blank
-      assign ratio_css = image_before.aspect_ratio
-    else
-      assign ratio_css = '16 / 9'
-    endif
-    if image_after_mobile != blank
-      assign ratio_css_mobile = image_after_mobile.aspect_ratio
-    elsif image_before_mobile != blank
-      assign ratio_css_mobile = image_before_mobile.aspect_ratio
-    endif
   endif
   assign img_sizes = '(max-width: 749px) calc(100vw - 30px), min(1200px, 100vw - 80px)'
 %}
@@ -85,12 +75,16 @@
     --xtu-ics-bg: {{ background_color }};
     --xtu-ics-content-bg: {{ content_background }};
     --xtu-ics-content-width: {{ content_width }}px;
-    --xtu-ics-ratio: {{ ratio_css }};
-    {% if ratio_css_mobile != blank %}--xtu-ics-ratio-mobile: {{ ratio_css_mobile }};{% endif %}
+    --xtu-ics-ratio: {{ media_ratio }};
     --xtu-ics-radius: {{ media_radius }}px;
     --xtu-ics-split: {{ initial_position }}%;
     --xtu-ics-handle: {{ handle_color }};
     --xtu-ics-handle-accent: {{ handle_accent }};
+    --xtu-ics-heading: {{ heading_color }};
+    --xtu-ics-muted: {{ muted_text_color }};
+    --xtu-ics-placeholder-bg: {{ placeholder_bg }};
+    --xtu-ics-label-bg: {{ label_bg }};
+    --xtu-ics-label-color: {{ label_color }};
     --xtu-ics-pt: {{ padding_top }}px;
     --xtu-ics-pb: {{ padding_bottom }}px;
     --xtu-ics-pt-m: {{ padding_top_mobile }}px;
@@ -324,6 +318,37 @@
       "type": "color",
       "id": "content_background",
       "label": "内容区背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "副标题颜色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#F5F5F7"
+    },
+    {
+      "type": "color",
+      "id": "label_bg",
+      "label": "标签背景色",
+      "default": "#000000",
+      "info": "前台以 56% 透明度叠色显示。"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "标签文字色",
       "default": "#FFFFFF"
     },
     {

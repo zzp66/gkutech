@@ -9,6 +9,15 @@
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
   assign accent_color = section.settings.accent_color | default: '#0070CA'
+  assign background_color = section.settings.background_color | default: '#FFFFFF'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#333333'
+  assign card_background = section.settings.card_background | default: '#FFFFFF'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8E8EA'
+  assign button_bg = section.settings.button_bg | default: '#1590F2'
+  assign button_color = section.settings.button_color | default: '#FFFFFF'
+  assign button_bg_hover = section.settings.button_bg_hover | default: '#0070CA'
+  assign button_color_hover = section.settings.button_color_hover | default: '#FFFFFF'
 
   assign selected_count = 0
   for block in section.blocks
@@ -27,6 +36,11 @@
   style="
     --xtu-bf-radius: {{ card_radius }}px;
     --xtu-bf-accent: {{ accent_color }};
+    --xtu-bf-bg: {{ background_color }};
+    --xtu-bf-heading: {{ heading_color }};
+    --xtu-bf-text: {{ text_color }};
+    --xtu-bf-card-bg: {{ card_background }};
+    --xtu-bf-placeholder-bg: {{ placeholder_bg }};
     --xtu-bf-padding-top: {{ padding_top }}px;
     --xtu-bf-padding-bottom: {{ padding_bottom }}px;
     --xtu-bf-padding-top-mobile: {{ padding_top_mobile }}px;
@@ -100,10 +114,10 @@
                   label: button_label,
                   href: featured_article.url,
                   show_arrow: show_button_arrow,
-                  bg: '#1590F2',
-                  color: '#FFFFFF',
-                  bg_hover: '#0070CA',
-                  color_hover: '#FFFFFF',
+                  bg: button_bg,
+                  color: button_color,
+                  bg_hover: button_bg_hover,
+                  color_hover: button_color_hover,
                   class: 'xtu-blog-featured__btn'
                 %}
               {% endif %}
@@ -158,10 +172,10 @@
                         href: article.url,
                         size: 'sm',
                         show_arrow: show_button_arrow,
-                        bg: '#1590F2',
-                        color: '#FFFFFF',
-                        bg_hover: '#0070CA',
-                        color_hover: '#FFFFFF',
+                        bg: button_bg,
+                        color: button_color,
+                        bg_hover: button_bg_hover,
+                        color_hover: button_color_hover,
                         class: 'xtu-blog-featured__btn'
                       %}
                     {% endif %}
@@ -192,10 +206,10 @@
                 label: button_label,
                 href: '#',
                 show_arrow: show_button_arrow,
-                bg: '#1590F2',
-                color: '#FFFFFF',
-                bg_hover: '#0070CA',
-                color_hover: '#FFFFFF',
+                bg: button_bg,
+                color: button_color,
+                bg_hover: button_bg_hover,
+                color_hover: button_color_hover,
                 class: 'xtu-blog-featured__btn'
               %}
             {% endif %}
@@ -217,10 +231,10 @@
                     href: '#',
                     size: 'sm',
                     show_arrow: show_button_arrow,
-                    bg: '#1590F2',
-                    color: '#FFFFFF',
-                    bg_hover: '#0070CA',
-                    color_hover: '#FFFFFF',
+                    bg: button_bg,
+                    color: button_color,
+                    bg_hover: button_bg_hover,
+                    color_hover: button_color_hover,
                     class: 'xtu-blog-featured__btn'
                   %}
                 {% endif %}
@@ -288,10 +302,10 @@
                             label: button_label,
                             href: article.url,
                             show_arrow: show_button_arrow,
-                            bg: '#1590F2',
-                            color: '#FFFFFF',
-                            bg_hover: '#0070CA',
-                            color_hover: '#FFFFFF',
+                            bg: button_bg,
+                            color: button_color,
+                            bg_hover: button_bg_hover,
+                            color_hover: button_color_hover,
                             class: 'xtu-blog-featured__mobile-btn'
                           %}
                         {% endif %}
@@ -324,10 +338,10 @@
                         label: button_label,
                         href: '#',
                         show_arrow: show_button_arrow,
-                        bg: '#1590F2',
-                        color: '#FFFFFF',
-                        bg_hover: '#0070CA',
-                        color_hover: '#FFFFFF',
+                        bg: button_bg,
+                        color: button_color,
+                        bg_hover: button_bg_hover,
+                        color_hover: button_color_hover,
                         class: 'xtu-blog-featured__mobile-btn'
                       %}
                     {% endif %}
@@ -346,6 +360,7 @@
   .xtu-blog-featured {
     padding: var(--xtu-bf-padding-top) 0 var(--xtu-bf-padding-bottom);
     overflow: hidden;
+    background: var(--xtu-bf-bg, #fff);
   }
 
   .xtu-blog-featured__inner {
@@ -359,7 +374,7 @@
     font-size: var(--xtu-type-section-title, clamp(1.5rem, 2.8vw, 2rem));
     font-weight: 600;
     line-height: 1.2;
-    color: var(--color-foreground);
+    color: var(--xtu-bf-heading, #000);
     text-align: left;
   }
 
@@ -387,7 +402,7 @@
     border-radius: var(--xtu-bf-radius, 16px);
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    background: var(--color-4);
+    background: var(--xtu-bf-placeholder-bg, #e8e8ea);
   }
 
   .xtu-blog-featured__featured-img,
@@ -400,7 +415,7 @@
   }
 
   .xtu-blog-featured__placeholder {
-    background: #e8e8ea;
+    background: var(--xtu-bf-placeholder-bg, #e8e8ea);
   }
 
   .xtu-blog-featured__featured-body {
@@ -424,7 +439,7 @@
     font-size: var(--xtu-type-eyebrow, 0.75rem);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-1);
+    color: var(--xtu-bf-text, #333);
   }
 
   .xtu-blog-featured__latest::before {
@@ -443,7 +458,7 @@
     font-size: var(--xtu-type-eyebrow, 0.75rem);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-1);
+    color: var(--xtu-bf-text, #333);
     white-space: nowrap;
   }
 
@@ -453,7 +468,7 @@
     font-size: var(--xtu-type-block-title, 1.75rem);
     font-weight: 600;
     line-height: 1.2;
-    color: var(--color-foreground);
+    color: var(--xtu-bf-heading, #000);
   }
 
   .xtu-blog-featured__featured-title a,
@@ -474,7 +489,7 @@
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-1);
+    color: var(--xtu-bf-text, #333);
     display: -webkit-box;
     -webkit-line-clamp: 4;
     line-clamp: 4;
@@ -500,7 +515,7 @@
     flex-direction: column;
     min-width: 0;
     height: 100%;
-    background: #fff;
+    background: var(--xtu-bf-card-bg, #fff);
     border-radius: var(--xtu-bf-radius, 16px);
     overflow: hidden;
   }
@@ -509,7 +524,7 @@
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: var(--color-4);
+    background: var(--xtu-bf-placeholder-bg, #e8e8ea);
   }
 
   .xtu-blog-featured__card-body {
@@ -528,7 +543,7 @@
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 600;
     line-height: 1.2;
-    color: var(--color-foreground);
+    color: var(--xtu-bf-heading, #000);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -543,7 +558,7 @@
     font-size: var(--xtu-type-body, 0.875rem);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-1);
+    color: var(--xtu-bf-text, #333);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -562,7 +577,7 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background: #fff;
+    background: var(--xtu-bf-card-bg, #fff);
     border-radius: var(--xtu-bf-radius, 16px);
     overflow: hidden;
   }
@@ -582,7 +597,7 @@
     min-width: 0;
     padding: var(--xtu-space-20, 20px);
     box-sizing: border-box;
-    background: #fff;
+    background: var(--xtu-bf-card-bg, #fff);
   }
 
   .xtu-blog-featured__mobile-card .xtu-blog-featured__featured-title {
@@ -713,6 +728,60 @@
       "label": "强调色",
       "default": "#0070CA",
       "info": "精选标签左侧色条"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "版块背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "正文颜色",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "卡片背景色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8E8EA"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "按钮背景色",
+      "default": "#1590F2"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "按钮文字色",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "按钮 Hover 背景色",
+      "default": "#0070CA"
+    },
+    {
+      "type": "color",
+      "id": "button_color_hover",
+      "label": "按钮 Hover 文字色",
+      "default": "#FFFFFF"
     },
     {
       "type": "range",

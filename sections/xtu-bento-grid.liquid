@@ -16,6 +16,7 @@
   assign padding_top_mobile = section.settings.padding_top_mobile | default: 40
   assign padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 40
   assign heading_color = section.settings.heading_color | default: '#000000'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#E8EAED'
 %}
 
 <section
@@ -37,6 +38,7 @@
     --xtu-bento-pt-m: {{ padding_top_mobile }}px;
     --xtu-bento-pb-m: {{ padding_bottom_mobile }}px;
     --xtu-bento-heading-color: {{ heading_color }};
+    --xtu-bento-placeholder-bg: {{ placeholder_bg }};
   "
 >
   <div class="xtu-bento-grid__inner">
@@ -258,7 +260,7 @@
     grid-row: var(--xtu-bento-gr);
     overflow: hidden;
     border-radius: var(--xtu-bento-radius, 16px);
-    background: #e8eaed;
+    background: var(--xtu-bento-placeholder-bg, #e8eaed);
     text-decoration: none;
     color: inherit;
     isolation: isolate;
@@ -304,7 +306,7 @@
   }
 
   .xtu-bento-grid__placeholder {
-    background: #dfe3e8;
+    background: var(--xtu-bento-placeholder-bg, #e8eaed);
   }
 
   .xtu-bento-grid__wash {
@@ -443,6 +445,12 @@
       "label": "版块标题色",
       "default": "#000000",
       "info": "大标题；卡片内文案仍由块级设置控制"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "占位背景色",
+      "default": "#E8EAED"
     },
     {
       "type": "range",
