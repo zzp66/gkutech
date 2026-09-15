@@ -74,7 +74,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "全站共用组件的默认颜色。Section / Header 内单独配置会覆盖此处。"
+        "content": "仅全站共用组件默认色（胶囊按钮、加购、轮播箭头等）。场景专属色放在对应模块：如购物车抽屉色在「购物车」设置；Section / Header 内配置会覆盖此处。"
       },
       {
         "type": "header",
@@ -1664,6 +1664,131 @@
         "info": "按商店主币种填写数字，例如 99；进度按购物车合计（折扣后）计算",
         "default": "399.99",
         "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "header",
+        "content": "XTU 购物车抽屉颜色",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "paragraph",
+        "content": "侧边购物车专用色。Checkout、免邮进度条；折扣金额与优惠码徽章同时作用于购物车页。",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_checkout_bg",
+        "label": "Checkout 背景色",
+        "default": "#1590F2",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_checkout_color",
+        "label": "Checkout 文字色",
+        "default": "#FFFFFF",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_checkout_bg_hover",
+        "label": "Checkout Hover 背景色",
+        "default": "#0070CA",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_checkout_color_hover",
+        "label": "Checkout Hover 文字色",
+        "default": "#FFFFFF",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_accent",
+        "label": "免邮强调色",
+        "default": "#1590F2",
+        "info": "进度条主色、图标色",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_accent_deep",
+        "label": "免邮强调色（深）",
+        "default": "#0070CA",
+        "info": "进度条末端、解锁态",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_accent_soft",
+        "label": "免邮强调色（浅）",
+        "default": "#66B1ED",
+        "info": "进度条渐变起点",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_track",
+        "label": "免邮轨道底色",
+        "default": "#EBEBEB",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_text",
+        "label": "免邮文案色",
+        "default": "#111111",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_success",
+        "label": "免邮解锁文案色",
+        "default": "#0070CA",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_panel_start",
+        "label": "免邮区背景（上）",
+        "default": "#F7FBFF",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_panel_end",
+        "label": "免邮区背景（下）",
+        "default": "#FFFFFF",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_fs_border",
+        "label": "免邮区分隔线",
+        "default": "#EEEEEE",
+        "visible_if": "{{ settings.cart_type == 'drawer' and settings.xtu_cart_free_shipping_enable }}"
+      },
+      {
+        "type": "header",
+        "content": "XTU 购物车折扣色"
+      },
+      {
+        "type": "paragraph",
+        "content": "抽屉与购物车页共用：折扣节省金额、优惠码徽章。"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_discount_color",
+        "label": "折扣金额色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "xtu_cart_discount_pill_color",
+        "label": "优惠码徽章文字色",
+        "default": "#1590F2",
+        "info": "徽章底色为该色的浅透明叠色"
       },
       {
         "type": "header",

@@ -4,6 +4,7 @@
   Uses Theme settings:
   - settings.xtu_cart_free_shipping_enable
   - settings.xtu_cart_free_shipping_threshold (store currency major units)
+  - settings.xtu_cart_fs_* colors（主题设置 → 购物车 → XTU 购物车抽屉颜色）
 
   @example
   {% render 'xtu-cart-free-shipping' %}
@@ -135,20 +136,24 @@
 
 {% stylesheet %}
   xtu-cart-free-shipping.xtu-fs {
-    --xtu-fs-blue: #1590f2;
-    --xtu-fs-blue-deep: #0070ca;
-    --xtu-fs-blue-soft: #66b1ed;
-    --xtu-fs-track: #ebebeb;
-    --xtu-fs-text: #111;
-    --xtu-fs-success: #0070ca;
+    --xtu-fs-blue: var(--xtu-cart-fs-accent, #1590f2);
+    --xtu-fs-blue-deep: var(--xtu-cart-fs-accent-deep, #0070ca);
+    --xtu-fs-blue-soft: var(--xtu-cart-fs-accent-soft, #66b1ed);
+    --xtu-fs-track: var(--xtu-cart-fs-track, #ebebeb);
+    --xtu-fs-text: var(--xtu-cart-fs-text, #111);
+    --xtu-fs-success: var(--xtu-cart-fs-success, #0070ca);
 
     display: block;
     position: relative;
     flex-shrink: 0;
     margin: 0 0 16px;
     padding: 12px var(--cart-drawer-padding, 16px) 14px;
-    border-bottom: 1px solid #eee;
-    background: linear-gradient(180deg, #f7fbff 0%, #fff 100%);
+    border-bottom: 1px solid var(--xtu-cart-fs-border, #eee);
+    background: linear-gradient(
+      180deg,
+      var(--xtu-cart-fs-panel-start, #f7fbff) 0%,
+      var(--xtu-cart-fs-panel-end, #fff) 100%
+    );
     overflow: hidden;
   }
 
@@ -166,7 +171,7 @@
     display: grid;
     place-items: center;
     border-radius: 999px;
-    background: rgb(21 144 242 / 0.1);
+    background: color-mix(in srgb, var(--xtu-fs-blue) 10%, transparent);
     color: var(--xtu-fs-blue);
     transition:
       background 0.35s ease,
@@ -189,7 +194,7 @@
 
   xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__icon {
     background: var(--xtu-fs-blue-deep);
-    color: #fff;
+    color: var(--xtu-cart-checkout-color, #fff);
   }
 
   xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__svg--truck {
@@ -239,7 +244,7 @@
       var(--xtu-fs-blue) 55%,
       var(--xtu-fs-blue-deep)
     );
-    box-shadow: 0 0 12px rgb(21 144 242 / 0.35);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--xtu-fs-blue) 35%, transparent);
     transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: width;
   }
@@ -259,7 +264,7 @@
   }
 
   xtu-cart-free-shipping.xtu-fs--unlocked .xtu-fs__fill {
-    background: linear-gradient(90deg, #66b1ed, #0070ca);
+    background: linear-gradient(90deg, var(--xtu-fs-blue-soft), var(--xtu-fs-blue-deep));
   }
 
   xtu-cart-free-shipping .xtu-fs__burst {
@@ -276,11 +281,11 @@
   xtu-cart-free-shipping.xtu-fs.is-celebrate .xtu-fs__burst {
     opacity: 1;
     background:
-      radial-gradient(circle at 18% 40%, rgb(21 144 242 / 0.45) 0 2px, transparent 3px),
-      radial-gradient(circle at 78% 28%, rgb(0 112 202 / 0.5) 0 2px, transparent 3px),
-      radial-gradient(circle at 62% 70%, rgb(102 177 237 / 0.55) 0 2px, transparent 3px),
-      radial-gradient(circle at 36% 72%, rgb(21 144 242 / 0.4) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 88% 58%, rgb(0 112 202 / 0.45) 0 1.5px, transparent 2.5px);
+      radial-gradient(circle at 18% 40%, color-mix(in srgb, var(--xtu-fs-blue) 45%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 28%, color-mix(in srgb, var(--xtu-fs-blue-deep) 50%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 62% 70%, color-mix(in srgb, var(--xtu-fs-blue-soft) 55%, transparent) 0 2px, transparent 3px),
+      radial-gradient(circle at 36% 72%, color-mix(in srgb, var(--xtu-fs-blue) 40%, transparent) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle at 88% 58%, color-mix(in srgb, var(--xtu-fs-blue-deep) 45%, transparent) 0 1.5px, transparent 2.5px);
     animation: xtu-fs-burst 0.9s ease-out forwards;
   }
 

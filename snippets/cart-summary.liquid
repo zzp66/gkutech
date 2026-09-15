@@ -631,7 +631,7 @@
     font-weight: 600;
     line-height: 1.2;
     white-space: nowrap;
-    color: #0070ca;
+    color: var(--xtu-cart-discount-color, #0070ca);
   }
 
   .cart-totals__installments {
@@ -796,8 +796,8 @@
     min-height: 24px;
     padding: 0 4px 0 10px;
     border-radius: 999px;
-    background: rgb(21 144 242 / 0.12);
-    color: #1590f2;
+    background: color-mix(in srgb, var(--xtu-cart-discount-pill-color, #1590f2) 12%, transparent);
+    color: var(--xtu-cart-discount-pill-color, #1590f2);
     font-size: 0.75rem;
     font-weight: 600;
     line-height: 1.2;

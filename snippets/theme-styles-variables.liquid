@@ -694,7 +694,7 @@
     --cart-secondary-font-style: var(--font-{{ settings.cart_price_font }}--style);
     --cart-secondary-font-weight: var(--font-{{ settings.cart_price_font }}--weight);
 
-    /* XTU shared component colors (Theme settings → XTU 通用颜色) */
+    /* XTU shared component colors (Theme settings → XTU 通用颜色；购物车色见「购物车」) */
     --xtu-btn-bg: {{ settings.xtu_btn_bg | default: '#1590F2' }};
     --xtu-btn-color: {{ settings.xtu_btn_color | default: '#FFFFFF' }};
     --xtu-btn-bg-hover: {{ settings.xtu_btn_bg_hover | default: '#0070CA' }};
@@ -705,6 +705,21 @@
     --xtu-atc-color-hover: {{ settings.xtu_atc_color_hover | default: '#FFFFFF' }};
     --xtu-atc-bg-disabled: {{ settings.xtu_atc_bg_disabled | default: '#E8E8ED' }};
     --xtu-atc-color-disabled: {{ settings.xtu_atc_color_disabled | default: '#8E8E93' }};
+    --xtu-cart-checkout-bg: {{ settings.xtu_cart_checkout_bg | default: '#1590F2' }};
+    --xtu-cart-checkout-color: {{ settings.xtu_cart_checkout_color | default: '#FFFFFF' }};
+    --xtu-cart-checkout-bg-hover: {{ settings.xtu_cart_checkout_bg_hover | default: '#0070CA' }};
+    --xtu-cart-checkout-color-hover: {{ settings.xtu_cart_checkout_color_hover | default: '#FFFFFF' }};
+    --xtu-cart-fs-accent: {{ settings.xtu_cart_fs_accent | default: '#1590F2' }};
+    --xtu-cart-fs-accent-deep: {{ settings.xtu_cart_fs_accent_deep | default: '#0070CA' }};
+    --xtu-cart-fs-accent-soft: {{ settings.xtu_cart_fs_accent_soft | default: '#66B1ED' }};
+    --xtu-cart-fs-track: {{ settings.xtu_cart_fs_track | default: '#EBEBEB' }};
+    --xtu-cart-fs-text: {{ settings.xtu_cart_fs_text | default: '#111111' }};
+    --xtu-cart-fs-success: {{ settings.xtu_cart_fs_success | default: '#0070CA' }};
+    --xtu-cart-fs-panel-start: {{ settings.xtu_cart_fs_panel_start | default: '#F7FBFF' }};
+    --xtu-cart-fs-panel-end: {{ settings.xtu_cart_fs_panel_end | default: '#FFFFFF' }};
+    --xtu-cart-fs-border: {{ settings.xtu_cart_fs_border | default: '#EEEEEE' }};
+    --xtu-cart-discount-color: {{ settings.xtu_cart_discount_color | default: '#0070CA' }};
+    --xtu-cart-discount-pill-color: {{ settings.xtu_cart_discount_pill_color | default: '#1590F2' }};
     --xtu-swiper-nav-bg-hover: {{ settings.xtu_swiper_nav_bg_hover | default: '#0070CA' }};
     --xtu-swiper-nav-color-hover: {{ settings.xtu_swiper_nav_color_hover | default: '#FFFFFF' }};
     --xtu-swiper-nav-on-light-bg: {{ settings.xtu_swiper_nav_on_light_bg | default: '#F0F0F0' }};
