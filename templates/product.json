@@ -316,6 +316,12 @@
                   "static": true,
                   "settings": {
                     "style_class": "button",
+                    "atc_bg": "#FFF001",
+                    "atc_color": "{{ settings.color_palette.foreground }}",
+                    "atc_bg_hover": "#FFBF01",
+                    "atc_color_hover": "#ffffff",
+                    "atc_bg_disabled": "#e8e8ed",
+                    "atc_color_disabled": "#8e8e93",
                     "custom_button_background": "#1590f2",
                     "custom_button_text": "#ffffff",
                     "custom_button_border": "#1590f2"
@@ -372,6 +378,12 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
+        "atc_bg": "#1590f2",
+        "atc_color": "#ffffff",
+        "atc_bg_hover": "#0070ca",
+        "atc_color_hover": "#ffffff",
+        "atc_bg_disabled": "#e8e8ed",
+        "atc_color_disabled": "#8e8e93",
         "padding-block-start": 40,
         "padding-block-end": 60
       }

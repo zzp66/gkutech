@@ -20,7 +20,7 @@
             "image_mobile": "shopify://shop_images/2-D600PROMAX_fee58dd1-80fe-4cee-82bc-207a64580814.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 15,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -75,7 +75,7 @@
             "image": "shopify://shop_images/1_c5b00351-05fc-4a92-8149-5c42f515243f.png",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 5,
             "text_alignment_desktop": "center",
             "text_position_v_desktop": "bottom",
             "text_position_mobile": "center",
@@ -92,7 +92,7 @@
             "subheading_color": "",
             "subheading_size_desktop": 20,
             "subheading_size_mobile": 16,
-            "button_label": "Learn More",
+            "button_label": "Shop Now",
             "button_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
             "button_bg": "{{ settings.color_palette.color7 }}",
             "button_border": "#f2e715",
@@ -130,7 +130,7 @@
             "image_mobile": "shopify://shop_images/5-D1000_08b5b67c-76d4-41ff-9eb7-d42002ddf306.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 15,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -185,7 +185,7 @@
             "image_mobile": "shopify://shop_images/4-D900_e6d212a6-dcbb-4757-825d-ba5b146ec422.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 15,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -240,7 +240,7 @@
             "image_mobile": "shopify://shop_images/3-D700_1afdd23a-fcf1-4c36-8f4b-c49e19a5265a.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 15,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -295,7 +295,7 @@
             "image_mobile": "shopify://shop_images/1-D600PRO_2ac2137f-22dc-4cf2-a266-5e9e3cf05f6f.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 15,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -614,104 +614,6 @@
         "tab_bg_active": "#ffffff",
         "tab_color_active": "#111827",
         "placeholder_bg": "#e5e7eb",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_activity_slider_NJCqdx": {
-      "type": "xtu-activity-slider",
-      "blocks": {
-        "card_kYNYMQ": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Dive + Snorkel",
-            "link": ""
-          }
-        },
-        "card_JHeeUR": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Surf",
-            "link": ""
-          }
-        },
-        "card_httjqE": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Travel + Adventure",
-            "link": ""
-          }
-        },
-        "card_ymrHrf": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Kids + Pets",
-            "link": ""
-          }
-        },
-        "card_Lw9mqN": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Mountain Bike",
-            "link": ""
-          }
-        },
-        "card_HdiJa4": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Hike + Camp",
-            "link": ""
-          }
-        },
-        "card_wk6Dn4": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Snow",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_kYNYMQ",
-        "card_JHeeUR",
-        "card_httjqE",
-        "card_ymrHrf",
-        "card_Lw9mqN",
-        "card_HdiJa4",
-        "card_wk6Dn4"
-      ],
-      "disabled": true,
-      "name": "XTU Activity Slider",
-      "settings": {
-        "heading": "Shop by Activity",
-        "show_arrows": true,
-        "show_arrows_mobile": false,
-        "show_image_overlay": false,
-        "mobile_per_view": "2.1",
-        "card_gap": 16,
-        "card_gap_mobile": 8,
-        "card_radius": 16,
-        "card_ratio": "1 / 1",
-        "background_color": "#ffffff",
-        "heading_color": "#111827",
-        "placeholder_bg": "#e8eaed",
-        "overlay_text_color": "#ffffff",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -1674,7 +1576,6 @@
     "xtu_hero_banner_ctqDGb",
     "xtu_featured_products_YCmU9w",
     "xtu_tab_product_slider_wMWmQF",
-    "xtu_activity_slider_NJCqdx",
     "xtu_bento_grid_CK8ezM",
     "xtu_customer_reviews_YMxNAe",
     "xtu_image_compare_slider_cHVPrE",

@@ -20,6 +20,14 @@
         "content_position": "center",
         "show_overlay": false,
         "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -57,6 +65,12 @@
           "settings": {
             "product_card_gap": 0,
             "background_color": "#ffffff",
+            "atc_bg": "#FFF001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "#FFBF01",
+            "atc_color_hover": "#ffffff",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
