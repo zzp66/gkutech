@@ -85,10 +85,10 @@
   justify-content: center;
   min-height: 24px;
   padding: 4px 10px;
-  border: 1px solid currentColor;
+  border: 1px solid var(--xtu-badge-border, currentColor);
   border-radius: 999px;
-  background: #fff;
-  color: #111;
+  background: var(--xtu-badge-bg, #fff);
+  color: var(--xtu-badge-color, #111);
   font-size: var(--xtu-type-eyebrow, 0.75rem);
   font-weight: 600;
   line-height: 1.2;
@@ -99,16 +99,22 @@
 
 :is(.product-grid__item, .resource-list__item) .product-badges__badge.color-custom-badge-sale,
 :is(.product-grid__item, .resource-list__item) .xtu-collection-card__badge .color-custom-badge-sale {
-  color: #0070ca;
-  border-color: #0070ca;
-  background: #fff;
+  --xtu-badge-bg: var(--xtu-badge-sale-bg, #fff);
+  --xtu-badge-color: var(--xtu-badge-sale-color, #0070ca);
+  --xtu-badge-border: var(--xtu-badge-sale-border, #0070ca);
+  background: var(--xtu-badge-bg);
+  color: var(--xtu-badge-color);
+  border-color: var(--xtu-badge-border);
 }
 
 :is(.product-grid__item, .resource-list__item) .product-badges__badge.color-custom-badge-sold-out,
 :is(.product-grid__item, .resource-list__item) .xtu-collection-card__badge .color-custom-badge-sold-out {
-  color: #8e8e93;
-  border-color: #c7c7cc;
-  background: #fff;
+  --xtu-badge-bg: var(--xtu-badge-sold-out-bg, #fff);
+  --xtu-badge-color: var(--xtu-badge-sold-out-color, #8e8e93);
+  --xtu-badge-border: var(--xtu-badge-sold-out-border, #c7c7cc);
+  background: var(--xtu-badge-bg);
+  color: var(--xtu-badge-color);
+  border-color: var(--xtu-badge-border);
 }
 
 /* Card gallery arrows — match xtu-swiper-nav on-light; show on image hover only */

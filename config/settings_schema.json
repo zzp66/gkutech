@@ -1334,27 +1334,44 @@
         "content": "t:settings.colors"
       },
       {
+        "type": "paragraph",
+        "content": "集合页 / 搜索 / 推荐产品卡胶囊徽章（促销 / 售罄）的背景、文字与边框色。"
+      },
+      {
         "type": "color",
         "id": "badge_sale_background_color",
-        "label": "t:settings.badge_sale_background_color",
-        "default": "{{ settings.color_palette.foreground }}"
+        "label": "促销徽章背景色",
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "badge_sale_text_color",
-        "label": "t:settings.badge_sale_text_color"
+        "label": "促销徽章文字色",
+        "default": "#0070CA"
+      },
+      {
+        "type": "color",
+        "id": "badge_sale_border_color",
+        "label": "促销徽章边框色",
+        "default": "#0070CA"
       },
       {
         "type": "color",
         "id": "badge_sold_out_background_color",
-        "label": "t:settings.badge_sold_out_background_color",
-        "default": "{{ settings.color_palette.background }}"
+        "label": "售罄徽章背景色",
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "badge_sold_out_text_color",
-        "label": "t:settings.badge_sold_out_text_color",
-        "default": "{{ settings.color_palette.foreground }}"
+        "label": "售罄徽章文字色",
+        "default": "#8E8E93"
+      },
+      {
+        "type": "color",
+        "id": "badge_sold_out_border_color",
+        "label": "售罄徽章边框色",
+        "default": "#C7C7CC"
       },
       {
         "type": "header",
