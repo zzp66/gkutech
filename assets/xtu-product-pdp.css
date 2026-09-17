@@ -350,11 +350,42 @@
     border-radius: 0;
   }
 
+  /*
+    Adapt + mixed ratios: Swiper used to stretch all slides to the tallest image,
+    leaving empty letterbox under square photos; counter sat in that gap above the title.
+    Let each slide use its own --media-preview-ratio; autoHeight (JS) shrinks the shell.
+  */
+  .xtu-pdp-swiper .swiper-slide {
+    height: auto !important;
+  }
+
+  .xtu-pdp-swiper .product-media-container,
+  .xtu-pdp-swiper .product-media-container.constrain-height,
+  .xtu-pdp-swiper .product-media-container--tallest {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: var(--media-preview-ratio, 1);
+  }
+
+  .xtu-pdp-swiper .product-media,
+  .xtu-pdp-swiper .product-media__image,
+  .xtu-pdp-swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   .xtu-pdp-swiper .product-media-container,
   .xtu-pdp-swiper .product-media,
   .xtu-pdp-swiper .product-media__image,
   .xtu-pdp-swiper img {
     border-radius: 0 !important;
+  }
+
+  /* Tighter handoff from gallery to title once height matches the image */
+  .product-information.xtu-product-pdp .product-details {
+    padding-block-start: 12px;
   }
 }
 
@@ -644,6 +675,8 @@
   font-size: var(--xtu-type-eyebrow, 0.75rem);
   font-weight: 400;
   line-height: 1.2;
+  background: var(--xtu-price-saved-bg, #e8f4fe);
+  color: var(--xtu-price-saved-color, #1590f2);
 }
 
 .xtu-product-pdp .product-details variant-picker {
@@ -825,6 +858,60 @@
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease;
+}
+
+/*
+  Camouflage / Hide OOS 会给选项加 .camouflage-marked-unavailable { display:none }.
+  我们的卡片用了 display:flex !important，会压过「整卡隐藏」，却压不过内部 body，
+  结果留下空壳。规则：
+  - 真不可售：整卡隐藏
+  - 可售却被误标：强制显示文案
+*/
+.xtu-product-pdp .variant-option__card.camouflage-marked-unavailable:has(> input[data-option-available='false']),
+.xtu-product-pdp
+  .variant-option__button-label--xtu-card.camouflage-marked-unavailable:has(> input[data-option-available='false']) {
+  display: none !important;
+}
+
+.xtu-product-pdp .variant-option__card:has(> input[data-option-available='true']).camouflage-marked-unavailable,
+.xtu-product-pdp
+  .variant-option__button-label--xtu-card:has(> input[data-option-available='true']).camouflage-marked-unavailable {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.xtu-product-pdp
+  .variant-option__card:has(> input[data-option-available='true'])
+  .variant-option__card-body.camouflage-marked-unavailable,
+.xtu-product-pdp
+  .variant-option__card:has(> input[data-option-available='true'])
+  .variant-option__card-body.hide-oos-disable,
+.xtu-product-pdp
+  .variant-option__card:has(> input[data-option-available='true'])
+  .camouflage-marked-unavailable.variant-option__card-title,
+.xtu-product-pdp
+  .variant-option__card:has(> input[data-option-available='true'])
+  .variant-option__card-title {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.xtu-product-pdp
+  .variant-option__card:has(> input[data-option-available='true'])
+  .variant-option__card-title {
+  display: block !important;
+}
+
+/* Re-enable pointer events if an app dims available options */
+.xtu-product-pdp .variant-option__card:has(> input[data-option-available='true'][disabled]),
+.xtu-product-pdp
+  .variant-option__button-label--xtu-card:has(> input[data-option-available='true'][disabled]) {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
 }
 
 .xtu-product-pdp .variant-option__card--text-only {

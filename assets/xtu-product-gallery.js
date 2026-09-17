@@ -260,6 +260,14 @@
       spaceBetween: 0,
       resistanceRatio: 0,
       watchOverflow: true,
+      // Mobile: height follows active slide (mixed aspect ratios won't leave empty gap).
+      // Desktop: fixed equal height for thumbs alignment.
+      autoHeight: true,
+      breakpoints: {
+        750: {
+          autoHeight: false,
+        },
+      },
       grabCursor: canLoop,
       simulateTouch: true,
       allowTouchMove: visibleCount > 1,
@@ -282,6 +290,12 @@
           }
         : undefined,
       on: {
+        init(swiper) {
+          if (swiper.params.autoHeight) swiper.updateAutoHeight(0);
+        },
+        imagesReady(swiper) {
+          if (swiper.params.autoHeight) swiper.updateAutoHeight(0);
+        },
         sliderFirstMove() {
           const state = instances.get(gallery);
           if (state) state.didSwipe = true;
@@ -297,6 +311,7 @@
           syncCounter(gallery, swiper.realIndex, visibleCount);
           if (thumbsEl instanceof HTMLElement) syncThumbButtons(thumbsEl, swiper.realIndex);
           pauseInactiveVideos(mainEl, swiper.realIndex);
+          if (swiper.params.autoHeight) swiper.updateAutoHeight(200);
         },
       },
     });

@@ -1356,6 +1356,27 @@
         "default": "#0070CA"
       },
       {
+        "type": "header",
+        "content": "节省金额徽章（Save）"
+      },
+      {
+        "type": "paragraph",
+        "content": "详情页等位置的 .price-item__saved（如 Save $33.01）。产品卡列表默认隐藏该徽章。"
+      },
+      {
+        "type": "color",
+        "id": "xtu_price_saved_color",
+        "label": "文字色",
+        "default": "#1590F2"
+      },
+      {
+        "type": "color",
+        "id": "xtu_price_saved_bg",
+        "label": "背景色",
+        "default": "#E8F4FE",
+        "info": "默认浅蓝底；留空则按文字色 12% 透明叠色。"
+      },
+      {
         "type": "color",
         "id": "badge_sold_out_background_color",
         "label": "售罄徽章背景色",

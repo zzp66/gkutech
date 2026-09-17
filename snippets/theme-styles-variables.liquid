@@ -723,6 +723,8 @@
     --xtu-badge-sale-bg: {{ settings.badge_sale_background_color | default: '#FFFFFF' }};
     --xtu-badge-sale-color: {{ settings.badge_sale_text_color | default: '#0070CA' }};
     --xtu-badge-sale-border: {{ settings.badge_sale_border_color | default: '#0070CA' }};
+    --xtu-price-saved-color: {{ settings.xtu_price_saved_color | default: '#1590F2' }};
+    --xtu-price-saved-bg: {% if settings.xtu_price_saved_bg != blank %}{{ settings.xtu_price_saved_bg }}{% else %}color-mix(in srgb, {{ settings.xtu_price_saved_color | default: '#1590F2' }} 12%, transparent){% endif %};
     --xtu-badge-sold-out-bg: {{ settings.badge_sold_out_background_color | default: '#FFFFFF' }};
     --xtu-badge-sold-out-color: {{ settings.badge_sold_out_text_color | default: '#8E8E93' }};
     --xtu-badge-sold-out-border: {{ settings.badge_sold_out_border_color | default: '#C7C7CC' }};

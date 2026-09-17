@@ -865,7 +865,28 @@
 }
 
 @media (min-width: 990px) and (max-width: 1199px) {
+  .xtu-mega-menu--products .xtu-mega-menu__layout,
+  .xtu-mega-menu--featured .xtu-mega-menu__layout {
+    grid-template-columns: minmax(160px, 200px) minmax(0, 1fr);
+    gap: var(--xtu-space-16, 16px);
+  }
+
+  .xtu-mega-menu__tab {
+    min-height: 40px;
+    padding: var(--xtu-space-8, 8px) var(--xtu-space-12, 12px);
+  }
+
+  .xtu-mega-menu__tab-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .xtu-mega-menu--products .xtu-mega-menu__products {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xtu-mega-menu__featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

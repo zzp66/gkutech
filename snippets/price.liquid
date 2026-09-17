@@ -60,8 +60,15 @@
     assign use_currency = true
   endif
 
-  # Plain-text savings for badge (avoid money HTML / currency-app wrappers in translations)
-  assign savings_money = savings_amount | money | strip_html
+  # Format savings as money HTML so currency apps can wrap/convert the amount node.
+  # Label text stays outside the money node (i18n-safe via split placeholder).
+  if use_currency
+    assign savings_money_html = savings_amount | money_with_currency
+  else
+    assign savings_money_html = savings_amount | money
+  endif
+  assign saved_template = 'content.saved_amount' | t: amount: '###AMOUNT###'
+  assign saved_parts = saved_template | split: '###AMOUNT###'
 
   # Format all prices
   if use_currency
@@ -116,7 +123,11 @@
         </span>
       {% endif %}
       <span class="price-item__saved">
-        {{ 'content.saved_amount' | t: amount: savings_money }}
+        {{- saved_parts[0] -}}
+        <span class="price-item__saved-amount" data-xtu-saved-amount data-cents="{{ savings_amount }}">
+          {{- savings_money_html -}}
+        </span>
+        {{- saved_parts[1] -}}
       </span>
     {% else %}
       <span class="price">{{ price | default: '&nbsp;' }}</span>
@@ -153,14 +164,21 @@
   .price-item__saved {
     display: inline-flex;
     align-items: center;
+    gap: 4px;
     min-height: 22px;
     padding: 0 10px;
     border-radius: 999px;
-    background: rgb(21 144 242 / 0.12);
-    color: #1590f2;
+    background: var(--xtu-price-saved-bg, #e8f4fe);
+    color: var(--xtu-price-saved-color, #1590f2);
     font-size: 0.75rem;
     font-weight: 600;
     line-height: 1.2;
     white-space: nowrap;
+  }
+
+  .price-item__saved-amount {
+    display: inline;
+    color: inherit;
+    font: inherit;
   }
 {% endstylesheet %}

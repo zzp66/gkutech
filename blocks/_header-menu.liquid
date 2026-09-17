@@ -245,12 +245,23 @@
           aria-label="{{ 'accessibility.header_navigation_label' | t }}"
           style="{% render 'menu-font-styles', settings: block_settings, menu_type: 'mega_menu' %}"
         >
+          {% liquid
+            comment
+              Any overflow into "More" breaks XTU mega/text dropdown layout (full-bleed
+              overflow panel + dropdown CSS excluded for slot=overflow). Treat the full
+              top-level count as the minimum so the first overflowed item switches to drawer.
+            endcomment
+            assign header_menu_min_items = block_settings.menu.links.size | default: 2
+            if header_menu_min_items < 2
+              assign header_menu_min_items = 2
+            endif
+          %}
           {% assign class = 'overflow-menu' | append: background_color_classes %}
           {% render 'overflow-list',
             class: class,
             ref: 'overflowMenu',
             children: children,
-            minimum-items: 2,
+            minimum-items: header_menu_min_items,
             data-testid: 'header-menu-overflow-list',
             attributes: 'data-skip-node-update'
           %}

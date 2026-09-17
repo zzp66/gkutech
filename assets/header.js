@@ -83,6 +83,12 @@ class HeaderComponent extends Component {
     const roundedHeaderHeight = Math.round(entry.borderBoxSize[0].blockSize);
     document.body.style.setProperty('--header-height', `${roundedHeaderHeight}px`);
 
+    // Tablet and below: keep drawer (mega / overflow panels break under ~990px).
+    if (window.innerWidth <= 989) {
+      this.#updateMenuVisibility(true);
+      return;
+    }
+
     // Check if the menu drawer should be hidden in favor of the header menu
     if (this.#menuDrawerHiddenWidth && window.innerWidth > this.#menuDrawerHiddenWidth) {
       this.#updateMenuVisibility(false);

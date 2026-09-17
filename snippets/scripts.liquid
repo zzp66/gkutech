@@ -296,6 +296,10 @@
   src="{{ 'auto-close-details.js' | asset_url }}"
   defer="defer"
 ></script>
+<script
+  src="{{ 'xtu-price-saved.js' | asset_url }}"
+  defer="defer"
+></script>
 
 {%- comment -%}
   Vendor libraries (classic scripts, not ES modules).
@@ -312,6 +316,10 @@
 {% if template == 'product' or template.name == 'product' or request.page_type == 'product' %}
   <script
     src="{{ 'xtu-product-gallery.js' | asset_url }}"
+    defer="defer"
+  ></script>
+  <script
+    src="{{ 'xtu-variant-cards.js' | asset_url }}"
     defer="defer"
   ></script>
 {% endif %}

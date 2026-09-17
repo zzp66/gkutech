@@ -783,6 +783,7 @@ export class ResizeNotifier extends ResizeObserver {
 
 /**
  * Sets the menuStyle dataset attribute on the header component element.
+ * Below 990px always use the drawer — desktop mega / overflow menus break on tablet widths.
  */
 export function setHeaderMenuStyle() {
   const headerComponent = /** @type {HTMLElement} | null */ (document.querySelector('#header-component'));
@@ -790,7 +791,9 @@ export function setHeaderMenuStyle() {
     window.requestAnimationFrame(() => {
       const overflowList = headerComponent?.querySelector('overflow-list');
       const hasReachedMinimum = overflowList && overflowList.hasAttribute('minimum-reached');
-      headerComponent.dataset.menuStyle = isTouchDevice() || hasReachedMinimum ? 'drawer' : 'menu';
+      const isNarrowViewport = window.matchMedia('(max-width: 989px)').matches;
+      headerComponent.dataset.menuStyle =
+        isTouchDevice() || hasReachedMinimum || isNarrowViewport ? 'drawer' : 'menu';
     });
   }
 }
