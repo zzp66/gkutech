@@ -1,3 +1,13 @@
+{%- comment -%}
+  XTU Story Slider — 横向故事卡轮播。
+
+  数据：Theme Editor 本 section + card blocks。
+  媒体：块级可选图片 / 上传视频 / YouTube·Vimeo 链接；section 级 card_ratio 统一卡片比例，媒体 cover 撑满。
+  视频链接：封面 + 点击注入 iframe（避免 Swiper 拦截嵌套 iframe）。
+
+  相关：assets/xtu-story-slider.js、xtu-swiper-nav、xtu-btn
+{%- endcomment -%}
+
 {% liquid
   assign heading = section.settings.heading
   assign gap = section.settings.card_gap | default: 16
@@ -95,8 +105,20 @@
                 endif
               endif
               assign is_youtube = false
+              assign embed_id = ''
+              assign embed_type = 'youtube'
+              assign youtube_thumb = blank
               if media_type == 'youtube'
                 assign is_youtube = true
+                if video_url != blank and video_url.id != blank
+                  assign embed_id = video_url.id
+                  if video_url.type != blank
+                    assign embed_type = video_url.type
+                  endif
+                endif
+                if embed_type == 'youtube' and embed_id != blank
+                  assign youtube_thumb = 'https://i.ytimg.com/vi/' | append: embed_id | append: '/hqdefault.jpg'
+                endif
               endif
               assign corner_icon = block.settings.corner_icon
               assign corner_link = block.settings.corner_link
@@ -128,14 +150,40 @@
             >
               <div class="xtu-story-slider__media{% if media_type == 'image' and has_mobile_image %} xtu-story-slider__media--split{% endif %}{% if media_type == 'video' and has_mobile_video %} xtu-story-slider__media--split{% endif %}">
                 {% if is_youtube %}
-                  {% render 'xtu-video-embed',
-                    video_url: video_url,
-                    mode: 'embed',
-                    class: 'xtu-story-slider__youtube',
-                    title: heading,
-                    placeholder: 'lifestyle-1',
-                    placeholder_class: 'xtu-story-slider__image xtu-story-slider__placeholder'
-                  %}
+                  <div
+                    class="xtu-story-slider__yt"
+                    data-xtu-story-yt
+                    data-embed-id="{{ embed_id | escape }}"
+                    data-embed-type="{{ embed_type | escape }}"
+                  >
+                    {% if youtube_thumb != blank %}
+                      <img
+                        class="xtu-story-slider__image xtu-story-slider__yt-poster"
+                        src="{{ youtube_thumb | escape }}"
+                        alt="{{ heading | escape }}"
+                        loading="lazy"
+                        decoding="async"
+                        width="1280"
+                        height="720"
+                      >
+                    {% else %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-story-slider__image xtu-story-slider__placeholder' }}
+                    {% endif %}
+                    {% if embed_id != blank %}
+                      <button
+                        type="button"
+                        class="xtu-story-slider__play"
+                        data-xtu-story-play
+                        aria-label="Play video"
+                      >
+                        <span class="xtu-story-slider__play-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.5 6.8v10.4L18 12 8.5 6.8Z" fill="currentColor"/>
+                          </svg>
+                        </span>
+                      </button>
+                    {% endif %}
+                  </div>
                 {% elsif is_video %}
                   {% if card_video != blank %}
                     {{
@@ -389,12 +437,36 @@
     background: #d0d5dd;
   }
 
-  .xtu-story-slider__youtube {
+  /* YouTube / Vimeo: poster fills card ratio; iframe injected on play (avoids Swiper blocking iframe) */
+  .xtu-story-slider__yt {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .xtu-story-slider__yt-poster,
+  .xtu-story-slider__yt .xtu-story-slider__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .xtu-story-slider__yt-iframe {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
     border: 0;
+  }
+
+  .xtu-story-slider__card.is-playing .xtu-story-slider__yt-poster,
+  .xtu-story-slider__card.is-playing .xtu-story-slider__yt .xtu-story-slider__placeholder {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .xtu-story-slider__image--mobile,

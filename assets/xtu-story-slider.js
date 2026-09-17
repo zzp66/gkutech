@@ -5,6 +5,9 @@
  *
  * Multi-instance safe: section may include this script more than once; boot only once.
  * One section failing must not block other instances on the same page.
+ *
+ * Media: image / hosted video / YouTube|Vimeo link coexist under section card_ratio.
+ * Link videos use poster + click-to-inject iframe (Swiper otherwise blocks nested iframe UX).
  */
 (function () {
   'use strict';
@@ -67,17 +70,43 @@
     swiper.update();
   }
 
-  function pauseAllVideos(root, except) {
+  function stopYoutubeStage(stage) {
+    if (!stage) return;
+    var iframe = stage.querySelector('iframe[data-xtu-story-yt-iframe]');
+    if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    stage.classList.remove('swiper-no-swiping');
+    var card = stage.closest('[data-xtu-story-card]');
+    if (card) card.classList.remove('is-playing');
+  }
+
+  function pauseAllMedia(root, exceptCard) {
     var videos = root.querySelectorAll('.xtu-story-slider__video');
     Array.prototype.forEach.call(videos, function (video) {
-      if (except && video === except) return;
-      video.pause();
       var card = video.closest('[data-xtu-story-card]');
+      if (exceptCard && card === exceptCard) return;
+      video.pause();
       if (card) card.classList.remove('is-playing');
+    });
+
+    var stages = root.querySelectorAll('[data-xtu-story-yt]');
+    Array.prototype.forEach.call(stages, function (stage) {
+      var card = stage.closest('[data-xtu-story-card]');
+      if (exceptCard && card === exceptCard) return;
+      stopYoutubeStage(stage);
     });
   }
 
-  function bindVideoCards(root) {
+  function visibleHostedVideo(card) {
+    var videos = card.querySelectorAll('.xtu-story-slider__video');
+    var video = videos[0] || null;
+    Array.prototype.forEach.call(videos, function (node) {
+      if (window.getComputedStyle(node).display === 'none') return;
+      video = node;
+    });
+    return video;
+  }
+
+  function bindHostedVideoCards(root) {
     var cards = root.querySelectorAll('[data-xtu-story-card][data-media-type="video"]');
     Array.prototype.forEach.call(cards, function (card) {
       if (card.getAttribute('data-xtu-story-video-bound') === 'true') return;
@@ -92,13 +121,10 @@
           event.preventDefault();
           event.stopPropagation();
         }
-        var video = videos[0];
-        Array.prototype.forEach.call(videos, function (node) {
-          if (window.getComputedStyle(node).display === 'none') return;
-          video = node;
-        });
+        var video = visibleHostedVideo(card);
+        if (!video) return;
         if (video.paused) {
-          pauseAllVideos(root, video);
+          pauseAllMedia(root, card);
           var playPromise = video.play();
           if (playPromise && typeof playPromise.then === 'function') {
             playPromise
@@ -117,9 +143,7 @@
         }
       }
 
-      if (playBtn) {
-        playBtn.addEventListener('click', togglePlay);
-      }
+      if (playBtn) playBtn.addEventListener('click', togglePlay);
 
       Array.prototype.forEach.call(videos, function (video) {
         video.addEventListener('click', togglePlay);
@@ -132,6 +156,71 @@
         video.addEventListener('play', function () {
           card.classList.add('is-playing');
         });
+      });
+    });
+  }
+
+  function embedSrc(embedType, embedId) {
+    if (!embedId) return '';
+    if (embedType === 'vimeo') {
+      return (
+        'https://player.vimeo.com/video/' +
+        encodeURIComponent(embedId) +
+        '?autoplay=1&dnt=1'
+      );
+    }
+    return (
+      'https://www.youtube.com/embed/' +
+      encodeURIComponent(embedId) +
+      '?autoplay=1&rel=0&modestbranding=1&playsinline=1'
+    );
+  }
+
+  function bindYoutubeCards(root) {
+    var cards = root.querySelectorAll('[data-xtu-story-card][data-media-type="youtube"]');
+    Array.prototype.forEach.call(cards, function (card) {
+      if (card.getAttribute('data-xtu-story-yt-bound') === 'true') return;
+      card.setAttribute('data-xtu-story-yt-bound', 'true');
+
+      var stage = card.querySelector('[data-xtu-story-yt]');
+      var playBtn = card.querySelector('[data-xtu-story-play]');
+      if (!stage || !playBtn) return;
+
+      function startEmbed(event) {
+        if (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        if (card.classList.contains('is-playing')) return;
+
+        var embedId = stage.getAttribute('data-embed-id') || '';
+        var embedType = stage.getAttribute('data-embed-type') || 'youtube';
+        var src = embedSrc(embedType, embedId);
+        if (!src) return;
+
+        pauseAllMedia(root, card);
+
+        var iframe = document.createElement('iframe');
+        iframe.className = 'xtu-story-slider__yt-iframe';
+        iframe.setAttribute('data-xtu-story-yt-iframe', '');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute(
+          'allow',
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+        );
+        iframe.setAttribute('title', playBtn.getAttribute('aria-label') || 'Video');
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        iframe.src = src;
+        stage.appendChild(iframe);
+        stage.classList.add('swiper-no-swiping');
+        card.classList.add('is-playing');
+      }
+
+      playBtn.addEventListener('click', startEmbed);
+      stage.addEventListener('click', function (event) {
+        if (event.target.closest('[data-xtu-story-play]')) return;
+        if (card.classList.contains('is-playing')) return;
+        startEmbed(event);
       });
     });
   }
@@ -150,7 +239,6 @@
       instances.delete(root);
     }
 
-    // Clear any orphan Swiper left by a previous (duplicate) script boot
     var container = root && root.querySelector ? root.querySelector('[data-xtu-story-swiper]') : null;
     if (container && container.swiper && typeof container.swiper.destroy === 'function') {
       try {
@@ -185,6 +273,7 @@
       speed: 550,
       watchOverflow: true,
       grabCursor: slideCount > 1,
+      noSwipingSelector: 'iframe, button, a, [data-xtu-story-play], .swiper-no-swiping',
       mousewheel: {
         forceToAxis: true,
         releaseOnEdges: true,
@@ -206,12 +295,13 @@
       },
       on: {
         slideChange: function () {
-          pauseAllVideos(root, null);
+          pauseAllMedia(root, null);
         },
       },
     });
 
-    bindVideoCards(root);
+    bindHostedVideoCards(root);
+    bindYoutubeCards(root);
 
     requestAnimationFrame(function () {
       applyInset(swiper, root);
