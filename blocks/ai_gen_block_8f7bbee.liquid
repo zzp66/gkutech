@@ -1,0 +1,331 @@
+{% doc %}
+  @prompt
+    ## Who Should Consider a 4G LTE Dash Cam?
+    
+    A 4G LTE dash cam can be especially useful when remote access and vehicle connectivity matter as much as video recording.
+    
+    ### Drivers Who Park Away From Home
+    
+    If your vehicle is frequently parked on the street, in public parking areas, or away from where you live or work, 4G connectivity can provide additional ways to stay connected to the vehicle.
+    
+    ### Frequent Travelers
+    
+    Drivers who regularly leave their vehicles at airports, hotels, parking garages, or other unfamiliar locations may benefit from connected monitoring features.
+    
+    ### Business and Commercial Vehicles
+    
+    4G dash cams can also be useful for company cars and commercial vehicles where vehicle location, remote visibility, and driving records are important.
+    
+    ### Drivers Who Want Smarter Parking Protection
+    
+    Traditional parking mode records events while the vehicle is parked. A connected 4G dash cam can add remote capabilities to compatible parking protection features, helping drivers stay more informed when they're away from the vehicle.
+    请帮我根据这些文案生成section
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-lte-audience-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 24px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-lte-audience__inner-{{ ai_gen_id }} {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .ai-lte-audience__eyebrow-{{ ai_gen_id }} {
+    margin: 0 0 14px;
+    color: {{ block.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .ai-lte-audience__heading-{{ ai_gen_id }} {
+    max-width: 760px;
+    margin: 0 0 18px;
+    color: {{ block.settings.heading_color }};
+    font-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  .ai-lte-audience__intro-{{ ai_gen_id }} {
+    max-width: 760px;
+    margin: 0 0 42px;
+    color: {{ block.settings.text_color }};
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .ai-lte-audience__intro-{{ ai_gen_id }} p,
+  .ai-lte-audience__card-copy-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+
+  .ai-lte-audience__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .ai-lte-audience__card-{{ ai_gen_id }} {
+    min-height: 210px;
+    padding: 28px;
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_radius }}px;
+    background: {{ block.settings.card_background_color }};
+  }
+
+  .ai-lte-audience__number-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 22px;
+    border-radius: 50%;
+    background: {{ block.settings.accent_color }};
+    color: {{ block.settings.accent_text_color }};
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ai-lte-audience__card-title-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    color: {{ block.settings.heading_color }};
+    font-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+    font-size: 23px;
+    line-height: 1.2;
+  }
+
+  .ai-lte-audience__card-copy-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-lte-audience-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.7 }}px 18px;
+    }
+
+    .ai-lte-audience__intro-{{ ai_gen_id }} {
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
+
+    .ai-lte-audience__grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-lte-audience__card-{{ ai_gen_id }} {
+      min-height: auto;
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<section class="ai-lte-audience-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-lte-audience__inner-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow != blank %}
+      <p class="ai-lte-audience__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow }}</p>
+    {% endif %}
+
+    <h2 class="ai-lte-audience__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    <div class="ai-lte-audience__intro-{{ ai_gen_id }}">{{ block.settings.intro }}</div>
+
+    <div class="ai-lte-audience__grid-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% liquid
+          assign title_key = 'card_' | append: i | append: '_title'
+          assign copy_key = 'card_' | append: i | append: '_copy'
+          assign card_title = block.settings[title_key]
+          assign card_copy = block.settings[copy_key]
+        %}
+        <article class="ai-lte-audience__card-{{ ai_gen_id }}">
+          <span class="ai-lte-audience__number-{{ ai_gen_id }}" aria-hidden="true">0{{ i }}</span>
+          <h3 class="ai-lte-audience__card-title-{{ ai_gen_id }}">{{ card_title }}</h3>
+          <div class="ai-lte-audience__card-copy-{{ ai_gen_id }}">{{ card_copy }}</div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "4G LTE audience",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Connected driving"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Who Should Consider a 4G LTE Dash Cam?"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>A 4G LTE dash cam can be especially useful when remote access and vehicle connectivity matter as much as video recording.</p>"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 title",
+      "default": "Drivers Who Park Away From Home"
+    },
+    {
+      "type": "richtext",
+      "id": "card_1_copy",
+      "label": "Card 1 text",
+      "default": "<p>If your vehicle is frequently parked on the street, in public parking areas, or away from where you live or work, 4G connectivity can provide additional ways to stay connected to the vehicle.</p>"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 title",
+      "default": "Frequent Travelers"
+    },
+    {
+      "type": "richtext",
+      "id": "card_2_copy",
+      "label": "Card 2 text",
+      "default": "<p>Drivers who regularly leave their vehicles at airports, hotels, parking garages, or other unfamiliar locations may benefit from connected monitoring features.</p>"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Card 3 title",
+      "default": "Business and Commercial Vehicles"
+    },
+    {
+      "type": "richtext",
+      "id": "card_3_copy",
+      "label": "Card 3 text",
+      "default": "<p>4G dash cams can also be useful for company cars and commercial vehicles where vehicle location, remote visibility, and driving records are important.</p>"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Card 4 title",
+      "default": "Drivers Who Want Smarter Parking Protection"
+    },
+    {
+      "type": "richtext",
+      "id": "card_4_copy",
+      "label": "Card 4 text",
+      "default": "<p>Traditional parking mode records events while the vehicle is parked. A connected 4G dash cam can add remote capabilities to compatible parking protection features, helping drivers stay more informed when they are away from the vehicle.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Vertical spacing",
+      "min": 24,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F8F9FD"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#DFDFDF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#FFF002"
+    },
+    {
+      "type": "color",
+      "id": "accent_text_color",
+      "label": "Accent text",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "4G LTE audience"
+    }
+  ],
+  "tag": null,
+  "class": "lte-audience-block"
+}
+{% endschema %}

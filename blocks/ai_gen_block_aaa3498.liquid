@@ -1,0 +1,348 @@
+{% doc %}
+  @prompt
+    请帮我生成一些可以跳转链接的标签帮助客户快速按照产品功能去下单购买产品
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-function-tags-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px 0;
+  }
+
+  .ai-function-tags__heading-{{ ai_gen_id }} {
+    margin: 0 0 16px;
+    color: {{ block.settings.text_color }};
+    font-family: {{ block.settings.heading_font.family }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.25;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-function-tags__list-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: {{ block.settings.text_alignment }};
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ai-function-tags__item-{{ ai_gen_id }} {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ai-function-tags__link-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid {{ block.settings.tag_border_color }};
+    border-radius: {{ block.settings.tag_radius }}px;
+    background: {{ block.settings.tag_background_color }};
+    color: {{ block.settings.tag_text_color }};
+    font-family: {{ block.settings.body_font.family }};
+    font-size: {{ block.settings.tag_font_size }}px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .ai-function-tags__link-{{ ai_gen_id }}:hover,
+  .ai-function-tags__link-{{ ai_gen_id }}:focus-visible {
+    border-color: {{ block.settings.tag_hover_background_color }};
+    background: {{ block.settings.tag_hover_background_color }};
+    color: {{ block.settings.tag_hover_text_color }};
+  }
+
+  .ai-function-tags__link-{{ ai_gen_id }}:focus-visible {
+    outline: 3px solid {{ block.settings.focus_color }};
+    outline-offset: 3px;
+  }
+
+  .ai-function-tags__arrow-{{ ai_gen_id }} {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-function-tags-{{ ai_gen_id }} {
+      width: 100%;
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    .ai-function-tags__list-{{ ai_gen_id }} {
+      justify-content: flex-start;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-function-tags-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.heading != blank %}
+    <h2 class="ai-function-tags__heading-{{ ai_gen_id }}">{{ block.settings.heading | escape }}</h2>
+  {% endif %}
+
+  <ul class="ai-function-tags__list-{{ ai_gen_id }}" aria-label="{{ block.settings.aria_label | escape }}">
+    {% for i in (1..8) %}
+      {% liquid
+        assign label_key = 'tag_' | append: i | append: '_label'
+        assign link_key = 'tag_' | append: i | append: '_link'
+        assign label = block.settings[label_key]
+        assign link = block.settings[link_key]
+      %}
+      {% if label != blank and link != blank %}
+        <li class="ai-function-tags__item-{{ ai_gen_id }}">
+          <a class="ai-function-tags__link-{{ ai_gen_id }}" href="{{ link }}">
+            <span>{{ label | escape }}</span>
+            <span class="ai-function-tags__arrow-{{ ai_gen_id }}" aria-hidden="true">→</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "功能导航标签",
+  "settings": [
+    {
+      "type": "header",
+      "content": "内容"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "标题",
+      "default": "按功能选择产品"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "辅助说明",
+      "default": "按产品功能浏览"
+    },
+    {
+      "type": "text",
+      "id": "tag_1_label",
+      "label": "标签 1",
+      "default": "夜视清晰"
+    },
+    {
+      "type": "url",
+      "id": "tag_1_link",
+      "label": "标签 1 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_2_label",
+      "label": "标签 2",
+      "default": "4K 高清"
+    },
+    {
+      "type": "url",
+      "id": "tag_2_link",
+      "label": "标签 2 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_3_label",
+      "label": "标签 3",
+      "default": "停车监控"
+    },
+    {
+      "type": "url",
+      "id": "tag_3_link",
+      "label": "标签 3 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_4_label",
+      "label": "标签 4",
+      "default": "前后双录"
+    },
+    {
+      "type": "url",
+      "id": "tag_4_link",
+      "label": "标签 4 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_5_label",
+      "label": "标签 5",
+      "default": "Wi-Fi 连接"
+    },
+    {
+      "type": "url",
+      "id": "tag_5_link",
+      "label": "标签 5 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_6_label",
+      "label": "标签 6",
+      "default": "GPS 定位"
+    },
+    {
+      "type": "url",
+      "id": "tag_6_link",
+      "label": "标签 6 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_7_label",
+      "label": "标签 7",
+      "default": "语音控制"
+    },
+    {
+      "type": "url",
+      "id": "tag_7_link",
+      "label": "标签 7 链接"
+    },
+    {
+      "type": "text",
+      "id": "tag_8_label",
+      "label": "标签 8",
+      "default": "智能驾驶辅助"
+    },
+    {
+      "type": "url",
+      "id": "tag_8_link",
+      "label": "标签 8 链接"
+    },
+    {
+      "type": "header",
+      "content": "样式"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "桌面宽度",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "对齐方式",
+      "options": [
+        { "value": "left", "label": "左对齐" },
+        { "value": "center", "label": "居中" },
+        { "value": "right", "label": "右对齐" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "标题字体",
+      "default": "inter_n6"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "标签字体",
+      "default": "inter_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "标题字号",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size",
+      "label": "标签字号",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tag_radius",
+      "label": "标签圆角",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "上下间距",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "标题颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_background_color",
+      "label": "标签背景",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "标签文字",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_border_color",
+      "label": "标签边框",
+      "default": "#DFDFDF"
+    },
+    {
+      "type": "color",
+      "id": "tag_hover_background_color",
+      "label": "悬停背景",
+      "default": "#FFF002"
+    },
+    {
+      "type": "color",
+      "id": "tag_hover_text_color",
+      "label": "悬停文字",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "焦点轮廓",
+      "default": "#0070CA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "功能导航标签"
+    }
+  ],
+  "tag": null,
+  "class": "function-navigation-tags"
+}
+{% endschema %}

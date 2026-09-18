@@ -16,9 +16,18 @@
         "enable_collection_description": true,
         "description": "",
         "enable_collection_image": true,
+        "media_ratio": "21 / 9",
         "content_position": "center",
         "show_overlay": false,
         "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -28,6 +37,7 @@
       "blocks": {
         "filters": {
           "type": "filters",
+          "disabled": true,
           "static": true,
           "settings": {
             "enable_filtering": true,
@@ -55,6 +65,12 @@
           "settings": {
             "product_card_gap": 0,
             "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "#ffbf01",
+            "atc_color_hover": "{{ settings.color_palette.background }}",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,

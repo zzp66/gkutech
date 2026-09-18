@@ -116,7 +116,7 @@
               },
               "blocks": {}
             },
-            "klip_coupons_klip_app_section_product_cYC3pY": {
+            "klip_coupons_klip_app_section_product_KrQYmx": {
               "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
               "settings": {
                 "margin_top": 10,
@@ -278,15 +278,15 @@
                 "text_color": "",
                 "show_pickup_availability": false,
                 "gift_card_form": true,
-                "recipient_button_style": "default",
+                "recipient_button_style": "custom",
                 "recipient_button_background": "{{ settings.color_palette.background }}",
                 "recipient_button_text": "{{ settings.color_palette.foreground }}",
                 "recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "selected_recipient_button_style": "default",
+                "selected_recipient_button_style": "custom",
                 "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
                 "selected_recipient_button_text": "{{ settings.color_palette.background }}",
                 "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "input_style": "default",
+                "input_style": "custom",
                 "input_background_color": "{{ settings.color_palette.background }}",
                 "input_text_color": "{{ settings.color_palette.foreground }}",
                 "input_border_color": "{{ settings.color_palette.foreground }}",
@@ -316,6 +316,12 @@
                   "static": true,
                   "settings": {
                     "style_class": "button",
+                    "atc_bg": "{{ settings.color_palette.foreground }}",
+                    "atc_color": "{{ settings.color_palette.background }}",
+                    "atc_bg_hover": "{{ settings.color_palette.color7 }}",
+                    "atc_color_hover": "{{ settings.color_palette.foreground }}",
+                    "atc_bg_disabled": "#e8e8ed",
+                    "atc_color_disabled": "#8e8e93",
                     "custom_button_background": "#1590f2",
                     "custom_button_text": "#ffffff",
                     "custom_button_border": "#1590f2"
@@ -352,7 +358,7 @@
           "block_order": [
             "text_xrnftG",
             "price_tVjtKg",
-            "klip_coupons_klip_app_section_product_cYC3pY",
+            "klip_coupons_klip_app_section_product_KrQYmx",
             "xtu_key_specs",
             "text_aEtTtq",
             "xtu_feature_benefits",
@@ -372,6 +378,12 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
+        "atc_bg": "#1590f2",
+        "atc_color": "#ffffff",
+        "atc_bg_hover": "#0070ca",
+        "atc_color_hover": "#ffffff",
+        "atc_bg_disabled": "#e8e8ed",
+        "atc_color_disabled": "#8e8e93",
         "padding-block-start": 40,
         "padding-block-end": 60
       }
@@ -383,12 +395,11 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-rich-content-template--29209056706726__xtu_rich_content_e4i7PF"
+            "target": "xtu-tab-images-template--29086148395174__xtu_tab_images_yfFbMx"
           }
         },
         "item_4YAHeY": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Compare",
             "target": "xtu-product-compare-template--29086148395174__xtu_product_compare_U7Mgh3"
@@ -396,7 +407,6 @@
         },
         "nav_comparison": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Look",
             "target": "xtu_tab_images_yfFbMx"
@@ -404,7 +414,6 @@
         },
         "nav_specs": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Highlights",
             "target": "xtu_bento_grid_r6pyGH"
@@ -414,12 +423,11 @@
           "type": "item",
           "settings": {
             "label": "FAQs",
-            "target": "xtu-faq-template--29209056706726__xtu_faq_kT3Ffi"
+            "target": "xtu_faq_kT3Ffi"
           }
         },
         "item_MUMPVp": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Specs",
             "target": "xtu_product_specs_7XrG4D"
@@ -434,6 +442,7 @@
         "item_dwBHWi",
         "item_MUMPVp"
       ],
+      "disabled": true,
       "settings": {
         "aria_label": "Product sections",
         "alignment": "center",
@@ -472,6 +481,7 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "media_radius": 16,
         "gap_desktop": 8,
@@ -543,6 +553,11 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#0070ca",
+        "tab_color_active": "#ffffff",
         "show_tab_underline": false,
         "content_width": 1200,
         "gallery_ratio": "auto",
@@ -661,6 +676,8 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "card_background": "#f5f5f7",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "label_width": 140,
         "image_ratio": "1 / 1",
@@ -815,6 +832,7 @@
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "card_radius": 16,
         "show_image_overlay": false,
@@ -824,6 +842,62 @@
         "columns_mobile": 2,
         "row_height_mobile": 180,
         "gap_mobile": 8,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_kT3Ffi": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_37LRTh": {
+          "type": "item",
+          "settings": {
+            "question": "What is included in the box?",
+            "answer": "<p>The package includes the camera body, mounting accessories, and a quick start guide.</p>"
+          }
+        },
+        "item_f6em3x": {
+          "type": "item",
+          "settings": {
+            "question": "Is this waterproof?",
+            "answer": "<p>Please check the product specifications for waterproof rating and recommended usage.</p>"
+          }
+        },
+        "item_XHwPXM": {
+          "type": "item",
+          "settings": {
+            "question": "How long is the warranty?",
+            "answer": "<p>Warranty coverage depends on your region and purchase channel. Contact support for details.</p>"
+          }
+        },
+        "item_77XCPT": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I download the app?",
+            "answer": "<p>Search for the official XTU app in the App Store or Google Play.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_37LRTh",
+        "item_f6em3x",
+        "item_XHwPXM",
+        "item_77XCPT"
+      ],
+      "disabled": true,
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQs",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "content_radius": 16,
+        "open_first": true,
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -985,6 +1059,11 @@
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#0070ca",
+        "tab_color_active": "#ffffff",
         "show_tab_underline": false,
         "content_width": 1200,
         "gallery_ratio": "16 / 10",
@@ -992,349 +1071,6 @@
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_rich_content_e4i7PF": {
-      "type": "xtu-rich-content",
-      "blocks": {
-        "paragraph_LLX6Rj": {
-          "type": "paragraph",
-          "settings": {
-            "text": "Charge two batteries together and keep your backup power organised for travel, vlogging and outdoor adventures.",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 22,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_7qtUd3": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Charge Two Batteries at Once</strong></h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_QhRLdF": {
-          "type": "richtext",
-          "settings": {
-            "body": "<p>Designed for <a href=\"/products/xtu-s7-pro-4k-action-camera\" target=\"_blank\" title=\"XTU S7 Pro 4K Action Camera | 50FPS, AI ISP, Super 5.0 Stabilization, Wi-Fi 6 & 360° Horizon Lock\">XTU S7 Pro</a> and <a href=\"/products/xtu-s7-pro-max-action-camera\" target=\"_blank\" title=\"XTU S7 Pro Max 4K50FPS HDR Action Camera | 1/1.28&quot; RYYB Sensor 50MP, AI ISP & 14-Stop Dynamic Range\">S7 Pro Max </a>action-camera batteries, this dual charging case can charge two compatible batteries simultaneously, helping reduce waiting time between recording sessions.</p>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "image_YGBbdQ": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/ACC-07.jpg",
-            "media_ratio": "21 / 9",
-            "alt": "",
-            "image_width": 100,
-            "align": "center",
-            "image_radius": 16,
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_YNjjqN": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Charging and Storage in One</strong></h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_wMJDYd": {
-          "type": "richtext",
-          "settings": {
-            "body": "<p>The case combines battery charging and organised storage in one compact accessory. Keep two batteries together and ready for travel, outdoor filming or everyday use.</p><p>The package includes two compatible batteries, giving your camera additional backup power for longer shooting sessions.</p>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_dmRJMK": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Compact Flip-Lid Design</strong></h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "paragraph_HLtm3A": {
-          "type": "paragraph",
-          "settings": {
-            "text": "Featuring a portable matte-black body and flip lid, the charging case measures approximately 1.57 × 2 × 2 inches and weighs only 103 g. It fits easily inside a camera bag, backpack or travel kit without taking up unnecessary space.",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_7pNYeD": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4>Clear Charging Status</h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_bxxgpd": {
-          "type": "richtext",
-          "settings": {
-            "body": "<p>Built-in indicator lights display the battery charging status at a glance, making it easy to check whether the batteries are still charging or ready for use.</p>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_nfycYk": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Ready for Longer Adventures</strong></h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_kngPrF": {
-          "type": "richtext",
-          "settings": {
-            "body": "<p>A practical backup-power solution for:</p><ul><li>Travel and vlogging</li><li>Cycling and motorcycle recording</li><li>Hiking and camping</li><li>Outdoor sports</li><li>Family activities</li><li>Everyday and extended shooting</li></ul>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_dafnPi": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Package Contents</strong></h4>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_bExXhr": {
-          "type": "richtext",
-          "settings": {
-            "body": "<ul><li>1 × Dual Battery Charging Case</li><li>2 × Batteries for XTU S7 Pro/S7 Pro Max</li></ul>",
-            "align": "left",
-            "font_size": 14,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_3ECzBp": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Installation and Sealing Guide</strong></h4>",
-            "align": "left",
-            "font_size": 14,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "image_KxEX3H": {
-          "type": "video",
-          "settings": {
-            "video_source": "youtube",
-            "video_url": "https://youtu.be/AAP-lo1xoKA",
-            "media_ratio": "16 / 9",
-            "alt": "Installation and sealing guide",
-            "image_width": 100,
-            "align": "center",
-            "image_radius": 16,
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "richtext_pQmd6A": {
-          "type": "richtext",
-          "settings": {
-            "body": "<h4><strong>Complete Your XTU S7 Pro Setup</strong></h4>",
-            "align": "left",
-            "font_size": 14,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 12,
-            "spacing_mobile": 8
-          }
-        },
-        "richtext_XAwEjX": {
-          "type": "richtext",
-          "settings": {
-            "body": "<p>This package includes the dual battery charging case and two compatible batteries. The action camera, charging cable, power adapter and other accessories are not included unless otherwise stated.</p><p><a href=\"/products/xtu-s7-pro-4k-action-camera\" target=\"_blank\" title=\"XTU S7 Pro 4K Action Camera | 50FPS, AI ISP, Super 5.0 Stabilization, Wi-Fi 6 & 360° Horizon Lock\">Purchase the XTU S7 Pro Action Camera</a></p><p><a href=\"/collections/action-camera-accessories\" target=\"_blank\" title=\"Action Camera Accessories\">Explore XTU Action Camera Accessories</a></p>",
-            "align": "left",
-            "font_size": 18,
-            "font_size_mobile": 14,
-            "text_color": "#333333",
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        },
-        "image_LHkVyq": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/ACC-02_3969d0c1-f31f-482a-a8ce-5031fe40cc63.jpg",
-            "media_ratio": "auto",
-            "alt": "",
-            "image_width": 100,
-            "align": "center",
-            "image_radius": 16,
-            "spacing": 24,
-            "spacing_mobile": 16
-          }
-        }
-      },
-      "block_order": [
-        "paragraph_LLX6Rj",
-        "richtext_7qtUd3",
-        "richtext_QhRLdF",
-        "image_YGBbdQ",
-        "richtext_YNjjqN",
-        "richtext_wMJDYd",
-        "richtext_dmRJMK",
-        "paragraph_HLtm3A",
-        "richtext_7pNYeD",
-        "richtext_bxxgpd",
-        "richtext_nfycYk",
-        "richtext_kngPrF",
-        "richtext_dafnPi",
-        "richtext_bExXhr",
-        "richtext_3ECzBp",
-        "image_KxEX3H",
-        "richtext_pQmd6A",
-        "richtext_XAwEjX",
-        "image_LHkVyq"
-      ],
-      "name": "XTU Rich Content",
-      "settings": {
-        "heading": "XTU Dual Battery Charging Case",
-        "subheading": "",
-        "heading_align": "center",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "link_color": "#0070ca",
-        "content_width": 1200,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_faq_kT3Ffi": {
-      "type": "xtu-faq",
-      "blocks": {
-        "item_f6em3x": {
-          "type": "item",
-          "settings": {
-            "question": "Which cameras are these batteries compatible with?",
-            "answer": "<p>The batteries and charging case are designed for the XTU S7 Pro and S7 Pro Max action cameras.</p>"
-          }
-        },
-        "item_37LRTh": {
-          "type": "item",
-          "settings": {
-            "question": "How many batteries can the case charge at once?",
-            "answer": "<p>It can charge two compatible batteries simultaneously.</p>"
-          }
-        },
-        "item_XHwPXM": {
-          "type": "item",
-          "settings": {
-            "question": "Are batteries included?",
-            "answer": "<p>Yes. The package includes two compatible batteries and one dual battery charging case.</p>"
-          }
-        },
-        "item_77XCPT": {
-          "type": "item",
-          "settings": {
-            "question": "Can the case also be used for battery storage?",
-            "answer": "<p>Yes. The compact flip-lid design keeps the batteries together and organised when travelling or storing your camera equipment.</p>"
-          }
-        },
-        "item_364Mby": {
-          "type": "item",
-          "settings": {
-            "question": "How can I check the charging status?",
-            "answer": "<p>The built-in indicator lights show the charging status of the batteries.</p>"
-          }
-        },
-        "item_9gEUan": {
-          "type": "item",
-          "settings": {
-            "question": "Is the action camera included?",
-            "answer": "<p>No. The XTU S7 Pro/S7 Pro Max action camera is sold separately.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_f6em3x",
-        "item_37LRTh",
-        "item_XHwPXM",
-        "item_77XCPT",
-        "item_364Mby",
-        "item_9gEUan"
-      ],
-      "name": "XTU FAQ",
-      "settings": {
-        "heading": "FAQs",
-        "background_color": "#ffffff",
-        "content_background": "#f5f5f7",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "link_color": "#0070ca",
-        "content_width": 1200,
-        "content_radius": 16,
-        "open_first": true,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
         "padding_bottom_mobile": 40
       }
     }
@@ -1346,9 +1082,8 @@
     "xtu_tab_images_yfFbMx",
     "xtu_product_compare_U7Mgh3",
     "xtu_bento_grid_r6pyGH",
+    "xtu_faq_kT3Ffi",
     "xtu_product_specs_7XrG4D",
-    "xtu_tab_images_EeXx8Q",
-    "xtu_rich_content_e4i7PF",
-    "xtu_faq_kT3Ffi"
+    "xtu_tab_images_EeXx8Q"
   ]
 }

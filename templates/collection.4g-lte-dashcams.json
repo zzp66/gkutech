@@ -1,0 +1,380 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "xtu_collection_banner": {
+      "type": "xtu-collection-banner",
+      "settings": {
+        "heading": "",
+        "enable_collection_description": true,
+        "description": "",
+        "enable_collection_image": true,
+        "media_ratio": "21 / 9",
+        "content_position": "center",
+        "show_overlay": false,
+        "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": true,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 0
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "#ffbf01",
+            "atc_color_hover": "{{ settings.color_palette.background }}",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "small",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f8f9fd",
+        "padding-block-start": 0,
+        "padding-block-end": 36
+      }
+    },
+    "178971228409b419d0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_c4b3376_awDiMM": {
+          "type": "ai_gen_block_c4b3376",
+          "settings": {
+            "eyebrow": "Connected vehicle technology",
+            "title": "What Is a 4G LTE Dash Cam?",
+            "introduction": "<h3>What Is a 4G LTE Dash Cam?</h3><p>A 4G LTE dash cam is a connected vehicle camera that uses a cellular network to support remote features beyond the local WiFi connection found on many standard dash cams.</p><p>Depending on the camera, 4G connectivity may enable remote vehicle monitoring, remote access, GPS tracking, parking notifications, or other connected services while you are away from the vehicle.</p><p>This makes a 4G dash cam particularly useful for drivers who want to stay connected to their vehicle even when they are not sitting inside it.</p>",
+            "benefits": "<h3>Why Choose a 4G Dash Cam?</h3><p>The biggest advantage of a 4G dash cam is connectivity beyond the vehicle. With a traditional WiFi dash cam, your smartphone generally needs to be near the camera to establish a direct WiFi connection. A 4G LTE dash cam can use cellular connectivity to support compatible remote features over a much greater distance.</p><p>This can make 4G dash cams useful for:</p><ul><li>Remote vehicle monitoring</li><li>Parking protection</li><li>GPS vehicle tracking</li><li>Checking on a parked vehicle</li><li>Business and commercial vehicles</li><li>Drivers who frequently leave their vehicles parked for extended periods</li></ul>",
+            "desktop_width_percent": 100,
+            "content_width": 1100,
+            "vertical_padding": 45,
+            "heading_size": 40,
+            "mobile_heading_size": 30,
+            "subheading_size": 24,
+            "border_radius": 12,
+            "background_color": "#F8F9FD",
+            "panel_color": "#FFFFFF",
+            "heading_color": "#111111",
+            "text_color": "#333333",
+            "accent_color": "#FFF001",
+            "border_color": "#DFDFDF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_c4b3376_awDiMM"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1789712985a07bac15": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2b49b3c_ChcYXz": {
+          "type": "ai_gen_block_2b49b3c",
+          "settings": {
+            "heading": "4G LTE Dash Cam vs WiFi Dash Cam",
+            "subtitle": "Choose WiFi if you mainly want convenient local access to footage. Choose 4G LTE if you want to stay connected to your vehicle remotely.",
+            "table_data": "Feature|4G LTE Dash Cam|WiFi Dash Cam||Connection|Cellular network|Local WiFi connection||Phone Needs to Be Near Camera|Not necessarily for supported remote features|Usually yes||Remote Vehicle Monitoring|Supported on compatible models|Generally no||Remote Access|Possible with compatible 4G services|Primarily local||GPS Tracking|Can support connected tracking|GPS may record trip data locally||Video Download|Depends on model/service|Common through local app connection||Cellular Data Required|Yes for 4G functions|No||Best For|Remote monitoring & connected protection|Local footage access & camera control",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_size": 40,
+            "subtitle_size": 15,
+            "cell_size": 15,
+            "mobile_cell_size": 14,
+            "border_radius": 8,
+            "header_font": "inter_n6",
+            "background_color": "#FFFFFF",
+            "alternate_color": "#F8F9FD",
+            "header_background_color": "#FFF002",
+            "header_text_color": "#000000",
+            "border_color": "#DFDFDF",
+            "text_color": "#333333",
+            "heading_color": "#000000",
+            "subtitle_color": "#535F11"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2b49b3c_ChcYXz"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_X9kkVz": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_rjF3ki": {
+          "type": "item",
+          "settings": {
+            "question": "What is a 4G LTE dash cam?",
+            "answer": "<p>A 4G LTE dash cam is a connected dash camera that uses a cellular network to support remote features beyond a standard local WiFi connection. Depending on the model and service, 4G connectivity can enable features such as remote vehicle monitoring, GPS tracking, parking notifications, and remote access while you are away from your vehicle.</p>"
+          }
+        },
+        "item_ptfb6d": {
+          "type": "item",
+          "settings": {
+            "question": "How does a 4G dash cam work?",
+            "answer": "<p>A 4G dash cam connects to a supported cellular network to transmit data between the camera and its compatible app or connected service. This allows supported remote features to work even when your smartphone is not physically close to the dash cam.</p><p>The exact features available depend on the dash cam, cellular coverage, power connection, app, and data service.</p>"
+          }
+        },
+        "item_NN7zVB": {
+          "type": "item",
+          "settings": {
+            "question": "Does a 4G dash cam need a SIM card?",
+            "answer": "<p>Most 4G LTE dash cams require a SIM or an integrated cellular connectivity solution to access a mobile network. The exact SIM requirements, supported carriers, and setup process depend on the specific dash cam and region.</p><p>Always check the product specifications and connectivity requirements before purchasing or activating 4G features.</p>"
+          }
+        },
+        "item_cb4PdK": {
+          "type": "item",
+          "settings": {
+            "question": "Does a 4G dash cam require a data plan?",
+            "answer": "<p>4G-connected features generally require an active cellular data service. Data requirements and any associated fees depend on the dash cam, service provider, region, and features being used.</p><p>Basic local recording to a memory card does not normally depend on a 4G data connection.</p>"
+          }
+        },
+        "item_Ab8FrT": {
+          "type": "item",
+          "settings": {
+            "question": "Can I view a 4G dash cam remotely?",
+            "answer": "<p>A 4G LTE dash cam can support remote vehicle monitoring when the model and connected service provide this feature. Unlike a standard WiFi dash cam, you do not necessarily need to be near the vehicle to use supported remote functions.</p><p>Remote availability can depend on cellular coverage, power supply, app connectivity, and the specific features supported by the dash cam.</p>"
+          }
+        },
+        "item_bYwf74": {
+          "type": "item",
+          "settings": {
+            "question": "What is the difference between a 4G dash cam and a WiFi dash cam?",
+            "answer": "<p>The main difference is how the camera connects to your phone.</p><p>A WiFi dash cam typically creates a local wireless connection with a nearby smartphone for video preview, footage downloads, and camera settings. A 4G LTE dash cam uses a cellular network to support compatible remote features even when you are away from the vehicle.</p><p>Choose WiFi if you mainly need convenient local access to your dash cam. Consider 4G LTE if remote vehicle connectivity and monitoring are important to you.</p>"
+          }
+        },
+        "item_VKAj3Y": {
+          "type": "item",
+          "settings": {
+            "question": "Can a 4G dash cam monitor my car while parked?",
+            "answer": "<p>A 4G dash cam with compatible parking and remote monitoring features can help you stay connected to your vehicle while it is parked. Depending on the model, supported functions may include parking event monitoring, notifications, GPS information, or remote access.</p><p>Parking monitoring usually requires a continuous power source, such as a compatible hardwire kit. Available remote features also depend on cellular connectivity, the app, and the dash cam's specific capabilities.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_rjF3ki",
+        "item_ptfb6d",
+        "item_NN7zVB",
+        "item_cb4PdK",
+        "item_Ab8FrT",
+        "item_bYwf74",
+        "item_VKAj3Y"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "4G LTE Dash Cam FAQs",
+        "background_color": "#FFFFFF",
+        "content_background": "#F5F5F7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#FFF001",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "xtu_collection_banner",
+    "main",
+    "178971228409b419d0",
+    "1789712985a07bac15",
+    "xtu_faq_X9kkVz"
+  ]
+}

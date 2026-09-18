@@ -486,7 +486,8 @@
       "settings": {
         "collection_list": [
           "4k-dash-cam",
-          "starvis-2-dash-cam"
+          "starvis-2-dash-cam",
+          "night-vision-dash-cams"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,

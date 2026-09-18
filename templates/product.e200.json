@@ -116,7 +116,7 @@
               },
               "blocks": {}
             },
-            "klip_coupons_klip_app_section_product_gRPEFQ": {
+            "klip_coupons_klip_app_section_product_KrQYmx": {
               "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
               "settings": {
                 "margin_top": 10,
@@ -137,24 +137,24 @@
                 "spec_1": {
                   "type": "_xtu-key-spec-item",
                   "settings": {
-                    "value": "0.2s",
-                    "label": "Trigger"
+                    "value": "4K+4K",
+                    "label": "Resolution"
                   },
                   "blocks": {}
                 },
                 "spec_2": {
                   "type": "_xtu-key-spec-item",
                   "settings": {
-                    "value": "64",
-                    "label": "MP"
+                    "value": "2",
+                    "label": "Channels"
                   },
                   "blocks": {}
                 },
                 "spec_3": {
                   "type": "_xtu-key-spec-item",
                   "settings": {
-                    "value": "4k",
-                    "label": "Resolution"
+                    "value": "HDR",
+                    "label": "Night Vision"
                   },
                   "blocks": {}
                 }
@@ -168,6 +168,7 @@
             "text_aEtTtq": {
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
+              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "enable_collapse": true,
@@ -276,15 +277,15 @@
                 "text_color": "",
                 "show_pickup_availability": false,
                 "gift_card_form": true,
-                "recipient_button_style": "default",
+                "recipient_button_style": "custom",
                 "recipient_button_background": "{{ settings.color_palette.background }}",
                 "recipient_button_text": "{{ settings.color_palette.foreground }}",
                 "recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "selected_recipient_button_style": "default",
+                "selected_recipient_button_style": "custom",
                 "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
                 "selected_recipient_button_text": "{{ settings.color_palette.background }}",
                 "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "input_style": "default",
+                "input_style": "custom",
                 "input_background_color": "{{ settings.color_palette.background }}",
                 "input_text_color": "{{ settings.color_palette.foreground }}",
                 "input_border_color": "{{ settings.color_palette.foreground }}",
@@ -314,6 +315,12 @@
                   "static": true,
                   "settings": {
                     "style_class": "button",
+                    "atc_bg": "{{ settings.color_palette.foreground }}",
+                    "atc_color": "{{ settings.color_palette.background }}",
+                    "atc_bg_hover": "#fff001",
+                    "atc_color_hover": "#ffffff",
+                    "atc_bg_disabled": "#e8e8ed",
+                    "atc_color_disabled": "#8e8e93",
                     "custom_button_background": "#1590f2",
                     "custom_button_text": "#ffffff",
                     "custom_button_border": "#1590f2"
@@ -322,7 +329,6 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
-                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -351,7 +357,7 @@
           "block_order": [
             "text_xrnftG",
             "price_tVjtKg",
-            "klip_coupons_klip_app_section_product_gRPEFQ",
+            "klip_coupons_klip_app_section_product_KrQYmx",
             "xtu_key_specs",
             "text_aEtTtq",
             "xtu_feature_benefits",
@@ -371,6 +377,12 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
+        "atc_bg": "#fff001",
+        "atc_color": "{{ settings.color_palette.foreground }}",
+        "atc_bg_hover": "#ffab02",
+        "atc_color_hover": "#ffffff",
+        "atc_bg_disabled": "#e8e8ed",
+        "atc_color_disabled": "#8e8e93",
         "padding-block-start": 40,
         "padding-block-end": 60
       }
@@ -382,31 +394,28 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "shopify-section-template--29150716788902__xtu_media_grid_HCTTxt"
-          }
-        },
-        "item_4YAHeY": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "label": "Compare",
-            "target": "xtu-product-compare-template--29086148395174__xtu_product_compare_U7Mgh3"
-          }
-        },
-        "nav_comparison": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "label": "Look",
-            "target": "xtu_tab_images_yfFbMx"
+            "target": "xtu_media_grid_HCTTxt"
           }
         },
         "nav_specs": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Highlights",
-            "target": "xtu_bento_grid_r6pyGH"
+            "target": "shopify-section-template--22594749825251__xtu_tab_images_yfFbMx"
+          }
+        },
+        "item_4YAHeY": {
+          "type": "item",
+          "settings": {
+            "label": "Compare",
+            "target": "xtu-product-compare-template--22594749825251__xtu_product_compare_U7Mgh3"
+          }
+        },
+        "nav_comparison": {
+          "type": "item",
+          "settings": {
+            "label": "What's in the Package",
+            "target": "xtu-rich-content-template--22594749825251__xtu_rich_content_pjPMPg"
           }
         },
         "item_dwBHWi": {
@@ -426,9 +435,9 @@
       },
       "block_order": [
         "nav_overview",
+        "nav_specs",
         "item_4YAHeY",
         "nav_comparison",
-        "nav_specs",
         "item_dwBHWi",
         "item_MUMPVp"
       ],
@@ -447,29 +456,30 @@
     "xtu_media_grid_HCTTxt": {
       "type": "xtu-media-grid",
       "blocks": {
-        "full_width_zBDgix": {
-          "type": "full_width",
+        "column_amVfh6": {
+          "type": "column",
           "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/A_1-1_871fb9ee-8ff9-4c47-91a8-a8bd14ae7e76.jpg",
-            "image_mobile": "shopify://shop_images/A_1-1_6331ee6d-d61a-478d-8303-1922e880d294.jpg",
+            "media_type": "youtube",
+            "image": "shopify://shop_images/1_00281d7b-054c-4bbd-abe0-4c179fec4d1d.png",
+            "video_url": "https://www.youtube.com/watch?v=LCHdH4O5NRA",
             "media_ratio": "auto",
             "alt": ""
           }
         }
       },
       "block_order": [
-        "full_width_zBDgix"
+        "column_amVfh6"
       ],
       "name": "XTU Media Grid",
       "settings": {
-        "heading": "XTU SV-TCQSW",
-        "subheading": "Designed for hunting, wildlife observation and outdoor monitoring, the XTU Solar Trail Camera combines 64MP photos, 4K video, a fast 0.2-second trigger, local app connectivity and solar charging in one rugged outdoor camera.",
+        "heading": "GKU E200 Dual 4K Dash Cam",
+        "subheading": "Capture clearer evidence from both directions with Dual 4K recording, Sony STARVIS 2 imaging and HDR—built for greater detail day and night.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "media_radius": 16,
         "gap_desktop": 8,
@@ -480,278 +490,269 @@
         "padding_bottom_mobile": 20
       }
     },
+    "xtu_media_pair_iH98Kt": {
+      "type": "xtu-media-pair",
+      "blocks": {
+        "item_PW87xD": {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "4K Front",
+            "body": "<p>Capture road signs, vehicles and important details ahead. <strong>Please note:</strong> The footage shown here is not the original file exported directly from the dash cam.<br/><br/></p>",
+            "media_type": "video",
+            "video": "shopify://files/videos/0917.mp4",
+            "video_url": ""
+          }
+        },
+        "item_GCHcT8": {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "4K Rear",
+            "body": "<p>Preserve more detail from vehicles approaching or following behind. <strong>Please note:</strong> The footage shown here is not the original file exported directly from the dash cam.<br/><br/></p>",
+            "media_type": "video",
+            "video": "shopify://files/videos/0917-副本.mp4",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_PW87xD",
+        "item_GCHcT8"
+      ],
+      "name": "XTU Media Pair",
+      "settings": {
+        "heading": "4K Shouldn't Stop at the Front Camera.",
+        "subheading": "Many dual dash cams pair a 4K front camera with a lower-resolution rear camera. The GKU E200 records in 4K from both directions, helping preserve more detail whether an incident happens ahead of you or behind you.",
+        "media_ratio": "16 / 9",
+        "media_radius": 16,
+        "gap_desktop": 24,
+        "gap_mobile": 32,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "xtu_tab_images_yfFbMx": {
       "type": "xtu-tab-images",
       "blocks": {
         "tab_nGtdLW": {
           "type": "tab",
           "settings": {
-            "tab_label": "64MP Clear Photos",
+            "tab_label": "Starvis 2",
             "media_type": "image",
-            "image": "shopify://shop_images/A_2-2.jpg",
-            "image_mobile": "shopify://shop_images/A_2-2_60e047df-9046-4308-99dc-516423eee6b1.jpg"
+            "image": "shopify://shop_images/4_33166b00-addd-4f5d-875a-ff4ffee16431.jpg",
+            "video_url": ""
           }
         },
         "tab_Q3Ywfh": {
           "type": "tab",
           "settings": {
-            "tab_label": "4K Ultra HD Video",
+            "tab_label": "HDR",
             "media_type": "image",
-            "image": "shopify://shop_images/A_3-2.jpg",
-            "image_mobile": "shopify://shop_images/A_3-2_c3dcb4d6-e417-4a42-92fb-4450e3bda3ba.jpg"
+            "image": "shopify://shop_images/f28e755c-68be-4cde-aa62-93504f435595.png",
+            "video_url": ""
           }
         },
-        "tab_rbFPNB": {
+        "tab_mFRRrR": {
           "type": "tab",
           "settings": {
-            "tab_label": "0.2s Fast Trigger",
+            "tab_label": "WiFi 6 & GKU App",
             "media_type": "image",
-            "image": "shopify://shop_images/A_4-2_1.jpg",
-            "image_mobile": "shopify://shop_images/A_4-2.jpg"
+            "image": "shopify://shop_images/6_b8227c84-7d1f-46cf-9aee-893fe20ca8e7.jpg",
+            "video_url": ""
           }
         },
-        "tab_M4YJap": {
+        "tab_AtzgRP": {
           "type": "tab",
           "settings": {
-            "tab_label": "Burst & Time-Lapse",
+            "tab_label": "GPS",
             "media_type": "image",
-            "image": "shopify://shop_images/A_6-2.jpg",
-            "image_mobile": "shopify://shop_images/A_6-1.jpg"
+            "image": "shopify://shop_images/7_830670a1-e1cb-42c9-bca3-9730d0c4e753.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_qEia3z": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Voice Control",
+            "media_type": "image",
+            "image": "shopify://shop_images/8_20393322-41dc-4815-86ba-521bc7e605fe.jpg",
+            "video_url": ""
           }
         }
       },
       "block_order": [
         "tab_nGtdLW",
         "tab_Q3Ywfh",
-        "tab_rbFPNB",
-        "tab_M4YJap"
+        "tab_mFRRrR",
+        "tab_AtzgRP",
+        "tab_qEia3z"
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "64MP & 4K Solar Trail Camera",
-        "subheading": "Record the natural world with high-resolution photos and clear video. Whether an animal is standing still or moving through the frame, the camera helps preserve the details of every encounter.",
+        "heading": "E200 Highlights",
+        "subheading": "The GKU E200 Dual 4K dash cam combines Sony STARVIS 2, HDR, WiFi 6, built-in GPS, and voice control for clearer front and rear footage, enhanced night vision, and smarter everyday driving.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#fff001",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
+        "show_tab_underline": true,
         "content_width": 1200,
         "gallery_ratio": "auto",
         "image_radius": 16,
         "padding_top": 12,
-        "padding_bottom": 80,
+        "padding_bottom": 32,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
     },
-    "xtu_tab_images_PcBV8M": {
+    "xtu_tab_images_EeXx8Q": {
       "type": "xtu-tab-images",
       "blocks": {
-        "tab_aQ6KPN": {
+        "tab_BeyiXk": {
           "type": "tab",
           "settings": {
-            "tab_label": "850nm Night Vision",
+            "tab_label": "Loop Recording",
             "media_type": "image",
-            "image": "shopify://shop_images/A_7-2.jpg",
-            "image_mobile": "shopify://shop_images/A_7-2_2616e144-cd7c-4965-bcf8-7a49d2cf861f.jpg"
+            "image": "shopify://shop_images/5_877b2cdc-c691-4340-8aad-11ad7d441140.jpg",
+            "video_url": ""
           }
         },
-        "tab_zfAUiQ": {
+        "tab_JYiMht": {
           "type": "tab",
           "settings": {
-            "tab_label": "Wi-Fi & Bluetooth App",
+            "tab_label": "24h Parking Mode",
             "media_type": "image",
-            "image": "shopify://shop_images/A_5-2.jpg",
-            "image_mobile": "shopify://shop_images/A_5-2_353ef1a3-79f0-4027-81b5-0f5e6c759aea.jpg"
+            "image": "shopify://shop_images/10_f6687856-bb91-4732-bd9b-e22a8d8d18c5.jpg",
+            "video_url": ""
           }
         },
-        "tab_3Qaw33": {
+        "tab_ebVhYc": {
           "type": "tab",
           "settings": {
-            "tab_label": "Easy File Access",
+            "tab_label": "G-Sensor",
             "media_type": "image",
-            "image": "shopify://shop_images/MB-_-A_13-NC_3cc760ec-bf73-430b-857c-e5314f5f89ed.jpg",
-            "image_mobile": "shopify://shop_images/A_8-1.jpg"
+            "image": "shopify://shop_images/9_53b53c27-2a39-494c-a9f7-2f25f6e8f43f.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Ret4F6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Easy to Install",
+            "media_type": "image",
+            "image": "shopify://shop_images/14_d26b5ddf-d037-4d24-87e3-362ee0d62a19.jpg",
+            "video_url": ""
           }
         }
       },
       "block_order": [
-        "tab_aQ6KPN",
-        "tab_zfAUiQ",
-        "tab_3Qaw33"
+        "tab_BeyiXk",
+        "tab_JYiMht",
+        "tab_ebVhYc",
+        "tab_Ret4F6"
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "Smarter Monitoring Around the Clock",
-        "subheading": "Connect through local Wi-Fi and Bluetooth to preview, download and manage recordings in the TrailCamGO app from up to 49 ft away. After dark, 22 low-glow 850nm infrared LEDs provide clear nighttime monitoring while minimizing disturbance to wildlife.",
+        "heading": "E200 Highlights",
+        "subheading": "The GKU E200 Dual 4K dash cam combines loop recording, 24-hour parking mode, G-sensor protection, and easy installation for reliable front and rear driving protection.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "{{ settings.color_palette.color7 }}",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
+        "show_tab_underline": true,
         "content_width": 1200,
-        "gallery_ratio": "auto",
-        "image_radius": 0,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
+        "gallery_ratio": "21 / 9",
+        "image_radius": 16,
+        "padding_top": 24,
+        "padding_bottom": 16,
+        "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
     },
-    "xtu_tab_images_PMR9YE": {
-      "type": "xtu-tab-images",
+    "xtu_rich_content_pjPMPg": {
+      "type": "xtu-rich-content",
       "blocks": {
-        "tab_7cC8Fh": {
-          "type": "tab",
+        "paragraph_RkwTCP": {
+          "type": "paragraph",
           "settings": {
-            "tab_label": "Flexible Power Options",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_8-2.jpg",
-            "image_mobile": "shopify://shop_images/A_8-1.jpg"
+            "text": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
           }
         },
-        "tab_FaapV6": {
-          "type": "tab",
+        "image_jhAi7N": {
+          "type": "image",
           "settings": {
-            "tab_label": "IP66 Weather Protection",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_9-2.jpg",
-            "image_mobile": "shopify://shop_images/A_9-2_b44e8a69-b488-4841-a157-1095077df832.jpg"
+            "image": "shopify://shop_images/2_5c020912-a187-490a-bf73-6c2d8f22c3f5.png",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
           }
         },
-        "tab_kAn89e": {
-          "type": "tab",
+        "richtext_NK68LR": {
+          "type": "richtext",
           "settings": {
-            "tab_label": "All-Season Performance",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_10-2.jpg",
-            "image_mobile": "shopify://shop_images/A_10-2_d0323b29-dee3-42f0-9b1e-9ec4b87aa611.jpg"
+            "body": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
           }
         }
       },
       "block_order": [
-        "tab_7cC8Fh",
-        "tab_FaapV6",
-        "tab_kAn89e"
+        "paragraph_RkwTCP",
+        "image_jhAi7N",
+        "richtext_NK68LR"
       ],
-      "name": "XTU Tab Images",
+      "name": "XTU Rich Content",
       "settings": {
-        "heading": "Reliable Power in Changing Weather",
-        "subheading": "The integrated solar panel helps keep the built-in battery charged during daylight, while USB-C, four AA backup batteries and DC input provide flexible power options. Its rugged IP66 housing is designed for outdoor use in rain, snow, dust and temperatures from 5°F to 140°F (-15°C to 60°C).",
+        "heading": "What's in the Package",
+        "subheading": "1*E200 Dash Cam; 1*Car Charger; 5 Cable stickers;2*Adhesive Tape; 1*Crowbar; 1*Extension cable; 1*128GB SD Card; 2*Elestrostatic Film*2",
+        "heading_align": "center",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
-        "text_color": "#333333",
         "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "{{ settings.color_palette.color7 }}",
         "content_width": 1200,
-        "gallery_ratio": "auto",
-        "image_radius": 0,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_tab_images_Feg6in": {
-      "type": "xtu-tab-images",
-      "blocks": {
-        "tab_zpDFyw": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Camouflage Design",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_11-2.jpg",
-            "image_mobile": "shopify://shop_images/A_11-2_6e0db9d4-1593-4606-81ca-f0b9e6182ab2.jpg"
-          }
-        },
-        "tab_43DbEA": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Flexible Mounting",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_12-2.jpg",
-            "image_mobile": "shopify://shop_images/A_12-2_2055c899-e677-49b9-a662-ea70c698bfd8.jpg"
-          }
-        },
-        "tab_QDAUDi": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Quick Setup",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_14-2.jpg",
-            "image_mobile": "shopify://shop_images/A_14-1.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "tab_zpDFyw",
-        "tab_43DbEA",
-        "tab_QDAUDi"
-      ],
-      "name": "XTU Tab Images",
-      "settings": {
-        "heading": "Discreet, Flexible and Easy to Use",
-        "subheading": "The natural camouflage finish helps the camera blend into outdoor surroundings. Install it on a tree with the included strap or use the adjustable metal bracket, then configure the settings in TEST mode and switch to ON to begin motion-activated monitoring.",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
-        "content_width": 1200,
-        "gallery_ratio": "auto",
-        "image_radius": 0,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_tab_images_7AKG8e": {
-      "type": "xtu-tab-images",
-      "blocks": {
-        "tab_tQ7V8A": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Versatile Outdoor Use",
-            "media_type": "image",
-            "image": "shopify://shop_images/A_15-2.jpg",
-            "image_mobile": "shopify://shop_images/A_15-1.jpg"
-          }
-        },
-        "tab_7MG7Wi": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "What’s in the Box",
-            "media_type": "image",
-            "image": "shopify://shop_images/MB-EN-16-NC.jpg",
-            "image_mobile": "shopify://shop_images/PC-EN-16-NC_6bc844ec-18c8-41e6-832c-59a3f0bfe41a.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "tab_tQ7V8A",
-        "tab_7MG7Wi"
-      ],
-      "name": "XTU Tab Images",
-      "settings": {
-        "heading": "Ready for Every Outdoor Setting",
-        "subheading": "Ideal for forests, wildlife trails, farms, gardens, backyards and outdoor property monitoring. The package includes practical mounting and charging accessories for flexible installation.",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
-        "content_width": 1200,
-        "gallery_ratio": "auto",
-        "image_radius": 0,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
+        "padding_top": 32,
+        "padding_bottom": 28,
+        "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
     },
@@ -761,11 +762,11 @@
         "product_9RVxKG": {
           "type": "product",
           "settings": {
-            "product": "",
-            "title": "S7 Pro Max",
-            "subtitle": "4K flagship action camera",
+            "product": "gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "title": "D600 Pro Max",
+            "subtitle": "4K+1080P Front and Rear Dash Cam with Starvis 2",
             "buy_label": "Buy now",
-            "buy_link": "",
+            "buy_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
             "more_label": "Learn more",
             "more_link": ""
           }
@@ -773,63 +774,39 @@
         "product_f68ynV": {
           "type": "product",
           "settings": {
-            "product": "",
-            "title": "S7 Pro",
-            "subtitle": "4K action camera",
+            "product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "title": "E200",
+            "subtitle": "4K+4K Front and Rear Dash Cam with STARVIS 2 & HDR",
             "buy_label": "Buy now",
             "buy_link": "",
             "more_label": "Learn more",
             "more_link": ""
-          }
-        },
-        "product_prVryw": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "title": "S7",
-            "subtitle": "Essential action camera",
-            "buy_label": "Buy now",
-            "buy_link": "",
-            "more_label": "Learn more",
-            "more_link": ""
-          }
-        },
-        "group_8UK6FD": {
-          "type": "group",
-          "settings": {
-            "title": "Camera"
           }
         },
         "row_cpWCR7": {
           "type": "row",
           "settings": {
-            "label": "Category",
-            "value_1": "Action camera",
-            "value_2": "Action camera",
+            "label": "Best For",
+            "value_1": "Maximum front & rear detail",
+            "value_2": "Everyday value",
             "value_3": "Action camera"
           }
         },
         "row_acUdgQ": {
           "type": "row",
           "settings": {
-            "label": "Availability",
-            "value_1": "On sale",
-            "value_2": "On sale",
+            "label": "Front",
+            "value_1": "4K",
+            "value_2": "4K",
             "value_3": "On sale"
-          }
-        },
-        "group_KGk8rC": {
-          "type": "group",
-          "settings": {
-            "title": "General"
           }
         },
         "row_kPnbhK": {
           "type": "row",
           "settings": {
-            "label": "Weight",
-            "value_1": "145g",
-            "value_2": "138g",
+            "label": "Rear",
+            "value_1": "4K",
+            "value_2": "1080P",
             "value_3": "132g"
           }
         },
@@ -841,183 +818,111 @@
             "value_2": "69 × 48 × 32 mm",
             "value_3": "66 × 46 × 30 mm"
           }
+        },
+        "row_bhUKp4": {
+          "type": "row",
+          "settings": {
+            "label": "STARVIS 2",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": ""
+          }
+        },
+        "row_C9qiRD": {
+          "type": "row",
+          "settings": {
+            "label": "HDR",
+            "value_1": "✓",
+            "value_2": "No",
+            "value_3": ""
+          }
         }
       },
       "block_order": [
         "product_9RVxKG",
         "product_f68ynV",
-        "product_prVryw",
-        "group_8UK6FD",
         "row_cpWCR7",
         "row_acUdgQ",
-        "group_KGk8rC",
         "row_kPnbhK",
-        "row_CkmctA"
+        "row_CkmctA",
+        "row_bhUKp4",
+        "row_C9qiRD"
       ],
-      "disabled": true,
       "name": "XTU Product Compare",
       "settings": {
-        "heading": "XTU S7 Series Compare",
+        "heading": "Why Choose E200",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
+        "card_background": "#f5f5f7",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "label_width": 140,
         "image_ratio": "1 / 1",
-        "btn_bg": "#ffcc00",
+        "btn_bg": "#fff001",
         "btn_color": "#111111",
-        "btn_bg_hover": "#f0b800",
+        "btn_bg_hover": "#fff001",
         "btn_color_hover": "#111111",
         "show_btn_arrow": false,
-        "link_color": "#0070ca",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "link_color": "#ffab02",
+        "padding_top": 28,
+        "padding_bottom": 20,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
     },
-    "xtu_bento_grid_r6pyGH": {
-      "type": "xtu-bento-grid",
+    "blocks_FVdMAx": {
+      "type": "_blocks",
       "blocks": {
-        "tile_9dbRcD": {
-          "type": "tile",
+        "ai_gen_block_d02fef5_VUFVaP": {
+          "type": "ai_gen_block_d02fef5",
           "settings": {
-            "title": "4K Brilliance in Your Hand",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "1",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_EVTLwj": {
-          "type": "tile",
-          "settings": {
-            "title": "Smart Tracking, Always in Focus",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "2",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_FNpjEM": {
-          "type": "tile",
-          "settings": {
-            "title": "Rock-Solid 3-Axis Stabilization",
-            "text_color": "#ff6a00",
-            "text_align": "left",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "3",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 1,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 2,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 1
-          }
-        },
-        "tile_fbziEN": {
-          "type": "tile",
-          "settings": {
-            "title": "Vertical Shooting Made for Socials",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "3",
-            "col_span_desktop": 1,
-            "row_start_desktop": "2",
-            "row_span_desktop": 3,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_UPeepa": {
-          "type": "tile",
-          "settings": {
-            "title": "Portable Sleek Design",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "1",
-            "col_span_desktop": 1,
-            "row_start_desktop": "3",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_E98MX4": {
-          "type": "tile",
-          "settings": {
-            "title": "Splendid Low-Light Performance",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "link": "",
-            "col_start_desktop": "2",
-            "col_span_desktop": 1,
-            "row_start_desktop": "3",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 2,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
+            "subtitle": "Choose E200 if front-and-rear image quality is your priority.",
+            "body": "",
+            "alignment": "center",
+            "desktop_width_percent": 100,
+            "subtitle_size": 18,
+            "body_size": 16,
+            "spacing": 12,
+            "subtitle_color": "#333333",
+            "text_color": "#333333"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "tile_9dbRcD",
-        "tile_EVTLwj",
-        "tile_FNpjEM",
-        "tile_fbziEN",
-        "tile_UPeepa",
-        "tile_E98MX4"
+        "ai_gen_block_d02fef5_VUFVaP"
       ],
-      "disabled": true,
-      "name": "XTU Bento Grid",
+      "name": "副标题和正文",
       "settings": {
-        "heading": "The Highlights",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "content_width": 1200,
-        "card_radius": 16,
-        "show_image_overlay": false,
-        "columns_desktop": 3,
-        "row_height_desktop": 200,
-        "gap_desktop": 16,
-        "columns_mobile": 2,
-        "row_height_mobile": 180,
-        "gap_mobile": 8,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 13,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "xtu_faq_kT3Ffi": {
@@ -1026,71 +931,57 @@
         "item_37LRTh": {
           "type": "item",
           "settings": {
-            "question": "What’s included in the package?",
-            "answer": "<ul><li>Solar Trail Camera × 1</li><li>Mounting Strap × 1</li><li>USB-C Cable × 1</li><li>Metal Mounting Bracket × 1</li><li>Metal Base × 1</li><li>Hex Key × 1</li><li>Screws × 4</li><li>Wall Anchors × 4</li><li>User Manual × 1</li></ul>"
+            "question": "What is Sony STARVIS 2, and how does it improve night recording?",
+            "answer": "<p>The E200 uses the <strong>Sony STARVIS 2 IMX675 image sensor</strong>, designed to improve image quality in challenging low-light conditions. It helps capture cleaner footage with reduced image noise and better detail at night.</p><p>Actual night footage can still vary depending on vehicle speed, surrounding light, headlights, weather, windshield condition, and other environmental factors.</p>"
           }
         },
         "item_f6em3x": {
           "type": "item",
           "settings": {
-            "question": "Is a microSD card included?",
-            "answer": "<p>No. The camera supports microSD cards up to 256GB, but the card must be purchased separately. A reliable Class 10/U3 high-speed card is recommended.</p>"
+            "question": "Does the E200 support HDR?",
+            "answer": "<p>Yes. The E200 supports <strong>HDR imaging</strong> to help balance bright and dark areas in high-contrast driving situations, such as headlights at night, tunnels, streetlights, and rapidly changing lighting conditions.</p>"
           }
         },
         "item_XHwPXM": {
           "type": "item",
           "settings": {
-            "question": "Can I view the camera remotely over the internet?",
-            "answer": "<p>No. The camera uses local Wi-Fi and Bluetooth for nearby access through the TrailCamGO app. It does not connect to home Wi-Fi or support remote internet viewing.</p>"
+            "question": "Can I connect the E200 to my smartphone?",
+            "answer": "<p>Yes. The E200 features built-in WiFi and works with the <strong>GKU GO App</strong> on compatible iOS and Android devices.</p><p>You can use your phone to preview recordings, manage camera settings, download important footage, and save clips for sharing.</p>"
           }
         },
         "item_77XCPT": {
           "type": "item",
           "settings": {
-            "question": "Does the camera require AA batteries?",
-            "answer": "<p>No. The camera has a built-in 2600mAh rechargeable battery and an integrated solar panel. Four 1.5V AA batteries can be added as backup power but are not included.</p>"
+            "question": "Does the E200's WiFi provide internet or remote monitoring?",
+            "answer": "<p>No. The E200's WiFi creates a <strong>local wireless connection between the dash cam and your smartphone</strong>. It is used for video preview, downloads, and camera management through the GKU GO App.</p><p>It does not provide internet access or remote vehicle monitoring when you are away from the car.</p>"
           }
         },
-        "item_DyMHNk": {
+        "item_UaqcKr": {
           "type": "item",
           "settings": {
-            "question": "Is the camera waterproof?",
-            "answer": "<p>The camera has an IP66 weather-resistant rating and is designed for outdoor use in rain, snow and dust. Do not submerge it in water.</p>"
+            "question": "Does the GKU E200 have built-in GPS?",
+            "answer": "<p>Yes. The E200 has <strong>built-in GPS</strong> that can record driving information such as vehicle speed, route, and location data, providing additional context when reviewing your footage.</p>"
           }
         },
-        "item_T6HNbf": {
+        "item_TmAAYP": {
           "type": "item",
           "settings": {
-            "question": "What should I do before first use?",
-            "answer": "<p>Fully charge the camera with a 5V/2A USB-C power source. Insert a compatible microSD card and format it in the camera before recording.</p>"
+            "question": "Does the E200 support parking mode?",
+            "answer": "<p>Yes. The E200 supports <strong>24-hour parking surveillance</strong> when connected to a compatible GKU hardwire kit.</p><p>The hardwire kit provides continuous power while the vehicle is parked and includes low-voltage protection to help protect the vehicle battery.</p>"
           }
         },
-        "item_we4rkp": {
+        "item_NpnXWK": {
           "type": "item",
           "settings": {
-            "question": "How can I access my photos and videos?",
-            "answer": "<p>You can access recordings through the TrailCamGO app, connect the camera to a computer with the included USB-C cable, or use a compatible microSD card reader.</p>"
+            "question": "Is the E200 a good choice for night driving?",
+            "answer": "<p>The E200 is designed for drivers who prioritize <strong>front-and-rear image quality and nighttime performance</strong>. Its Dual 4K recording, Sony STARVIS 2 imaging, and HDR work together to capture more useful detail across a range of daytime and nighttime driving conditions.</p><p>For the best results, keep the windshield and camera lenses clean and make sure the cameras are installed at the correct angle.</p>"
           }
         },
-        "item_aL6WRp": {
+        "item_NFjWeY": {
           "type": "item",
           "settings": {
-            "question": "Where should I install the camera?",
-            "answer": "<p>Mount the camera approximately 1.6–6.5ft/0.5–2m above the ground and angle it slightly downward. Keep the lens and PIR sensor clear of branches or grass, and position the solar panel where it can receive direct sunlight.</p>"
-          }
-        },
-        "item_jHxGEH": {
-          "type": "item",
-          "settings": {
-            "question": "How do I start using the camera?",
-            "answer": "<p>Insert and format a compatible microSD card, move the switch to TEST, configure the recording settings, and then switch it to ON. The screen will turn off and the camera will enter motion-detection standby mode.</p>"
-          }
-        },
-        "item_rti3tB": {
-          "type": "item",
-          "settings": {
-            "question": "What is the app connection range?",
-            "answer": "<p>The local wireless connection works at distances of up to approximately 49ft/15m in an open area. Walls, trees and other obstacles may reduce the connection range.</p>"
+            "question": "Does the E200 come with a memory card?",
+            "answer": "<p>No</p>"
           }
         }
       },
@@ -1099,12 +990,10 @@
         "item_f6em3x",
         "item_XHwPXM",
         "item_77XCPT",
-        "item_DyMHNk",
-        "item_T6HNbf",
-        "item_we4rkp",
-        "item_aL6WRp",
-        "item_jHxGEH",
-        "item_rti3tB"
+        "item_UaqcKr",
+        "item_TmAAYP",
+        "item_NpnXWK",
+        "item_NFjWeY"
       ],
       "name": "XTU FAQ",
       "settings": {
@@ -1117,9 +1006,9 @@
         "content_width": 1200,
         "content_radius": 16,
         "open_first": true,
-        "padding_top": 0,
+        "padding_top": 80,
         "padding_bottom": 80,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
     },
@@ -1129,127 +1018,57 @@
         "spec_pBAqEr": {
           "type": "spec",
           "settings": {
-            "label": "Model",
-            "value": "XTU SV-TCQSW"
+            "label": "Dash Cam Model",
+            "value": "E200"
           }
         },
         "spec_rDD8Gq": {
           "type": "spec",
           "settings": {
-            "label": "Product Type",
-            "value": "Solar Trail Camera"
+            "label": "Channels",
+            "value": "2-Channel (Front + Rear)"
           }
         },
         "spec_6XdedW": {
           "type": "spec",
           "settings": {
-            "label": "Photo Resolution",
-            "value": "Up to 64MP"
+            "label": "Sensor",
+            "value": "Sony STARVIS 2"
           }
         },
         "spec_EpUKmz": {
           "type": "spec",
           "settings": {
             "label": "Video Resolution",
-            "value": "Up to 4K/30fps"
+            "value": "4K Front + 4K Rear"
           }
         },
         "spec_TgHcPf": {
           "type": "spec",
           "settings": {
-            "label": "Display",
-            "value": "2.0-Inch Color Screen"
+            "label": "Field of View",
+            "value": "170° Front / 150° Rear"
           }
         },
         "spec_LJDF8j": {
           "type": "spec",
           "settings": {
-            "label": "Field of View",
-            "value": "72°"
-          }
-        },
-        "spec_WJ9h67": {
-          "type": "spec",
-          "settings": {
-            "label": "Trigger Speed",
-            "value": "0.2 Seconds"
+            "label": "GPS Tracking",
+            "value": "Built-in GPS"
           }
         },
         "spec_FCPGXr": {
           "type": "spec",
           "settings": {
-            "label": "Waterproof Rating",
-            "value": "IP66"
+            "label": "Storage",
+            "value": "MicroSD up to 512GB"
           }
         },
         "spec_XkjdET": {
           "type": "spec",
           "settings": {
-            "label": "PIR Detection Angle",
-            "value": "90°"
-          }
-        },
-        "spec_aRTMMm": {
-          "type": "spec",
-          "settings": {
-            "label": "PIR Detection Range",
-            "value": "Up to 70ft/21m"
-          }
-        },
-        "spec_DT9DgT": {
-          "type": "spec",
-          "settings": {
-            "label": "Night Vision Range",
-            "value": "Up to 65ft/20m"
-          }
-        },
-        "spec_9UNQVe": {
-          "type": "spec",
-          "settings": {
-            "label": "Built-In Battery",
-            "value": "2600mAh Rechargeable Lithium Battery"
-          }
-        },
-        "spec_NdfEtc": {
-          "type": "spec",
-          "settings": {
-            "label": "Burst Shooting",
-            "value": "1–5 Photos per Trigger"
-          }
-        },
-        "spec_QHwWf3": {
-          "type": "spec",
-          "settings": {
-            "label": "Mounting Options",
-            "value": "Mounting Strap or Adjustable Metal Bracket"
-          }
-        },
-        "spec_Lcmcbj": {
-          "type": "spec",
-          "settings": {
-            "label": "Operating Temperature",
-            "value": "5°F–140°F/-15°C–60°C"
-          }
-        },
-        "spec_E9hJpQ": {
-          "type": "spec",
-          "settings": {
-            "label": "Wireless Connectivity",
-            "value": "Local Wi-Fi and Bluetooth"
-          }
-        },
-        "spec_AQCHrd": {
-          "type": "spec",
-          "settings": {
-            "label": "Capture Modes",
-            "value": "Photo, Video, Photo + Video, Motion Detection and Time-Lapse"
-          }
-        },
-        "spec_Nz7imq": {
-          "type": "spec",
-          "settings": {
-            "label": "Charging",
-            "value": "Integrated Solar Panel and USB-C"
+            "label": "Connectivity",
+            "value": "Wi-Fi 6/ App Control"
           }
         }
       },
@@ -1260,18 +1079,8 @@
         "spec_EpUKmz",
         "spec_TgHcPf",
         "spec_LJDF8j",
-        "spec_WJ9h67",
         "spec_FCPGXr",
-        "spec_XkjdET",
-        "spec_aRTMMm",
-        "spec_DT9DgT",
-        "spec_9UNQVe",
-        "spec_NdfEtc",
-        "spec_QHwWf3",
-        "spec_Lcmcbj",
-        "spec_E9hJpQ",
-        "spec_AQCHrd",
-        "spec_Nz7imq"
+        "spec_XkjdET"
       ],
       "name": "XTU Product Specs",
       "settings": {
@@ -1282,82 +1091,16 @@
         "text_color": "#333333",
         "content_width": 1200,
         "columns_desktop": "2",
-        "initial_visible": 10,
+        "initial_visible": 6,
         "view_more_label": "View More",
         "view_less_label": "View Less",
-        "btn_bg": "#ffffff",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
         "btn_color": "#111111",
-        "btn_border": "#111111",
+        "btn_border": "#fff001",
         "btn_bg_hover": "#111111",
         "btn_color_hover": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_tab_images_EeXx8Q": {
-      "type": "xtu-tab-images",
-      "blocks": {
-        "tab_BeyiXk": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Background Bokeh",
-            "media_type": "image"
-          }
-        },
-        "tab_JYiMht": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Face Retouch",
-            "media_type": "image"
-          }
-        },
-        "tab_ebVhYc": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Portrait Mode",
-            "media_type": "image"
-          }
-        },
-        "tab_Ret4F6": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Live Streaming",
-            "media_type": "image"
-          }
-        },
-        "tab_Tfwx8f": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Panorama",
-            "media_type": "image"
-          }
-        }
-      },
-      "block_order": [
-        "tab_BeyiXk",
-        "tab_JYiMht",
-        "tab_ebVhYc",
-        "tab_Ret4F6",
-        "tab_Tfwx8f"
-      ],
-      "disabled": true,
-      "name": "XTU Tab Images",
-      "settings": {
-        "heading": "Personalize Your Look",
-        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "show_tab_underline": false,
-        "content_width": 1200,
-        "gallery_ratio": "16 / 10",
-        "image_radius": 0,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 28,
+        "padding_bottom": 40,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -1367,15 +1110,13 @@
     "main",
     "xtu_product_nav",
     "xtu_media_grid_HCTTxt",
+    "xtu_media_pair_iH98Kt",
     "xtu_tab_images_yfFbMx",
-    "xtu_tab_images_PcBV8M",
-    "xtu_tab_images_PMR9YE",
-    "xtu_tab_images_Feg6in",
-    "xtu_tab_images_7AKG8e",
+    "xtu_tab_images_EeXx8Q",
+    "xtu_rich_content_pjPMPg",
     "xtu_product_compare_U7Mgh3",
-    "xtu_bento_grid_r6pyGH",
+    "blocks_FVdMAx",
     "xtu_faq_kT3Ffi",
-    "xtu_product_specs_7XrG4D",
-    "xtu_tab_images_EeXx8Q"
+    "xtu_product_specs_7XrG4D"
   ]
 }

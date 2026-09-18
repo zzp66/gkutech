@@ -53,42 +53,45 @@
           "type": "social_item",
           "settings": {
             "title": "facebook",
-            "link": "https://www.facebook.com/xtucam"
+            "icon": "shopify://shop_images/fb.png",
+            "icon_hover": "shopify://shop_images/fb.png",
+            "link": "https://www.facebook.com/gkutech"
           }
         },
         "social_2": {
           "type": "social_item",
           "settings": {
             "title": "Instagram",
-            "link": "https://www.instagram.com/xtucam_official/"
+            "icon": "shopify://shop_images/ig_4431bb34-14f3-4564-b505-24ee01553790.png",
+            "icon_hover": "shopify://shop_images/ig.png",
+            "link": "https://www.instagram.com/gku_dashcam/"
           }
         },
         "social_3": {
           "type": "social_item",
           "settings": {
             "title": "X",
-            "link": "https://x.com/XTUCAMJP"
+            "icon": "shopify://shop_images/X_logo_2023__white_55fad9ee-bf13-46bb-9001-d9791989481f.png",
+            "icon_hover": "shopify://shop_images/X_logo_2023__white_55fad9ee-bf13-46bb-9001-d9791989481f.png",
+            "link": "https://x.com/GKU_dashcam"
           }
         },
         "social_4": {
           "type": "social_item",
           "settings": {
             "title": "TikTok",
-            "link": "https://www.tiktok.com/@xtucam_shop"
+            "icon": "shopify://shop_images/images_40dcc5f6-aa75-4ee5-9faf-56e7d2b3d7bd.png",
+            "icon_hover": "shopify://shop_images/images.png",
+            "link": "https://www.tiktok.com/@gkudashcam_shop"
           }
         },
         "social_5": {
           "type": "social_item",
           "settings": {
             "title": "Youtube",
-            "link": "https://www.youtube.com/@XTUCAM"
-          }
-        },
-        "social_6": {
-          "type": "social_item",
-          "settings": {
-            "title": "Bilibili",
-            "link": ""
+            "icon": "shopify://shop_images/images.jpg",
+            "icon_hover": "shopify://shop_images/images.jpg",
+            "link": "https://www.youtube.com/@gku_dashcam"
           }
         }
       },
@@ -102,8 +105,7 @@
         "social_2",
         "social_3",
         "social_4",
-        "social_5",
-        "social_6"
+        "social_5"
       ],
       "name": "XTU Footer",
       "settings": {
@@ -114,6 +116,17 @@
         "background_color": "{{ settings.color_palette.foreground }}",
         "text_color": "{{ settings.color_palette.background }}",
         "muted_text_color": "{{ settings.color_palette.background }}",
+        "border_color": "#e5e7eb",
+        "input_bg": "#ffffff",
+        "input_border": "#e4e7ed",
+        "input_placeholder": "#9aa0a8",
+        "submit_bg": "#1a1c22",
+        "submit_color": "#ffffff",
+        "submit_bg_hover": "#111318",
+        "success_color": "#059669",
+        "error_color": "#dc2626",
+        "popover_bg": "#ffffff",
+        "popover_text": "#111827",
         "padding_top": 60,
         "padding_bottom": 40,
         "padding_top_mobile": 40,

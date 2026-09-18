@@ -1,0 +1,614 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "xtu_collection_banner": {
+      "type": "xtu-collection-banner",
+      "settings": {
+        "heading": "",
+        "enable_collection_description": true,
+        "description": "",
+        "enable_collection_image": true,
+        "media_ratio": "21 / 9",
+        "content_position": "center",
+        "show_overlay": false,
+        "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": true,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 0
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "#ffbf01",
+            "atc_color_hover": "{{ settings.color_palette.background }}",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "small",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f8f9fd",
+        "padding-block-start": 0,
+        "padding-block-end": 80
+      }
+    },
+    "1789630872290a78c0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d90b719_VKkHG8": {
+          "type": "ai_gen_block_d90b719",
+          "settings": {
+            "eyebrow": "Dash cam buying guide",
+            "title": "What Makes a Good Night Vision Dash Cam?",
+            "introduction": "<p>A good night vision dash cam needs more than high resolution. When available light decreases, the camera must capture useful detail while managing image noise, bright headlights, streetlights, shadows, and fast-moving vehicles.</p><p>Several technologies can influence dash cam performance at night.</p><p>Know More at GKU Buying Guides: <a href=\"/blogs/guides/what-makes-a-good-night-vision-dash-cam\" target=\"_blank\" title=\"What Makes a Good Night Vision Dash Cam? A Complete Buyer's Guide\">What makes a good night vision dash cam?</a></p><p></p>",
+            "sensor_content": "<p>The image sensor plays an important role in low-light recording. Advanced sensors such as Sony <a href=\"/blogs/guides/what-is-sony-starvis-2-everything-you-need-to-know-before-buying-a-dash-cam\" target=\"_blank\" title=\"What Is Sony STARVIS 2? Everything You Need to Know Before Buying a Dash Cam\">STARVIS 2</a> are designed to capture more useful image information in challenging lighting conditions, helping produce clearer footage after dark.</p>",
+            "hdr_content": "<p>Night driving often combines very bright and very dark areas in the same scene. Headlights, streetlights, signs, and dark roads can create difficult exposure conditions.</p><p><a href=\"/blogs/guides/hdr-vs-wdr-in-dash-cams-whats-the-difference-and-which-is-better\" target=\"_blank\" title=\"HDR vs WDR in Dash Cams: What's the Difference and Which Is Better?\">HDR and WDR</a> help the camera manage these differences so that important areas of the image are less likely to become excessively bright or dark.</p>",
+            "resolution_content": "<p>Higher <a href=\"https://www.gkutech.com/blogs/guides/what-dash-cam-resolution-do-you-need-1080p-vs-2k-vs-4k-explained\" target=\"_blank\" title=\"https://www.gkutech.com/blogs/guides/what-dash-cam-resolution-do-you-need-1080p-vs-2k-vs-4k-explained\">resolution</a> can preserve more image detail, but resolution alone does not determine night performance. Sensor quality, exposure processing, image signal processing, lens performance, and lighting conditions also matter.</p>",
+            "ir_content": "<p>Infrared night vision is particularly useful for interior cameras. IR LEDs can illuminate the vehicle cabin when there is very little visible light, helping the camera record interior activity at night.</p><p>This makes an IR cabin dash cam especially useful for rideshare, taxi, and professional drivers.</p>",
+            "desktop_width_percent": 100,
+            "section_padding": 64,
+            "card_radius": 20,
+            "background_color": "#F8F9FD",
+            "card_color": "#FFFFFF",
+            "heading_color": "#111111",
+            "text_color": "#333333",
+            "muted_text_color": "#4A4A4A",
+            "accent_color": "#FFF002",
+            "accent_text_color": "#111111",
+            "border_color": "#DFDFDF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d90b719_VKkHG8"
+      ],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_product_compare_9w3cpT": {
+      "type": "xtu-product-compare",
+      "blocks": {
+        "product_HYRmxt": {
+          "type": "product",
+          "settings": {
+            "product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "title": "E200",
+            "subtitle": "Starvis 2&HDR Imaging",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "product_4wHQKT": {
+          "type": "product",
+          "settings": {
+            "product": "gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "title": "D600 Pro Max",
+            "subtitle": "Starvis 2&WDR",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "product_nGYfrk": {
+          "type": "product",
+          "settings": {
+            "product": "gku-d1000-4k-triple-channel-dash-cam",
+            "title": "D1000",
+            "subtitle": "IR night vision",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-d1000-4k-triple-channel-dash-cam",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "row_8ULg7J": {
+          "type": "row",
+          "settings": {
+            "label": "Best For",
+            "value_1": "Front & Rear Night Detail",
+            "value_2": "Everyday Night Driving",
+            "value_3": "Cabin & 3-Channel Night Coverage"
+          }
+        },
+        "row_PVkTVk": {
+          "type": "row",
+          "settings": {
+            "label": "Camera Setup",
+            "value_1": "2-Channel",
+            "value_2": "2-Channel",
+            "value_3": "3-Channel"
+          }
+        },
+        "row_zeUdhx": {
+          "type": "row",
+          "settings": {
+            "label": "Recording Resolution",
+            "value_1": "4K + 4K",
+            "value_2": "4K + 1080P",
+            "value_3": "4K + 1080P + 1080P"
+          }
+        },
+        "row_aGQpf9": {
+          "type": "row",
+          "settings": {
+            "label": "Image Sensor",
+            "value_1": "Sony STARVIS 2",
+            "value_2": "Sony STARVIS 2",
+            "value_3": "Sony Sensor"
+          }
+        },
+        "row_FTTwkj": {
+          "type": "row",
+          "settings": {
+            "label": "HDR",
+            "value_1": "Yes",
+            "value_2": "",
+            "value_3": ""
+          }
+        },
+        "row_tV33Xy": {
+          "type": "row",
+          "settings": {
+            "label": "WDR",
+            "value_1": "",
+            "value_2": "Yes",
+            "value_3": "Yes"
+          }
+        },
+        "row_36jdja": {
+          "type": "row",
+          "settings": {
+            "label": "Auto IR Mode",
+            "value_1": "",
+            "value_2": "",
+            "value_3": "Yes"
+          }
+        },
+        "row_AJEMQX": {
+          "type": "row",
+          "settings": {
+            "label": "Core Night Vision Advantage",
+            "value_1": "Dual 4K + STARVIS 2 + HDR",
+            "value_2": "STARVIS 2 + WDR",
+            "value_3": "IR Cabin Night Vision"
+          }
+        }
+      },
+      "block_order": [
+        "product_HYRmxt",
+        "product_4wHQKT",
+        "product_nGYfrk",
+        "row_8ULg7J",
+        "row_PVkTVk",
+        "row_zeUdhx",
+        "row_aGQpf9",
+        "row_FTTwkj",
+        "row_tV33Xy",
+        "row_36jdja",
+        "row_AJEMQX"
+      ],
+      "name": "XTU Product Compare",
+      "settings": {
+        "heading": "E200 vs D600 Pro Max vs D1000: Night Vision Comparison",
+        "background_color": "#FFFFFF",
+        "content_background": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8E9297",
+        "card_background": "#F5F5F7",
+        "placeholder_bg": "#E8EAED",
+        "content_width": 1200,
+        "label_width": 140,
+        "image_ratio": "1 / 1",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
+        "btn_color": "#111111",
+        "btn_bg_hover": "{{ settings.color_palette.foreground }}",
+        "btn_color_hover": "{{ settings.color_palette.background }}",
+        "show_btn_arrow": false,
+        "link_color": "{{ settings.color_palette.color7 }}",
+        "padding_top": 32,
+        "padding_bottom": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "blocks_Ew3YmF": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d02fef5_tYxfYP": {
+          "type": "ai_gen_block_d02fef5",
+          "settings": {
+            "subtitle": "Compare three GKU night vision dash cams to find the right setup for front and rear detail, everyday night driving, or interior recording after dark.",
+            "body": "",
+            "alignment": "left",
+            "desktop_width_percent": 100,
+            "subtitle_size": 18,
+            "body_size": 16,
+            "spacing": 12,
+            "subtitle_color": "#333333",
+            "text_color": "#333333"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d02fef5_tYxfYP"
+      ],
+      "name": "副标题和正文",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 21,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "collection_list_3rVCDp": {
+      "type": "collection-list",
+      "blocks": {
+        "group_6yAWhd": {
+          "type": "group",
+          "name": "t:names.header",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_kjfVgH": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h3>Shop by collection</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_kjfVgH"
+          ]
+        },
+        "static-collection-card": {
+          "type": "_collection-card",
+          "name": "t:names.collection_card",
+          "static": true,
+          "settings": {
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection_title_yGMyRb": {
+              "type": "collection-title",
+              "name": "t:names.collection_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "{{ settings.color_palette.background }}",
+                "text_color": "{{ settings.color_palette.foreground }}",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "name": "t:names.collection_card_image",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_title_yGMyRb"
+          ]
+        }
+      },
+      "block_order": [
+        "group_6yAWhd"
+      ],
+      "disabled": true,
+      "name": "t:names.collections_carousel",
+      "settings": {
+        "collection_list": [
+          "action-camera-batteries-chargers",
+          "action-camera-microphones",
+          "action-camera-mounts",
+          "action-camera-waterproof-case"
+        ],
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "bento_gap": 8,
+        "rows_gap": 8,
+        "max_collections": 4,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 12,
+        "background_color": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "xtu_collection_banner",
+    "main",
+    "1789630872290a78c0",
+    "xtu_product_compare_9w3cpT",
+    "blocks_Ew3YmF",
+    "collection_list_3rVCDp"
+  ]
+}

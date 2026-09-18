@@ -32,142 +32,229 @@
         "padding_bottom": 60
       }
     },
-    "main": {
-      "type": "main-collection",
+    "1789640238324e6866": {
+      "type": "_blocks",
       "blocks": {
-        "filters": {
-          "type": "filters",
-          "disabled": true,
-          "static": true,
+        "ai_gen_block_aaa3498_ifrqAY": {
+          "type": "ai_gen_block_aaa3498",
           "settings": {
-            "enable_filtering": true,
-            "filter_style": "vertical",
-            "filter_width": "centered",
-            "text_label_case": "default",
-            "show_swatch_label": true,
-            "show_filter_label": true,
-            "enable_sorting": true,
-            "enable_grid_density": false,
-            "background_color": "",
-            "text_color": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "facets_margin_bottom": 0,
-            "facets_margin_right": 0
+            "heading": "Shop By Video & Imaging",
+            "aria_label": "",
+            "tag_1_label": "Night Vision Dash Cams",
+            "tag_1_link": "shopify://collections/night-vision-dash-cams",
+            "tag_2_label": "4K UHD Dash Cams",
+            "tag_2_link": "shopify://collections/4k-dash-cam",
+            "tag_3_label": "Starvis 2 Dash Cams",
+            "tag_3_link": "shopify://collections/starvis-2-dash-cam",
+            "tag_4_label": "前后双录",
+            "tag_4_link": "",
+            "tag_5_label": "Wi-Fi 连接",
+            "tag_5_link": "",
+            "tag_6_label": "GPS 定位",
+            "tag_6_link": "",
+            "tag_7_label": "语音控制",
+            "tag_7_link": "",
+            "tag_8_label": "智能驾驶辅助",
+            "tag_8_link": "",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_font": "inter_n6",
+            "body_font": "inter_n4",
+            "heading_size": 24,
+            "tag_font_size": 14,
+            "tag_radius": 16,
+            "vertical_padding": 20,
+            "text_color": "#000000",
+            "tag_background_color": "#FFF001",
+            "tag_text_color": "#000000",
+            "tag_border_color": "#DFDFDF",
+            "tag_hover_background_color": "#FFF002",
+            "tag_hover_text_color": "#000000",
+            "focus_color": "#0070CA"
           },
           "blocks": {}
-        },
-        "product-card": {
-          "type": "_product-card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 0,
-            "background_color": "#ffffff",
-            "atc_bg": "#FFF001",
-            "atc_color": "{{ settings.color_palette.foreground }}",
-            "atc_bg_hover": "#FFBF01",
-            "atc_color_hover": "#ffffff",
-            "atc_bg_disabled": "#e8e8ed",
-            "atc_color_disabled": "#8e8e93",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 12,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "card-gallery": {
-              "type": "_product-card-gallery",
-              "settings": {
-                "image_ratio": "square",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "h5",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "card-gallery",
-            "product_title",
-            "price"
-          ]
         }
       },
+      "block_order": [
+        "ai_gen_block_aaa3498_ifrqAY"
+      ],
       "settings": {
-        "layout_type": "grid",
-        "product_card_size": "small",
-        "mobile_product_card_size": "small",
-        "enable_infinite_scroll": false,
-        "products_per_page": 9,
-        "product_grid_width": "centered",
-        "full_width_on_mobile": false,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 16,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
-        "background_color": "#f8f9fd",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
         "padding-block-start": 0,
-        "padding-block-end": 80
+        "padding-block-end": 0
+      }
+    },
+    "blocks_wT8YD6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_aaa3498_YzTAyB": {
+          "type": "ai_gen_block_aaa3498",
+          "settings": {
+            "heading": "Shop By Camera Setup",
+            "aria_label": "",
+            "tag_1_label": "Front Only Dash Cam",
+            "tag_1_link": "shopify://collections/1-channel-dash-cams",
+            "tag_2_label": "Front&Real Dash Cams",
+            "tag_2_link": "shopify://collections/2-channel-dash-cams",
+            "tag_3_label": "3-Channel Dash Cams",
+            "tag_3_link": "shopify://collections/3-channel-dash-cams",
+            "tag_4_label": "前后双录",
+            "tag_4_link": "",
+            "tag_5_label": "Wi-Fi 连接",
+            "tag_5_link": "",
+            "tag_6_label": "GPS 定位",
+            "tag_6_link": "",
+            "tag_7_label": "语音控制",
+            "tag_7_link": "",
+            "tag_8_label": "智能驾驶辅助",
+            "tag_8_link": "",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_font": "inter_n6",
+            "body_font": "inter_n4",
+            "heading_size": 24,
+            "tag_font_size": 14,
+            "tag_radius": 16,
+            "vertical_padding": 20,
+            "text_color": "#000000",
+            "tag_background_color": "#FFF001",
+            "tag_text_color": "#000000",
+            "tag_border_color": "#DFDFDF",
+            "tag_hover_background_color": "#FFF002",
+            "tag_hover_text_color": "#000000",
+            "focus_color": "#0070CA"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_aaa3498_YzTAyB"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "blocks_PChb3d": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_aaa3498_JchwU9": {
+          "type": "ai_gen_block_aaa3498",
+          "settings": {
+            "heading": "Shop By Smart Features",
+            "aria_label": "",
+            "tag_1_label": "Voice Control Dash Cams",
+            "tag_1_link": "shopify://collections/voice-control-dash-cam",
+            "tag_2_label": "WiFi Dash Cams",
+            "tag_2_link": "shopify://collections/wifi-dash-cams",
+            "tag_3_label": "Touch Screen Dash Cam",
+            "tag_3_link": "shopify://collections/touch-screen-dash-cam",
+            "tag_4_label": "前后双录",
+            "tag_4_link": "",
+            "tag_5_label": "Wi-Fi 连接",
+            "tag_5_link": "",
+            "tag_6_label": "GPS 定位",
+            "tag_6_link": "",
+            "tag_7_label": "语音控制",
+            "tag_7_link": "",
+            "tag_8_label": "智能驾驶辅助",
+            "tag_8_link": "",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "heading_font": "inter_n6",
+            "body_font": "inter_n4",
+            "heading_size": 24,
+            "tag_font_size": 14,
+            "tag_radius": 16,
+            "vertical_padding": 20,
+            "text_color": "#000000",
+            "tag_background_color": "#FFF001",
+            "tag_text_color": "#000000",
+            "tag_border_color": "#DFDFDF",
+            "tag_hover_background_color": "#FFF002",
+            "tag_hover_text_color": "#000000",
+            "focus_color": "#0070CA"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_aaa3498_JchwU9"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "collection_list_3rVCDp": {
@@ -317,10 +404,16 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "action-camera-batteries-chargers",
-          "action-camera-microphones",
-          "action-camera-mounts",
-          "action-camera-waterproof-case"
+          "2-channel-dash-cams",
+          "3-channel-dash-cams",
+          "4k-dash-cam",
+          "1-channel-dash-cams",
+          "night-vision-dash-cams",
+          "rear-camera-for-dash-cam-car-backup-rear-view-camera-accessory",
+          "starvis-2-dash-cam",
+          "touch-screen-dash-cam",
+          "voice-control-dash-cam",
+          "wifi-dash-cams"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -339,11 +432,152 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": true,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 0
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "{{ settings.color_palette.foreground }}",
+            "atc_color_hover": "#ffffff",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "small",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f8f9fd",
+        "padding-block-start": 0,
+        "padding-block-end": 80
+      }
     }
   },
   "order": [
     "xtu_collection_banner",
-    "main",
-    "collection_list_3rVCDp"
+    "1789640238324e6866",
+    "blocks_wT8YD6",
+    "blocks_PChb3d",
+    "collection_list_3rVCDp",
+    "main"
   ]
 }

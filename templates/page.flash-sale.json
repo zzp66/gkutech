@@ -318,104 +318,6 @@
         "padding_bottom_mobile": 40
       }
     },
-    "xtu_activity_slider_t6n7VC": {
-      "type": "xtu-activity-slider",
-      "blocks": {
-        "card_iJhfXp": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Dive + Snorkel",
-            "link": ""
-          }
-        },
-        "card_jY7FGP": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Surf",
-            "link": ""
-          }
-        },
-        "card_tc6wQL": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Travel + Adventure",
-            "link": ""
-          }
-        },
-        "card_n94T8m": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Kids + Pets",
-            "link": ""
-          }
-        },
-        "card_LCh9NA": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Mountain Bike",
-            "link": ""
-          }
-        },
-        "card_6AbH3Y": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Hike + Camp",
-            "link": ""
-          }
-        },
-        "card_fzcjqd": {
-          "type": "card",
-          "settings": {
-            "media_type": "image",
-            "video_url": "",
-            "title": "Snow",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_iJhfXp",
-        "card_jY7FGP",
-        "card_tc6wQL",
-        "card_n94T8m",
-        "card_LCh9NA",
-        "card_6AbH3Y",
-        "card_fzcjqd"
-      ],
-      "disabled": true,
-      "name": "XTU Activity Slider",
-      "settings": {
-        "heading": "Shop by Activity",
-        "show_arrows": true,
-        "show_arrows_mobile": false,
-        "show_image_overlay": false,
-        "mobile_per_view": "2.1",
-        "card_gap": 16,
-        "card_gap_mobile": 8,
-        "card_radius": 16,
-        "card_ratio": "1 / 1",
-        "background_color": "#ffffff",
-        "heading_color": "#111827",
-        "placeholder_bg": "#e8eaed",
-        "overlay_text_color": "#ffffff",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
     "section_p8ggWa": {
       "type": "section",
       "blocks": {
@@ -988,18 +890,141 @@
         "content_background": "#ffffff",
         "heading_color": "#000000",
         "muted_text_color": "{{ settings.color_palette.foreground }}",
-        "placeholder_bg": "#e8eaed",
+        "placeholder_bg": "{{ settings.color_palette.background }}",
         "media_bg": "#111111",
         "link_color": "#0070ca",
         "content_width": 1200,
-        "padding_top": 80,
+        "padding_top": 18,
         "padding_bottom": 0,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 10,
         "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_deal_countdown_mmRRfD": {
+      "type": "xtu-deal-countdown",
+      "name": "XTU Deal Countdown",
+      "settings": {
+        "layout_desktop": "full",
+        "layout_mobile": "full",
+        "content_width": 1200,
+        "copy_width": 560,
+        "media_radius": 0,
+        "height_mode": "ratio",
+        "media_ratio": "21 / 9",
+        "media_ratio_mobile": "16 / 9",
+        "min_height": 360,
+        "min_height_mobile": 240,
+        "height_desktop": 70,
+        "height_mobile": 70,
+        "bg_image": "shopify://shop_images/2_39a2a91b-be36-45fd-8248-e64c377e173f.png",
+        "enable_overlay": false,
+        "overlay_opacity": 30,
+        "shell_background": "#111111",
+        "placeholder_bg": "#1a1a1a",
+        "eyebrow": "WEEKLY FLASH SALE · 40% OFF",
+        "heading": "E200 Flash Deal",
+        "body": "4K + 4K · STARVIS 2 · Wi-Fi 6 · Voice Control",
+        "align_desktop": "left",
+        "align_mobile": "center",
+        "show_countdown": true,
+        "countdown_end": "2026-9-24",
+        "expired_behavior": "hide",
+        "expired_message": "Deal ended",
+        "show_days": true,
+        "show_hours": true,
+        "show_minutes": true,
+        "show_seconds": true,
+        "label_days": "DAYS",
+        "label_hours": "HRS",
+        "label_minutes": "MIN",
+        "label_seconds": "SEC",
+        "button_label": "Shop now",
+        "button_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+        "button_style": "outline",
+        "show_button_arrow": true,
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#ffffff",
+        "button_border": "#ffffff",
+        "button_bg_hover": "{{ settings.color_palette.color7 }}",
+        "button_color_hover": "#111111",
+        "button_border_hover": "#ffffff",
+        "eyebrow_size": 24,
+        "heading_size": 36,
+        "body_size": 18,
+        "timer_number_size": 24,
+        "timer_label_size": 10,
+        "eyebrow_size_mobile": 12,
+        "heading_size_mobile": 24,
+        "body_size_mobile": 14,
+        "timer_number_size_mobile": 20,
+        "timer_label_size_mobile": 10,
+        "eyebrow_color": "#f2e715",
+        "heading_color": "#ffffff",
+        "body_color": "#ffffff",
+        "timer_bg": "#000000",
+        "timer_bg_opacity": 55,
+        "timer_number_color": "#ffffff",
+        "timer_label_color": "#ffffff",
+        "timer_sep_color": "#ffffff",
+        "expired_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_media_pair_z8GBNj": {
+      "type": "xtu-media-pair",
+      "blocks": {
+        "item_e9xPQE": {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "4K Front View",
+            "body": "<p>Capture clear road details ahead with sharp 4K recording, from traffic signs to license plates.<br/><br/></p>",
+            "media_type": "video",
+            "video": "shopify://files/videos/0917.mp4"
+          }
+        },
+        "item_yM4Yfa": {
+          "type": "item",
+          "settings": {
+            "mobile_layout": "image-top",
+            "title": "4K Rear View",
+            "body": "<p>See what’s happening behind you in crisp 4K detail for more complete driving coverage.</p>",
+            "media_type": "video",
+            "video": "shopify://files/videos/0917-副本.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "item_e9xPQE",
+        "item_yM4Yfa"
+      ],
+      "name": "XTU Media Pair",
+      "settings": {
+        "heading": "See More with E200 Dual 4K",
+        "subheading": "See More. See Clear.",
+        "media_ratio": "16 / 9",
+        "media_radius": 16,
+        "gap_desktop": 24,
+        "gap_mobile": 32,
+        "background_color": "#FFFFFF",
+        "content_background": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8E9297",
+        "placeholder_bg": "#E8EAED",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "custom_liquid_zYRa6N": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:names.custom_liquid",
       "settings": {
         "custom_liquid": "<div class=\"gku-weeklybar-wrap\">\n  <div class=\"gku-weeklybar\" data-end=\"2026-09-21T23:59:59\">\n\n    <!-- 产品图 -->\n    <div class=\"gku-weeklybar__product\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/D600PM_900640d0-87c2-4f43-9442-17c7603b6400.png?v=1789463977\"\n        alt=\"GKU D600 Pro Max\"\n      >\n    </div>\n\n    <!-- 秒杀信息 -->\n    <div class=\"gku-weeklybar__info\">\n      <div class=\"gku-weeklybar__eyebrow\">\n        WEEKLY FLASH SALE\n      </div>\n\n      <h2 class=\"gku-weeklybar__title\">\n        D600 Pro Max\n      </h2>\n\n      <div class=\"gku-weeklybar__offer\">\n        <span class=\"gku-weeklybar__discount\">40% OFF</span>\n        <span class=\"gku-weeklybar__only\">THIS WEEK ONLY</span>\n      </div>\n    </div>\n\n    <!-- 倒计时 -->\n    <div class=\"gku-weeklybar__countdown\">\n\n      <div class=\"gku-weeklybar__ends\">\n        SALE ENDS IN\n      </div>\n\n      <div class=\"gku-weeklybar__timer\">\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-days>00</span>\n          <small>DAYS</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-hours>00</span>\n          <small>HRS</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-minutes>00</span>\n          <small>MIN</small>\n        </div>\n\n        <div class=\"gku-weeklybar__colon\">:</div>\n\n        <div class=\"gku-weeklybar__time\">\n          <span data-seconds>00</span>\n          <small>SEC</small>\n        </div>\n\n      </div>\n\n    </div>\n\n    <!-- 按钮 -->\n    <div class=\"gku-weeklybar__action\">\n      <a\n        href=\"https://www.gkutech.com/products/gku-d600-pro-max-starvis-2-dual-dash-cam\"\n        class=\"gku-weeklybar__btn\"\n      >\n        SHOP THE DEAL\n      </a>\n    </div>\n\n  </div>\n</div>\n\n<style>\n.gku-weeklybar-wrap {\n  width: 100%;\n  max-width: 1320px;\n  margin: 28px auto;\n  padding: 0 20px;\n  box-sizing: border-box;\n}\n\n.gku-weeklybar {\n  position: relative;\n  width: 100%;\n  min-height: 185px;\n\n  display: grid;\n  grid-template-columns: 250px minmax(280px, 1fr) 390px 155px;\n  align-items: center;\n  gap: 28px;\n\n  padding: 14px 30px 14px 18px;\n  box-sizing: border-box;\n\n  overflow: hidden;\n\n  border: 1px solid #e5e7eb;\n  border-radius: 22px;\n\n  background:\n    linear-gradient(\n      105deg,\n      #ffffff 0%,\n      #f8f9fb 70%,\n      #fff5b5 100%\n    );\n}\n\n/* 黄色装饰线 */\n.gku-weeklybar::before {\n  content: \"\";\n  position: absolute;\n\n  left: 0;\n  top: 0;\n  bottom: 0;\n\n  width: 7px;\n\n  background: #f4d427;\n}\n\n\n/* 产品图 */\n\n.gku-weeklybar__product {\n  height: 155px;\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.gku-weeklybar__product img {\n  display: block;\n\n  width: 100%;\n  max-width: 235px;\n  max-height: 150px;\n\n  object-fit: contain;\n\n  filter: drop-shadow(\n    0 14px 20px rgba(0,0,0,0.15)\n  );\n}\n\n\n/* 中间信息 */\n\n.gku-weeklybar__info {\n  min-width: 0;\n}\n\n.gku-weeklybar__eyebrow {\n  margin-bottom: 8px;\n\n  font-size: 12px;\n  font-weight: 800;\n  letter-spacing: 2px;\n\n  color: #b28c00;\n}\n\n.gku-weeklybar__title {\n  margin: 0 0 12px;\n\n  font-size: 30px;\n  line-height: 1.1;\n  font-weight: 800;\n\n  color: #111111;\n}\n\n.gku-weeklybar__offer {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n\n  flex-wrap: wrap;\n}\n\n.gku-weeklybar__discount {\n  display: inline-flex;\n  align-items: center;\n\n  padding: 8px 14px;\n\n  border-radius: 8px;\n\n  background: #f4d427;\n  color: #111111;\n\n  font-size: 22px;\n  line-height: 1;\n  font-weight: 900;\n}\n\n.gku-weeklybar__only {\n  font-size: 11px;\n  font-weight: 800;\n  letter-spacing: 1px;\n\n  color: #777777;\n}\n\n\n/* 倒计时 */\n\n.gku-weeklybar__countdown {\n  padding-left: 28px;\n\n  border-left: 1px solid #dedfe3;\n}\n\n.gku-weeklybar__ends {\n  margin-bottom: 12px;\n\n  font-size: 11px;\n  font-weight: 800;\n  letter-spacing: 1.4px;\n\n  color: #777777;\n}\n\n.gku-weeklybar__timer {\n  display: flex;\n  align-items: center;\n}\n\n.gku-weeklybar__time {\n  min-width: 55px;\n\n  text-align: center;\n}\n\n.gku-weeklybar__time span {\n  display: block;\n\n  font-size: 30px;\n  line-height: 1;\n  font-weight: 800;\n\n  color: #111111;\n}\n\n.gku-weeklybar__time small {\n  display: block;\n\n  margin-top: 7px;\n\n  font-size: 9px;\n  letter-spacing: .8px;\n\n  color: #888888;\n}\n\n.gku-weeklybar__colon {\n  margin: -13px 6px 0;\n\n  font-size: 22px;\n  font-weight: 700;\n\n  color: #d0a600;\n}\n\n\n/* 按钮 */\n\n.gku-weeklybar__action {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.gku-weeklybar__btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n\n  min-width: 140px;\n\n  padding: 14px 20px;\n\n  border-radius: 999px;\n\n  background: #111111;\n  color: #ffffff;\n\n  text-decoration: none;\n\n  font-size: 12px;\n  font-weight: 800;\n\n  white-space: nowrap;\n\n  transition: all .2s ease;\n}\n\n.gku-weeklybar__btn:hover {\n  background: #f4d427;\n  color: #111111;\n\n  transform: translateY(-2px);\n}\n\n\n/* 中等屏幕 */\n\n@media screen and (max-width: 1100px) {\n\n  .gku-weeklybar {\n    grid-template-columns: 200px 1fr 330px;\n  }\n\n  .gku-weeklybar__action {\n    grid-column: 2 / 4;\n    justify-content: flex-start;\n  }\n\n}\n\n\n/* 手机和平板 */\n\n@media screen and (max-width: 749px) {\n\n  .gku-weeklybar-wrap {\n    padding: 0 12px;\n  }\n\n  .gku-weeklybar {\n    grid-template-columns: 120px 1fr;\n\n    gap: 16px;\n\n    padding: 18px;\n\n    border-radius: 18px;\n  }\n\n  .gku-weeklybar__product {\n    height: 110px;\n  }\n\n  .gku-weeklybar__product img {\n    max-width: 120px;\n    max-height: 105px;\n  }\n\n  .gku-weeklybar__title {\n    font-size: 22px;\n  }\n\n  .gku-weeklybar__discount {\n    font-size: 18px;\n  }\n\n  .gku-weeklybar__countdown {\n    grid-column: 1 / -1;\n\n    padding: 16px 0 0;\n\n    border-left: 0;\n    border-top: 1px solid #e1e3e7;\n\n    text-align: center;\n  }\n\n  .gku-weeklybar__timer {\n    justify-content: center;\n  }\n\n  .gku-weeklybar__action {\n    grid-column: 1 / -1;\n\n    justify-content: center;\n  }\n\n  .gku-weeklybar__btn {\n    width: 100%;\n  }\n\n}\n\n</style>\n\n<script>\n(function () {\n\n  const sections =\n    document.querySelectorAll('.gku-weeklybar');\n\n  sections.forEach((section) => {\n\n    const end =\n      new Date(section.dataset.end).getTime();\n\n    function updateCountdown() {\n\n      let distance =\n        end - Date.now();\n\n      if (distance < 0) {\n        distance = 0;\n      }\n\n      const days =\n        Math.floor(distance / 86400000);\n\n      const hours =\n        Math.floor(\n          (distance % 86400000) / 3600000\n        );\n\n      const minutes =\n        Math.floor(\n          (distance % 3600000) / 60000\n        );\n\n      const seconds =\n        Math.floor(\n          (distance % 60000) / 1000\n        );\n\n      section\n        .querySelector('[data-days]')\n        .textContent =\n        String(days).padStart(2, '0');\n\n      section\n        .querySelector('[data-hours]')\n        .textContent =\n        String(hours).padStart(2, '0');\n\n      section\n        .querySelector('[data-minutes]')\n        .textContent =\n        String(minutes).padStart(2, '0');\n\n      section\n        .querySelector('[data-seconds]')\n        .textContent =\n        String(seconds).padStart(2, '0');\n    }\n\n    updateCountdown();\n\n    setInterval(updateCountdown, 1000);\n\n  });\n\n})();\n</script>",
@@ -1014,6 +1039,7 @@
       "blocks": {
         "row_qnUVYa": {
           "type": "row",
+          "disabled": true,
           "settings": {
             "desktop_layout": "image-left",
             "mobile_layout": "image-top",
@@ -1062,9 +1088,9 @@
         "image_radius": 16,
         "row_gap": 80,
         "row_gap_mobile": 48,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 80,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 44,
         "padding_bottom_mobile": 40
       }
     },
@@ -1605,6 +1631,261 @@
         "padding_bottom_mobile": 40
       }
     },
+    "xtu_rich_content_atfJ9L": {
+      "type": "xtu-rich-content",
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "Influencer Reviews & Road Tests",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "padding_top": 28,
+        "padding_bottom": 0,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_video_swiper_PgVzVe": {
+      "type": "xtu-video-swiper",
+      "blocks": {
+        "video_nnJHQi": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=J7Xo9LloBRo",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_CwFNKj": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=5MjdnXfz59g&t=24s",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_GNGU7J": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=Ey5qP2rguio",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_YLAi9c": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=v6ZCdlylodE&t=14s",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_mrAQbx": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=q0ax-kX_Ch4",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_gM6xtk": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=M_crZCYUbeY",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_Ef3W3X": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=BkqwQcYtdgk",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "Learn more",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        },
+        "video_zifdtd": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=Cit7RwaFvas",
+            "heading": "",
+            "subheading": "",
+            "heading_color": "",
+            "primary_label": "",
+            "primary_link": "",
+            "primary_show_arrow": true,
+            "primary_bg": "#ffffff",
+            "primary_color": "#111827",
+            "primary_bg_hover": "#0070ca",
+            "primary_color_hover": "#ffffff",
+            "secondary_label": "Buy now",
+            "secondary_link": "",
+            "secondary_show_arrow": true,
+            "secondary_bg": "#1590f2",
+            "secondary_color": "#ffffff",
+            "secondary_bg_hover": "#0070ca",
+            "secondary_color_hover": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "video_nnJHQi",
+        "video_CwFNKj",
+        "video_GNGU7J",
+        "video_YLAi9c",
+        "video_mrAQbx",
+        "video_gM6xtk",
+        "video_Ef3W3X",
+        "video_zifdtd"
+      ],
+      "name": "XTU Video Swiper",
+      "settings": {
+        "desktop_view": "70",
+        "slide_max_width": 1200,
+        "mobile_view": "88",
+        "media_ratio": "16 / 9",
+        "card_gap": 16,
+        "card_gap_mobile": 8,
+        "card_radius": 16,
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "enable_autoplay": true,
+        "autoplay_delay": 12,
+        "content_align_desktop": "center",
+        "content_valign_desktop": "top",
+        "content_align_mobile": "center",
+        "content_valign_mobile": "top",
+        "text_color": "#ffffff",
+        "show_overlay": false,
+        "overlay_opacity": 30,
+        "background_color": "#000000",
+        "media_bg": "#111111",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "xtu_bento_grid_K8EQdx": {
       "type": "xtu-bento-grid",
       "blocks": {
@@ -2023,16 +2304,19 @@
     "hero_NBkdmw",
     "section_AwNjn3",
     "xtu_image_text_L3TBxn",
-    "xtu_activity_slider_t6n7VC",
     "section_p8ggWa",
     "xtu_feature_slider_Hxahfc",
     "hero_nTfEYz",
     "custom_liquid_N6KnM3",
     "xtu_rich_content_YVNm4r",
+    "xtu_deal_countdown_mmRRfD",
+    "xtu_media_pair_z8GBNj",
     "custom_liquid_zYRa6N",
     "xtu_image_text_r9UH7M",
     "xtu_tab_product_slider_TtW8cE",
     "xtu_story_slider_Gax8Fr",
+    "xtu_rich_content_atfJ9L",
+    "xtu_video_swiper_PgVzVe",
     "xtu_bento_grid_K8EQdx",
     "17894698394162c00b",
     "xtu_process_steps_pwCKcL",

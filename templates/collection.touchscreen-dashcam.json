@@ -1,0 +1,353 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "xtu_collection_banner": {
+      "type": "xtu-collection-banner",
+      "settings": {
+        "heading": "",
+        "enable_collection_description": true,
+        "description": "",
+        "enable_collection_image": true,
+        "media_ratio": "21 / 9",
+        "content_position": "center",
+        "show_overlay": false,
+        "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": true,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 0
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "#ffbf01",
+            "atc_color_hover": "{{ settings.color_palette.background }}",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "small",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f8f9fd",
+        "padding-block-start": 0,
+        "padding-block-end": 80
+      }
+    },
+    "xtu_deal_countdown_KyEWTM": {
+      "type": "xtu-deal-countdown",
+      "name": "XTU Deal Countdown",
+      "settings": {
+        "layout_desktop": "full",
+        "layout_mobile": "full",
+        "content_width": 1200,
+        "copy_width": 560,
+        "media_radius": 0,
+        "height_mode": "ratio",
+        "media_ratio": "21 / 9",
+        "media_ratio_mobile": "3 / 4",
+        "min_height": 360,
+        "min_height_mobile": 280,
+        "height_desktop": 70,
+        "height_mobile": 70,
+        "bg_image": "shopify://shop_images/1-ai.png",
+        "enable_overlay": false,
+        "overlay_opacity": 30,
+        "shell_background": "#111111",
+        "placeholder_bg": "#1a1a1a",
+        "eyebrow": "Limited Sale 40% OFF with Code: d700-sale",
+        "heading": "GKU D700",
+        "body": "4K Front & Rear Dash Cam|3.18\" Touch Screen",
+        "align_desktop": "left",
+        "align_mobile": "center",
+        "show_countdown": true,
+        "countdown_end": "",
+        "expired_behavior": "zero",
+        "expired_message": "Deal ended",
+        "show_days": true,
+        "show_hours": true,
+        "show_minutes": true,
+        "show_seconds": true,
+        "label_days": "DAYS",
+        "label_hours": "HRS",
+        "label_minutes": "MIN",
+        "label_seconds": "SEC",
+        "button_label": "Shop now",
+        "button_link": "",
+        "button_style": "outline",
+        "show_button_arrow": true,
+        "button_bg": "rgba(0,0,0,0)",
+        "button_color": "#ffffff",
+        "button_border": "#ffffff",
+        "button_bg_hover": "#ffffff",
+        "button_color_hover": "#111111",
+        "button_border_hover": "#ffffff",
+        "eyebrow_size": 14,
+        "heading_size": 40,
+        "body_size": 14,
+        "timer_number_size": 24,
+        "timer_label_size": 10,
+        "eyebrow_size_mobile": 12,
+        "heading_size_mobile": 24,
+        "body_size_mobile": 14,
+        "timer_number_size_mobile": 20,
+        "timer_label_size_mobile": 10,
+        "eyebrow_color": "#f2e715",
+        "heading_color": "#ffffff",
+        "body_color": "#ffffff",
+        "timer_bg": "#000000",
+        "timer_bg_opacity": 55,
+        "timer_number_color": "#ffffff",
+        "timer_label_color": "#ffffff",
+        "timer_sep_color": "#ffffff",
+        "expired_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "17896362085cee47a7": {
+      "type": "_blocks",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1789636047cb2e6646": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_20ddce4_xykhWm": {
+          "type": "ai_gen_block_20ddce4",
+          "settings": {
+            "eyebrow": "Touch screen dash cam",
+            "heading": "Why choose a touch screen dash cam?",
+            "introduction": "<p>A touch screen dash cam gives you more direct control over your camera without relying entirely on a smartphone app. With an integrated touchscreen display, you can quickly check the camera view, review recorded footage, navigate menus, and adjust important settings directly from the dash cam.</p><p>For drivers who prefer simple on-device controls, a touchscreen can make everyday dash cam use faster and more intuitive.</p>",
+            "feature_1_title": "Easier camera control",
+            "feature_1_copy": "Navigate settings and recording options directly from the dash cam without using physical buttons for every adjustment.",
+            "feature_2_title": "Quick video playback",
+            "feature_2_copy": "Review important footage directly on the built-in display before transferring the video to your smartphone or computer.",
+            "feature_3_title": "Easier camera positioning",
+            "feature_3_copy": "Use the screen to check the live camera view during installation and make sure the road is properly framed.",
+            "feature_4_title": "Touchscreen + WiFi app control",
+            "feature_4_copy": "Use the touchscreen for quick in-car adjustments and WiFi connectivity when you want to preview, download, or manage footage from your phone.",
+            "desktop_width_percent": 100,
+            "alignment": "left",
+            "heading_size": 46,
+            "section_padding": 72,
+            "mobile_padding": 40,
+            "content_gap": 48,
+            "card_radius": 8,
+            "background_color": "#f8f9fd",
+            "card_color": "#ffffff",
+            "heading_color": "#111111",
+            "text_color": "#333333",
+            "border_color": "#dfdfdf",
+            "accent_color": "#fff002",
+            "accent_text_color": "#111111"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_20ddce4_xykhWm"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "xtu_collection_banner",
+    "main",
+    "xtu_deal_countdown_KyEWTM",
+    "17896362085cee47a7",
+    "1789636047cb2e6646"
+  ]
+}

@@ -1,0 +1,297 @@
+{% doc %}
+  @prompt
+    What Makes a Good Night Vision Dash Cam?
+    
+    A good night vision dash cam needs more than high resolution. When available light decreases, the camera must capture useful detail while managing image noise, bright headlights, streetlights, shadows, and fast-moving vehicles.
+    
+    Several technologies can influence dash cam performance at night.
+    
+    Image Sensor
+    
+    The image sensor plays an important role in low-light recording. Advanced sensors such as Sony STARVIS 2 are designed to capture more useful image information in challenging lighting conditions, helping produce clearer footage after dark.
+    
+    HDR and WDR
+    
+    Night driving often combines very bright and very dark areas in the same scene. Headlights, streetlights, signs, and dark roads can create difficult exposure conditions.
+    
+    HDR and WDR help the camera manage these differences so that important areas of the image are less likely to become excessively bright or dark.
+    
+    Video Resolution
+    
+    Higher resolution can preserve more image detail, but resolution alone does not determine night performance. Sensor quality, exposure processing, image signal processing, lens performance, and lighting conditions also matter.
+    
+    IR Night Vision
+    
+    Infrared night vision is particularly useful for interior cameras. IR LEDs can illuminate the vehicle cabin when there is very little visible light, helping the camera record interior activity at night.
+    
+    This makes an IR cabin dash cam especially useful for rideshare, taxi, and professional drivers. 根据这段文案 帮我生成一个section
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-night-vision-guide-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 24px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-night-vision-guide__inner-{{ ai_gen_id }} {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .ai-night-vision-guide__eyebrow-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    color: {{ block.settings.accent_color }};
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .ai-night-vision-guide__title-{{ ai_gen_id }} {
+    max-width: 780px;
+    margin: 0;
+    color: {{ block.settings.heading_color }};
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .ai-night-vision-guide__intro-{{ ai_gen_id }} {
+    max-width: 780px;
+    margin-top: 24px;
+    color: {{ block.settings.muted_text_color }};
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .ai-night-vision-guide__intro-{{ ai_gen_id }} p,
+  .ai-night-vision-guide__card-{{ ai_gen_id }} p {
+    margin: 0 0 14px;
+  }
+
+  .ai-night-vision-guide__intro-{{ ai_gen_id }} p:last-child,
+  .ai-night-vision-guide__card-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-night-vision-guide__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 42px;
+  }
+
+  .ai-night-vision-guide__card-{{ ai_gen_id }} {
+    padding: 28px;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.card_radius }}px;
+    background: {{ block.settings.card_color }};
+    color: {{ block.settings.text_color }};
+    line-height: 1.7;
+  }
+
+  .ai-night-vision-guide__number-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: {{ block.settings.accent_color }};
+    color: {{ block.settings.accent_text_color }};
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ai-night-vision-guide__card-{{ ai_gen_id }} h3 {
+    margin: 0 0 12px;
+    color: {{ block.settings.heading_color }};
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-night-vision-guide-{{ ai_gen_id }} {
+      padding-right: 18px;
+      padding-left: 18px;
+    }
+
+    .ai-night-vision-guide__grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      margin-top: 32px;
+    }
+
+    .ai-night-vision-guide__card-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<section class="ai-night-vision-guide-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-night-vision-guide__inner-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow != blank %}
+      <p class="ai-night-vision-guide__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    <h2 class="ai-night-vision-guide__title-{{ ai_gen_id }}">{{ block.settings.title | escape }}</h2>
+
+    {% if block.settings.introduction != blank %}
+      <div class="ai-night-vision-guide__intro-{{ ai_gen_id }}">{{ block.settings.introduction }}</div>
+    {% endif %}
+
+    <div class="ai-night-vision-guide__grid-{{ ai_gen_id }}">
+      {% assign headings = 'Image sensor|HDR and WDR|Video resolution|IR night vision' | split: '|' %}
+      {% assign content_keys = 'sensor_content|hdr_content|resolution_content|ir_content' | split: '|' %}
+      {% for heading in headings %}
+        {% assign content_key = content_keys[forloop.index0] %}
+        <article class="ai-night-vision-guide__card-{{ ai_gen_id }}">
+          <span class="ai-night-vision-guide__number-{{ ai_gen_id }}">{{ forloop.index }}</span>
+          <h3>{{ heading }}</h3>
+          <div>{{ block.settings[content_key] }}</div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Night vision guide",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Dash cam buying guide"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What Makes a Good Night Vision Dash Cam?"
+    },
+    {
+      "type": "richtext",
+      "id": "introduction",
+      "label": "Introduction",
+      "default": "<p>A good night vision dash cam needs more than high resolution. When available light decreases, the camera must capture useful detail while managing image noise, bright headlights, streetlights, shadows, and fast-moving vehicles.</p><p>Several technologies can influence dash cam performance at night.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "sensor_content",
+      "label": "Sensor content",
+      "default": "<p>The image sensor plays an important role in low-light recording. Advanced sensors such as Sony STARVIS 2 are designed to capture more useful image information in challenging lighting conditions, helping produce clearer footage after dark.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "hdr_content",
+      "label": "HDR and WDR content",
+      "default": "<p>Night driving often combines very bright and very dark areas in the same scene. Headlights, streetlights, signs, and dark roads can create difficult exposure conditions.</p><p>HDR and WDR help the camera manage these differences so that important areas of the image are less likely to become excessively bright or dark.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "resolution_content",
+      "label": "Resolution content",
+      "default": "<p>Higher resolution can preserve more image detail, but resolution alone does not determine night performance. Sensor quality, exposure processing, image signal processing, lens performance, and lighting conditions also matter.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "ir_content",
+      "label": "IR content",
+      "default": "<p>Infrared night vision is particularly useful for interior cameras. IR LEDs can illuminate the vehicle cabin when there is very little visible light, helping the camera record interior activity at night.</p><p>This makes an IR cabin dash cam especially useful for rideshare, taxi, and professional drivers.</p>"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F8F9FD"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Introduction text",
+      "default": "#4A4A4A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#FFF002"
+    },
+    {
+      "type": "color",
+      "id": "accent_text_color",
+      "label": "Accent text",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#DFDFDF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Night vision guide"
+    }
+  ],
+  "tag": null,
+  "class": "night-vision-guide-block"
+}
+{% endschema %}

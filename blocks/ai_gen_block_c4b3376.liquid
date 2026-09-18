@@ -1,0 +1,53 @@
+{% doc %}
+  @prompt
+    What Is a 4G LTE Dash Cam?
+    
+    A 4G LTE dash cam is a connected vehicle camera that can use a cellular network to support remote features beyond the local WiFi connection found on many standard dash cams.
+    
+    Depending on the camera, 4G connectivity may enable features such as remote vehicle monitoring, remote access, GPS tracking, parking notifications, or other connected services while you're away from the vehicle.
+    
+    This makes a 4G dash cam particularly useful for drivers who want to stay connected to their vehicle even when they are not sitting inside it.
+    
+    Why Choose a 4G Dash Cam?
+    
+    The biggest advantage of a 4G dash cam is connectivity beyond the vehicle.
+    
+    With a traditional WiFi dash cam, your smartphone generally needs to be near the camera to establish a direct WiFi connection. A 4G LTE dash cam can use cellular connectivity to support compatible remote features over a much greater distance.
+    
+    This can make 4G dash cams useful for:
+    
+    Remote vehicle monitoring
+    Parking protection
+    GPS vehicle tracking
+    Checking on a parked vehicle
+    Business and commercial vehicles
+    Drivers who frequently leave their vehicles parked for extended period这段话帮我生成一个section，方便展示和seo优化
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-lte-seo-{{ ai_gen_id }} { display: block; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; margin: 0 auto; padding: {{ block.settings.vertical_padding }}px 24px; background: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; }
+  .ai-lte-seo__inner-{{ ai_gen_id }} { max-width: {{ block.settings.content_width }}px; margin: 0 auto; }
+  .ai-lte-seo__eyebrow-{{ ai_gen_id }} { margin: 0 0 12px; color: {{ block.settings.accent_color }}; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .ai-lte-seo__title-{{ ai_gen_id }} { margin: 0 0 24px; color: {{ block.settings.heading_color }}; font-size: {{ block.settings.heading_size }}px; line-height: 1.15; }
+  .ai-lte-seo__content-{{ ai_gen_id }} { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .ai-lte-seo__panel-{{ ai_gen_id }} { padding: 24px; border: 1px solid {{ block.settings.border_color }}; border-radius: {{ block.settings.border_radius }}px; background: {{ block.settings.panel_color }}; }
+  .ai-lte-seo__panel h2 { margin: 0 0 14px; color: {{ block.settings.heading_color }}; font-size: {{ block.settings.subheading_size }}px; line-height: 1.25; }
+  .ai-lte-seo__panel p, .ai-lte-seo__panel ul { margin: 0; font-size: 16px; line-height: 1.7; }
+  .ai-lte-seo__panel p + p, .ai-lte-seo__panel p + ul { margin-top: 14px; }
+  .ai-lte-seo__panel ul { padding-left: 22px; }
+  .ai-lte-seo__panel li + li { margin-top: 7px; }
+  @media screen and (max-width: 749px) { .ai-lte-seo-{{ ai_gen_id }} { padding-right: 16px; padding-left: 16px; } .ai-lte-seo__content-{{ ai_gen_id }} { grid-template-columns: 1fr; gap: 20px; } .ai-lte-seo__title-{{ ai_gen_id }} { font-size: {{ block.settings.mobile_heading_size }}px; } .ai-lte-seo__panel-{{ ai_gen_id }} { padding: 20px; } }
+{% endstyle %}
+<section class="ai-lte-seo-{{ ai_gen_id }}" aria-labelledby="ai-lte-seo-title-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-lte-seo__inner-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow != blank %}<p class="ai-lte-seo__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+    <h1 id="ai-lte-seo-title-{{ ai_gen_id }}" class="ai-lte-seo__title-{{ ai_gen_id }}">{{ block.settings.title | escape }}</h1>
+    <div class="ai-lte-seo__content-{{ ai_gen_id }}">
+      <article class="ai-lte-seo__panel-{{ ai_gen_id }}">{{ block.settings.introduction }}</article>
+      <article class="ai-lte-seo__panel-{{ ai_gen_id }}">{{ block.settings.benefits }}</article>
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"4G LTE dash cam SEO","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Connected vehicle technology"},{"type":"text","id":"title","label":"Title","default":"What Is a 4G LTE Dash Cam?"},{"type":"richtext","id":"introduction","label":"Introduction","default":"<h2>What Is a 4G LTE Dash Cam?</h2><p>A 4G LTE dash cam is a connected vehicle camera that uses a cellular network to support remote features beyond the local WiFi connection found on many standard dash cams.</p><p>Depending on the camera, 4G connectivity may enable remote vehicle monitoring, remote access, GPS tracking, parking notifications, or other connected services while you are away from the vehicle.</p><p>This makes a 4G dash cam particularly useful for drivers who want to stay connected to their vehicle even when they are not sitting inside it.</p>"},{"type":"richtext","id":"benefits","label":"Benefits","default":"<h2>Why Choose a 4G Dash Cam?</h2><p>The biggest advantage of a 4G dash cam is connectivity beyond the vehicle. With a traditional WiFi dash cam, your smartphone generally needs to be near the camera to establish a direct WiFi connection. A 4G LTE dash cam can use cellular connectivity to support compatible remote features over a much greater distance.</p><p>This can make 4G dash cams useful for:</p><ul><li>Remote vehicle monitoring</li><li>Parking protection</li><li>GPS vehicle tracking</li><li>Checking on a parked vehicle</li><li>Business and commercial vehicles</li><li>Drivers who frequently leave their vehicles parked for extended periods</li></ul>"},{"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},{"type":"range","id":"content_width","label":"Content width","min":600,"max":1400,"step":50,"unit":"px","default":1100},{"type":"range","id":"vertical_padding","label":"Vertical spacing","min":20,"max":100,"step":5,"unit":"px","default":55},{"type":"range","id":"heading_size","label":"Title size","min":24,"max":64,"step":2,"unit":"px","default":40},{"type":"range","id":"mobile_heading_size","label":"Mobile title size","min":22,"max":44,"step":2,"unit":"px","default":30},{"type":"range","id":"subheading_size","label":"Section title size","min":18,"max":36,"step":2,"unit":"px","default":24},{"type":"range","id":"border_radius","label":"Corner radius","min":0,"max":24,"step":2,"unit":"px","default":12},{"type":"color","id":"background_color","label":"Background","default":"#F8F9FD"},{"type":"color","id":"panel_color","label":"Panel background","default":"#FFFFFF"},{"type":"color","id":"heading_color","label":"Headings","default":"#111111"},{"type":"color","id":"text_color","label":"Text","default":"#333333"},{"type":"color","id":"accent_color","label":"Accent","default":"#0070CA"},{"type":"color","id":"border_color","label":"Borders","default":"#DFDFDF"}],"presets":[{"name":"4G LTE dash cam SEO"}],"tag":null,"class":"lte-dash-cam-seo-block"}
+{% endschema %}
