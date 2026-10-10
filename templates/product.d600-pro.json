@@ -169,7 +169,6 @@
             "text_aEtTtq": {
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
-              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "enable_collapse": true,
@@ -853,7 +852,7 @@
       ],
       "name": "XTU Product Compare",
       "settings": {
-        "heading": "XTU S7 Series Compare",
+        "heading": "GKU D600 Series Compare",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",

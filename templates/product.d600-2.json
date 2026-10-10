@@ -1,0 +1,1091 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "counter",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 50,
+            "thumbnail_radius": 4,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": true,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_xrnftG": {
+              "type": "text",
+              "name": "t:names.product_title",
+              "settings": {
+                "text": "<h1>{{ closest.product.title }}</h1>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_tVjtKg": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h5",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "klip_coupons_klip_app_section_product_KrQYmx": {
+              "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
+              "settings": {
+                "margin_top": 10,
+                "margin_bottom": 10
+              }
+            },
+            "xtu_key_specs": {
+              "type": "xtu-key-specs",
+              "name": "XTU Key Specs",
+              "disabled": true,
+              "settings": {
+                "value_color": "#111111",
+                "label_color": "#8e9297",
+                "gap": 16,
+                "padding_top": 8,
+                "padding_bottom": 8
+              },
+              "blocks": {
+                "spec_1": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "0.2s",
+                    "label": "Trigger"
+                  },
+                  "blocks": {}
+                },
+                "spec_2": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "64",
+                    "label": "MP"
+                  },
+                  "blocks": {}
+                },
+                "spec_3": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "4k",
+                    "label": "Resolution"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "spec_1",
+                "spec_2",
+                "spec_3"
+              ]
+            },
+            "text_aEtTtq": {
+              "type": "xtu-expandable-description",
+              "name": "XTU Expand Description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "enable_collapse": true,
+                "collapsed_height": 200,
+                "expand_label": "Learn more",
+                "collapse_label": "Show less",
+                "background_color": "#f5f5f7",
+                "text_color": "#333333",
+                "link_color": "#0070ca",
+                "corner_radius": 16,
+                "padding": 20
+              },
+              "blocks": {}
+            },
+            "xtu_feature_benefits": {
+              "type": "xtu-feature-benefits",
+              "name": "XTU Feature Benefits",
+              "disabled": true,
+              "settings": {
+                "heading": "Service & Benefits",
+                "columns": "2",
+                "background_color": "#f5f5f7",
+                "heading_color": "#111111",
+                "text_color": "#111111",
+                "icon_background": "#ffffff",
+                "corner_radius": 16,
+                "padding": 20,
+                "gap": 16
+              },
+              "blocks": {
+                "benefit_1": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "Price Guarantee"
+                  },
+                  "blocks": {}
+                },
+                "benefit_2": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "1-Day Delivery"
+                  },
+                  "blocks": {}
+                },
+                "benefit_3": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "Members' Benefits"
+                  },
+                  "blocks": {}
+                },
+                "benefit_4": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "5-Year Warranty"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "benefit_1",
+                "benefit_2",
+                "benefit_3",
+                "benefit_4"
+              ]
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 10,
+                "padding-block-end": 10,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "xtu_addon_bundle": {
+              "type": "xtu-addon-bundle",
+              "name": "XTU Addon Bundle",
+              "disabled": true,
+              "settings": {
+                "heading": "Up To 60% Off Add-Ons",
+                "max_products": 5,
+                "learn_more_label": "Learn More",
+                "accent_color": "#0070ca",
+                "card_radius": 12
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "custom",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "custom",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "custom",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "atc_bg": "{{ settings.color_palette.foreground }}",
+                    "atc_color": "{{ settings.color_palette.background }}",
+                    "atc_bg_hover": "{{ settings.color_palette.color7 }}",
+                    "atc_color_hover": "{{ settings.color_palette.foreground }}",
+                    "atc_bg_disabled": "#e8e8ed",
+                    "atc_color_disabled": "#8e8e93",
+                    "custom_button_background": "#1590f2",
+                    "custom_button_text": "#ffffff",
+                    "custom_button_border": "#1590f2"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "xtu_info_modal_support": {
+              "type": "xtu-info-modal",
+              "name": "XTU Info Modal",
+              "settings": {
+                "title": "Global Support",
+                "content": "<p>Add your support details here.</p>"
+              },
+              "blocks": {}
+            },
+            "xtu_payment_methods": {
+              "type": "xtu-payment-methods",
+              "name": "XTU Payment Methods",
+              "settings": {
+                "title": "Payment Method"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_xrnftG",
+            "price_tVjtKg",
+            "klip_coupons_klip_app_section_product_KrQYmx",
+            "xtu_key_specs",
+            "text_aEtTtq",
+            "xtu_feature_benefits",
+            "variant_picker_R3rGDr",
+            "xtu_addon_bundle",
+            "buy_buttons_eYQEYi",
+            "xtu_info_modal_support",
+            "xtu_payment_methods"
+          ]
+        }
+      },
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "atc_bg": "#fff001",
+        "atc_color": "{{ settings.color_palette.foreground }}",
+        "atc_bg_hover": "{{ settings.color_palette.foreground }}",
+        "atc_color_hover": "#ffffff",
+        "atc_bg_disabled": "#e8e8ed",
+        "atc_color_disabled": "#8e8e93",
+        "padding-block-start": 40,
+        "padding-block-end": 60
+      }
+    },
+    "xtu_product_nav": {
+      "type": "xtu-product-nav",
+      "blocks": {
+        "nav_overview": {
+          "type": "item",
+          "settings": {
+            "label": "Overview",
+            "target": "xtu-media-grid-template--22624213336291__xtu_media_grid_HCTTxt"
+          }
+        },
+        "nav_specs": {
+          "type": "item",
+          "settings": {
+            "label": "Highlights",
+            "target": "xtu-tab-images-template--22624213336291__xtu_tab_images_yfFbMx"
+          }
+        },
+        "nav_comparison": {
+          "type": "item",
+          "settings": {
+            "label": "What's in the Box",
+            "target": "xtu-rich-content-template--22624213336291__xtu_rich_content_xMqyGy"
+          }
+        },
+        "item_4YAHeY": {
+          "type": "item",
+          "settings": {
+            "label": "Compare",
+            "target": "xtu-product-compare-template--22624213336291__xtu_product_compare_U7Mgh3"
+          }
+        },
+        "item_dwBHWi": {
+          "type": "item",
+          "settings": {
+            "label": "FAQs",
+            "target": "xtu_faq_kT3Ffi"
+          }
+        },
+        "item_MUMPVp": {
+          "type": "item",
+          "settings": {
+            "label": "Specs",
+            "target": "xtu_product_specs_7XrG4D"
+          }
+        }
+      },
+      "block_order": [
+        "nav_overview",
+        "nav_specs",
+        "nav_comparison",
+        "item_4YAHeY",
+        "item_dwBHWi",
+        "item_MUMPVp"
+      ],
+      "settings": {
+        "aria_label": "Product sections",
+        "alignment": "center",
+        "spacing_top": 40,
+        "spacing_top_mobile": 24,
+        "sticky_offset": 0,
+        "background_color": "#ffffff",
+        "border_color": "#dddddd",
+        "active_color": "#000000",
+        "inactive_color": "#8e8e93"
+      }
+    },
+    "xtu_media_grid_HCTTxt": {
+      "type": "xtu-media-grid",
+      "blocks": {
+        "column_amVfh6": {
+          "type": "column",
+          "settings": {
+            "media_type": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=VZQxpQG6HoA&t=49s",
+            "media_ratio": "auto",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_amVfh6"
+      ],
+      "name": "XTU Media Grid",
+      "settings": {
+        "heading": "GKU D600 4K Front & Rear Dash Cam",
+        "subheading": "Capture the road ahead in 4K and behind in 1080P with WiFi connectivity, built-in GPS, and essential driving protection for everyday journeys.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "media_radius": 16,
+        "gap_desktop": 8,
+        "gap_mobile": 4,
+        "padding_top": 28,
+        "padding_bottom": 12,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "xtu_tab_images_yfFbMx": {
+      "type": "xtu-tab-images",
+      "blocks": {
+        "tab_nGtdLW": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "4K Front Recording",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-2_bdebe3f9-0209-49b5-aac6-333a6274fb13.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Q3Ywfh": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Time-lapse / G-Sensor",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-4-1_f5de407a-8d48-479b-b0af-f0082659faaf.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_mFRRrR": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Emergency Lock",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-5_87b63002-db41-4416-bcf0-30a5bd0ff601.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_AtzgRP": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Loop Recording",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-7_0effbb96-9d47-4d33-a3d0-5615609da37e.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_qEia3z": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "64GB SD Card Included",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-9_c7f6bf87-d6ff-4bdd-afb1-71bd39f9a1bd.jpg",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_nGtdLW",
+        "tab_Q3Ywfh",
+        "tab_mFRRrR",
+        "tab_AtzgRP",
+        "tab_qEia3z"
+      ],
+      "name": "XTU Tab Images",
+      "settings": {
+        "heading": "GKU D600 4K Front & Rear Dash Cam",
+        "subheading": "Clear Recording. Reliable Protection. Ready for Every Drive.\nThe GKU D600 combines 4K front recording, time-lapse and G-Sensor protection, emergency video locking, seamless loop recording, and an included 64GB SD card for reliable everyday driving protection right out of the box.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#fff001",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
+        "show_tab_underline": false,
+        "content_width": 1200,
+        "gallery_ratio": "auto",
+        "image_radius": 16,
+        "padding_top": 12,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_tab_images_EeXx8Q": {
+      "type": "xtu-tab-images",
+      "blocks": {
+        "tab_BeyiXk": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "WDR",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-10_e7ad420b-2252-40bc-81d9-541b7c60a4b2.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_JYiMht": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Sony Sensor",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-11_7465c15e-c0e3-44a6-a6f4-211f0a6ac535.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_ebVhYc": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "5GHz WiFi/App Control",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600pro-8_b787278e-30b8-4eec-a75d-c57f396432fe.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Ret4F6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Easy to Install",
+            "media_type": "image",
+            "image": "shopify://shop_images/D600-16_d90e5430-6191-41f7-b276-552cfc692994.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Tfwx8f": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "tab_label": "Panorama",
+            "media_type": "image",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_BeyiXk",
+        "tab_JYiMht",
+        "tab_ebVhYc",
+        "tab_Ret4F6",
+        "tab_Tfwx8f"
+      ],
+      "name": "XTU Tab Images",
+      "settings": {
+        "heading": "GKU D600: Clearer Imaging. Faster Access. Easier Everyday Use.",
+        "subheading": "The GKU D600 combines WDR imaging, a Sony image sensor, fast 5GHz WiFi with app control, and easy installation for clearer footage and a simpler everyday driving experience.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "{{ settings.color_palette.color7 }}",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
+        "show_tab_underline": false,
+        "content_width": 1200,
+        "gallery_ratio": "21 / 9",
+        "image_radius": 0,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_rich_content_xMqyGy": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "paragraph_mNLq4p": {
+          "type": "paragraph",
+          "settings": {
+            "text": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_4Ujxgm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/D600-8_600802eb-2e4d-4d10-8a45-341d6efc8501.jpg",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_iE8zUT": {
+          "type": "richtext",
+          "settings": {
+            "body": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_mNLq4p",
+        "image_4Ujxgm",
+        "richtext_iE8zUT"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "What's in the Box",
+        "subheading": "",
+        "heading_align": "left",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#fff001",
+        "content_width": 1200,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_product_compare_U7Mgh3": {
+      "type": "xtu-product-compare",
+      "blocks": {
+        "product_9RVxKG": {
+          "type": "product",
+          "settings": {
+            "product": "gku-d600-dual-dash-cam",
+            "title": "D600",
+            "subtitle": "4K + 1080P",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-d600-dual-dash-cam",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "product_f68ynV": {
+          "type": "product",
+          "settings": {
+            "product": "gku-d600-pro-4k-dual-dash-cam",
+            "title": "D600 Pro",
+            "subtitle": "4K + 1080P",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "product_prVryw": {
+          "type": "product",
+          "settings": {
+            "product": "gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "title": "D600 Pro Max",
+            "subtitle": "4K + 1080P",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "more_label": "",
+            "more_link": ""
+          }
+        },
+        "row_cpWCR7": {
+          "type": "row",
+          "settings": {
+            "label": "Position",
+            "value_1": "Everyday Essentials",
+            "value_2": "Everyday Upgrade",
+            "value_3": "Advanced Imaging"
+          }
+        },
+        "row_acUdgQ": {
+          "type": "row",
+          "settings": {
+            "label": "Camera Setup",
+            "value_1": "Front + Rear",
+            "value_2": "Front + Rear",
+            "value_3": "Front + Rear"
+          }
+        },
+        "row_Rt3Bn6": {
+          "type": "row",
+          "settings": {
+            "label": "Image Sensor",
+            "value_1": "Sony Sensor",
+            "value_2": "Sony Sensor",
+            "value_3": "Sony STARVIS 2"
+          }
+        },
+        "row_kPnbhK": {
+          "type": "row",
+          "settings": {
+            "label": "Night Image",
+            "value_1": "WDR",
+            "value_2": "WDR",
+            "value_3": "STARVIS 2 + WDR"
+          }
+        },
+        "row_CkmctA": {
+          "type": "row",
+          "settings": {
+            "label": "WiFi",
+            "value_1": "5GHz WiFi",
+            "value_2": "5GHz WiFi",
+            "value_3": "5.8GHz WiFi 6"
+          }
+        },
+        "row_mCffqw": {
+          "type": "row",
+          "settings": {
+            "label": "Built-In GPS",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_PbmgVN": {
+          "type": "row",
+          "settings": {
+            "label": "Voice Control",
+            "value_1": "",
+            "value_2": "",
+            "value_3": "✓"
+          }
+        },
+        "row_AebaC7": {
+          "type": "row",
+          "settings": {
+            "label": "Parking Monitoring",
+            "value_1": "✓*(Hardwire Kits)",
+            "value_2": "✓*(Hardwire Kits)",
+            "value_3": "✓*(Hardwire Kits)"
+          }
+        },
+        "row_98iYPK": {
+          "type": "row",
+          "settings": {
+            "label": "G-Sensor",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_mMmJKK": {
+          "type": "row",
+          "settings": {
+            "label": "Loop Recording",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_rwMTqG": {
+          "type": "row",
+          "settings": {
+            "label": "Max Storage",
+            "value_1": "256GB",
+            "value_2": "256GB",
+            "value_3": "512GB"
+          }
+        },
+        "row_BtG93U": {
+          "type": "row",
+          "settings": {
+            "label": "Best for",
+            "value_1": "First-Time Buyers",
+            "value_2": "Everyday Drivers",
+            "value_3": "Night & Advanced Use"
+          }
+        }
+      },
+      "block_order": [
+        "product_9RVxKG",
+        "product_f68ynV",
+        "product_prVryw",
+        "row_cpWCR7",
+        "row_acUdgQ",
+        "row_Rt3Bn6",
+        "row_kPnbhK",
+        "row_CkmctA",
+        "row_mCffqw",
+        "row_PbmgVN",
+        "row_AebaC7",
+        "row_98iYPK",
+        "row_mMmJKK",
+        "row_rwMTqG",
+        "row_BtG93U"
+      ],
+      "name": "XTU Product Compare",
+      "settings": {
+        "heading": "D600 vs D600 Pro vs D600 Pro Max",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "card_background": "#f5f5f7",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "label_width": 140,
+        "image_ratio": "1 / 1",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
+        "btn_color": "#111111",
+        "btn_bg_hover": "#f0b800",
+        "btn_color_hover": "#111111",
+        "show_btn_arrow": false,
+        "link_color": "#0070ca",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_kT3Ffi": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_37LRTh": {
+          "type": "item",
+          "settings": {
+            "question": "Does the GKU D600 record in 4K?",
+            "answer": "<p>Yes. The GKU D600 records the road ahead in <strong>4K UHD</strong>, helping capture clearer road details during everyday driving.</p>"
+          }
+        },
+        "item_f6em3x": {
+          "type": "item",
+          "settings": {
+            "question": "Is the GKU D600 a front and rear dash cam?",
+            "answer": "<p>Yes. The D600 is a <strong>dual-channel front and rear dash cam</strong>, recording in <strong>4K from the front camera and 1080P from the rear camera</strong> for more complete coverage of your drive.</p>"
+          }
+        },
+        "item_DHfHGc": {
+          "type": "item",
+          "settings": {
+            "question": "Does the GKU D600 have WiFi?",
+            "answer": "<p>Yes. The D600 features built-in <strong>5GHz WiFi</strong>, allowing you to connect the dash cam to a compatible smartphone app to preview recordings, download important footage, and manage camera settings.</p>"
+          }
+        },
+        "item_XHwPXM": {
+          "type": "item",
+          "settings": {
+            "question": "Can I view the D600 remotely when I am away from my vehicle?",
+            "answer": "<p>No. The D600's WiFi provides a <strong>local connection between the dash cam and your smartphone</strong>. It does not provide 4G cellular connectivity or remote live monitoring when you are away from your vehicle.</p>"
+          }
+        },
+        "item_77XCPT": {
+          "type": "item",
+          "settings": {
+            "question": "Does the D600 support parking monitoring?",
+            "answer": "<p>Yes. The D600 supports parking monitoring when connected to a <strong>compatible hardwire kit</strong>, helping capture important events while your vehicle is parked.</p><p>A compatible hardwire kit is required for extended parking monitoring and may be sold separately.</p>"
+          }
+        },
+        "item_pwAxfr": {
+          "type": "item",
+          "settings": {
+            "question": "How does the G-Sensor work on the D600?",
+            "answer": "<p>The built-in <strong>G-Sensor</strong> detects sudden impacts or unusual vehicle movement. When a significant event is detected, the D600 can automatically protect the relevant video file from normal loop overwriting.</p>"
+          }
+        },
+        "item_GzMt37": {
+          "type": "item",
+          "settings": {
+            "question": "Does the GKU D600 come with a memory card?",
+            "answer": "<p>The D600 package includes a <strong>64GB microSD card</strong>, so you can set up the dash cam and start recording without purchasing a separate memory card.</p><p>Package contents may vary by region or promotion. Please check the selected package before ordering.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_37LRTh",
+        "item_f6em3x",
+        "item_DHfHGc",
+        "item_XHwPXM",
+        "item_77XCPT",
+        "item_pwAxfr",
+        "item_GzMt37"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQs",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#fff001",
+        "content_width": 1200,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_product_specs_7XrG4D": {
+      "type": "xtu-product-specs",
+      "blocks": {
+        "spec_pBAqEr": {
+          "type": "spec",
+          "settings": {
+            "label": "Dash Cam Model",
+            "value": "D600"
+          }
+        },
+        "spec_rDD8Gq": {
+          "type": "spec",
+          "settings": {
+            "label": "Channels",
+            "value": "3-Channel (Front + Rear)"
+          }
+        },
+        "spec_6XdedW": {
+          "type": "spec",
+          "settings": {
+            "label": "Sensor",
+            "value": "Sony Sensor"
+          }
+        },
+        "spec_EpUKmz": {
+          "type": "spec",
+          "settings": {
+            "label": "Video Resolution",
+            "value": "4K Front + 1080P Rear"
+          }
+        },
+        "spec_TgHcPf": {
+          "type": "spec",
+          "settings": {
+            "label": "Field of View",
+            "value": "170° Front / 150° Rear"
+          }
+        },
+        "spec_LJDF8j": {
+          "type": "spec",
+          "settings": {
+            "label": "GPS Tracking",
+            "value": "Built-in GPS"
+          }
+        },
+        "spec_FCPGXr": {
+          "type": "spec",
+          "settings": {
+            "label": "Storage",
+            "value": "MicroSD up to 256GB"
+          }
+        },
+        "spec_XkjdET": {
+          "type": "spec",
+          "settings": {
+            "label": "Connectivity",
+            "value": "5GHz Wi-Fi / App Control"
+          }
+        }
+      },
+      "block_order": [
+        "spec_pBAqEr",
+        "spec_rDD8Gq",
+        "spec_6XdedW",
+        "spec_EpUKmz",
+        "spec_TgHcPf",
+        "spec_LJDF8j",
+        "spec_FCPGXr",
+        "spec_XkjdET"
+      ],
+      "name": "XTU Product Specs",
+      "settings": {
+        "heading": "Product Information",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "content_width": 1200,
+        "columns_desktop": "2",
+        "initial_visible": 6,
+        "view_more_label": "View More",
+        "view_less_label": "View Less",
+        "btn_bg": "#fff001",
+        "btn_color": "#111111",
+        "btn_border": "{{ settings.color_palette.color7 }}",
+        "btn_bg_hover": "#111111",
+        "btn_color_hover": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "xtu_product_nav",
+    "xtu_media_grid_HCTTxt",
+    "xtu_tab_images_yfFbMx",
+    "xtu_tab_images_EeXx8Q",
+    "xtu_rich_content_xMqyGy",
+    "xtu_product_compare_U7Mgh3",
+    "xtu_faq_kT3Ffi",
+    "xtu_product_specs_7XrG4D"
+  ]
+}

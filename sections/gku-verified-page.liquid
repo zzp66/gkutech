@@ -1,0 +1,31 @@
+{% comment %}
+  Dedicated renderer for the page.gku-verified template.
+  Keep the original sections/main-page.liquid unchanged.
+  The page body already contains its H1, so no duplicate title is added here.
+  This file does not install or initialize a GoCertify verification widget.
+{% endcomment %}
+
+{{ 'gku-verified-page.css' | asset_url | stylesheet_tag }}
+
+<div class="gku-verified-host">
+  {% if page.content != blank %}
+    {{ page.content }}
+  {% elsif request.design_mode %}
+    <div class="gku-verified-host__empty">
+      Add the supplied GKU discount-page HTML to this page's content in the
+      Shopify page editor, then preview this template with that page selected.
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "GKU Verified Discounts",
+  "tag": "div",
+  "class": "gku-verified-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": []
+}
+{% endschema %}

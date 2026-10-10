@@ -1,0 +1,218 @@
+{% doc %}
+  @prompt
+    Exclusive savings for eligible GKU drivers.
+    GKU supports drivers who rely on their cars every day — from students commuting to campus, young drivers starting their first journeys, teachers traveling between school and home, and key workers or military members who need reliable protection on the road.
+    This verified discount page helps eligible groups securely confirm their status and access exclusive GKU dash cam offers.
+    
+    Student Discounts: for campus life, commuting, and first cars.
+    Youth Discount: For eligible young drivers and new journeys.
+    Teacher Discount: Smart driving protection for everyday school routes.
+    Military Discount: Exclusive savings for approved service and key worker groups. 根据这些文案生成1个section
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-driver-savings-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 72px 24px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__intro {
+    max-width: 760px;
+    margin: 0 auto 42px;
+    text-align: center;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 14px;
+    color: {{ block.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__heading {
+    margin: 0 0 18px;
+    color: {{ block.settings.text_color }};
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__description {
+    margin: 0;
+    color: {{ block.settings.muted_text_color }};
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__card {
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+    padding: 26px 22px;
+    background: {{ block.settings.card_background_color }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_radius }}px;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 26px;
+    border-radius: 50%;
+    background: {{ block.settings.accent_color }};
+    color: {{ block.settings.accent_text_color }};
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__title {
+    margin: 0 0 10px;
+    color: {{ block.settings.text_color }};
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__copy {
+    flex: 1;
+    margin: 0;
+    color: {{ block.settings.muted_text_color }};
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    color: {{ block.settings.link_color }};
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__link:hover {
+    text-decoration: underline;
+  }
+
+  .ai-driver-savings-{{ ai_gen_id }}__link:focus-visible {
+    outline: 2px solid {{ block.settings.accent_color }};
+    outline-offset: 4px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .ai-driver-savings-{{ ai_gen_id }}__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .ai-driver-savings-{{ ai_gen_id }} {
+      padding: 52px 18px;
+    }
+
+    .ai-driver-savings-{{ ai_gen_id }}__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<driver-savings-{{ ai_gen_id }} class="ai-driver-savings-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-driver-savings-{{ ai_gen_id }}__inner">
+    <div class="ai-driver-savings-{{ ai_gen_id }}__intro">
+      {% if block.settings.eyebrow != blank %}
+        <p class="ai-driver-savings-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="ai-driver-savings-{{ ai_gen_id }}__heading">{{ block.settings.heading }}</h2>
+      <div class="ai-driver-savings-{{ ai_gen_id }}__description">{{ block.settings.description }}</div>
+    </div>
+
+    <div class="ai-driver-savings-{{ ai_gen_id }}__grid">
+      {% for i in (1..4) %}
+        {% liquid
+          assign title_key = 'card_' | append: i | append: '_title'
+          assign copy_key = 'card_' | append: i | append: '_copy'
+          assign link_key = 'card_' | append: i | append: '_link_label'
+          assign url_key = 'card_' | append: i | append: '_url'
+        %}
+        <article class="ai-driver-savings-{{ ai_gen_id }}__card">
+          <span class="ai-driver-savings-{{ ai_gen_id }}__number" aria-hidden="true">{{ i }}</span>
+          <h3 class="ai-driver-savings-{{ ai_gen_id }}__title">{{ block.settings[title_key] }}</h3>
+          <p class="ai-driver-savings-{{ ai_gen_id }}__copy">{{ block.settings[copy_key] }}</p>
+          {% if block.settings[url_key] != blank %}
+            <a class="ai-driver-savings-{{ ai_gen_id }}__link" href="{{ block.settings[url_key] }}">
+              {{ block.settings[link_key] }} <span aria-hidden="true">→</span>
+            </a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</driver-savings-{{ ai_gen_id }}>
+
+{% schema %}
+{
+  "name": "Driver savings",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Exclusive savings for eligible GKU drivers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Protection for every journey" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "GKU supports drivers who rely on their cars every day. Verify your status securely and access exclusive GKU dash cam offers." },
+    { "type": "header", "content": "Offers" },
+    { "type": "text", "id": "card_1_title", "label": "Student title", "default": "Student Discounts" },
+    { "type": "textarea", "id": "card_1_copy", "label": "Student description", "default": "For campus life, commuting, and first cars." },
+    { "type": "text", "id": "card_1_link_label", "label": "Student link label", "default": "Verify student status" },
+    { "type": "url", "id": "card_1_url", "label": "Student link" },
+    { "type": "text", "id": "card_2_title", "label": "Youth title", "default": "Youth Discount" },
+    { "type": "textarea", "id": "card_2_copy", "label": "Youth description", "default": "For eligible young drivers and new journeys." },
+    { "type": "text", "id": "card_2_link_label", "label": "Youth link label", "default": "Verify youth status" },
+    { "type": "url", "id": "card_2_url", "label": "Youth link" },
+    { "type": "text", "id": "card_3_title", "label": "Teacher title", "default": "Teacher Discount" },
+    { "type": "textarea", "id": "card_3_copy", "label": "Teacher description", "default": "Smart driving protection for everyday school routes." },
+    { "type": "text", "id": "card_3_link_label", "label": "Teacher link label", "default": "Verify teacher status" },
+    { "type": "url", "id": "card_3_url", "label": "Teacher link" },
+    { "type": "text", "id": "card_4_title", "label": "Military title", "default": "Military Discount" },
+    { "type": "textarea", "id": "card_4_copy", "label": "Military description", "default": "Exclusive savings for approved service and key worker groups." },
+    { "type": "text", "id": "card_4_link_label", "label": "Military link label", "default": "Verify eligibility" },
+    { "type": "url", "id": "card_4_url", "label": "Military link" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F8F9FD" },
+    { "type": "color", "id": "card_background_color", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "muted_text_color", "label": "Secondary text", "default": "#333333" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#FFF002" },
+    { "type": "color", "id": "accent_text_color", "label": "Accent text", "default": "#000000" },
+    { "type": "color", "id": "link_color", "label": "Link", "default": "#0070CA" },
+    { "type": "color", "id": "card_border_color", "label": "Card border", "default": "#DFDFDF" },
+    { "type": "range", "id": "card_radius", "label": "Card radius", "min": 0, "max": 32, "step": 1, "unit": "px", "default": 8 }
+  ],
+  "presets": [
+    { "name": "Driver savings" }
+  ],
+  "tag": null,
+  "class": "driver-savings-block"
+}
+{% endschema %}

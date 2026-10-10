@@ -153,7 +153,6 @@
           ]
         }
       },
-      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "small",
@@ -210,7 +209,7 @@
         "label_minutes": "MIN",
         "label_seconds": "SEC",
         "button_label": "Shop now",
-        "button_link": "",
+        "button_link": "shopify://products/gku-d700-4k-touch-screen-dual-dash-cam",
         "button_style": "outline",
         "show_button_arrow": true,
         "button_bg": "rgba(0,0,0,0)",
@@ -344,9 +343,9 @@
     }
   },
   "order": [
+    "xtu_deal_countdown_KyEWTM",
     "xtu_collection_banner",
     "main",
-    "xtu_deal_countdown_KyEWTM",
     "17896362085cee47a7",
     "1789636047cb2e6646"
   ]

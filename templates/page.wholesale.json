@@ -78,11 +78,11 @@
             "mobile_padding_top": 40,
             "mobile_padding_bottom": 40,
             "mobile_padding_horizontal": 20,
-            "background_color": "#FFFFFF",
+            "background_color": "#ffffff",
             "text_color": "#333333",
             "heading_color": "#000000",
-            "accent_color": "#FFF001",
-            "link_color": "#FFF001"
+            "accent_color": "#fff001",
+            "link_color": "#fff001"
           },
           "blocks": {}
         },
@@ -100,9 +100,9 @@
             "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_border_color": "#000000",
             "hover_background_color": "#333333",
-            "hover_text_color": "#FFFFFF",
+            "hover_text_color": "#ffffff",
             "hover_border_color": "#333333",
-            "focus_color": "#0070CA"
+            "focus_color": "#0070ca"
           },
           "blocks": {}
         },
@@ -123,11 +123,11 @@
             "mobile_padding_top": 40,
             "mobile_padding_bottom": 40,
             "mobile_padding_horizontal": 20,
-            "background_color": "#FFFFFF",
+            "background_color": "#ffffff",
             "text_color": "#333333",
             "heading_color": "#000000",
-            "accent_color": "#016D8E",
-            "link_color": "#016D8E"
+            "accent_color": "#016d8e",
+            "link_color": "#016d8e"
           },
           "blocks": {}
         },
@@ -156,9 +156,36 @@
           },
           "blocks": {}
         },
+        "ai_gen_block_88fee00_TpnVkJ": {
+          "type": "ai_gen_block_88fee00",
+          "name": "Contact us form",
+          "settings": {
+            "heading": "",
+            "intro": "",
+            "button_label": "Send message",
+            "success_message": "Thanks for contacting us. We will get back to you soon.",
+            "desktop_width_percent": 100,
+            "heading_size": 36,
+            "background_color": "#F8F9FD",
+            "text_color": "#000000",
+            "muted_text_color": "#333333",
+            "border_color": "#DFDFDF",
+            "input_background_color": "#FFFFFF",
+            "input_border_color": "#333333",
+            "focus_color": "{{ settings.color_palette.color7 }}",
+            "button_color": "#FFF001",
+            "button_text_color": "#000000",
+            "button_hover_color": "#F2C615",
+            "border_radius": 8,
+            "input_radius": 8,
+            "button_radius": 16
+          },
+          "blocks": {}
+        },
         "contact_form_zbPcnU": {
           "type": "contact-form",
           "name": "t:names.contact_form",
+          "disabled": true,
           "settings": {
             "width": "fit-content",
             "custom_width": 100,
@@ -202,6 +229,7 @@
         "ai_gen_block_54e8ec3_DCPpax",
         "ai_gen_block_d149a36_m7Caxe",
         "ai_gen_block_763f870_jBEEND",
+        "ai_gen_block_88fee00_TpnVkJ",
         "contact_form_zbPcnU"
       ],
       "name": "Refund policy content",
@@ -323,11 +351,11 @@
       "name": "XTU FAQ",
       "settings": {
         "heading": "Frequently Asked Questions",
-        "background_color": "#FFFFFF",
-        "content_background": "#F5F5F7",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
         "heading_color": "#000000",
         "text_color": "#333333",
-        "link_color": "#0070CA",
+        "link_color": "#0070ca",
         "content_width": 900,
         "content_radius": 16,
         "open_first": true,

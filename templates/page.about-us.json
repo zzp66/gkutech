@@ -209,7 +209,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Established in 2015, GKU specializes in dashboard cameras. Based in Nanshan, Shenzhen with a Hong Kong subsidiary, the brand leverages cross-border regional strengths to expand globally and deliver premium automotive imaging products worldwide.<br/></p><p>Established in 2015, GKU specializes in dashboard cameras. Based in Nanshan, Shenzhen with a Hong Kong subsidiary, the brand leverages cross-border regional strengths to expand globally and deliver premium automotive imaging products worldwide.<br/></p>",
+            "text": "<p>Founded in 2015, GKU is a smart automotive imaging brand dedicated to making every journey safer, clearer, and better protected. Based in Shenzhen, China, with a subsidiary in Hong Kong, GKU was built on a simple belief: every driver deserves reliable protection and advanced imaging technology without paying a premium.</p><p><br/>Our name reflects the values at the heart of our brand: <strong>Guard, Keep, and Ultra-clear</strong>. These three principles represent our commitment to protecting drivers, preserving important moments, and delivering clear, dependable footage when it matters most.</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "center",
@@ -236,7 +236,7 @@
           "name": "标题和跳转按钮",
           "settings": {
             "title": "Explore All GKU Cameras",
-            "button_label": "Know More",
+            "button_label": "Check Now",
             "button_link": "shopify://collections/dash-cam",
             "desktop_width_percent": 100,
             "alignment": "center",
@@ -322,8 +322,8 @@
             "image_ratio": "4 / 3",
             "eyebrow": "Our vision",
             "eyebrow_color": "#fff001",
-            "heading": "To Be a Leader in Smart Automotive Imaging Industry.",
-            "body": ""
+            "heading": "To Be A Leader in Smart Automotive Imaging Industry.",
+            "body": "<p><strong>To make every journey safer, more connected, and better protected.</strong></p>"
           }
         }
       },
@@ -341,6 +341,7 @@
         "text_color": "#333333",
         "muted_text_color": "#8e9297",
         "link_color": "#0070ca",
+        "placeholder_bg": "#e8eaed",
         "content_width": 1200,
         "image_radius": 16,
         "row_gap": 80,
@@ -608,6 +609,10 @@
         "card_gap_mobile": 8,
         "card_radius": 16,
         "card_ratio": "1 / 1",
+        "background_color": "#ffffff",
+        "heading_color": "#111827",
+        "placeholder_bg": "#e8eaed",
+        "overlay_text_color": "#ffffff",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -689,8 +694,8 @@
         "name_color": "#000000",
         "text_color": "#333333",
         "content_width": 1200,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 34,
+        "padding_bottom": 34,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }

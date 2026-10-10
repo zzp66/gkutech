@@ -1,0 +1,216 @@
+{% doc %}
+  @prompt
+    生成一个contact us的表单 英文的，可以选国家
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-contact-form-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__title {
+    margin: 0 0 10px;
+    font-family: {{ settings.type_heading_font.family }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.15;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__intro {
+    margin: 0 0 28px;
+    color: {{ block.settings.muted_text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__input,
+  .ai-contact-form-{{ ai_gen_id }}__select,
+  .ai-contact-form-{{ ai_gen_id }}__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_radius }}px;
+    background: {{ block.settings.input_background_color }};
+    color: {{ block.settings.text_color }};
+    font: inherit;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__input:focus,
+  .ai-contact-form-{{ ai_gen_id }}__select:focus,
+  .ai-contact-form-{{ ai_gen_id }}__textarea:focus {
+    outline: 2px solid {{ block.settings.focus_color }};
+    outline-offset: 2px;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__button {
+    margin-top: 22px;
+    padding: 14px 28px;
+    border: 0;
+    border-radius: {{ block.settings.button_radius }}px;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__button:hover {
+    background: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__message {
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border-radius: {{ block.settings.input_radius }}px;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__message--success {
+    background: #e8f5e9;
+    color: #155724;
+  }
+
+  .ai-contact-form-{{ ai_gen_id }}__message--error {
+    background: #fdecea;
+    color: #8a1c13;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-contact-form-{{ ai_gen_id }} {
+      padding: 28px 20px;
+      width: 100%;
+    }
+
+    .ai-contact-form-{{ ai_gen_id }}__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-contact-form-{{ ai_gen_id }}__field--full {
+      grid-column: auto;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-contact-form-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-contact-form-{{ ai_gen_id }}__inner">
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="ai-contact-form-{{ ai_gen_id }}__message ai-contact-form-{{ ai_gen_id }}__message--success" role="status">{{ block.settings.success_message }}</p>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="ai-contact-form-{{ ai_gen_id }}__message ai-contact-form-{{ ai_gen_id }}__message--error" role="alert">Please check the highlighted fields and try again.</div>
+      {% endif %}
+
+      <h2 class="ai-contact-form-{{ ai_gen_id }}__title">{{ block.settings.heading }}</h2>
+      <p class="ai-contact-form-{{ ai_gen_id }}__intro">{{ block.settings.intro }}</p>
+
+      <div class="ai-contact-form-{{ ai_gen_id }}__grid">
+        <div>
+          <label class="ai-contact-form-{{ ai_gen_id }}__label" for="ContactName-{{ ai_gen_id }}">Name</label>
+          <input class="ai-contact-form-{{ ai_gen_id }}__input" id="ContactName-{{ ai_gen_id }}" type="text" name="contact[name]" autocomplete="name" required>
+        </div>
+        <div>
+          <label class="ai-contact-form-{{ ai_gen_id }}__label" for="ContactEmail-{{ ai_gen_id }}">Email</label>
+          <input class="ai-contact-form-{{ ai_gen_id }}__input" id="ContactEmail-{{ ai_gen_id }}" type="email" name="contact[email]" autocomplete="email" required>
+        </div>
+        <div>
+          <label class="ai-contact-form-{{ ai_gen_id }}__label" for="ContactCountry-{{ ai_gen_id }}">Country</label>
+          <select class="ai-contact-form-{{ ai_gen_id }}__select" id="ContactCountry-{{ ai_gen_id }}" name="contact[country]" autocomplete="country-name" required>
+            <option value="" disabled selected>Select your country</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+            <option value="China">China</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Japan">Japan</option>
+            <option value="Singapore">Singapore</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="ai-contact-form-{{ ai_gen_id }}__label" for="ContactSubject-{{ ai_gen_id }}">Subject</label>
+          <input class="ai-contact-form-{{ ai_gen_id }}__input" id="ContactSubject-{{ ai_gen_id }}" type="text" name="contact[subject]" required>
+        </div>
+        <div class="ai-contact-form-{{ ai_gen_id }}__field--full">
+          <label class="ai-contact-form-{{ ai_gen_id }}__label" for="ContactMessage-{{ ai_gen_id }}">Message</label>
+          <textarea class="ai-contact-form-{{ ai_gen_id }}__textarea" id="ContactMessage-{{ ai_gen_id }}" name="contact[body]" required></textarea>
+        </div>
+      </div>
+
+      <button class="ai-contact-form-{{ ai_gen_id }}__button" type="submit">{{ block.settings.button_label }}</button>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact us form",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
+    { "type": "textarea", "id": "intro", "label": "Intro text", "default": "Have a question? Send us a message and our team will get back to you soon." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Send message" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for contacting us. We will get back to you soon." },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 20, "max": 56, "step": 2, "unit": "px", "default": 36 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F8F9FD" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "muted_text_color", "label": "Secondary text", "default": "#333333" },
+    { "type": "color", "id": "border_color", "label": "Border", "default": "#DFDFDF" },
+    { "type": "color", "id": "input_background_color", "label": "Input background", "default": "#FFFFFF" },
+    { "type": "color", "id": "input_border_color", "label": "Input border", "default": "#333333" },
+    { "type": "color", "id": "focus_color", "label": "Focus outline", "default": "#0070CA" },
+    { "type": "color", "id": "button_color", "label": "Button", "default": "#FFF001" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#000000" },
+    { "type": "color", "id": "button_hover_color", "label": "Button hover", "default": "#F2C615" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "border_radius", "label": "Form radius", "min": 0, "max": 32, "step": 1, "unit": "px", "default": 8 },
+    { "type": "range", "id": "input_radius", "label": "Input radius", "min": 0, "max": 20, "step": 1, "unit": "px", "default": 8 },
+    { "type": "range", "id": "button_radius", "label": "Button radius", "min": 0, "max": 32, "step": 1, "unit": "px", "default": 16 }
+  ],
+  "presets": [{ "name": "Contact us form" }],
+  "tag": null,
+  "class": "contact-us-form-block"
+}
+{% endschema %}

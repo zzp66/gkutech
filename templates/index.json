@@ -12,37 +12,148 @@
     "xtu_hero_banner_ctqDGb": {
       "type": "xtu-hero-banner",
       "blocks": {
-        "slide_WDcx4X": {
+        "slide_exAgQ4": {
           "type": "slide",
+          "disabled": true,
           "settings": {
-            "bullet_title": "D600 Pro Max",
-            "image": "shopify://shop_images/2-D600PROMAX.jpg",
-            "image_mobile": "shopify://shop_images/2-D600PROMAX_fee58dd1-80fe-4cee-82bc-207a64580814.jpg",
+            "bullet_title": "Autumn Deal",
+            "image": "shopify://shop_images/1920x800.png",
+            "image_mobile": "shopify://shop_images/750x1200_1_8277a8ee-d4c0-4414-b5bd-23a8f4152c42.png",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 15,
-            "text_alignment_desktop": "left",
-            "text_position_v_desktop": "center",
-            "text_position_mobile": "center",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "center",
+            "text_position_v_desktop": "bottom",
+            "text_position_mobile": "bottom",
             "text_color": "#ffffff",
-            "eyebrow": "4K UHD · Sony STARVIS 2 · Voice Control",
+            "eyebrow": "",
             "eyebrow_color": "",
             "eyebrow_size_desktop": 16,
             "eyebrow_size_mobile": 14,
-            "heading": "D600 Pro Max",
+            "heading": "",
             "heading_color": "",
             "heading_size_desktop": 56,
-            "heading_size_mobile": 20,
-            "subheading": "5.8GHz Wi-Fi 6 · GPS · WDR · Supercapacitor",
+            "heading_size_mobile": 36,
+            "subheading": "",
             "subheading_color": "",
             "subheading_size_desktop": 20,
-            "subheading_size_mobile": 12,
-            "button_label": "Learn more",
-            "button_link": "shopify://pages/gku-d600-pro-max-dash-cam-for-new-release",
-            "button_bg": "#f2e715",
-            "button_border": "{{ settings.color_palette.foreground }}",
+            "subheading_size_mobile": 16,
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://pages/gku-autumn-drive-sale-2026",
+            "button_bg": "{{ settings.color_palette.color7 }}",
+            "button_border": "{{ settings.color_palette.color7 }}",
             "button_text_color": "{{ settings.color_palette.foreground }}",
-            "button_bg_hover": "{{ settings.color_palette.color1 }}",
+            "button_bg_hover": "{{ settings.color_palette.foreground }}",
+            "button_border_hover": "{{ settings.color_palette.foreground }}",
+            "button_text_color_hover": "#ffffff",
+            "button_bg_mobile": "",
+            "button_border_mobile": "",
+            "button_text_color_mobile": "",
+            "button_bg_hover_mobile": "",
+            "button_border_hover_mobile": "",
+            "button_text_color_hover_mobile": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_button_bg": "",
+            "secondary_button_border": "",
+            "secondary_button_text_color": "#ffffff",
+            "secondary_button_bg_hover": "#ffffff",
+            "secondary_button_border_hover": "#ffffff",
+            "secondary_button_text_color_hover": "#111111",
+            "secondary_button_bg_mobile": "",
+            "secondary_button_border_mobile": "",
+            "secondary_button_text_color_mobile": "",
+            "secondary_button_bg_hover_mobile": "",
+            "secondary_button_border_hover_mobile": "",
+            "secondary_button_text_color_hover_mobile": ""
+          }
+        },
+        "slide_zcVHXQ": {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "C600",
+            "image": "shopify://shop_images/1-C600.jpg",
+            "image_mobile": "shopify://shop_images/1-C600_2311b614-11ef-4cc8-9d63-5a123f2d92ff.jpg",
+            "youtube_url": "",
+            "background_color": "#000000",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "left",
+            "text_position_v_desktop": "center",
+            "text_position_mobile": "top",
+            "text_color": "#ffffff",
+            "eyebrow": "Your Car. Always Within Reach.",
+            "eyebrow_color": "",
+            "eyebrow_size_desktop": 16,
+            "eyebrow_size_mobile": 14,
+            "heading": "C600",
+            "heading_color": "",
+            "heading_size_desktop": 56,
+            "heading_size_mobile": 36,
+            "subheading": "Wi-Fi 6|2.99\" HD Display|4G LTE Remote Monitoring|Two Way Communication",
+            "subheading_color": "",
+            "subheading_size_desktop": 20,
+            "subheading_size_mobile": 16,
+            "button_label": "Explore C600",
+            "button_link": "shopify://products/gku-c600-4g-lte-dual-dash-cam",
+            "button_bg": "{{ settings.color_palette.color7 }}",
+            "button_border": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
+            "button_bg_hover": "{{ settings.color_palette.foreground }}",
+            "button_border_hover": "{{ settings.color_palette.foreground }}",
+            "button_text_color_hover": "#ffffff",
+            "button_bg_mobile": "",
+            "button_border_mobile": "",
+            "button_text_color_mobile": "",
+            "button_bg_hover_mobile": "",
+            "button_border_hover_mobile": "",
+            "button_text_color_hover_mobile": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_button_bg": "",
+            "secondary_button_border": "",
+            "secondary_button_text_color": "#ffffff",
+            "secondary_button_bg_hover": "#ffffff",
+            "secondary_button_border_hover": "#ffffff",
+            "secondary_button_text_color_hover": "#111111",
+            "secondary_button_bg_mobile": "",
+            "secondary_button_border_mobile": "",
+            "secondary_button_text_color_mobile": "",
+            "secondary_button_bg_hover_mobile": "",
+            "secondary_button_border_hover_mobile": "",
+            "secondary_button_text_color_hover_mobile": ""
+          }
+        },
+        "slide_fT3MjJ": {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "C300",
+            "image": "shopify://shop_images/1-C300.jpg",
+            "image_mobile": "shopify://shop_images/1-C300_61010deb-92e2-4737-b4b4-ca92f7b6407c.jpg",
+            "youtube_url": "",
+            "background_color": "#000000",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "left",
+            "text_position_v_desktop": "center",
+            "text_position_mobile": "top",
+            "text_color": "#ffffff",
+            "eyebrow": "4K Front. 4K Rear. Complete Cabin Coverage.",
+            "eyebrow_color": "",
+            "eyebrow_size_desktop": 16,
+            "eyebrow_size_mobile": 14,
+            "heading": "C300",
+            "heading_color": "",
+            "heading_size_desktop": 56,
+            "heading_size_mobile": 36,
+            "subheading": "Capture every angle with 4K + 1080P + 4K triple-channel recording.",
+            "subheading_color": "",
+            "subheading_size_desktop": 20,
+            "subheading_size_mobile": 16,
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "button_bg": "{{ settings.color_palette.color7 }}",
+            "button_border": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
+            "button_bg_hover": "{{ settings.color_palette.foreground }}",
             "button_border_hover": "{{ settings.color_palette.foreground }}",
             "button_text_color_hover": "#ffffff",
             "button_bg_mobile": "",
@@ -69,36 +180,92 @@
         },
         "slide_bCPGFy": {
           "type": "slide",
-          "name": "幻灯片-e200",
+          "name": "幻灯片",
           "settings": {
             "bullet_title": "E200",
-            "image": "shopify://shop_images/1_c5b00351-05fc-4a92-8149-5c42f515243f.png",
+            "image": "shopify://shop_images/1-E200_e02f7acb-0f26-4bbe-98da-e82784436429.jpg",
+            "image_mobile": "shopify://shop_images/1-E200_9f78342c-22e7-4f2c-ac03-7a8ca9ca80e2.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 5,
-            "text_alignment_desktop": "center",
-            "text_position_v_desktop": "bottom",
-            "text_position_mobile": "center",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "left",
+            "text_position_v_desktop": "center",
+            "text_position_mobile": "top",
             "text_color": "#ffffff",
-            "eyebrow": "",
+            "eyebrow": "Double the 4K. Double the Detail.",
             "eyebrow_color": "",
             "eyebrow_size_desktop": 16,
             "eyebrow_size_mobile": 14,
-            "heading": "",
+            "heading": "E200",
             "heading_color": "",
             "heading_size_desktop": 56,
             "heading_size_mobile": 36,
-            "subheading": "",
+            "subheading": "5.8GHz Wi-Fi 6|HDR Imaging|STARVIS 2|Voice Control",
             "subheading_color": "",
             "subheading_size_desktop": 20,
             "subheading_size_mobile": 16,
             "button_label": "Shop Now",
-            "button_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "button_link": "shopify://products/gku-e200-4k-front-rear-dash-cam",
             "button_bg": "{{ settings.color_palette.color7 }}",
             "button_border": "#f2e715",
             "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_bg_hover": "{{ settings.color_palette.color1 }}",
-            "button_border_hover": "#f2e715",
+            "button_border_hover": "{{ settings.color_palette.foreground }}",
+            "button_text_color_hover": "#ffffff",
+            "button_bg_mobile": "",
+            "button_border_mobile": "",
+            "button_text_color_mobile": "",
+            "button_bg_hover_mobile": "",
+            "button_border_hover_mobile": "",
+            "button_text_color_hover_mobile": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_button_bg": "",
+            "secondary_button_border": "",
+            "secondary_button_text_color": "#ffffff",
+            "secondary_button_bg_hover": "#ffffff",
+            "secondary_button_border_hover": "#ffffff",
+            "secondary_button_text_color_hover": "#111111",
+            "secondary_button_bg_mobile": "",
+            "secondary_button_border_mobile": "",
+            "secondary_button_text_color_mobile": "",
+            "secondary_button_bg_hover_mobile": "",
+            "secondary_button_border_hover_mobile": "",
+            "secondary_button_text_color_hover_mobile": ""
+          }
+        },
+        "slide_WDcx4X": {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "D600 Pro Max",
+            "image": "shopify://shop_images/2-D600PROMAX.jpg",
+            "image_mobile": "shopify://shop_images/1-D600PROMAX.jpg",
+            "youtube_url": "",
+            "background_color": "#000000",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "left",
+            "text_position_v_desktop": "center",
+            "text_position_mobile": "top",
+            "text_color": "#ffffff",
+            "eyebrow": "4K Clarity. Day and Night.",
+            "eyebrow_color": "",
+            "eyebrow_size_desktop": 16,
+            "eyebrow_size_mobile": 14,
+            "heading": "D600 Pro Max",
+            "heading_color": "",
+            "heading_size_desktop": 56,
+            "heading_size_mobile": 20,
+            "subheading": "5.8GHz Wi-Fi 6| 4K UHD|Sony STARVIS 2|Voice Control",
+            "subheading_color": "",
+            "subheading_size_desktop": 20,
+            "subheading_size_mobile": 12,
+            "button_label": "Shop Now",
+            "button_link": "shopify://pages/gku-d600-pro-max-dash-cam-for-new-release",
+            "button_bg": "{{ settings.color_palette.color7 }}",
+            "button_border": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
+            "button_bg_hover": "{{ settings.color_palette.color1 }}",
+            "button_border_hover": "{{ settings.color_palette.foreground }}",
             "button_text_color_hover": "#ffffff",
             "button_bg_mobile": "",
             "button_border_mobile": "",
@@ -124,13 +291,14 @@
         },
         "slide_6mVYDk": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "bullet_title": "D1000",
             "image": "shopify://shop_images/5-D1000_a408bedc-474a-4f9d-85f6-25607d1b2fa8.jpg",
             "image_mobile": "shopify://shop_images/5-D1000_08b5b67c-76d4-41ff-9eb7-d42002ddf306.jpg",
             "youtube_url": "",
             "background_color": "#000000",
-            "overlay_opacity": 15,
+            "overlay_opacity": 0,
             "text_alignment_desktop": "left",
             "text_position_v_desktop": "center",
             "text_position_mobile": "center",
@@ -179,6 +347,7 @@
         },
         "slide_84pMEe": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "bullet_title": "D900",
             "image": "shopify://shop_images/4-D900_37a52d19-2da3-4ca2-b133-0c268c0537c0.jpg",
@@ -234,6 +403,7 @@
         },
         "slide_PQg3RF": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "bullet_title": "D700",
             "image": "shopify://shop_images/3-D700_1568a493-cb44-4103-8817-930d15ef5f1e.jpg",
@@ -289,6 +459,7 @@
         },
         "slide_wa4eWP": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "bullet_title": "D600 Pro",
             "image": "shopify://shop_images/1-D600PRO.jpg",
@@ -344,8 +515,11 @@
         }
       },
       "block_order": [
-        "slide_WDcx4X",
+        "slide_exAgQ4",
+        "slide_zcVHXQ",
+        "slide_fT3MjJ",
         "slide_bCPGFy",
+        "slide_WDcx4X",
         "slide_6mVYDk",
         "slide_84pMEe",
         "slide_PQg3RF",
@@ -353,9 +527,9 @@
       ],
       "name": "XTU Hero Banner",
       "settings": {
-        "height_mode_desktop": "fixed",
-        "fixed_height_desktop": 800,
-        "height_mode_mobile": "fixed",
+        "height_mode_desktop": "fullscreen",
+        "fixed_height_desktop": 660,
+        "height_mode_mobile": "fullscreen",
         "fixed_height_mobile": 300,
         "enable_autoplay": true,
         "autoplay_delay": 5,
@@ -374,13 +548,13 @@
         "product_card_yLy3EQ": {
           "type": "product_card",
           "settings": {
-            "product": "",
+            "product": "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
             "image": "shopify://shop_images/ChatGPT_Image_Sep_9_2026_01_11_40_PM.png",
             "eyebrow": "",
             "heading": "Dash Cams",
             "description": "",
             "learn_more_label": "",
-            "learn_more_link": "",
+            "learn_more_link": "shopify://collections/dash-cam",
             "learn_more_bg": "{{ settings.color_palette.foreground }}",
             "learn_more_text_color": "{{ settings.color_palette.background }}",
             "learn_more_bg_hover": "#fff001",
@@ -402,7 +576,7 @@
             "heading": "Accessory",
             "description": "",
             "learn_more_label": "",
-            "learn_more_link": "",
+            "learn_more_link": "shopify://collections/gku-dash-cam-accessories-hardwire-kits-mounts-memory-cards",
             "learn_more_bg": "{{ settings.color_palette.foreground }}",
             "learn_more_text_color": "{{ settings.color_palette.background }}",
             "learn_more_bg_hover": "#fff001",
@@ -420,6 +594,7 @@
         "product_card_yLy3EQ",
         "product_card_YzGXb3"
       ],
+      "disabled": true,
       "name": "XTU Featured Products",
       "settings": {
         "height_mode": "fixed",
@@ -434,9 +609,9 @@
         "heading_color": "#111827",
         "muted_text_color": "#667085",
         "placeholder_bg": "#e8eaed",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 52,
         "padding_bottom_mobile": 40,
         "show_button_arrow": false
       }
@@ -456,15 +631,43 @@
             "title": "Accessory"
           }
         },
+        "card_iMzmHB": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/8-_-C600.jpg",
+            "title": "C600",
+            "subtitle": "4G LTE Dash Cams with Cloud Storage",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-c600-4g-lte-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "{{ settings.color_palette.foreground }}",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_tWhPtT": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/3-_-C300.jpg",
+            "title": "C300",
+            "subtitle": "4K+1080P+4K Triple Dash Cams",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "button_background": "#fff001",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
         "card_GaGDwW": {
           "type": "card",
           "settings": {
             "tab_name": "Dashcams",
-            "image": "shopify://shop_images/E200_b5c3805e-5f69-4f63-b437-a24bc88aaac4.jpg",
+            "image": "shopify://shop_images/2-_-E200.jpg",
             "title": "E200",
             "subtitle": "4K+4K HDR Front and Rear Dash Cams",
             "button_label": "Shop Now",
-            "button_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "button_link": "shopify://products/gku-e200-4k-front-rear-dash-cam",
             "button_background": "#fff001",
             "button_text_color": "#111827",
             "button_hover_background": "#f3f4f6"
@@ -474,7 +677,7 @@
           "type": "card",
           "settings": {
             "tab_name": "Dashcams",
-            "image": "shopify://shop_images/D600PROMAX_47e2dfc8-aa38-4c6b-9dad-e8c69ee27294.jpg",
+            "image": "shopify://shop_images/7-_-D600_Pro_MAX.jpg",
             "title": "D600 Pro Max",
             "subtitle": "4K+1080P STARVIS 2 Dash Cams",
             "button_label": "Shop Now",
@@ -488,7 +691,7 @@
           "type": "card",
           "settings": {
             "tab_name": "Dashcams",
-            "image": "shopify://shop_images/D1000_f6fb665d-879e-4d2a-a086-5e076c6e501c.jpg",
+            "image": "shopify://shop_images/9-_-D1000.jpg",
             "title": "D1000",
             "subtitle": "4K+1080P+1080P Front Rear Cabin Camera",
             "button_label": "Shop Now",
@@ -498,16 +701,72 @@
             "button_hover_background": "{{ settings.color_palette.background }}"
           }
         },
-        "card_tWhPtT": {
+        "card_qRcELk": {
           "type": "card",
           "settings": {
             "tab_name": "Dashcams",
-            "image": "shopify://shop_images/C300.jpg",
-            "title": "C300",
-            "subtitle": "4K+1080P+4K Triple Dash Cams",
+            "image": "shopify://shop_images/1-_-D200.jpg",
+            "title": "D200",
+            "subtitle": "4K Front-only Dash Cams",
             "button_label": "Shop Now",
-            "button_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
-            "button_background": "#fff001",
+            "button_link": "shopify://products/products-gku-d200-4k-wifi-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_AFEqww": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/6-_-D700.jpg",
+            "title": "D700",
+            "subtitle": "3.18\" Touch Screen Front & Rear Dash Cam",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-d700-4k-touch-screen-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_8nPPex": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/4-_-D600.jpg",
+            "title": "D600",
+            "subtitle": "4K Front and Rear WiFi Dash Cam",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-d600-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_hLE4N7": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/5-_-D600_Pro.jpg",
+            "title": "D600 Pro",
+            "subtitle": "4K Front & Rear Dash Cams",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_Ktz3aj": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Dashcams",
+            "image": "shopify://shop_images/10-_-D900.jpg",
+            "title": "D900",
+            "subtitle": "4K Dash Cam Front and Rear",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/gku-d900-4k-front-rear-dash-cam",
+            "button_background": "{{ settings.color_palette.color7 }}",
             "button_text_color": "#111827",
             "button_hover_background": "#f3f4f6"
           }
@@ -516,7 +775,7 @@
           "type": "card",
           "settings": {
             "tab_name": "Accessory",
-            "image": "shopify://shop_images/4_8597a5da-3b1c-4920-b060-6139eaf60e78.png",
+            "image": "shopify://shop_images/3_3e34077e-9505-4299-ae7e-ad07e0b4c87d.png",
             "title": "Hardwire Kit",
             "subtitle": "",
             "button_label": "Shop Now",
@@ -530,7 +789,7 @@
           "type": "card",
           "settings": {
             "tab_name": "Accessory",
-            "image": "shopify://shop_images/5_64f0cf25-30ff-4c5b-8315-e82130e27122.png",
+            "image": "shopify://shop_images/1_7eff6cb9-879e-4a07-a4a2-1c021deb5f58.png",
             "title": "Mount Bracket Kit",
             "subtitle": "",
             "button_label": "Shop Now",
@@ -540,25 +799,11 @@
             "button_hover_background": "{{ settings.color_palette.background }}"
           }
         },
-        "card_ex4Djg": {
-          "type": "card",
-          "settings": {
-            "tab_name": "Accessory",
-            "image": "shopify://shop_images/gku-d1000-rear-dash-cam-with-6m-extension-cable-2306498_dd1a5873-2377-4a7a-bdc7-7979667b64eb.jpg",
-            "title": "Rear Cameras",
-            "subtitle": "",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/rear-camera-for-dash-cam-car-backup-rear-view-camera-accessory",
-            "button_background": "#fff001",
-            "button_text_color": "#111827",
-            "button_hover_background": "#f3f4f6"
-          }
-        },
         "card_MPQd6E": {
           "type": "card",
           "settings": {
             "tab_name": "Accessory",
-            "image": "shopify://shop_images/SD_-128GB.jpg",
+            "image": "shopify://shop_images/2_c359319c-9f48-4112-a96e-914117d9d4d7.png",
             "title": "Memory Cards",
             "subtitle": "",
             "button_label": "Shop Now",
@@ -572,11 +817,25 @@
           "type": "card",
           "settings": {
             "tab_name": "Accessory",
-            "image": "shopify://shop_images/gku-usb-a-to-c-charger-cable-5897535.jpg",
+            "image": "shopify://shop_images/4_1c70bcfe-62f2-4a72-8fb5-423859574572.png",
             "title": "Power Cables",
             "subtitle": "",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/dash-cam-charger-cable",
+            "button_background": "#fff001",
+            "button_text_color": "#111827",
+            "button_hover_background": "#f3f4f6"
+          }
+        },
+        "card_ex4Djg": {
+          "type": "card",
+          "settings": {
+            "tab_name": "Accessory",
+            "image": "shopify://shop_images/5_1aaec1b1-07eb-4658-af9a-89cfcfbeae4f.png",
+            "title": "Rear Cameras",
+            "subtitle": "",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/rear-camera-for-dash-cam-car-backup-rear-view-camera-accessory",
             "button_background": "#fff001",
             "button_text_color": "#111827",
             "button_hover_background": "#f3f4f6"
@@ -586,20 +845,25 @@
       "block_order": [
         "tab_rRBXeM",
         "tab_Nt4Aqa",
+        "card_iMzmHB",
+        "card_tWhPtT",
         "card_GaGDwW",
         "card_7brMdX",
         "card_qbEibA",
-        "card_tWhPtT",
+        "card_qRcELk",
+        "card_AFEqww",
+        "card_8nPPex",
+        "card_hLE4N7",
+        "card_Ktz3aj",
         "card_8aB9HH",
         "card_brHa9P",
-        "card_ex4Djg",
         "card_MPQd6E",
-        "card_Wd9QpB"
+        "card_Wd9QpB",
+        "card_ex4Djg"
       ],
-      "disabled": true,
       "name": "XTU Tab Product Slider",
       "settings": {
-        "heading": "Find the Right Bestselling Dash Cams",
+        "heading": "Find Your Perfect Dash Cam",
         "desktop_per_view": 3,
         "card_gap": 16,
         "card_gap_mobile": 8,
@@ -627,13 +891,13 @@
         "ai_gen_block_1b50f18_iFdHye": {
           "type": "ai_gen_block_1b50f18",
           "settings": {
-            "eyebrow": "Limited-time offer 40% OFF",
-            "heading": "Deals of the day",
-            "subtitle": "Shop the product below, you can enjoy 40% off at checkout automatically.",
-            "end_time": "2026-09-23T23:59:59+08:00",
-            "featured_product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
-            "deals_collection": "flash-sale",
-            "collection_heading": "More deals 35% OFF | Auto Discounts shown at checkout",
+            "eyebrow": "Fall Sale",
+            "heading": "Limited Deal 50% OFF",
+            "subtitle": "Shop the product below, you can enjoy 50% off at checkout automatically.",
+            "end_time": "2026-10-11T11:59:59+08:00",
+            "featured_product": "gku-d1000-4k-triple-channel-dash-cam",
+            "deals_collection": "fall-sale-save-40",
+            "collection_heading": "More deals 40% OFF | Auto discounts shown at checkout",
             "button_label": "Shop Now",
             "desktop_width_percent": 100,
             "radius": 12,
@@ -651,6 +915,8 @@
       "block_order": [
         "ai_gen_block_1b50f18_iFdHye"
       ],
+      "disabled": true,
+      "name": "Limited Deals",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -680,42 +946,45 @@
         "padding-block-end": 0
       }
     },
-    "1789638867bdbe23ce": {
+    "1790217856a574ae77": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_909e28e_KUDL33": {
-          "type": "ai_gen_block_909e28e",
-          "disabled": true,
+        "ai_gen_block_9287266_9fRRna": {
+          "type": "ai_gen_block_9287266",
           "settings": {
-            "heading": "Deals of the Day",
-            "subheading": "35% OFF Auto Discount at Checkout",
-            "deal_collection": "flash-sale",
-            "flash_product": "gku-d1000-4k-triple-channel-dash-cam",
-            "flash_title": "Limited Sale 40% OFF",
-            "button_label": "Shop Now",
-            "end_time": "2026-09-31T23:59:59+08:00",
+            "eyebrow": "Fall Sale",
+            "heading": "GKU Autumn Drive Sale 2026",
+            "subheading": "Save more on selected dashcams",
+            "timer_label": "Time remaining",
+            "end_time": "2026-10-11 23:59:59",
+            "featured_product": "",
+            "product_section_title": "Featured deal",
+            "product_discount_percent": 50,
+            "featured_collection": "fall-sale-save-40",
+            "collection_section_title": "Auto discount shown at checkout",
+            "collection_discount_percent": 40,
+            "product_limit": 4,
+            "collection_button_label": "Shop the collection",
             "desktop_width_percent": 100,
-            "border_radius": 16,
-            "card_radius": 12,
-            "timer_radius": 8,
-            "button_radius": 16,
             "background_color": "#f8f9fd",
-            "card_color": "#ffffff",
+            "card_background": "#ffffff",
             "text_color": "#000000",
-            "timer_color": "#fff002",
-            "timer_text_color": "#000000",
-            "flash_color": "{{ settings.color_palette.foreground }}",
-            "flash_text_color": "#ffffff",
-            "button_color": "#fff002",
-            "button_text_color": "#000000"
+            "accent_color": "#d95b12",
+            "discount_text_color": "{{ settings.color_palette.background }}",
+            "timer_background": "#d95b12",
+            "timer_text_color": "{{ settings.color_palette.background }}",
+            "button_background": "#d95b12",
+            "button_text_color": "{{ settings.color_palette.background }}",
+            "border_radius": 16,
+            "card_radius": 12
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_909e28e_KUDL33"
+        "ai_gen_block_9287266_9fRRna"
       ],
-      "disabled": true,
+      "name": "Flash Sale Collection",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -751,7 +1020,7 @@
         "tile_nyqtTV": {
           "type": "tile",
           "settings": {
-            "title": "Sony STARVIS 2 IMX675",
+            "title": "Sony Starvis 2 IMX675",
             "text_color": "#ffffff",
             "text_align": "center",
             "text_position": "bottom",
@@ -814,14 +1083,14 @@
         "tile_jKzhid": {
           "type": "tile",
           "settings": {
-            "title": "Clearer Details, Day or Night",
+            "title": "4K Ultra Clear",
             "text_color": "#ffffff",
             "text_align": "center",
             "text_position": "bottom",
             "media_type": "image",
-            "image": "shopify://shop_images/6_9f46418b-d0b9-4e51-ac81-f0cb5dea1f52.jpg",
+            "image": "shopify://shop_images/6-_-3.jpg",
             "video_url": "",
-            "link": "shopify://collections/night-vision-dash-cams",
+            "link": "shopify://collections/voice-control-dash-cam",
             "col_start_desktop": "3",
             "col_span_desktop": 1,
             "row_start_desktop": "2",
@@ -835,14 +1104,14 @@
         "tile_BJzzj8": {
           "type": "tile",
           "settings": {
-            "title": "24H Parking Protection",
+            "title": "4G LTE Remote Monitoring",
             "text_color": "#ffffff",
             "text_align": "center",
             "text_position": "bottom",
             "media_type": "image",
-            "image": "shopify://shop_images/4_313f683f-db8e-4058-a4c7-3e02a8832fdf.jpg",
+            "image": "shopify://shop_images/6-_-1.jpg",
             "video_url": "",
-            "link": "shopify://collections",
+            "link": "shopify://collections/4g-lte-dash-cams",
             "col_start_desktop": "1",
             "col_span_desktop": 1,
             "row_start_desktop": "3",
@@ -856,14 +1125,14 @@
         "tile_hUi7xH": {
           "type": "tile",
           "settings": {
-            "title": "Loop Recording & G-Sensor",
+            "title": "Touch Screen Design",
             "text_color": "#ffffff",
             "text_align": "center",
             "text_position": "bottom",
             "media_type": "image",
-            "image": "shopify://shop_images/5_f1b86860-8b71-4eb2-a48d-dba8dbff8374.jpg",
+            "image": "shopify://shop_images/6-_-2.jpg",
             "video_url": "",
-            "link": "shopify://collections/dash-cam",
+            "link": "shopify://collections/touch-screen-dash-cam",
             "col_start_desktop": "2",
             "col_span_desktop": 1,
             "row_start_desktop": "3",
@@ -883,9 +1152,9 @@
         "tile_BJzzj8",
         "tile_hUi7xH"
       ],
-      "name": "XTU Bento Grid",
+      "name": "GKU Bento Grid",
       "settings": {
-        "heading": "GKU Dash Cam Key Features",
+        "heading": "GKU Dash Cams Key Features",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -899,8 +1168,8 @@
         "columns_mobile": 2,
         "row_height_mobile": 180,
         "gap_mobile": 8,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 44,
+        "padding_bottom": 44,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -982,7 +1251,7 @@
         "review_FEFEfP"
       ],
       "disabled": true,
-      "name": "XTU Customer Reviews",
+      "name": "GKU Customer Reviews",
       "settings": {
         "heading": "Customer Reviews",
         "subheading": "",
@@ -1019,7 +1288,7 @@
     },
     "xtu_image_compare_slider_cHVPrE": {
       "type": "xtu-image-compare-slider",
-      "name": "XTU Image Compare Slider",
+      "name": "GKU Image Compare Slider",
       "settings": {
         "heading": "Why Choose GKU E200",
         "subheading": "4K+4K HDR Front and Rear Dash Cams",
@@ -1040,10 +1309,44 @@
         "label_bg": "#000000",
         "label_color": "#ffffff",
         "content_width": 1600,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 40,
+        "padding_bottom": 44,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_buying_guide_QAk7M3": {
+      "type": "xtu-buying-guide",
+      "name": "GKU Buying Guide",
+      "settings": {
+        "eyebrow": "Buying guide",
+        "heading": "Compare and recommend",
+        "media_type": "image",
+        "image": "shopify://shop_images/4_062602b4-1528-4be5-a21a-507383cb3552.jpg",
+        "video_url": "",
+        "show_image_overlay": false,
+        "primary_label": "Compare products",
+        "primary_link": "shopify://pages/compare-dash-cams",
+        "secondary_label": "",
+        "secondary_link": "",
+        "media_sizing": "natural",
+        "media_height": 400,
+        "media_sizing_mobile": "natural",
+        "media_height_mobile": 350,
+        "background_color": "#ffffff",
+        "card_background": "#f5f5f7",
+        "eyebrow_color": "#7a8599",
+        "heading_color": "#111827",
+        "button_bg": "#22242a",
+        "button_bg_hover": "#1a1c21",
+        "button_color": "#ffffff",
+        "link_color": "#667085",
+        "link_color_hover": "#111827",
+        "placeholder_bg": "#e8eaed",
+        "padding_top": 32,
+        "padding_bottom": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 16
       }
     },
     "xtu_media_endorsement_LqhGE3": {
@@ -1142,7 +1445,7 @@
         "media_card_dVejgQ",
         "media_card_Xwy3c9"
       ],
-      "name": "XTU Media Endorsement",
+      "name": "GKU Media Endorsement",
       "settings": {
         "mode": "quote",
         "heading": "As Seen On",
@@ -1276,7 +1579,7 @@
         "slide_3wFJe9",
         "slide_8pkHaY"
       ],
-      "name": "XTU Hero Banner",
+      "name": "GKU Hero Banner",
       "settings": {
         "height_mode_desktop": "fixed",
         "fixed_height_desktop": 880,
@@ -1384,9 +1687,9 @@
         "card_zgDHLg",
         "card_exYNHz"
       ],
-      "name": "XTU Story Slider",
+      "name": "GKU Story Slider",
       "settings": {
-        "heading": "Real-Life Stories",
+        "heading": "Real Footage of GKU Dash Cams",
         "show_arrows": true,
         "show_arrows_mobile": false,
         "show_button_arrow": false,
@@ -1401,8 +1704,8 @@
         "play_color": "#111827",
         "play_bg_hover": "#f5f5f7",
         "accent_color": "#0070ca",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 48,
+        "padding_bottom": 48,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -1549,7 +1852,7 @@
         "card_jQP6Kd",
         "card_EqiRPY"
       ],
-      "name": "XTU Story Slider",
+      "name": "GKU Story Slider",
       "settings": {
         "heading": "Shared by customers",
         "show_arrows": true,
@@ -1566,8 +1869,8 @@
         "play_color": "#111827",
         "play_bg_hover": "#f5f5f7",
         "accent_color": "#0070ca",
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -1614,7 +1917,7 @@
         "image_YKHV4h"
       ],
       "disabled": true,
-      "name": "XTU Image Marquee",
+      "name": "GKU Image Marquee",
       "settings": {
         "heading": "Featured by",
         "direction": "rtl",
@@ -1638,7 +1941,7 @@
         "post_AVX6W6": {
           "type": "post",
           "settings": {
-            "article": "guides/are-dash-cams-worth-it"
+            "article": "guides/why-your-dash-cam-footage-looks-blurry-and-how-to-fix-it"
           }
         },
         "post_CaFJjE": {
@@ -1662,7 +1965,7 @@
         "post_qY83UY": {
           "type": "post",
           "settings": {
-            "article": "guides/what-does-wi-fi-do-on-a-dash-cam-a-simple-guide-for-drivers"
+            "article": "guides/how-dash-cams-handle-bright-sunlight-and-headlight-glare"
           }
         }
       },
@@ -1673,7 +1976,7 @@
         "post_JzYUcC",
         "post_qY83UY"
       ],
-      "name": "XTU Blog Featured",
+      "name": "GKU Blog Featured",
       "settings": {
         "heading": "Blogs",
         "latest_label": "Latest Blogs",
@@ -1690,8 +1993,8 @@
         "button_bg_hover": "{{ settings.color_palette.foreground }}",
         "button_color_hover": "#ffffff",
         "card_radius": 16,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 32,
+        "padding_bottom": 32,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -1702,10 +2005,11 @@
     "xtu_featured_products_YCmU9w",
     "xtu_tab_product_slider_wMWmQF",
     "17896395537d17196a",
-    "1789638867bdbe23ce",
+    "1790217856a574ae77",
     "xtu_bento_grid_CK8ezM",
     "xtu_customer_reviews_YMxNAe",
     "xtu_image_compare_slider_cHVPrE",
+    "xtu_buying_guide_QAk7M3",
     "xtu_media_endorsement_LqhGE3",
     "xtu_hero_banner_P4dVR8",
     "xtu_story_slider_PYLihM",

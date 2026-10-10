@@ -178,9 +178,10 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "2-channel-dash-cams",
+          "front-and-rear-dash-cams",
           "3-channel-dash-cams",
-          "1-channel-dash-cams"
+          "1-channel-dash-cams",
+          "rear-camera-for-dash-cam-car-backup-rear-view-camera-accessory"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
@@ -654,7 +655,8 @@
       "settings": {
         "collection_list": [
           "voice-control-dash-cam",
-          "wifi-dash-cams"
+          "wifi-dash-cams",
+          "touch-screen-dash-cam"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,

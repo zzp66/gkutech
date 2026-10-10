@@ -169,7 +169,6 @@
             "text_aEtTtq": {
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
-              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "enable_collapse": true,
@@ -378,9 +377,9 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
-        "atc_bg": "#1590f2",
-        "atc_color": "#ffffff",
-        "atc_bg_hover": "#0070ca",
+        "atc_bg": "{{ settings.color_palette.color7 }}",
+        "atc_color": "{{ settings.color_palette.foreground }}",
+        "atc_bg_hover": "{{ settings.color_palette.foreground }}",
         "atc_color_hover": "#ffffff",
         "atc_bg_disabled": "#e8e8ed",
         "atc_color_disabled": "#8e8e93",
@@ -395,54 +394,53 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-tab-images-template--29086148395174__xtu_tab_images_yfFbMx"
-          }
-        },
-        "item_4YAHeY": {
-          "type": "item",
-          "settings": {
-            "label": "Compare",
-            "target": "xtu-product-compare-template--29086148395174__xtu_product_compare_U7Mgh3"
-          }
-        },
-        "nav_comparison": {
-          "type": "item",
-          "settings": {
-            "label": "Look",
-            "target": "xtu_tab_images_yfFbMx"
+            "target": "xtu-media-grid-template--22608165732579__xtu_media_grid_HCTTxt"
           }
         },
         "nav_specs": {
           "type": "item",
           "settings": {
             "label": "Highlights",
-            "target": "xtu_bento_grid_r6pyGH"
+            "target": "xtu-tab-images-template--22608165732579__xtu_tab_images_yfFbMx"
+          }
+        },
+        "nav_comparison": {
+          "type": "item",
+          "settings": {
+            "label": "What's in the Box",
+            "target": "xtu-rich-content-template--22608165732579__xtu_rich_content_aDDXUM"
+          }
+        },
+        "item_4YAHeY": {
+          "type": "item",
+          "settings": {
+            "label": "Compare",
+            "target": "xtu-product-compare-template--22608165732579__xtu_product_compare_U7Mgh3"
           }
         },
         "item_dwBHWi": {
           "type": "item",
           "settings": {
             "label": "FAQs",
-            "target": "xtu_faq_kT3Ffi"
+            "target": "xtu-faq-template--22608165732579__xtu_faq_kT3Ffi"
           }
         },
         "item_MUMPVp": {
           "type": "item",
           "settings": {
             "label": "Specs",
-            "target": "xtu_product_specs_7XrG4D"
+            "target": "xtu-product-specs-template--22608165732579__xtu_product_specs_7XrG4D"
           }
         }
       },
       "block_order": [
         "nav_overview",
-        "item_4YAHeY",
-        "nav_comparison",
         "nav_specs",
+        "nav_comparison",
+        "item_4YAHeY",
         "item_dwBHWi",
         "item_MUMPVp"
       ],
-      "disabled": true,
       "settings": {
         "aria_label": "Product sections",
         "alignment": "center",
@@ -461,8 +459,9 @@
         "column_amVfh6": {
           "type": "column",
           "settings": {
-            "media_type": "image",
-            "video_url": "",
+            "media_type": "youtube",
+            "image": "shopify://shop_images/PC_-1_ad56f8f9-0eab-447c-a862-5a06a6caf8bc.jpg",
+            "video_url": "https://www.youtube.com/watch?v=sQRX0FwBHJA",
             "media_ratio": "auto",
             "alt": ""
           }
@@ -471,11 +470,10 @@
       "block_order": [
         "column_amVfh6"
       ],
-      "disabled": true,
       "name": "XTU Media Grid",
       "settings": {
-        "heading": "XTU S7 Pro Max",
-        "subheading": "XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid",
+        "heading": "GKU D600 Pro Max 4K Front & Rear Dash Cam|See It Clearly. Prove What Happened.",
+        "subheading": "Capture the road ahead in 4K and behind in 1080P with Sony STARVIS 2 imaging—built for clearer evidence, enhanced night vision, and smarter everyday driving protection.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -498,40 +496,45 @@
         "tab_nGtdLW": {
           "type": "tab",
           "settings": {
-            "tab_label": "",
+            "tab_label": "4K Front&1080P Rear Recording",
             "media_type": "image",
+            "image": "shopify://shop_images/PC_-2_3a466902-4f83-4f42-b2db-ee5d94329285.jpg",
             "video_url": ""
           }
         },
         "tab_Q3Ywfh": {
           "type": "tab",
           "settings": {
-            "tab_label": "Face Retouch",
+            "tab_label": "Sony STARVIS 2 Night Vison",
             "media_type": "image",
+            "image": "shopify://shop_images/PC_-3_7dda3b09-d58f-4c28-8e1e-c298e5caabc3.jpg",
             "video_url": ""
           }
         },
         "tab_mFRRrR": {
           "type": "tab",
           "settings": {
-            "tab_label": "Portrait Mode",
+            "tab_label": "5.8 GHz WiFi 6&APP Control",
             "media_type": "image",
+            "image": "shopify://shop_images/PC_-4_062f21b4-897e-4e42-87c1-256e10edb9ab.jpg",
             "video_url": ""
           }
         },
         "tab_AtzgRP": {
           "type": "tab",
           "settings": {
-            "tab_label": "Live Streaming",
+            "tab_label": "Pre-recording&G-Sensor",
             "media_type": "image",
+            "image": "shopify://shop_images/PC_-5_237a0dab-3e4b-4ef1-bf64-ea4532bb46ca.jpg",
             "video_url": ""
           }
         },
         "tab_qEia3z": {
           "type": "tab",
           "settings": {
-            "tab_label": "Panorama",
+            "tab_label": "24 Parking Protection",
             "media_type": "image",
+            "image": "shopify://shop_images/PC_-6_ef8fe14f-9307-4ce7-a0ef-b83d3f4cf823.jpg",
             "video_url": ""
           }
         }
@@ -543,11 +546,10 @@
         "tab_AtzgRP",
         "tab_qEia3z"
       ],
-      "disabled": true,
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "Personalize Your Look",
-        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
+        "heading": "D600 Pro Max Highlights: Clearer Footage. Smarter Protection. Day and Night.",
+        "subheading": "The GKU D600 Pro Max combines 4K front and 1080P rear recording, Sony STARVIS 2 night imaging, fast WiFi 6 connectivity, pre-recording with G-sensor protection, and 24-hour parking monitoring for smarter protection on the road and while parked.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -556,8 +558,8 @@
         "placeholder_bg": "#e8eaed",
         "tab_rail_bg": "#dfe3e8",
         "tab_color": "#000000",
-        "tab_bg_active": "#0070ca",
-        "tab_color_active": "#ffffff",
+        "tab_bg_active": "#fff001",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
         "show_tab_underline": false,
         "content_width": 1200,
         "gallery_ratio": "auto",
@@ -568,91 +570,278 @@
         "padding_bottom_mobile": 40
       }
     },
+    "xtu_tab_images_EeXx8Q": {
+      "type": "xtu-tab-images",
+      "blocks": {
+        "tab_BeyiXk": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Time-lapse",
+            "media_type": "image",
+            "image": "shopify://shop_images/PC_-6-1_94ac1c0e-05fb-430a-b8f3-d9176ecb28fb.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_JYiMht": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Loop Recording",
+            "media_type": "image",
+            "image": "shopify://shop_images/PC_-7_aa159adb-839c-4d3e-8a14-e4bfd1d65aef.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_ebVhYc": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Built-in GPS&GKU Player",
+            "media_type": "image",
+            "image": "shopify://shop_images/PC_-8_614268f8-af97-49f8-8b39-94a2f8c09657.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Ret4F6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "One-click Emergency Lock",
+            "media_type": "image",
+            "image": "shopify://shop_images/PC_-10_33f7e227-9b09-4c97-bd16-c23fe455d6e0.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_Tfwx8f": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Voice Control",
+            "media_type": "image",
+            "image": "shopify://shop_images/PC_-11_0150acd4-b932-4b86-9e8e-e1c86a62fd50.jpg",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_BeyiXk",
+        "tab_JYiMht",
+        "tab_ebVhYc",
+        "tab_Ret4F6",
+        "tab_Tfwx8f"
+      ],
+      "name": "XTU Tab Images",
+      "settings": {
+        "heading": "D600 Pro Max Highlights: Smarter Recording. Easier Control. Reliable Protection.",
+        "subheading": "The GKU D600 Pro Max combines time-lapse recording, seamless loop recording, built-in GPS with GKU Player, one-click emergency video locking, and voice control for a smarter and more convenient everyday driving experience.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#fff001",
+        "tab_color_active": "{{ settings.color_palette.foreground }}",
+        "show_tab_underline": false,
+        "content_width": 1200,
+        "gallery_ratio": "21 / 9",
+        "image_radius": 0,
+        "padding_top": 28,
+        "padding_bottom": 32,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_rich_content_aDDXUM": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "paragraph_JzbQ4M": {
+          "type": "paragraph",
+          "settings": {
+            "text": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_YEegJk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PC_-12_c6e01582-8660-4038-99c9-1a7465439fda.jpg",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_KXXwha": {
+          "type": "richtext",
+          "settings": {
+            "body": "",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_JzbQ4M",
+        "image_YEegJk",
+        "richtext_KXXwha"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "What's in the Box",
+        "subheading": "",
+        "heading_align": "left",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#fff001",
+        "content_width": 1200,
+        "padding_top": 24,
+        "padding_bottom": 30,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "xtu_product_compare_U7Mgh3": {
       "type": "xtu-product-compare",
       "blocks": {
         "product_9RVxKG": {
           "type": "product",
           "settings": {
-            "product": "",
-            "title": "S7 Pro Max",
-            "subtitle": "4K flagship action camera",
+            "product": "gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "title": "D600 Pro Max",
+            "subtitle": "Night Imaging & Smart Features",
             "buy_label": "Buy now",
-            "buy_link": "",
-            "more_label": "Learn more",
+            "buy_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "more_label": "",
             "more_link": ""
           }
         },
         "product_f68ynV": {
           "type": "product",
           "settings": {
-            "product": "",
-            "title": "S7 Pro",
-            "subtitle": "4K action camera",
+            "product": "gku-e200-4k-front-rear-dash-cam",
+            "title": "E200",
+            "subtitle": "Maximum Front & Rear Detail",
             "buy_label": "Buy now",
-            "buy_link": "",
-            "more_label": "Learn more",
+            "buy_link": "shopify://products/gku-e200-4k-front-rear-dash-cam",
+            "more_label": "",
             "more_link": ""
           }
         },
         "product_prVryw": {
           "type": "product",
           "settings": {
-            "product": "",
-            "title": "S7",
-            "subtitle": "Essential action camera",
+            "product": "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "title": "C300",
+            "subtitle": "Complete 3-Channel Coverage",
             "buy_label": "Buy now",
-            "buy_link": "",
-            "more_label": "Learn more",
+            "buy_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "more_label": "",
             "more_link": ""
-          }
-        },
-        "group_8UK6FD": {
-          "type": "group",
-          "settings": {
-            "title": "Camera"
           }
         },
         "row_cpWCR7": {
           "type": "row",
           "settings": {
-            "label": "Category",
-            "value_1": "Action camera",
-            "value_2": "Action camera",
-            "value_3": "Action camera"
+            "label": "Camera Setup",
+            "value_1": "Front + Rear",
+            "value_2": "Front + Rear",
+            "value_3": "Front + Cabin + Rear"
           }
         },
         "row_acUdgQ": {
           "type": "row",
           "settings": {
-            "label": "Availability",
-            "value_1": "On sale",
-            "value_2": "On sale",
-            "value_3": "On sale"
-          }
-        },
-        "group_KGk8rC": {
-          "type": "group",
-          "settings": {
-            "title": "General"
+            "label": "Channels",
+            "value_1": "2-Channel",
+            "value_2": "2-Channel",
+            "value_3": "3-Channel"
           }
         },
         "row_kPnbhK": {
           "type": "row",
           "settings": {
-            "label": "Weight",
-            "value_1": "145g",
-            "value_2": "138g",
-            "value_3": "132g"
+            "label": "Recording",
+            "value_1": "4K + 1080P",
+            "value_2": "4K + 4K",
+            "value_3": "4K + 1080P + 4K"
           }
         },
         "row_CkmctA": {
           "type": "row",
           "settings": {
-            "label": "Dimensions",
-            "value_1": "71 × 50 × 33 mm",
-            "value_2": "69 × 48 × 32 mm",
-            "value_3": "66 × 46 × 30 mm"
+            "label": "Sony STARVIS 2",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": ""
+          }
+        },
+        "row_JXFmx9": {
+          "type": "row",
+          "settings": {
+            "label": "HDR / WDR",
+            "value_1": "WDR",
+            "value_2": "HDR",
+            "value_3": "WDR"
+          }
+        },
+        "row_XwRPAN": {
+          "type": "row",
+          "settings": {
+            "label": "IR Cabin Night Vision",
+            "value_1": "",
+            "value_2": "",
+            "value_3": "✓"
+          }
+        },
+        "row_rGB3kx": {
+          "type": "row",
+          "settings": {
+            "label": "WiFi",
+            "value_1": "5.8GHz WiFi 6",
+            "value_2": "5.8GHz WiFi 6",
+            "value_3": "5.8GHz WiFi 6"
+          }
+        },
+        "row_JGcXhV": {
+          "type": "row",
+          "settings": {
+            "label": "Built-In GPS",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_aUTfgD": {
+          "type": "row",
+          "settings": {
+            "label": "Voice Control",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_LYfa4B": {
+          "type": "row",
+          "settings": {
+            "label": "Parking Protection",
+            "value_1": "✓*(Hardwire Kits)",
+            "value_2": "✓*(Hardwire Kits)",
+            "value_3": "✓*(Hardwire Kits)"
           }
         }
       },
@@ -660,17 +849,20 @@
         "product_9RVxKG",
         "product_f68ynV",
         "product_prVryw",
-        "group_8UK6FD",
         "row_cpWCR7",
         "row_acUdgQ",
-        "group_KGk8rC",
         "row_kPnbhK",
-        "row_CkmctA"
+        "row_CkmctA",
+        "row_JXFmx9",
+        "row_XwRPAN",
+        "row_rGB3kx",
+        "row_JGcXhV",
+        "row_aUTfgD",
+        "row_LYfa4B"
       ],
-      "disabled": true,
       "name": "XTU Product Compare",
       "settings": {
-        "heading": "XTU S7 Series Compare",
+        "heading": "Find the Right GKU Dash Cam",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -681,169 +873,14 @@
         "content_width": 1200,
         "label_width": 140,
         "image_ratio": "1 / 1",
-        "btn_bg": "#ffcc00",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
         "btn_color": "#111111",
-        "btn_bg_hover": "#f0b800",
-        "btn_color_hover": "#111111",
+        "btn_bg_hover": "{{ settings.color_palette.foreground }}",
+        "btn_color_hover": "{{ settings.color_palette.background }}",
         "show_btn_arrow": false,
-        "link_color": "#0070ca",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_bento_grid_r6pyGH": {
-      "type": "xtu-bento-grid",
-      "blocks": {
-        "tile_9dbRcD": {
-          "type": "tile",
-          "settings": {
-            "title": "4K Brilliance in Your Hand",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "1",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_EVTLwj": {
-          "type": "tile",
-          "settings": {
-            "title": "Smart Tracking, Always in Focus",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "2",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_FNpjEM": {
-          "type": "tile",
-          "settings": {
-            "title": "Rock-Solid 3-Axis Stabilization",
-            "text_color": "#ff6a00",
-            "text_align": "left",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "3",
-            "col_span_desktop": 1,
-            "row_start_desktop": "1",
-            "row_span_desktop": 1,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 2,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 1
-          }
-        },
-        "tile_fbziEN": {
-          "type": "tile",
-          "settings": {
-            "title": "Vertical Shooting Made for Socials",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "3",
-            "col_span_desktop": 1,
-            "row_start_desktop": "2",
-            "row_span_desktop": 3,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_UPeepa": {
-          "type": "tile",
-          "settings": {
-            "title": "Portable Sleek Design",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "1",
-            "col_span_desktop": 1,
-            "row_start_desktop": "3",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 1,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        },
-        "tile_E98MX4": {
-          "type": "tile",
-          "settings": {
-            "title": "Splendid Low-Light Performance",
-            "text_color": "#ffffff",
-            "text_align": "center",
-            "text_position": "top",
-            "media_type": "image",
-            "video_url": "",
-            "link": "",
-            "col_start_desktop": "2",
-            "col_span_desktop": 1,
-            "row_start_desktop": "3",
-            "row_span_desktop": 2,
-            "col_start_mobile": "auto",
-            "col_span_mobile": 2,
-            "row_start_mobile": "auto",
-            "row_span_mobile": 2
-          }
-        }
-      },
-      "block_order": [
-        "tile_9dbRcD",
-        "tile_EVTLwj",
-        "tile_FNpjEM",
-        "tile_fbziEN",
-        "tile_UPeepa",
-        "tile_E98MX4"
-      ],
-      "disabled": true,
-      "name": "XTU Bento Grid",
-      "settings": {
-        "heading": "The Highlights",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "placeholder_bg": "#e8eaed",
-        "content_width": 1200,
-        "card_radius": 16,
-        "show_image_overlay": false,
-        "columns_desktop": 3,
-        "row_height_desktop": 200,
-        "gap_desktop": 16,
-        "columns_mobile": 2,
-        "row_height_mobile": 180,
-        "gap_mobile": 8,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "link_color": "{{ settings.color_palette.color7 }}",
+        "padding_top": 48,
+        "padding_bottom": 44,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -854,29 +891,71 @@
         "item_37LRTh": {
           "type": "item",
           "settings": {
-            "question": "What is included in the box?",
-            "answer": "<p>The package includes the camera body, mounting accessories, and a quick start guide.</p>"
+            "question": "What video resolution does the GKU D600 Pro Max record?",
+            "answer": "<p>The GKU D600 Pro Max records in <strong>4K UHD (3840 × 2160P) at 30fps from the front camera and 1080P (1920 × 1080P) from the rear camera</strong>, providing front and rear coverage to help capture important road details from both directions.</p>"
           }
         },
         "item_f6em3x": {
           "type": "item",
           "settings": {
-            "question": "Is this waterproof?",
-            "answer": "<p>Please check the product specifications for waterproof rating and recommended usage.</p>"
+            "question": "Does the D600 Pro Max use Sony STARVIS 2?",
+            "answer": "<p>Yes. The D600 Pro Max features <strong>Sony STARVIS 2 imaging technology</strong>, designed to deliver clearer footage in challenging lighting conditions. Combined with WDR imaging, it helps preserve more useful road detail at night and in high-contrast scenes such as bright headlights, streetlights, shadows, and tunnels.</p>"
           }
         },
         "item_XHwPXM": {
           "type": "item",
           "settings": {
-            "question": "How long is the warranty?",
-            "answer": "<p>Warranty coverage depends on your region and purchase channel. Contact support for details.</p>"
+            "question": "Is the D600 Pro Max good for night driving?",
+            "answer": "<p>Yes. The combination of <strong>Sony STARVIS 2 and WDR</strong> helps the D600 Pro Max capture clearer footage in low-light and high-contrast driving environments. This makes it particularly suitable for drivers who frequently commute or travel after dark.</p>"
           }
         },
         "item_77XCPT": {
           "type": "item",
           "settings": {
-            "question": "Where can I download the app?",
-            "answer": "<p>Search for the official XTU app in the App Store or Google Play.</p>"
+            "question": "Does the D600 Pro Max have WiFi 6?",
+            "answer": "<p>Yes. The D600 Pro Max supports <strong>dual-band 2.4GHz and 5.8GHz WiFi</strong>, allowing you to connect the dash cam to the GKU GO app to preview, manage, and download recordings.</p><p>For faster video transfers, 5.8GHz WiFi is recommended when supported by your smartphone. 2.4GHz provides broader device compatibility.</p>"
+          }
+        },
+        "item_EEHTma": {
+          "type": "item",
+          "settings": {
+            "question": "Can I view the D600 Pro Max remotely when I am away from my car?",
+            "answer": "<p>No. The D600 Pro Max uses WiFi for a <strong>local connection between the dash cam and your smartphone</strong>. It does not support cellular connectivity, cloud viewing, or remote live monitoring when you are away from the vehicle.</p><p>For remote vehicle monitoring, consider a compatible GKU 4G LTE dash cam instead.</p>"
+          }
+        },
+        "item_TXqWqp": {
+          "type": "item",
+          "settings": {
+            "question": "Does the D600 Pro Max support voice control?",
+            "answer": "<p>Yes. The D600 Pro Max supports <strong>hands-free voice control for selected camera functions</strong>, allowing you to operate key features without reaching for the dash cam while driving.</p>"
+          }
+        },
+        "item_jchhnT": {
+          "type": "item",
+          "settings": {
+            "question": "Does the D600 Pro Max support 24-hour parking monitoring?",
+            "answer": "<p>Yes. When connected to a compatible hardwire kit, the D600 Pro Max supports <strong>24-hour parking monitoring</strong>, including features such as time-lapse recording and collision detection to help capture important events while your vehicle is parked.</p><p>A compatible hardwire kit is required for parking monitoring and is sold separately.</p>"
+          }
+        },
+        "item_bpw7Lj": {
+          "type": "item",
+          "settings": {
+            "question": "What happens when the memory card is full?",
+            "answer": "<p>The D600 Pro Max supports <strong>loop recording</strong>. When the memory card becomes full, the dash cam automatically overwrites the oldest unlocked normal recordings so it can continue recording without requiring you to manually delete files.</p><p>Important emergency or locked recordings are protected from normal loop overwriting.</p>"
+          }
+        },
+        "item_FBgy6K": {
+          "type": "item",
+          "settings": {
+            "question": "What microSD card does the D600 Pro Max support?",
+            "answer": "<p>The D600 Pro Max supports <strong>32GB to 512GB microSD cards</strong>. For reliable 4K recording, we recommend using a high-endurance card rated <strong>U3/V30 or higher</strong>.</p><p>For best stability, format the memory card through the GKU GO app before first use.</p>"
+          }
+        },
+        "item_n4TjnG": {
+          "type": "item",
+          "settings": {
+            "question": "Is a memory card included with the D600 Pro Max?",
+            "answer": "<p>Memory card availability depends on the package you select. Some D600 Pro Max packages may include a memory card, while others may not.</p><p>Please check the selected package contents before placing your order.</p>"
           }
         }
       },
@@ -884,9 +963,14 @@
         "item_37LRTh",
         "item_f6em3x",
         "item_XHwPXM",
-        "item_77XCPT"
+        "item_77XCPT",
+        "item_EEHTma",
+        "item_TXqWqp",
+        "item_jchhnT",
+        "item_bpw7Lj",
+        "item_FBgy6K",
+        "item_n4TjnG"
       ],
-      "disabled": true,
       "name": "XTU FAQ",
       "settings": {
         "heading": "FAQs",
@@ -894,12 +978,12 @@
         "content_background": "#f5f5f7",
         "heading_color": "#000000",
         "text_color": "#333333",
-        "link_color": "#0070ca",
+        "link_color": "#fff001",
         "content_width": 1200,
         "content_radius": 16,
         "open_first": true,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "padding_top": 32,
+        "padding_bottom": 24,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -911,35 +995,42 @@
           "type": "spec",
           "settings": {
             "label": "Dash Cam Model",
-            "value": "F17 Elite"
+            "value": "D600 Pro Max"
           }
         },
         "spec_rDD8Gq": {
           "type": "spec",
           "settings": {
             "label": "Channels",
-            "value": "3-Channel (Front + Cabin + Rear)"
-          }
-        },
-        "spec_6XdedW": {
-          "type": "spec",
-          "settings": {
-            "label": "Sensor",
-            "value": "Sony STARVIS 2 IMX678 (Front)"
+            "value": "2-Channel (Front + Rear)"
           }
         },
         "spec_EpUKmz": {
           "type": "spec",
           "settings": {
             "label": "Video Resolution",
-            "value": "4K Front + 1080P Cabin + 1080P Rear"
+            "value": "4K Front+1080P Rear"
+          }
+        },
+        "spec_6XdedW": {
+          "type": "spec",
+          "settings": {
+            "label": "Sensor",
+            "value": "Sony STARVIS 2"
           }
         },
         "spec_TgHcPf": {
           "type": "spec",
           "settings": {
             "label": "Field of View",
-            "value": "170° Front / 160° Cabin / 140° Rear"
+            "value": "170° Front / 150° Rear"
+          }
+        },
+        "spec_rPaKMx": {
+          "type": "spec",
+          "settings": {
+            "label": "Voice Control",
+            "value": "Yes"
           }
         },
         "spec_LJDF8j": {
@@ -960,21 +1051,29 @@
           "type": "spec",
           "settings": {
             "label": "Connectivity",
-            "value": "Wi-Fi / App Control"
+            "value": "Wi-Fi 6/ App Control"
+          }
+        },
+        "spec_8rGPxa": {
+          "type": "spec",
+          "settings": {
+            "label": "Display",
+            "value": "3\" IPS Screen"
           }
         }
       },
       "block_order": [
         "spec_pBAqEr",
         "spec_rDD8Gq",
-        "spec_6XdedW",
         "spec_EpUKmz",
+        "spec_6XdedW",
         "spec_TgHcPf",
+        "spec_rPaKMx",
         "spec_LJDF8j",
         "spec_FCPGXr",
-        "spec_XkjdET"
+        "spec_XkjdET",
+        "spec_8rGPxa"
       ],
-      "disabled": true,
       "name": "XTU Product Specs",
       "settings": {
         "heading": "Product Information",
@@ -989,87 +1088,11 @@
         "view_less_label": "View Less",
         "btn_bg": "#ffffff",
         "btn_color": "#111111",
-        "btn_border": "#111111",
-        "btn_bg_hover": "#111111",
-        "btn_color_hover": "#ffffff",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
-    "xtu_tab_images_EeXx8Q": {
-      "type": "xtu-tab-images",
-      "blocks": {
-        "tab_BeyiXk": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Background Bokeh",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_JYiMht": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Face Retouch",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_ebVhYc": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Portrait Mode",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_Ret4F6": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Live Streaming",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_Tfwx8f": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Panorama",
-            "media_type": "image",
-            "video_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_BeyiXk",
-        "tab_JYiMht",
-        "tab_ebVhYc",
-        "tab_Ret4F6",
-        "tab_Tfwx8f"
-      ],
-      "disabled": true,
-      "name": "XTU Tab Images",
-      "settings": {
-        "heading": "Personalize Your Look",
-        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "placeholder_bg": "#e8eaed",
-        "tab_rail_bg": "#dfe3e8",
-        "tab_color": "#000000",
-        "tab_bg_active": "#0070ca",
-        "tab_color_active": "#ffffff",
-        "show_tab_underline": false,
-        "content_width": 1200,
-        "gallery_ratio": "16 / 10",
-        "image_radius": 0,
-        "padding_top": 80,
-        "padding_bottom": 80,
+        "btn_border": "{{ settings.color_palette.color7 }}",
+        "btn_bg_hover": "{{ settings.color_palette.color7 }}",
+        "btn_color_hover": "{{ settings.color_palette.foreground }}",
+        "padding_top": 36,
+        "padding_bottom": 44,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
@@ -1080,10 +1103,10 @@
     "xtu_product_nav",
     "xtu_media_grid_HCTTxt",
     "xtu_tab_images_yfFbMx",
+    "xtu_tab_images_EeXx8Q",
+    "xtu_rich_content_aDDXUM",
     "xtu_product_compare_U7Mgh3",
-    "xtu_bento_grid_r6pyGH",
     "xtu_faq_kT3Ffi",
-    "xtu_product_specs_7XrG4D",
-    "xtu_tab_images_EeXx8Q"
+    "xtu_product_specs_7XrG4D"
   ]
 }

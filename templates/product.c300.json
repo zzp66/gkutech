@@ -162,7 +162,6 @@
             "text_aEtTtq": {
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
-              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "enable_collapse": true,
@@ -378,9 +377,9 @@
         "gap": 48,
         "enable_sticky_add_to_cart": true,
         "background_color": "{{ settings.color_palette.background }}",
-        "atc_bg": "#1590f2",
-        "atc_color": "#ffffff",
-        "atc_bg_hover": "#0070ca",
+        "atc_bg": "{{ settings.color_palette.color7 }}",
+        "atc_color": "{{ settings.color_palette.foreground }}",
+        "atc_bg_hover": "{{ settings.color_palette.foreground }}",
         "atc_color_hover": "#ffffff",
         "atc_bg_disabled": "#e8e8ed",
         "atc_color_disabled": "#8e8e93",
@@ -497,9 +496,9 @@
         "paragraph_G7Hm3P": {
           "type": "paragraph",
           "settings": {
-            "text": "Whether you're commuting to work, driving for Uber or Lyft, or taking long road trips, every journey deserves complete protection. The GKU C300 is designed to capture every important moment with its three-channel recording system, providing simultaneous coverage of the road ahead, the vehicle interior, and what's happening behind you.\n\nUnlike standard front-only dash cams, with 4K front, 1080P interior and 4K rear recording, the C300 delivers a full 360° perspective, helping protect you from false claims, capture valuable evidence in the event of an accident, and give you greater peace of mind wherever you drive.",
+            "text": "The GKU C300 is a 3 channel dash cam designed to record the road ahead, vehicle interior and traffic behind at the same time. With 4K front, 1080P cabin and 4K rear recording, it provides more complete video coverage for daily driving, rideshare work, road trips and unexpected incidents.\n\nFor Uber, Lyft, taxi and other professional drivers, the interior camera adds an important record of passenger-area activity, while the high-resolution front and rear cameras capture events outside the vehicle.",
             "align": "left",
-            "font_size": 20,
+            "font_size": 16,
             "font_size_mobile": 14,
             "text_color": "#333333",
             "spacing": 24,
@@ -667,8 +666,8 @@
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "C300 Highlights",
-        "subheading": "The GKU C300 dash cam delivers 4K + 1080P + 4K triple-channel recording, enhanced night vision, fast 5.8GHz Wi-Fi and built-in GPS for clear, complete coverage on every drive.",
+        "heading": "C300 Highlights: Three Cameras. Complete Driving Protection.",
+        "subheading": "With triple recording, IR cabin night vision, fast 5.8GHz Wi-Fi, and built-in GPS, the GKU C300 keeps the road, cabin, and rear covered while making footage easier to access and driving information easier to review.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -736,6 +735,14 @@
             "media_type": "image",
             "video_url": ""
           }
+        },
+        "tab_9TqynM": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Feature",
+            "media_type": "image",
+            "video_url": ""
+          }
         }
       },
       "block_order": [
@@ -743,12 +750,13 @@
         "tab_WyJGWb",
         "tab_fh6MPQ",
         "tab_67z3gJ",
-        "tab_9b79wt"
+        "tab_9b79wt",
+        "tab_9TqynM"
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "C300 Highlights",
-        "subheading": "Smart driving and protection features make the GKU C300 easier to use on the road while helping preserve important footage before, during and after unexpected incidents.",
+        "heading": "C300 Highlights: Smarter Control. Protection When It Matters.",
+        "subheading": "The GKU C300 combines hands-free voice control, pre-recording, parking mode, and emergency video locking to help capture important moments before, during, and after unexpected events.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -764,7 +772,7 @@
         "gallery_ratio": "auto",
         "image_radius": 0,
         "padding_top": 20,
-        "padding_bottom": 80,
+        "padding_bottom": 40,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 40
       }
@@ -827,8 +835,8 @@
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "C300 Highlights",
-        "subheading": "Designed for convenient everyday use, the GKU C300 keeps recording automatically and gives you flexible ways to access, transfer and review your footage.",
+        "heading": "C300 Highlights: Designed for Easier Everyday Recording",
+        "subheading": "The GKU C300 combines seamless loop recording, convenient video transfer, and a flexible camera design to make everyday recording, footage access, and installation easier.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -883,7 +891,7 @@
         "link_color": "#0070ca",
         "content_width": 1200,
         "padding_top": 22,
-        "padding_bottom": 80,
+        "padding_bottom": 42,
         "padding_top_mobile": 22,
         "padding_bottom_mobile": 40
       }
@@ -895,45 +903,48 @@
           "type": "product",
           "settings": {
             "product": "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "image": "shopify://shop_images/C300.jpg",
             "title": "C300",
             "subtitle": "4K + 1080P + 4K",
             "buy_label": "Buy now",
             "buy_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
-            "more_label": "Learn more",
-            "more_link": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera"
+            "more_label": "",
+            "more_link": ""
           }
         },
         "product_9RVxKG": {
           "type": "product",
           "settings": {
             "product": "gku-d1000-4k-triple-channel-dash-cam",
+            "image": "shopify://shop_images/D1000_f6fb665d-879e-4d2a-a086-5e076c6e501c.jpg",
             "title": "D1000",
             "subtitle": "4K+1080P+1080P",
             "buy_label": "Buy now",
             "buy_link": "shopify://products/gku-d1000-4k-triple-channel-dash-cam",
-            "more_label": "Learn more",
-            "more_link": "shopify://products/gku-d1000-4k-triple-channel-dash-cam"
+            "more_label": "",
+            "more_link": ""
           }
         },
         "product_f68ynV": {
           "type": "product",
           "settings": {
-            "product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "product": "gku-e200-4k-front-rear-dash-cam",
+            "image": "shopify://shop_images/E200_b5c3805e-5f69-4f63-b437-a24bc88aaac4.jpg",
             "title": "E200",
             "subtitle": "4K+4K",
             "buy_label": "Buy now",
-            "buy_link": "shopify://products/products-gku-d200-4k-wifi-dash-cam",
-            "more_label": "Learn more",
-            "more_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear"
+            "buy_link": "shopify://products/gku-e200-4k-front-rear-dash-cam",
+            "more_label": "",
+            "more_link": ""
           }
         },
         "row_cpWCR7": {
           "type": "row",
           "settings": {
             "label": "Positioning",
-            "value_1": "Triple-Camera Detail",
+            "value_1": "High-Resolution 3-Channel",
             "value_2": "Complete 3-Channel Coverage",
-            "value_3": "Maximum Front & Rear Detail"
+            "value_3": "Dual 4K Image Quality"
           }
         },
         "row_tJqjmh": {
@@ -941,17 +952,17 @@
           "settings": {
             "label": "Best For",
             "value_1": "Rideshare & Professional Drivers",
-            "value_2": "Front + Cabin + Rear CoverageHigh-Resolution Front & Rear",
-            "value_3": "High-Resolution Front & Rear"
+            "value_2": "Front + Cabin + Rear Coverage",
+            "value_3": "Maximum Front & Rear Detail"
           }
         },
         "row_CR9nxh": {
           "type": "row",
           "settings": {
             "label": "Camera Channels",
-            "value_1": "3 Channel",
-            "value_2": "3 Channel",
-            "value_3": "2 Channel"
+            "value_1": "3CH",
+            "value_2": "3CH",
+            "value_3": "2CH"
           }
         },
         "row_VJa6A6": {
@@ -969,15 +980,15 @@
             "label": "Night Vision",
             "value_1": "IR Cabin Night Vision",
             "value_2": "IR Cabin Night Vision",
-            "value_3": "STARVIS 2"
+            "value_3": "STARVIS 2+WDR"
           }
         },
         "row_acUdgQ": {
           "type": "row",
           "settings": {
             "label": "Wi-Fi",
-            "value_1": "5.8GHz",
-            "value_2": "5.8GHz",
+            "value_1": "Wi-Fi 6 / 5.8GHz",
+            "value_2": "5.0GHz",
             "value_3": "Wi-Fi 6 / 5.8GHz"
           }
         },
@@ -1015,7 +1026,7 @@
       ],
       "name": "XTU Product Compare",
       "settings": {
-        "heading": "Compare｜Which GKU Dash Cam Is Right for You?",
+        "heading": "Which GKU Dash Cam Is Right for You?",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -1026,12 +1037,12 @@
         "content_width": 1200,
         "label_width": 140,
         "image_ratio": "1 / 1",
-        "btn_bg": "#ffcc00",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
         "btn_color": "#111111",
-        "btn_bg_hover": "#f0b800",
-        "btn_color_hover": "#111111",
+        "btn_bg_hover": "{{ settings.color_palette.foreground }}",
+        "btn_color_hover": "{{ settings.color_palette.background }}",
         "show_btn_arrow": false,
-        "link_color": "#0070ca",
+        "link_color": "{{ settings.color_palette.color7 }}",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -1147,18 +1158,11 @@
             "value": "Built-in GPS"
           }
         },
-        "spec_NweQt6": {
-          "type": "spec",
-          "settings": {
-            "label": "GPS Tracking",
-            "value": "Built-in GPS"
-          }
-        },
         "spec_UGbeFa": {
           "type": "spec",
           "settings": {
             "label": "Storage",
-            "value": "2.4GHz / 5.8GHz Wi-Fi + GKU GO App"
+            "value": "5.8GHz Wi-Fi + GKU GO App"
           }
         },
         "spec_ajGPh3": {
@@ -1181,6 +1185,13 @@
             "label": "Night Vision",
             "value": "WDR + IR Cabin"
           }
+        },
+        "spec_weYgLP": {
+          "type": "spec",
+          "settings": {
+            "label": "FOV",
+            "value": "170°+140°"
+          }
         }
       },
       "block_order": [
@@ -1189,11 +1200,11 @@
         "spec_3wzBqR",
         "spec_BrRRVY",
         "spec_7JqJaj",
-        "spec_NweQt6",
         "spec_UGbeFa",
         "spec_ajGPh3",
         "spec_LifkWt",
-        "spec_YPiLYg"
+        "spec_YPiLYg",
+        "spec_weYgLP"
       ],
       "name": "XTU Product Specs",
       "settings": {
@@ -1207,9 +1218,9 @@
         "initial_visible": 6,
         "view_more_label": "View More",
         "view_less_label": "View Less",
-        "btn_bg": "#ffffff",
+        "btn_bg": "{{ settings.color_palette.color7 }}",
         "btn_color": "#111111",
-        "btn_border": "#111111",
+        "btn_border": "{{ settings.color_palette.color7 }}",
         "btn_bg_hover": "#111111",
         "btn_color_hover": "#ffffff",
         "padding_top": 0,

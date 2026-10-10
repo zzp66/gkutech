@@ -166,27 +166,10 @@
           "agent_border_radius": 16
         }
       },
-      "pagefly-ai-page-builder": {
-        "type": "shopify://apps/pagefly-ai-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
-        "disabled": false,
-        "settings": {}
-      },
       "246135896087123374": {
         "type": "shopify://apps/1clickpopup/blocks/main/233742b9-16cb-4f75-9de7-3fe92c29fdff",
         "disabled": false,
         "settings": {}
-      },
-      "914574027208035924": {
-        "type": "shopify://apps/camouflage-hide-variants/blocks/hide-oos-variants/12f79890-9cb9-4b70-ac12-64dd825d687e",
-        "disabled": false,
-        "settings": {
-          "theme_name": "",
-          "selector_type": "",
-          "hide_oos_variants": false,
-          "strikethrough_oos_variants": false,
-          "other_file_name": "",
-          "reverse_options": false
-        }
       },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
@@ -211,6 +194,21 @@
         "settings": {
           "widget_type": "review-widget"
         }
+      },
+      "1373006865992778634": {
+        "type": "shopify://apps/impact-com/blocks/utt/adac1a7f-d17f-4936-8a12-45628cdd8add",
+        "disabled": false,
+        "settings": {}
+      },
+      "1602673961235493340": {
+        "type": "shopify://apps/impact-com/blocks/consent_mode/adac1a7f-d17f-4936-8a12-45628cdd8add",
+        "disabled": false,
+        "settings": {}
+      },
+      "9259287601446025245": {
+        "type": "shopify://apps/gocertify/blocks/script-injector/db5e2393-7255-4f50-ada1-7de16398f487",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
@@ -222,7 +220,7 @@
       "color4": "#f5f5f7",
       "color5": "#0070ca",
       "color6": "#f8f9fd",
-      "color7": "#FFF002",
+      "color7": "#FFF001",
       "color8": "#9ce13e",
       "color9": "#016d8e",
       "color10": "#535f11",

@@ -16,9 +16,18 @@
         "enable_collection_description": true,
         "description": "",
         "enable_collection_image": true,
+        "media_ratio": "21 / 9",
         "content_position": "center",
         "show_overlay": false,
         "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "#0070ca",
+        "border_color": "#000000",
+        "button_bg": "#FFF001",
+        "button_bg_hover": "#FFF001",
+        "button_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -28,6 +37,7 @@
       "blocks": {
         "filters": {
           "type": "filters",
+          "disabled": true,
           "static": true,
           "settings": {
             "enable_filtering": true,
@@ -55,6 +65,12 @@
           "settings": {
             "product_card_gap": 0,
             "background_color": "#ffffff",
+            "atc_bg": "#FFF001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "{{ settings.color_palette.foreground }}",
+            "atc_color_hover": "#ffffff",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -153,10 +169,159 @@
         "padding-block-start": 0,
         "padding-block-end": 80
       }
+    },
+    "blocks_GAVAXe": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e8e86db_6QUtge": {
+          "type": "ai_gen_block_e8e86db",
+          "settings": {
+            "eyebrow": "",
+            "heading": "What's New at GKU?",
+            "description": "",
+            "card_1_title": "E200: Dual 4K Detail",
+            "card_1_copy": "4K front and 4K rear recording for drivers who prioritize maximum detail from both directions.",
+            "card_1_link_label": "E200",
+            "card_1_url": "shopify://products/gku-e200-4k-front-rear-dash-cam",
+            "card_2_title": "D600 Pro Max: Advanced Night Imaging",
+            "card_2_copy": "STARVIS 2 imaging with 4K front recording for clearer everyday and nighttime footage.",
+            "card_2_link_label": "D600 Pro Max",
+            "card_2_url": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
+            "card_3_title": "C300: Complete 3-Channel Coverage",
+            "card_3_copy": "Front, cabin and rear recording for rideshare, family and professional drivers.",
+            "card_3_link_label": "C300",
+            "card_3_url": "shopify://products/gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+            "card_4_title": "C600: 4G Connected Protection",
+            "card_4_copy": "Remote vehicle connectivity with 4G LTE, GPS tracking and connected protection.",
+            "card_4_link_label": "C600",
+            "card_4_url": "shopify://products/gku-c600-4g-lte-dual-dash-cam",
+            "desktop_width_percent": 100,
+            "background_color": "#F8F9FD",
+            "card_background_color": "#FFFFFF",
+            "text_color": "#000000",
+            "muted_text_color": "#333333",
+            "accent_color": "#FFF002",
+            "accent_text_color": "#000000",
+            "link_color": "#FFF001",
+            "card_border_color": "#DFDFDF",
+            "card_radius": 8
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e8e86db_6QUtge"
+      ],
+      "name": "Driver savings",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "17899695080e8a62e3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9ed9d45_G8UVwR": {
+          "type": "ai_gen_block_9ed9d45",
+          "settings": {
+            "heading": "Shop by Need",
+            "need_1_type": "product",
+            "need_1_label": "Dual 4K",
+            "need_1_collection": "",
+            "need_1_product": "gku-e200-4k-front-rear-dash-cam",
+            "need_2_type": "collection",
+            "need_2_label": "Night Vision",
+            "need_2_collection": "night-vision-dash-cams",
+            "need_2_product": "",
+            "need_3_type": "collection",
+            "need_3_label": "3-Channel",
+            "need_3_collection": "3-channel-dash-cams",
+            "need_3_product": "",
+            "need_4_type": "product",
+            "need_4_label": "4G LTE",
+            "need_4_collection": "",
+            "need_4_product": "gku-c600-4g-lte-dual-dash-cam",
+            "desktop_width_percent": 100,
+            "padding_vertical": 32,
+            "heading_size": 32,
+            "mobile_heading_size": 24,
+            "button_text_size": 16,
+            "border_radius": 16,
+            "border_width": 1,
+            "background_color": "#F8F9FD",
+            "text_color": "#000000",
+            "button_color": "#FFF002",
+            "button_text_color": "#000000",
+            "button_hover_color": "{{ settings.color_palette.color1 }}",
+            "button_hover_text_color": "#FFFFFF",
+            "border_color": "{{ settings.color_palette.color7 }}",
+            "focus_color": "{{ settings.color_palette.foreground }}",
+            "muted_text_color": "{{ settings.color_palette.background }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9ed9d45_G8UVwR"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "xtu_collection_banner",
-    "main"
+    "main",
+    "blocks_GAVAXe",
+    "17899695080e8a62e3"
   ]
 }

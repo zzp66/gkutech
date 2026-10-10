@@ -46,7 +46,7 @@
             "tag_2_link": "shopify://collections/4k-dash-cam",
             "tag_3_label": "Starvis 2 Dash Cams",
             "tag_3_link": "shopify://collections/starvis-2-dash-cam",
-            "tag_4_label": "前后双录",
+            "tag_4_label": "",
             "tag_4_link": "",
             "tag_5_label": "Wi-Fi 连接",
             "tag_5_link": "",
@@ -65,12 +65,12 @@
             "tag_radius": 16,
             "vertical_padding": 20,
             "text_color": "#000000",
-            "tag_background_color": "#FFF001",
+            "tag_background_color": "#fff001",
             "tag_text_color": "#000000",
-            "tag_border_color": "#DFDFDF",
-            "tag_hover_background_color": "#FFF002",
+            "tag_border_color": "#dfdfdf",
+            "tag_hover_background_color": "#fff002",
             "tag_hover_text_color": "#000000",
-            "focus_color": "#0070CA"
+            "focus_color": "#0070ca"
           },
           "blocks": {}
         }
@@ -118,11 +118,11 @@
             "tag_1_label": "Front Only Dash Cam",
             "tag_1_link": "shopify://collections/1-channel-dash-cams",
             "tag_2_label": "Front&Real Dash Cams",
-            "tag_2_link": "shopify://collections/2-channel-dash-cams",
+            "tag_2_link": "shopify://collections/front-and-rear-dash-cams",
             "tag_3_label": "3-Channel Dash Cams",
             "tag_3_link": "shopify://collections/3-channel-dash-cams",
-            "tag_4_label": "前后双录",
-            "tag_4_link": "",
+            "tag_4_label": "Rear Cameras",
+            "tag_4_link": "shopify://collections/rear-camera-for-dash-cam-car-backup-rear-view-camera-accessory",
             "tag_5_label": "Wi-Fi 连接",
             "tag_5_link": "",
             "tag_6_label": "GPS 定位",
@@ -140,12 +140,12 @@
             "tag_radius": 16,
             "vertical_padding": 20,
             "text_color": "#000000",
-            "tag_background_color": "#FFF001",
+            "tag_background_color": "#fff001",
             "tag_text_color": "#000000",
-            "tag_border_color": "#DFDFDF",
-            "tag_hover_background_color": "#FFF002",
+            "tag_border_color": "#dfdfdf",
+            "tag_hover_background_color": "#fff002",
             "tag_hover_text_color": "#000000",
-            "focus_color": "#0070CA"
+            "focus_color": "#0070ca"
           },
           "blocks": {}
         }
@@ -215,12 +215,12 @@
             "tag_radius": 16,
             "vertical_padding": 20,
             "text_color": "#000000",
-            "tag_background_color": "#FFF001",
+            "tag_background_color": "#fff001",
             "tag_text_color": "#000000",
-            "tag_border_color": "#DFDFDF",
-            "tag_hover_background_color": "#FFF002",
+            "tag_border_color": "#dfdfdf",
+            "tag_hover_background_color": "#fff002",
             "tag_hover_text_color": "#000000",
-            "focus_color": "#0070CA"
+            "focus_color": "#0070ca"
           },
           "blocks": {}
         }
@@ -404,7 +404,7 @@
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
-          "2-channel-dash-cams",
+          "front-and-rear-dash-cams",
           "3-channel-dash-cams",
           "4k-dash-cam",
           "1-channel-dash-cams",

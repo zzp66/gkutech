@@ -236,11 +236,11 @@
         "product_HYRmxt": {
           "type": "product",
           "settings": {
-            "product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "product": "gku-e200-4k-front-rear-dash-cam",
             "title": "E200",
             "subtitle": "Starvis 2&HDR Imaging",
             "buy_label": "Buy now",
-            "buy_link": "shopify://products/gku-e200-true-dual-4k-dash-cam-front-and-rear",
+            "buy_link": "shopify://products/gku-e200-4k-front-rear-dash-cam",
             "more_label": "",
             "more_link": ""
           }

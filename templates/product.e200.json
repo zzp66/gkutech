@@ -168,7 +168,6 @@
             "text_aEtTtq": {
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
-              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "enable_collapse": true,
@@ -404,18 +403,18 @@
             "target": "shopify-section-template--22594749825251__xtu_tab_images_yfFbMx"
           }
         },
-        "item_4YAHeY": {
-          "type": "item",
-          "settings": {
-            "label": "Compare",
-            "target": "xtu-product-compare-template--22594749825251__xtu_product_compare_U7Mgh3"
-          }
-        },
         "nav_comparison": {
           "type": "item",
           "settings": {
             "label": "What's in the Package",
             "target": "xtu-rich-content-template--22594749825251__xtu_rich_content_pjPMPg"
+          }
+        },
+        "item_4YAHeY": {
+          "type": "item",
+          "settings": {
+            "label": "Compare",
+            "target": "xtu-product-compare-template--22594749825251__xtu_product_compare_U7Mgh3"
           }
         },
         "item_dwBHWi": {
@@ -436,8 +435,8 @@
       "block_order": [
         "nav_overview",
         "nav_specs",
-        "item_4YAHeY",
         "nav_comparison",
+        "item_4YAHeY",
         "item_dwBHWi",
         "item_MUMPVp"
       ],
@@ -759,6 +758,18 @@
     "xtu_product_compare_U7Mgh3": {
       "type": "xtu-product-compare",
       "blocks": {
+        "product_f68ynV": {
+          "type": "product",
+          "settings": {
+            "product": "gku-e200-4k-front-rear-dash-cam",
+            "title": "E200",
+            "subtitle": "4K+4K Front and Rear Dash Cam with STARVIS 2 & HDR",
+            "buy_label": "Buy now",
+            "buy_link": "",
+            "more_label": "Learn more",
+            "more_link": ""
+          }
+        },
         "product_9RVxKG": {
           "type": "product",
           "settings": {
@@ -767,18 +778,6 @@
             "subtitle": "4K+1080P Front and Rear Dash Cam with Starvis 2",
             "buy_label": "Buy now",
             "buy_link": "shopify://products/gku-d600-pro-max-starvis-2-dual-dash-cam",
-            "more_label": "Learn more",
-            "more_link": ""
-          }
-        },
-        "product_f68ynV": {
-          "type": "product",
-          "settings": {
-            "product": "gku-e200-true-dual-4k-dash-cam-front-and-rear",
-            "title": "E200",
-            "subtitle": "4K+4K Front and Rear Dash Cam with STARVIS 2 & HDR",
-            "buy_label": "Buy now",
-            "buy_link": "",
             "more_label": "Learn more",
             "more_link": ""
           }
@@ -810,15 +809,6 @@
             "value_3": "132g"
           }
         },
-        "row_CkmctA": {
-          "type": "row",
-          "settings": {
-            "label": "Dimensions",
-            "value_1": "71 × 50 × 33 mm",
-            "value_2": "69 × 48 × 32 mm",
-            "value_3": "66 × 46 × 30 mm"
-          }
-        },
         "row_bhUKp4": {
           "type": "row",
           "settings": {
@@ -839,12 +829,11 @@
         }
       },
       "block_order": [
-        "product_9RVxKG",
         "product_f68ynV",
+        "product_9RVxKG",
         "row_cpWCR7",
         "row_acUdgQ",
         "row_kPnbhK",
-        "row_CkmctA",
         "row_bhUKp4",
         "row_C9qiRD"
       ],

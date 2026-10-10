@@ -1,0 +1,92 @@
+{% doc %}
+  @prompt
+    我想生成一个表格产品参数对比的section,表头是产品展示链接，下方是所有的产品参数，参数可做增加，需要有主副标题和备注note，符合gku这个模板的风格
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-compare-{{ ai_gen_id }} { display: block; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; margin: 0 auto; color: {{ block.settings.text_color }}; font-family: {{ block.settings.body_font.family }}; }
+  .ai-compare-{{ ai_gen_id }}__intro { margin-bottom: 28px; }
+  .ai-compare-{{ ai_gen_id }}__eyebrow { margin: 0 0 8px; color: {{ block.settings.accent_color }}; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .ai-compare-{{ ai_gen_id }}__title { margin: 0; font-family: {{ block.settings.heading_font.family }}; font-size: {{ block.settings.heading_size }}px; line-height: 1.1; }
+  .ai-compare-{{ ai_gen_id }}__note { margin: 12px 0 0; color: {{ block.settings.muted_color }}; font-size: 14px; line-height: 1.6; }
+  .ai-compare-{{ ai_gen_id }}__scroll { overflow-x: auto; border: 1px solid {{ block.settings.border_color }}; border-radius: {{ block.settings.radius }}px; background: {{ block.settings.background_color }}; }
+  .ai-compare-{{ ai_gen_id }}__table { width: 100%; min-width: 680px; border-collapse: collapse; table-layout: fixed; }
+  .ai-compare-{{ ai_gen_id }} th, .ai-compare-{{ ai_gen_id }} td { padding: 18px 16px; border-bottom: 1px solid {{ block.settings.border_color }}; vertical-align: middle; text-align: center; }
+  .ai-compare-{{ ai_gen_id }} th:first-child, .ai-compare-{{ ai_gen_id }} td:first-child { width: 20%; text-align: left; background: {{ block.settings.label_background }}; font-weight: 700; }
+  .ai-compare-{{ ai_gen_id }} thead th { background: {{ block.settings.header_background }}; }
+  .ai-compare-{{ ai_gen_id }} tbody tr:last-child td { border-bottom: 0; }
+  .ai-compare-{{ ai_gen_id }}__product-image { display: block; width: 100%; height: 130px; object-fit: contain; margin-bottom: 12px; }
+  .ai-compare-{{ ai_gen_id }}__placeholder { display: flex; align-items: center; justify-content: center; height: 130px; margin-bottom: 12px; background: {{ block.settings.label_background }}; }
+  .ai-compare-{{ ai_gen_id }}__placeholder svg { width: 80px; height: 80px; color: {{ block.settings.muted_color }}; }
+  .ai-compare-{{ ai_gen_id }}__product-name { display: block; color: {{ block.settings.text_color }}; font-size: 15px; line-height: 1.35; text-decoration: none; }
+  .ai-compare-{{ ai_gen_id }}__product-name:hover { color: {{ block.settings.accent_color }}; text-decoration: underline; }
+  .ai-compare-{{ ai_gen_id }}__value { white-space: pre-line; font-size: 14px; line-height: 1.5; }
+  @media screen and (max-width: 749px) { .ai-compare-{{ ai_gen_id }} { width: 100%; } .ai-compare-{{ ai_gen_id }}__title { font-size: {{ block.settings.heading_size | times: 0.75 }}px; } .ai-compare-{{ ai_gen_id }} th, .ai-compare-{{ ai_gen_id }} td { padding: 14px 12px; } }
+{% endstyle %}
+
+<product-compare-{{ ai_gen_id }} class="ai-compare-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-compare-{{ ai_gen_id }}__intro">
+    {% if block.settings.eyebrow != blank %}<p class="ai-compare-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow }}</p>{% endif %}
+    {% if block.settings.title != blank %}<h2 class="ai-compare-{{ ai_gen_id }}__title">{{ block.settings.title }}</h2>{% endif %}
+    {% if block.settings.note != blank %}<div class="ai-compare-{{ ai_gen_id }}__note">{{ block.settings.note }}</div>{% endif %}
+  </div>
+  <div class="ai-compare-{{ ai_gen_id }}__scroll">
+    <table class="ai-compare-{{ ai_gen_id }}__table">
+      <thead><tr><th scope="col">{{ block.settings.parameter_heading }}</th>{% for product in block.settings.products %}<th scope="col">{% if product.featured_image %}<img class="ai-compare-{{ ai_gen_id }}__product-image" src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy">{% else %}<div class="ai-compare-{{ ai_gen_id }}__placeholder">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>{% endif %}<a class="ai-compare-{{ ai_gen_id }}__product-name" href="{{ product.url }}">{{ product.title }}</a></th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for i in (1..10) %}
+          {% liquid
+            assign enabled_key = 'row_' | append: i | append: '_enabled'
+            assign label_key = 'row_' | append: i | append: '_label'
+            assign values_key = 'row_' | append: i | append: '_values'
+            assign enabled = block.settings[enabled_key]
+            assign label = block.settings[label_key]
+            assign values = block.settings[values_key] | split: '|'
+          %}
+          {% if enabled and label != blank %}<tr><th scope="row">{{ label }}</th>{% for product in block.settings.products %}<td class="ai-compare-{{ ai_gen_id }}__value">{{ values[forloop.index0] | default: '—' | strip }}</td>{% endfor %}</tr>{% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</product-compare-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!customElements.get('product-compare-{{ ai_gen_id }}')) { customElements.define('product-compare-{{ ai_gen_id }}', class extends HTMLElement { connectedCallback() {} }); }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "产品参数对比",
+  "settings": [
+    {"type":"header","content":"标题内容"},
+    {"type":"text","id":"eyebrow","label":"眉题","default":"产品对比"},
+    {"type":"text","id":"title","label":"主标题","default":"选择适合你的产品"},
+    {"type":"textarea","id":"note","label":"备注 note","default":"参数信息仅供参考，实际规格请以产品页面为准。"},
+    {"type":"text","id":"parameter_heading","label":"参数列标题","default":"参数"},
+    {"type":"product_list","id":"products","label":"对比产品","limit":4},
+    {"type":"header","content":"参数行"},
+    {"type":"paragraph","content":"每行的参数值请按产品顺序填写，并使用竖线 | 分隔，例如：128GB | 256GB | 512GB。启用更多行即可增加参数。"},
+    {"type":"checkbox","id":"row_1_enabled","label":"启用参数 1","default":true},{"type":"text","id":"row_1_label","label":"参数 1 名称","default":"存储容量"},{"type":"textarea","id":"row_1_values","label":"参数 1 数值","default":"128GB | 256GB | 512GB"},
+    {"type":"checkbox","id":"row_2_enabled","label":"启用参数 2","default":true},{"type":"text","id":"row_2_label","label":"参数 2 名称","default":"视频分辨率"},{"type":"textarea","id":"row_2_values","label":"参数 2 数值","default":"4K UHD | 2.5K QHD | 1080P"},
+    {"type":"checkbox","id":"row_3_enabled","label":"启用参数 3","default":true},{"type":"text","id":"row_3_label","label":"参数 3 名称","default":"视角"},{"type":"textarea","id":"row_3_values","label":"参数 3 数值","default":"170° | 160° | 140°"},
+    {"type":"checkbox","id":"row_4_enabled","label":"启用参数 4","default":true},{"type":"text","id":"row_4_label","label":"参数 4 名称","default":"夜视"},{"type":"textarea","id":"row_4_values","label":"参数 4 数值","default":"增强夜视 | 高清夜视 | 标准夜视"},
+    {"type":"checkbox","id":"row_5_enabled","label":"启用参数 5","default":false},{"type":"text","id":"row_5_label","label":"参数 5 名称","default":"GPS"},{"type":"textarea","id":"row_5_values","label":"参数 5 数值","default":"内置 | 可选 | 不支持"},
+    {"type":"checkbox","id":"row_6_enabled","label":"启用参数 6","default":false},{"type":"text","id":"row_6_label","label":"参数 6 名称","default":"停车监控"},{"type":"textarea","id":"row_6_values","label":"参数 6 数值","default":"支持 | 支持 | 不支持"},
+    {"type":"checkbox","id":"row_7_enabled","label":"启用参数 7","default":false},{"type":"text","id":"row_7_label","label":"参数 7 名称","default":"连接方式"},{"type":"textarea","id":"row_7_values","label":"参数 7 数值","default":"Wi-Fi | Wi-Fi | USB"},
+    {"type":"checkbox","id":"row_8_enabled","label":"启用参数 8","default":false},{"type":"text","id":"row_8_label","label":"参数 8 名称","default":"尺寸"},{"type":"textarea","id":"row_8_values","label":"参数 8 数值","default":"紧凑型 | 标准型 | 紧凑型"},
+    {"type":"checkbox","id":"row_9_enabled","label":"启用参数 9","default":false},{"type":"text","id":"row_9_label","label":"参数 9 名称","default":"重量"},{"type":"textarea","id":"row_9_values","label":"参数 9 数值","default":"120g | 145g | 98g"},
+    {"type":"checkbox","id":"row_10_enabled","label":"启用参数 10","default":false},{"type":"text","id":"row_10_label","label":"参数 10 名称","default":"保修"},{"type":"textarea","id":"row_10_values","label":"参数 10 数值","default":"12个月 | 24个月 | 12个月"},
+    {"type":"header","content":"样式"},
+    {"type":"range","id":"desktop_width_percent","label":"桌面宽度","min":50,"max":100,"step":5,"unit":"%","default":100},
+    {"type":"font_picker","id":"heading_font","label":"标题字体","default":"inter_n6"},{"type":"font_picker","id":"body_font","label":"正文字体","default":"inter_n4"},
+    {"type":"range","id":"heading_size","label":"标题大小","min":20,"max":64,"step":2,"unit":"px","default":40},{"type":"range","id":"radius","label":"圆角","min":0,"max":24,"step":2,"unit":"px","default":8},
+    {"type":"color","id":"text_color","label":"文字颜色","default":"#111111"},{"type":"color","id":"muted_color","label":"辅助文字颜色","default":"#535F11"},{"type":"color","id":"accent_color","label":"强调颜色","default":"#0070CA"},{"type":"color","id":"background_color","label":"表格背景","default":"#FFFFFF"},{"type":"color","id":"header_background","label":"表头背景","default":"#FFF002"},{"type":"color","id":"label_background","label":"参数栏背景","default":"#F8F9FD"},{"type":"color","id":"border_color","label":"边框颜色","default":"#DFDFDF"}
+  ],
+  "presets": [{"name":"产品参数对比"}],
+  "tag": null,
+  "class": "product-comparison-block"
+}
+{% endschema %}

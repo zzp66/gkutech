@@ -1,0 +1,1573 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "counter",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 50,
+            "thumbnail_radius": 4,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 12,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 24,
+            "sticky_details_desktop": true,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_xrnftG": {
+              "type": "text",
+              "name": "t:names.product_title",
+              "settings": {
+                "text": "<h1>{{ closest.product.title }}</h1>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-heading--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_tVjtKg": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h5",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "klip_coupons_klip_app_section_product_KrQYmx": {
+              "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
+              "settings": {
+                "margin_top": 10,
+                "margin_bottom": 10
+              }
+            },
+            "xtu_key_specs": {
+              "type": "xtu-key-specs",
+              "name": "XTU Key Specs",
+              "disabled": true,
+              "settings": {
+                "value_color": "#111111",
+                "label_color": "#8e9297",
+                "gap": 16,
+                "padding_top": 8,
+                "padding_bottom": 8
+              },
+              "blocks": {
+                "spec_1": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "0.2s",
+                    "label": "Trigger"
+                  },
+                  "blocks": {}
+                },
+                "spec_2": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "64",
+                    "label": "MP"
+                  },
+                  "blocks": {}
+                },
+                "spec_3": {
+                  "type": "_xtu-key-spec-item",
+                  "settings": {
+                    "value": "4k",
+                    "label": "Resolution"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "spec_1",
+                "spec_2",
+                "spec_3"
+              ]
+            },
+            "text_aEtTtq": {
+              "type": "xtu-expandable-description",
+              "name": "XTU Expand Description",
+              "disabled": true,
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "enable_collapse": true,
+                "collapsed_height": 200,
+                "expand_label": "Learn more",
+                "collapse_label": "Show less",
+                "background_color": "#f5f5f7",
+                "text_color": "#333333",
+                "link_color": "#0070ca",
+                "corner_radius": 16,
+                "padding": 20
+              },
+              "blocks": {}
+            },
+            "xtu_feature_benefits": {
+              "type": "xtu-feature-benefits",
+              "name": "XTU Feature Benefits",
+              "disabled": true,
+              "settings": {
+                "heading": "Service & Benefits",
+                "columns": "2",
+                "background_color": "#f5f5f7",
+                "heading_color": "#111111",
+                "text_color": "#111111",
+                "icon_background": "#ffffff",
+                "corner_radius": 16,
+                "padding": 20,
+                "gap": 16
+              },
+              "blocks": {
+                "benefit_1": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "Price Guarantee"
+                  },
+                  "blocks": {}
+                },
+                "benefit_2": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "1-Day Delivery"
+                  },
+                  "blocks": {}
+                },
+                "benefit_3": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "Members' Benefits"
+                  },
+                  "blocks": {}
+                },
+                "benefit_4": {
+                  "type": "_xtu-feature-benefit-item",
+                  "settings": {
+                    "label": "5-Year Warranty"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "benefit_1",
+                "benefit_2",
+                "benefit_3",
+                "benefit_4"
+              ]
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 10,
+                "padding-block-end": 10,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "xtu_addon_bundle": {
+              "type": "xtu-addon-bundle",
+              "name": "XTU Addon Bundle",
+              "disabled": true,
+              "settings": {
+                "heading": "Up To 60% Off Add-Ons",
+                "max_products": 5,
+                "learn_more_label": "Learn More",
+                "accent_color": "#0070ca",
+                "card_radius": 12
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "custom",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "custom",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "custom",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "atc_bg": "{{ settings.color_palette.foreground }}",
+                    "atc_color": "{{ settings.color_palette.background }}",
+                    "atc_bg_hover": "{{ settings.color_palette.color7 }}",
+                    "atc_color_hover": "{{ settings.color_palette.foreground }}",
+                    "atc_bg_disabled": "#e8e8ed",
+                    "atc_color_disabled": "#8e8e93",
+                    "custom_button_background": "#1590f2",
+                    "custom_button_text": "#ffffff",
+                    "custom_button_border": "#1590f2"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "xtu_info_modal_support": {
+              "type": "xtu-info-modal",
+              "name": "XTU Info Modal",
+              "settings": {
+                "title": "Global Support",
+                "content": "<p><a href=\"mailto:support@gkutech.com\" target=\"_blank\" title=\"mailto:support@gkutech.com\">support@gkutech.com</a></p>"
+              },
+              "blocks": {}
+            },
+            "xtu_payment_methods": {
+              "type": "xtu-payment-methods",
+              "name": "XTU Payment Methods",
+              "settings": {
+                "title": "Payment Method"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_xrnftG",
+            "price_tVjtKg",
+            "klip_coupons_klip_app_section_product_KrQYmx",
+            "xtu_key_specs",
+            "text_aEtTtq",
+            "xtu_feature_benefits",
+            "variant_picker_R3rGDr",
+            "xtu_addon_bundle",
+            "buy_buttons_eYQEYi",
+            "xtu_info_modal_support",
+            "xtu_payment_methods"
+          ]
+        }
+      },
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "atc_bg": "{{ settings.color_palette.color7 }}",
+        "atc_color": "{{ settings.color_palette.foreground }}",
+        "atc_bg_hover": "{{ settings.color_palette.foreground }}",
+        "atc_color_hover": "#ffffff",
+        "atc_bg_disabled": "#e8e8ed",
+        "atc_color_disabled": "#8e8e93",
+        "padding-block-start": 40,
+        "padding-block-end": 60
+      }
+    },
+    "xtu_product_nav": {
+      "type": "xtu-product-nav",
+      "blocks": {
+        "nav_overview": {
+          "type": "item",
+          "settings": {
+            "label": "Overview",
+            "target": "xtu-rich-content-template--22636936462563__xtu_rich_content_xWzDGq"
+          }
+        },
+        "nav_comparison": {
+          "type": "item",
+          "settings": {
+            "label": "How to Install？",
+            "target": "xtu-rich-content-template--22636936462563__xtu_rich_content_VcNFVQ"
+          }
+        },
+        "item_4YAHeY": {
+          "type": "item",
+          "settings": {
+            "label": "Compare",
+            "target": "xtu-product-compare-template--22636936462563__xtu_product_compare_U7Mgh3"
+          }
+        },
+        "nav_specs": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "label": "Highlights",
+            "target": "xtu_bento_grid_r6pyGH"
+          }
+        },
+        "item_dwBHWi": {
+          "type": "item",
+          "settings": {
+            "label": "FAQs",
+            "target": "xtu_faq_kT3Ffi"
+          }
+        },
+        "item_MUMPVp": {
+          "type": "item",
+          "settings": {
+            "label": "Specs",
+            "target": "xtu_product_specs_7XrG4D"
+          }
+        }
+      },
+      "block_order": [
+        "nav_overview",
+        "nav_comparison",
+        "item_4YAHeY",
+        "nav_specs",
+        "item_dwBHWi",
+        "item_MUMPVp"
+      ],
+      "settings": {
+        "aria_label": "Product sections",
+        "alignment": "center",
+        "spacing_top": 40,
+        "spacing_top_mobile": 24,
+        "sticky_offset": 0,
+        "background_color": "#ffffff",
+        "border_color": "#dddddd",
+        "active_color": "{{ settings.color_palette.foreground }}",
+        "inactive_color": "{{ settings.color_palette.color1 }}"
+      }
+    },
+    "xtu_rich_content_xWzDGq": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "richtext_BmDGmM": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h4>4 Fuse Types. One Flexible Installation Solution.</h4>",
+            "align": "center",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_3y47m6": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>The GKU Upgraded Multi-Fuse ACC Hardwire Kit includes eight fuse taps across four commonly used fuse types—Low-Profile Mini, Mini, ATO (Regular) and Micro2—for wider vehicle compatibility. It provides stable USB-C power for 24-hour parking monitoring and is compatible with all GKU dash cams.</strong></p><ul><li>8-Piece Fuse Tap Set</li><li>4 Fuse Types Included</li><li>24H Parking Surveillance</li><li>12V–24V Input</li><li>5V/2.5A USB-C Output</li><li>11.8V ± 0.2V Low-Voltage Protection</li><li>Compatible with All GKU Dash Cams</li></ul>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_8m7aCi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/XC016banner_363de65a-0232-42e6-a553-5c6da45e7a78.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU hardwire kit for 24-hour parking monitoring, compatible with GKU dash cams",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_mc4zHh": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Professional Installation Recommended:</strong><br/>Installation requires connection to your vehicle’s fuse box. Vehicle electrical systems vary by model, so professional installation is recommended to help ensure safe and correct wiring.</p><p><a href=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/GKU-V9H_3A.pdf?v=1779175986\"><strong>View the User Manual</strong></a></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_aeWarc": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h4>24H Parking Protection, Automatically Activated<br/></h4>",
+            "align": "center",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_fzpwBc": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p>The GKU ACC Hardwire Kit keeps your compatible dash cam powered after the engine is turned off, allowing parking monitoring to continue while your vehicle is unattended.</p><p>Built-in ACC detection automatically recognizes the vehicle's ignition status:</p><p><strong>Engine On → Driving Recording</strong><br/><strong>Engine Off → Parking Monitoring</strong></p><p><br/>Compatible with 12V–24V vehicle electrical systems, including cars, SUVs, EVs, trucks, vans and buses.<br/><br/></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_wDFY7C": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/b22bf0de-2bd8-4f93-83f6-27f2c3b0556d.__CR0_0_1464_600_PT0_SX1464_V1_814c93aa-133e-4654-a2b8-e293249c6fd1.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU hardwire kit for 12V–24V cars, trucks, SUVs, buses and vans with 24-hour parking monitoring",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_CXEUXh": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Depending on your dash cam model, parking monitoring may include:</strong></p><p><strong>G-Sensor Collision Detection</strong><br/>Automatically starts recording when an impact or sudden vibration is detected.</p><p><strong>Time-Lapse Recording</strong><br/>Records continuously at a lower frame rate to capture longer parking periods while reducing storage and power consumption.</p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_r6hCkM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/9e9f30e0-1d4c-4441-b748-9569008c78c6.__CR0_0_1464_600_PT0_SX1464_V1_2985c75a-7135-4a64-9356-614c2b831be5.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU dash cam parking monitoring with G-sensor collision detection and time-lapse recording, hardwire kit required",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_86HTwD": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h4>Stable Power with Built-In Battery Protection<br/></h4>",
+            "align": "center",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_k9EW86": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p>Designed for compatible <strong>USB-C dash cams</strong>, the GKU ACC Hardwire Kit delivers stable <strong>5V/2.5A power</strong> for reliable recording and parking monitoring.<br/></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_UrfMCn": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p>The GKU ACC Hardwire Kit includes multiple built-in safety protections to help provide stable power while reducing the risk of excessive battery drain.</p><ul><li>Low-Voltage Protection<br/></li><li>Over-Current Protection<br/></li><li>Short-Circuit Protection<br/></li><li>Overheat Protection<br/></li></ul><p>The hardwire kit includes low-voltage protection and automatically cuts power when battery voltage falls below approximately 11.8V ± 0.2V. Overheating, overcurrent and short-circuit protection provide additional safety during continuous parking monitoring.<br/><br/></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_EaEhcf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/97006e2d-3d90-4cac-a561-d6fc014699ed.__CR0_0_1464_600_PT0_SX1464_V1_641b63d5-194e-4ea8-aace-8b46ae985ae4.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU hardwire kit with low-voltage battery protection and automatic power cut-off during parking monitoring",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_4CxC6y": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Note:</strong> This kit is not compatible with Mini USB or Micro USB dash cameras and is not recommended for vehicle electrical systems above 24V.</p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_ecM6KU": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h4>Clean and Permanent Installation</h4>",
+            "align": "center",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_YBdcYa": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h5>Benefits</h5><ul><li>Reduces visible cable clutter<br/></li><li>Keeps the cigarette lighter port available<br/></li><li>Creates a cleaner, factory-style appearance<br/></li><li>Provides a permanent power connection<br/></li><li>11.5 ft / 3.5 m cable for flexible routing<br/></li></ul><h5>Wiring Guide</h5><p><strong>Red Wire — ACC</strong><br/>Connect to a fuse that receives power when the ignition is on.</p><p><strong>Yellow Wire — BATT</strong><br/>Connect to a constant-power fuse.</p><p><strong>Black Wire — GND</strong><br/>Connect to a suitable metal grounding point.</p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_aCbU7N": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/14e8ebef-df09-4be5-a1dc-0e1d5c881a8e.__CR0_0_1464_600_PT0_SX1464_V1_0f2e878a-f45b-45b1-9288-4b2b0b6d4f15.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU hardwire kit wiring overview with ACC, battery, ground wires and 11.5 ft cable length",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_LbBABn": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>4 Fuse Types, 8 Fuse Taps Included</strong></p><p><strong>The upgraded GKU Hardwire Kit includes eight Add-A-Circuit fuse taps across four commonly used fuse types:</strong></p><ul><li>2 × Low-Profile Mini</li><li>2 × Mini</li><li>2 × ATO / Regular</li><li>2 × Micro2</li></ul>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_W69kqe": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Professional installation is recommended if you are unfamiliar with vehicle fuse boxes or automotive wiring.</strong></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "richtext_BmDGmM",
+        "richtext_3y47m6",
+        "image_8m7aCi",
+        "richtext_mc4zHh",
+        "richtext_aeWarc",
+        "richtext_fzpwBc",
+        "image_wDFY7C",
+        "richtext_CXEUXh",
+        "image_r6hCkM",
+        "richtext_86HTwD",
+        "richtext_k9EW86",
+        "richtext_UrfMCn",
+        "image_EaEhcf",
+        "richtext_4CxC6y",
+        "richtext_ecM6KU",
+        "richtext_YBdcYa",
+        "image_aCbU7N",
+        "richtext_LbBABn",
+        "richtext_W69kqe"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "GKU Type-C Multi-Fuse ACC Hardwire Kit",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_rich_content_VcNFVQ": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "richtext_ecVdxt": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Follow the installation images below for a quick overview, or watch the video for a complete step-by-step guide.<br/></strong></p>",
+            "align": "left",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_MNMGNR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/f0d06089-be1a-473b-9a10-9315ac0c93fc.__CR0_0_1464_600_PT0_SX1464_V1_9d8541c7-d64c-450a-a299-89e8998c3d99.jpg",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 0,
+            "spacing_mobile": 0
+          }
+        },
+        "image_CEy8DG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5e92c080-ae84-434f-838e-1bec699e2df1.__CR0_0_1464_600_PT0_SX1464_V1_0aedee7d-3dac-4ce2-903b-00fed5318cd5.jpg",
+            "media_ratio": "auto",
+            "alt": "GKU ACC hardwire kit wiring steps for add-a-fuse tap, ACC and battery connections, and vehicle grounding",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "richtext_mpNnLd": {
+          "type": "richtext",
+          "settings": {
+            "body": "<h4>Watch the Installation Video</h4><p>For detailed installation guidance, watch the full installation video below.</p>",
+            "align": "center",
+            "font_size": 14,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "video_qFdfYW": {
+          "type": "video",
+          "settings": {
+            "video_source": "youtube",
+            "video_url": "https://youtu.be/P9vhU9pRZ8I",
+            "media_ratio": "16 / 9",
+            "alt": "GKU ACC hardwire kit installation steps for dash cam placement, fuse box location and fuse slot identification",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "richtext_ecVdxt",
+        "image_MNMGNR",
+        "image_CEy8DG",
+        "richtext_mpNnLd",
+        "video_qFdfYW"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "How to Install the GKU ACC Hardwire Kit",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_media_grid_HCTTxt": {
+      "type": "xtu-media-grid",
+      "blocks": {
+        "column_amVfh6": {
+          "type": "column",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "media_ratio": "auto",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_amVfh6"
+      ],
+      "disabled": true,
+      "name": "XTU Media Grid",
+      "settings": {
+        "heading": "XTU S7 Pro Max",
+        "subheading": "XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "media_radius": 16,
+        "gap_desktop": 8,
+        "gap_mobile": 4,
+        "padding_top": 28,
+        "padding_bottom": 12,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "xtu_tab_images_yfFbMx": {
+      "type": "xtu-tab-images",
+      "blocks": {
+        "tab_nGtdLW": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_Q3Ywfh": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Face Retouch",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_mFRRrR": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Portrait Mode",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_AtzgRP": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Live Streaming",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_qEia3z": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Panorama",
+            "media_type": "image",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_nGtdLW",
+        "tab_Q3Ywfh",
+        "tab_mFRRrR",
+        "tab_AtzgRP",
+        "tab_qEia3z"
+      ],
+      "disabled": true,
+      "name": "XTU Tab Images",
+      "settings": {
+        "heading": "Personalize Your Look",
+        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#0070ca",
+        "tab_color_active": "#ffffff",
+        "show_tab_underline": false,
+        "content_width": 1200,
+        "gallery_ratio": "auto",
+        "image_radius": 16,
+        "padding_top": 12,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_product_compare_U7Mgh3": {
+      "type": "xtu-product-compare",
+      "blocks": {
+        "product_9RVxKG": {
+          "type": "product",
+          "settings": {
+            "product": "gku-dash-cam-3m-acc-hardwire-kit",
+            "title": "Standard ACC",
+            "subtitle": "",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-dash-cam-3m-acc-hardwire-kit",
+            "more_label": "Learn more",
+            "more_link": "shopify://products/gku-dash-cam-3m-acc-hardwire-kit"
+          }
+        },
+        "product_prVryw": {
+          "type": "product",
+          "settings": {
+            "product": "gku-adjustable-obd-hardwire-kit-for-dash-camera",
+            "image": "shopify://shop_images/OBD.jpg",
+            "title": "OBD Hardwire Kit",
+            "subtitle": "",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-adjustable-obd-hardwire-kit-for-dash-camera",
+            "more_label": "Learn more",
+            "more_link": "shopify://products/gku-adjustable-obd-hardwire-kit-for-dash-camera"
+          }
+        },
+        "product_f68ynV": {
+          "type": "product",
+          "settings": {
+            "product": "gku-type-c-dash-cam-hardwire-kit",
+            "title": "Multi-Fuse ACC",
+            "subtitle": "",
+            "buy_label": "Buy now",
+            "buy_link": "shopify://products/gku-type-c-dash-cam-hardwire-kit",
+            "more_label": "Learn more",
+            "more_link": "shopify://products/gku-type-c-dash-cam-hardwire-kit"
+          }
+        },
+        "product_rfjdJX": {
+          "type": "product",
+          "settings": {
+            "product": "gku-dash-cam-multifuse-hardwire-kit-3-meter-type-c-acc-adjustable-voltage",
+            "title": "Product name",
+            "subtitle": "Product highlight",
+            "buy_label": "Buy now",
+            "buy_link": "",
+            "more_label": "Learn more",
+            "more_link": ""
+          }
+        },
+        "row_cpWCR7": {
+          "type": "row",
+          "settings": {
+            "label": "Best For",
+            "value_1": "Simple permanent installation",
+            "value_2": "Easy DIY installation",
+            "value_3": "Wider fuse compatibility"
+          }
+        },
+        "row_acUdgQ": {
+          "type": "row",
+          "settings": {
+            "label": "Connection",
+            "value_1": "Vehicle Fuse Box",
+            "value_2": "OBD Port",
+            "value_3": "Vehicle Fuse Box"
+          }
+        },
+        "row_kPnbhK": {
+          "type": "row",
+          "settings": {
+            "label": "Installation",
+            "value_1": "Professional",
+            "value_2": "Plug & Play",
+            "value_3": "Professional"
+          }
+        },
+        "row_CkmctA": {
+          "type": "row",
+          "settings": {
+            "label": "Fuse Types",
+            "value_1": "Mini",
+            "value_2": "—",
+            "value_3": "Low-Profile Mini / Mini / ATO / Micro2"
+          }
+        },
+        "row_EgURKm": {
+          "type": "row",
+          "settings": {
+            "label": "Input Voltage",
+            "value_1": "12V–24V",
+            "value_2": "12V–24V",
+            "value_3": "12V–24V"
+          }
+        },
+        "row_jaxaLQ": {
+          "type": "row",
+          "settings": {
+            "label": "Output",
+            "value_1": "5V / 3A",
+            "value_2": "5V / 3A",
+            "value_3": "5V / 2.5A"
+          }
+        },
+        "row_pEmiXE": {
+          "type": "row",
+          "settings": {
+            "label": "Connector",
+            "value_1": "USB-C",
+            "value_2": "USB-C",
+            "value_3": "USB-C"
+          }
+        },
+        "row_BxNtfG": {
+          "type": "row",
+          "settings": {
+            "label": "Low-Voltage Protection",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        },
+        "row_AayTfy": {
+          "type": "row",
+          "settings": {
+            "label": "24H Parking Mode",
+            "value_1": "✓",
+            "value_2": "✓",
+            "value_3": "✓"
+          }
+        }
+      },
+      "block_order": [
+        "product_9RVxKG",
+        "product_prVryw",
+        "product_f68ynV",
+        "product_rfjdJX",
+        "row_cpWCR7",
+        "row_acUdgQ",
+        "row_kPnbhK",
+        "row_CkmctA",
+        "row_EgURKm",
+        "row_jaxaLQ",
+        "row_pEmiXE",
+        "row_BxNtfG",
+        "row_AayTfy"
+      ],
+      "name": "XTU Product Compare",
+      "settings": {
+        "heading": "Choose the Right GKU Hardwire Kit",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "card_background": "#f5f5f7",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "label_width": 140,
+        "image_ratio": "1 / 1",
+        "btn_bg": "#ffcc00",
+        "btn_color": "#111111",
+        "btn_bg_hover": "#f0b800",
+        "btn_color_hover": "#111111",
+        "show_btn_arrow": false,
+        "link_color": "#0070ca",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_bento_grid_r6pyGH": {
+      "type": "xtu-bento-grid",
+      "blocks": {
+        "tile_9dbRcD": {
+          "type": "tile",
+          "settings": {
+            "title": "4K Brilliance in Your Hand",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "1",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_EVTLwj": {
+          "type": "tile",
+          "settings": {
+            "title": "Smart Tracking, Always in Focus",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "2",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_FNpjEM": {
+          "type": "tile",
+          "settings": {
+            "title": "Rock-Solid 3-Axis Stabilization",
+            "text_color": "#ff6a00",
+            "text_align": "left",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "3",
+            "col_span_desktop": 1,
+            "row_start_desktop": "1",
+            "row_span_desktop": 1,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 2,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 1
+          }
+        },
+        "tile_fbziEN": {
+          "type": "tile",
+          "settings": {
+            "title": "Vertical Shooting Made for Socials",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "3",
+            "col_span_desktop": 1,
+            "row_start_desktop": "2",
+            "row_span_desktop": 3,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_UPeepa": {
+          "type": "tile",
+          "settings": {
+            "title": "Portable Sleek Design",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "1",
+            "col_span_desktop": 1,
+            "row_start_desktop": "3",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 1,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        },
+        "tile_E98MX4": {
+          "type": "tile",
+          "settings": {
+            "title": "Splendid Low-Light Performance",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "text_position": "top",
+            "media_type": "image",
+            "video_url": "",
+            "link": "",
+            "col_start_desktop": "2",
+            "col_span_desktop": 1,
+            "row_start_desktop": "3",
+            "row_span_desktop": 2,
+            "col_start_mobile": "auto",
+            "col_span_mobile": 2,
+            "row_start_mobile": "auto",
+            "row_span_mobile": 2
+          }
+        }
+      },
+      "block_order": [
+        "tile_9dbRcD",
+        "tile_EVTLwj",
+        "tile_FNpjEM",
+        "tile_fbziEN",
+        "tile_UPeepa",
+        "tile_E98MX4"
+      ],
+      "disabled": true,
+      "name": "XTU Bento Grid",
+      "settings": {
+        "heading": "The Highlights",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "card_radius": 16,
+        "show_image_overlay": false,
+        "columns_desktop": 3,
+        "row_height_desktop": 200,
+        "gap_desktop": 16,
+        "columns_mobile": 2,
+        "row_height_mobile": 180,
+        "gap_mobile": 8,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_faq_kT3Ffi": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_37LRTh": {
+          "type": "item",
+          "settings": {
+            "question": "What is different about the Multi-Fuse ACC Hardwire Kit?",
+            "answer": "<p>The Multi-Fuse ACC Hardwire Kit includes <strong>8 fuse taps across 4 commonly used fuse types</strong>, providing wider compatibility with different vehicle fuse boxes.</p><p>The package includes:</p><ul><li>2 × Low-Profile Mini</li><li>2 × Mini</li><li>2 × ATO / Regular</li><li>2 × Micro2</li></ul>"
+          }
+        },
+        "item_f6em3x": {
+          "type": "item",
+          "settings": {
+            "question": "Does this hardwire kit support 24-hour parking mode?",
+            "answer": "<p>Yes. The hardwire kit provides continuous power from your vehicle’s electrical system, allowing compatible GKU dash cams to use parking monitoring features while the vehicle is turned off.</p><p>Available parking mode functions may vary by dash cam model.</p>"
+          }
+        },
+        "item_XHwPXM": {
+          "type": "item",
+          "settings": {
+            "question": "How can I confirm that my dash cam has entered Parking Mode?",
+            "answer": "<p>If the hardwire kit is installed correctly and Parking Mode is supported by your dash cam, the <strong>Parking Mode</strong> option should appear in the GKU GO app.</p><p>Make sure Parking Mode is enabled in the app before testing.</p>"
+          }
+        },
+        "item_77XCPT": {
+          "type": "item",
+          "settings": {
+            "question": "My dash cam does not enter Parking Mode. What should I check?",
+            "answer": "<p>Please check the following:</p><ul><li>Make sure Parking Mode is enabled in the GKU GO app.</li><li>Connect the <strong>red wire</strong> to an ACC / ignition-switched fuse.</li><li>Connect the <strong>yellow wire</strong> to a constant-power fuse.</li><li>Connect the <strong>black wire</strong> to a clean metal grounding point.</li><li>Make sure the selected fuse adapter matches your vehicle’s fuse box.</li></ul><p>Incorrect wiring may prevent the dash cam from switching properly between driving and parking modes.</p>"
+          }
+        },
+        "item_3jErwb": {
+          "type": "item",
+          "settings": {
+            "question": "Why does my dash cam stay on after the engine is turned off?",
+            "answer": "<p>The red and yellow wires may be connected incorrectly.</p><p>Make sure:</p><p><strong>Red Wire — ACC</strong><br/>Connect to a fuse that powers on and off with the vehicle ignition.</p><p><strong>Yellow Wire — BATT</strong><br/>Connect to a constant-power fuse.</p><p>If these wires are reversed, the dash cam may not switch correctly between driving and parking modes.</p>"
+          }
+        },
+        "item_V6G4dQ": {
+          "type": "item",
+          "settings": {
+            "question": "Will the hardwire kit drain my car battery?",
+            "answer": "<p>The kit includes <strong>low-voltage protection</strong> to help reduce excessive battery drain.</p><p>When the vehicle battery voltage falls below approximately <strong>11.8V ± 0.2V</strong>, the hardwire kit automatically cuts power.</p><p>It also includes <strong>overheating, overcurrent and short-circuit protection</strong> for additional safety.</p>"
+          }
+        },
+        "item_wtaBKG": {
+          "type": "item",
+          "settings": {
+            "question": "What fuse types are included?",
+            "answer": "<p>The package includes <strong>8 fuse taps across 4 fuse types</strong>:</p><ul><li>2 × Low-Profile Mini</li><li>2 × Mini</li><li>2 × ATO / Regular</li><li>2 × Micro2</li></ul><p>Choose the fuse adapter that matches your vehicle’s fuse box before installation.</p>"
+          }
+        },
+        "item_zYMq8B": {
+          "type": "item",
+          "settings": {
+            "question": "Is this hardwire kit compatible with GKU dash cams?",
+            "answer": "<p>Yes. The hardwire kit is compatible with <strong>all GKU dash cams</strong>.</p><p>It uses a <strong>USB-C connector</strong> and provides a <strong>5V/2.5A output</strong>.</p>"
+          }
+        },
+        "item_JUbFak": {
+          "type": "item",
+          "settings": {
+            "question": "What vehicles are compatible with this hardwire kit?",
+            "answer": "<p>The kit supports <strong>12V–24V vehicle electrical systems</strong> and is suitable for a wide range of vehicles.</p><p>Always check your vehicle’s fuse type and electrical system before installation.</p>"
+          }
+        },
+        "item_wUUiiz": {
+          "type": "item",
+          "settings": {
+            "question": "Is professional installation recommended?",
+            "answer": "<p>Yes. Installation requires connection to the vehicle’s fuse box and electrical system.</p><p>If you are unfamiliar with automotive wiring or fuse boxes, professional installation is recommended to help ensure safe and correct installation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_37LRTh",
+        "item_f6em3x",
+        "item_XHwPXM",
+        "item_77XCPT",
+        "item_3jErwb",
+        "item_V6G4dQ",
+        "item_wtaBKG",
+        "item_zYMq8B",
+        "item_JUbFak",
+        "item_wUUiiz"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQs",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "content_radius": 16,
+        "open_first": false,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_product_specs_7XrG4D": {
+      "type": "xtu-product-specs",
+      "blocks": {
+        "spec_hynD6P": {
+          "type": "spec",
+          "settings": {
+            "label": "Product Type",
+            "value": "Multi-Fuse ACC Hardwire Kit"
+          }
+        },
+        "spec_pBAqEr": {
+          "type": "spec",
+          "settings": {
+            "label": "Input Voltage",
+            "value": "12V–24V"
+          }
+        },
+        "spec_rDD8Gq": {
+          "type": "spec",
+          "settings": {
+            "label": "Output",
+            "value": "5V/2.5A"
+          }
+        },
+        "spec_6XdedW": {
+          "type": "spec",
+          "settings": {
+            "label": "Connector",
+            "value": "USB-C"
+          }
+        },
+        "spec_EpUKmz": {
+          "type": "spec",
+          "settings": {
+            "label": "Cable Length",
+            "value": "11.5 ft / 3.5 m"
+          }
+        },
+        "spec_TgHcPf": {
+          "type": "spec",
+          "settings": {
+            "label": "Connection",
+            "value": "ACC / BATT / GND"
+          }
+        },
+        "spec_LJDF8j": {
+          "type": "spec",
+          "settings": {
+            "label": "Included Fuse Adapter",
+            "value": "Low-Profile Mini / Mini / ATO / Micro2"
+          }
+        },
+        "spec_YbTXrb": {
+          "type": "spec",
+          "settings": {
+            "label": "Fuse Tap Set",
+            "value": "8 pcs total — 2 × Low-Profile Mini, 2 × Mini, 2 × ATO / Regular, 2 × Micro2"
+          }
+        },
+        "spec_FCPGXr": {
+          "type": "spec",
+          "settings": {
+            "label": "Low-Voltage Protection",
+            "value": "11.8V ± 0.2V"
+          }
+        },
+        "spec_XkjdET": {
+          "type": "spec",
+          "settings": {
+            "label": "Safety Protection",
+            "value": "Low Voltage, Over-Current, Short-Circuit, Reverse Connection & Overheat Protection"
+          }
+        }
+      },
+      "block_order": [
+        "spec_hynD6P",
+        "spec_pBAqEr",
+        "spec_rDD8Gq",
+        "spec_6XdedW",
+        "spec_EpUKmz",
+        "spec_TgHcPf",
+        "spec_LJDF8j",
+        "spec_YbTXrb",
+        "spec_FCPGXr",
+        "spec_XkjdET"
+      ],
+      "name": "XTU Product Specs",
+      "settings": {
+        "heading": "Product Information",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "content_width": 1200,
+        "columns_desktop": "2",
+        "initial_visible": 15,
+        "view_more_label": "View More",
+        "view_less_label": "View Less",
+        "btn_bg": "#ffffff",
+        "btn_color": "#111111",
+        "btn_border": "#111111",
+        "btn_bg_hover": "#111111",
+        "btn_color_hover": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_tab_images_EeXx8Q": {
+      "type": "xtu-tab-images",
+      "blocks": {
+        "tab_BeyiXk": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Background Bokeh",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_JYiMht": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Face Retouch",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_ebVhYc": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Portrait Mode",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_Ret4F6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Live Streaming",
+            "media_type": "image",
+            "video_url": ""
+          }
+        },
+        "tab_Tfwx8f": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Panorama",
+            "media_type": "image",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_BeyiXk",
+        "tab_JYiMht",
+        "tab_ebVhYc",
+        "tab_Ret4F6",
+        "tab_Tfwx8f"
+      ],
+      "disabled": true,
+      "name": "XTU Tab Images",
+      "settings": {
+        "heading": "Personalize Your Look",
+        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "tab_rail_bg": "#dfe3e8",
+        "tab_color": "#000000",
+        "tab_bg_active": "#0070ca",
+        "tab_color_active": "#ffffff",
+        "show_tab_underline": false,
+        "content_width": 1200,
+        "gallery_ratio": "16 / 10",
+        "image_radius": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "xtu_product_nav",
+    "xtu_rich_content_xWzDGq",
+    "xtu_rich_content_VcNFVQ",
+    "xtu_media_grid_HCTTxt",
+    "xtu_tab_images_yfFbMx",
+    "xtu_product_compare_U7Mgh3",
+    "xtu_bento_grid_r6pyGH",
+    "xtu_faq_kT3Ffi",
+    "xtu_product_specs_7XrG4D",
+    "xtu_tab_images_EeXx8Q"
+  ]
+}
