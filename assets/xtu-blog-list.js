@@ -166,12 +166,6 @@
 
     bindSection(section);
 
-    section.querySelectorAll('[data-xtu-blog-tab]').forEach(function (link) {
-      if (link instanceof HTMLAnchorElement && !link.classList.contains('is-active')) {
-        prefetchUrl(link.href);
-      }
-    });
-
     if (!history.state?.xtuBlog) {
       history.replaceState({ xtuBlog: window.location.href }, '', window.location.href);
     }

@@ -32,6 +32,68 @@
         "padding_bottom": 60
       }
     },
+    "blocks_BrLVtf": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_856d43e_ybPyf6": {
+          "type": "ai_gen_block_856d43e",
+          "settings": {
+            "heading": "",
+            "tags": "Mount Bracket Kit | /collections/mount-bracket-kit\nHardwire Kits | /collections/hardwire-kit\nRear Cameras | /collections/rear-camera\nCharger Cables | /collections/charger-cable\nMemory Cards | /collections/dash-cam-memory-cards",
+            "alignment": "center",
+            "desktop_width_percent": 100,
+            "vertical_padding": 16,
+            "mobile_vertical_padding": 8,
+            "heading_size": 24,
+            "mobile_heading_size": 20,
+            "tag_size": 15,
+            "mobile_tag_size": 14,
+            "border_radius": 16,
+            "border_width": 1,
+            "heading_color": "#000000",
+            "tag_background": "#FFF001",
+            "tag_text_color": "#000000",
+            "border_color": "{{ settings.color_palette.color7 }}",
+            "tag_hover_background": "{{ settings.color_palette.foreground }}",
+            "tag_hover_text_color": "#FFFFFF",
+            "focus_color": "#0070CA"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_856d43e_ybPyf6"
+      ],
+      "name": "Shop by tags",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -65,9 +127,9 @@
           "settings": {
             "product_card_gap": 0,
             "background_color": "#ffffff",
-            "atc_bg": "#FFF001",
+            "atc_bg": "#fff001",
             "atc_color": "{{ settings.color_palette.foreground }}",
-            "atc_bg_hover": "#FFBF01",
+            "atc_bg_hover": "#ffbf01",
             "atc_color_hover": "{{ settings.color_palette.background }}",
             "atc_bg_disabled": "#e8e8ed",
             "atc_color_disabled": "#8e8e93",
@@ -343,6 +405,7 @@
   },
   "order": [
     "xtu_collection_banner",
+    "blocks_BrLVtf",
     "main",
     "collection_list_3rVCDp"
   ]

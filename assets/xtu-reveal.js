@@ -60,11 +60,12 @@
     el.style.visibility = '';
     el.style.pointerEvents = '';
     el.style.filter = '';
+    el.style.willChange = '';
 
     if (window.gsap) {
       try {
         window.gsap.killTweensOf(el);
-        window.gsap.set(el, { clearProps: 'transform,opacity,visibility,filter' });
+        window.gsap.set(el, { clearProps: 'transform,opacity,visibility,filter,willChange' });
       } catch (_) {}
     }
   }
@@ -187,6 +188,8 @@
           ease: EASE,
           stagger: kids.length ? STAGGER : 0,
           overwrite: 'auto',
+          willChange: 'transform, opacity',
+          clearProps: 'willChange',
         }
       );
     } else {
@@ -201,6 +204,8 @@
           delay: d,
           ease: EASE,
           overwrite: 'auto',
+          willChange: 'transform, opacity',
+          clearProps: 'willChange',
         }
       );
     }
@@ -290,8 +295,10 @@
       }, 50);
     });
 
+    var resizeTimer = null;
     window.addEventListener('resize', function () {
-      window.setTimeout(refresh, 100);
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(refresh, 100);
     });
 
     var wrap = document.querySelector('.page-wrapper');

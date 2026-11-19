@@ -1,0 +1,28 @@
+{%- comment -%}
+  Usage:
+    {%- capture params -%}
+      {%- render 'data-url-parameters' key: 'from_collection' -%}
+    {%- endcapture -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign params = routes.storefront_login_url | split: '?' | last | split: '&'
+
+  for param in params
+    assign parts = param | split: '='
+    if parts[0] == 'return_to'
+      assign nested_url = parts[1] | url_decode
+      if nested_url contains '?'
+        assign nested_params = nested_url | split: '?' | last | split: '&'
+        for nested_param in nested_params
+          assign nested_parts = nested_param | split: '='
+          if nested_parts[0] == key
+            echo nested_parts[1] | url_decode
+            break
+          endif
+        endfor
+      endif
+      break
+    endif
+  endfor
+-%}

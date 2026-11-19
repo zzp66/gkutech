@@ -1,0 +1,33 @@
+{%- liquid
+  assign image_loading = 'lazy'
+  assign image_priority = 'auto'
+  if priority
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  endif
+  assign cover_mismatch = false
+  if card_article.image.aspect_ratio < 1.2 or card_article.image.aspect_ratio > 1.65
+    assign cover_mismatch = true
+  endif
+  assign word_count = card_article.content | strip_html | split: ' ' | size
+  assign read_minutes = word_count | plus: 199 | divided_by: 200 | at_least: 1
+  assign summary = card_article.excerpt_or_content | strip_html | strip
+-%}
+<article class="seo-blog-card seo-blog-card--{{ card_style }}" data-article-id="{{ card_article.id }}">
+  <a class="seo-blog-card__link" href="{{ card_article.url | escape }}">
+    <div class="seo-blog-card__media{% if cover_mismatch %} seo-blog-card__media--contain{% endif %}">
+      {%- if card_article.image != blank -%}
+        {%- if cover_mismatch -%}{{ card_article.image | image_url: width: 600 | image_tag: class: 'seo-blog-card__backdrop', loading: image_loading, alt: '', aria-hidden: 'true' }}{%- endif -%}
+        {{ card_article.image | image_url: width: 1200 | image_tag: class: 'seo-blog-card__image', loading: image_loading, fetchpriority: image_priority, widths: '360, 540, 720, 960, 1200', sizes: '(min-width: 1280px) 35vw, (min-width: 750px) 50vw, 100vw', alt: card_article.title }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'seo-blog-card__placeholder' }}
+      {%- endif -%}
+      {%- if card_article.tags.first != blank -%}<span class="seo-blog-card__tag">{{ card_article.tags.first | escape }}</span>{%- endif -%}
+    </div>
+    <div class="seo-blog-card__body">
+      {%- if card_style == 'regular' -%}<h3 class="seo-blog-card__title">{{ card_article.title | escape }}</h3>{%- else -%}<h2 class="seo-blog-card__title">{{ card_article.title | escape }}</h2>{%- endif -%}
+      {%- if summary != blank -%}<p class="seo-blog-card__excerpt">{{ summary | escape }}</p>{%- endif -%}
+      <p class="seo-blog-card__meta"><time datetime="{{ card_article.published_at | date: '%Y-%m-%d' }}">{{ card_article.published_at | date: section.settings.date_format }}</time><span aria-hidden="true">·</span><span>{{ section.settings.reading_time_label | replace: ':count', read_minutes | escape }}</span></p>
+    </div>
+  </a>
+</article>

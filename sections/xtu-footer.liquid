@@ -1,5 +1,9 @@
 {% liquid
   assign subscribe_heading = section.settings.subscribe_heading
+  assign subscribe_heading_tag = section.settings.subscribe_heading_tag | default: 'h3'
+  unless subscribe_heading_tag == 'h2' or subscribe_heading_tag == 'h3' or subscribe_heading_tag == 'p'
+    assign subscribe_heading_tag = 'h3'
+  endunless
   assign subscribe_desc = section.settings.subscribe_description
   assign subscribe_button = section.settings.subscribe_button_label
   assign email_placeholder = section.settings.email_placeholder
@@ -135,7 +139,7 @@
       <aside class="xtu-footer__aside">
         <div class="xtu-footer__subscribe">
           {% if subscribe_heading != blank %}
-            <h3 class="xtu-footer__subscribe-title">{{ subscribe_heading | escape }}</h3>
+            <{{ subscribe_heading_tag }} class="xtu-footer__subscribe-title">{{ subscribe_heading | escape }}</{{ subscribe_heading_tag }}>
           {% endif %}
           {% if subscribe_desc != blank %}
             <p class="xtu-footer__subscribe-desc">{{ subscribe_desc | escape }}</p>
@@ -480,6 +484,9 @@
   }
 
   .xtu-footer__subscribe-title {
+    font-style: var(--font-h3--style);
+    letter-spacing: var(--font-h3--letter-spacing);
+    text-transform: var(--font-h3--case);
     margin: 0 0 10px;
     padding: 0;
     min-height: calc(16px * 1.2);
@@ -777,6 +784,26 @@
       "id": "subscribe_heading",
       "label": "订阅标题",
       "default": "Subscribe"
+    },
+    {
+      "type": "select",
+      "id": "subscribe_heading_tag",
+      "label": "订阅标题 HTML 标签",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "p",
+          "label": "段落"
+        }
+      ],
+      "default": "h3"
     },
     {
       "type": "text",

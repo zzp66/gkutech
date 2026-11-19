@@ -54,6 +54,7 @@
 >
   <div class="xtu-article__inner">
     <header class="xtu-article__header">
+      {% if settings.show_breadcrumb_nav %}{% render 'breadcrumbs', class: 'breadcrumbs-inline' %}{% endif %}
       <h1 class="xtu-article__title">{{ article.title | escape }}</h1>
 
       {% if show_date or show_author %}
@@ -87,6 +88,7 @@
           | image_tag:
             class: 'xtu-article__image',
             loading: 'eager',
+            fetchpriority: 'high',
             widths: '750, 1100, 1500, 2000, 2400',
             sizes: '(max-width: 749px) calc(100vw - 30px), min(1200px, calc(100vw - 80px))',
             alt: cover_alt
@@ -96,7 +98,7 @@
 
     <div class="xtu-article__body rte">
       <rte-formatter>
-        {{ article.content }}
+        {% render 'xtu-lazy-richtext-media', html: article.content %}
       </rte-formatter>
     </div>
 
@@ -259,10 +261,6 @@
     {% endif %}
   </div>
 </section>
-
-<script type="application/ld+json">
-  {{ article | structured_data }}
-</script>
 
 {% schema %}
 {

@@ -6,10 +6,11 @@
   {% render 'text', fallback_text: product_title, block: block %}
 {% else %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
+  {%- capture breadcrumb_product_url -%}{% render 'breadcrumb-product-url', url: closest.product.url %}{%- endcapture -%}
   <a
     class="contents user-select-text"
     ref="productTitleLink"
-    href="{{ closest.product.url }}"
+    href="{{ breadcrumb_product_url | escape }}"
   >
     {% render 'text', fallback_text: product_title, block: block %}
   </a>

@@ -1,0 +1,20 @@
+{%- liquid
+  assign cover_mismatch = false
+  if card_article.image.aspect_ratio < 1.2 or card_article.image.aspect_ratio > 1.65
+    assign cover_mismatch = true
+  endif
+  assign words = card_article.content | strip_html | split: ' ' | size
+  assign minutes = words | plus: 199 | divided_by: 200 | at_least: 1
+-%}
+<article class="seo-author-card" data-author-card data-article-id="{{ card_article.id }}">
+  <a class="seo-author-card__link" href="{{ card_article.url | escape }}">
+    <div class="seo-author-card__media{% if cover_mismatch %} seo-author-card__media--contain{% endif %}">
+      {%- if card_article.image -%}
+        {%- if cover_mismatch -%}{{ card_article.image | image_url: width: 540 | image_tag: class: 'seo-author-card__backdrop', loading: 'lazy', alt: '', aria-hidden: 'true' }}{%- endif -%}
+        {{ card_article.image | image_url: width: 960 | image_tag: class: 'seo-author-card__image', loading: 'lazy', widths: '360, 540, 720, 960', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw', alt: card_article.title }}
+      {%- else -%}{{ 'image' | placeholder_svg_tag: 'seo-author-card__placeholder' }}{%- endif -%}
+      {%- if card_article.tags.first != blank -%}<span class="seo-author-card__tag">{{ card_article.tags.first | escape }}</span>{%- endif -%}
+    </div>
+    <div class="seo-author-card__body"><h3>{{ card_article.title | escape }}</h3><p class="seo-author-card__excerpt">{{ card_article.excerpt_or_content | strip_html | truncatewords: 60 | escape }}</p><p class="seo-author-card__meta"><time datetime="{{ card_article.published_at | date: '%Y-%m-%d' }}">{{ card_article.published_at | date: section.settings.date_format }}</time><span aria-hidden="true">·</span><span>{{ section.settings.reading_time_label | replace: ':count', minutes | escape }}</span></p></div>
+  </a>
+</article>

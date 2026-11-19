@@ -1,0 +1,15 @@
+{%- comment -%}Swap a pinned article's original slot with the displaced front-slot article.{%- endcomment -%}
+{%- liquid
+  assign resolved_article = slot_article
+  assign slot_id = slot_article.id | append: ''
+  for foreign_id in foreign_pin_ids
+    if foreign_id == slot_id
+      assign displaced_handle = displaced_handles[forloop.index0]
+      assign resolved_article = articles[displaced_handle]
+      break
+    endif
+  endfor
+  if resolved_article != blank
+    render 'seo-blog-card', card_article: resolved_article, card_style: card_style, priority: priority
+  endif
+-%}

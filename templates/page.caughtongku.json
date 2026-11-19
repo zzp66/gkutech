@@ -90,11 +90,11 @@
         "text_kjLpAe": {
           "type": "text",
           "settings": {
-            "text": "<h3>Caught It? Share It. Win.</h3>",
+            "text": "<h1>Caught It? Share It. Win.</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h3",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -1091,7 +1091,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h4>Your Footage Could Pay for Your Dash Cam.</h4><h4></h4><p><strong>3 SELECTED VIDEOS<br/>↓<br/>GET YOUR GKU DASH CAM REFUNDED</strong></p>",
+            "text": "<h3>Your Footage Could Pay for Your Dash Cam.</h3><p><strong>3 SELECTED VIDEOS<br/>↓<br/>GET YOUR GKU DASH CAM REFUNDED</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1167,7 +1167,10 @@
         "border_radius": 0,
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
+      },
+      "custom_css": [
+        ".text-block[class*=\"__text_mifnUJ\"] > h3 {font-family:var(--font-h4--family);font-style:var(--font-h4--style);font-weight:var(--font-h4--weight);font-size:var(--font-h4--size);line-height:var(--font-h4--line-height);letter-spacing:var(--font-h4--letter-spacing);text-transform:var(--font-h4--case);}"
+      ]
     },
     "xtu_process_steps_xHRtpx": {
       "type": "xtu-process-steps",

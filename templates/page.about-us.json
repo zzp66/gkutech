@@ -65,7 +65,7 @@
         "text_jGkWFC": {
           "type": "text",
           "settings": {
-            "text": "<h2>About GKU</h2>",
+            "text": "<h1>About GKU</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -90,11 +90,11 @@
         "text_kjLpAe": {
           "type": "text",
           "settings": {
-            "text": "<h3>Nonstop Record, Nonstop Protect. </h3>",
+            "text": "<p>Nonstop Record, Nonstop Protect. </p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h3",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -668,8 +668,8 @@
             "logo": "shopify://shop_images/images.png",
             "icon_background": "{{ settings.color_palette.background }}",
             "name": "TikTok",
-            "text": "@gkudashcam_shop",
-            "link": "https://www.tiktok.com/@gkudashcam_shop"
+            "text": "@gku.official.us",
+            "link": "https://www.tiktok.com/@gku.official.us"
           }
         }
       },

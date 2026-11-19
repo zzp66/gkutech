@@ -5,7 +5,11 @@
 (function () {
   'use strict';
 
+  if (window.__xtuHeroBannerInit) return;
+  window.__xtuHeroBannerInit = true;
+
   var instances = new WeakMap();
+  var progressStates = new WeakMap();
 
   function getDelay(root) {
     var delay = Number(root.getAttribute('data-autoplay-delay') || 5000);
@@ -16,17 +20,29 @@
     root.style.setProperty('--xtu-hero-progress-duration', delay + 'ms');
   }
 
+  function cancelProgressFrames(root) {
+    var state = progressStates.get(root);
+    if (!state) {
+      state = { generation: 0, firstFrame: null, secondFrame: null };
+      progressStates.set(root, state);
+    }
+    state.generation += 1;
+    if (state.firstFrame !== null) cancelAnimationFrame(state.firstFrame);
+    if (state.secondFrame !== null) cancelAnimationFrame(state.secondFrame);
+    state.firstFrame = null;
+    state.secondFrame = null;
+    return state;
+  }
+
   function resetProgressFills(root) {
+    cancelProgressFrames(root);
     var bullets = root.querySelectorAll('.xtu-hero-banner__bullet');
     Array.prototype.forEach.call(bullets, function (bullet) {
       bullet.classList.remove('is-progressing');
       var fill = bullet.querySelector('.xtu-hero-banner__bullet-fill');
       if (fill) {
         fill.style.transition = 'none';
-        fill.style.width = '0%';
-        void fill.offsetWidth;
-        fill.style.transition = '';
-        fill.style.width = '';
+        fill.style.transform = 'translateX(-100%)';
       }
     });
   }
@@ -39,22 +55,37 @@
   }
 
   function beginProgressFill(root, index) {
+    var state = cancelProgressFrames(root);
+    var generation = state.generation;
     var bullets = root.querySelectorAll('.xtu-hero-banner__bullet');
     var active = bullets[index];
     if (!active) return;
+    var fill = active.querySelector('.xtu-hero-banner__bullet-fill');
 
     if (root.getAttribute('data-autoplay') === 'false') {
       active.classList.add('is-progressing');
-      var fill = active.querySelector('.xtu-hero-banner__bullet-fill');
       if (fill) {
         fill.style.transition = 'none';
-        fill.style.width = '100%';
+        fill.style.transform = 'translateX(0)';
       }
       return;
     }
 
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
+    function isCurrent() {
+      return progressStates.get(root) === state && state.generation === generation &&
+        root.isConnected !== false && active.classList.contains('is-active');
+    }
+
+    state.firstFrame = requestAnimationFrame(function () {
+      if (!isCurrent()) return;
+      state.firstFrame = null;
+      state.secondFrame = requestAnimationFrame(function () {
+        if (!isCurrent()) return;
+        state.secondFrame = null;
+        if (fill) {
+          fill.style.transition = '';
+          fill.style.transform = '';
+        }
         active.classList.add('is-progressing');
       });
     });
@@ -66,7 +97,27 @@
     setActiveBullet(root, index);
   }
 
-  function renderBullets(root, titles) {
+  function warmSlide(slides, index) {
+    var slide = slides[(index + slides.length) % slides.length];
+    if (!slide) return;
+    Array.prototype.forEach.call(slide.querySelectorAll('.xtu-hero-banner__image'), function (image) {
+      if (image.getAttribute('loading') !== 'eager') image.setAttribute('loading', 'eager');
+    });
+  }
+
+  function warmAdjacentSlides(slides, index) {
+    warmSlide(slides, index);
+    warmSlide(slides, index + 1);
+    warmSlide(slides, index - 1);
+  }
+
+  function warmAfterFirstImage(slides, index, warm) {
+    var image = slides[index].querySelector('.xtu-hero-banner__image');
+    if (!image || image.complete) warm();
+    else image.addEventListener('load', warm, { once: true });
+  }
+
+  function renderBullets(root, titles, slides) {
     var pagination = root.querySelector('[data-xtu-hero-pagination]');
     if (!pagination) return;
 
@@ -93,7 +144,12 @@
       track.appendChild(fill);
       button.appendChild(track);
 
+      function warmTarget() { warmSlide(slides, index); }
+      button.addEventListener('pointerenter', warmTarget);
+      button.addEventListener('focus', warmTarget);
+      button.addEventListener('pointerdown', warmTarget, { passive: true });
       button.addEventListener('click', function () {
+        warmTarget();
         var swiper = instances.get(root);
         if (swiper) swiper.slideToLoop(index);
       });
@@ -119,7 +175,9 @@
     });
 
     setProgressDuration(root, delay);
-    renderBullets(root, titles);
+    renderBullets(root, titles, slides);
+
+    var mediaWarmingReady = false;
 
     var swiper = new window.Swiper(container, {
       slidesPerView: 1,
@@ -152,10 +210,15 @@
           syncPagination(root, instance.realIndex);
           beginProgressFill(root, instance.realIndex);
           root.classList.add('is-ready');
+          warmAfterFirstImage(slides, instance.realIndex, function () {
+            mediaWarmingReady = true;
+            warmAdjacentSlides(slides, instance.realIndex);
+          });
         },
         /* Fire as soon as the target slide is known — keep pagination in lockstep with media */
         slideChange: function (instance) {
           syncPagination(root, instance.realIndex);
+          if (mediaWarmingReady) warmAdjacentSlides(slides, instance.realIndex);
         },
         slideChangeTransitionEnd: function (instance) {
           beginProgressFill(root, instance.realIndex);
@@ -201,6 +264,8 @@
   document.addEventListener('shopify:section:unload', function (event) {
     var root = event.target.querySelector('[data-xtu-hero-banner]');
     if (!root) return;
+    cancelProgressFrames(root);
+    progressStates.delete(root);
     var swiper = instances.get(root);
     if (swiper) {
       swiper.destroy(true, true);

@@ -1,0 +1,183 @@
+{% doc %}
+  @prompt
+    创建一个用于黑五促销合集页的横向秒杀倒计时模块，整体为紧凑的横幅。左侧显示可编辑的促销标题，默认英文“FLASH SALE”，以及可选的简短说明；右侧显示清晰醒目的倒计时数字，按天、时、分、秒排列，数字等宽、每秒更新，避免跳动。桌面端左右对齐，手机端也尽量保持文字在左、数字在右的单行横向布局，适当缩小字号和间距，不出现横向溢出。风格沿用主题字体，默认深色背景、白色文字和红色数字强调。提供可编辑设置：标题、说明、结束日期与时间及明确的时区、背景色、文字色、数字颜色、数字背景色、字号、上下间距、圆角和内容最大宽度。结束时间未设置时在编辑器中提示配置，不向顾客显示虚假的倒计时；结束后归零并显示可编辑的结束文案，可选择自动隐藏，不循环重置。适配主题编辑器预览和模块重新加载，多个倒计时实例各自独立运行。
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-flash-countdown-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: {{ block.settings.content_width }}px;
+    margin: {{ block.settings.vertical_spacing }}px auto;
+    padding: 14px 18px;
+    box-sizing: border-box;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border-radius: {{ block.settings.corner_radius }}px;
+    font-family: inherit;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__inner-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-width: 0;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__copy-{{ ai_gen_id }} { min-width: 0; flex: 1 1 auto; }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__title-{{ ai_gen_id }} {
+    margin: 0;
+    color: inherit;
+    font-size: {{ block.settings.title_size }}px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__description-{{ ai_gen_id }} { margin: 4px 0 0; font-size: 13px; line-height: 1.3; }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__timer-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__unit-{{ ai_gen_id }} {
+    min-width: 48px;
+    padding: 5px 6px;
+    box-sizing: border-box;
+    text-align: center;
+    background: {{ block.settings.digit_background }};
+    border-radius: 5px;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__value-{{ ai_gen_id }} {
+    display: block;
+    color: {{ block.settings.digit_color }};
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: {{ block.settings.digit_size }}px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__label-{{ ai_gen_id }} {
+    display: block;
+    margin-top: 3px;
+    color: {{ block.settings.text_color }};
+    font-size: 9px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__ended-{{ ai_gen_id }} { margin: 0; color: inherit; font-size: 14px; font-weight: 600; }
+  .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__notice-{{ ai_gen_id }} { margin: 0; font-size: 13px; }
+  @media screen and (max-width: 600px) {
+    .ai-flash-countdown-{{ ai_gen_id }} { padding: 11px 10px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__inner-{{ ai_gen_id }} { gap: 7px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__title-{{ ai_gen_id }} { font-size: min({{ block.settings.title_size }}px, 16px); }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__description-{{ ai_gen_id }} { font-size: 10px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__timer-{{ ai_gen_id }} { gap: 3px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__unit-{{ ai_gen_id }} { min-width: 36px; padding: 4px 3px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__value-{{ ai_gen_id }} { font-size: min({{ block.settings.digit_size }}px, 18px); }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__label-{{ ai_gen_id }} { font-size: 7px; }
+  }
+  @media screen and (max-width: 360px) {
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__inner-{{ ai_gen_id }} { gap: 4px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__unit-{{ ai_gen_id }} { min-width: 31px; padding-inline: 2px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__timer-{{ ai_gen_id }} { gap: 2px; }
+    .ai-flash-countdown-{{ ai_gen_id }} .ai-flash-countdown__title-{{ ai_gen_id }} { font-size: 13px; }
+  }
+{% endstyle %}
+
+<flash-countdown-{{ ai_gen_id }}
+  class="ai-flash-countdown-{{ ai_gen_id }}"
+  data-end="{{ block.settings.end_datetime | escape }}"
+  data-hide="{{ block.settings.auto_hide }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.end_datetime == blank %}
+    <p class="ai-flash-countdown__notice-{{ ai_gen_id }}">Set the end date, time, and time zone to enable the countdown.</p>
+  {% else %}
+    <div class="ai-flash-countdown__inner-{{ ai_gen_id }}">
+      <div class="ai-flash-countdown__copy-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}<h2 class="ai-flash-countdown__title-{{ ai_gen_id }}">{{ block.settings.title | escape }}</h2>{% endif %}
+        {% if block.settings.description != blank %}<p class="ai-flash-countdown__description-{{ ai_gen_id }}">{{ block.settings.description | escape }}</p>{% endif %}
+      </div>
+      <div class="ai-flash-countdown__timer-{{ ai_gen_id }}" role="timer" aria-label="Time remaining">
+        <div class="ai-flash-countdown__unit-{{ ai_gen_id }}"><span class="ai-flash-countdown__value-{{ ai_gen_id }}" data-days>00</span><span class="ai-flash-countdown__label-{{ ai_gen_id }}">Days</span></div>
+        <div class="ai-flash-countdown__unit-{{ ai_gen_id }}"><span class="ai-flash-countdown__value-{{ ai_gen_id }}" data-hours>00</span><span class="ai-flash-countdown__label-{{ ai_gen_id }}">Hours</span></div>
+        <div class="ai-flash-countdown__unit-{{ ai_gen_id }}"><span class="ai-flash-countdown__value-{{ ai_gen_id }}" data-minutes>00</span><span class="ai-flash-countdown__label-{{ ai_gen_id }}">Minutes</span></div>
+        <div class="ai-flash-countdown__unit-{{ ai_gen_id }}"><span class="ai-flash-countdown__value-{{ ai_gen_id }}" data-seconds>00</span><span class="ai-flash-countdown__label-{{ ai_gen_id }}">Seconds</span></div>
+      </div>
+      <p class="ai-flash-countdown__ended-{{ ai_gen_id }}" hidden>{{ block.settings.ended_text | escape }}</p>
+    </div>
+  {% endif %}
+</flash-countdown-{{ ai_gen_id }}>
+
+<script>
+  (() => {
+    const tagName = 'flash-countdown-{{ ai_gen_id }}';
+    if (customElements.get(tagName)) return;
+    class FlashCountdown extends HTMLElement {
+      connectedCallback() {
+        if (this._timer) return;
+        const raw = this.dataset.end;
+        if (!raw) return;
+        const end = new Date(raw).getTime();
+        if (!Number.isFinite(end)) return;
+        const days = this.querySelector('[data-days]');
+        const hours = this.querySelector('[data-hours]');
+        const minutes = this.querySelector('[data-minutes]');
+        const seconds = this.querySelector('[data-seconds]');
+        const timer = this.querySelector('[role="timer"]');
+        const ended = this.querySelector('.ai-flash-countdown__ended-{{ ai_gen_id }}');
+        const update = () => {
+          const remaining = Math.max(0, Math.floor((end - Date.now()) / 1000));
+          days.textContent = String(Math.floor(remaining / 86400)).padStart(2, '0');
+          hours.textContent = String(Math.floor((remaining % 86400) / 3600)).padStart(2, '0');
+          minutes.textContent = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
+          seconds.textContent = String(remaining % 60).padStart(2, '0');
+          if (remaining === 0) {
+            window.clearInterval(this._timer);
+            this._timer = null;
+            if (timer) timer.hidden = true;
+            if (ended) ended.hidden = false;
+            if (this.dataset.hide === 'true') this.hidden = true;
+          }
+        };
+        update();
+        if (end > Date.now()) this._timer = window.setInterval(update, 1000);
+      }
+      disconnectedCallback() {
+        if (this._timer) window.clearInterval(this._timer);
+        this._timer = null;
+      }
+    }
+    customElements.define(tagName, FlashCountdown);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Flash sale countdown",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "FLASH SALE" },
+    { "type": "text", "id": "description", "label": "Short description", "default": "Black Friday deals end soon" },
+    { "type": "text", "id": "end_datetime", "label": "End date and time with time zone", "info": "Use ISO 8601 format including an explicit offset, for example 2026-11-27T23:59:59+08:00. Leave blank to disable the timer." },
+    { "type": "text", "id": "ended_text", "label": "Ended message", "default": "This sale has ended" },
+    { "type": "checkbox", "id": "auto_hide", "label": "Hide banner when countdown ends", "default": false },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#171717" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "digit_color", "label": "Digits", "default": "#FF4D4D" },
+    { "type": "color", "id": "digit_background", "label": "Digit background", "default": "#2B2B2B" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "content_width", "label": "Content maximum width", "min": 600, "max": 1600, "step": 100, "unit": "px", "default": 1200 },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 12, "max": 32, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "digit_size", "label": "Digit size", "min": 14, "max": 36, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "vertical_spacing", "label": "Vertical spacing", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 12 },
+    { "type": "range", "id": "corner_radius", "label": "Corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 8 }
+  ],
+  "presets": [{ "name": "Flash sale countdown" }],
+  "tag": null,
+  "class": "flash-sale-countdown-block"
+}
+{% endschema %}

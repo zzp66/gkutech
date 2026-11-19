@@ -178,7 +178,8 @@
             "button_hover_color": "#F2C615",
             "border_radius": 8,
             "input_radius": 8,
-            "button_radius": 16
+            "button_radius": 16,
+            "hide_empty_heading": true
           },
           "blocks": {}
         },

@@ -1,0 +1,16 @@
+{%- if profile_url != blank -%}
+  {%- liquid
+    assign profile_base = profile_url | split: '#' | first
+    assign source_query = article_url | url_encode
+    assign separator = '?'
+    if profile_base contains '?'
+      assign separator = '&'
+    endif
+    assign profile_result = profile_base | append: separator | append: 'author_article=' | append: source_query
+    if profile_url contains '#'
+      assign profile_fragment = profile_url | split: '#' | last
+      assign profile_result = profile_result | append: '#' | append: profile_fragment
+    endif
+    echo profile_result
+  -%}
+{%- endif -%}

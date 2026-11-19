@@ -1,5 +1,10 @@
 import { Component } from '@theme/component';
 
+const SOCIAL_LINK_LABELS = {
+  'https://www.facebook.com/gkutech': 'GKU on Facebook',
+  'https://www.instagram.com/gku_dashcam': 'GKU on Instagram',
+};
+
 /**
  * A custom element that formats rte content for easier styling
  */
@@ -8,6 +13,23 @@ class RTEFormatter extends Component {
     super.connectedCallback();
     this.querySelectorAll('table').forEach(this.#formatTable);
     this.querySelectorAll('iframe, video').forEach(this.#formatEmbed);
+    this.querySelectorAll('a[href]').forEach(this.#labelSocialLink);
+  }
+
+  /**
+   * Gives unnamed social icons pasted into rich text an accessible name.
+   * @param {HTMLAnchorElement} link
+   */
+  #labelSocialLink(link) {
+    const label = SOCIAL_LINK_LABELS[link.href.replace(/\/$/, '')];
+    if (!label) return;
+
+    const hasName = ['aria-label', 'aria-labelledby', 'title'].some((attribute) =>
+      (link.getAttribute(attribute) || '').trim()
+    );
+    if (hasName || link.textContent.trim() || link.querySelector('img[alt]:not([alt=""])')) return;
+
+    link.setAttribute('aria-label', label);
   }
 
   /**

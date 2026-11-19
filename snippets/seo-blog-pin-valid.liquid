@@ -1,0 +1,27 @@
+{%- comment -%}Only published articles from this blog matching every selected tag can be pinned.{%- endcomment -%}
+{%- liquid
+  assign pin_blog_handle = candidate.handle | split: '/' | first
+  assign pin_published = candidate.published_at | date: '%s' | plus: 0
+  assign pin_now = 'now' | date: '%s' | plus: 0
+  if candidate != blank and pin_blog_handle == blog.handle and candidate.published_at != blank and pin_published <= pin_now
+    assign matches_tags = true
+    for selected_tag in current_tags
+      assign selected_handle = selected_tag | handleize
+      assign has_tag = false
+      for candidate_tag in candidate.tags
+        assign candidate_handle = candidate_tag | handleize
+        if candidate_handle == selected_handle
+          assign has_tag = true
+          break
+        endif
+      endfor
+      unless has_tag
+        assign matches_tags = false
+        break
+      endunless
+    endfor
+    if matches_tags
+      echo candidate.id
+    endif
+  endif
+-%}

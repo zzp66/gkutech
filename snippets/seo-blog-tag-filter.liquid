@@ -1,0 +1,40 @@
+{%- liquid
+  assign preview_query = ''
+  if template.suffix == 'seo-blog' and blog.template_suffix != template.suffix
+    assign preview_query = '?view=seo-blog'
+  endif
+-%}
+<nav class="seo-blog-tags" aria-label="Blog topics">
+  <ul role="list">
+    <li><a class="seo-blog-tags__link{% if current_tags == blank %} is-active{% endif %}" href="{{ blog.url }}{{ preview_query }}"{% if current_tags == blank %} aria-current="page"{% endif %}>{{ section.settings.all_tags_label | escape }}</a></li>
+    {%- for tag in blog.all_tags -%}
+      {%- liquid
+        assign tag_handle = tag | handleize
+        assign tag_active = false
+        assign selected_handles = ''
+        for selected_tag in current_tags
+          assign selected_handle = selected_tag | handleize
+          if selected_handle == tag_handle
+            assign tag_active = true
+          else
+            unless selected_handles == blank
+              assign selected_handles = selected_handles | append: '+'
+            endunless
+            assign selected_handles = selected_handles | append: selected_handle
+          endif
+        endfor
+        unless tag_active
+          unless selected_handles == blank
+            assign selected_handles = selected_handles | append: '+'
+          endunless
+          assign selected_handles = selected_handles | append: tag_handle
+        endunless
+        assign tag_url = blog.url
+        if selected_handles != blank
+          assign tag_url = tag_url | append: '/tagged/' | append: selected_handles
+        endif
+      -%}
+      <li><a class="seo-blog-tags__link{% if tag_active %} is-active{% endif %}" href="{{ tag_url | append: preview_query | escape }}"{% if tag_active %} aria-current="page"{% endif %}>{{ tag | escape }}</a></li>
+    {%- endfor -%}
+  </ul>
+</nav>

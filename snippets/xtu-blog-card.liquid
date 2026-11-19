@@ -5,6 +5,7 @@
   @param {string} [button_label] - CTA label (default: Read More)
   @param {boolean} [show_button_arrow] - Show chevron on CTA
   @param {string} [date_format] - Liquid date format for published_at
+  @param {boolean} [prioritize_image] - Prioritize the first visible blog image
   @param {boolean} [show_author] - Show author name (default true)
   @param {string} [button_bg] - CTA background
   @param {string} [button_color] - CTA text color
@@ -15,6 +16,12 @@
 {% liquid
   assign card_button_label = button_label | default: 'Read More'
   assign card_date_format = date_format | default: '%B %d, %Y'
+  assign image_loading = 'lazy'
+  assign image_priority = 'auto'
+  if prioritize_image
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  endif
   assign card_show_author = show_author
   if card_show_author == nil
     assign card_show_author = true
@@ -39,7 +46,8 @@
           | image_url: width: 900
           | image_tag:
             class: 'xtu-blog-list__image xtu-img-zoom__media',
-            loading: 'lazy',
+            loading: image_loading,
+            fetchpriority: image_priority,
             widths: '400, 600, 800, 900',
             sizes: '(max-width: 749px) 50vw, 33vw',
             alt: article.title

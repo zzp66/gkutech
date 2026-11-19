@@ -79,12 +79,7 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  /* CSS background is the paint layer — immune to global img { height:auto } */
   background-color: #111;
-  background-image: var(--xtu-cb-banner-image);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   /*
    * Many collection images are square product shots with a white matte.
    * On a wide short banner, cover keeps those side mattes visible and looks
@@ -94,24 +89,24 @@
   transform-origin: center center;
 }
 
-@media screen and (max-width: 749px) {
-  .xtu-collection-banner__media {
-    background-image: var(--xtu-cb-banner-image-mobile, var(--xtu-cb-banner-image));
-  }
+.xtu-collection-banner__picture {
+  position: absolute;
+  inset: 0;
+  display: block;
 }
 
-/* Keep <img> for SEO/a11y but hide visually — background handles display */
 .xtu-collection-banner__image {
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
   padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
+  margin: 0 !important;
+  object-fit: cover;
+  object-position: center center !important;
   border: 0 !important;
-  opacity: 0 !important;
   pointer-events: none !important;
 }
 

@@ -44,11 +44,13 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
+    {% render 'structured-data' %}
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    {% render 'deferred-app-widgets' %}
     {{ content_for_header }}
   {% include 'pagefly-app-header' %}</head>
 
@@ -132,16 +134,29 @@
         })();
       </script>
 
-      <main
+      {% liquid
+        assign content_tag = 'main'
+        if template.name == 'blog' and content_for_layout contains 'id="SeoBlog-'
+          assign content_tag = 'div'
+        elsif metaobject.system.type == 'blog_author_information'
+          assign content_tag = 'div'
+        endif
+      %}
+      <{{ content_tag }}
         id="MainContent"
         class="content-for-layout"
-        role="main"
+        {% if content_tag == 'main' %}role="main"{% endif %}
         data-page-transition-enabled="{{ settings.page_transition_enabled }}"
         data-product-transition="{{ settings.transition_to_main_product }}"
         data-template="{{ template }}"
       >
+        {% if settings.show_breadcrumb_nav %}
+          {% unless request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'blog' or request.page_type == 'article' or metaobject.system.type == 'blog_author_information' %}
+            {% render 'breadcrumbs', class: 'breadcrumbs-global' %}
+          {% endunless %}
+        {% endif %}
         {{ content_for_layout }}
-      </main>
+      </{{ content_tag }}>
 
       <footer>
         {% sections 'footer-group' %}

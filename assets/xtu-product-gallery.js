@@ -54,7 +54,7 @@
     slides.forEach((slide, index) => {
       const btn = slide.querySelector('.xtu-pdp-thumbs__btn, .xtu-zoom-dialog__thumb-btn');
       if (!(btn instanceof HTMLElement)) return;
-      btn.setAttribute('aria-selected', index === realIndex ? 'true' : 'false');
+      btn.setAttribute('aria-current', index === realIndex ? 'true' : 'false');
     });
   }
 

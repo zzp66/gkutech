@@ -1,0 +1,16 @@
+<section class="seo-article-comments" id="Comments-{{ section.id }}">
+  <h2>{{ section.settings.comments_title | replace: ':count', article.comments_count | escape }}</h2>
+  {% paginate article.comments by 10 %}
+    {% for comment in article.comments %}<div class="seo-article-comments__entry"><p><strong>{{ comment.author | escape }}</strong> <time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}">{{ comment.created_at | date: section.settings.date_format }}</time></p>{{ comment.content }}</div>{% endfor %}
+    {% if paginate.pages > 1 %}<nav aria-label="Comment pages">{% for part in paginate.parts %}{% if part.is_link %}<a href="{{ part.url }}">{{ part.title }}</a>{% else %}<span>{{ part.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
+  {% endpaginate %}
+  {% form 'new_comment', article %}
+    <h3>{{ section.settings.comment_form_title | escape }}</h3>
+    {% if form.posted_successfully? %}<p role="status">{% if blog.moderated? %}{{ section.settings.comment_moderated_label | escape }}{% else %}{{ section.settings.comment_success_label | escape }}{% endif %}</p>{% endif %}
+    {% if form.errors %}{{ form.errors | default_errors }}{% endif %}
+    <label for="CommentAuthor-{{ section.id }}">{{ section.settings.comment_name_label | escape }}</label><input id="CommentAuthor-{{ section.id }}" type="text" name="comment[author]" value="{{ form.author | escape }}" autocomplete="name" required>
+    <label for="CommentEmail-{{ section.id }}">{{ section.settings.comment_email_label | escape }}</label><input id="CommentEmail-{{ section.id }}" type="email" name="comment[email]" value="{{ form.email | escape }}" autocomplete="email" required>
+    <label for="CommentBody-{{ section.id }}">{{ section.settings.comment_body_label | escape }}</label><textarea id="CommentBody-{{ section.id }}" name="comment[body]" rows="5" required>{{ form.body }}</textarea>
+    <button class="seo-article-button" type="submit">{{ section.settings.comment_submit_label | escape }}</button>
+  {% endform %}
+</section>

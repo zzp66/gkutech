@@ -1,12 +1,21 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{% if request.page_type == 'index' and request.design_mode == false %}
+  <style>{{ 'xtu-motion.css' | inline_asset_content }}</style>
+  <style>{{ 'xtu-swiper-nav.css' | inline_asset_content }}</style>
+  <style>{{ 'xtu-btn.css' | inline_asset_content }}</style>
+  <style>{{ 'xtu-section-type.css' | inline_asset_content }}</style>
+  <style>{{ 'xtu-media.css' | inline_asset_content }}</style>
+  <style>{{ 'xtu-ratio-auto.css' | inline_asset_content }}</style>
+{% else %}
 {{ 'xtu-motion.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-swiper-nav.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-btn.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-section-type.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-media.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-ratio-auto.css' | asset_url | stylesheet_tag }}
+{% endif %}
 {{ 'xtu-mega-menu.css' | asset_url | stylesheet_tag }}
 {{ 'xtu-product-card.css' | asset_url | stylesheet_tag }}
 {% if request.page_type == 'product' %}

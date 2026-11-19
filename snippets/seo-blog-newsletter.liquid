@@ -1,0 +1,13 @@
+{%- assign newsletter_form_id = 'SeoBlogNewsletter-' | append: section.id -%}
+<section class="seo-blog-newsletter" aria-labelledby="NewsletterTitle-{{ section.id }}">
+  <h2 id="NewsletterTitle-{{ section.id }}" class="seo-blog-sidebar__title">{{ section.settings.newsletter_title | escape }}</h2>
+  {%- if section.settings.newsletter_description != blank -%}<div class="seo-blog-newsletter__description">{{ section.settings.newsletter_description }}</div>{%- endif -%}
+  {%- form 'customer', id: newsletter_form_id, class: 'seo-blog-newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ section.settings.newsletter_email_label | escape }}</label>
+    <input id="NewsletterEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="{{ section.settings.newsletter_email_label | escape }}" autocomplete="email" autocapitalize="off" autocorrect="off" required{% if form.errors %} aria-invalid="true" aria-describedby="NewsletterError-{{ section.id }}"{% elsif form.posted_successfully? %} aria-describedby="NewsletterSuccess-{{ section.id }}"{% endif %}>
+    <button class="seo-blog-button" type="submit">{{ section.settings.newsletter_button_label | escape }}</button>
+    {%- if form.errors -%}<div id="NewsletterError-{{ section.id }}" class="seo-blog-newsletter__status" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+    {%- if form.posted_successfully? -%}<p id="NewsletterSuccess-{{ section.id }}" class="seo-blog-newsletter__status" role="status">{{ section.settings.newsletter_success_label | escape }}</p>{%- endif -%}
+  {%- endform -%}
+</section>

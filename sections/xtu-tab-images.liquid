@@ -376,10 +376,15 @@
       video.pause();
     };
 
-    const syncPanelVideos = (panel, active) => {
+    const syncPanelVideos = (panel, active, interacted) => {
       panel.querySelectorAll('video').forEach((video) => {
-        if (active) playVideo(video);
-        else pauseVideo(video);
+        if (!active) {
+          pauseVideo(video);
+        } else if (video.hasAttribute('data-xtu-deferred-media')) {
+          if (interacted) window.XtuDeferredMedia?.activate(video, { play: true });
+        } else {
+          playVideo(video);
+        }
       });
     };
 
@@ -484,7 +489,7 @@
           } else {
             panel.setAttribute('hidden', '');
           }
-          syncPanelVideos(panel, on);
+          syncPanelVideos(panel, on, !options.skipScroll);
         });
 
         activeIndex = index;

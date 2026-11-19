@@ -1,0 +1,142 @@
+{% doc %}
+  @prompt
+    Create NEW 'Soft Gray Deals Gallery'; never alter existing blocks. Match Limited deals style. English UI, editable heading Halloween Dash Cam Flash Deals; subtitle exactly Limited-time dash cam deals, plus an extra $10 OFF orders $100+, $15 OFF $150+, or $20 OFF $200+. Background#f8f9fd text#111111 white cards full width. Editable single countdown top-right, text top-left, mobile no overlap; Ends in, end2026-10-31T23:59:59+08:00, stop at zero; digits28 dark, yellow#fff001 tiles48 padding8 radius6. Up to5 selectable independent collection rows, desktop4/mobile2 adjustable, touch and desktop scrolling. Empty collections hidden. Each row heading LEFT and small black underlined editable Shop all link TOP-RIGHT. Per-row editable label,destination,show toggle. Render entire link only if enabled and label/destination both nonblank; otherwise no markup or space. Destinations default blank; NO bottom collection buttons or circular arrows. Bottom horizontal scrollbar each row, default thumb#C8CDD5 track#F0F2F5 height4. CRITICAL expose TWO working COLOR PICKERS under Appearance > Scrollbar: Scrollbar thumb color and Scrollbar track color. Connect settings to real scrollbar CSS for both Firefox and WebKit. Not hardcoded-only colors. Every row follows them. Independently editable collection discounts and badges. Use SAME selected_or_first_available_variant.price for base and sale; separately assign remaining=100-discount, then sale=base*remaining/100; round minor units then money-format. $169.99 at50%=$85.00. Strike current base not compare_at_price;0% normal only. Display-only, no actual price or checkout discount changes. Product Shop now links to product, yellow#fff001 dark text border0 radius8 hover#f2c615; editable labels/colors. Badge custom text else percentage OFF, editable dark text/yellow bg/border0. Seed collection1 halloween-sale-save-40 gid://shopify/Collection/513284210915 heading Halloween Deals: 40% OFF discount40 badge40% OFF; collection2 halloween-sale-save-35 gid://shopify/Collection/513284178147 heading More Halloween Deals: 35% OFF discount35 blank badge. Slots3-5 empty headings More deals 3/4/5 discounts30/25/20. Unsupported resource defaults remain unset, never substitute. All copy, countdown colors/sizes/date, collections, discounts, badges, buttons, links and scrollbar colors functioning editor settings. Preserve old blocks; generation must include color controls and top-right links from the start.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-deals-{{ ai_gen_id }}{display:block;width:{{ block.settings.desktop_width_percent }}%;max-width:100%;box-sizing:border-box;background:{{ block.settings.background_color }};color:{{ block.settings.text_color }};padding:24px;font-family:inherit}
+  .ai-deals-{{ ai_gen_id }}__top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+  .ai-deals-{{ ai_gen_id }}__intro{flex:1 1 320px;min-width:0}.ai-deals-{{ ai_gen_id }}__title{font-size:30px;line-height:1.15;margin:0 0 8px}.ai-deals-{{ ai_gen_id }}__subtitle{margin:0;line-height:1.5}
+  .ai-deals-{{ ai_gen_id }}__timer{flex:0 0 auto;text-align:right}.ai-deals-{{ ai_gen_id }}__timer-label{display:block;margin-bottom:7px;font-weight:600}.ai-deals-{{ ai_gen_id }}__timer-digits{display:flex;gap:6px;justify-content:flex-end;font-size:28px;font-weight:700}.ai-deals-{{ ai_gen_id }}__unit{min-width:48px;padding:8px 5px;background:{{ block.settings.timer_tile_color }};color:{{ block.settings.timer_digit_color }};border-radius:6px;text-align:center;line-height:1.15}.ai-deals-{{ ai_gen_id }}__unit small{display:block;font-size:10px;font-weight:500;margin-top:4px}
+  .ai-deals-{{ ai_gen_id }}__row{margin:28px 0 0}.ai-deals-{{ ai_gen_id }}__row-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px}.ai-deals-{{ ai_gen_id }}__row-title{font-size:20px;margin:0}.ai-deals-{{ ai_gen_id }}__shopall{color:#111;text-decoration:underline;font-size:13px;white-space:nowrap}.ai-deals-{{ ai_gen_id }}__products{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - ({{ block.settings.desktop_columns | minus: 1 }} * 14px)) / {{ block.settings.desktop_columns }});gap:14px;overflow-x:auto;overflow-y:hidden;padding:0 0 10px;scrollbar-width:thin;scrollbar-color:{{ block.settings.scroll_thumb }} {{ block.settings.scroll_track }}}
+  .ai-deals-{{ ai_gen_id }}__products::-webkit-scrollbar{height:4px}.ai-deals-{{ ai_gen_id }}__products::-webkit-scrollbar-track{background:{{ block.settings.scroll_track }}}.ai-deals-{{ ai_gen_id }}__products::-webkit-scrollbar-thumb{background:{{ block.settings.scroll_thumb }};border-radius:8px}
+  .ai-deals-{{ ai_gen_id }}__card{position:relative;display:flex;flex-direction:column;min-width:0;background:#fff;border-radius:8px;overflow:hidden;padding:12px}.ai-deals-{{ ai_gen_id }}__media{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:5px;background:#f3f4f6}.ai-deals-{{ ai_gen_id }}__media img{width:100%;height:100%;object-fit:cover;display:block}.ai-deals-{{ ai_gen_id }}__placeholder{width:100%;height:100%;display:flex}.ai-deals-{{ ai_gen_id }}__placeholder svg{width:100%;height:100%;object-fit:cover}.ai-deals-{{ ai_gen_id }}__badge{position:absolute;top:8px;left:8px;background:{{ block.settings.badge_background }};color:{{ block.settings.badge_text_color }};border:0;border-radius:4px;padding:5px 8px;font-size:12px;font-weight:700}.ai-deals-{{ ai_gen_id }}__product-title{font-weight:600;text-decoration:none;color:inherit;margin:12px 0 8px;line-height:1.35}.ai-deals-{{ ai_gen_id }}__prices{display:flex;gap:8px;align-items:center;margin-bottom:12px}.ai-deals-{{ ai_gen_id }}__sale{font-weight:700}.ai-deals-{{ ai_gen_id }}__base{text-decoration:line-through;color:#646464}.ai-deals-{{ ai_gen_id }}__cta{display:block;margin-top:auto;text-align:center;text-decoration:none;background:{{ block.settings.button_color }};color:{{ block.settings.button_text_color }};border:0;border-radius:8px;padding:10px 12px;font-weight:700}.ai-deals-{{ ai_gen_id }}__cta:hover{background:{{ block.settings.button_hover_color }}}
+  @media(max-width:749px){.ai-deals-{{ ai_gen_id }}{padding:18px}.ai-deals-{{ ai_gen_id }}__top{gap:16px}.ai-deals-{{ ai_gen_id }}__timer{text-align:left}.ai-deals-{{ ai_gen_id }}__timer-digits{justify-content:flex-start}.ai-deals-{{ ai_gen_id }}__title{font-size:24px}.ai-deals-{{ ai_gen_id }}__products{grid-auto-columns:calc((100% - 12px)/{{ block.settings.mobile_columns }});gap:12px}.ai-deals-{{ ai_gen_id }}__row-head{align-items:flex-start}.ai-deals-{{ ai_gen_id }}__row-title{font-size:18px}}
+{% endstyle %}
+<deals-gallery-{{ ai_gen_id }} class="ai-deals-{{ ai_gen_id }}" {{ block.shopify_attributes }} data-end="{{ block.settings.countdown_end | escape }}">
+  <div class="ai-deals-{{ ai_gen_id }}__top"><div class="ai-deals-{{ ai_gen_id }}__intro"><h2 class="ai-deals-{{ ai_gen_id }}__title">{{ block.settings.heading | escape }}</h2><p class="ai-deals-{{ ai_gen_id }}__subtitle">{{ block.settings.subtitle | escape }}</p></div><div class="ai-deals-{{ ai_gen_id }}__timer" aria-live="off"><span class="ai-deals-{{ ai_gen_id }}__timer-label">{{ block.settings.timer_label | escape }}</span><div class="ai-deals-{{ ai_gen_id }}__timer-digits"><span class="ai-deals-{{ ai_gen_id }}__unit" data-days>00<small>Days</small></span><span class="ai-deals-{{ ai_gen_id }}__unit" data-hours>00<small>Hours</small></span><span class="ai-deals-{{ ai_gen_id }}__unit" data-minutes>00<small>Min</small></span><span class="ai-deals-{{ ai_gen_id }}__unit" data-seconds>00<small>Sec</small></span></div></div></div>
+  {% for i in (1..5) %}
+    {% liquid
+      assign collection_key = 'collection_' | append: i
+      assign title_key = 'row_heading_' | append: i
+      assign discount_key = 'discount_' | append: i
+      assign badge_key = 'badge_' | append: i
+      assign enabled_key = 'link_enabled_' | append: i
+      assign label_key = 'link_label_' | append: i
+      assign destination_key = 'link_destination_' | append: i
+      assign selected_collection = block.settings[collection_key]
+      assign row_heading = block.settings[title_key]
+      assign discount = block.settings[discount_key] | plus: 0
+      assign custom_badge = block.settings[badge_key]
+      assign link_enabled = block.settings[enabled_key]
+      assign link_label = block.settings[label_key]
+      assign link_destination = block.settings[destination_key]
+    %}
+    {% if selected_collection != blank %}
+      <section class="ai-deals-{{ ai_gen_id }}__row">
+        <div class="ai-deals-{{ ai_gen_id }}__row-head"><h3 class="ai-deals-{{ ai_gen_id }}__row-title">{{ row_heading | escape }}</h3>{% if link_enabled and link_label != blank and link_destination != blank %}<a class="ai-deals-{{ ai_gen_id }}__shopall" href="{{ link_destination }}">{{ link_label | escape }}</a>{% endif %}</div>
+        <div class="ai-deals-{{ ai_gen_id }}__products" aria-label="{{ row_heading | escape }}">
+          {% for product in selected_collection.products %}
+            {% assign variant = product.selected_or_first_available_variant %}{% assign base_price = variant.price %}{% assign remaining = 100 | minus: discount %}{% assign sale_price = base_price | times: remaining | divided_by: 100.0 | round %}
+            <article class="ai-deals-{{ ai_gen_id }}__card">
+              <a href="{{ product.url }}" class="ai-deals-{{ ai_gen_id }}__media" aria-label="{{ product.title | escape }}">
+                {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="600" height="600">{% else %}<div class="ai-deals-{{ ai_gen_id }}__placeholder">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>{% endif %}
+                {% if custom_badge != blank %}<span class="ai-deals-{{ ai_gen_id }}__badge">{{ custom_badge | escape }}</span>{% elsif discount > 0 %}<span class="ai-deals-{{ ai_gen_id }}__badge">{{ discount }}% OFF</span>{% endif %}
+              </a>
+              <a class="ai-deals-{{ ai_gen_id }}__product-title" href="{{ product.url }}">{{ product.title | escape }}</a>
+              <div class="ai-deals-{{ ai_gen_id }}__prices">{% if discount > 0 %}<span class="ai-deals-{{ ai_gen_id }}__sale">{{ sale_price | money }}</span><span class="ai-deals-{{ ai_gen_id }}__base">{{ base_price | money }}</span>{% else %}<span class="ai-deals-{{ ai_gen_id }}__sale">{{ base_price | money }}</span>{% endif %}</div>
+              <a class="ai-deals-{{ ai_gen_id }}__cta" href="{{ product.url }}">{{ block.settings.product_button_label | escape }}</a>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+</deals-gallery-{{ ai_gen_id }}>
+<script>
+(function(){
+  var tag='deals-gallery-{{ ai_gen_id }}';
+  if(customElements.get(tag)) return;
+  class DealsGallery extends HTMLElement{
+    connectedCallback(){this.timer=this.querySelector('.ai-deals-{{ ai_gen_id }}__timer');this.end=Date.parse(this.dataset.end);if(!this.timer||!Number.isFinite(this.end))return;this.tick();this.interval=window.setInterval(()=>this.tick(),1000)}
+    disconnectedCallback(){if(this.interval)window.clearInterval(this.interval)}
+    tick(){var left=Math.max(0,this.end-Date.now());var total=Math.floor(left/1000);var vals={days:Math.floor(total/86400),hours:Math.floor(total%86400/3600),minutes:Math.floor(total%3600/60),seconds:total%60};Object.keys(vals).forEach((key)=>{var el=this.querySelector('[data-'+key+']');if(el){var small=el.querySelector('small');el.firstChild.textContent=String(vals[key]).padStart(2,'0');if(left===0&&small)small.textContent=small.textContent}});if(left===0)window.clearInterval(this.interval)}
+  }
+  customElements.define(tag,DealsGallery);
+})();
+</script>
+{% schema %}
+{
+  "name": "Soft Gray Deals Gallery",
+  "settings": [
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},
+    {"type":"header","content":"Content"},
+    {"type":"text","id":"heading","label":"Heading","default":"Halloween Dash Cam Flash Deals"},
+    {"type":"text","id":"subtitle","label":"Subtitle","default":"Limited-time dash cam deals, plus an extra $10 OFF orders $100+, $15 OFF $150+, or $20 OFF $200+."},
+    {"type":"text","id":"timer_label","label":"Countdown label","default":"Ends in"},
+    {"type":"text","id":"countdown_end","label":"Countdown end (ISO 8601)","default":"2026-10-31T23:59:59+08:00"},
+    {"type":"header","content":"Layout"},
+    {"type":"range","id":"desktop_columns","label":"Products per view on desktop","min":2,"max":5,"step":1,"default":4},
+    {"type":"range","id":"mobile_columns","label":"Products per view on mobile","min":1,"max":3,"step":1,"default":2},
+    {"type":"header","content":"Appearance"},
+    {"type":"color","id":"background_color","label":"Background","default":"#f8f9fd"},
+    {"type":"color","id":"text_color","label":"Text","default":"#111111"},
+    {"type":"header","content":"Countdown"},
+    {"type":"color","id":"timer_tile_color","label":"Tile background","default":"#fff001"},
+    {"type":"color","id":"timer_digit_color","label":"Digits","default":"#111111"},
+    {"type":"header","content":"Scrollbar"},
+    {"type":"color","id":"scroll_thumb","label":"Scrollbar thumb color","default":"#C8CDD5"},
+    {"type":"color","id":"scroll_track","label":"Scrollbar track color","default":"#F0F2F5"},
+    {"type":"header","content":"Product buttons and badges"},
+    {"type":"text","id":"product_button_label","label":"Shop now label","default":"Shop now"},
+    {"type":"color","id":"button_color","label":"Button background","default":"#fff001"},
+    {"type":"color","id":"button_text_color","label":"Button text","default":"#111111"},
+    {"type":"color","id":"button_hover_color","label":"Button hover background","default":"#f2c615"},
+    {"type":"color","id":"badge_background","label":"Badge background","default":"#fff001"},
+    {"type":"color","id":"badge_text_color","label":"Badge text","default":"#111111"},
+    {"type":"header","content":"Collection row 1"},
+    {"type":"collection","id":"collection_1","label":"Collection"},
+    {"type":"text","id":"row_heading_1","label":"Heading","default":"Halloween Deals: 40% OFF"},
+    {"type":"range","id":"discount_1","label":"Display discount","min":0,"max":90,"step":5,"unit":"%","default":40},
+    {"type":"text","id":"badge_1","label":"Badge text","default":"40% OFF"},
+    {"type":"checkbox","id":"link_enabled_1","label":"Show Shop all link","default":false},
+    {"type":"text","id":"link_label_1","label":"Link label"},
+    {"type":"url","id":"link_destination_1","label":"Link destination"},
+    {"type":"header","content":"Collection row 2"},
+    {"type":"collection","id":"collection_2","label":"Collection"},
+    {"type":"text","id":"row_heading_2","label":"Heading","default":"More Halloween Deals: 35% OFF"},
+    {"type":"range","id":"discount_2","label":"Display discount","min":0,"max":90,"step":5,"unit":"%","default":35},
+    {"type":"text","id":"badge_2","label":"Badge text"},
+    {"type":"checkbox","id":"link_enabled_2","label":"Show Shop all link","default":false},
+    {"type":"text","id":"link_label_2","label":"Link label"},
+    {"type":"url","id":"link_destination_2","label":"Link destination"},
+    {"type":"header","content":"Collection row 3"},
+    {"type":"collection","id":"collection_3","label":"Collection"},
+    {"type":"text","id":"row_heading_3","label":"Heading","default":"More deals 3"},
+    {"type":"range","id":"discount_3","label":"Display discount","min":0,"max":90,"step":5,"unit":"%","default":30},
+    {"type":"text","id":"badge_3","label":"Badge text"},
+    {"type":"checkbox","id":"link_enabled_3","label":"Show Shop all link","default":false},
+    {"type":"text","id":"link_label_3","label":"Link label"},
+    {"type":"url","id":"link_destination_3","label":"Link destination"},
+    {"type":"header","content":"Collection row 4"},
+    {"type":"collection","id":"collection_4","label":"Collection"},
+    {"type":"text","id":"row_heading_4","label":"Heading","default":"More deals 4"},
+    {"type":"range","id":"discount_4","label":"Display discount","min":0,"max":90,"step":5,"unit":"%","default":25},
+    {"type":"text","id":"badge_4","label":"Badge text"},
+    {"type":"checkbox","id":"link_enabled_4","label":"Show Shop all link","default":false},
+    {"type":"text","id":"link_label_4","label":"Link label"},
+    {"type":"url","id":"link_destination_4","label":"Link destination"},
+    {"type":"header","content":"Collection row 5"},
+    {"type":"collection","id":"collection_5","label":"Collection"},
+    {"type":"text","id":"row_heading_5","label":"Heading","default":"More deals 5"},
+    {"type":"range","id":"discount_5","label":"Display discount","min":0,"max":90,"step":5,"unit":"%","default":20},
+    {"type":"text","id":"badge_5","label":"Badge text"},
+    {"type":"checkbox","id":"link_enabled_5","label":"Show Shop all link","default":false},
+    {"type":"text","id":"link_label_5","label":"Link label"},
+    {"type":"url","id":"link_destination_5","label":"Link destination"}
+  ],
+  "presets": [{"name":"Soft Gray Deals Gallery"}],
+  "tag": null,
+  "class": "soft-gray-deals-gallery"
+}
+{% endschema %}

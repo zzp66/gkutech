@@ -3,6 +3,12 @@
     我想生成一个表格产品参数对比的section,表头是产品展示链接，下方是所有的产品参数，参数可做增加，需要有主副标题和备注note，符合gku这个模板的风格
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% liquid
+  assign title_tag = block.settings.title_tag | default: 'h2'
+  unless title_tag == 'h1' or title_tag == 'h2' or title_tag == 'h3'
+    assign title_tag = 'h2'
+  endunless
+%}
 
 {% style %}
   .ai-compare-{{ ai_gen_id }} { display: block; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; margin: 0 auto; color: {{ block.settings.text_color }}; font-family: {{ block.settings.body_font.family }}; }
@@ -28,7 +34,7 @@
 <product-compare-{{ ai_gen_id }} class="ai-compare-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-compare-{{ ai_gen_id }}__intro">
     {% if block.settings.eyebrow != blank %}<p class="ai-compare-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow }}</p>{% endif %}
-    {% if block.settings.title != blank %}<h2 class="ai-compare-{{ ai_gen_id }}__title">{{ block.settings.title }}</h2>{% endif %}
+    {% if block.settings.title != blank %}<{{ title_tag }} class="ai-compare-{{ ai_gen_id }}__title">{{ block.settings.title }}</{{ title_tag }}>{% endif %}
     {% if block.settings.note != blank %}<div class="ai-compare-{{ ai_gen_id }}__note">{{ block.settings.note }}</div>{% endif %}
   </div>
   <div class="ai-compare-{{ ai_gen_id }}__scroll">
@@ -64,6 +70,7 @@
     {"type":"header","content":"标题内容"},
     {"type":"text","id":"eyebrow","label":"眉题","default":"产品对比"},
     {"type":"text","id":"title","label":"主标题","default":"选择适合你的产品"},
+    {"type":"select","id":"title_tag","label":"标题 HTML 标签","options":[{"value":"h1","label":"H1"},{"value":"h2","label":"H2"},{"value":"h3","label":"H3"}],"default":"h2"},
     {"type":"textarea","id":"note","label":"备注 note","default":"参数信息仅供参考，实际规格请以产品页面为准。"},
     {"type":"text","id":"parameter_heading","label":"参数列标题","default":"参数"},
     {"type":"product_list","id":"products","label":"对比产品","limit":4},

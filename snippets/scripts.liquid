@@ -57,13 +57,11 @@
   defer
 ></script>
 
-<script
-  src="{{ 'view-transitions.js' | asset_url }}"
-  async
-  {% if settings.page_transition_enabled or settings.transition_to_main_product %}
-    blocking="render"
-  {% endif %}
-></script>
+{%- comment -%}
+  pagereveal must be registered before the first render. Inline this small
+  bootstrap so a separate network request cannot hold up the first paint.
+{%- endcomment -%}
+<script>{{ 'view-transitions.js' | inline_asset_content }}</script>
 
 <link
   rel="modulepreload"
@@ -114,11 +112,13 @@
   href="{{ 'recently-viewed-products.js' | asset_url }}"
   fetchpriority="low"
 >
-<link
-  rel="modulepreload"
-  href="{{ 'scrolling.js' | asset_url }}"
-  fetchpriority="low"
->
+{% if request.design_mode or request.page_type != 'index' %}
+  <link
+    rel="modulepreload"
+    href="{{ 'scrolling.js' | asset_url }}"
+    fetchpriority="low"
+  >
+{% endif %}
 <link
   rel="modulepreload"
   href="{{ 'events.js' | asset_url }}"
@@ -172,17 +172,18 @@
   fetchpriority="low"
 ></script>
 <script
-  src="{{ 'product-card.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
   src="{{ 'product-form.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
 <script
   src="{{ 'fly-to-cart.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+{% if request.design_mode or request.page_type != 'index' %}
+<script
+  src="{{ 'product-card.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
@@ -202,47 +203,7 @@
   fetchpriority="low"
 ></script>
 <script
-  src="{{ 'product-sku.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'product-inventory.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'show-more.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
   src="{{ 'slideshow.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'layered-slideshow.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'anchored-popover.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'floating-panel.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'video-background.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'component-quantity-selector.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
@@ -251,26 +212,58 @@
   type="module"
   fetchpriority="low"
 ></script>
+{% endif %}
 <script
-  src="{{ 'rte-formatter.js' | asset_url }}"
+  src="{{ 'component-quantity-selector.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
-<script
-  src="{{ 'volume-pricing.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'price-per-item.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'volume-pricing-info.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
+
+{% if request.design_mode %}
+<script src="{{ 'product-sku.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'product-inventory.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'show-more.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'layered-slideshow.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'anchored-popover.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'floating-panel.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'video-background.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'rte-formatter.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'volume-pricing.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'price-per-item.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'volume-pricing-info.js' | asset_url }}" type="module" fetchpriority="low"></script>
+{% else %}
+<script type="application/json" id="xtu-component-modules">
+  [
+    {% if request.page_type == 'index' %}
+    { "selector": "product-component", "url": {{ 'view-event-elements.js' | asset_url | json }} },
+    { "selector": "collection-component", "url": {{ 'view-event-elements.js' | asset_url | json }} },
+    { "selector": "product-card", "url": {{ 'product-card.js' | asset_url | json }} },
+    { "selector": "product-card-link", "url": {{ 'product-card.js' | asset_url | json }} },
+    { "selector": "swatches-variant-picker-component", "url": {{ 'product-card.js' | asset_url | json }} },
+    { "selector": "accordion-custom", "url": {{ 'accordion-custom.js' | asset_url | json }} },
+    { "selector": "deferred-media", "url": {{ 'media.js' | asset_url | json }} },
+    { "selector": "product-model", "url": {{ 'media.js' | asset_url | json }} },
+    { "selector": "product-price", "url": {{ 'product-price.js' | asset_url | json }} },
+    { "selector": "slideshow-component", "url": {{ 'slideshow.js' | asset_url | json }} },
+    { "selector": "media-gallery", "url": {{ 'media-gallery.js' | asset_url | json }} },
+    {% endif %}
+    { "selector": "product-sku-component", "url": {{ 'product-sku.js' | asset_url | json }} },
+    { "selector": "product-inventory", "url": {{ 'product-inventory.js' | asset_url | json }} },
+    { "selector": "show-more-component", "url": {{ 'show-more.js' | asset_url | json }} },
+    { "selector": "layered-slideshow-component", "url": {{ 'layered-slideshow.js' | asset_url | json }} },
+    { "selector": "anchored-popover-component", "url": {{ 'anchored-popover.js' | asset_url | json }} },
+    { "selector": "floating-panel-component", "url": {{ 'floating-panel.js' | asset_url | json }} },
+    { "selector": "video-background-component", "url": {{ 'video-background.js' | asset_url | json }} },
+    { "selector": "rte-formatter", "url": {{ 'rte-formatter.js' | asset_url | json }} },
+    { "selector": "volume-pricing", "url": {{ 'volume-pricing.js' | asset_url | json }} },
+    { "selector": "price-per-item", "url": {{ 'price-per-item.js' | asset_url | json }} },
+    { "selector": "volume-pricing-info", "url": {{ 'volume-pricing-info.js' | asset_url | json }} }
+  ]
+</script>
+<script src="{{ 'xtu-component-loader.js' | asset_url }}" defer></script>
+{% endif %}
+<script src="{{ 'xtu-deferred-media.js' | asset_url }}" defer></script>
+<script src="{{ 'xtu-app-accessibility.js' | asset_url }}" defer fetchpriority="low"></script>
 
 {% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
   <script
@@ -328,6 +321,15 @@
   (Shopify section:select scrolls window; Horizon's .page-wrapper scroller fights it).
 {% endcomment %}
 {% unless request.design_mode %}
+  {% if request.page_type == 'blog' or request.page_type == 'article' %}
+    <script
+      src="{{ 'xtu-motion-loader.js' | asset_url }}"
+      data-gsap="{{ 'gsap.min.js' | asset_url }}"
+      data-scroll-trigger="{{ 'ScrollTrigger.min.js' | asset_url }}"
+      data-reveal="{{ 'xtu-reveal.js' | asset_url }}"
+      defer="defer"
+    ></script>
+  {% else %}
   <script
     src="{{ 'gsap.min.js' | asset_url }}"
     defer="defer"
@@ -340,6 +342,7 @@
     src="{{ 'xtu-reveal.js' | asset_url }}"
     defer="defer"
   ></script>
+  {% endif %}
 {% else %}
   <script
     src="{{ 'xtu-editor-scroll.js' | asset_url }}"

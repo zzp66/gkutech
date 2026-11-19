@@ -1,0 +1,440 @@
+{% comment %} 获取分隔符参数，默认为 '/' {% endcomment %}
+{% assign separator = separator | default: '/' %}
+
+<style>
+  /* Breadcrumbs' styles - 经典电商风格 */
+  .custom-breadcrumbs.page-width {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    --breadcrumb-separator: {{ separator | json }};
+  }
+
+  .custom-breadcrumbs .breadcrumbs {
+    font-size: 16px;
+    line-height: 1.4;
+    font-family: var(--font-body--family);
+    font-weight: 400;
+  }
+
+  .custom-breadcrumbs .breadcrumbs ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+  }
+
+  .custom-breadcrumbs .breadcrumbs li {
+    display: flex;
+    align-items: center;
+  }
+
+  /* ========== 颜色主题 ========== */
+  /* 用于浅色背景（默认） */
+  .custom-breadcrumbs .breadcrumbs a {
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    position: relative;
+  }
+
+  .custom-breadcrumbs .breadcrumbs a:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+
+  .custom-breadcrumbs .breadcrumbs [aria-current='page'] {
+    color: #000000;
+    font-weight: 500;
+    cursor: default;
+    text-decoration: none;
+  }
+
+  .custom-breadcrumbs .breadcrumbs [aria-current='page']:hover,
+  .custom-breadcrumbs .breadcrumbs [aria-current='page']:focus {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  .custom-breadcrumbs .breadcrumbs li:not(:last-child)::after {
+    content: var(--breadcrumb-separator, '/');
+    display: inline-block;
+    margin: 0 10px;
+    color: #999999;
+    font-size: 1.1em;
+    speak: none;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  /* 用于深色背景 */
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs a {
+    color: #c2c2c2;
+  }
+
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs a:hover {
+    color: #ffffff;
+  }
+
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs [aria-current='page'] {
+    color: #ffffff;
+  }
+
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs [aria-current='page']:hover,
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs [aria-current='page']:focus {
+    color: #ffffff;
+  }
+
+  .custom-breadcrumbs.breadcrumbs-light .breadcrumbs li:not(:last-child)::after {
+    color: #cccccc;
+  }
+
+  /* 移动端优化 */
+  @media screen and (max-width: 749px) {
+    .custom-breadcrumbs.page-width {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .custom-breadcrumbs .breadcrumbs {
+      font-size: 14px;
+    }
+
+    .custom-breadcrumbs .breadcrumbs li:not(:last-child)::after {
+      margin: 0 8px;
+    }
+
+    .custom-breadcrumbs .breadcrumbs ol {
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    .custom-breadcrumbs .breadcrumbs li:not(:last-child) {
+      flex-shrink: 0;
+    }
+
+    .custom-breadcrumbs .breadcrumbs li:last-child {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+  }
+
+  /* Horizon containers already supply their horizontal gutters. */
+  .custom-breadcrumbs.breadcrumbs-inline {
+    min-width: 0;
+    max-width: 100%;
+    padding-inline: 0;
+  }
+
+  .custom-breadcrumbs.breadcrumbs-global {
+    width: min(var(--page-content-width), calc(100% - var(--page-margin) * 2));
+    margin-inline: auto;
+  }
+
+  .seo-author-topbar > .custom-breadcrumbs { flex: 1; }
+
+  .xtu-collection-banner--center .custom-breadcrumbs .breadcrumbs ol { justify-content: center; }
+  .xtu-collection-banner--center .custom-breadcrumbs .breadcrumbs li:last-child { flex: 0 1 auto; }
+</style>
+
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' %}
+  {% assign t = template | split: '.' | first %}
+
+  <div
+    class="custom-breadcrumbs page-width {{class}}"
+    {% if style %}style="{{ style | escape }}"{% endif %}
+  >
+    <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+      <ol>
+        <li>
+          {% assign home_text = settings.breadcrumb_home_text | default: 'Home' %}
+          <a href="{{ routes.root_url }}" title="{{ home_text | escape }}">{{ home_text | escape }}</a>
+        </li>
+
+        {% case t %}
+          {% when 'page' %}
+            <li>
+              <span aria-current="page">{{ page.title | escape }}</span>
+            </li>
+
+          {% when 'product' %}
+            {% comment %}
+              --------------------------------------------------------------------------------
+              核心逻辑开始：确定要显示哪个集合路径
+              --------------------------------------------------------------------------------
+            {% endcomment %}
+
+            {%- capture from_collection_handle -%}
+              {%- render 'data-url-parameters' key: 'from_collection' -%}
+            {%- endcapture -%}
+            {% assign from_collection_handle = from_collection_handle | strip %}
+
+            {% assign target_collection = null %}
+            {% assign use_collection_metafield_path = false %}
+            {% assign default_collection = product.collections.first %}
+            {% assign custom_collection = product.metafields.custom.breadcrumb_path.value %}
+
+            {% comment %}
+              --------------------------------------------------------------------------------
+              确定目标集合的统一逻辑
+              优先级：URL参数 > 产品metafield > 当前collection > 默认collection
+              --------------------------------------------------------------------------------
+            {% endcomment %}
+
+            {% assign needs_fallback = true %}
+
+            {% if from_collection_handle != blank %}
+              {% comment %} 尝试从 URL 参数获取集合 {% endcomment %}
+              {% assign target_collection = collections[from_collection_handle] %}
+              {% if target_collection != blank %}
+                {% comment %} 参数指定的集合存在，使用该集合 {% endcomment %}
+                {% assign needs_fallback = false %}
+                {% if target_collection.metafields.custom.breadcrumb_path != blank %}
+                  {% assign use_collection_metafield_path = true %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+
+            {% if needs_fallback %}
+              {% comment %} 回退逻辑：按优先级尝试不同的集合源 {% endcomment %}
+              {% if custom_collection %}
+                {% assign target_collection = custom_collection %}
+                {% if custom_collection.metafields.custom.breadcrumb_path != blank %}
+                  {% assign use_collection_metafield_path = true %}
+                {% endif %}
+              {% elsif collection.handle %}
+                {% assign target_collection = collection %}
+              {% else %}
+                {% comment %} 所有集合信息都不存在，使用默认集合 {% endcomment %}
+                {% assign target_collection = default_collection %}
+              {% endif %}
+            {% endif %}
+
+            {% if target_collection != blank and target_collection.metafields.custom.breadcrumb_path != blank %}
+              {% assign use_collection_metafield_path = true %}
+            {% endif %}
+
+            {% if use_collection_metafield_path %}
+              {% comment %} 渲染集合的父级链 (custom.breadcrumb_path - List of Collections) {% endcomment %}
+              {% if use_collection_metafield_path and target_collection.metafields.custom.breadcrumb_path != blank %}
+                {% for parent_col in target_collection.metafields.custom.breadcrumb_path.value %}
+                  {% if parent_col.url != blank and parent_col.title != blank %}<li>
+                    <a href="{{ parent_col.url | escape }}">{{ parent_col.title | escape }}</a>
+                  </li>{% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+
+              {% if target_collection.url != blank and target_collection.title != blank %}<li>
+                <a href="{{ target_collection.url | escape }}">{{ target_collection.title | escape }}</a>
+              </li>{% endif %}
+
+              {% comment %} Terminal product title intentionally omitted. {% endcomment %}
+
+
+
+          {% when 'collection' %}
+            {% comment %} 集合页逻辑增加：支持显示父级路径 (Metafield) {% endcomment %}
+            {% if collection.metafields.custom.breadcrumb_path != blank %}
+              {% for parent_col in collection.metafields.custom.breadcrumb_path.value %}
+                {% if parent_col.url != blank and parent_col.title != blank %}<li>
+                  <a href="{{ parent_col.url | escape }}">{{ parent_col.title | escape }}</a>
+                </li>{% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if current_tags %}
+              <li>
+                <span aria-current="page">{{ collection.title | escape }}</span>
+              </li>
+            {% else %}
+              <li>
+                <span aria-current="page">{{ collection.title | escape }}</span>
+              </li>
+            {% endif %}
+
+          {% when 'blog' %}
+            {% if current_tags %}
+              <li>{{ blog.title | escape | link_to: blog.url }}</li>
+              {% comment %} Terminal active tag intentionally omitted. {% endcomment %}
+            {% else %}
+              <li>
+                <span aria-current="page">{{ blog.title | escape }}</span>
+              </li>
+            {% endif %}
+
+          {% when 'article' %}
+            <li>{{ blog.title | escape | link_to: blog.url }}</li>
+            {% comment %} Terminal article title intentionally omitted. {% endcomment %}
+
+          {% else %}
+            <li aria-current="page">
+              <span aria-current="page">{{ page_title | escape }}</span>
+            </li>
+        {% endcase %}
+      </ol>
+    </nav>
+  </div>
+
+  {% comment %}
+    --------------------------------------------------------------------------------
+    Breadcrumb 结构化数据 (JSON-LD)
+    符合 Google 的 Breadcrumb 结构化数据规范
+    https://developers.google.com/search/docs/appearance/breadcrumb
+    --------------------------------------------------------------------------------
+  {% endcomment %}
+
+  <script type="application/ld+json">{%- capture breadcrumb_json -%}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ settings.breadcrumb_home_text | default: 'Home' | json }},
+      "item": "{{ request.origin }}{{ routes.root_url }}"
+      }
+      {% assign item_position = 1 %}
+
+      {% case t %}
+        {% when 'page' %}
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ page.title | json }},
+            "item": "{{ request.origin }}{{ page.url }}"
+          }
+
+        {% when 'product' %}
+          {% comment %} 产品页：父级集合链 + 目标集合 + 产品 {% endcomment %}
+          {% if use_collection_metafield_path and target_collection.metafields.custom.breadcrumb_path != blank %}
+            {% for parent_col in target_collection.metafields.custom.breadcrumb_path.value %}
+              {% if parent_col.url == blank or parent_col.title == blank %}{% continue %}{% endif %}
+              {% assign item_position = item_position | plus: 1 %}
+              ,{
+                "@type": "ListItem",
+                "position": {{ item_position }},
+                "name": {{ parent_col.title | json }},
+                "item": "{{ request.origin }}{{ parent_col.url }}"
+              }
+            {% endfor %}
+          {% endif %}
+
+          {% if target_collection.url != blank and target_collection.title != blank %}
+            {% assign item_position = item_position | plus: 1 %}
+            ,{
+              "@type": "ListItem",
+              "position": {{ item_position }},
+              "name": {{ target_collection.title | json }},
+              "item": "{{ request.origin }}{{ target_collection.url }}"
+            }
+          {% endif %}
+
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ product.title | json }},
+            "item": "{{ request.origin }}{{ product.url }}"
+          }
+
+        {% when 'collection' %}
+          {% comment %} 集合页：父级集合链 + 集合（或标签） {% endcomment %}
+          {% if collection.metafields.custom.breadcrumb_path != blank %}
+            {% for parent_col in collection.metafields.custom.breadcrumb_path.value %}
+              {% if parent_col.url == blank or parent_col.title == blank %}{% continue %}{% endif %}
+              {% assign item_position = item_position | plus: 1 %}
+              ,{
+                "@type": "ListItem",
+                "position": {{ item_position }},
+                "name": {{ parent_col.title | json }},
+                "item": "{{ request.origin }}{{ parent_col.url }}"
+              }
+            {% endfor %}
+          {% endif %}
+
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ collection.title | json }},
+            "item": "{{ request.origin }}{{ collection.url }}"
+          }
+
+          {% if current_tags %}
+            {% assign item_position = item_position | plus: 1 %}
+            {% assign tag_url = request.path %}
+            ,{
+              "@type": "ListItem",
+              "position": {{ item_position }},
+              "name": {{ current_tags | join: ' + ' | json }},
+              "item": "{{ request.origin }}{{ tag_url }}"
+            }
+          {% endif %}
+
+        {% when 'blog' %}
+          {% if current_tags %}
+            {% assign item_position = item_position | plus: 1 %}
+            ,{
+              "@type": "ListItem",
+              "position": {{ item_position }},
+              "name": {{ blog.title | json }},
+              "item": "{{ request.origin }}{{ blog.url }}"
+            }
+
+            {% assign item_position = item_position | plus: 1 %}
+            {% assign tag_url = request.path %}
+            ,{
+              "@type": "ListItem",
+              "position": {{ item_position }},
+              "name": {{ current_tags | join: ' + ' | json }},
+              "item": "{{ request.origin }}{{ tag_url }}"
+            }
+          {% else %}
+            {% assign item_position = item_position | plus: 1 %}
+            ,{
+              "@type": "ListItem",
+              "position": {{ item_position }},
+              "name": {{ blog.title | json }},
+              "item": "{{ request.origin }}{{ blog.url }}"
+            }
+          {% endif %}
+
+        {% when 'article' %}
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ blog.title | json }},
+            "item": "{{ request.origin }}{{ blog.url }}"
+          }
+
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ article.title | json }},
+            "item": "{{ request.origin }}{{ article.url }}"
+          }
+
+        {% else %}
+          {% assign item_position = item_position | plus: 1 %}
+          ,{
+            "@type": "ListItem",
+            "position": {{ item_position }},
+            "name": {{ page_title | json }},
+            "item": "{{ request.origin }}{{ request.path }}"
+          }
+      {% endcase %}
+    ]
+  }
+  {%- endcapture -%}{{ breadcrumb_json | replace: '<', '\u003c' }}</script>
+{% endunless %}

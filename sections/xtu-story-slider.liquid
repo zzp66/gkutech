@@ -98,6 +98,10 @@
               if card_video_mobile != blank
                 assign has_mobile_video = true
               endif
+              assign desktop_video_query = blank
+              if has_mobile_video
+                assign desktop_video_query = '(min-width: 750px)'
+              endif
               assign is_video = false
               if media_type == 'video'
                 if card_video != blank or card_video_mobile != blank
@@ -186,32 +190,28 @@
                   </div>
                 {% elsif is_video %}
                   {% if card_video != blank %}
-                    {{
-                      card_video
-                      | video_tag:
-                        class: 'xtu-story-slider__video xtu-story-slider__video--desktop',
-                        image_size: '1200x',
-                        controls: false,
-                        autoplay: false,
-                        loop: false,
-                        muted: false,
-                        playsinline: true,
-                        preload: 'metadata'
-                    }}
+                    {% render 'xtu-deferred-video',
+                      video: card_video,
+                      class: 'xtu-story-slider__video xtu-story-slider__video--desktop',
+                      image_size: '1200x',
+                      controls: false,
+                      autoplay: false,
+                      loop: false,
+                      muted: false,
+                      media_query: desktop_video_query
+                    %}
                   {% endif %}
                   {% if has_mobile_video %}
-                    {{
-                      card_video_mobile
-                      | video_tag:
-                        class: 'xtu-story-slider__video xtu-story-slider__video--mobile',
-                        image_size: '1000x',
-                        controls: false,
-                        autoplay: false,
-                        loop: false,
-                        muted: false,
-                        playsinline: true,
-                        preload: 'metadata'
-                    }}
+                    {% render 'xtu-deferred-video',
+                      video: card_video_mobile,
+                      class: 'xtu-story-slider__video xtu-story-slider__video--mobile',
+                      image_size: '1000x',
+                      controls: false,
+                      autoplay: false,
+                      loop: false,
+                      muted: false,
+                      media_query: '(max-width: 749px)'
+                    %}
                   {% endif %}
                   {% if card_video == blank and has_mobile_video == false %}
                     {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-story-slider__image xtu-story-slider__placeholder' }}

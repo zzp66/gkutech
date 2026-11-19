@@ -592,12 +592,12 @@
         "product_tKzyAV": {
           "type": "product",
           "settings": {
-            "product": "gku-d600-pro-4k-dual-dash-cam",
+            "product": "gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "image": "shopify://shop_images/D600Pro_34700191-1783-49a4-b1b2-769a42dbcc6c.jpg",
             "title": "D600 Pro",
             "subtitle": "",
             "buy_label": "Buy now",
-            "buy_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "buy_link": "shopify://products/gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "more_label": "",
             "more_link": ""
           }
@@ -828,43 +828,6 @@
     },
     "1789202327ad1d10ab": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_d9cb976_6axeJf": {
-          "type": "ai_gen_block_d9cb976",
-          "settings": {
-            "heading": "Built for the Way You Drive",
-            "intro": "Find the right protection for your everyday drives, night journeys, road trips, and parked car.",
-            "audience_1_title": "Daily Commuters",
-            "audience_1_text": "Capture everyday journeys with front and rear coverage, GPS, and easy access to important footage.",
-            "audience_2_title": "Night Drivers",
-            "audience_2_text": "Sony STARVIS 2 imaging helps deliver clearer footage when driving after dark.",
-            "audience_3_title": "Road Trip Drivers",
-            "audience_3_text": "Record long journeys with GPS data, large storage support, and reliable front and rear coverage.",
-            "audience_4_title": "Drivers Who Park Outdoors",
-            "audience_4_text": "Add 24-hour parking monitoring with the optional hardwire kit for extra protection while you are away.",
-            "audience_5_title": "First-Time Dash Cam Buyers",
-            "audience_5_text": "Easy installation, voice control, Wi-Fi connectivity, and the GKU GO app make everyday operation simple.",
-            "desktop_width_percent": 100,
-            "alignment": "center",
-            "section_padding": 72,
-            "header_spacing": 48,
-            "card_radius": 16,
-            "heading_size": 48,
-            "mobile_heading_size": 32,
-            "background_color": "#f8f9fd",
-            "card_color": "#ffffff",
-            "heading_color": "#000000",
-            "text_color": "#333333",
-            "border_color": "#dfdfdf",
-            "accent_color": "#fff001",
-            "accent_text_color": "{{ settings.color_palette.foreground }}"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_d9cb976_6axeJf"
-      ],
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,

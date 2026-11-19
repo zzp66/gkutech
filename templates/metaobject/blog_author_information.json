@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "seo_main": {
+      "type": "seo-author-template",
+      "settings": {
+        "picked_product_1": "gku-c600-4g-lte-dual-dash-cam",
+        "picked_product_2": "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+        "picked_product_3": "gku-e200-4k-front-rear-dash-cam"
+      }
+    }
+  },
+  "order": [
+    "seo_main"
+  ]
+}

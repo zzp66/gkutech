@@ -85,6 +85,7 @@
   "
 >
   <div class="xtu-blog-list__inner xtu-blog-list__inner--head">
+    {% if settings.show_breadcrumb_nav %}{% render 'breadcrumbs', class: 'breadcrumbs-inline' %}{% endif %}
     {% if heading != blank %}
       <h1 class="xtu-blog-list__heading" data-xtu-blog-heading>
         {{ heading | escape }}
@@ -173,6 +174,7 @@
               <div class="xtu-blog-list__item">
                 {% render 'xtu-blog-card',
                   article: article,
+                  prioritize_image: forloop.first,
                   button_label: button_label,
                   show_button_arrow: show_button_arrow,
                   show_author: show_author,

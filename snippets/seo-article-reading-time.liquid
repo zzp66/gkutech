@@ -1,0 +1,5 @@
+{%- liquid
+  assign word_count = article.content | strip_html | split: ' ' | size
+  assign minutes = word_count | plus: 199 | divided_by: 200 | at_least: 1
+  echo section.settings.reading_time_label | replace: ':count', minutes | escape
+-%}

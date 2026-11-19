@@ -341,7 +341,7 @@
               "name": "XTU Info Modal",
               "settings": {
                 "title": "Global Support",
-                "content": "<p>Add your support details here.</p>"
+                "content": "<p><a href=\"mailto:support@gkutech.com\" target=\"_blank\" title=\"mailto:support@gkutech.com\">support@gkutech.com</a></p>"
               },
               "blocks": {}
             },

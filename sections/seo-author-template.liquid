@@ -1,0 +1,203 @@
+{{ 'section-seo-author-template.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign author_object = metaobject
+  assign author_name = author_object.name.value | default: author_object.name | default: section.settings.author_fallback_name
+  assign identity_value = author_object.identity.value | default: author_object.identity
+  assign description_field = author_object.description
+  assign description_value = description_field.value | default: description_field
+  assign author_avatar = author_object.avatar.value | default: author_object.avatar
+  if author_avatar != blank
+    assign author_avatar_url = author_avatar | image_url: width: 448
+    assign avatar_url_prefix = author_avatar_url | slice: 0, 2
+    if avatar_url_prefix == '//'
+      assign author_avatar_url = author_avatar_url | prepend: 'https:'
+    endif
+  endif
+  assign author_articles_field = author_object.blogs
+  assign author_articles = author_articles_field.value | default: author_articles_field
+  assign author_manual_count = author_articles_field.value.count | default: author_articles_field.count | default: author_articles.size | default: 0
+  assign sorted_articles = author_articles | sort: 'published_at' | reverse
+  assign author_articles_count = 0
+  assign author_records_json = ''
+  assign item_list_json = ''
+  assign seen_articles = '|'
+  assign author_canonical_url = canonical_url | split: '?' | first | split: '#' | first
+-%}
+{%- capture author_cards -%}
+  {%- for author_article in sorted_articles -%}
+    {%- capture article_record -%}{% render 'seo-author-source-article', source_article: author_article %}{%- endcapture -%}
+    {%- if article_record == blank -%}{%- continue -%}{%- endif -%}
+    {%- assign article_token = '|' | append: author_article.id | append: '|' -%}
+    {%- if seen_articles contains article_token -%}{%- continue -%}{%- endif -%}
+    {%- liquid
+      assign seen_articles = seen_articles | append: author_article.id | append: '|'
+      if author_articles_count > 0
+        assign author_records_json = author_records_json | append: ','
+        assign item_list_json = item_list_json | append: ','
+      endif
+      assign author_records_json = author_records_json | append: article_record
+      assign author_articles_count = author_articles_count | plus: 1
+      assign absolute_article_url = shop.url | append: author_article.url
+    -%}
+    {%- capture list_item -%}{"@type":"ListItem","position":{{ author_articles_count }},"url":{{ absolute_article_url | json }},"name":{{ author_article.title | json }}}{%- endcapture -%}
+    {%- assign item_list_json = item_list_json | append: list_item -%}
+    {% render 'seo-author-article-card', card_article: author_article %}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- liquid
+  assign author_articles_total = author_articles_count
+  assign author_total_override = false
+  assign author_blogs_total_field = author_object.blogs_total
+  assign author_blogs_total_value = author_blogs_total_field.value | default: author_blogs_total_field
+  assign author_blogs_total_text = author_blogs_total_value | append: '' | strip
+  assign non_digits = author_blogs_total_text | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+  if author_blogs_total_text != blank and non_digits == blank
+    assign author_articles_total = author_blogs_total_text | plus: 0
+    assign author_total_override = true
+  endif
+  assign social_urls_json = ''
+  assign social_count = 0
+-%}
+{%- capture author_socials -%}
+  {%- assign social_keys = 'facebook,instagram,tiktok,linkedin,youtube,pinterest,x_formerly_twitter' | split: ',' -%}
+  {%- for social_key in social_keys -%}
+    {%- liquid
+      assign social_url = author_object[social_key].value | default: author_object[social_key] | strip
+      assign icon_key = social_key
+      if social_key == 'x_formerly_twitter'
+        assign icon_key = 'x'
+      endif
+      assign prefix_long = social_url | slice: 0, 8
+      assign prefix_short = social_url | slice: 0, 7
+      assign social_valid = false
+      if prefix_long == 'https://' or prefix_short == 'http://'
+        unless social_url contains ' '
+          assign social_valid = true
+        endunless
+      endif
+    -%}
+    {%- if social_valid -%}
+      {%- capture social_url_json -%}{{ social_url | json }}{%- endcapture -%}
+      {%- liquid
+        if social_count > 0
+          assign social_urls_json = social_urls_json | append: ','
+        endif
+        assign social_urls_json = social_urls_json | append: social_url_json
+        assign social_count = social_count | plus: 1
+      -%}
+      {%- if section.settings.show_social_links -%}<a href="{{ social_url | escape }}" target="_blank" rel="nofollow noopener noreferrer" aria-label="{{ icon_key | capitalize }}">{% render 'seo-author-social-icon', icon: icon_key %}</a>{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- capture author_bio -%}
+  {%- if description_value != blank -%}
+    {%- if description_field.type != blank -%}{{ description_field | metafield_tag }}{%- else -%}{{ description_value | escape | newline_to_br }}{%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- liquid
+  assign product_count = 0
+  assign seen_products = '|'
+-%}
+{%- capture picked_products_markup -%}
+  {%- if section.settings.show_sidebar_products -%}
+    {%- assign picker_keys = 'picked_product_1,picked_product_2,picked_product_3' | split: ',' -%}
+    {%- for picker_key in picker_keys -%}
+      {%- assign picked_product = section.settings[picker_key] -%}
+      {%- capture stocked_variant_id -%}{% render 'seo-sidebar-product-variant', product: picked_product %}{%- endcapture -%}
+      {%- assign product_token = '|' | append: picked_product.id | append: '|' -%}
+      {%- if stocked_variant_id == blank or seen_products contains product_token -%}{%- continue -%}{%- endif -%}
+      {%- assign seen_products = seen_products | append: picked_product.id | append: '|' -%}
+      {%- assign product_count = product_count | plus: 1 -%}
+      {% render 'seo-author-product-card', product: picked_product %}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- liquid
+  assign has_sidebar = false
+  if product_count > 0 or section.settings.show_sidebar_newsletter
+    assign has_sidebar = true
+  endif
+-%}
+<main id="SeoAuthor-{{ section.id }}" class="seo-author section-container-lg" data-seo-author data-author-id="{{ author_object.system.id }}" data-manual-count="{{ author_manual_count }}" data-total-override="{{ author_total_override }}" data-author-total="{{ author_articles_total }}" data-per-page="{{ section.settings.articles_per_page }}" data-canonical-url="{{ author_canonical_url | escape }}" data-shop-url="{{ shop.url | escape }}" data-date-format="{{ section.settings.date_format | escape }}" data-count-singular="{{ section.settings.article_count_singular | escape }}" data-count-plural="{{ section.settings.article_count_plural | escape }}" data-reading-label="{{ section.settings.reading_time_label | escape }}" data-page-status="{{ section.settings.pagination_status | escape }}" data-empty-label="{{ section.settings.empty_state_text | escape }}" data-search-empty-label="{{ section.settings.search_empty_text | escape }}" style="--seo-author-padding-top: {{ section.settings.padding_top }}px; --seo-author-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {% render 'seo-author-bootstrap' %}
+  <div class="seo-author-topbar">{% if settings.show_breadcrumb_nav %}{% render 'breadcrumbs', class: 'breadcrumbs-inline', page_title: author_name %}{% endif %}<button class="seo-author-back" type="button" data-author-back hidden>{% render 'seo-article-ui-icon', icon: 'previous' %}{{ section.settings.back_label | escape }}</button></div>
+  <div class="seo-author-layout{% unless has_sidebar %} seo-author-layout--single{% endunless %}">
+    <div class="seo-author-primary">
+      <header class="seo-author-profile">
+        <div class="seo-author-profile__avatar">{%- if author_avatar != blank -%}{{ author_avatar | image_url: width: 224 | image_tag: loading: 'eager', widths: '112, 224', sizes: '112px', alt: author_name }}{%- else -%}<span aria-hidden="true">{{ author_name | slice: 0, 1 | upcase | escape }}</span>{%- endif -%}</div>
+        <div class="seo-author-profile__main">
+          {% if section.settings.profile_eyebrow != blank %}<p class="seo-author-profile__eyebrow">{{ section.settings.profile_eyebrow | escape }}</p>{% endif %}
+          <h1>{{ author_name | escape }}</h1>
+          {%- if identity_value != blank -%}<ul class="seo-author-profile__identities" role="list">{% assign identities = identity_value | split: ',' %}{% for identity in identities %}{% assign clean_identity = identity | strip %}{% if clean_identity != blank %}<li>{{ clean_identity | escape }}</li>{% endif %}{% endfor %}</ul>{%- endif -%}
+          {%- if author_socials != blank -%}<div class="seo-author-profile__socials">{{ author_socials }}</div>{%- endif -%}
+          <p class="seo-author-profile__total" data-author-total>{% if author_articles_total == 1 %}{{ section.settings.article_count_singular | replace: ':count', author_articles_total | escape }}{% else %}{{ section.settings.article_count_plural | replace: ':count', author_articles_total | escape }}{% endif %}</p>
+        </div>
+        {%- if author_bio != blank -%}<div class="seo-author-profile__bio">{{ author_bio }}</div>{%- endif -%}
+      </header>
+      <section class="seo-author-library" data-author-library aria-labelledby="AuthorArticles-{{ section.id }}">
+        <h2 id="AuthorArticles-{{ section.id }}">{{ section.settings.articles_heading | escape }}</h2>
+        <div class="seo-author-loading" role="status" aria-label="Loading articles"><span></span></div>
+        <div class="seo-author-library__content">
+          <div class="seo-author-search" data-author-search-controls hidden><label class="visually-hidden" for="AuthorSearch-{{ section.id }}">{{ section.settings.search_placeholder | escape }}</label><input id="AuthorSearch-{{ section.id }}" type="search" data-author-search placeholder="{{ section.settings.search_placeholder | escape }}" autocomplete="off"><span data-author-search-count role="status" aria-live="polite" hidden></span></div>
+          <div class="seo-author-grid" data-author-grid>{{ author_cards }}</div>
+          <p class="seo-author-empty" data-author-empty{% if author_articles_count > 0 %} hidden{% endif %}>{{ section.settings.empty_state_text | escape }}</p>
+          <nav class="seo-author-pagination" data-author-pagination aria-label="Pagination" hidden><div class="seo-author-pagination__buttons"><button type="button" data-author-prev>{% render 'seo-article-ui-icon', icon: 'previous' %}<span>{{ section.settings.previous_label | escape }}</span></button><div data-author-pages></div><button type="button" data-author-next><span>{{ section.settings.next_label | escape }}</span>{% render 'seo-article-ui-icon', icon: 'next' %}</button></div><p data-author-page-status></p></nav>
+        </div>
+      </section>
+    </div>
+    {%- if has_sidebar -%}<aside class="seo-author-sidebar" aria-label="Author resources">{%- if product_count > 0 -%}<section class="seo-author-products"><h2 class="seo-author-sidebar__title">{{ section.settings.products_heading | escape }}</h2><div class="seo-author-products__list">{{ picked_products_markup }}</div></section>{%- endif -%}{%- if section.settings.show_sidebar_newsletter -%}{% render 'seo-author-newsletter' %}{%- endif -%}</aside>{%- endif -%}
+  </div>
+  <template data-author-card-template><article class="seo-author-card" data-author-card><a class="seo-author-card__link"><div class="seo-author-card__media"><img class="seo-author-card__image" width="1200" height="900" alt="" loading="lazy" hidden><div class="seo-author-card__placeholder">{{ 'image' | placeholder_svg_tag }}</div><span class="seo-author-card__tag" hidden></span></div><div class="seo-author-card__body"><h3></h3><p class="seo-author-card__excerpt"></p><p class="seo-author-card__meta"><time></time><span aria-hidden="true">·</span><span data-card-reading></span></p></div></a></article></template>
+  <script type="application/json" data-author-records>[{{ author_records_json | replace: '<', '\u003c' }}]</script>
+  <script type="application/ld+json" data-author-item-list>{%- capture initial_item_list -%}{"@context":"https://schema.org","@type":"ItemList","@id":{{ author_canonical_url | append: '#articles' | json }},"name":{{ section.settings.articles_heading | json }},"numberOfItems":{{ author_articles_count }},"itemListElement":[{{ item_list_json }}]}{%- endcapture -%}{{ initial_item_list | replace: '<', '\u003c' }}</script>
+  {%- if author_object != blank -%}
+    <script type="application/ld+json">{%- capture person_json -%}{"@context":"https://schema.org","@type":"Person","@id":{{ author_canonical_url | append: '#person' | json }},"url":{{ author_canonical_url | json }},"name":{{ author_name | json }},"description":{{ author_bio | strip_html | strip | json }}{% if identity_value != blank %},"jobTitle":{{ identity_value | json }}{% endif %}{% if author_avatar != blank %},"image":{{ author_avatar_url | json }}{% endif %}{% if social_count > 0 %},"sameAs":[{{ social_urls_json }}]{% endif %}}{%- endcapture -%}{{ person_json | replace: '<', '\u003c' }}</script>
+  {%- endif -%}
+</main>
+{% render 'seo-author-controller' %}
+
+{% schema %}
+{
+  "name": "SEO作者页",
+  "limit": 1,
+  "settings": [
+    {"type":"header","content":"作者资料"},
+    {"type":"text","id":"profile_eyebrow","label":"作者眉题（可留空）"},
+    {"type":"text","id":"author_fallback_name","label":"缺少姓名时显示","default":"Author"},
+    {"type":"checkbox","id":"show_social_links","label":"显示作者社交链接","default":true},
+    {"type":"text","id":"home_label","label":"首页链接","default":"Home"},
+    {"type":"text","id":"back_label","label":"返回按钮","default":"Back"},
+    {"type":"text","id":"article_count_singular","label":"单篇文章数量（:count 为数量）","default":":count article"},
+    {"type":"text","id":"article_count_plural","label":"多篇文章数量（:count 为数量）","default":":count articles"},
+    {"type":"header","content":"文章列表"},
+    {"type":"text","id":"articles_heading","label":"文章列表标题","default":"Articles"},
+    {"type":"range","id":"articles_per_page","label":"每页文章数量","min":3,"max":12,"step":1,"default":6},
+    {"type":"text","id":"search_placeholder","label":"搜索输入提示","default":"Search articles"},
+    {"type":"text","id":"empty_state_text","label":"暂无文章提示","default":"No articles yet."},
+    {"type":"text","id":"search_empty_text","label":"无搜索结果提示","default":"No matching articles."},
+    {"type":"text","id":"reading_time_label","label":"阅读时长（:count 为分钟数）","default":":count min read"},
+    {"type":"select","id":"date_format","label":"日期格式","default":"%B %d, %Y","options":[{"value":"%B %d, %Y","label":"完整月份日期"},{"value":"%d %b %Y","label":"简短月份日期"},{"value":"%Y-%m-%d","label":"数字日期"}]},
+    {"type":"text","id":"previous_label","label":"上一页","default":"Previous"},
+    {"type":"text","id":"next_label","label":"下一页","default":"Next"},
+    {"type":"text","id":"pagination_status","label":"分页状态（:start、:end、:total 为范围和总数）","default":"Showing :start–:end of :total"},
+    {"type":"header","content":"推荐产品"},
+    {"type":"checkbox","id":"show_sidebar_products","label":"显示推荐产品","default":true},
+    {"type":"text","id":"products_heading","label":"推荐产品标题","default":"Recommended products"},
+    {"type":"product","id":"picked_product_1","label":"推荐产品一"},
+    {"type":"product","id":"picked_product_2","label":"推荐产品二"},
+    {"type":"product","id":"picked_product_3","label":"推荐产品三"},
+    {"type":"text","id":"product_button_label","label":"商品按钮","default":"Shop now"},
+    {"type":"header","content":"邮件订阅"},
+    {"type":"checkbox","id":"show_sidebar_newsletter","label":"显示邮件订阅","default":true},
+    {"type":"text","id":"newsletter_heading","label":"订阅标题","default":"Stay in the loop"},
+    {"type":"richtext","id":"newsletter_text","label":"订阅说明"},
+    {"type":"text","id":"newsletter_email_label","label":"邮箱输入提示","default":"Email address"},
+    {"type":"text","id":"newsletter_button","label":"订阅按钮","default":"Subscribe"},
+    {"type":"text","id":"newsletter_success_label","label":"订阅成功提示","default":"Thanks for subscribing."},
+    {"type":"header","content":"页面间距"},
+    {"type":"range","id":"padding_top","label":"顶部间距","min":0,"max":80,"step":4,"unit":"px","default":24},
+    {"type":"range","id":"padding_bottom","label":"底部间距","min":0,"max":120,"step":4,"unit":"px","default":64}
+  ],
+  "presets":[{"name":"SEO作者页"}]
+}
+{% endschema %}

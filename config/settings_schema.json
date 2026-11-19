@@ -2419,5 +2419,59 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Article Config",
+    "settings": [
+      {
+        "type": "metaobject",
+        "id": "default_author",
+        "label": "默认文章作者",
+        "metaobject_type": "blog_author_information"
+      },
+      {
+        "type": "metaobject",
+        "id": "default_reviewer",
+        "label": "默认文章审核者",
+        "metaobject_type": "blog_author_information"
+      }
+    ]
+  },
+  {
+    "name": "面包屑导航",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_breadcrumb_nav",
+        "label": "显示面包屑导航",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "collection_breadcrumb_position",
+        "label": "分类页面包屑位置",
+        "options": [
+          {
+            "value": "above_title_center",
+            "label": "标题上方，与标题对齐"
+          },
+          {
+            "value": "below_title_center",
+            "label": "标题下方，与标题对齐"
+          },
+          {
+            "value": "above_products_left",
+            "label": "商品列表上方，左对齐"
+          }
+        ],
+        "default": "above_title_center"
+      },
+      {
+        "type": "text",
+        "id": "breadcrumb_home_text",
+        "label": "首页链接文字",
+        "default": "Home"
+      }
+    ]
   }
 ]

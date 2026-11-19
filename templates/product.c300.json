@@ -116,6 +116,13 @@
               },
               "blocks": {}
             },
+            "klip_coupons_klip_app_section_product_7WaGmj": {
+              "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
+              "settings": {
+                "margin_top": 10,
+                "margin_bottom": 10
+              }
+            },
             "xtu_key_specs": {
               "type": "xtu-key-specs",
               "name": "XTU Key Specs",
@@ -263,13 +270,6 @@
               },
               "blocks": {}
             },
-            "klip_coupons_klip_app_section_product_7WaGmj": {
-              "type": "shopify://apps/klip-coupons/blocks/klip-app-section-product/df38e221-ede4-4ad4-b47d-56524361a5be",
-              "settings": {
-                "margin_top": 10,
-                "margin_bottom": 10
-              }
-            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
@@ -336,6 +336,10 @@
               },
               "block_order": []
             },
+            "selleasy_lb_upsell_widget_ba_mR8TP4": {
+              "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-ba/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+              "settings": {}
+            },
             "xtu_info_modal_support": {
               "type": "xtu-info-modal",
               "name": "XTU Info Modal",
@@ -357,13 +361,14 @@
           "block_order": [
             "text_xrnftG",
             "price_tVjtKg",
+            "klip_coupons_klip_app_section_product_7WaGmj",
             "xtu_key_specs",
             "text_aEtTtq",
             "xtu_feature_benefits",
             "variant_picker_R3rGDr",
             "xtu_addon_bundle",
-            "klip_coupons_klip_app_section_product_7WaGmj",
             "buy_buttons_eYQEYi",
+            "selleasy_lb_upsell_widget_ba_mR8TP4",
             "xtu_info_modal_support",
             "xtu_payment_methods"
           ]
@@ -394,42 +399,49 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-rich-content-template--29158114361510__xtu_rich_content_Q7NFYk"
+            "target": "xtu-rich-content-template--28091127922915__xtu_rich_content_Q7NFYk"
           }
         },
         "nav_comparison": {
           "type": "item",
           "settings": {
             "label": "Highlights",
-            "target": "xtu-tab-images-template--22586600816867__xtu_tab_images_R6zPMX"
+            "target": "xtu-tab-images-template--28091127922915__xtu_tab_images_R6zPMX"
           }
         },
         "item_4YAHeY": {
           "type": "item",
           "settings": {
             "label": "What's in the Box",
-            "target": "xtu-rich-content-template--22586600816867__xtu_rich_content_EEMAj4"
+            "target": "shopify-section-template--28091127922915__xtu_rich_content_EEMAj4"
           }
         },
         "nav_specs": {
           "type": "item",
           "settings": {
             "label": "Compare",
-            "target": "xtu-product-compare-template--22586600816867__xtu_product_compare_U7Mgh3"
+            "target": "xtu-product-compare-template--28091127922915__xtu_product_compare_U7Mgh3"
           }
         },
         "item_dwBHWi": {
           "type": "item",
           "settings": {
             "label": "FAQs",
-            "target": "xtu-faq-template--22586600816867__xtu_faq_kT3Ffi"
+            "target": "shopify-section-template--28091127922915__xtu_faq_kT3Ffi"
           }
         },
         "item_MUMPVp": {
           "type": "item",
           "settings": {
             "label": "Specs",
-            "target": "xtu-product-specs-template--22586600816867__xtu_product_specs_Gg8R6q"
+            "target": "shopify-section-template--28091127922915__xtu_product_specs_Gg8R6q"
+          }
+        },
+        "item_VcigwQ": {
+          "type": "item",
+          "settings": {
+            "label": "Reviews",
+            "target": "#customer-reviews"
           }
         }
       },
@@ -439,7 +451,8 @@
         "item_4YAHeY",
         "nav_specs",
         "item_dwBHWi",
-        "item_MUMPVp"
+        "item_MUMPVp",
+        "item_VcigwQ"
       ],
       "settings": {
         "aria_label": "Product sections",
@@ -510,7 +523,7 @@
           "settings": {
             "image": "shopify://shop_images/1_d1ce0f03-08b0-401d-8f10-16cc2c533a64.jpg",
             "media_ratio": "auto",
-            "alt": "",
+            "alt": "GKU C300 dash cam overview: 4K+1080P+4K recording, voice control, GPS, parking monitor",
             "image_width": 100,
             "align": "center",
             "image_radius": 16,
@@ -575,7 +588,7 @@
           "settings": {
             "image": "shopify://shop_images/PC_-3_36e7e48f-3cf4-4db5-944d-265840efed70.jpg",
             "media_ratio": "auto",
-            "alt": "",
+            "alt": "Triple views: 4K front at 170°, 1080P interior at 150°, 4K rear at 140°",
             "image_width": 100,
             "align": "center",
             "image_radius": 16,
@@ -865,7 +878,7 @@
           "settings": {
             "image": "shopify://shop_images/PC_-14_acab4dc0-8c56-48dd-9588-a93712582196.jpg",
             "media_ratio": "auto",
-            "alt": "",
+            "alt": "C300 retail box and contents: dash cam, rear camera, cable, car charger and install tools",
             "image_width": 100,
             "align": "center",
             "image_radius": 16,
@@ -1228,6 +1241,62 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_liquid_6TGbFn": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"customer-reviews\"></div>\n\n<style>\n  #customer-reviews {\n    scroll-margin-top: 120px;\n  }\n</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1793418159b2661331": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_N8Tikf": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": true,
+            "empty_state": "other_products_reviews"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_N8Tikf"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1242,6 +1311,8 @@
     "xtu_rich_content_EEMAj4",
     "xtu_product_compare_U7Mgh3",
     "xtu_faq_kT3Ffi",
-    "xtu_product_specs_Gg8R6q"
+    "xtu_product_specs_Gg8R6q",
+    "custom_liquid_6TGbFn",
+    "1793418159b2661331"
   ]
 }

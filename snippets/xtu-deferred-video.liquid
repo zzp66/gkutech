@@ -1,0 +1,73 @@
+{%- doc -%}
+  Keeps hosted media inactive until its visible viewport variant approaches the screen.
+
+  @param {video} video - Hosted Shopify video
+  @param {string} [class] - Existing video classes
+  @param {boolean} [autoplay] - Play when the visible media is activated (default true)
+  @param {boolean} [native_autoplay] - Autoplay without JavaScript (defaults to autoplay)
+  @param {boolean} [loop] - Loop video (default true)
+  @param {boolean} [muted] - Mute video (default true)
+  @param {boolean} [controls] - Display native controls (default false)
+  @param {string} [media_query] - Viewport in which this video is displayed
+  @param {string} [image_size] - Existing poster image size
+{%- enddoc -%}
+
+{%- liquid
+  assign should_autoplay = autoplay
+  if should_autoplay == nil
+    assign should_autoplay = true
+  endif
+  assign fallback_autoplay = native_autoplay
+  if fallback_autoplay == nil
+    assign fallback_autoplay = should_autoplay
+  endif
+  assign should_loop = loop
+  if should_loop == nil
+    assign should_loop = true
+  endif
+  assign should_mute = muted
+  if should_mute == nil
+    assign should_mute = true
+  endif
+  assign show_controls = controls | default: false
+  assign poster_size = image_size | default: '1600x'
+-%}
+
+{%- capture native_video -%}
+  {{- video | video_tag:
+    autoplay: fallback_autoplay,
+    loop: should_loop,
+    muted: should_mute,
+    playsinline: true,
+    controls: show_controls,
+    preload: 'metadata',
+    class: class,
+    width: video.preview_image.width,
+    height: video.preview_image.height,
+    image_size: poster_size
+  -}}
+{%- endcapture -%}
+{%- liquid
+  # Shopify's video_tag generates a fallback image without alt text.
+  assign fallback_image_attributes = native_video | split: '<img ' | last | split: '>' | first | prepend: ' '
+  unless fallback_image_attributes contains ' alt='
+    assign native_video = native_video | replace: '<img ', '<img alt="" '
+  endunless
+
+  assign deferred_attributes = '<video data-xtu-deferred-media data-xtu-autoplay="' | append: should_autoplay | append: '"'
+  if media_query != blank
+    assign escaped_query = media_query | escape
+    assign deferred_attributes = deferred_attributes | append: ' data-xtu-media-query="' | append: escaped_query | append: '"'
+  endif
+-%}
+{{- native_video
+  | replace: '<video', deferred_attributes
+  | replace: ' autoplay="autoplay"', ''
+  | replace: 'preload="metadata"', 'preload="none"'
+  | replace: ' src=', ' data-src='
+  | replace: ' poster=', ' data-poster='
+-}}
+<noscript>
+  <style>[data-xtu-deferred-media] { display: none !important; }</style>
+  {{- native_video -}}
+</noscript>

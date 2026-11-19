@@ -170,7 +170,7 @@
               "type": "xtu-expandable-description",
               "name": "XTU Expand Description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>{{ closest.product.description }}</p>",
                 "enable_collapse": true,
                 "collapsed_height": 200,
                 "expand_label": "Learn more",
@@ -394,42 +394,49 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-rich-content-template--22633731686627__xtu_rich_content_TQhDxV"
+            "target": "xtu-rich-content-template--28091127955683__xtu_rich_content_TQhDxV"
           }
         },
         "nav_specs": {
           "type": "item",
           "settings": {
             "label": "Highlights",
-            "target": "xtu-tab-images-template--22633731686627__xtu_tab_images_yfFbMx"
+            "target": "xtu-tab-images-template--28091127955683__xtu_tab_images_yfFbMx"
           }
         },
         "nav_comparison": {
           "type": "item",
           "settings": {
             "label": "What's in the Box",
-            "target": "xtu-rich-content-template--22633731686627__xtu_rich_content_WyNHXC"
+            "target": "xtu-rich-content-template--28091127955683__xtu_rich_content_WyNHXC"
           }
         },
         "item_4YAHeY": {
           "type": "item",
           "settings": {
             "label": "Compare",
-            "target": "shopify-section-template--22633731686627__xtu_product_compare_U7Mgh3"
+            "target": "xtu-product-compare-template--28091127955683__xtu_product_compare_U7Mgh3"
           }
         },
         "item_dwBHWi": {
           "type": "item",
           "settings": {
             "label": "FAQs",
-            "target": "xtu-faq-template--22633731686627__xtu_faq_kT3Ffi"
+            "target": "shopify-section-template--28091127955683__xtu_faq_kT3Ffi"
           }
         },
         "item_MUMPVp": {
           "type": "item",
           "settings": {
             "label": "Specs",
-            "target": "xtu-product-specs-template--22633731686627__xtu_product_specs_7XrG4D"
+            "target": "xtu-product-specs-template--28091127955683__xtu_product_specs_7XrG4D"
+          }
+        },
+        "item_NAiwPa": {
+          "type": "item",
+          "settings": {
+            "label": "Reviews",
+            "target": "#customer-reviews"
           }
         }
       },
@@ -439,7 +446,8 @@
         "nav_comparison",
         "item_4YAHeY",
         "item_dwBHWi",
-        "item_MUMPVp"
+        "item_MUMPVp",
+        "item_NAiwPa"
       ],
       "settings": {
         "aria_label": "Product sections",
@@ -451,6 +459,42 @@
         "border_color": "#dddddd",
         "active_color": "#000000",
         "inactive_color": "#8e8e93"
+      }
+    },
+    "xtu_media_grid_FKNEFU": {
+      "type": "xtu-media-grid",
+      "blocks": {
+        "full_width_rEmzGg": {
+          "type": "full_width",
+          "settings": {
+            "media_type": "youtube",
+            "video_url": "https://www.youtube.com/watch?v=bl1RG2U7Pos",
+            "media_ratio": "auto",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "full_width_rEmzGg"
+      ],
+      "name": "XTU Media Grid",
+      "settings": {
+        "heading": "Meet the GKU C600 4G LTE Dash Cam with WiFi 6",
+        "subheading": "Stay Connected Wherever You Go. Enjoy Fast WiFi 6 Connectivity or Switch to 4G LTE for Remote Monitoring, with an Optional $9.9 Subscription.",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "media_radius": 16,
+        "gap_desktop": 16,
+        "gap_mobile": 8,
+        "padding_top": 48,
+        "padding_bottom": 16,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 4
       }
     },
     "xtu_rich_content_TQhDxV": {
@@ -471,9 +515,10 @@
         "image_XbxXWg": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Sep_24_2026_11_54_09_AM.png",
+            "image": "shopify://shop_images/2_700eb098-482a-44c4-8c3a-a3a4301f46a4.jpg",
+            "image_mobile": "shopify://shop_images/3_f64d2c8b-b3e6-45c6-94b7-a964ec269f6f.jpg",
             "media_ratio": "auto",
-            "alt": "",
+            "alt": "GKU C600 4G LTE dual dash cam featuring built-in 4G and Wi-Fi connectivity, GPS tracking, remote monitoring, cloud storage, real-time alerts, and front and rear cameras with smartphone app control.",
             "image_width": 100,
             "align": "center",
             "image_radius": 16,
@@ -502,7 +547,7 @@
       "name": "XTU Rich Content",
       "settings": {
         "heading": "C600 4G LTE & WIFI Front & Rear Dash Cam",
-        "subheading": "Stay Connected to Your Car, Wherever You Are. The GKU C600 combines 4G LTE connectivity, remote vehicle monitoring, GPS, and STARVIS 2 imaging to help you stay connected to your vehicle on the road and while parked.",
+        "subheading": "Stay Connected to Your Car, Wherever You Are. Enjoy optional 4G remote access, GPS tracking, real-time alerts, and flexible Wi-Fi connectivity for everyday driving and parking protection.",
         "heading_align": "center",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
@@ -528,7 +573,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_Sep_24_2026_11_54_09_AM.png",
             "video_url": "",
             "media_ratio": "21 / 9",
-            "alt": ""
+            "alt": "Built-in 4G LTE GKU C600 dual dash cam lets you monitor your car anywhere"
           }
         }
       },
@@ -559,21 +604,23 @@
     "xtu_tab_images_yfFbMx": {
       "type": "xtu-tab-images",
       "blocks": {
-        "tab_nGtdLW": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Front 2.5K and Rear 1080P Recording",
-            "media_type": "image",
-            "image": "shopify://shop_images/3_752c15af-b73a-42f5-8751-f1f15b4cf014.jpg",
-            "video_url": ""
-          }
-        },
         "tab_Q3Ywfh": {
           "type": "tab",
           "settings": {
             "tab_label": "4G Remote Monitoring",
             "media_type": "image",
-            "image": "shopify://shop_images/4_449bf375-65ae-441b-8563-eb81748f605c.jpg",
+            "image": "shopify://shop_images/4_5d7aaa47-709c-4d67-9ee6-8ccbfc5270cf.jpg",
+            "image_mobile": "shopify://shop_images/5_c67aad75-5739-4322-82e7-97cf287e137e.jpg",
+            "video_url": ""
+          }
+        },
+        "tab_nGtdLW": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Front 2.5K and Rear 1080P Recording",
+            "media_type": "image",
+            "image": "shopify://shop_images/3_13dbf8c9-b61c-433f-9b2e-d0eee15c6b2f.jpg",
+            "image_mobile": "shopify://shop_images/4_d5ff0c99-565f-41dd-bb8a-df90ad2bd26d.jpg",
             "video_url": ""
           }
         },
@@ -582,7 +629,8 @@
           "settings": {
             "tab_label": "Two-way Voice Communication",
             "media_type": "image",
-            "image": "shopify://shop_images/5_4ebf1482-f1ef-4b7d-bfac-bcb74fb07b40.jpg",
+            "image": "shopify://shop_images/5_21ebcf01-79f7-4d43-9242-212e492685b3.jpg",
+            "image_mobile": "shopify://shop_images/6_256620ca-7f03-4b54-b071-c3da46c992f4.jpg",
             "video_url": ""
           }
         },
@@ -591,7 +639,8 @@
           "settings": {
             "tab_label": "5.8GHz WiFi6&App Control",
             "media_type": "image",
-            "image": "shopify://shop_images/6_38d36d07-9e58-42e7-837a-aa0656d43d5d.jpg",
+            "image": "shopify://shop_images/6_70b6d559-9642-4a7b-b288-a67ded6c0dd5.jpg",
+            "image_mobile": "shopify://shop_images/7_1d6cc64d-c9b4-4187-ae1e-0b9b796b7379.jpg",
             "video_url": ""
           }
         },
@@ -600,14 +649,15 @@
           "settings": {
             "tab_label": "GPS Tracking",
             "media_type": "image",
-            "image": "shopify://shop_images/7_14588cb3-9938-4f26-b0f5-bb26459ed6ae.jpg",
+            "image": "shopify://shop_images/7_751a225a-e8fd-4194-b5cc-bebdad175e76.jpg",
+            "image_mobile": "shopify://shop_images/8_5b3adbf4-8a61-4ed8-9238-15efb64ded8e.jpg",
             "video_url": ""
           }
         }
       },
       "block_order": [
-        "tab_nGtdLW",
         "tab_Q3Ywfh",
+        "tab_nGtdLW",
         "tab_mFRRrR",
         "tab_AtzgRP",
         "tab_qEia3z"
@@ -639,17 +689,29 @@
     "xtu_tab_images_EeXx8Q": {
       "type": "xtu-tab-images",
       "blocks": {
+        "tab_fjedta": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Flexible Plans, Affordable 4G",
+            "media_type": "image",
+            "image": "shopify://shop_images/14_a2519893-9c42-4dee-84a3-a323dbd35e2c.jpg",
+            "image_mobile": "shopify://shop_images/15_518d267a-ff46-44e5-91c0-08f643d71f7a.jpg",
+            "video_url": ""
+          }
+        },
         "tab_BeyiXk": {
           "type": "tab",
           "settings": {
             "tab_label": "Loop Recording&64GB Included",
             "media_type": "image",
-            "image": "shopify://shop_images/11_08bf914e-278a-47fd-99e1-577038fb5a66.jpg",
+            "image": "shopify://shop_images/11_e384a650-a043-475a-8664-a75a3695a196.jpg",
+            "image_mobile": "shopify://shop_images/12_57704beb-0e9e-4848-8ef4-0e4ec525db06.jpg",
             "video_url": ""
           }
         },
         "tab_JYiMht": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_label": "Starvis2 Night Vision",
             "media_type": "image",
@@ -662,7 +724,8 @@
           "settings": {
             "tab_label": "24H Parking Protection",
             "media_type": "image",
-            "image": "shopify://shop_images/9_10bcbff3-1df9-42bc-9906-c213c1938049.jpg",
+            "image": "shopify://shop_images/9_756763cf-d13e-4c24-8d71-8132d7b7fa68.jpg",
+            "image_mobile": "shopify://shop_images/10_a21d743e-c80a-4ecc-bc79-05fdf3c02aa8.jpg",
             "video_url": ""
           }
         },
@@ -671,12 +734,14 @@
           "settings": {
             "tab_label": "G-Sensor",
             "media_type": "image",
-            "image": "shopify://shop_images/10_47c9ae1a-0023-4cc7-b025-a46c462f011b.jpg",
+            "image": "shopify://shop_images/10_bd7c6b00-83f6-4a0d-9e6e-60ea7abfe927.jpg",
+            "image_mobile": "shopify://shop_images/11_2aa8c2df-abe8-46b8-8d93-eedfd5fb2e01.jpg",
             "video_url": ""
           }
         }
       },
       "block_order": [
+        "tab_fjedta",
         "tab_BeyiXk",
         "tab_JYiMht",
         "tab_ebVhYc",
@@ -684,8 +749,8 @@
       ],
       "name": "XTU Tab Images",
       "settings": {
-        "heading": "C600: Reliable Recording. Day, Night and While Parked.",
-        "subheading": "The GKU C600 combines seamless loop recording, included 64GB storage, STARVIS 2 night vision, 24-hour parking protection, and G-Sensor detection for reliable protection around the clock.",
+        "heading": "C600: Flexible Connectivity. Reliable Protection.",
+        "subheading": "Choose optional 4G remote access or standard Wi-Fi, with loop recording, included 64GB storage, 24-hour parking protection and G-Sensor collision detection for everyday peace of mind.",
         "background_color": "#ffffff",
         "content_background": "#ffffff",
         "heading_color": "#000000",
@@ -698,7 +763,7 @@
         "tab_color_active": "{{ settings.color_palette.foreground }}",
         "show_tab_underline": false,
         "content_width": 1200,
-        "gallery_ratio": "21 / 9",
+        "gallery_ratio": "auto",
         "image_radius": 0,
         "padding_top": 36,
         "padding_bottom": 44,
@@ -724,7 +789,8 @@
         "image_3q6bBA": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/12_11b96dd2-bb1a-4c16-97d9-8800e899c5d4.jpg",
+            "image": "shopify://shop_images/12_97dec98c-30f6-444b-8e62-98d31a422331.jpg",
+            "image_mobile": "shopify://shop_images/13_41144940-fd68-4207-85de-55ea7b9d0fba.jpg",
             "media_ratio": "auto",
             "alt": "",
             "image_width": 100,
@@ -737,7 +803,7 @@
         "richtext_AJtW3g": {
           "type": "richtext",
           "settings": {
-            "body": "<p>C600 Dash Cam *1</p><p>64GB SD Card *1</p><p>Power Cable with Car Charger (9.84 ft) *1</p><p>Rear Camera & Extension Cable (19.69 ft) *1</p><p>Multifuse Hardwire Kit *1</p><p>Electrostatic Stickers *2</p><p>Cable Clips *5</p><p>3M Sticky Tapes *2</p><p>Wire Trim Tool *1</p><p>User Manual *1</p>",
+            "body": "<p>C600 Dash Cam *1</p><p>64GB SD Card *1</p><p>Rear Camera & Extension Cable (19.69 ft) *1</p><p>ACC Multi-Size Hardwire Kit *1<br/></p><p>Electrostatic Stickers *2</p><p>Cable Clips *5</p><p>3M Sticky Tapes *2</p><p>Wire Trim Tool *1</p><p>User Manual *1</p>",
             "align": "left",
             "font_size": 14,
             "font_size_mobile": 14,
@@ -777,9 +843,9 @@
         "ai_gen_block_2b49b3c_4i7gdi": {
           "type": "ai_gen_block_2b49b3c",
           "settings": {
-            "heading": "GKU C600 vs. REDTIGER VS10",
-            "subtitle": "See how the C600 compares with the REDTIGER VS10 in imaging, connectivity, and connected vehicle protection.",
-            "table_data": "Feature|C600|REDTIGER VS10||Local App Front + Rear|2.5K + 1080P|2.5K + 1080P||4G LTE|✓|✓||Cloud Storage|✓|✓||GPS Tracking|✓|✓||Night Vision|Sony STARVIS 2|-||Wi-Fi|5.8GHz Wi-Fi 6|2.4GHz Wi-Fi||Two-Way Voice|✓|✓||Included Storage|64GB SD Card|32GB SD Card||Hardwire Kit|✓（Multi-size Hardwire Kits）|✓||Front FOV|123°|150°||Rear FOV|124°|140°|",
+            "heading": "GKU C600 vs. REDTIGER VS10 vs. LAMTTO DC22",
+            "subtitle": "See how GKU C600 compares with REDTIGER VS10 and LAMTTO DC22 in video quality, connectivity, storage, and subscription costs.",
+            "table_data": "Feature|GKU C600|REDTIGER VS10|LAMTTO DC22||Camera Setup|Front + Rear|Front + Rear|Front + Cabin||Recording Resolution|2.5K + 1080P|2.5K + 1080P|Dual 1080P||4G LTE|✓|✓|✓||Cloud Storage|✓|✓|✓||GPS Tracking|✓|✓|✓||Wi-Fi|2.4/5.8GHz Wi-Fi 6|2.4GHz Wi-Fi|Not Specified||Two-Way Talk|✓|Not Confirmed|✓||Included Storage|64GB SD Card|32GB SD Card|32GB SD Card||Max SD Support|512GB|256GB|128GB||Included Hardwire Kit|ACC Multi-Size Hardwire Kit|Hardwire Kit|OBD-II Power Cable||Front FOV|170°|150°|Not Specified||Rear / Cabin FOV|150°|140°|Not Specified||4G + Cloud Storage Plan|$9.99/month (30-Day Cloud Included)|Not Listed|$19.90/month (Cloud Storage Extra)||Free Trial|7 Days (4G + Cloud Storage)|6 Months 4G (2GB/month) + 30 Days Cloud|30-Day Cloud Trial",
             "desktop_width_percent": 100,
             "text_alignment": "left",
             "heading_size": 32,
@@ -1211,6 +1277,7 @@
         },
         "item_YVBLpe": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "question": "Does the C600 use Sony STARVIS 2?",
             "answer": "<p>Yes. The C600 features <strong>Sony STARVIS 2 imaging technology</strong>, designed to improve image quality and capture clearer footage in challenging low-light driving conditions.</p>"
@@ -1220,7 +1287,7 @@
           "type": "item",
           "settings": {
             "question": "Does parking mode require a hardwire kit?",
-            "answer": "<p>Yes. Continuous parking monitoring requires a compatible hardwire kit or other supported continuous power solution so the dash cam can remain powered after the vehicle is turned off.</p>"
+            "answer": "<p>Yes. The C600 includes an ACC Multi-Size Hardwire Kit for continuous power and parking monitoring when the vehicle is turned off.</p>"
           }
         },
         "item_RLQa8H": {
@@ -1285,6 +1352,7 @@
         },
         "spec_6XdedW": {
           "type": "spec",
+          "disabled": true,
           "settings": {
             "label": "Sensor",
             "value": "Sony STARVIS 2"
@@ -1301,7 +1369,7 @@
           "type": "spec",
           "settings": {
             "label": "Field of View",
-            "value": "123° Front /  124° Rear"
+            "value": "170° Front /  150° Rear"
           }
         },
         "spec_LJDF8j": {
@@ -1366,11 +1434,68 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_liquid_cMm9AM": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"customer-reviews\"></div>\n\n<style>\n  #customer-reviews {\n    scroll-margin-top: 120px;\n  }\n</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1793417917bca44f71": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_WMwhAP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_WMwhAP"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "xtu_product_nav",
+    "xtu_media_grid_FKNEFU",
     "xtu_rich_content_TQhDxV",
     "xtu_media_grid_HCTTxt",
     "xtu_tab_images_yfFbMx",
@@ -1380,6 +1505,8 @@
     "xtu_product_compare_U7Mgh3",
     "xtu_bento_grid_r6pyGH",
     "xtu_faq_kT3Ffi",
-    "xtu_product_specs_7XrG4D"
+    "xtu_product_specs_7XrG4D",
+    "custom_liquid_cMm9AM",
+    "1793417917bca44f71"
   ]
 }

@@ -393,7 +393,6 @@
       "blocks": {
         "nav_overview": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Overview",
             "target": "xtu-tab-images-template--29086148395174__xtu_tab_images_yfFbMx"
@@ -416,7 +415,6 @@
         },
         "nav_comparison": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "label": "Look",
             "target": "xtu_tab_images_yfFbMx"
@@ -468,117 +466,56 @@
         "inactive_color": "#8e8e93"
       }
     },
-    "xtu_media_grid_HCTTxt": {
-      "type": "xtu-media-grid",
+    "xtu_rich_content_bN7BrG": {
+      "type": "xtu-rich-content",
       "blocks": {
-        "column_amVfh6": {
-          "type": "column",
+        "richtext_QBLVfp": {
+          "type": "richtext",
           "settings": {
-            "media_type": "image",
-            "video_url": "",
+            "body": "<p><strong>Reliable Storage for Everyday Driving</strong></p><p>Designed for dash cam recording, the <strong>GKU 64GB Memory Card</strong> provides practical storage for daily commuting, city driving and short trips.</p><p>Built for continuous dash cam use, it supports loop recording and provides a simple storage solution for everyday driving footage.&nbsp;</p><ul><li>64GB Storage Capacity</li><li>Designed for Dash Cam Recording</li><li>Supports Loop Recording</li><li>High-Endurance Design</li><li>Easy Setup</li><li>Format Before First Use</li></ul>",
+            "align": "left",
+            "font_size": 18,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_y8hmpU": {
+          "type": "image",
+          "settings": {
             "media_ratio": "auto",
-            "alt": ""
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
           }
         }
       },
       "block_order": [
-        "column_amVfh6"
+        "richtext_QBLVfp",
+        "image_y8hmpU"
       ],
       "disabled": true,
-      "name": "XTU Media Grid",
+      "name": "XTU Rich Content",
       "settings": {
-        "heading": "XTU S7 Pro Max",
-        "subheading": "XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid XTU Media Grid",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
+        "heading": "GKU 64GB Memory Card for Dash Cam",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#FFFFFF",
+        "content_background": "#FFFFFF",
         "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "placeholder_bg": "#e8eaed",
+        "muted_text_color": "#8E9297",
+        "placeholder_bg": "#E8EAED",
+        "media_bg": "#111111",
+        "link_color": "#0070CA",
         "content_width": 1200,
-        "media_radius": 16,
-        "gap_desktop": 8,
-        "gap_mobile": 4,
-        "padding_top": 28,
-        "padding_bottom": 12,
-        "padding_top_mobile": 12,
-        "padding_bottom_mobile": 20
-      }
-    },
-    "xtu_tab_images_yfFbMx": {
-      "type": "xtu-tab-images",
-      "blocks": {
-        "tab_nGtdLW": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_Q3Ywfh": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Face Retouch",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_mFRRrR": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Portrait Mode",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_AtzgRP": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Live Streaming",
-            "media_type": "image",
-            "video_url": ""
-          }
-        },
-        "tab_qEia3z": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Panorama",
-            "media_type": "image",
-            "video_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_nGtdLW",
-        "tab_Q3Ywfh",
-        "tab_mFRRrR",
-        "tab_AtzgRP",
-        "tab_qEia3z"
-      ],
-      "disabled": true,
-      "name": "XTU Tab Images",
-      "settings": {
-        "heading": "Personalize Your Look",
-        "subheading": "Whether bold or soft, quirky or classic—express your unique style with intuitive in-app enhancements, always true to you.",
-        "background_color": "#ffffff",
-        "content_background": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#333333",
-        "muted_text_color": "#8e9297",
-        "placeholder_bg": "#e8eaed",
-        "tab_rail_bg": "#dfe3e8",
-        "tab_color": "#000000",
-        "tab_bg_active": "#0070ca",
-        "tab_color_active": "#ffffff",
-        "show_tab_underline": false,
-        "content_width": 1200,
-        "gallery_ratio": "auto",
-        "image_radius": 16,
-        "padding_top": 12,
-        "padding_bottom": 80,
+        "padding_top": 36,
+        "padding_bottom": 0,
         "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "padding_bottom_mobile": 0
       }
     },
     "xtu_product_compare_U7Mgh3": {
@@ -1091,8 +1028,7 @@
   "order": [
     "main",
     "xtu_product_nav",
-    "xtu_media_grid_HCTTxt",
-    "xtu_tab_images_yfFbMx",
+    "xtu_rich_content_bN7BrG",
     "xtu_product_compare_U7Mgh3",
     "xtu_bento_grid_r6pyGH",
     "xtu_faq_kT3Ffi",

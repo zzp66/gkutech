@@ -1,0 +1,7 @@
+<span class="seo-social-icon seo-social-icon--{{ icon | handle }}">
+  {%- if icon == 'linkedin' -%}
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M6.5 8.5H3.2V20h3.3V8.5ZM4.85 3a1.92 1.92 0 1 0 0 3.84A1.92 1.92 0 0 0 4.85 3ZM20.8 13.4c0-3.5-1.87-5.14-4.36-5.14a3.8 3.8 0 0 0-3.42 1.88V8.5H9.7V20h3.32v-6.42c0-1.7.76-2.7 2.2-2.7 1.38 0 2.16.98 2.16 2.7V20h3.42v-6.6Z"/></svg>
+  {%- else -%}
+    {%- render 'seo-article-share-icon', name: icon -%}
+  {%- endif -%}
+</span>

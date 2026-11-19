@@ -4,7 +4,15 @@
   @param {string} title - The title of the carousel.
   @param {object} resources - The resources to display.
   @param {string} resource_type - The type of resource to display.
+  @param {string} [heading_tag] - Optional subgroup heading tag; defaults to h4.
 {%- enddoc -%}
+{%- liquid
+  assign result_heading_tag = heading_tag | default: 'h4'
+  unless result_heading_tag == 'h3' or result_heading_tag == 'h4'
+    assign result_heading_tag = 'h4'
+  endunless
+-%}
+
 
 {% liquid
   capture slides
@@ -19,12 +27,12 @@
 
 {% capture header %}
   <div class="predictive-search-results__resource-header">
-    <h4
+    <{{ result_heading_tag }}
       id="predictive-search-{{ resource_type }}"
       class="predictive-search-results__title"
     >
       {{ title }}
-    </h4>
+    </{{ result_heading_tag }}>
 
     {% if resources.size >= 4 %}
       {%- render 'slideshow-controls',

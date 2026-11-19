@@ -337,12 +337,12 @@
           "type": "ai_gen_block_14f5556",
           "settings": {
             "eyebrow": "Compare",
-            "title": "Find the Right Dash Cam for Your Drive",
+            "title": "Find the Right Dash Cam for Your Car",
             "note": "Specifications are for reference only. Please refer to the individual product page for the most up-to-date specifications.",
             "parameter_heading": "Products",
             "products": [
               "gku-d600-dual-dash-cam",
-              "gku-d600-pro-4k-dual-dash-cam",
+              "gku-d600-pro-4k-front-1080p-rear-dash-cam",
               "gku-d600-pro-max-starvis-2-dual-dash-cam"
             ],
             "row_1_enabled": true,
@@ -359,7 +359,7 @@
             "row_4_values": "5GHz WiFi |5GHz WiFi | 5.8GHz WiFi 6",
             "row_5_enabled": true,
             "row_5_label": "GPS",
-            "row_5_values": "✓ | ✓ | ✓",
+            "row_5_values": "- | ✓ | ✓",
             "row_6_enabled": true,
             "row_6_label": "Voice Control",
             "row_6_values": "-| - | ✓",
@@ -382,11 +382,12 @@
             "radius": 8,
             "text_color": "#111111",
             "muted_color": "#535f11",
-            "accent_color": "#FFAB02",
+            "accent_color": "{{ settings.color_palette.color7 }}",
             "background_color": "#ffffff",
-            "header_background": "#EBEBD4",
+            "header_background": "{{ settings.color_palette.background }}",
             "label_background": "#f8f9fd",
-            "border_color": "#dfdfdf"
+            "border_color": "#dfdfdf",
+            "title_tag": "h1"
           },
           "blocks": {}
         }
@@ -475,9 +476,9 @@
             "radius": 8,
             "text_color": "#111111",
             "muted_color": "#535f11",
-            "accent_color": "#FFAB02",
+            "accent_color": "#ffab02",
             "background_color": "#ffffff",
-            "header_background": "#EBEBD4",
+            "header_background": "{{ settings.color_palette.background }}",
             "label_background": "#f8f9fd",
             "border_color": "#dfdfdf"
           },
@@ -539,7 +540,7 @@
             "row_2_values": "4K+1080P+1080P | 2.5K+1080P | 4K+1080P+4K",
             "row_3_enabled": true,
             "row_3_label": "Imaging",
-            "row_3_values": "WDR + IR | Sony STARVIS 2+WDR | WDR + IR",
+            "row_3_values": "WDR + IR | WDR | WDR + IR",
             "row_4_enabled": true,
             "row_4_label": "Connectivity",
             "row_4_values": "5GHz WiFi  | 4G LTE | 5.8GHz WiFi 6",
@@ -551,7 +552,7 @@
             "row_6_values": "- | ✓ | ✓",
             "row_7_enabled": true,
             "row_7_label": "FOV",
-            "row_7_values": "170° Front / 160° Cabin / 140° Rear | 123° Front / 124° Rear | 170° Front / 160° Cabin / 140° Rear",
+            "row_7_values": "170° Front / 160° Cabin / 140° Rear | 170° Front / 150° Rear | 170° Front / 160° Cabin / 140° Rear",
             "row_8_enabled": true,
             "row_8_label": "HDR",
             "row_8_values": "- | - | -",
@@ -568,9 +569,9 @@
             "radius": 8,
             "text_color": "#111111",
             "muted_color": "#535f11",
-            "accent_color": "#FFAB02",
+            "accent_color": "#ffab02",
             "background_color": "#ffffff",
-            "header_background": "#EBEBD4",
+            "header_background": "{{ settings.color_palette.background }}",
             "label_background": "#f8f9fd",
             "border_color": "#dfdfdf"
           },

@@ -1,0 +1,964 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "hero_NBkdmw": {
+      "type": "hero",
+      "blocks": {
+        "text_jGkWFC": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>About XTU</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kjLpAe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Capture Every Adventure. Preserve Every Moment.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_jGkWFC",
+        "text_kjLpAe"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "background_color": "",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_AwNjn3": {
+      "type": "section",
+      "blocks": {
+        "text_7TR7hk": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>XTU: Live Your Dream</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pEtNja": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>A smart imaging brand that helps people capture, explore, and protect what matters most.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6FzPPT": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>XTU is a global smart imaging brand dedicated to helping people capture adventures, explore nature, and protect what matters most.<br/><br/>Rooted in intelligent imaging and smart security technologies, XTU develops innovative camera solutions across three key areas: outdoor adventure, wildlife monitoring, and smart home protection.<br/><br/>From action cameras that record unforgettable journeys, to trail cameras that reveal the wonders of nature, and smart doorbells that enhance home security, XTU empowers people to see more, capture more, and stay connected wherever they are.</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "balance",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_7TR7hk",
+        "text_pEtNja",
+        "text_6FzPPT"
+      ],
+      "disabled": true,
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_image_text_L3TBxn": {
+      "type": "xtu-image-text",
+      "blocks": {
+        "row_cqTVzy": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "text-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our Mission",
+            "eyebrow_color": "#0070ca",
+            "heading": "Imagery Connects the World; Visual Tech Empowers Life.",
+            "body": ""
+          }
+        },
+        "row_Hry37X": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our vision",
+            "eyebrow_color": "#0070ca",
+            "heading": "To Be A Global Leader in Smart Imaging & Security.",
+            "body": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_cqTVzy",
+        "row_Hry37X"
+      ],
+      "disabled": true,
+      "name": "XTU Image Text",
+      "settings": {
+        "heading": "Our Story",
+        "subheading": "",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "link_color": "#0070ca",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "image_radius": 16,
+        "row_gap": 80,
+        "row_gap_mobile": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_activity_slider_t6n7VC": {
+      "type": "xtu-activity-slider",
+      "blocks": {
+        "card_iJhfXp": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Dive + Snorkel",
+            "link": ""
+          }
+        },
+        "card_jY7FGP": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Surf",
+            "link": ""
+          }
+        },
+        "card_tc6wQL": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Travel + Adventure",
+            "link": ""
+          }
+        },
+        "card_n94T8m": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Kids + Pets",
+            "link": ""
+          }
+        },
+        "card_LCh9NA": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Mountain Bike",
+            "link": ""
+          }
+        },
+        "card_6AbH3Y": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Hike + Camp",
+            "link": ""
+          }
+        },
+        "card_fzcjqd": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Snow",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_iJhfXp",
+        "card_jY7FGP",
+        "card_tc6wQL",
+        "card_n94T8m",
+        "card_LCh9NA",
+        "card_6AbH3Y",
+        "card_fzcjqd"
+      ],
+      "disabled": true,
+      "name": "XTU Activity Slider",
+      "settings": {
+        "heading": "Shop by Activity",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_image_overlay": false,
+        "mobile_per_view": "2.1",
+        "card_gap": 16,
+        "card_gap_mobile": 8,
+        "card_radius": 16,
+        "card_ratio": "1 / 1",
+        "background_color": "#ffffff",
+        "heading_color": "#111827",
+        "placeholder_bg": "#e8eaed",
+        "overlay_text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "section_p8ggWa": {
+      "type": "section",
+      "blocks": {
+        "group_DCp6iC": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_niFKqn": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Intentional design</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_btk9Yi": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_niFKqn",
+            "text_btk9Yi"
+          ]
+        },
+        "group_4kd469": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_64TNCj": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Quality first</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kGzniA": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_64TNCj",
+            "text_kGzniA"
+          ]
+        },
+        "group_JQajrP": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_n4QGXW": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Customer care</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Bg9X4U": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We're always on your side: keeping our loyal customers happy is our top priority and number one goal.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_n4QGXW",
+            "text_Bg9X4U"
+          ]
+        }
+      },
+      "block_order": [
+        "group_DCp6iC",
+        "group_4kd469",
+        "group_JQajrP"
+      ],
+      "disabled": true,
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_feature_slider_Hxahfc": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_fJWqVH": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Auto Event Detection",
+            "body": "<p>Automatically records 15 seconds before and 30 seconds after an incident is detected, capturing a complete event timeline.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_63Hm4n": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Time-lapse Recording",
+            "body": "<p>Capture long parking sessions in a compact clip without filling up your storage.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_Gp8cVz": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Low Bitrate Mode",
+            "body": "<p>Keep recording overnight with efficient compression that preserves key details.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_hfTMRE": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Motion Detection",
+            "body": "<p>Wake the camera when movement is detected around your vehicle and save the clip automatically.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_pqdbdU": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Parking Guard",
+            "body": "<p>Monitor your vehicle while parked and review incidents as soon as you return.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fJWqVH",
+        "slide_63Hm4n",
+        "slide_Gp8cVz",
+        "slide_hfTMRE",
+        "slide_pqdbdU"
+      ],
+      "disabled": true,
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "Advanced Parking Mode",
+        "subheading": "",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 16,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "pagination_color": "#d1d5db",
+        "pagination_color_active": "#000000",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "blocks_mwz9xw": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_92c17b1_MiMtqX": {
+          "type": "ai_gen_block_92c17b1",
+          "settings": {
+            "heading": "GKU Customer Reviews & Ratings",
+            "subtitle": "See what real customers are saying about GKU dash cams. Explore verified reviews, ratings, and firsthand experiences from drivers.",
+            "body": "",
+            "desktop_width_percent": 100,
+            "text_alignment": "center",
+            "content_width": 1000,
+            "vertical_padding": 40,
+            "mobile_vertical_padding": 30,
+            "heading_size": 48,
+            "mobile_heading_size": 32,
+            "subtitle_size": 20,
+            "mobile_subtitle_size": 18,
+            "body_size": 16,
+            "heading_color": "#000000",
+            "text_color": "#333333"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_92c17b1_MiMtqX"
+      ],
+      "name": "H1 text section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1794455574293b19f9": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_all_reviews_page_LAb7PL": {
+          "type": "shopify://apps/judge-me-reviews/blocks/all_reviews_page/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "max_width": 1200,
+            "review_source": "all",
+            "show_all_reviews_in_same_tab": false,
+            "show_first": "product",
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_all_reviews_page_LAb7PL"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_NBkdmw",
+    "section_AwNjn3",
+    "xtu_image_text_L3TBxn",
+    "xtu_activity_slider_t6n7VC",
+    "section_p8ggWa",
+    "xtu_feature_slider_Hxahfc",
+    "blocks_mwz9xw",
+    "1794455574293b19f9"
+  ]
+}

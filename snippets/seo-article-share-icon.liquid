@@ -1,0 +1,35 @@
+{%- liquid
+  assign icon_name = name | default: 'link'
+-%}
+
+{%- case icon_name -%}
+  {%- when 'x' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.5 4.5H9.5L13.05 9.58L17.45 4.5H19.92L14.13 11.18L20.5 19.5H16.52L12.63 14.11L7.92 19.5H5.44L11.58 12.47L5.5 4.5Z" fill="currentColor"/>
+    </svg>
+  {%- when 'facebook' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.43 20V12.7H15.88L16.24 9.86H13.43V8.05C13.43 7.23 13.66 6.67 14.84 6.67H16.34V4.14C15.61 4.05 14.88 4 14.14 4C11.95 4 10.45 5.34 10.45 7.82V9.86H8V12.7H10.45V20H13.43Z" fill="currentColor"/>
+    </svg>
+  {%- when 'instagram' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.25 4.5H16.75C18.27 4.5 19.5 5.73 19.5 7.25V16.75C19.5 18.27 18.27 19.5 16.75 19.5H7.25C5.73 19.5 4.5 18.27 4.5 16.75V7.25C4.5 5.73 5.73 4.5 7.25 4.5Z" fill="none" stroke="currentColor" stroke-width="1.75"/>
+      <path d="M12 9.05C13.63 9.05 14.95 10.37 14.95 12C14.95 13.63 13.63 14.95 12 14.95C10.37 14.95 9.05 13.63 9.05 12C9.05 10.37 10.37 9.05 12 9.05Z" fill="none" stroke="currentColor" stroke-width="1.75"/>
+      <circle cx="16.3" cy="7.7" r="0.95" fill="currentColor"/>
+    </svg>
+  {%- when 'pinterest' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.02 4C7.93 4 5 6.9 5 10.78C5 13.23 6.37 15.09 8.56 15.09C8.95 15.09 9.19 14.02 9.19 13.71C9.19 13.31 8.17 12.45 8.17 10.78C8.17 8.01 10.27 6.05 12.94 6.05C15.24 6.05 16.94 7.35 16.94 9.73C16.94 11.5 16.23 14.83 13.91 14.83C13.07 14.83 12.39 14.21 12.39 13.37C12.39 12.17 13.24 11 13.24 9.76C13.24 7.67 10.29 8.05 10.29 10.74C10.29 11.33 10.37 11.98 10.63 12.52C10.23 14.27 9.45 16.87 9.45 18.67C9.45 19.31 9.54 19.93 9.62 20.57C9.77 20.74 9.7 20.72 9.88 20.51C11.64 18.11 11.58 17.64 12.38 14.49C12.81 15.31 13.93 15.75 14.8 15.75C18.16 15.75 19.66 12.49 19.66 9.5C19.66 5.99 16.62 4 13.43 4H12.02Z" fill="currentColor"/>
+    </svg>
+  {%- when 'tiktok' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.86 4.5C15.11 5.89 16.17 6.95 17.56 7.2V9.52C16.56 9.49 15.61 9.19 14.79 8.67V14.36C14.79 16.66 12.93 18.5 10.65 18.5C8.36 18.5 6.5 16.66 6.5 14.36C6.5 12.06 8.36 10.22 10.65 10.22C10.92 10.22 11.18 10.24 11.43 10.3V12.68C11.19 12.59 10.93 12.54 10.65 12.54C9.65 12.54 8.84 13.35 8.84 14.36C8.84 15.36 9.65 16.17 10.65 16.17C11.65 16.17 12.47 15.36 12.47 14.36V4.5H14.86Z" fill="currentColor"/>
+    </svg>
+  {%- when 'youtube' -%}
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.3 7.38C19.06 6.47 18.35 5.76 17.44 5.52C15.8 5.08 12 5.08 12 5.08C12 5.08 8.2 5.08 6.56 5.52C5.65 5.76 4.94 6.47 4.7 7.38C4.26 9.02 4.26 12 4.26 12C4.26 12 4.26 14.98 4.7 16.62C4.94 17.53 5.65 18.24 6.56 18.48C8.2 18.92 12 18.92 12 18.92C12 18.92 15.8 18.92 17.44 18.48C18.35 18.24 19.06 17.53 19.3 16.62C19.74 14.98 19.74 12 19.74 12C19.74 12 19.74 9.02 19.3 7.38Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M10.46 9.64L14.49 12L10.46 14.36V9.64Z" fill="currentColor"/>
+    </svg>
+  {%- when 'copy' -%}
+    <svg class="-rotate-45" width="24" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1356_1880)"><path d="M10.0013 5.24662H12.0013C12.439 5.24662 12.8725 5.33284 13.2769 5.50036C13.6813 5.66787 14.0488 5.9134 14.3583 6.22293C14.6679 6.53246 14.9134 6.89992 15.0809 7.30434C15.2484 7.70876 15.3346 8.14221 15.3346 8.57995C15.3346 9.01769 15.2484 9.45115 15.0809 9.85556C14.9134 10.26 14.6679 10.6274 14.3583 10.937C14.0488 11.2465 13.6813 11.492 13.2769 11.6596C12.8725 11.8271 12.439 11.9133 12.0013 11.9133H10.0013M6.0013 11.9133H4.0013C3.56356 11.9133 3.13011 11.8271 2.72569 11.6596C2.32127 11.492 1.95381 11.2465 1.64428 10.937C1.01916 10.3119 0.667969 9.46401 0.667969 8.57995C0.667969 7.6959 1.01916 6.84805 1.64428 6.22293C2.2694 5.59781 3.11725 5.24662 4.0013 5.24662H6.0013" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.33203 8.57996H10.6654" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+{%- endcase -%}

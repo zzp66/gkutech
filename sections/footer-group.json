@@ -82,7 +82,7 @@
             "title": "TikTok",
             "icon": "shopify://shop_images/images_40dcc5f6-aa75-4ee5-9faf-56e7d2b3d7bd.png",
             "icon_hover": "shopify://shop_images/images.png",
-            "link": "https://www.tiktok.com/@gkudashcam_shop"
+            "link": "https://www.tiktok.com/@gku.official.us"
           }
         },
         "social_5": {
@@ -110,6 +110,7 @@
       "name": "GKU Footer",
       "settings": {
         "subscribe_heading": "Subscribe",
+        "subscribe_heading_tag": "h2",
         "subscribe_description": "Get product launches and brand updates",
         "email_placeholder": "Enter your email",
         "subscribe_button_label": "Subscribe",

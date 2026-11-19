@@ -745,7 +745,7 @@
         "text_V6epTX": {
           "type": "text",
           "settings": {
-            "text": "<h2>Weekly Flash Sale</h2>",
+            "text": "<h1>Weekly Flash Sale</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -927,7 +927,7 @@
         "align_desktop": "left",
         "align_mobile": "center",
         "show_countdown": true,
-        "countdown_end": "2026-9-25",
+        "countdown_end": "2026-11-13",
         "expired_behavior": "hide",
         "expired_message": "Deal ended",
         "show_days": true,
@@ -1039,7 +1039,7 @@
             "eyebrow": "",
             "eyebrow_color": "#0070ca",
             "heading": "GKU E200 Highlights",
-            "body": "<ul><li>4K + 4K Dual Recording<br/></li><li>Sony STARVIS 2  Sensor<br/></li><li>HDR Night Vision<br/></li><li>5.8GHz Wi-Fi 6<br/></li><li>Built-in GPS<br/></li><li>Voice Control<br/></li><li>24-Hour Parking Monitoring<br/></li><li>Pre-Recording Protection<br/></li><li>170° Front + 150° Rear Coverage<br/></li><li>Up to 512GB Storage Support</li></ul><h6><a href=\"/products/gku-e200-true-dual-4k-dash-cam-front-and-rear\" target=\"_blank\" title=\"GKU E200 Dual 4K Dash Cam | Sony STARVIS 2 HDR Front & Rear Camera with Voice Control\"><strong>Learn More</strong></a></h6>"
+            "body": "<ul><li>4K + 4K Dual Recording<br/></li><li>Sony STARVIS 2  Sensor<br/></li><li>HDR Night Vision<br/></li><li>5.8GHz Wi-Fi 6<br/></li><li>Built-in GPS<br/></li><li>Voice Control<br/></li><li>24-Hour Parking Monitoring<br/></li><li>Pre-Recording Protection<br/></li><li>170° Front + 150° Rear Coverage<br/></li><li>Up to 512GB Storage Support</li></ul><p><a href=\"/products/gku-e200-true-dual-4k-dash-cam-front-and-rear\" target=\"_blank\" title=\"GKU E200 Dual 4K Dash Cam | Sony STARVIS 2 HDR Front & Rear Camera with Voice Control\"><strong>Learn More</strong></a></p>"
           }
         }
       },
@@ -1065,7 +1065,10 @@
         "padding_bottom": 36,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 40
-      }
+      },
+      "custom_css": [
+        ".xtu-image-text__body > p:has(> a[href=\"/products/gku-e200-true-dual-4k-dash-cam-front-and-rear\"]) {font-family:var(--font-h6--family);font-style:var(--font-h6--style);font-weight:var(--font-h6--weight);font-size:var(--font-h6--size);line-height:var(--font-h6--line-height);letter-spacing:var(--font-h6--letter-spacing);text-transform:var(--font-h6--case);margin-block-start:40px;}"
+      ]
     },
     "custom_liquid_zYRa6N": {
       "type": "custom-liquid",
@@ -1136,7 +1139,7 @@
             "title": "D600 Pro",
             "subtitle": "4K + 1080P · Built-in GPS · 5.8GHz Wi-Fi",
             "button_label": "Shop Now",
-            "button_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "button_link": "shopify://products/gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "button_background": "{{ settings.color_palette.color7 }}",
             "button_text_color": "#111827",
             "button_hover_background": "#f3f4f6"
@@ -1378,7 +1381,7 @@
             "title": "D600 Pro",
             "subtitle": "4K + 1080P · Built-in GPS · 5.8GHz Wi-Fi",
             "button_label": "Shop Now",
-            "button_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "button_link": "shopify://products/gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "button_background": "{{ settings.color_palette.color7 }}",
             "button_text_color": "{{ settings.color_palette.foreground }}",
             "button_hover_background": "#374151"

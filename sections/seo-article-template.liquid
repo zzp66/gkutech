@@ -1,0 +1,712 @@
+{{ 'section-seo-article-template.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign article_author_profile = article.metafields.custom.author.value | default: settings.default_author
+  assign article_reviewer_profile = article.metafields.custom.reviewer.value | default: settings.default_reviewer
+  assign author_name = article_author_profile.name.value | default: article.author
+  assign author_url = article_author_profile.system.url
+  assign reviewer_name = article_reviewer_profile.name.value
+  assign reviewer_url = article_reviewer_profile.system.url | default: settings.default_reviewer.system.url
+  assign share_url = canonical_url | url_encode
+  assign share_title = article.title | url_encode
+  assign cover_alt = article.image.alt | default: article.title
+  assign share_image = blank
+  if article.image
+    assign share_image = article.image | image_url: width: 1200 | url_encode
+  endif
+  assign product_handles = article.metafields.custom.related_products.value
+  assign test_fallback_product = blank
+-%}
+{%- capture author_url -%}{% render 'seo-author-profile-url', profile_url: author_url, article_url: article.url %}{%- endcapture -%}
+{%- if section.settings.show_test_content -%}
+  {%- capture content -%}{% render 'seo-article-test-content' %}{%- endcapture -%}
+{%- else -%}
+  {%- assign content = article.content -%}
+{%- endif -%}
+{%- if section.settings.show_test_content and article.metafields.custom.related_products.value == blank and collections.all.products != blank -%}
+  {%- liquid
+    assign test_products = collections.all.products
+    assign test_product_count = test_products.size
+    assign test_product_index = 'now' | date: '%s' | plus: 0 | modulo: test_product_count
+    for test_product in test_products
+      if forloop.index0 == test_product_index
+        assign test_fallback_product = test_product
+        break
+      endif
+    endfor
+  -%}
+{%- endif -%}
+{%- if product_handles != blank -%}
+  {%- for product in product_handles -%}
+    {%- capture product_html -%}{% render 'seo-article-inline-product-card', product: product, index: forloop.index, last: forloop.last %}{%- endcapture -%}
+    {%- assign placeholder = '[[related_products_' | append: forloop.index | append: ']]' -%}
+    {%- assign content = content | replace: placeholder, product_html -%}
+  {%- endfor -%}
+{%- elsif test_fallback_product != blank -%}
+  {%- capture product_html -%}{% render 'seo-article-inline-product-card', product: test_fallback_product, index: 1, last: true %}{%- endcapture -%}
+  {%- assign content = content | replace: '[[related_products_1]]', product_html -%}
+{%- endif -%}
+{%- liquid
+  assign placeholder_parts = content | split: '[[related_products_'
+  assign clean_content = placeholder_parts | first
+  for placeholder_part in placeholder_parts offset: 1
+    if placeholder_part contains ']]'
+      assign placeholder_number = placeholder_part | split: ']]' | first
+      assign placeholder_prefix = placeholder_number | append: ']]'
+      assign cleaned_part = placeholder_part | remove_first: placeholder_prefix
+      assign clean_content = clean_content | append: cleaned_part
+    else
+      assign clean_content = clean_content | append: placeholder_part
+    endif
+  endfor
+  assign content = clean_content
+-%}
+{%- assign article_body_html = content | replace: '<table', '<div class="seo-article-table-scroll table-wrapper"><table' | replace: '</table>', '</table></div>' -%}
+{%- capture article_body_with_ids -%}{% render 'article-content-with-heading-ids', content: article_body_html %}{%- endcapture -%}
+{%- capture article_toc_markup -%}{% render 'seo-article-toc', content: article_body_with_ids %}{%- endcapture -%}
+{%- liquid
+  assign sidebar_products = article.metafields.custom.sidebar_products.value
+  assign sidebar_products_count = 0
+  for sidebar_product in sidebar_products
+    capture stocked_variant_id
+      render 'seo-sidebar-product-variant', product: sidebar_product
+    endcapture
+    if stocked_variant_id != blank
+      assign sidebar_products_count = sidebar_products_count | plus: 1
+    endif
+  endfor
+  if sidebar_products_count == 0 and section.settings.use_related_products_for_sidebar
+    assign sidebar_products = article.metafields.custom.related_products.value
+    for sidebar_product in sidebar_products
+      capture stocked_variant_id
+        render 'seo-sidebar-product-variant', product: sidebar_product
+      endcapture
+      if stocked_variant_id != blank
+        assign sidebar_products_count = sidebar_products_count | plus: 1
+      endif
+    endfor
+  endif
+  if sidebar_products_count == 0
+    assign sidebar_products = section.settings.featured_products
+    for sidebar_product in sidebar_products
+      capture stocked_variant_id
+        render 'seo-sidebar-product-variant', product: sidebar_product
+      endcapture
+      if stocked_variant_id != blank
+        assign sidebar_products_count = sidebar_products_count | plus: 1
+      endif
+    endfor
+  endif
+  assign has_sidebar = false
+  if article_toc_markup != blank or sidebar_products_count > 0
+    assign has_sidebar = true
+  endif
+-%}
+<article id="SeoArticle-{{ section.id }}" class="seo-article section-container-lg" data-seo-article data-table-hint="{{ section.settings.table_hint | escape }}" style="--seo-article-padding-top: {{ section.settings.padding_top }}px; --seo-article-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <header class="seo-article-hero{% unless article.image %} seo-article-hero--no-image{% endunless %}{% if article.image.aspect_ratio < 1 %} seo-article-hero--portrait{% elsif article.image.aspect_ratio > 2.4 %} seo-article-hero--wide{% endif %}">
+    <div class="seo-article-hero__main">
+      <div class="seo-article-hero__copy">
+        {% if settings.show_breadcrumb_nav %}{% render 'breadcrumbs', class: 'breadcrumbs-inline' %}{% endif %}
+        <h1 class="seo-article-title">{{ article.title | escape }}</h1>
+        <div class="seo-article-meta">
+          <div class="seo-article-meta__author">
+            {%- if article_author_profile.avatar.value -%}
+              {%- if author_url != blank -%}<a href="{{ author_url | escape }}" aria-label="{{ author_name | escape }}">{%- endif -%}
+              {{ article_author_profile.avatar.value | image_url: width: 96 | image_tag: class: 'seo-article-meta__avatar', widths: '48, 96', sizes: '40px', alt: author_name }}
+              {%- if author_url != blank -%}</a>{%- endif -%}
+            {%- endif -%}
+            <div><span>{{ section.settings.by_label | escape }} </span>{% if author_url != blank %}<a href="{{ author_url | escape }}">{{ author_name | escape }}</a>{% else %}<span>{{ author_name | escape }}</span>{% endif %}
+              <p class="seo-article-meta__date"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: section.settings.date_format }}</time><span aria-hidden="true">·</span>{% render 'seo-article-reading-time', article: article %}</p>
+            </div>
+          </div>
+          {%- if reviewer_name != blank -%}<p class="seo-article-meta__reviewer">{{ section.settings.reviewed_by_label | escape }} {% if reviewer_url != blank %}<a href="{{ reviewer_url | escape }}">{{ reviewer_name | escape }}</a>{% else %}{{ reviewer_name | escape }}{% endif %}</p>{%- endif -%}
+        </div>
+        {%- if article.excerpt != blank -%}<div class="seo-article-excerpt">{{ article.excerpt }}</div>{%- endif -%}
+        <div class="seo-article-share">
+          <span class="seo-article-share__label">{{ section.settings.share_label | escape }}</span>
+          <a href="mailto:?subject={{ share_title }}&amp;body={{ share_url }}" aria-label="Share by email" rel="nofollow noopener">{% render 'seo-article-ui-icon', icon: 'email' %}</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank" rel="nofollow noopener" aria-label="Share on Facebook">{% render 'seo-article-share-icon', name: 'facebook' %}</a>
+          <a href="https://twitter.com/intent/tweet?url={{ share_url }}&amp;text={{ share_title }}" target="_blank" rel="nofollow noopener" aria-label="Share on X">{% render 'seo-article-share-icon', name: 'x' %}</a>
+          <a href="https://pinterest.com/pin/create/button/?url={{ share_url }}&amp;description={{ share_title }}&amp;media={{ share_image }}" target="_blank" rel="nofollow noopener" aria-label="Share on Pinterest">{% render 'seo-article-share-icon', name: 'pinterest' %}</a>
+          <button type="button" class="seo-article-share__copy" data-copy-url="{{ canonical_url | escape }}" data-copy-success="{{ section.settings.copy_success_label | escape }}" data-copy-failure="{{ section.settings.copy_failure_label | escape }}" aria-label="{{ section.settings.copy_label | escape }}">{% render 'seo-article-share-icon', name: 'copy' %}<span data-copy-label>{{ section.settings.copy_label | escape }}</span></button>
+          <span class="visually-hidden" data-copy-status role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      {%- if article.image -%}<div class="seo-article-hero__media">{{ article.image | image_url: width: 1500 | image_tag: class: 'seo-article-hero__image', loading: 'eager', fetchpriority: 'high', widths: '390, 600, 900, 1200, 1500', sizes: '(min-width: 990px) 45vw, 100vw', alt: cover_alt }}</div>{%- endif -%}
+    </div>
+  </header>
+  <div class="seo-article-layout{% unless has_sidebar %} seo-article-layout--single{% endunless %}">
+    <div class="seo-article-main">
+      <div class="seo-article-content">{{ article_body_with_ids }}</div>
+      {%- if article.tags != blank -%}<ul class="seo-article-tags" role="list">{%- for tag in article.tags -%}<li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag | escape }}</a></li>{%- endfor -%}</ul>{%- endif -%}
+      {%- if article_author_profile != blank -%}
+        <section class="seo-article-author" aria-label="{{ author_name | escape }}">
+          {%- if author_url != blank -%}<a class="seo-article-author__profile" href="{{ author_url | escape }}">{{ section.settings.author_profile_label | escape }}<span aria-hidden="true"> ↗</span></a>{%- endif -%}
+          {%- if article_author_profile.avatar.value -%}<div class="seo-article-author__avatar">{% if author_url != blank %}<a href="{{ author_url | escape }}">{% endif %}{{ article_author_profile.avatar.value | image_url: width: 180 | image_tag: loading: 'lazy', widths: '90, 180', sizes: '80px', alt: author_name }}{% if author_url != blank %}</a>{% endif %}</div>{%- endif -%}
+          <div class="seo-article-author__details">
+            <div class="seo-article-author__heading"><h2>{% if author_url != blank %}<a href="{{ author_url | escape }}">{{ author_name | escape }}</a>{% else %}{{ author_name | escape }}{% endif %}</h2>
+              <div class="seo-article-author__socials">
+                {%- assign social_keys = 'facebook,instagram,x_formerly_twitter,pinterest,tiktok,youtube' | split: ',' -%}
+                {%- for social_key in social_keys -%}
+                  {%- liquid
+                    assign social_url = article_author_profile[social_key].value
+                    assign social_icon = social_key
+                    if social_key == 'x_formerly_twitter'
+                      assign social_url = social_url | default: article_author_profile.twitter.value
+                      assign social_icon = 'x'
+                    endif
+                    assign social_prefix = social_url | slice: 0, 8
+                    assign social_prefix_short = social_url | slice: 0, 7
+                  -%}
+                  {%- if social_url != blank and social_prefix == 'https://' or social_url != blank and social_prefix_short == 'http://' -%}<a href="{{ social_url | escape }}" target="_blank" rel="nofollow noopener" aria-label="{{ social_icon | capitalize }}">{% render 'seo-author-social-icon', icon: social_icon %}</a>{%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+            {%- if article_author_profile.identity.value != blank -%}<ul class="seo-article-author__identities" role="list">{% assign identities = article_author_profile.identity.value | split: ',' %}{% for identity in identities %}{% assign clean_identity = identity | strip %}{% if clean_identity != blank %}<li>{{ clean_identity | escape }}</li>{% endif %}{% endfor %}</ul>{%- endif -%}
+            {%- if article_author_profile.description != blank -%}<div class="seo-article-author__bio">{{ article_author_profile.description | metafield_tag }}</div>{%- endif -%}
+          </div>
+        </section>
+      {%- endif -%}
+      {%- if blog.previous_article or blog.next_article -%}
+        <nav class="seo-article-adjacent" aria-label="Article navigation">
+          {% if blog.previous_article %}{% render 'seo-article-adjacent-card', article_url: blog.previous_article, direction: 'previous', label: section.settings.previous_label %}{% endif %}
+          {% if blog.next_article %}{% render 'seo-article-adjacent-card', article_url: blog.next_article, direction: 'next', label: section.settings.next_label %}{% endif %}
+        </nav>
+      {%- endif -%}
+      {%- if section.settings.show_comments and blog.comments_enabled? -%}{% render 'seo-article-comments', article: article, blog: blog %}{%- endif -%}
+    </div>
+    {%- if has_sidebar -%}
+      <aside class="seo-article-sidebar" tabindex="-1" aria-label="Article resources">
+        {%- if article_toc_markup != blank -%}<section class="seo-article-sidebar__toc"><h2 class="seo-article-sidebar__heading">{{ section.settings.toc_title | escape }}</h2>{{ article_toc_markup }}</section>{%- endif -%}
+        {%- if sidebar_products_count > 0 -%}
+          <section class="seo-article-recommended-products" data-products-layout="{{ section.settings.recommended_products_layout }}" data-autoplay="{{ section.settings.recommended_products_autoplay }}" data-interval="{{ section.settings.recommended_products_autoplay_interval | times: 1000 }}" aria-labelledby="Recommendations-{{ section.id }}">
+            <div class="seo-article-recommended-products__heading"><h2 id="Recommendations-{{ section.id }}" class="seo-article-sidebar__heading">{{ section.settings.recommended_products_title | escape }}</h2><button type="button" class="seo-article-recommended-products__close" aria-label="Close recommended products">{% render 'seo-article-ui-icon', icon: 'close' %}</button></div>
+            <div class="seo-article-recommended-products__viewport"><div class="seo-article-recommended-products__track">
+              {%- for sidebar_product in sidebar_products -%}
+                {%- capture sidebar_card -%}{% render 'seo-article-sidebar-product-card', product: sidebar_product %}{%- endcapture -%}
+                {%- if sidebar_card != blank -%}<div class="seo-article-recommended-products__slide">{{ sidebar_card }}</div>{%- endif -%}
+              {%- endfor -%}
+            </div></div>
+            {%- if section.settings.recommended_products_layout == 'carousel' and sidebar_products_count > 1 -%}
+              <div class="seo-article-recommended-products__controls"><button type="button" class="seo-article-recommended-products__previous" aria-label="Previous product">{% render 'seo-article-ui-icon', icon: 'previous' %}</button><div class="seo-article-recommended-products__pagination">{%- for dot in (1..sidebar_products_count) -%}<button type="button" data-product-index="{{ forloop.index0 }}" aria-label="{{ dot }} / {{ sidebar_products_count }}"{% if forloop.first %} aria-current="true"{% endif %}></button>{%- endfor -%}</div><button type="button" class="seo-article-recommended-products__next" aria-label="Next product">{% render 'seo-article-ui-icon', icon: 'next' %}</button></div>
+            {%- endif -%}
+          </section>
+        {%- endif -%}
+      </aside>
+    {%- endif -%}
+  </div>
+  {%- liquid
+    assign more_count = 0
+    capture more_cards
+      for more_article in section.settings.more_articles
+        if more_article.id != article.id and more_article.published_at != blank
+          render 'seo-article-more-card', more_article: more_article
+          assign more_count = more_count | plus: 1
+        endif
+      endfor
+      if more_count == 0
+        for more_article in blog.articles
+          if more_article.id != article.id
+            render 'seo-article-more-card', more_article: more_article
+            assign more_count = more_count | plus: 1
+            if more_count >= section.settings.more_count
+              break
+            endif
+          endif
+        endfor
+      endif
+    endcapture
+  -%}
+  {%- if more_cards != blank -%}<section class="seo-article-more"><h2>{{ section.settings.more_title | escape }}</h2><div class="seo-article-more__grid">{{ more_cards }}</div></section>{%- endif -%}
+  <seo-article-enhancements hidden></seo-article-enhancements>
+</article>
+<script>
+  if (!customElements.get('seo-article-enhancements')) {
+    customElements.define('seo-article-enhancements', class extends HTMLElement {
+      connectedCallback() {
+        this.root = this.closest('[data-seo-article]');
+        this.abort = new AbortController();
+        this.listen = (target, event, callback, options = {}) => target?.addEventListener(event, callback, { ...options, signal: this.abort.signal });
+        this.motion = matchMedia('(prefers-reduced-motion: reduce)');
+        this.setupTables();
+        this.setupCopy();
+        this.setupToc();
+        this.setupProducts();
+      }
+      disconnectedCallback() {
+        this.abort?.abort();
+        this.resize?.disconnect();
+        clearTimeout(this.timer);
+        clearTimeout(this.copyTimer);
+        cancelAnimationFrame(this.frame);
+      }
+      setupTables() {
+        const content = this.root.querySelector('.seo-article-content');
+        const wrappers = new Set();
+        content.querySelectorAll('table').forEach(table => {
+          let wrapper = table.parentElement;
+          if (!wrapper.matches('.seo-article-table-scroll, .table-wrapper')) {
+            wrapper = document.createElement('div');
+            table.before(wrapper);
+            wrapper.append(table);
+          }
+          wrapper.classList.add('seo-article-table-scroll', 'table-wrapper');
+          // Rich text may already contain a table-wrapper before Liquid adds its wrapper.
+          const outer = wrapper.parentElement;
+          if (outer.matches('.seo-article-table-scroll, .table-wrapper') && outer.children.length === 1) outer.replaceWith(wrapper);
+          wrapper.dataset.tableHint = this.root.dataset.tableHint;
+          wrapper.tabIndex = 0;
+          wrappers.add(wrapper);
+        });
+        this.resize = new ResizeObserver(() => wrappers.forEach(wrapper => {
+          wrapper.dataset.overflow = String(wrapper.scrollWidth > wrapper.clientWidth + 1);
+        }));
+        wrappers.forEach(wrapper => this.resize.observe(wrapper));
+      }
+      setupCopy() {
+        const button = this.root.querySelector('[data-copy-url]');
+        const label = button.querySelector('[data-copy-label]');
+        const status = this.root.querySelector('[data-copy-status]');
+        const original = label.textContent;
+        this.listen(button, 'click', async () => {
+          clearTimeout(this.copyTimer);
+          let feedback;
+          try {
+            await navigator.clipboard.writeText(button.dataset.copyUrl);
+            feedback = button.dataset.copySuccess;
+          } catch {
+            feedback = button.dataset.copyFailure;
+          }
+          if (!this.isConnected) return;
+          label.textContent = feedback;
+          status.textContent = feedback;
+          button.setAttribute('aria-label', feedback);
+          this.copyTimer = setTimeout(() => {
+            label.textContent = original;
+            button.setAttribute('aria-label', original);
+            status.textContent = '';
+          }, 3000);
+        });
+      }
+      setupToc() {
+        const list = this.root.querySelector('.seo-article-toc__list');
+        if (!list) return;
+        const links = [...list.querySelectorAll('a[href^="#"]')];
+        const entries = links.map(link => ({ link, heading: document.getElementById(decodeURIComponent(link.hash.slice(1))) })).filter(entry => entry.heading);
+        const toggles = [...list.querySelectorAll('.seo-article-toc__toggle')];
+        const expand = (button, expanded) => {
+          const sublist = document.getElementById(button.getAttribute('aria-controls'));
+          button.setAttribute('aria-expanded', String(expanded));
+          sublist.hidden = !expanded;
+          sublist.setAttribute('aria-hidden', String(!expanded));
+        };
+        const activate = link => {
+          links.forEach(item => {
+            item.classList.toggle('is-active', item === link);
+            if (item === link) item.setAttribute('aria-current', 'location');
+            else item.removeAttribute('aria-current');
+          });
+          const parent = link.closest('.seo-article-toc__item--level-2');
+          toggles.forEach(button => expand(button, button.closest('.seo-article-toc__item--level-2') === parent));
+          const rect = link.getBoundingClientRect();
+          const container = list.getBoundingClientRect();
+          if (rect.bottom > container.bottom) list.scrollTop += rect.bottom - container.bottom + 8;
+          if (rect.top < container.top) list.scrollTop -= container.top - rect.top + 8;
+        };
+        toggles.forEach(button => this.listen(button, 'click', () => expand(button, button.getAttribute('aria-expanded') !== 'true')));
+        links.forEach(link => this.listen(link, 'click', () => {
+          this.tocClickLocked = true;
+          activate(link);
+        }));
+        const sync = () => {
+          this.frame = null;
+          if (this.tocClickLocked || !entries.length || list.getClientRects().length === 0) return;
+          const top = parseFloat(getComputedStyle(document.body).getPropertyValue('--header-height')) || 0;
+          let current = entries[0];
+          for (const entry of entries) {
+            if (entry.heading.getBoundingClientRect().top <= top + 64) current = entry;
+          }
+          if (!current.link.classList.contains('is-active')) activate(current.link);
+        };
+        const resume = event => {
+          if (!list.contains(event.target)) this.tocClickLocked = false;
+        };
+        this.listen(window, 'wheel', resume, { passive: true });
+        this.listen(window, 'touchmove', resume, { passive: true });
+        this.listen(window, 'keydown', event => {
+          if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key) && !event.target.matches('input, textarea, select, [contenteditable], button')) this.tocClickLocked = false;
+        });
+        this.listen(window, 'pointerdown', event => {
+          if (event.clientX >= document.documentElement.clientWidth && innerWidth > document.documentElement.clientWidth) this.tocClickLocked = false;
+        });
+        this.listen(window, 'scroll', () => { if (!this.frame) this.frame = requestAnimationFrame(sync); }, { passive: true });
+        const releaseAtBoundary = delta => {
+          const atBoundary = (delta < 0 && list.scrollTop <= 0) || (delta > 0 && list.scrollTop + list.clientHeight >= list.scrollHeight - 1);
+          list.style.overscrollBehaviorY = atBoundary ? 'auto' : 'none';
+          if (atBoundary) this.tocClickLocked = false;
+        };
+        this.listen(list, 'wheel', event => releaseAtBoundary(event.deltaY), { passive: true });
+        let touchY = 0;
+        this.listen(list, 'touchstart', event => { touchY = event.touches[0].clientY; }, { passive: true });
+        this.listen(list, 'touchmove', event => {
+          releaseAtBoundary(touchY - event.touches[0].clientY);
+          touchY = event.touches[0].clientY;
+        }, { passive: true });
+        const initial = entries.find(entry => entry.link.hash === location.hash) || entries[0];
+        if (initial) activate(initial.link);
+      }
+      setupProducts() {
+        const module = this.root.querySelector('.seo-article-recommended-products');
+        if (!module) return;
+        const track = module.querySelector('.seo-article-recommended-products__track');
+        const slides = [...track.children];
+        const dots = [...module.querySelectorAll('[data-product-index]')];
+        const isCarousel = module.dataset.productsLayout === 'carousel';
+        const viewport = module.querySelector('.seo-article-recommended-products__viewport');
+        let current = 0;
+        let hovered = false;
+        const schedule = () => {
+          clearTimeout(this.timer);
+          if (!this.isConnected || !isCarousel || slides.length < 2 || module.dataset.autoplay !== 'true' || this.motion.matches || document.hidden || hovered || module.matches(':focus-within') || module.hidden) return;
+          this.timer = setTimeout(() => select(current + 1), Number(module.dataset.interval));
+        };
+        const select = index => {
+          current = (index + slides.length) % slides.length;
+          track.style.transform = isCarousel ? `translate3d(${-current * 100}%, 0, 0)` : '';
+          slides.forEach((slide, i) => {
+            const active = !isCarousel || i === current;
+            slide.classList.toggle('is-active', active);
+            slide.setAttribute('aria-hidden', String(!active));
+            slide.inert = !active;
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === current);
+            if (i === current) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+          });
+          schedule();
+        };
+        this.listen(module.querySelector('.seo-article-recommended-products__close'), 'click', () => {
+          const sidebar = module.closest('aside');
+          const target = [...sidebar.querySelectorAll('.seo-article-toc__link')].find(link => link.getClientRects().length);
+          (target || sidebar).focus({ preventScroll: true });
+          module.hidden = true;
+          clearTimeout(this.timer);
+        });
+        if (!isCarousel) { select(0); return; }
+        this.listen(module.querySelector('.seo-article-recommended-products__previous'), 'click', () => select(current - 1));
+        this.listen(module.querySelector('.seo-article-recommended-products__next'), 'click', () => select(current + 1));
+        dots.forEach(dot => this.listen(dot, 'click', () => select(Number(dot.dataset.productIndex))));
+        let startX = 0;
+        let startY = 0;
+        this.listen(viewport, 'touchstart', event => { startX = event.touches[0].clientX; startY = event.touches[0].clientY; }, { passive: true });
+        this.listen(viewport, 'touchend', event => {
+          const dx = event.changedTouches[0].clientX - startX;
+          const dy = event.changedTouches[0].clientY - startY;
+          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) select(current + (dx < 0 ? 1 : -1));
+        }, { passive: true });
+        this.listen(module, 'mouseenter', () => { hovered = true; schedule(); });
+        this.listen(module, 'mouseleave', () => { hovered = false; schedule(); });
+        this.listen(module, 'focusin', () => clearTimeout(this.timer));
+        this.listen(module, 'focusout', () => queueMicrotask(schedule));
+        this.listen(document, 'visibilitychange', schedule);
+        this.listen(this.motion, 'change', schedule);
+        select(0);
+      }
+    });
+  }
+</script>
+
+
+{% schema %}
+{
+  "name": "SEO文章页",
+  "settings": [
+    {
+      "type": "header",
+      "content": "文章布局"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "顶部间距",
+      "default": 24,
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "底部间距",
+      "default": 64,
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_test_content",
+      "label": "显示测试文案（仅人工校验）",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "date_format",
+      "label": "日期格式",
+      "default": "%B %d, %Y"
+    },
+    {
+      "type": "header",
+      "content": "文章文案"
+    },
+    {
+      "type": "text",
+      "id": "home_label",
+      "label": "首页链接",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "by_label",
+      "label": "作者前缀",
+      "default": "By"
+    },
+    {
+      "type": "text",
+      "id": "reviewed_by_label",
+      "label": "审核者前缀",
+      "default": "Reviewed by"
+    },
+    {
+      "type": "text",
+      "id": "reading_time_label",
+      "label": "阅读时长（:count 为分钟数）",
+      "default": ":count min read"
+    },
+    {
+      "type": "text",
+      "id": "toc_title",
+      "label": "目录标题",
+      "default": "In this article"
+    },
+    {
+      "type": "text",
+      "id": "share_label",
+      "label": "分享标题",
+      "default": "Share"
+    },
+    {
+      "type": "text",
+      "id": "copy_label",
+      "label": "复制链接",
+      "default": "Copy link"
+    },
+    {
+      "type": "text",
+      "id": "copy_success_label",
+      "label": "复制成功反馈",
+      "default": "Link copied"
+    },
+    {
+      "type": "text",
+      "id": "copy_failure_label",
+      "label": "复制失败反馈",
+      "default": "Could not copy link"
+    },
+    {
+      "type": "text",
+      "id": "table_hint",
+      "label": "移动端表格提示",
+      "default": "← Swipe to see the full table →"
+    },
+    {
+      "type": "text",
+      "id": "author_profile_label",
+      "label": "作者详情链接",
+      "default": "View profile"
+    },
+    {
+      "type": "text",
+      "id": "previous_label",
+      "label": "上一篇",
+      "default": "Previous article"
+    },
+    {
+      "type": "text",
+      "id": "next_label",
+      "label": "下一篇",
+      "default": "Next article"
+    },
+    {
+      "type": "text",
+      "id": "buy_label",
+      "label": "购买按钮",
+      "default": "Shop now"
+    },
+    {
+      "type": "text",
+      "id": "inline_buy_label",
+      "label": "正文商品购买按钮",
+      "default": "Buy Now"
+    },
+    {
+      "type": "text",
+      "id": "featured_label",
+      "label": "正文商品推荐标签",
+      "default": "Featured"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "正文商品售罄标签",
+      "default": "Sold Out"
+    },
+    {
+      "type": "header",
+      "content": "推荐产品"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_related_products_for_sidebar",
+      "label": "允许使用正文关联商品作为侧栏回退",
+      "default": true
+    },
+    {
+      "type": "product_list",
+      "id": "featured_products",
+      "label": "推荐产品",
+      "limit": 8
+    },
+    {
+      "type": "text",
+      "id": "recommended_products_title",
+      "label": "推荐产品标题",
+      "default": "Recommended products"
+    },
+    {
+      "type": "select",
+      "id": "recommended_products_layout",
+      "label": "展示方式",
+      "default": "carousel",
+      "options": [
+        {
+          "value": "carousel",
+          "label": "轮播"
+        },
+        {
+          "value": "list",
+          "label": "列表"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "recommended_products_autoplay",
+      "label": "自动轮播",
+      "default": true,
+      "visible_if": "{{ section.settings.recommended_products_layout == 'carousel' }}"
+    },
+    {
+      "type": "range",
+      "id": "recommended_products_autoplay_interval",
+      "label": "自动轮播间隔",
+      "default": 5,
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "visible_if": "{{ section.settings.recommended_products_layout == 'carousel' and section.settings.recommended_products_autoplay }}"
+    },
+    {
+      "type": "header",
+      "content": "推荐阅读"
+    },
+    {
+      "type": "text",
+      "id": "more_title",
+      "label": "推荐阅读标题",
+      "default": "More to Read"
+    },
+    {
+      "type": "article_list",
+      "id": "more_articles",
+      "label": "手动推荐文章",
+      "limit": 3
+    },
+    {
+      "type": "range",
+      "id": "more_count",
+      "label": "自动推荐文章数量",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "step": 1
+    },
+    {
+      "type": "header",
+      "content": "文章评论"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comments",
+      "label": "显示评论",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "comments_title",
+      "label": "评论标题（:count 为数量）",
+      "default": "Comments (:count)"
+    },
+    {
+      "type": "text",
+      "id": "comment_form_title",
+      "label": "评论表单标题",
+      "default": "Leave a comment"
+    },
+    {
+      "type": "text",
+      "id": "comment_name_label",
+      "label": "姓名",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "comment_email_label",
+      "label": "邮箱",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "comment_body_label",
+      "label": "评论内容",
+      "default": "Comment"
+    },
+    {
+      "type": "text",
+      "id": "comment_submit_label",
+      "label": "提交评论",
+      "default": "Post comment"
+    },
+    {
+      "type": "text",
+      "id": "comment_success_label",
+      "label": "评论提交成功",
+      "default": "Your comment has been posted."
+    },
+    {
+      "type": "text",
+      "id": "comment_moderated_label",
+      "label": "评论待审核",
+      "default": "Your comment has been submitted for review."
+    }
+  ],
+  "presets": [
+    {
+      "name": "SEO Article Template"
+    }
+  ]
+}
+{% endschema %}

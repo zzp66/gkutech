@@ -17,7 +17,7 @@
         "date_format": "%B %d, %Y",
         "image_radius": 12,
         "show_comments": true,
-        "comment_btn_bg": "#FFF001",
+        "comment_btn_bg": "#fff001",
         "comment_btn_color": "{{ settings.color_palette.foreground }}",
         "comment_btn_bg_hover": "{{ settings.color_palette.foreground }}",
         "comment_btn_color_hover": "#ffffff",
@@ -26,7 +26,7 @@
         "heading_color": "#111111",
         "text_color": "#333333",
         "muted_text_color": "#6b7280",
-        "link_color": "{{ settings.color_palette.color7 }}",
+        "link_color": "{{ settings.color_palette.color5 }}",
         "link_color_hover": "#ffab02",
         "accent_color": "{{ settings.color_palette.foreground }}",
         "border_color": "#e5e7eb",
@@ -38,10 +38,23 @@
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
+      },
+      "disabled": true
+    },
+    "seo_main": {
+      "type": "seo-article-template",
+      "settings": {
+        "show_test_content": false,
+        "featured_products": [
+          "gku-c600-4g-lte-dual-dash-cam",
+          "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+          "gku-e200-4k-front-rear-dash-cam"
+        ]
       }
     }
   },
   "order": [
+    "seo_main",
     "main"
   ]
 }

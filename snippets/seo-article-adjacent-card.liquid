@@ -1,0 +1,9 @@
+{%- assign adjacent_handle = article_url | split: '/blogs/' | last -%}
+{%- assign adjacent_article = articles[adjacent_handle] -%}
+{%- if adjacent_article != blank -%}
+<a class="seo-article-adjacent__card seo-article-adjacent__card--{{ direction }}" href="{{ adjacent_article.url | escape }}">
+  <span class="seo-article-adjacent__direction">{% render 'seo-article-ui-icon', icon: direction %}{{ label | escape }}</span>
+  <span class="seo-article-card-meta"><time datetime="{{ adjacent_article.published_at | date: '%Y-%m-%d' }}">{{ adjacent_article.published_at | date: section.settings.date_format }}</time><span aria-hidden="true">·</span>{% render 'seo-article-reading-time', article: adjacent_article %}</span>
+  <span class="seo-article-adjacent__title">{{ adjacent_article.title | escape }}</span>
+</a>
+{%- endif -%}

@@ -40,6 +40,11 @@
   "
   data-testid="collection-list"
 >
+  {% if request.page_type == 'collection' and template.suffix == 'all-collection' and section.index == 2 %}
+    {% if settings.show_breadcrumb_nav and settings.collection_breadcrumb_position == 'above_products_left' %}
+      {% render 'breadcrumbs', class: 'breadcrumbs-inline' %}
+    {% endif %}
+  {% endif %}
   <div class="section-resource-list__content">
     {%- content_for 'blocks' -%}
   </div>

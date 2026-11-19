@@ -92,10 +92,20 @@
 
 {% if fallback_text != blank and visible_text == blank %}
   <div {{ attributes | strip_newlines | strip }}>
+    {% if settings.show_breadcrumb_nav and fallback_text contains '<h1' %}
+      {% if request.page_type == 'product' or request.page_type == 'blog' or request.page_type == 'article' %}
+        {% render 'breadcrumbs', class: 'breadcrumbs-inline' %}
+      {% endif %}
+    {% endif %}
     {{ fallback_text }}
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes | strip_newlines | strip }}>
+    {% if settings.show_breadcrumb_nav and plain_text contains '<h1' %}
+      {% if request.page_type == 'product' or request.page_type == 'blog' or request.page_type == 'article' %}
+        {% render 'breadcrumbs', class: 'breadcrumbs-inline' %}
+      {% endif %}
+    {% endif %}
     {{ block.settings.text }}
   </{{ element }}>
 {% endif %}

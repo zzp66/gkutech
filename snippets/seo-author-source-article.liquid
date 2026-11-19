@@ -1,0 +1,19 @@
+{%- liquid
+  assign record_now = 'now' | date: '%s' | plus: 0
+  assign record_published = source_article.published_at | date: '%s' | plus: 0
+  assign record_words = source_article.content | strip_html | split: ' ' | size
+  assign record_minutes = record_words | plus: 199 | divided_by: 200 | at_least: 1
+-%}
+{%- if source_article != blank and source_article.published_at != blank and record_published <= record_now -%}
+{
+  "id": {{ source_article.id | append: '' | json }},
+  "url": {{ source_article.url | json }},
+  "title": {{ source_article.title | json }},
+  "excerpt": {{ source_article.excerpt_or_content | strip_html | truncatewords: 60 | json }},
+  "tag": {{ source_article.tags.first | default: '' | json }},
+  "published": {{ record_published | json }},
+  "date": {{ source_article.published_at | date: '%Y-%m-%d' | json }},
+  "reading_minutes": {{ record_minutes | json }},
+  "image": {% if source_article.image %}{"url": {{ source_article.image | image_url: width: 960 | json }}, "width": {{ source_article.image.width | json }}, "height": {{ source_article.image.height | json }}, "alt": {{ source_article.image.alt | default: source_article.title | json }}}{% else %}null{% endif %}
+}
+{%- endif -%}

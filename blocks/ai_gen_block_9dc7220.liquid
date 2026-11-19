@@ -1,0 +1,194 @@
+{% doc %}
+  @prompt
+    帮我生成一个可以编辑颜色和字体颜色的button,可以调整与上下section的距离，还需要可以设置居左居中或者居右
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-button-wrap-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding-top: {{ block.settings.space_top }}px;
+    padding-bottom: {{ block.settings.space_bottom }}px;
+  }
+
+  .ai-button-inner-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    display: flex;
+    justify-content: {{ block.settings.alignment }};
+  }
+
+  .ai-button-link-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 12px 26px;
+    border: 1px solid {{ block.settings.button_color }};
+    border-radius: {{ block.settings.corner_radius }}px;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.text_color }};
+    font-family: {{ block.settings.button_font.family }}, {{ block.settings.button_font.fallback_families }};
+    font-weight: {{ block.settings.button_font.weight }};
+    font-size: {{ block.settings.font_size }}px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .ai-button-link-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.hover_color }};
+    border-color: {{ block.settings.hover_color }};
+    color: {{ block.settings.hover_text_color }};
+  }
+
+  .ai-button-link-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ai-button-link-{{ ai_gen_id }} {
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-button-wrap-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-button-inner-{{ ai_gen_id }}">
+    {% if block.settings.button_link != blank %}
+      <a class="ai-button-link-{{ ai_gen_id }}" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
+    {% else %}
+      <span class="ai-button-link-{{ ai_gen_id }}">{{ block.settings.button_label | escape }}</span>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "space_top",
+      "label": "Space above",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "space_bottom",
+      "label": "Space below",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "font_picker",
+      "id": "button_font",
+      "label": "Font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Background",
+      "default": "#FFF001"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Hover background",
+      "default": "#FFBF01"
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Hover text",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom button"
+    }
+  ],
+  "tag": null,
+  "class": "custom-button-block"
+}
+{% endschema %}

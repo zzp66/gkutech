@@ -1,0 +1,141 @@
+{% doc %}
+  @prompt
+    请帮我生成一个秒杀的营销section,限时，特色产品，折扣与价格做特殊展示, 改成英文的语言, 折扣可选择, 折扣力度可编辑
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign sale_variant = block.settings.product.selected_or_first_available_variant %}
+{% assign sale_compare_price = sale_variant.compare_at_price %}
+{% if sale_compare_price == blank or sale_compare_price <= sale_variant.price %}{% assign sale_compare_price = sale_variant.price %}{% endif %}
+{% assign custom_saving = sale_compare_price | times: block.settings.discount_strength | divided_by: 100 %}
+{% assign custom_sale_price = sale_compare_price | minus: custom_saving %}
+
+{% style %}
+  .ai-flash-sale-{{ ai_gen_id }}{display:block;width:{{ block.settings.desktop_width_percent }}%;max-width:100%;padding:30px;color:{{ block.settings.text_color }};background:{{ block.settings.background_color }};border:1px solid {{ block.settings.border_color }};border-radius:16px;box-sizing:border-box}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__layout{display:grid;grid-template-columns:minmax(220px,.9fr) minmax(0,1.1fr);gap:32px;align-items:center}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__media{overflow:hidden;border-radius:12px;background:#f5f5f7;aspect-ratio:1/1}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__media img,.ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__media svg{display:block;width:100%;height:100%;object-fit:cover}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px;box-sizing:border-box;color:#333;text-align:center}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__empty svg{width:70%;height:70%;color:#777}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__eyebrow{margin:0 0 10px;color:{{ block.settings.accent_color }};font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__heading{margin:0 0 8px;color:inherit;font-size:clamp(26px,4vw,42px);line-height:1.12}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__product-title{margin:0 0 12px;font-size:19px;line-height:1.35}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__description{margin:0 0 18px;line-height:1.6}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__prices{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:0 0 18px}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__sale-price{color:{{ block.settings.accent_color }};font-size:clamp(30px,4vw,44px);font-weight:800;line-height:1}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__compare{color:{{ block.settings.muted_color }};font-size:18px;text-decoration:line-through}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__discount{display:inline-flex;padding:6px 10px;border-radius:6px;background:{{ block.settings.accent_color }};color:{{ block.settings.badge_text_color }};font-size:13px;font-weight:700}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__timer-label{margin:0 0 8px;font-weight:600}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__timer{display:flex;gap:8px;margin-bottom:20px}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__time-unit{min-width:58px;padding:9px 8px;border-radius:8px;background:{{ block.settings.timer_background }};color:{{ block.settings.timer_text_color }};text-align:center}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__time-value{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__time-caption{display:block;margin-top:2px;font-size:11px}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:16px;background:{{ block.settings.button_color }};color:{{ block.settings.button_text_color }};font-weight:700;text-align:center;text-decoration:none}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__button:focus-visible{outline:3px solid {{ block.settings.text_color }};outline-offset:3px}
+  .ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__ended{margin:0 0 16px;font-weight:700;color:{{ block.settings.accent_color }}}
+  @media screen and (max-width:749px){.ai-flash-sale-{{ ai_gen_id }}{width:100%;padding:20px}.ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__layout{grid-template-columns:1fr;gap:22px}.ai-flash-sale-{{ ai_gen_id }} .ai-flash-sale__media{max-height:420px}}
+{% endstyle %}
+
+<flash-sale-{{ ai_gen_id }} class="ai-flash-sale-{{ ai_gen_id }}" data-end="{{ block.settings.end_datetime | escape }}" data-ended-text="{{ block.settings.ended_text | escape }}" {{ block.shopify_attributes }}>
+  <div class="ai-flash-sale__layout">
+    <div class="ai-flash-sale__media">
+      {% if block.settings.product != blank and block.settings.product.featured_image %}<img src="{{ block.settings.product.featured_image | image_url: width: 1000 }}" alt="{{ block.settings.product.featured_image.alt | default: block.settings.product.title | escape }}" loading="lazy" width="{{ block.settings.product.featured_image.width }}" height="{{ block.settings.product.featured_image.height }}">
+      {% elsif block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+      {% else %}<div class="ai-flash-sale__empty">{{ 'product-1' | placeholder_svg_tag }}<span>Select a featured product or upload an image</span></div>{% endif %}
+    </div>
+    <div class="ai-flash-sale__content">
+      {% if block.settings.eyebrow != blank %}<p class="ai-flash-sale__eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+      {% if block.settings.heading != blank %}<h2 class="ai-flash-sale__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
+      {% if block.settings.product != blank %}
+        <h3 class="ai-flash-sale__product-title">{{ block.settings.product.title | escape }}</h3>
+        {% if block.settings.description != blank %}<div class="ai-flash-sale__description">{{ block.settings.description }}</div>{% endif %}
+        <div class="ai-flash-sale__prices">
+          <span class="ai-flash-sale__sale-price">{{ custom_sale_price | money }}</span>
+          {% if sale_compare_price > custom_sale_price %}<span class="ai-flash-sale__compare">{{ sale_compare_price | money }}</span>{% endif %}
+          {% if block.settings.discount_display == 'amount' %}<span class="ai-flash-sale__discount">Save {{ custom_saving | money }}</span>{% else %}<span class="ai-flash-sale__discount">{{ block.settings.discount_strength }}% OFF</span>{% endif %}
+        </div>
+      {% else %}
+        {% if block.settings.description != blank %}<div class="ai-flash-sale__description">{{ block.settings.description }}</div>{% endif %}
+        <p class="ai-flash-sale__description">Select a product to display its sale offer.</p>
+      {% endif %}
+      {% if block.settings.show_timer %}
+        <p class="ai-flash-sale__timer-label">{{ block.settings.timer_label | escape }}</p>
+        <div class="ai-flash-sale__timer" role="timer" aria-live="off">
+          <span class="ai-flash-sale__time-unit"><span class="ai-flash-sale__time-value" data-days>00</span><span class="ai-flash-sale__time-caption">Days</span></span>
+          <span class="ai-flash-sale__time-unit"><span class="ai-flash-sale__time-value" data-hours>00</span><span class="ai-flash-sale__time-caption">Hours</span></span>
+          <span class="ai-flash-sale__time-unit"><span class="ai-flash-sale__time-value" data-minutes>00</span><span class="ai-flash-sale__time-caption">Minutes</span></span>
+          <span class="ai-flash-sale__time-unit"><span class="ai-flash-sale__time-value" data-seconds>00</span><span class="ai-flash-sale__time-caption">Seconds</span></span>
+        </div>
+        <p class="ai-flash-sale__ended" data-ended hidden></p>
+      {% endif %}
+      {% if block.settings.product != blank %}<a class="ai-flash-sale__button" href="{{ block.settings.product.url }}">{{ block.settings.button_label | escape }}</a>{% elsif block.settings.button_link != blank %}<a class="ai-flash-sale__button" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>{% endif %}
+    </div>
+  </div>
+</flash-sale-{{ ai_gen_id }}>
+
+<script>
+  (() => {
+    const tagName = 'flash-sale-{{ ai_gen_id }}';
+    if (customElements.get(tagName)) return;
+    class FlashSale extends HTMLElement {
+      connectedCallback() {
+        if (this.dataset.initialized) return;
+        this.dataset.initialized = 'true';
+        const endValue = this.dataset.end;
+        const endTime = endValue ? new Date(endValue.replace(' ', 'T') + (endValue.includes('Z') || endValue.includes('+') ? '' : '+08:00')).getTime() : NaN;
+        const timer = this.querySelector('.ai-flash-sale__timer');
+        if (!timer || !Number.isFinite(endTime)) return;
+        const ended = this.querySelector('[data-ended]');
+        const update = () => {
+          const remaining = endTime - Date.now();
+          if (remaining <= 0) { timer.hidden = true; ended.textContent = this.dataset.endedText || 'This sale has ended'; ended.hidden = false; return; }
+          this.querySelector('[data-days]').textContent = String(Math.floor(remaining / 86400000)).padStart(2, '0');
+          this.querySelector('[data-hours]').textContent = String(Math.floor(remaining % 86400000 / 3600000)).padStart(2, '0');
+          this.querySelector('[data-minutes]').textContent = String(Math.floor(remaining % 3600000 / 60000)).padStart(2, '0');
+          this.querySelector('[data-seconds]').textContent = String(Math.floor(remaining % 60000 / 1000)).padStart(2, '0');
+          this.timeout = window.setTimeout(update, 1000);
+        };
+        update();
+      }
+      disconnectedCallback() { window.clearTimeout(this.timeout); }
+    }
+    customElements.define(tagName, FlashSale);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Flash sale",
+  "settings": [
+    { "type": "header", "content": "Sale content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Limited-time offer" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Flash sale countdown" },
+    { "type": "product", "id": "product", "label": "Featured product" },
+    { "type": "image_picker", "id": "image", "label": "Fallback product image" },
+    { "type": "richtext", "id": "description", "label": "Product description", "default": "<p>Shop our selected product for a limited time at a special price.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Fallback button link" },
+    { "type": "range", "id": "discount_strength", "label": "Discount strength", "min": 5, "max": 90, "step": 5, "unit": "%", "default": 20, "info": "Sets the sale price shown in this block. Set the matching price and compare-at price on the Shopify product to apply it at checkout." },
+    { "type": "select", "id": "discount_display", "label": "Discount display", "options": [{ "value": "percent", "label": "Percentage off" }, { "value": "amount", "label": "Amount saved" }], "default": "percent" },
+    { "type": "header", "content": "Sale timing" },
+    { "type": "checkbox", "id": "show_timer", "label": "Show countdown", "default": true },
+    { "type": "text", "id": "end_datetime", "label": "Sale end date and time", "default": "2026-12-31T23:59:59", "info": "Use YYYY-MM-DDTHH:MM:SS format. Time is interpreted as China Standard Time (UTC+8)." },
+    { "type": "text", "id": "timer_label", "label": "Countdown label", "default": "Sale ends in" },
+    { "type": "text", "id": "ended_text", "label": "Ended message", "default": "This sale has ended" },
+    { "type": "header", "content": "Block style" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#111827" },
+    { "type": "color", "id": "muted_color", "label": "Secondary text", "default": "#535F11" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#0070CA" },
+    { "type": "color", "id": "badge_text_color", "label": "Discount badge text", "default": "#FFFFFF" },
+    { "type": "color", "id": "border_color", "label": "Border", "default": "#DFDFDF" },
+    { "type": "color", "id": "timer_background", "label": "Countdown background", "default": "#111827" },
+    { "type": "color", "id": "timer_text_color", "label": "Countdown text", "default": "#FFFFFF" },
+    { "type": "color", "id": "button_color", "label": "Button background", "default": "#FFF001" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#111111" }
+  ],
+  "presets": [{ "name": "Flash sale" }],
+  "tag": null,
+  "class": "flash-sale-block"
+}
+{% endschema %}

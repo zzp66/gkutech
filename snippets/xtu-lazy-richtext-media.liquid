@@ -1,0 +1,32 @@
+{%- doc -%}
+  Adds native lazy loading to article media without replacing existing attributes.
+
+  @param {string} html - Article rich text HTML
+{%- enddoc -%}
+{%- liquid
+  assign image_parts = html | split: '<img'
+-%}
+{%- capture lazy_images -%}
+  {%- for part in image_parts -%}
+    {%- if forloop.first -%}
+      {{- part -}}
+    {%- else -%}
+      {%- assign image_attributes = part | split: '>' | first | downcase -%}
+      {{- '<img' -}}
+      {%- unless image_attributes contains 'loading=' or image_attributes contains 'loading =' %} loading="lazy"{% endunless -%}
+      {%- unless image_attributes contains 'decoding=' or image_attributes contains 'decoding =' %} decoding="async"{% endunless -%}
+      {{- part -}}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign iframe_parts = lazy_images | split: '<iframe' -%}
+{%- for part in iframe_parts -%}
+  {%- if forloop.first -%}
+    {{- part -}}
+  {%- else -%}
+    {%- assign iframe_attributes = part | split: '>' | first | downcase -%}
+    {{- '<iframe' -}}
+    {%- unless iframe_attributes contains 'loading=' or iframe_attributes contains 'loading =' %} loading="lazy"{% endunless -%}
+    {{- part -}}
+  {%- endif -%}
+{%- endfor -%}

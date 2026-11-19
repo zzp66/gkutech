@@ -1,0 +1,16 @@
+{%- liquid
+  assign breadcrumb_product_url = url
+  if request.page_type == 'collection' and collection.handle != blank
+    assign url_base = breadcrumb_product_url | split: '#' | first
+    assign separator = '?'
+    if url_base contains '?'
+      assign separator = '&'
+    endif
+    assign breadcrumb_product_url = url_base | append: separator | append: 'from_collection=' | append: collection.handle
+    if url contains '#'
+      assign fragment = url | split: '#' | last
+      assign breadcrumb_product_url = breadcrumb_product_url | append: '#' | append: fragment
+    endif
+  endif
+  echo breadcrumb_product_url
+-%}

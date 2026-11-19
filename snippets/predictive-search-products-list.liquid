@@ -6,7 +6,15 @@
   @param {string[]} [order_ids] - array of product ids
   @param {number} [limit] - limit of products to display
   @param {string} [products_test_id] - a playwright test id, used to differentiate empty state from 'real' search results
+  @param {string} [heading_tag] - Optional subgroup heading tag; defaults to h4.
 {%- enddoc -%}
+{%- liquid
+  assign result_heading_tag = heading_tag | default: 'h4'
+  unless result_heading_tag == 'h3' or result_heading_tag == 'h4'
+    assign result_heading_tag = 'h4'
+  endunless
+-%}
+
 {%- liquid
   assign recently_viewed_title_text = 'content.recently_viewed_products' | t
 -%}
@@ -22,7 +30,7 @@
       class="recently-viewed-wrapper"
       ref="recentlyViewedWrapper"
     >
-      <h4
+      <{{ result_heading_tag }}
         class="predictive-search-results__title"
         ref="recentlyViewedTitle[]"
       >
@@ -34,7 +42,7 @@
         >
           {{ 'actions.clear' | t }}
         </button>
-      </h4>
+      </{{ result_heading_tag }}>
       <ul
         class="predictive-search-results__list predictive-search-results__wrapper-products list-unstyled"
       >
@@ -83,9 +91,9 @@
       </ul>
     </div>
   {% else %}
-    <h4 class="predictive-search-results__title">
+    <{{ result_heading_tag }} class="predictive-search-results__title">
       {{ title }}
-    </h4>
+    </{{ result_heading_tag }}>
     <ul
       class="predictive-search-results__list predictive-search-results__wrapper-products list-unstyled"
     >

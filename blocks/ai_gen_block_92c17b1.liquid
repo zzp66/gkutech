@@ -1,0 +1,66 @@
+{% doc %}
+  @prompt
+    生成一个H1+副标题加正文的section
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-text-section-{{ ai_gen_id }} {
+    display: block;
+    box-sizing: border-box;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px 24px;
+    color: {{ block.settings.text_color }};
+    text-align: {{ block.settings.text_alignment }};
+  }
+  .ai-text-section-{{ ai_gen_id }}__inner { max-width: {{ block.settings.content_width }}px; margin: 0 auto; }
+  .ai-text-section-{{ ai_gen_id }}__heading { margin: 0 0 12px; color: {{ block.settings.heading_color }}; font-size: {{ block.settings.heading_size }}px; line-height: 1.15; font-weight: 600; }
+  .ai-text-section-{{ ai_gen_id }}__subtitle { margin: 0 0 18px; color: {{ block.settings.text_color }}; font-size: {{ block.settings.subtitle_size }}px; line-height: 1.45; font-weight: 500; }
+  .ai-text-section-{{ ai_gen_id }}__body { font-size: {{ block.settings.body_size }}px; line-height: 1.7; }
+  .ai-text-section-{{ ai_gen_id }}__body > :first-child { margin-top: 0; }
+  .ai-text-section-{{ ai_gen_id }}__body > :last-child { margin-bottom: 0; }
+  @media screen and (max-width: 749px) {
+    .ai-text-section-{{ ai_gen_id }} { padding: {{ block.settings.mobile_vertical_padding }}px 18px; }
+    .ai-text-section-{{ ai_gen_id }}__heading { font-size: {{ block.settings.mobile_heading_size }}px; }
+    .ai-text-section-{{ ai_gen_id }}__subtitle { font-size: {{ block.settings.mobile_subtitle_size }}px; }
+  }
+{% endstyle %}
+
+<section class="ai-text-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-text-section-{{ ai_gen_id }}__inner">
+    {% if block.settings.heading != blank %}<h1 class="ai-text-section-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h1>{% endif %}
+    {% if block.settings.subtitle != blank %}<p class="ai-text-section-{{ ai_gen_id }}__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
+    {% if block.settings.body != blank %}<div class="ai-text-section-{{ ai_gen_id }}__body">{{ block.settings.body }}</div>{% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "H1 text section",
+  "settings": [
+    { "type": "header", "content": "内容" },
+    { "type": "text", "id": "heading", "label": "H1 标题", "default": "Wireless dash cams" },
+    { "type": "text", "id": "subtitle", "label": "副标题", "default": "Drive with confidence" },
+    { "type": "richtext", "id": "body", "label": "正文", "default": "<p>Explore reliable dash cameras designed to capture every journey with clarity and confidence.</p>" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "header", "content": "版式" },
+    { "type": "select", "id": "text_alignment", "label": "文字对齐", "options": [{ "value": "left", "label": "左对齐" }, { "value": "center", "label": "居中" }, { "value": "right", "label": "右对齐" }], "default": "center" },
+    { "type": "range", "id": "content_width", "label": "内容最大宽度", "min": 500, "max": 1400, "step": 50, "unit": "px", "default": 1000 },
+    { "type": "range", "id": "vertical_padding", "label": "桌面上下间距", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 40 },
+    { "type": "range", "id": "mobile_vertical_padding", "label": "移动端上下间距", "min": 0, "max": 80, "step": 5, "unit": "px", "default": 30 },
+    { "type": "header", "content": "文字样式" },
+    { "type": "range", "id": "heading_size", "label": "桌面 H1 字号", "min": 24, "max": 72, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "mobile_heading_size", "label": "移动端 H1 字号", "min": 20, "max": 48, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "subtitle_size", "label": "桌面副标题字号", "min": 14, "max": 32, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "mobile_subtitle_size", "label": "移动端副标题字号", "min": 14, "max": 26, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "body_size", "label": "正文字号", "min": 12, "max": 24, "step": 2, "unit": "px", "default": 16 },
+    { "type": "color", "id": "heading_color", "label": "标题颜色", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "正文与副标题颜色", "default": "#333333" }
+  ],
+  "presets": [{ "name": "H1 text section" }],
+  "tag": null,
+  "class": "h1-text-section-block"
+}
+{% endschema %}

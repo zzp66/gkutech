@@ -749,7 +749,8 @@
             "muted_text_color": "#535f11",
             "accent_color": "#fff001",
             "accent_text_color": "#000000",
-            "image_background_color": "#ffffff"
+            "image_background_color": "#ffffff",
+            "hide_empty_heading": true
           },
           "blocks": {}
         },

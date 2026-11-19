@@ -1,3 +1,4 @@
+{%- capture breadcrumb_card_url -%}{% render 'breadcrumb-product-url', url: closest.product.url %}{%- endcapture -%}
 {%- doc -%}
   Displays product images in a carousel.
   Settings allow for a full slideshow, showing only the first image, or showing the second image when hovering.
@@ -98,7 +99,7 @@
     <a
       class="contents"
       ref="cardGalleryLink"
-      href="{{ product.url }}"
+      href="{{ breadcrumb_card_url | escape }}"
       aria-label="{{- product.title -}}"
     >
       {% liquid
@@ -106,7 +107,17 @@
 
         assign featured_media_loading = 'lazy'
         assign featured_media_sizes = 'auto, ' | append: image_sizes
-        if section.index == null or section.index < 5
+        if request.page_type == 'collection'
+          if section.index != null and section.index <= 3
+            for priority_product in collection.products limit: 3
+              if priority_product.id == product.id
+                assign featured_media_loading = 'eager'
+                assign featured_media_sizes = image_sizes
+                break
+              endif
+            endfor
+          endif
+        elsif section.index == null or section.index < 5
           assign featured_media_loading = 'eager'
           assign featured_media_sizes = image_sizes
         endif
@@ -227,7 +238,7 @@
       <a
         class="contents"
         ref="cardGalleryLink"
-        href="{{ product.url }}"
+        href="{{ breadcrumb_card_url | escape }}"
       >
         <span class="title-text">{{- product.title -}}</span>
       </a>

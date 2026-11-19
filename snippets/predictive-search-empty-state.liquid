@@ -7,6 +7,7 @@
 
   @example
   {% render 'predictive-search-empty-state', shadow_opacity: 0.1, products_test_id: 'empty-state' %}
+  @param {string} [heading_tag] - Optional subgroup heading tag; defaults to h4.
 {% enddoc %}
 
 <div
@@ -29,6 +30,7 @@
         {% if products.size > 0 %}
           {% render 'predictive-search-products-list',
             products_test_id: products_test_id,
+            heading_tag: heading_tag,
             title: title,
             products: products,
             limit: 4

@@ -214,7 +214,6 @@
         on:pointerleave="/deactivate"
       >
         <button
-          role="listitem"
           class="menu-list__link menu-list__link--has-children button-unstyled"
           aria-haspopup="true"
           aria-expanded="false"
@@ -276,6 +275,9 @@
       {% if use_xtu_mega %}
         <script
           src="{{ 'xtu-mega-menu.js' | asset_url }}"
+          {% if request.page_type == 'index' and request.design_mode == false %}
+            type="module"
+          {% endif %}
           defer="defer"
         ></script>
       {% endif %}

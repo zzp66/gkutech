@@ -342,7 +342,7 @@
               "name": "XTU Info Modal",
               "settings": {
                 "title": "Global Support",
-                "content": "<p>Add your support details here.</p>"
+                "content": "<p><a href=\"mailto:support@gkutech.com\" target=\"_blank\" title=\"mailto:support@gkutech.com\">support@gkutech.com</a></p>"
               },
               "blocks": {}
             },
@@ -395,21 +395,21 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-rich-content-template--22625626652899__xtu_rich_content_xWzDGq"
+            "target": "xtu-rich-content-template--28091128414435__xtu_rich_content_xWzDGq"
           }
         },
         "nav_comparison": {
           "type": "item",
           "settings": {
             "label": "How to Install？",
-            "target": "xtu-rich-content-template--22625626652899__xtu_rich_content_VcNFVQ"
+            "target": "xtu-rich-content-template--28091128414435__xtu_rich_content_VcNFVQ"
           }
         },
         "item_4YAHeY": {
           "type": "item",
           "settings": {
             "label": "Compare",
-            "target": "xtu-product-compare-template--22625626652899__xtu_product_compare_U7Mgh3"
+            "target": "xtu-product-compare-template--28091128414435__xtu_product_compare_U7Mgh3"
           }
         },
         "nav_specs": {
@@ -433,6 +433,13 @@
             "label": "Specs",
             "target": "xtu_product_specs_7XrG4D"
           }
+        },
+        "item_h7BBnR": {
+          "type": "item",
+          "settings": {
+            "label": "Reviews",
+            "target": "#customer-reviews"
+          }
         }
       },
       "block_order": [
@@ -441,7 +448,8 @@
         "item_4YAHeY",
         "nav_specs",
         "item_dwBHWi",
-        "item_MUMPVp"
+        "item_MUMPVp",
+        "item_h7BBnR"
       ],
       "settings": {
         "aria_label": "Product sections",
@@ -658,7 +666,7 @@
         "richtext_LbBABn": {
           "type": "richtext",
           "settings": {
-            "body": "<p><strong>This hardwire kit includes a Mini fuse adapter.</strong></p><p><strong>If your vehicle uses a different fuse type, please choose the </strong><a href=\"https://www.gkutech.com/products/gku-type-c-dash-cam-hardwire-kit\"><strong>GKU hardwire kit with multiple fuse adapters</strong></a><strong>, which includes:</strong></p><ul><li>Low-Profile Mini<br/></li><li>Mini<br/></li><li>ATO / Regular<br/></li><li>Micro2</li></ul>",
+            "body": "<p><strong>This hardwire kit includes a Mini fuse adapter.</strong></p><p><strong>If your vehicle uses a different fuse type, please choose the </strong><a href=\"https://www.gkutech.com/products/gku-type-c-dash-cam-hardwire-kit\"><strong>GKU hardwire kit with multiple size adapters</strong></a><strong>, which includes:</strong></p><ul><li>Low-Profile Mini<br/></li><li>Mini<br/></li><li>ATO / Regular<br/></li><li>Micro2</li></ul>",
             "align": "left",
             "font_size": 14,
             "font_size_mobile": 14,
@@ -945,7 +953,7 @@
           "type": "product",
           "settings": {
             "product": "gku-adjustable-obd-hardwire-kit-for-dash-camera",
-            "image": "shopify://shop_images/OBD.jpg",
+            "image": "shopify://shop_images/JYX0002-1_5514379d-7914-46a9-ba3f-26aa95d4e03e.png",
             "title": "OBD Hardwire Kit",
             "subtitle": "",
             "buy_label": "Buy now",
@@ -958,7 +966,7 @@
           "type": "product",
           "settings": {
             "product": "gku-type-c-dash-cam-hardwire-kit",
-            "title": "Multi-Fuse ACC",
+            "title": "Multi-Size ACC",
             "subtitle": "",
             "buy_label": "Buy now",
             "buy_link": "shopify://products/gku-type-c-dash-cam-hardwire-kit",
@@ -1028,7 +1036,7 @@
           "settings": {
             "label": "Output",
             "value_1": "5V / 3A",
-            "value_2": "5V / 3A",
+            "value_2": "5V / 2.5A",
             "value_3": "5V / 3A"
           }
         },
@@ -1510,6 +1518,62 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_liquid_RDDFVK": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"customer-reviews\"></div>\n\n<style>\n  #customer-reviews {\n    scroll-margin-top: 120px;\n  }\n</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "179343949038f3386b": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_RN6VhX": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": true,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_RN6VhX"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1523,6 +1587,8 @@
     "xtu_bento_grid_r6pyGH",
     "xtu_faq_kT3Ffi",
     "xtu_product_specs_7XrG4D",
-    "xtu_tab_images_EeXx8Q"
+    "xtu_tab_images_EeXx8Q",
+    "custom_liquid_RDDFVK",
+    "179343949038f3386b"
   ]
 }

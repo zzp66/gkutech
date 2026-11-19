@@ -17,8 +17,8 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to GKU. Free Shipping on orders over $49.99.",
-            "link": "",
+            "text": "&nbsp;Black Friday Sale: 30% OFF Sitewide & Up to 50% OFF Dash Cams | Free Shipping on Orders $50+&nbsp;",
+            "link": "shopify://collections/dash-cam",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "weight": "",

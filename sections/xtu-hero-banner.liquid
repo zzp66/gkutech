@@ -146,6 +146,14 @@
               assign image_mobile = block.settings.image_mobile
               assign youtube_url = block.settings.youtube_url | strip
               assign has_mobile_media = false
+              assign use_responsive_image = false
+              assign image_loading = 'lazy'
+              assign image_fetchpriority = 'auto'
+
+              if section.index == 1 and forloop.first
+                assign image_loading = 'eager'
+                assign image_fetchpriority = 'high'
+              endif
 
               if video_desktop == blank and image_desktop == blank
                 if video_mobile != blank
@@ -155,6 +163,15 @@
                 endif
               elsif video_mobile != blank or image_mobile != blank
                 assign has_mobile_media = true
+              endif
+
+              if image_desktop != blank and image_mobile != blank and video_desktop == blank and video_mobile == blank and youtube_url == blank
+                assign use_responsive_image = true
+              endif
+
+              assign desktop_media_query = blank
+              if has_mobile_media
+                assign desktop_media_query = '(min-width: 750px)'
               endif
 
               assign slide_alt = block.settings.heading
@@ -176,22 +193,48 @@
                   placeholder_class: 'xtu-hero-banner__placeholder xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop'
                 %}
               {% elsif video_desktop != blank %}
-                {{
-                  video_desktop
-                  | video_tag:
-                    autoplay: true,
-                    loop: true,
-                    muted: true,
-                    controls: false,
-                    class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop'
-                }}
+                {% render 'xtu-deferred-video',
+                  video: video_desktop,
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  image_size: 'small',
+                  media_query: desktop_media_query,
+                  class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop'
+                %}
+              {% elsif use_responsive_image %}
+                <picture
+                  class="xtu-hero-banner__picture xtu-hero-banner__media-item"
+                  style="--xtu-hero-image-position-mobile: {{ image_mobile.presentation.focal_point | default: '50% 50%' }};"
+                >
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="{{ image_mobile | image_url: width: 480 }} 480w, {{ image_mobile | image_url: width: 750 }} 750w, {{ image_mobile | image_url: width: 1100 }} 1100w, {{ image_mobile | image_url: width: 1500 }} 1500w"
+                    sizes="100vw"
+                    width="{{ image_mobile.width }}"
+                    height="{{ image_mobile.height }}"
+                  >
+                  {{
+                    image_desktop
+                    | image_url: width: 2400
+                    | image_tag:
+                      class: 'xtu-hero-banner__image',
+                      loading: image_loading,
+                      fetchpriority: image_fetchpriority,
+                      widths: '750, 1100, 1500, 2000, 2400',
+                      sizes: '100vw',
+                      alt: slide_alt
+                  }}
+                </picture>
               {% elsif image_desktop != blank %}
                 {{
                   image_desktop
                   | image_url: width: 2400
                   | image_tag:
                     class: 'xtu-hero-banner__image xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop',
-                    loading: 'eager',
+                    loading: image_loading,
+                    fetchpriority: image_fetchpriority,
                     widths: '750, 1100, 1500, 2000, 2400',
                     sizes: '100vw',
                     alt: slide_alt
@@ -200,24 +243,26 @@
                 {{ 'lifestyle-1' | placeholder_svg_tag: 'xtu-hero-banner__placeholder xtu-hero-banner__media-item xtu-hero-banner__media-item--desktop' }}
               {% endif %}
 
-              {% if has_mobile_media %}
+              {% if has_mobile_media and use_responsive_image == false %}
                 {% if video_mobile != blank %}
-                  {{
-                    video_mobile
-                    | video_tag:
-                      autoplay: true,
-                      loop: true,
-                      muted: true,
-                      controls: false,
-                      class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--mobile'
-                  }}
+                  {% render 'xtu-deferred-video',
+                    video: video_mobile,
+                    autoplay: true,
+                    loop: true,
+                    muted: true,
+                    controls: false,
+                    image_size: 'small',
+                    media_query: '(max-width: 749px)',
+                    class: 'xtu-hero-banner__video xtu-hero-banner__media-item xtu-hero-banner__media-item--mobile'
+                  %}
                 {% elsif image_mobile != blank %}
                   {{
                     image_mobile
                     | image_url: width: 1500
                     | image_tag:
                       class: 'xtu-hero-banner__image xtu-hero-banner__media-item xtu-hero-banner__media-item--mobile',
-                      loading: 'eager',
+                      loading: image_loading,
+                      fetchpriority: image_fetchpriority,
                       widths: '480, 750, 1100, 1500',
                       sizes: '100vw',
                       alt: slide_alt
@@ -416,6 +461,10 @@
   }
 
   @media screen and (max-width: 749px) {
+    .xtu-hero-banner__picture .xtu-hero-banner__image {
+      object-position: var(--xtu-hero-image-position-mobile, 50% 50%) !important;
+    }
+
     .xtu-hero-banner__media--has-mobile .xtu-hero-banner__media-item--desktop {
       display: none;
     }
@@ -667,16 +716,17 @@
 
   .xtu-hero-banner__bullet-fill {
     display: block;
-    width: 0;
+    width: 100%;
     height: 100%;
     border-radius: inherit;
     background: var(--xtu-hero-pagination-fill, #fff);
-    transition: width 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
   .xtu-hero-banner__bullet.is-progressing .xtu-hero-banner__bullet-fill {
-    width: 100%;
-    transition: width var(--xtu-hero-progress-duration, 5000ms) linear;
+    transform: translateX(0);
+    transition: transform var(--xtu-hero-progress-duration, 5000ms) linear;
   }
 
   @media screen and (max-width: 749px) {

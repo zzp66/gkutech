@@ -8,8 +8,11 @@
   }
 
   const viewTransitionRenderBlocker = document.getElementById('view-transition-render-blocker');
-  // Remove the view transition render blocker if the user has reduced motion enabled or is on a low power device.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isLowPowerDevice()) {
+  // Direct entries and reloads have no incoming cross-document transition.
+  // Keep the existing content guard on browsers without NavigationActivation.
+  const activation = window.navigation?.activation;
+  const isInitialNavigation = activation && (!activation.from || activation.navigationType === 'reload');
+  if (isInitialNavigation || prefersReducedMotion() || isLowPowerDevice()) {
     viewTransitionRenderBlocker?.remove();
   } else {
     // If the browser didn't manage to parse the main content quickly, at least let the user see something.
@@ -100,6 +103,7 @@
    */
   function shouldSkipViewTransition(viewTransition) {
     return (
+      typeof ViewTransition === 'undefined' ||
       !(viewTransition instanceof ViewTransition) ||
       isLowPowerDevice() ||
       prefersReducedMotion() ||

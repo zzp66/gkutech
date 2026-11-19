@@ -16,6 +16,73 @@
   window.__xtuStorySliderInit = true;
 
   var instances = new WeakMap();
+  var pendingRoots = new WeakMap();
+
+  function shouldDefer() {
+    var main = document.getElementById('MainContent');
+    return main && main.getAttribute('data-template') === 'index' &&
+      !(window.Shopify && window.Shopify.designMode) &&
+      !(document.documentElement && document.documentElement.classList.contains('shopify-design-mode')) &&
+      typeof window.IntersectionObserver === 'function';
+  }
+
+  function stopWatching(root, state) {
+    if (state.observer) state.observer.disconnect();
+    root.removeEventListener('pointerdown', state.onInteraction, true);
+    root.removeEventListener('focusin', state.onInteraction, true);
+  }
+
+  function cancelPending(root) {
+    var state = pendingRoots.get(root);
+    if (!state) return;
+    stopWatching(root, state);
+    pendingRoots.delete(root);
+  }
+
+  function initSafely(root) {
+    try {
+      initRoot(root);
+    } catch (err) {
+      if (typeof console !== 'undefined' && console.error) {
+        console.error('[xtu-story-slider] init failed', err);
+      }
+    }
+  }
+
+  function activatePending(root) {
+    var state = pendingRoots.get(root);
+    if (!state || state.activating) return;
+    state.activating = true;
+    stopWatching(root, state);
+    waitForSwiper(function () {
+      if (pendingRoots.get(root) !== state) return;
+      pendingRoots.delete(root);
+      if (root.isConnected === false || instances.has(root)) return;
+      initSafely(root);
+    });
+  }
+
+  function deferRoot(root) {
+    if (root.isConnected === false || instances.has(root) || pendingRoots.has(root)) return;
+    var state = {
+      activating: false,
+      observer: null,
+      onInteraction: function () { activatePending(root); },
+    };
+    pendingRoots.set(root, state);
+    root.addEventListener('pointerdown', state.onInteraction, true);
+    root.addEventListener('focusin', state.onInteraction, true);
+    try {
+      state.observer = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.target === root && entry.isIntersecting) activatePending(root);
+        });
+      }, { root: null, rootMargin: '300px 0px', threshold: 0 });
+      state.observer.observe(root);
+    } catch (_) {
+      activatePending(root);
+    }
+  }
 
   function waitForSwiper(cb) {
     if (typeof window.Swiper !== 'undefined') {
@@ -106,6 +173,29 @@
     return video;
   }
 
+  function activateHostedVideo(video) {
+    if (window.XtuDeferredMedia) {
+      window.XtuDeferredMedia.activate(video);
+      return;
+    }
+
+    // A direct play must still work if the shared loader has not finished loading.
+    var pending = video.querySelectorAll('[data-src]:not([src])');
+    var poster = video.getAttribute('data-poster');
+    if (poster) {
+      video.setAttribute('poster', poster);
+    }
+    var source = video.getAttribute('data-src');
+    var needsSource = source && !video.hasAttribute('src');
+    if (needsSource) {
+      video.setAttribute('src', source);
+    }
+    Array.prototype.forEach.call(pending, function (node) {
+      node.setAttribute('src', node.getAttribute('data-src'));
+    });
+    if (needsSource || pending.length) video.load();
+  }
+
   function bindHostedVideoCards(root) {
     var cards = root.querySelectorAll('[data-xtu-story-card][data-media-type="video"]');
     Array.prototype.forEach.call(cards, function (card) {
@@ -125,6 +215,7 @@
         if (!video) return;
         if (video.paused) {
           pauseAllMedia(root, card);
+          activateHostedVideo(video);
           var playPromise = video.play();
           if (playPromise && typeof playPromise.then === 'function') {
             playPromise
@@ -226,6 +317,7 @@
   }
 
   function destroy(root) {
+    cancelPending(root);
     var inst = instances.get(root);
     if (inst) {
       if (inst.swiper && typeof inst.swiper.destroy === 'function') {
@@ -325,14 +417,12 @@
   function boot(scope) {
     var roots = (scope || document).querySelectorAll('[data-xtu-story-slider]');
     Array.prototype.forEach.call(roots, function (root) {
+      if (shouldDefer()) {
+        deferRoot(root);
+        return;
+      }
       waitForSwiper(function () {
-        try {
-          initRoot(root);
-        } catch (err) {
-          if (typeof console !== 'undefined' && console.error) {
-            console.error('[xtu-story-slider] init failed', err);
-          }
-        }
+        initSafely(root);
       });
     });
   }

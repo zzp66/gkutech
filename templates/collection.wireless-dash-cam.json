@@ -1,0 +1,503 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "xtu_collection_banner": {
+      "type": "xtu-collection-banner",
+      "settings": {
+        "heading": "",
+        "enable_collection_description": true,
+        "description": "",
+        "enable_collection_image": true,
+        "media_ratio": "21 / 9",
+        "content_position": "center",
+        "show_overlay": false,
+        "page_background": "#f8f9fd",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "muted_text_color": "#666666",
+        "accent_color": "{{ settings.color_palette.color7 }}",
+        "border_color": "#000000",
+        "button_bg": "#1590f2",
+        "button_bg_hover": "#0070ca",
+        "button_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": true,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": false,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 0,
+            "facets_margin_right": 0
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 0,
+            "background_color": "#ffffff",
+            "atc_bg": "#fff001",
+            "atc_color": "{{ settings.color_palette.foreground }}",
+            "atc_bg_hover": "{{ settings.color_palette.foreground }}",
+            "atc_color_hover": "{{ settings.color_palette.background }}",
+            "atc_bg_disabled": "#e8e8ed",
+            "atc_color_disabled": "#8e8e93",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "square",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "small",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": false,
+        "products_per_page": 9,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": false,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 16,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "#f8f9fd",
+        "padding-block-start": 0,
+        "padding-block-end": 80
+      }
+    },
+    "collection_list_3rVCDp": {
+      "type": "collection-list",
+      "blocks": {
+        "group_6yAWhd": {
+          "type": "group",
+          "name": "t:names.header",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_kjfVgH": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h3>Shop by collection</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_kjfVgH"
+          ]
+        },
+        "static-collection-card": {
+          "type": "_collection-card",
+          "name": "t:names.collection_card",
+          "static": true,
+          "settings": {
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "collection_card_gap": 8,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection_title_yGMyRb": {
+              "type": "collection-title",
+              "name": "t:names.collection_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "{{ settings.color_palette.background }}",
+                "text_color": "{{ settings.color_palette.foreground }}",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "name": "t:names.collection_card_image",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_title_yGMyRb"
+          ]
+        }
+      },
+      "block_order": [
+        "group_6yAWhd"
+      ],
+      "disabled": true,
+      "name": "t:names.collections_carousel",
+      "settings": {
+        "collection_list": [
+          "action-camera-batteries-chargers",
+          "action-camera-microphones",
+          "action-camera-mounts",
+          "action-camera-waterproof-case"
+        ],
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "bento_gap": 8,
+        "rows_gap": 8,
+        "max_collections": 4,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 12,
+        "background_color": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "1792139031679e86c3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_92c17b1_UrJPPE": {
+          "type": "ai_gen_block_92c17b1",
+          "settings": {
+            "heading": "What to Consider When Buying A Wireless Dash Cam",
+            "subtitle": "Wireless Dash Cam for Car – Smart WiFi & 4G LTE Connectivity",
+            "body": "<p>Explore GKU wireless dash cams designed to make everyday driving and vehicle monitoring more convenient. Whether you're looking for a <strong>wireless dash camera with WiFi</strong>, a <strong>front and rear dash cam</strong>, or an advanced <strong>4G LTE dash cam with live view</strong>, GKU offers smart recording solutions for different driving needs.</p><p>Choose a WiFi dash cam for convenient local video access or a 4G LTE model for compatible remote monitoring features. Please note that wireless connectivity does not necessarily mean wire-free power installation.</p><h3>1. Is there a wireless dash cam?&nbsp;</h3><p>Yes, true<span style=\"text-decoration:underline\"> </span>wireless dash camera models exist. Compared with traditional dash cam, these dash cams use LTE connectivity instead of Wi-Fi. They upload footage directly to the cloud using cellular data. You get live alerts and remote viewing anywhere. No phone hotspot is needed.</p><p><strong>How a true wireless dash cam can help you.</strong></p><p><strong>Parking Lot Hit & Runs:</strong></p><p>Record parked crashes. If someone crashes your car and takes off, you can get an alert and have evidence immediately.</p><p>With a <span style=\"text-decoration:underline\"><strong>dash cam with cloud storage</strong></span>, your footage stays protected even if the device is damaged or removed.</p><p><strong>Road Trip Security:</strong></p><p>Monitors your parked car at rest stops.<em>Detects break-in attempts or vandalism.</em></p><p><strong>Traffic Incident Documentation:</strong></p><p>Capture reckless driving or near-misses. Upload to the cloud to ensure video is preserved.</p><p>Provide video evidence for insurance claims.</p><p><strong>Real-Time Vehicle Monitoring:</strong></p><p>Check your parked car remotely via phone.<em>See live footage if an alert triggers.</em></p><p><strong>Rental Car / Borrowed Vehicle Use:</strong></p><p>Install temporarily without wires.<em>Protect yourself in unfamiliar vehicles.</em></p><p><strong>Teen Driver Safety</strong>:</p><p>Review driving habits remotely.<em>Peace of mind for new drivers.</em></p><p><strong>Fleet Vehicle Oversight:</strong></p><p>Track location and driving behavior. <em>Manage business vehicles efficiently.</em></p><p>Choose <strong>LTE dash cams</strong> for real wireless freedom.</p><h3>2. Differences Between Wired And Wireless Dash Cams</h3><p><strong>Core Function:</strong></p><p>Wired dash cams record to an SD card inside the device. LTE wireless dash cams record <em>and</em> upload footage to secure cloud storage via cellular networks.</p><p><strong>Remote Access:</strong></p><p>Wired cams need physical access or local Wi-Fi to view footage. LTE cams offer live remote viewing anytime, anywhere using your phone app. See your car in real-time.</p><p><strong>Alerts & Notifications:</strong></p><p>Wired cams record parking incidents but notify you later. LTE cams send instant push alerts for impacts, motion, or geofence triggers while parked, anywhere.</p><p><strong>Video Storage & Safety:</strong></p><p>Wired cam footage stays on the SD card (vulnerable to theft/damage). LTE cam footage saves automatically to the cloud, protecting evidence even if the camera is stolen.</p><p><strong>Connectivity Dependency:</strong></p><p>Wired cams work without the internet. LTE cams require a cellular data plan for cloud features but operate locally without it.</p><p><strong>Parking Mode Power:</strong></p><p>Wired cams use hardwiring for unlimited parking power. LTE cams use batteries <em>or</em> optional hardwiring, needing power for extended cloud-connected parking mode.</p><p><strong>Key Difference:</strong></p><p>LTE wireless dash cams provide live remote control, cloud evidence protection, and instant alerts - features wired models cannot offer alone.</p><h3>3.How does a wireless dash cam work?</h3><p>A wireless (LTE) dash cam still needs power—usually tapped from your car’s fuse box or a 12V lighter socket. What makes it truly “wireless” is how it sends and stores data: instead of relying on Wi‑Fi, it uses built‑in LTE cellular connectivity.</p><p><strong>Power & Installation</strong></p><p>Power source: Hard‑wired to the fuse box or plugged into the cigarette lighter.</p><p>Install: Suction cup or adhesive mount on the windshield.</p><p>No data cables: Data travels over the cellular network, so there’s no long Ethernet or USB run to your head unit.</p><p><strong>Automatic Cloud Uploads</strong></p><p>Real‑time transfer: Video clips upload instantly via LTE as you drive.</p><p>Cloud storage: All driving and parking event footage is saved off‑site—no manual memory‑card swaps.</p><p>Remote live access: View live or recorded footage anytime through a smartphone app.</p><p><strong>Parking Monitor & Alerts</strong></p><p>Event detection: When the camera senses a bump, it automatically records a clip.Instant notifications: You receive an alert on your phone within seconds.</p><p>Secure backup: Even if the dash cam is stolen or damaged, your video remains safely stored in the cloud.</p><h3>Why Choose A Wireless Dash Cam?</h3><p>24/7 protection: Constant connectivity means you never miss an important event.</p><p>-Hands‑free operation: No need to fetch memory cards or worry about local storage limits.</p><p>Enhanced security: Cloud backup ensures footage integrity and peace of mind.</p><p>By leveraging LTE cellular data and automatic cloud uploads, a wireless dash cam delivers seamless recording, remote monitoring, and secure storage—making it the high‑tech choice for modern drivers.</p><p></p>",
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "content_width": 1000,
+            "vertical_padding": 40,
+            "mobile_vertical_padding": 30,
+            "heading_size": 48,
+            "mobile_heading_size": 32,
+            "subtitle_size": 20,
+            "mobile_subtitle_size": 18,
+            "body_size": 16,
+            "heading_color": "#000000",
+            "text_color": "#333333"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_92c17b1_UrJPPE"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_faq_EME89m": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_BFm6Pq": {
+          "type": "item",
+          "settings": {
+            "question": "Can I see my dash cam live on my phone?",
+            "answer": "<p>Yes! With a True Wireless dash cam like the GKU C600 4G LTE Dash Cam, viewing your dash cam live on your phone is easy. Simply use the dedicated mobile app to access a real-time feed, just like live monitoring. No Wi-Fi hotspot needed - <a href=\"/products/gku-c600-4g-lte-dual-dash-cam\" target=\"_blank\" title=\"GKU C600 4G LTE Dash Cams with Cloud Storage & WiFi 6\"><span style=\"text-decoration:underline\">the C600 uses built-in LTE</span></a><span style=\"text-decoration:underline\"> </span>cellular connectivity for true wireless, remote live viewing anytime, anywhere.&nbsp;</p>"
+          }
+        },
+        "item_9gdWxW": {
+          "type": "item",
+          "settings": {
+            "question": "Can I View My Wireless Dash Cam Remotely?",
+            "answer": "<p>Yes, if your dash cam supports cellular connectivity and remote live viewing. The GKU C600 supports remote vehicle monitoring through 4G LTE, allowing you to check your car using a compatible app. Remote access requires sufficient power, cellular coverage, and an active data plan.</p>"
+          }
+        },
+        "item_AWfwFk": {
+          "type": "item",
+          "settings": {
+            "question": "Do Wireless Dash Cams Require a Monthly Subscription?",
+            "answer": "<p>Not always. WiFi-based features generally do not require a cellular subscription. However, 4G LTE remote connectivity and certain cloud services may require an active data plan or paid service. Check the specific dash cam's service requirements before purchasing.</p>"
+          }
+        },
+        "item_FUNbA4": {
+          "type": "item",
+          "settings": {
+            "question": "Can I Still Use My Dash Cam Without Renewing the 4G Data Plan?",
+            "answer": "<p>Yes. The GKU C600 can still function as a regular dash cam without an active 4G data plan. You can continue recording driving footage and use the built-in WiFi connection to access videos and adjust settings locally through the app.</p><p>However, 4G-dependent features, such as remote live viewing, cellular GPS tracking, cloud services, and remote parking alerts, will be unavailable until you renew or activate a compatible data plan.</p>"
+          }
+        },
+        "item_QqpWkf": {
+          "type": "item",
+          "settings": {
+            "question": "What Is a Wireless Dash Cam?",
+            "answer": "<p>A wireless dash cam uses WiFi or cellular connectivity to connect with your smartphone, transfer footage, or enable remote monitoring. Unlike traditional dash cams that rely mainly on physical connections for data access, wireless models offer more convenient connectivity. However, most wireless dash cams still require a power cable.</p>"
+          }
+        },
+        "item_6pWPMy": {
+          "type": "item",
+          "settings": {
+            "question": "Is a Wireless Dash Cam Better Than a Wired Dash Cam?",
+            "answer": "<p>It depends on your needs. A wireless dash cam with WiFi or 4G LTE connectivity offers convenient smartphone access, video downloads, and, on supported models, remote live viewing and parking alerts. A traditional wired dash cam may provide similar recording quality but typically offers fewer wireless connectivity features.</p><p>However, wireless does not mean wire-free. Most wireless dash cams still require a power cable, and front-and-rear systems may also need a cable connecting the rear camera.</p><p>For drivers who want remote vehicle monitoring, the <a href=\"/products/gku-c600-4g-lte-dual-dash-cam\" target=\"_blank\" title=\"GKU C600 4G LTE Dash Cams with Cloud Storage & WiFi 6\"><strong>GKU C600 4G LTE Dash Cam</strong></a> offers built-in 4G LTE connectivity and WiFi 6, combining remote access with convenient local video management.</p>"
+          }
+        },
+        "item_YNiUqL": {
+          "type": "item",
+          "settings": {
+            "question": "Do wireless dash cams need to be plugged in?",
+            "answer": "<p>Yes. Most wireless dash cams need continuous power from a vehicle's USB port, 12V outlet, or a compatible hardwire kit. Wireless connectivity does not mean the camera operates without power cables.</p>"
+          }
+        },
+        "item_di9U4L": {
+          "type": "item",
+          "settings": {
+            "question": "Can a wireless dash cam record without WiFi?",
+            "answer": "<p>Yes. Most WiFi-enabled dash cams can record footage to a memory card without an active WiFi connection, provided they have power and suitable storage.</p>"
+          }
+        },
+        "item_gKywBY": {
+          "type": "item",
+          "settings": {
+            "question": "Can a wireless dash cam work when the car is off?",
+            "answer": "<p>Yes. GKU C600 supports parking monitoring with &nbsp;hardwire kit included.&nbsp;</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_BFm6Pq",
+        "item_9gdWxW",
+        "item_AWfwFk",
+        "item_FUNbA4",
+        "item_QqpWkf",
+        "item_6pWPMy",
+        "item_YNiUqL",
+        "item_di9U4L",
+        "item_gKywBY"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "xtu_collection_banner",
+    "main",
+    "collection_list_3rVCDp",
+    "1792139031679e86c3",
+    "xtu_faq_EME89m"
+  ]
+}

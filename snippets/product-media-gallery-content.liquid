@@ -525,7 +525,7 @@
                     type="button"
                     class="xtu-pdp-thumbs__btn"
                     aria-label="{{ 'accessibility.scroll_to' | t: title: media.alt | default: media.media_type }}"
-                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                    aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
                   >
                     {{
                       media.preview_image
@@ -651,7 +651,7 @@
                           type="button"
                           class="xtu-pdp-thumbs__btn xtu-zoom-dialog__thumb-btn"
                           aria-label="{{ 'accessibility.scroll_to' | t: title: media.alt | default: media.media_type }}"
-                          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                          aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
                         >
                           {{
                             media.preview_image

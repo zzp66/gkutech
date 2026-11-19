@@ -1,0 +1,12 @@
+{%- liquid
+  assign stock_now = 'now' | date: '%s' | plus: 0
+  assign stock_published = product.published_at | date: '%s' | plus: 0
+  if product != blank and product.available and product.published_at != blank and stock_published <= stock_now
+    for stock_variant in product.variants
+      if stock_variant.available and stock_variant.inventory_management != blank and stock_variant.inventory_quantity > 0
+        echo stock_variant.id
+        break
+      endif
+    endfor
+  endif
+-%}

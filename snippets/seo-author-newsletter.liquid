@@ -1,0 +1,13 @@
+{%- assign newsletter_form_id = 'SeoAuthorNewsletter-' | append: section.id -%}
+<section class="seo-author-newsletter" aria-labelledby="AuthorNewsletterTitle-{{ section.id }}">
+  <h2 id="AuthorNewsletterTitle-{{ section.id }}" class="seo-author-sidebar__title">{{ section.settings.newsletter_heading | escape }}</h2>
+  {%- if section.settings.newsletter_text != blank -%}<div class="seo-author-newsletter__description">{{ section.settings.newsletter_text }}</div>{%- endif -%}
+  {%- form 'customer', id: newsletter_form_id, class: 'seo-author-newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="AuthorNewsletterEmail-{{ section.id }}">{{ section.settings.newsletter_email_label | escape }}</label>
+    <input id="AuthorNewsletterEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="{{ section.settings.newsletter_email_label | escape }}" autocomplete="email" autocapitalize="off" autocorrect="off" required{% if form.errors %} aria-invalid="true" aria-describedby="AuthorNewsletterError-{{ section.id }}"{% elsif form.posted_successfully? %} aria-describedby="AuthorNewsletterSuccess-{{ section.id }}"{% endif %}>
+    <button class="seo-author-button" type="submit">{{ section.settings.newsletter_button | escape }}</button>
+    {%- if form.errors -%}<div id="AuthorNewsletterError-{{ section.id }}" class="seo-author-newsletter__status" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+    {%- if form.posted_successfully? -%}<p id="AuthorNewsletterSuccess-{{ section.id }}" class="seo-author-newsletter__status" role="status">{{ section.settings.newsletter_success_label | escape }}</p>{%- endif -%}
+  {%- endform -%}
+</section>

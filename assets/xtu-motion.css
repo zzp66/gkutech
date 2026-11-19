@@ -15,7 +15,6 @@
 [data-xtu-reveal-child] {
   opacity: 1;
   transform: none;
-  will-change: transform, opacity;
 }
 
 /* -----------------------------------------------------------------------------

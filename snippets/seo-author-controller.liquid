@@ -1,0 +1,201 @@
+<script data-author-controller>
+(() => {
+  if (window.__seoAuthorControllerInstalled) return;
+  window.__seoAuthorControllerInstalled = true;
+  {% render 'seo-author-route-validation' %}
+  const controllers = new WeakMap();
+  const numericId = value => typeof value === 'string' && /^[1-9]\d*$/.test(value);
+  const format = (pattern, values) => pattern.replace(/:(count|start|end|total)/g, (_, key) => String(values[key] ?? ''));
+  class AuthorPage {
+    constructor(root) {
+      this.root = root;
+      this.events = new AbortController();
+      this.listen = (target, event, callback) => target?.addEventListener(event, callback, { signal: this.events.signal });
+      this.pageSize = Math.max(1, Math.min(50, Number(root.dataset.perPage) || 6));
+      this.grid = root.querySelector('[data-author-grid]');
+      this.pagination = root.querySelector('[data-author-pagination]');
+      this.input = root.querySelector('[data-author-search]');
+      this.cards = new Map([...this.grid.querySelectorAll('[data-author-card]')].map(card => [card.dataset.articleId, card]));
+      this.records = JSON.parse(root.querySelector('[data-author-records]').textContent).map(record => this.normalize(record)).filter(Boolean);
+      this.query = '';
+      const pageValue = new URLSearchParams(location.search).get('author_page') || '1';
+      this.page = /^\d+$/.test(pageValue) && Number.isSafeInteger(Number(pageValue)) ? Math.max(1, Number(pageValue)) : 1;
+      this.source = root._seoAuthorSource || validateArticle(new URLSearchParams(location.search).get('author_article')) || validateArticle(document.referrer);
+      this.bind();
+      this.initialize();
+    }
+    normalize(record) {
+      if (!record || !numericId(record.id) || typeof record.title !== 'string' || !record.title.trim() || record.title.length > 1024) return null;
+      const route = validateArticle(record.url);
+      if (!route || typeof record.excerpt !== 'string' || record.excerpt.length > 20000 || typeof record.tag !== 'string' || record.tag.length > 1000) return null;
+      const published = Number(record.published), minutes = Number(record.reading_minutes);
+      if (!Number.isSafeInteger(published) || published <= 0 || published > Date.now() / 1000 + 60 || !Number.isSafeInteger(minutes) || minutes < 1 || !/^\d{4}-\d{2}-\d{2}$/.test(record.date) || !Number.isFinite(Date.parse(record.date))) return null;
+      let image = null;
+      if (record.image && Number.isFinite(Number(record.image.width)) && Number.isFinite(Number(record.image.height)) && Number(record.image.width) > 0 && Number(record.image.height) > 0) {
+        try {
+          const imageUrl = new URL(record.image.url, location.href);
+          const shopOrigin = new URL(this.root.dataset.shopUrl, location.origin).origin;
+          const allowedOrigin = [location.origin, shopOrigin].includes(imageUrl.origin) || imageUrl.hostname === 'cdn.shopify.com' || imageUrl.hostname.endsWith('.shopifycdn.com');
+          if (allowedOrigin && ['http:', 'https:'].includes(imageUrl.protocol) && !imageUrl.username && !imageUrl.password) image = { ...record.image, url: imageUrl.href, width: Number(record.image.width), height: Number(record.image.height) };
+        } catch { /* Invalid media keeps the ordinary article placeholder. */ }
+      }
+      return { ...record, url: route.url.href, routeKey: route.key, published, reading_minutes: minutes, image };
+    }
+    bind() {
+      const back = this.root.querySelector('[data-author-back]');
+      if (this.source) {
+        back.dataset.authorBackUrl = this.source.url.href;
+        back.hidden = false;
+      }
+      this.listen(back, 'click', () => { if (back.dataset.authorBackUrl) window.location.assign(back.dataset.authorBackUrl); });
+      this.listen(this.input, 'input', () => {
+        this.query = this.input.value.trim().toLocaleLowerCase();
+        this.page = 1;
+        this.render(true);
+      });
+      this.listen(this.root.querySelector('[data-author-prev]'), 'click', () => this.go(this.page - 1));
+      this.listen(this.root.querySelector('[data-author-next]'), 'click', () => this.go(this.page + 1));
+      this.listen(this.root.querySelector('[data-author-pages]'), 'click', event => {
+        const button = event.target.closest('[data-page]');
+        if (button) this.go(Number(button.dataset.page));
+      });
+      this.listen(window, 'popstate', () => {
+        const value = new URLSearchParams(location.search).get('author_page');
+        this.page = /^\d+$/.test(value || '') ? Math.max(1, Number(value)) : 1;
+        this.render(false);
+      });
+    }
+    async initialize() {
+      try {
+        if (this.source && !this.root._seoAuthorSourceExpired) await this.loadSource();
+      } finally {
+        if (!this.root.isConnected) return;
+        this.updateItemList();
+        this.render(false);
+        this.root.querySelector('[data-author-search-controls]').hidden = this.records.length === 0;
+        this.reveal();
+      }
+    }
+    async loadSource() {
+      this.root.classList.add('is-loading');
+      this.root.querySelector('[data-author-library]').setAttribute('aria-busy', 'true');
+      this.request = new AbortController();
+      const timeout = setTimeout(() => this.request.abort(), 8000);
+      try {
+        const endpoint = new URL(this.source.url.href);
+        endpoint.hash = '';
+        endpoint.searchParams.set('view', 'seo-author-source');
+        const preview = new URLSearchParams(location.search).get('preview_theme_id') || (['development', 'unpublished'].includes(window.Shopify?.theme?.role) ? String(window.Shopify.theme.id) : '');
+        if (/^\d+$/.test(preview)) endpoint.searchParams.set('preview_theme_id', preview);
+        const response = await fetch(endpoint.href, { credentials: 'same-origin', signal: this.request.signal, headers: { Accept: 'application/json' } });
+        const returnedRoute = validateArticle(response.url);
+        if (!response.ok || !returnedRoute || returnedRoute.key !== this.source.key) return;
+        const raw = await response.text();
+        if (raw.length > 750000) return;
+        const payload = JSON.parse(raw);
+        if (payload.version !== 1 || !numericId(payload.author_id) || payload.author_id !== this.root.dataset.authorId || !numericId(payload.source_id) || !Array.isArray(payload.articles) || payload.articles.length > 50) return;
+        const payloadRoute = validateArticle(payload.source_url);
+        if (!payloadRoute || payloadRoute.key !== this.source.key) return;
+        const incoming = payload.articles.map(record => this.normalize(record));
+        if (incoming.some(record => !record) || new Set(incoming.map(record => record.id)).size !== incoming.length) return;
+        const source = incoming.find(record => record.id === payload.source_id && record.routeKey === this.source.key);
+        if (!source || this.root._seoAuthorSourceExpired) return;
+        const manual = Number(this.root.dataset.manualCount) > 0;
+        const remaining = (manual ? this.records : incoming).filter(record => record.id !== source.id).sort((a, b) => b.published - a.published);
+        const existing = this.records.find(record => record.id === source.id);
+        this.records = [existing || source, ...remaining].slice(0, manual ? remaining.length + 1 : 50);
+        for (const record of this.records) {
+          if (!this.cards.has(record.id)) this.cards.set(record.id, this.buildCard(record));
+          this.grid.append(this.cards.get(record.id));
+        }
+      } catch { /* Retain the original public manual list on any request failure. */ }
+      finally { clearTimeout(timeout); }
+    }
+    dateLabel(record) {
+      const date = new Date(record.date + 'T12:00:00Z');
+      const locale = document.documentElement.lang || undefined;
+      const parts = { '%Y': record.date.slice(0, 4), '%m': record.date.slice(5, 7), '%d': record.date.slice(8, 10), '%b': new Intl.DateTimeFormat(locale, { month: 'short', timeZone: 'UTC' }).format(date), '%B': new Intl.DateTimeFormat(locale, { month: 'long', timeZone: 'UTC' }).format(date) };
+      return (this.root.dataset.dateFormat || record.date).replace(/%[YmdBb]/g, token => parts[token]);
+    }
+    buildCard(record) {
+      const card = this.root.querySelector('[data-author-card-template]').content.firstElementChild.cloneNode(true);
+      card.dataset.articleId = record.id;
+      card.querySelector('a').href = record.url;
+      const title = card.querySelector('h3'); title.textContent = record.title; title.title = record.title;
+      card.querySelector('.seo-author-card__excerpt').textContent = record.excerpt;
+      const time = card.querySelector('time'); time.dateTime = record.date; time.textContent = this.dateLabel(record);
+      card.querySelector('[data-card-reading]').textContent = format(this.root.dataset.readingLabel, { count: record.reading_minutes });
+      const tag = card.querySelector('.seo-author-card__tag'); tag.textContent = record.tag; tag.hidden = !record.tag;
+      if (record.image) {
+        const image = card.querySelector('.seo-author-card__image');
+        image.src = record.image.url; image.width = record.image.width; image.height = record.image.height; image.alt = record.image.alt || record.title; image.hidden = false;
+        card.querySelector('.seo-author-card__placeholder').hidden = true;
+        const ratio = record.image.width / record.image.height;
+        if (ratio < 1.2 || ratio > 1.65) {
+          const backdrop = image.cloneNode(); backdrop.className = 'seo-author-card__backdrop'; backdrop.alt = ''; backdrop.setAttribute('aria-hidden', 'true');
+          image.before(backdrop); card.querySelector('.seo-author-card__media').classList.add('seo-author-card__media--contain');
+        }
+      }
+      return card;
+    }
+    countLabel(count) { return format(count === 1 ? this.root.dataset.countSingular : this.root.dataset.countPlural, { count }); }
+    render(updateUrl) {
+      const filtered = this.records.filter(record => (record.title + ' ' + record.excerpt + ' ' + record.tag).toLocaleLowerCase().includes(this.query));
+      this.totalPages = Math.max(1, Math.ceil(filtered.length / this.pageSize));
+      this.page = Math.max(1, Math.min(this.totalPages, this.page));
+      const start = (this.page - 1) * this.pageSize;
+      const visible = new Set(filtered.slice(start, start + this.pageSize).map(record => record.id));
+      this.cards.forEach((card, id) => { card.hidden = !visible.has(id); });
+      const override = Number(this.root.dataset.authorTotal);
+      const visibleTotal = this.root.dataset.totalOverride === 'true' && Number.isSafeInteger(override) && override >= 0 ? override : this.records.length;
+      this.root.querySelector('[data-author-total]').textContent = this.countLabel(visibleTotal);
+      const empty = this.root.querySelector('[data-author-empty]'); empty.hidden = filtered.length > 0; empty.textContent = this.query ? this.root.dataset.searchEmptyLabel : this.root.dataset.emptyLabel;
+      const searchCount = this.root.querySelector('[data-author-search-count]'); searchCount.hidden = !this.query; searchCount.textContent = this.countLabel(filtered.length);
+      this.pagination.hidden = this.totalPages <= 1;
+      this.root.querySelector('[data-author-prev]').disabled = this.page === 1;
+      this.root.querySelector('[data-author-next]').disabled = this.page === this.totalPages;
+      const pages = this.root.querySelector('[data-author-pages]'); pages.replaceChildren();
+      const numbers = new Set([1, this.totalPages, this.page - 1, this.page, this.page + 1]);
+      [...numbers].filter(number => number >= 1 && number <= this.totalPages).sort((a, b) => a - b).forEach(number => {
+        const button = document.createElement('button'); button.type = 'button'; button.dataset.page = String(number); button.textContent = String(number);
+        if (number === this.page) button.setAttribute('aria-current', 'page');
+        pages.append(button);
+      });
+      this.root.querySelector('[data-author-page-status]').textContent = format(this.root.dataset.pageStatus, { start: filtered.length ? start + 1 : 0, end: Math.min(start + this.pageSize, filtered.length), total: filtered.length });
+      if (updateUrl) {
+        const url = new URL(location.href);
+        if (this.page > 1) url.searchParams.set('author_page', String(this.page)); else url.searchParams.delete('author_page');
+        history.replaceState(null, '', url.href);
+      }
+    }
+    go(page) {
+      if (page < 1 || page > this.totalPages) return;
+      this.page = page; this.render(true);
+      this.root.querySelector('[data-author-library]').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    }
+    updateItemList() {
+      const script = this.root.querySelector('[data-author-item-list]');
+      const itemList = JSON.parse(script.textContent);
+      itemList.numberOfItems = this.records.length;
+      itemList.itemListElement = this.records.map((record, index) => ({ '@type': 'ListItem', position: index + 1, url: record.url, name: record.title }));
+      script.textContent = JSON.stringify(itemList);
+    }
+    reveal() {
+      clearTimeout(this.root._seoAuthorRecovery);
+      this.root.classList.remove('is-loading');
+      this.root.querySelector('[data-author-library]').removeAttribute('aria-busy');
+    }
+    destroy() { this.events.abort(); this.request?.abort(); this.reveal(); }
+  }
+  const roots = scope => [...(scope.matches?.('[data-seo-author]') ? [scope] : []), ...scope.querySelectorAll('[data-seo-author]')];
+  const initialize = scope => roots(scope).forEach(root => {
+    if (controllers.has(root)) return;
+    try { controllers.set(root, new AuthorPage(root)); }
+    catch { clearTimeout(root._seoAuthorRecovery); root.classList.remove('is-loading'); }
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initialize(document), { once: true });
+  else initialize(document);
+  document.addEventListener('shopify:section:load', event => initialize(event.target));
+  document.addEventListener('shopify:section:unload', event => roots(event.target).forEach(root => { controllers.get(root)?.destroy(); controllers.delete(root); }));
+})();
+</script>

@@ -1,0 +1,48 @@
+{%- comment -%}Generate stable native anchors before the TOC reads the same HTML.{%- endcomment -%}
+{%- liquid
+  assign segments = content | replace: '<h2', '[[seo-heading]]h2' | replace: '<h3', '[[seo-heading]]h3' | split: '[[seo-heading]]'
+  assign used_ids = '|'
+  assign max_suffix = segments.size | plus: 1
+-%}
+{%- for segment in segments -%}
+  {%- if forloop.first -%}{{- segment -}}{%- continue -%}{%- endif -%}
+  {%- liquid
+    assign opening = segment | split: '>' | first
+    assign kind = opening | slice: 0, 2
+    assign closing = '</' | append: kind | append: '>'
+    assign remainder = segment | remove_first: opening | remove_first: '>'
+    assign heading_html = remainder | split: closing | first
+    assign original_id = blank
+    if opening contains ' id="'
+      assign original_id = opening | split: ' id="' | last | split: '"' | first
+      assign old_attribute = ' id="' | append: original_id | append: '"'
+      assign opening = opening | remove_first: old_attribute
+    elsif opening contains " id='"
+      assign original_id = opening | split: " id='" | last | split: "'" | first
+      assign old_attribute = " id='" | append: original_id | append: "'"
+      assign opening = opening | remove_first: old_attribute
+    endif
+    assign base_id = original_id
+    if base_id == blank
+      assign base_id = heading_html | strip_html | replace: '&nbsp;', ' ' | replace: '&amp;', ' and ' | replace: '&#39;', '' | replace: '&quot;', '' | handleize
+    endif
+    if base_id == blank
+      assign base_id = kind
+    endif
+    assign heading_id = base_id
+    for suffix in (2..max_suffix)
+      assign id_token = '|' | append: heading_id | append: '|'
+      unless used_ids contains id_token
+        break
+      endunless
+      assign heading_id = base_id | append: '-' | append: suffix
+    endfor
+    assign used_ids = used_ids | append: heading_id | append: '|'
+    echo '<'
+    echo opening
+    echo ' id="'
+    echo heading_id | escape_once
+    echo '">'
+    echo remainder
+  -%}
+{%- endfor -%}

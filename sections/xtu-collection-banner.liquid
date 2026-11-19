@@ -42,14 +42,6 @@
     assign has_media = true
   endif
 
-  if has_media
-    assign image_url_desktop = image | image_url: width: 2880
-    if image_mobile != blank
-      assign image_url_mobile = image_mobile | image_url: width: 1200
-    else
-      assign image_url_mobile = image_url_desktop
-    endif
-  endif
 %}
 
 {% style %}
@@ -97,8 +89,6 @@
 
     #shopify-section-{{ section.id }} .xtu-collection-banner--has-media {
       --xtu-cb-banner-ratio: {{ banner_ratio }};
-      --xtu-cb-banner-image: url('{{ image_url_desktop }}');
-      --xtu-cb-banner-image-mobile: url('{{ image_url_mobile }}');
     }
   {% endif %}
 {% endstyle %}
@@ -116,20 +106,28 @@
 >
   {% if has_media %}
     <div class="xtu-collection-banner__media" aria-hidden="true">
-      {%- comment -%}
-        Prefer CSS background for reliable cover fill.
-        Keep a visually-hidden img for crawlers / accessibility fallback.
-      {%- endcomment -%}
-      {{
-        image
-        | image_url: width: 2880
-        | image_tag:
-          class: 'xtu-collection-banner__image',
-          loading: 'eager',
-          widths: '800, 1200, 1600, 2000, 2400, 2880',
-          sizes: '100vw',
-          alt: heading
-      }}
+      <picture class="xtu-collection-banner__picture">
+        {% if image_mobile != blank %}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ image_mobile | image_url: width: 400 }} 400w, {{ image_mobile | image_url: width: 600 }} 600w, {{ image_mobile | image_url: width: 800 }} 800w, {{ image_mobile | image_url: width: 1000 }} 1000w, {{ image_mobile | image_url: width: 1200 }} 1200w"
+            sizes="120vw"
+            width="{{ image_mobile.width }}"
+            height="{{ image_mobile.height }}"
+          >
+        {% endif %}
+        {{
+          image
+          | image_url: width: 2880
+          | image_tag:
+            class: 'xtu-collection-banner__image',
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '400, 600, 800, 1000, 1200, 1600, 2000, 2400, 2880',
+            sizes: '120vw',
+            alt: heading
+        }}
+      </picture>
       {% if show_overlay %}
         <div class="xtu-collection-banner__overlay"></div>
       {% endif %}
@@ -138,8 +136,15 @@
 
   <div class="xtu-collection-banner__inner" data-xtu-reveal>
     <div class="xtu-collection-banner__content">
+      {% assign breadcrumb_position = settings.collection_breadcrumb_position | default: 'above_title_center' %}
+      {% if settings.show_breadcrumb_nav and breadcrumb_position == 'above_title_center' %}
+        {% render 'breadcrumbs', class: 'breadcrumbs-inline' %}
+      {% endif %}
       {% if heading != blank %}
         <h1 class="xtu-collection-banner__title">{{ heading }}</h1>
+      {% endif %}
+      {% if settings.show_breadcrumb_nav and breadcrumb_position == 'below_title_center' %}
+        {% render 'breadcrumbs', class: 'breadcrumbs-inline' %}
       {% endif %}
       {% if description != blank %}
         <div class="xtu-collection-banner__desc rte">{{ description }}</div>

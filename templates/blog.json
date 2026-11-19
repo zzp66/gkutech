@@ -77,10 +77,22 @@
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
+      },
+      "disabled": true
+    },
+    "seo_main": {
+      "type": "seo-blog-template",
+      "settings": {
+        "featured_products": [
+          "gku-c600-4g-lte-dual-dash-cam",
+          "gku-c300-4k-1080p-4k-triple-dash-cam-front-cabin-rear-camera",
+          "gku-e200-4k-front-rear-dash-cam"
+        ]
       }
     }
   },
   "order": [
+    "seo_main",
     "main"
   ]
 }

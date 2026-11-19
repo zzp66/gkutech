@@ -1,0 +1,188 @@
+{{ 'section-seo-blog-template.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign pinned_handles_string = ''
+  assign pinned_id_tokens = '|'
+  assign pinned_count = 0
+  for block in section.blocks
+    if block.type != 'blog_pin' or block.settings.blog.id != blog.id
+      continue
+    endif
+    assign rule_handles = ''
+    assign rule_ids = '|'
+    assign rule_count = 0
+    for candidate in block.settings.articles
+      capture valid_pin_id
+        render 'seo-blog-pin-valid', candidate: candidate, blog: blog, current_tags: current_tags
+      endcapture
+      assign valid_pin_id = valid_pin_id | strip
+      if valid_pin_id == blank
+        continue
+      endif
+      assign id_token = '|' | append: valid_pin_id | append: '|'
+      unless rule_ids contains id_token
+        assign rule_ids = rule_ids | append: valid_pin_id | append: '|'
+        assign rule_handles = rule_handles | append: candidate.handle | append: '|'
+        assign rule_count = rule_count | plus: 1
+      endunless
+      if rule_count == 3
+        break
+      endif
+    endfor
+    if rule_count > 0
+      assign pinned_handles_string = rule_handles
+      assign pinned_id_tokens = rule_ids
+      assign pinned_count = rule_count
+      assign active_pin_rule = block
+      break
+    endif
+  endfor
+  assign pinned_handles = pinned_handles_string | split: '|'
+
+  comment
+    Cache the first k native slots BEFORE paginate. A pinned article outside those
+    slots takes one displaced article's place, preserving page counts and coverage.
+  endcomment
+  assign front_id_tokens = '|'
+  assign displaced_handles_string = ''
+  if pinned_count > 0
+    for front_article in blog.articles limit: pinned_count
+      assign front_id_tokens = front_id_tokens | append: front_article.id | append: '|'
+      assign front_id_token = '|' | append: front_article.id | append: '|'
+      unless pinned_id_tokens contains front_id_token
+        assign displaced_handles_string = displaced_handles_string | append: front_article.handle | append: '|'
+      endunless
+    endfor
+  endif
+  assign foreign_ids_string = ''
+  for pinned_handle in pinned_handles
+    assign pinned_article = articles[pinned_handle]
+    assign pinned_token = '|' | append: pinned_article.id | append: '|'
+    unless front_id_tokens contains pinned_token
+      assign foreign_ids_string = foreign_ids_string | append: pinned_article.id | append: '|'
+    endunless
+  endfor
+  assign foreign_pin_ids = foreign_ids_string | split: '|'
+  assign displaced_handles = displaced_handles_string | split: '|'
+
+  assign sidebar_products_count = 0
+  for sidebar_product in section.settings.featured_products
+    capture stocked_variant_id
+      render 'seo-sidebar-product-variant', product: sidebar_product
+    endcapture
+    if stocked_variant_id != blank
+      assign sidebar_products_count = sidebar_products_count | plus: 1
+    endif
+  endfor
+  assign has_sidebar = false
+  if sidebar_products_count > 0 or section.settings.show_newsletter
+    assign has_sidebar = true
+  endif
+-%}
+<main id="SeoBlog-{{ section.id }}" class="seo-blog section-container-lg" style="--seo-blog-padding-top: {{ section.settings.padding_top }}px; --seo-blog-padding-bottom: {{ section.settings.padding_bottom }}px; --seo-blog-pin-count: {{ pinned_count }};">
+  <header class="seo-blog-hero">
+    {% if settings.show_breadcrumb_nav %}{% render 'breadcrumbs', class: 'breadcrumbs-inline' %}{% endif %}
+    <h1>{{ blog.title | escape }}</h1>
+    {%- if section.settings.description != blank -%}<div class="seo-blog-hero__description">{{ section.settings.description }}</div>{%- endif -%}
+  </header>
+  {%- if section.settings.show_tags and blog.all_tags != blank -%}{% render 'seo-blog-tag-filter', blog: blog, current_tags: current_tags %}{%- endif -%}
+  {%- paginate blog.articles by section.settings.articles_per_page -%}
+    <div class="seo-blog-layout{% unless has_sidebar %} seo-blog-layout--single{% endunless %}" data-blog-page="{{ paginate.current_page }}" data-blog-pages="{{ paginate.pages }}" data-blog-total="{{ paginate.items }}">
+      <div class="seo-blog-primary">
+        {%- if blog.articles != blank -%}
+          {%- liquid
+            assign regular_offset = 1
+            assign featured_style = 'featured'
+            if paginate.current_page == 1 and pinned_count > 0
+              assign regular_offset = pinned_count
+              if pinned_count > 1
+                assign featured_style = 'pinned'
+              endif
+            endif
+          -%}
+          <div class="seo-blog-featured{% if featured_style == 'pinned' %} seo-blog-featured--group{% endif %}"{% if paginate.current_page == 1 and pinned_count > 0 %} {{ active_pin_rule.shopify_attributes }}{% endif %}>
+            {%- if paginate.current_page == 1 and pinned_count > 0 -%}
+              {%- for pinned_handle in pinned_handles -%}
+                {%- assign pinned_article = articles[pinned_handle] -%}
+                {% render 'seo-blog-card', card_article: pinned_article, card_style: featured_style, priority: forloop.first %}
+              {%- endfor -%}
+            {%- else -%}
+              {%- assign featured_article = blog.articles.first -%}
+              {% render 'seo-blog-pinned-replacement', slot_article: featured_article, card_style: 'featured', foreign_pin_ids: foreign_pin_ids, displaced_handles: displaced_handles, priority: true %}
+            {%- endif -%}
+          </div>
+          {%- capture regular_cards -%}
+            {%- for regular_article in blog.articles offset: regular_offset -%}
+              {% render 'seo-blog-pinned-replacement', slot_article: regular_article, card_style: 'regular', foreign_pin_ids: foreign_pin_ids, displaced_handles: displaced_handles, priority: false %}
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- if regular_cards != blank -%}<section class="seo-blog-latest" aria-label="Article list">{% if section.settings.latest_title != blank %}<h2 class="seo-blog-latest__title">{{ section.settings.latest_title | escape }}</h2>{% endif %}<div class="seo-blog-grid">{{ regular_cards }}</div></section>{%- endif -%}
+        {%- else -%}
+          <p class="seo-blog-empty">{{ section.settings.empty_label | escape }}</p>
+        {%- endif -%}
+        {%- if paginate.pages > 1 -%}
+          <nav class="seo-blog-pagination" aria-label="Pagination">
+            <div class="seo-blog-pagination__links">
+              {%- if paginate.previous -%}<a class="seo-blog-pagination__direction" href="{{ paginate.previous.url | escape }}" rel="prev">{% render 'seo-article-ui-icon', icon: 'previous' %}<span>{{ section.settings.previous_label | escape }}</span></a>{%- endif -%}
+              {%- for part in paginate.parts -%}{% assign part_page = part.title | plus: 0 %}{% if part.is_link %}<a href="{{ part.url | escape }}">{{ part.title }}</a>{% else %}<span{% if part_page == paginate.current_page %} aria-current="page"{% endif %}>{{ part.title }}</span>{% endif %}{%- endfor -%}
+              {%- if paginate.next -%}<a class="seo-blog-pagination__direction" href="{{ paginate.next.url | escape }}" rel="next"><span>{{ section.settings.next_label | escape }}</span>{% render 'seo-article-ui-icon', icon: 'next' %}</a>{%- endif -%}
+            </div>
+            <p class="seo-blog-pagination__status">{{ section.settings.page_status_label | replace: ':pages', paginate.pages | replace: ':page', paginate.current_page | escape }}</p>
+          </nav>
+        {%- endif -%}
+      </div>
+      {%- if has_sidebar -%}
+        <aside class="seo-blog-sidebar" aria-label="Blog resources">
+          {%- if sidebar_products_count > 0 -%}<section class="seo-blog-products" aria-labelledby="BlogProducts-{{ section.id }}"><h2 id="BlogProducts-{{ section.id }}" class="seo-blog-sidebar__title">{{ section.settings.products_title | escape }}</h2><div class="seo-blog-products__list">{%- for sidebar_product in section.settings.featured_products -%}{% render 'seo-blog-product-card', product: sidebar_product %}{%- endfor -%}</div></section>{%- endif -%}
+          {%- if section.settings.show_newsletter -%}{% render 'seo-blog-newsletter' %}{%- endif -%}
+        </aside>
+      {%- endif -%}
+    </div>
+  {%- endpaginate -%}
+</main>
+
+{% schema %}
+{
+  "name": "SEO博客分类页",
+  "limit": 1,
+  "settings": [
+    {"type": "header", "content": "布局与文章"},
+    {"type": "richtext", "id": "description", "label": "博客简介"},
+    {"type": "range", "id": "articles_per_page", "label": "每页文章数量", "min": 4, "max": 24, "step": 1, "default": 16},
+    {"type": "checkbox", "id": "show_tags", "label": "显示标签筛选", "default": true},
+    {"type": "text", "id": "date_format", "label": "日期格式", "default": "%B %d, %Y"},
+    {"type": "range", "id": "padding_top", "label": "顶部间距", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 24},
+    {"type": "range", "id": "padding_bottom", "label": "底部间距", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 64},
+    {"type": "header", "content": "页面文案"},
+    {"type": "text", "id": "home_label", "label": "首页链接", "default": "Home"},
+    {"type": "text", "id": "all_tags_label", "label": "全部标签", "default": "All topics"},
+    {"type": "text", "id": "latest_title", "label": "文章列表标题", "default": "Latest articles"},
+    {"type": "text", "id": "reading_time_label", "label": "阅读时长（:count 为分钟数）", "default": ":count min read"},
+    {"type": "text", "id": "empty_label", "label": "无文章时提示", "default": "No articles found."},
+    {"type": "text", "id": "previous_label", "label": "上一页", "default": "Previous"},
+    {"type": "text", "id": "next_label", "label": "下一页", "default": "Next"},
+    {"type": "text", "id": "page_status_label", "label": "页码状态（:page 为当前页，:pages 为总页数）", "default": "Page :page of :pages"},
+    {"type": "header", "content": "侧栏推荐产品"},
+    {"type": "product_list", "id": "featured_products", "label": "推荐产品", "limit": 4},
+    {"type": "text", "id": "products_title", "label": "推荐产品标题", "default": "Recommended products"},
+    {"type": "text", "id": "product_button_label", "label": "商品按钮", "default": "Shop now"},
+    {"type": "header", "content": "邮件订阅"},
+    {"type": "checkbox", "id": "show_newsletter", "label": "显示邮件订阅", "default": true},
+    {"type": "text", "id": "newsletter_title", "label": "订阅标题", "default": "Stay in the loop"},
+    {"type": "richtext", "id": "newsletter_description", "label": "订阅说明"},
+    {"type": "text", "id": "newsletter_email_label", "label": "邮箱输入提示", "default": "Email address"},
+    {"type": "text", "id": "newsletter_button_label", "label": "订阅按钮", "default": "Subscribe"},
+    {"type": "text", "id": "newsletter_success_label", "label": "订阅成功提示", "default": "Thanks for subscribing."}
+  ],
+  "blocks": [
+    {
+      "type": "blog_pin",
+      "name": "分类置顶文章",
+      "settings": [
+        {"type": "blog", "id": "blog", "label": "博客分类"},
+        {"type": "article_list", "id": "articles", "label": "置顶文章（最多3篇）", "limit": 3, "info": "文章选择器包含全店文章，请选择当前博客中的文章。"}
+      ]
+    }
+  ],
+  "presets": [{"name": "SEO博客分类页"}]
+}
+{% endschema %}

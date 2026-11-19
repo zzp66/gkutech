@@ -1,0 +1,144 @@
+<h1>Check 01: Heading Hierarchy</h1>
+<p><strong>Expected:</strong> H1 through H6 should have a clear visual hierarchy. Each heading should have readable font size, reasonable top and bottom spacing, and appropriate font weight. Lower-level headings should not collapse into paragraph text.</p>
+
+<h2>Heading Level Test: H2 Section</h2>
+<p>H2 headings should clearly divide major sections. They need enough top margin to separate ideas, enough bottom margin to connect with the following paragraph, and enough weight to feel important without overwhelming the article title.</p>
+
+<h3>Heading Level Test: H3 Subsection</h3>
+<p>H3 headings are used for supporting sections. They should be visibly smaller than H2 while still standing apart from body text.</p>
+
+<h4>Heading Level Test: H4 Detail Title</h4>
+<p>H4 should work for detail groups, feature notes, and smaller explanations. It should not look like plain bold paragraph text.</p>
+
+<h5>Heading Level Test: H5 Minor Note</h5>
+<p>H5 is often forgotten in blog CSS. It should remain readable, distinct, and correctly spaced.</p>
+
+<h6>Heading Level Test: H6 Smallest Heading</h6>
+<p>H6 should not become too tiny to read on mobile screens.</p>
+
+<hr>
+
+<h2>Check 02: Paragraph Rhythm</h2>
+<p><strong>Expected:</strong> Paragraphs should have comfortable line height, readable font size, and enough vertical spacing. Long text should wrap naturally inside the article column without creating horizontal page overflow.</p>
+<p>This short paragraph checks compact reading rhythm.</p>
+<p>This longer paragraph checks how a real article feels when several lines wrap naturally inside the content column. Users should be able to scan the text without feeling that lines are too tight, paragraphs are glued together, or the content area is too wide. On mobile, the line length should stay comfortable and should not force horizontal page scrolling.</p>
+<p>This paragraph includes <strong>bold text</strong>, <em>italic text</em>, and <code>inline code</code>. Inline code should be visually distinct without disrupting the surrounding line height.</p>
+
+<h2>Check 03: HTML Entities and &amp;nbsp;</h2>
+<p><strong>Expected:</strong> Literal entity text such as <code>&amp;nbsp;</code> should display correctly when written as code. Real non-breaking spaces should render as spaces, keep short phrases together where appropriate, and avoid causing the whole article column to overflow on mobile.</p>
+<p>Visible entity labels: <code>&amp;nbsp;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code>. Rendered characters: Apple &amp; iOS, 5 &lt; 10, and 10 &gt; 5.</p>
+<p>Normal spaces: iPhone 17 Pro Max / A19 Pro chip / USB-C charging / Super Retina XDR / 2TB storage / battery life.</p>
+<p>Non-breaking spaces: iPhone&nbsp;17&nbsp;Pro&nbsp;Max / A19&nbsp;Pro&nbsp;chip / USB-C&nbsp;charging / Super&nbsp;Retina&nbsp;XDR / 2TB&nbsp;storage / battery&nbsp;life.</p>
+<p>Repeated non-breaking-space sample: iPhone&nbsp;17&nbsp;Pro&nbsp;Max / iPhone&nbsp;17&nbsp;Pro&nbsp;Max / iPhone&nbsp;17&nbsp;Pro&nbsp;Max / iPhone&nbsp;17&nbsp;Pro&nbsp;Max.</p>
+
+<h2>Check 04: Lists</h2>
+<p><strong>Expected:</strong> Unordered lists should show bullets and indentation. Ordered lists should show numbers and indentation. Wrapped lines should align under the list text, not under the bullet or number.</p>
+<ul>
+  <li>Unordered list item with normal text.</li>
+  <li>Long unordered list item that wraps onto multiple lines so indentation, bullet alignment, and line spacing can be checked on narrow mobile screens.</li>
+  <li>Nested unordered list:
+    <ul>
+      <li>Nested bullet item one.</li>
+      <li>Nested bullet item two with longer text for wrapping behavior.</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Ordered list item one.</li>
+  <li>Ordered list item two with a longer description to verify number alignment and wrapped text indentation.</li>
+  <li>Nested ordered list:
+    <ol>
+      <li>Nested number item one.</li>
+      <li>Nested number item two.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2>Check 05: Links</h2>
+<p><strong>Expected:</strong> Links should be easy to recognize in normal text, hover state, and keyboard focus state. Long link labels should wrap cleanly without breaking the article layout.</p>
+<p>This is a normal external link to <a href="https://www.apple.com/" target="_blank" rel="nofollow noopener">Apple official website</a>.</p>
+<p>This is a deliberately long link label: <a href="https://www.apple.com/iphone/compare/" target="_blank" rel="nofollow noopener">compare iPhone models, display sizes, camera features, storage options, battery life, and long-term software support</a>.</p>
+
+<h2>Check 06: Images and Captions</h2>
+<p><strong>Expected:</strong> Images should stay within the article column, keep their aspect ratio, and use stable spacing. Captions should be readable, visually connected to the image, and not collide with following content.</p>
+<figure>
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='675' viewBox='0 0 1200 675'%3E%3Crect width='1200' height='675' fill='%23e5e7eb'/%3E%3Crect x='80' y='80' width='1040' height='515' rx='28' fill='%23ffffff'/%3E%3Ctext x='600' y='325' text-anchor='middle' font-family='Arial' font-size='52' fill='%231f2937'%3EArticle Image Test%3C/text%3E%3Ctext x='600' y='390' text-anchor='middle' font-family='Arial' font-size='28' fill='%234b5563'%3E1200 x 675 responsive image%3C/text%3E%3C/svg%3E" alt="Responsive placeholder image for article layout testing">
+  <figcaption>This caption checks spacing, font size, alignment, and whether captions remain readable below wide images.</figcaption>
+</figure>
+
+<figure>
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='840' viewBox='0 0 640 840'%3E%3Crect width='640' height='840' fill='%23edf2f7'/%3E%3Crect x='70' y='90' width='500' height='660' rx='36' fill='%23ffffff'/%3E%3Ctext x='320' y='405' text-anchor='middle' font-family='Arial' font-size='42' fill='%231f2937'%3EPortrait Image%3C/text%3E%3Ctext x='320' y='462' text-anchor='middle' font-family='Arial' font-size='24' fill='%234b5563'%3EChecks narrow media%3C/text%3E%3C/svg%3E" alt="">
+  <figcaption>Decorative image with an empty alt attribute. The layout should remain stable even when the image is narrow or the caption wraps onto more than one line on mobile.</figcaption>
+</figure>
+
+<h2>Check 07: Tables</h2>
+<p><strong>Expected:</strong> Tables should be readable. Wide tables should scroll horizontally inside a table wrapper instead of forcing the whole page to overflow. Cell padding, table borders, header contrast, and long text wrapping should stay usable.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Desktop Expectation</th>
+      <th>Tablet Expectation</th>
+      <th>Mobile Expectation</th>
+      <th>Failure to Catch</th>
+      <th>Manual Check</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Typography</td>
+      <td>Readable body text near 18px with balanced line height.</td>
+      <td>Headings scale down without losing hierarchy.</td>
+      <td>Minimum 16px body text with no cramped paragraphs.</td>
+      <td>Text too small, tight lines, or inconsistent heading rhythm.</td>
+      <td>Scan H1 through H6 before approving.</td>
+    </tr>
+    <tr>
+      <td>Wide table</td>
+      <td>Fits the article column or scrolls inside a wrapper.</td>
+      <td>Does not overlap the sidebar or content gutter.</td>
+      <td>Horizontal scrolling works without breaking the viewport.</td>
+      <td>Page overflow, clipped columns, or fake swipe hint.</td>
+      <td>Try dragging the table horizontally on a phone viewport.</td>
+    </tr>
+    <tr>
+      <td>Long cell content</td>
+      <td>Cells wrap naturally and keep usable padding.</td>
+      <td>Column width stays readable.</td>
+      <td>Columns remain readable without crushing text.</td>
+      <td>Words squeezed, tiny fonts, or unreadable columns.</td>
+      <td>Confirm table text is still readable at 390px.</td>
+    </tr>
+    <tr>
+      <td>Links in tables</td>
+      <td><a href="https://www.apple.com/iphone/" target="_blank" rel="nofollow noopener">Product link</a> remains obvious.</td>
+      <td>Focus state stays visible.</td>
+      <td>Tap target is not cramped.</td>
+      <td>Links lose color inside table cells.</td>
+      <td>Hover and keyboard focus the link.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Check 08: Blockquote, Code, and HR</h2>
+<p><strong>Expected:</strong> Blockquotes, inline code, code blocks, and horizontal rules should all have intentional article styles. They should not appear as raw browser defaults, and they should not overflow the content column.</p>
+<blockquote>
+  <p>A good article template makes quoted content feel intentional. Blockquotes should not look like unstyled paragraphs, and they should not overflow the content column.</p>
+</blockquote>
+<p>Inline code such as <code>article.content</code>, <code>table-wrapper</code>, and <code>scroll-margin-top</code> should be visually distinct without disrupting line height.</p>
+<pre><code>const articleCheck = {
+  headings: "H1 to H6",
+  tables: "horizontal scroll on mobile",
+  links: "visible hover and focus states"
+};
+
+console.log(articleCheck);</code></pre>
+<hr>
+<p>The final paragraph verifies that spacing after tables, quotes, code blocks, and horizontal rules returns to a normal article rhythm. Nothing should feel glued together, visually raw, or wider than the main content column.</p>
+
+<h2>Check 09: Inline Product Cards</h2>
+<p><strong>Expected:</strong> The placeholder below should render an inline article product card from <code>article.metafields.custom.related_products.value</code> using the fixed <code>seo-article-inline-product-card.liquid</code> snippet. If the article does not have related products yet, test mode should pass a random product from the store catalog into the same fixed snippet. It should not reuse the sidebar recommended-products card, and it should be removed cleanly only when no product is available for testing.</p>
+<p>The inline product card should stay inside the article column, keep readable spacing before and after the card, and remain usable on mobile without creating horizontal overflow.</p>
+[[related_products_1]]
+<p>This paragraph should appear after the inline product card with normal article spacing.</p>

@@ -336,12 +336,16 @@
               },
               "block_order": []
             },
+            "selleasy_lb_upsell_widget_ba_UHFJdq": {
+              "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-ba/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+              "settings": {}
+            },
             "xtu_info_modal_support": {
               "type": "xtu-info-modal",
               "name": "XTU Info Modal",
               "settings": {
                 "title": "Global Support",
-                "content": "<p>Add your support details here.</p>"
+                "content": "<p>support@gkutech.com</p>"
               },
               "blocks": {}
             },
@@ -364,6 +368,7 @@
             "variant_picker_R3rGDr",
             "xtu_addon_bundle",
             "buy_buttons_eYQEYi",
+            "selleasy_lb_upsell_widget_ba_UHFJdq",
             "xtu_info_modal_support",
             "xtu_payment_methods"
           ]
@@ -394,42 +399,49 @@
           "type": "item",
           "settings": {
             "label": "Overview",
-            "target": "xtu-media-grid-template--22607707701475__xtu_media_grid_HCTTxt"
+            "target": "shopify-section-template--28091128152291__xtu_media_grid_HCTTxt"
           }
         },
         "nav_specs": {
           "type": "item",
           "settings": {
             "label": "Highlights",
-            "target": "xtu-tab-images-template--22607707701475__xtu_tab_images_yfFbMx"
+            "target": "xtu-tab-images-template--28091128152291__xtu_tab_images_yfFbMx"
           }
         },
         "nav_comparison": {
           "type": "item",
           "settings": {
             "label": "What's in the Box",
-            "target": "xtu-rich-content-template--22607707701475__xtu_rich_content_eJEz4i"
+            "target": "xtu-rich-content-template--28091128152291__xtu_rich_content_eJEz4i"
           }
         },
         "item_4YAHeY": {
           "type": "item",
           "settings": {
             "label": "Compare",
-            "target": "xtu-product-compare-template--22607707701475__xtu_product_compare_U7Mgh3"
+            "target": "xtu-product-compare-template--28091128152291__xtu_product_compare_U7Mgh3"
           }
         },
         "item_dwBHWi": {
           "type": "item",
           "settings": {
             "label": "FAQs",
-            "target": "xtu-faq-template--22607707701475__xtu_faq_kT3Ffi"
+            "target": "shopify-section-template--28091128152291__xtu_faq_kT3Ffi"
           }
         },
         "item_MUMPVp": {
           "type": "item",
           "settings": {
             "label": "Specs",
-            "target": "xtu-product-specs-template--22607707701475__xtu_product_specs_7XrG4D"
+            "target": "xtu-product-specs-template--28091128152291__xtu_product_specs_7XrG4D"
+          }
+        },
+        "item_byX9cY": {
+          "type": "item",
+          "settings": {
+            "label": "Reviews",
+            "target": "#customer-reviews"
           }
         }
       },
@@ -439,7 +451,8 @@
         "nav_comparison",
         "item_4YAHeY",
         "item_dwBHWi",
-        "item_MUMPVp"
+        "item_MUMPVp",
+        "item_byX9cY"
       ],
       "settings": {
         "aria_label": "Product sections",
@@ -711,11 +724,11 @@
         "product_9RVxKG": {
           "type": "product",
           "settings": {
-            "product": "gku-d600-pro-4k-dual-dash-cam",
+            "product": "gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "title": "D600 Pro",
             "subtitle": "Everyday Upgrade",
             "buy_label": "Buy now",
-            "buy_link": "shopify://products/gku-d600-pro-4k-dual-dash-cam",
+            "buy_link": "shopify://products/gku-d600-pro-4k-front-1080p-rear-dash-cam",
             "more_label": "",
             "more_link": ""
           }
@@ -794,7 +807,7 @@
           "settings": {
             "label": "Built-In GPS",
             "value_1": "✓",
-            "value_2": "✓",
+            "value_2": "",
             "value_3": "✓"
           }
         },
@@ -1030,6 +1043,62 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_liquid_ggEwhi": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"customer-reviews\"></div>\n\n<style>\n  #customer-reviews {\n    scroll-margin-top: 120px;\n  }\n</style>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "1793431453c090b8fc": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_7RUcP7": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_7RUcP7"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1041,6 +1110,8 @@
     "xtu_rich_content_eJEz4i",
     "xtu_product_compare_U7Mgh3",
     "xtu_faq_kT3Ffi",
-    "xtu_product_specs_7XrG4D"
+    "xtu_product_specs_7XrG4D",
+    "custom_liquid_ggEwhi",
+    "1793431453c090b8fc"
   ]
 }

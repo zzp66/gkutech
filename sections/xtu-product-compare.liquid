@@ -168,6 +168,9 @@
                     href="{{ more_link | default: '#' }}"
                   >
                     <span>{{ more_label | escape }}</span>
+                    {% if title != blank %}
+                      <span class="visually-hidden">: {{ title | escape }}</span>
+                    {% endif %}
                     <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path d="M4.5 2.25 8.25 6 4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>

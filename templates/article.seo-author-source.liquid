@@ -1,0 +1,27 @@
+{% layout none %}
+{%- liquid
+  assign source_profile = article.metafields.custom.author.value | default: settings.default_author
+  assign source_profile_id = source_profile.system.id | append: ''
+  assign response_count = 0
+-%}
+{%- capture source_record -%}{% render 'seo-author-source-article', source_article: article %}{%- endcapture -%}
+{%- capture response_records -%}
+  {%- if source_record != blank -%}
+    {{- source_record -}}
+    {%- assign response_count = 1 -%}
+    {%- if source_profile_id != blank -%}
+      {%- for candidate in blog.articles limit: 50 -%}
+        {%- if response_count >= 50 -%}{%- break -%}{%- endif -%}
+        {%- assign candidate_author_id = candidate.metafields.custom.author.value.system.id | append: '' -%}
+        {%- if candidate.id != article.id and candidate_author_id == source_profile_id -%}
+          {%- capture candidate_record -%}{% render 'seo-author-source-article', source_article: candidate %}{%- endcapture -%}
+          {%- if candidate_record != blank -%},{{- candidate_record -}}{%- assign response_count = response_count | plus: 1 -%}{%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- capture source_payload -%}
+{"version":1,"author_id":{{ source_profile_id | json }},"source_id":{{ article.id | append: '' | json }},"source_url":{{ article.url | json }},"articles":[{{ response_records }}]}
+{%- endcapture -%}
+{{- source_payload | replace: '<', '\u003c' -}}

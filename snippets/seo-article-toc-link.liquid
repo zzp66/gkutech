@@ -1,0 +1,13 @@
+{%- liquid
+  assign opening = segment | split: '>' | first
+  assign kind = opening | slice: 0, 2
+  assign closing = '</' | append: kind | append: '>'
+  assign heading_text = segment | remove_first: opening | remove_first: '>' | split: closing | first | strip_html | strip
+  assign heading_id = blank
+  if opening contains ' id="'
+    assign heading_id = opening | split: ' id="' | last | split: '"' | first
+  elsif opening contains " id='"
+    assign heading_id = opening | split: " id='" | last | split: "'" | first
+  endif
+-%}
+{%- if heading_id != blank and heading_text != blank -%}<a class="seo-article-toc__link" href="#{{ heading_id | escape_once }}">{{ heading_text | escape_once }}</a>{%- endif -%}

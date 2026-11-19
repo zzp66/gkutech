@@ -265,7 +265,7 @@
   border-radius: calc(var(--thumbnail-radius, 4px) - 2px);
 }
 
-.xtu-pdp-thumbs__btn[aria-selected='true'] {
+.xtu-pdp-thumbs__btn[aria-current='true'] {
   opacity: 1;
   border-color: #111827;
 }

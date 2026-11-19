@@ -1,0 +1,38 @@
+{%- liquid
+  assign toc_source = content | default: article.content
+  assign toc_segments = toc_source | replace: '<h2', '[[toc-heading]]h2' | replace: '<h3', '[[toc-heading]]h3' | split: '[[toc-heading]]'
+  assign has_parent = false
+-%}
+{%- capture toc_items -%}
+  {%- for toc_segment in toc_segments offset: 1 -%}
+    {%- liquid
+      assign kind = toc_segment | slice: 0, 2
+      assign next_offset = forloop.index | plus: 1
+      capture heading_link
+        render 'seo-article-toc-link', segment: toc_segment
+      endcapture
+      if heading_link == blank
+        continue
+      endif
+    -%}
+    {%- if kind == 'h2' -%}
+      {%- assign has_parent = true -%}
+      {%- capture child_items -%}
+        {%- for child_segment in toc_segments offset: next_offset -%}
+          {%- assign child_kind = child_segment | slice: 0, 2 -%}
+          {%- if child_kind == 'h2' -%}{%- break -%}{%- endif -%}
+          {%- capture child_link -%}{% render 'seo-article-toc-link', segment: child_segment %}{%- endcapture -%}
+          {%- if child_link != blank -%}<li class="seo-article-toc__item seo-article-toc__item--level-3">{{ child_link }}</li>{%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign sublist_id = 'ArticleToc-' | append: section.id | append: '-' | append: forloop.index -%}
+      <li class="seo-article-toc__item seo-article-toc__item--level-2">
+        <div class="seo-article-toc__row">{{ heading_link }}{%- if child_items != blank -%}<button type="button" class="seo-article-toc__toggle" aria-label="Toggle subsections" aria-expanded="true" aria-controls="{{ sublist_id }}">{% render 'seo-article-ui-icon', icon: 'chevron' %}</button>{%- endif -%}</div>
+        {%- if child_items != blank -%}<ol class="seo-article-toc__sublist" id="{{ sublist_id }}" aria-hidden="false" role="list">{{ child_items }}</ol>{%- endif -%}
+      </li>
+    {%- elsif has_parent == false -%}
+      <li class="seo-article-toc__item seo-article-toc__item--level-3">{{ heading_link }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if toc_items != blank -%}<ol class="seo-article-toc__list" role="list">{{ toc_items }}</ol>{%- endif -%}

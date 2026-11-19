@@ -1,12 +1,15 @@
-{%- unless settings.type_body_font.system? -%}
-  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_subheading_font.system? -%}
-  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_heading_font.system? -%}
-  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_accent_font.system? -%}
-  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
+{%- liquid
+  assign font_setting_keys = 'type_body_font,type_subheading_font,type_heading_font,type_accent_font' | split: ','
+  assign preloaded_font_urls = '|'
+  for font_setting_key in font_setting_keys
+    assign theme_font = settings[font_setting_key]
+    unless theme_font.system?
+      assign theme_font_url = theme_font | font_url
+      assign font_url_key = theme_font_url | prepend: '|' | append: '|'
+      unless preloaded_font_urls contains font_url_key
+        echo theme_font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low'
+        assign preloaded_font_urls = preloaded_font_urls | append: theme_font_url | append: '|'
+      endunless
+    endunless
+  endfor
+-%}

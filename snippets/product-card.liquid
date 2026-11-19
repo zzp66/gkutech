@@ -11,6 +11,7 @@
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
+{%- capture product_url -%}{% render 'breadcrumb-product-url', url: product.url %}{%- endcapture -%}
 
 {% style %}
   {% if request.visual_preview_mode %}
@@ -82,7 +83,7 @@
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
       {% # Link to product.url so algorithmic variant relevance and tracking params are maintained. %}
-      href="{{ product.url }}"
+      href="{{ product_url | escape }}"
     {% endunless %}
     class="product-card__link"
     ref="productCardLink"

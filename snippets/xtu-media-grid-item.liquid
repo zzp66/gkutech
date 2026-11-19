@@ -57,31 +57,27 @@
       placeholder_class: 'xtu-media-grid__placeholder xtu-media-grid__media'
     %}
   {% elsif media_type == 'video' %}
+    {% liquid
+      assign desktop_query = ''
+      if has_mobile_video
+        assign desktop_query = '(min-width: 750px)'
+      endif
+    %}
     {% if video != blank %}
-      {{
-        video
-        | video_tag:
-          autoplay: true,
-          loop: true,
-          muted: true,
-          playsinline: true,
-          controls: false,
-          class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--desktop',
-          image_size: '1600x'
-      }}
+      {% render 'xtu-deferred-video',
+        video: video,
+        class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--desktop',
+        media_query: desktop_query,
+        image_size: '1600x'
+      %}
     {% endif %}
     {% if has_mobile_video %}
-      {{
-        video_mobile
-        | video_tag:
-          autoplay: true,
-          loop: true,
-          muted: true,
-          playsinline: true,
-          controls: false,
-          class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--mobile',
-          image_size: '1200x'
-      }}
+      {% render 'xtu-deferred-video',
+        video: video_mobile,
+        class: 'xtu-media-grid__video xtu-media-grid__media xtu-media-grid__media--mobile',
+        media_query: '(max-width: 749px)',
+        image_size: '1200x'
+      %}
     {% endif %}
     {% if video == blank and has_mobile_video == false %}
       {{ placeholder_name | placeholder_svg_tag: 'xtu-media-grid__placeholder xtu-media-grid__media' }}

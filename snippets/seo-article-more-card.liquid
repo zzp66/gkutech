@@ -1,0 +1,19 @@
+{%- liquid
+  assign unusual_ratio = false
+  if more_article.image.aspect_ratio < 1.2 or more_article.image.aspect_ratio > 2.2
+    assign unusual_ratio = true
+  endif
+-%}
+<a class="seo-article-more__card" href="{{ more_article.url | escape }}">
+  {%- if more_article.image -%}
+    <div class="seo-article-more__media{% if unusual_ratio %} seo-article-more__media--contain{% endif %}">
+      {%- if unusual_ratio -%}{{ more_article.image | image_url: width: 600 | image_tag: class: 'seo-article-more__backdrop', loading: 'lazy', alt: '', aria-hidden: 'true' }}{%- endif -%}
+      {{ more_article.image | image_url: width: 800 | image_tag: class: 'seo-article-more__image', loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '360, 540, 800', alt: more_article.title }}
+    </div>
+  {%- endif -%}
+  <div class="seo-article-more__content">
+    <p class="seo-article-card-meta"><time datetime="{{ more_article.published_at | date: '%Y-%m-%d' }}">{{ more_article.published_at | date: section.settings.date_format }}</time><span aria-hidden="true">·</span>{% render 'seo-article-reading-time', article: more_article %}</p>
+    <h3>{{ more_article.title | escape }}</h3>
+    {%- if more_article.excerpt != blank -%}<p>{{ more_article.excerpt | strip_html | truncatewords: 24 | escape }}</p>{%- endif -%}
+  </div>
+</a>

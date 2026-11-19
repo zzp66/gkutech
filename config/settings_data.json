@@ -91,8 +91,8 @@
     "xtu_cart_fs_accent_deep": "#FFF001",
     "xtu_cart_fs_accent_soft": "#EDD966",
     "xtu_cart_fs_success": "{{ settings.color_palette.color1 }}",
-    "xtu_cart_discount_color": "#FFBF01",
-    "xtu_cart_discount_pill_color": "#FFF001",
+    "xtu_cart_discount_color": "{{ settings.color_palette.foreground }}",
+    "xtu_cart_discount_pill_color": "{{ settings.color_palette.color1 }}",
     "show_cart_note": true,
     "show_add_discount_code": true,
     "empty_cart_button_link": "shopify://collections",
@@ -209,6 +209,25 @@
         "type": "shopify://apps/gocertify/blocks/script-injector/db5e2393-7255-4f50-ada1-7de16398f487",
         "disabled": false,
         "settings": {}
+      },
+      "6159598353363395418": {
+        "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
+        "disabled": false,
+        "settings": {
+          "widget_position": "LEFT_BOTTOM",
+          "side_margin": 36,
+          "bottom_margin": 36,
+          "mobile_side_margin": 16,
+          "mobile_bottom_margin": 46
+        }
+      },
+      "18228966181090706294": {
+        "type": "shopify://apps/selleasy/blocks/app-embed/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+        "disabled": false,
+        "settings": {
+          "storefrontAccessToken": "",
+          "scriptInitMode": "immediate"
+        }
       }
     },
     "color_palette": {

@@ -84,63 +84,39 @@
       placeholder_class: ph_class
     %}
   {% elsif media_type == 'video' %}
+    {% liquid
+      assign desktop_query = ''
+      if has_mobile_video
+        assign desktop_query = '(min-width: 750px)'
+      endif
+      assign video_autoplay = true
+      if controls
+        assign video_autoplay = false
+      endif
+    %}
     {% if video != blank %}
-      {% if controls %}
-        {{
-          video
-          | video_tag:
-            autoplay: false,
-            loop: false,
-            muted: false,
-            playsinline: true,
-            controls: true,
-            preload: 'metadata',
-            class: vid_desktop,
-            image_size: '1600x'
-        }}
-      {% else %}
-        {{
-          video
-          | video_tag:
-            autoplay: true,
-            loop: true,
-            muted: true,
-            playsinline: true,
-            controls: false,
-            preload: 'metadata',
-            class: vid_desktop,
-            image_size: '1600x'
-        }}
-      {% endif %}
+      {% render 'xtu-deferred-video',
+        video: video,
+        autoplay: video_autoplay,
+        loop: video_autoplay,
+        muted: video_autoplay,
+        controls: controls,
+        class: vid_desktop,
+        media_query: desktop_query,
+        image_size: '1600x'
+      %}
     {% endif %}
     {% if has_mobile_video %}
-      {% if controls %}
-        {{
-          video_mobile
-          | video_tag:
-            autoplay: false,
-            loop: false,
-            muted: false,
-            playsinline: true,
-            controls: true,
-            preload: 'metadata',
-            class: vid_mobile,
-            image_size: '1200x'
-        }}
-      {% else %}
-        {{
-          video_mobile
-          | video_tag:
-            autoplay: true,
-            loop: true,
-            muted: true,
-            playsinline: true,
-            controls: false,
-            preload: 'metadata',
-            class: vid_mobile,
-            image_size: '1200x'
-        }}
-      {% endif %}
+      {% render 'xtu-deferred-video',
+        video: video_mobile,
+        autoplay: video_autoplay,
+        loop: video_autoplay,
+        muted: video_autoplay,
+        controls: controls,
+        class: vid_mobile,
+        media_query: '(max-width: 749px)',
+        image_size: '1200x'
+      %}
     {% endif %}
     {% if video == blank and has_mobile_video == false %}
       {{ ph | placeholder_svg_tag: ph_class }}

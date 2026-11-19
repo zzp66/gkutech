@@ -1,0 +1,1519 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 40,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 60,
+        "padding-block-end": 80
+      }
+    },
+    "hero_NBkdmw": {
+      "type": "hero",
+      "blocks": {
+        "text_jGkWFC": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>About XTU</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kjLpAe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Capture Every Adventure. Preserve Every Moment.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_jGkWFC",
+        "text_kjLpAe"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/1-C600.jpg",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "background_color": "",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_AwNjn3": {
+      "type": "section",
+      "blocks": {
+        "text_7TR7hk": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>XTU: Live Your Dream</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pEtNja": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>A smart imaging brand that helps people capture, explore, and protect what matters most.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6FzPPT": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>XTU is a global smart imaging brand dedicated to helping people capture adventures, explore nature, and protect what matters most.<br/><br/>Rooted in intelligent imaging and smart security technologies, XTU develops innovative camera solutions across three key areas: outdoor adventure, wildlife monitoring, and smart home protection.<br/><br/>From action cameras that record unforgettable journeys, to trail cameras that reveal the wonders of nature, and smart doorbells that enhance home security, XTU empowers people to see more, capture more, and stay connected wherever they are.</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "balance",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_7TR7hk",
+        "text_pEtNja",
+        "text_6FzPPT"
+      ],
+      "disabled": true,
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_image_text_L3TBxn": {
+      "type": "xtu-image-text",
+      "blocks": {
+        "row_cqTVzy": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "text-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our Mission",
+            "eyebrow_color": "#0070ca",
+            "heading": "Imagery Connects the World; Visual Tech Empowers Life.",
+            "body": ""
+          }
+        },
+        "row_Hry37X": {
+          "type": "row",
+          "settings": {
+            "desktop_layout": "image-left",
+            "mobile_layout": "image-top",
+            "media_type": "image",
+            "video_url": "",
+            "image_ratio": "4 / 3",
+            "eyebrow": "Our vision",
+            "eyebrow_color": "#0070ca",
+            "heading": "To Be A Global Leader in Smart Imaging & Security.",
+            "body": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_cqTVzy",
+        "row_Hry37X"
+      ],
+      "disabled": true,
+      "name": "XTU Image Text",
+      "settings": {
+        "heading": "Our Story",
+        "subheading": "",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "link_color": "#0070ca",
+        "placeholder_bg": "#e8eaed",
+        "content_width": 1200,
+        "image_radius": 16,
+        "row_gap": 80,
+        "row_gap_mobile": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_activity_slider_t6n7VC": {
+      "type": "xtu-activity-slider",
+      "blocks": {
+        "card_iJhfXp": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Dive + Snorkel",
+            "link": ""
+          }
+        },
+        "card_jY7FGP": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Surf",
+            "link": ""
+          }
+        },
+        "card_tc6wQL": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Travel + Adventure",
+            "link": ""
+          }
+        },
+        "card_n94T8m": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Kids + Pets",
+            "link": ""
+          }
+        },
+        "card_LCh9NA": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Mountain Bike",
+            "link": ""
+          }
+        },
+        "card_6AbH3Y": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Hike + Camp",
+            "link": ""
+          }
+        },
+        "card_fzcjqd": {
+          "type": "card",
+          "settings": {
+            "media_type": "image",
+            "video_url": "",
+            "title": "Snow",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_iJhfXp",
+        "card_jY7FGP",
+        "card_tc6wQL",
+        "card_n94T8m",
+        "card_LCh9NA",
+        "card_6AbH3Y",
+        "card_fzcjqd"
+      ],
+      "disabled": true,
+      "name": "XTU Activity Slider",
+      "settings": {
+        "heading": "Shop by Activity",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_image_overlay": false,
+        "mobile_per_view": "2.1",
+        "card_gap": 16,
+        "card_gap_mobile": 8,
+        "card_radius": 16,
+        "card_ratio": "1 / 1",
+        "background_color": "#ffffff",
+        "heading_color": "#111827",
+        "placeholder_bg": "#e8eaed",
+        "overlay_text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "section_p8ggWa": {
+      "type": "section",
+      "blocks": {
+        "group_DCp6iC": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_niFKqn": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Intentional design</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_btk9Yi": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We create with intention. Our products solve real problems with clean design and honest materials.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_niFKqn",
+            "text_btk9Yi"
+          ]
+        },
+        "group_4kd469": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_64TNCj": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Quality first</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kGzniA": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_64TNCj",
+            "text_kGzniA"
+          ]
+        },
+        "group_JQajrP": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_n4QGXW": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Customer care</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_Bg9X4U": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We're always on your side: keeping our loyal customers happy is our top priority and number one goal.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_n4QGXW",
+            "text_Bg9X4U"
+          ]
+        }
+      },
+      "block_order": [
+        "group_DCp6iC",
+        "group_4kd469",
+        "group_JQajrP"
+      ],
+      "disabled": true,
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "xtu_feature_slider_Hxahfc": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_fJWqVH": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Auto Event Detection",
+            "body": "<p>Automatically records 15 seconds before and 30 seconds after an incident is detected, capturing a complete event timeline.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_63Hm4n": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Time-lapse Recording",
+            "body": "<p>Capture long parking sessions in a compact clip without filling up your storage.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_Gp8cVz": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Low Bitrate Mode",
+            "body": "<p>Keep recording overnight with efficient compression that preserves key details.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_hfTMRE": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Motion Detection",
+            "body": "<p>Wake the camera when movement is detected around your vehicle and save the clip automatically.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        },
+        "slide_pqdbdU": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Parking Guard",
+            "body": "<p>Monitor your vehicle while parked and review incidents as soon as you return.</p>",
+            "media_type": "image",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_fJWqVH",
+        "slide_63Hm4n",
+        "slide_Gp8cVz",
+        "slide_hfTMRE",
+        "slide_pqdbdU"
+      ],
+      "disabled": true,
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "Advanced Parking Mode",
+        "subheading": "",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 16,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "pagination_color": "#d1d5db",
+        "pagination_color_active": "#000000",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "xtu_hero_banner_qmXrw4": {
+      "type": "xtu-hero-banner",
+      "blocks": {
+        "slide_7Ue67B": {
+          "type": "slide",
+          "settings": {
+            "bullet_title": "C600",
+            "image": "shopify://shop_images/1-C600.jpg",
+            "image_mobile": "shopify://shop_images/1-C600_2311b614-11ef-4cc8-9d63-5a123f2d92ff.jpg",
+            "youtube_url": "",
+            "background_color": "#000000",
+            "overlay_opacity": 0,
+            "text_alignment_desktop": "left",
+            "text_position_v_desktop": "center",
+            "text_position_mobile": "top",
+            "text_color": "#ffffff",
+            "eyebrow": "Built-in 4G LTE + Wi-Fi 6 Dash Cam",
+            "eyebrow_color": "",
+            "eyebrow_size_desktop": 16,
+            "eyebrow_size_mobile": 14,
+            "heading": "GKU C600",
+            "heading_color": "",
+            "heading_size_desktop": 56,
+            "heading_size_mobile": 36,
+            "subheading": "Stay Connected. Near or Far.",
+            "subheading_color": "",
+            "subheading_size_desktop": 20,
+            "subheading_size_mobile": 16,
+            "button_label": "",
+            "button_link": "",
+            "button_bg": "#1590f2",
+            "button_border": "#1590f2",
+            "button_text_color": "#ffffff",
+            "button_bg_hover": "#0070ca",
+            "button_border_hover": "#0070ca",
+            "button_text_color_hover": "#ffffff",
+            "button_bg_mobile": "",
+            "button_border_mobile": "",
+            "button_text_color_mobile": "",
+            "button_bg_hover_mobile": "",
+            "button_border_hover_mobile": "",
+            "button_text_color_hover_mobile": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_button_bg": "",
+            "secondary_button_border": "",
+            "secondary_button_text_color": "#ffffff",
+            "secondary_button_bg_hover": "#ffffff",
+            "secondary_button_border_hover": "#ffffff",
+            "secondary_button_text_color_hover": "#111111",
+            "secondary_button_bg_mobile": "",
+            "secondary_button_border_mobile": "",
+            "secondary_button_text_color_mobile": "",
+            "secondary_button_bg_hover_mobile": "",
+            "secondary_button_border_hover_mobile": "",
+            "secondary_button_text_color_hover_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_7Ue67B"
+      ],
+      "name": "XTU Hero Banner",
+      "settings": {
+        "height_mode_desktop": "fixed",
+        "fixed_height_desktop": 700,
+        "height_mode_mobile": "fixed",
+        "fixed_height_mobile": 480,
+        "enable_autoplay": true,
+        "autoplay_delay": 5,
+        "transition_effect": "slide",
+        "show_arrows": true,
+        "show_arrows_mobile": true,
+        "media_bg": "#000000",
+        "pagination_label_color": "#ffffff",
+        "pagination_track_color": "#ffffff",
+        "pagination_fill_color": "#ffffff"
+      }
+    },
+    "section_fi8ghg": {
+      "type": "section",
+      "blocks": {
+        "text_mBBQC8": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h1>Meet the New GKU C600</h1>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_AxLJLV": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h3>Two Ways to Connect. More Ways to Stay Protected.</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_pmNjiG": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Connect via Wi-Fi or built-in 4G LTE with the GKU Link app. View and download original footage nearby over Wi-Fi—no subscription needed—or access live views, playback, and alerts remotely over 4G.</p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_rLYiGg": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://products/gku-c600-4g-lte-dual-dash-cam",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
+            "link_text_color": "",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_mBBQC8",
+        "text_AxLJLV",
+        "text_pmNjiG",
+        "button_rLYiGg"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 19,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 27,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 12,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_product_nav_kF9979": {
+      "type": "xtu-product-nav",
+      "blocks": {
+        "item_fffKmy": {
+          "type": "item",
+          "settings": {
+            "label": "Highlights",
+            "target": "xtu-rich-content-template--28003706110179__xtu_rich_content_HUtbqt"
+          }
+        },
+        "item_EBfbbp": {
+          "type": "item",
+          "settings": {
+            "label": "Pakage Lists",
+            "target": "xtu-rich-content-template--28003706110179__xtu_rich_content_LymVe8"
+          }
+        },
+        "item_zjmFcD": {
+          "type": "item",
+          "settings": {
+            "label": "FAQS",
+            "target": "xtu-faq-template--28003706110179__xtu_faq_VqQPMd"
+          }
+        },
+        "item_XFNXze": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "label": "Specs",
+            "target": "xtu_tab_product_slider_BB8FfH"
+          }
+        }
+      },
+      "block_order": [
+        "item_fffKmy",
+        "item_EBfbbp",
+        "item_zjmFcD",
+        "item_XFNXze"
+      ],
+      "name": "XTU Product Nav",
+      "settings": {
+        "aria_label": "Page sections",
+        "alignment": "center",
+        "spacing_top": 0,
+        "spacing_top_mobile": 24,
+        "sticky_offset": 0,
+        "background_color": "{{ settings.color_palette.background }}",
+        "border_color": "{{ settings.color_palette.color2 }}",
+        "active_color": "#f7cb05",
+        "inactive_color": "{{ settings.color_palette.foreground }}"
+      }
+    },
+    "xtu_rich_content_HUtbqt": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "richtext_iH83fr": {
+          "type": "richtext",
+          "settings": {
+            "body": "<p><strong>Wi-Fi · No Subscription Needed</strong><br/>View live footage and download recordings nearby through GKU LINK.</p><p><strong>Optional 4G Plan · $9.99/month</strong><br/>Includes 4G data and 30-day cloud storage for remote access.4G service is currently available in the United States only.<br/><br/></p><p><strong>7-Day Free Trial Included</strong><br/>Enjoy free 4G data and cloud storage for 7 days. 4G service is available in the U.S. only.</p>",
+            "align": "center",
+            "font_size": 18,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_gbHELT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/C600-1_5970eaf0-a8a3-4336-953a-6d68d764a69f.png",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "richtext_iH83fr",
+        "image_gbHELT"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "Built-in Wi-Fi. Optional 4G Plan.",
+        "subheading": "Use Wi-Fi nearby, or choose an optional 4G plan for remote access.",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "{{ settings.color_palette.color1 }}",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "padding_top": 14,
+        "padding_bottom": 40,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "xtu_feature_slider_zE4Kac": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_HQfUXw": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Stay Connected. Two-Way Talk.",
+            "body": "<p>Talk with family in your car and hear their response through GKU LINK, keeping you connected throughout the journey.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/2_76bd561e-bdf5-468f-a979-7b4a7b49afdd.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_9CEW6k": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Your Car, Just a Tap Away.",
+            "body": "<p><br/>View live footage and replay recordings through GKU LINK, even when you’re far from your car.<br/><br/></p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/4_9f5667d4-78e8-41ae-bc57-85d84ccce0a7.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_d6XajK": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Stay Alert. See What Happened.",
+            "body": "<p>Receive parking impact alerts and review footage from up to 60 seconds before and 30 seconds after a collision.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/3_868ecb2e-c648-4736-95cb-b1c5a3327978.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_RgEwqB": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "image-left",
+            "title": "Vehicle Location & Geofence Alerts",
+            "body": "<p>Locate your car remotely and receive alerts when it enters or leaves an area you’ve set.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/5_082758a4-266a-44d3-8063-ea06f70e0de2.png",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_HQfUXw",
+        "slide_9CEW6k",
+        "slide_d6XajK",
+        "slide_RgEwqB"
+      ],
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "Your Car, Just a Tap Away.",
+        "subheading": "View live footage and replay recordings remotely with 4G LTE.",
+        "show_arrows": true,
+        "show_arrows_mobile": true,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 0,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "{{ settings.color_palette.foreground }}",
+        "placeholder_bg": "#e8eaed",
+        "pagination_color": "{{ settings.color_palette.color2 }}",
+        "pagination_color_active": "#ef9206",
+        "content_width": 1200,
+        "padding_top": 12,
+        "padding_bottom": 0,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_feature_slider_EUDrcr": {
+      "type": "xtu-feature-slider",
+      "blocks": {
+        "slide_WcFqyi": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Dual-Band Wi-Fi 6",
+            "body": "<p>Connect via 2.4GHz or 5.8GHz Wi-Fi, with download speeds up to 15MB/s for faster video transfers and a more stable connection.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/9_5b662512-c815-48b7-af94-fe3b5c8bd13e.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_dMfiET": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Front & Rear Coverage",
+            "body": "<p>Record in 2.5K front and 1080P rear for a more complete view of the road and incidents around your car.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/6_be1a7e78-0e47-472a-9374-c81767f43908.png",
+            "youtube_url": ""
+          }
+        },
+        "slide_wwa3gU": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Protection While Parked",
+            "body": "<p>Capture parking incidents and time-lapse footage with the included ACC Multi-Size Hardwire Kit.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/9_063b6f73-9ce8-4379-9864-4cbd3065a435.jpg",
+            "youtube_url": ""
+          }
+        },
+        "slide_AdJAwc": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Looping Recording",
+            "body": "<p>Automatically replace older unlocked footage when storage fills up, while keeping locked clips protected.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/12_57704beb-0e9e-4848-8ef4-0e4ec525db06.jpg",
+            "youtube_url": ""
+          }
+        },
+        "slide_i4Rpep": {
+          "type": "slide",
+          "settings": {
+            "desktop_layout": "text-left",
+            "title": "Review Your Journey",
+            "body": "<p>Replay your footage alongside recorded routes, speed and location to see where and when events happened.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/8_80df4dc1-6b6d-4299-9c63-58e87084de14.png",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_WcFqyi",
+        "slide_dMfiET",
+        "slide_wwa3gU",
+        "slide_AdJAwc",
+        "slide_i4Rpep"
+      ],
+      "name": "XTU Feature Slider",
+      "settings": {
+        "heading": "Everyday Recording. No Subscription Needed.",
+        "subheading": "Record your journeys and protect your parked car without a 4G plan.",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "media_width": 60,
+        "media_ratio": "auto",
+        "card_radius": 16,
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "card_background": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "muted_text_color": "{{ settings.color_palette.foreground }}",
+        "placeholder_bg": "#e8eaed",
+        "pagination_color": "#d1d5db",
+        "pagination_color_active": "#000000",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_rich_content_LymVe8": {
+      "type": "xtu-rich-content",
+      "blocks": {
+        "richtext_wL9Eci": {
+          "type": "richtext",
+          "settings": {
+            "body": "<ul><li>C600 Dash Cam × 1</li><li>64GB microSD Card × 1</li><li>Rear Camera & Extension Cable (19.69 ft) × 1</li><li>ACC Multi-Size Hardwire Kit × 1</li><li>Electrostatic Stickers × 2</li><li>Cable Clips × 5</li><li>3M Adhesive Pads × 2</li><li>Trim Removal Tool × 1</li><li>User Manual × 1</li></ul>",
+            "align": "left",
+            "font_size": 18,
+            "font_size_mobile": 14,
+            "text_color": "#333333",
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        },
+        "image_pctbaM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/12_97dec98c-30f6-444b-8e62-98d31a422331.jpg",
+            "media_ratio": "auto",
+            "alt": "",
+            "image_width": 100,
+            "align": "center",
+            "image_radius": 16,
+            "spacing": 24,
+            "spacing_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "richtext_wL9Eci",
+        "image_pctbaM"
+      ],
+      "name": "XTU Rich Content",
+      "settings": {
+        "heading": "What’s in the Package?",
+        "subheading": "",
+        "heading_align": "center",
+        "background_color": "#ffffff",
+        "content_background": "#ffffff",
+        "heading_color": "#000000",
+        "muted_text_color": "#8e9297",
+        "placeholder_bg": "#e8eaed",
+        "media_bg": "#111111",
+        "link_color": "#0070ca",
+        "content_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "xtu_faq_VqQPMd": {
+      "type": "xtu-faq",
+      "blocks": {
+        "item_grftqP": {
+          "type": "item",
+          "settings": {
+            "question": "Do I need a subscription to use the C600?",
+            "answer": "<p>No. Recording, Wi-Fi access, GPS route recording and local parking recording work without a subscription. A 4G plan is required for remote features.</p>"
+          }
+        },
+        "item_n4ChAF": {
+          "type": "item",
+          "settings": {
+            "question": "What’s included in the 4G plan?",
+            "answer": "<p>The optional $9.90/month plan includes 4G data and 30-day cloud storage. A 7-day free trial of 4G data and cloud storage is included.</p>"
+          }
+        },
+        "item_rrLdHa": {
+          "type": "item",
+          "settings": {
+            "question": "Where can I use the 4G service?",
+            "answer": "<p>The C600’s 4G service is currently available in the United States only</p>"
+          }
+        },
+        "item_BjqjrP": {
+          "type": "item",
+          "settings": {
+            "question": "Which app should I use?",
+            "answer": "<p>Use the GKU LINK app for both Wi-Fi and 4G access.</p>"
+          }
+        },
+        "item_hLT8zX": {
+          "type": "item",
+          "settings": {
+            "question": "Does the C600 require a hardwire kit?",
+            "answer": "<p>Yes. The C600 requires hardwire installation for continuous power and parking monitoring. An ACC Multi-Size Hardwire Kit is included in the package.</p>"
+          }
+        },
+        "item_XytL8U": {
+          "type": "item",
+          "settings": {
+            "question": "Is a memory card included?",
+            "answer": "<p>Yes. A 64GB microSD card is included. The C600 supports microSD cards up to 512GB.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_grftqP",
+        "item_n4ChAF",
+        "item_rrLdHa",
+        "item_BjqjrP",
+        "item_hLT8zX",
+        "item_XytL8U"
+      ],
+      "name": "XTU FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "background_color": "#ffffff",
+        "content_background": "#f5f5f7",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "link_color": "#0070ca",
+        "content_width": 900,
+        "content_radius": 16,
+        "open_first": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_liquid_qrfALQ": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"gku-pr-section\">\n  <div class=\"gku-pr-inner\">\n\n    <h2 class=\"gku-pr-title\">AS SEEN IN</h2>\n\n    <div class=\"gku-pr-marquee\">\n      <div class=\"gku-pr-track\" id=\"gkuPrTrack\">\n\n        <!-- 第一组 -->\n        <div class=\"gku-pr-group\">\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.evo.co.uk/features/208898/evo-summer-essentials-guide\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on evo\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/evo-logo-white-on-black-1800px.png?v=1789200260\"\n              alt=\"evo\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.autoexpress.co.uk/features/360610/auto-express-summer-essentials-2026\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on Auto Express\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/images_3_31b7fbba-07de-4f07-972b-4a78340d73bb.png?v=1789200349\"\n              alt=\"Auto Express\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.totalkitcar.com/2026/06/11/advanced-dash-cam/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on TotalKitCar\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/toalkitcar.png?v=1788938579\"\n              alt=\"TotalKitCar\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.thesun.co.uk/motors/36206593/car-drivers-amazon-gku-dash-cam-slashed/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on The Sun\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/images_6a852614-8417-41d8-b1c3-85b11a24ed1a.png?v=1789196186\"\n              alt=\"The Sun\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://global.techradar.com/it-it/vehicle-tech/dash-cams/black-friday-gku-d1000-e-la-dash-cam-a-3-canali-scontata-fino-al-57-per-cento\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on TechRadar\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_002.webp?v=1786092209\"\n              alt=\"TechRadar\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.china-gadgets.de/gku-d600-pro-test/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on China-Gadgets\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_003.png?v=1786092222\"\n              alt=\"China-Gadgets\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.smarthomeassistent.de/gku-d900-dashcam-test-4k-frontkamera-25k-rueckkamera-im-alltag/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on SmarthomeAssistent\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_004.png?v=1786092166\"\n              alt=\"SmarthomeAssistent\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://the-gadgeteer.com/2025/07/24/gku-d1000-3-channel-4k-dash-cam-review-4k-3-lens-2-cool/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on The Gadgeteer\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_006.png?v=1786092220\"\n              alt=\"The Gadgeteer\">\n          </a>\n\n          <a class=\"gku-pr-logo\"\n             href=\"https://www.neozone.org/bon-plan/black-friday-2025-profitez-de-remises-exclusives-sur-les-dashcams-gku-4k/\"\n             target=\"_blank\"\n             rel=\"noopener noreferrer\"\n             aria-label=\"Read GKU coverage on NeozOne\">\n            <img\n              src=\"https://cdn.shopify.com/s/files/1/0637/6135/0883/files/DM_20260807163937_005_1df78369-664d-4f5b-9242-08559dcfc21c.jpg?v=1786092303\"\n              alt=\"NeozOne\">\n          </a>\n\n        </div>\n      </div>\n    </div>\n\n  </div>\n</section>\n\n<style>\n.gku-pr-section {\n  width: 100%;\n  padding: 48px 0;\n  background: #ffffff;\n}\n\n.gku-pr-inner {\n  width: min(100% - 40px, 1320px);\n  margin: 0 auto;\n}\n\n.gku-pr-title {\n  margin: 0 0 34px;\n  text-align: center;\n  font-size: 30px;\n  line-height: 1.2;\n  font-weight: 800;\n  letter-spacing: 4px;\n  color: #111111;\n}\n\n.gku-pr-marquee {\n  width: 100%;\n  overflow: hidden;\n  position: relative;\n}\n\n.gku-pr-track {\n  display: flex;\n  align-items: center;\n  width: max-content;\n  animation: gku-pr-scroll 34s linear infinite;\n}\n\n.gku-pr-group {\n  display: flex;\n  align-items: center;\n  gap: 56px;\n  flex-shrink: 0;\n  padding-right: 56px;\n}\n\n.gku-pr-logo {\n  width: 170px;\n  height: 70px;\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-decoration: none;\n}\n\n.gku-pr-logo img {\n  display: block;\n  width: auto;\n  height: auto;\n  max-width: 155px;\n  max-height: 44px;\n  object-fit: contain;\n  opacity: 1;\n  transition: transform .25s ease, opacity .25s ease;\n}\n\n.gku-pr-logo:hover img {\n  transform: scale(1.06);\n}\n\n.gku-pr-marquee:hover .gku-pr-track {\n  animation-play-state: paused;\n}\n\n@keyframes gku-pr-scroll {\n  from {\n    transform: translateX(0);\n  }\n  to {\n    transform: translateX(-50%);\n  }\n}\n\n@media screen and (max-width: 749px) {\n  .gku-pr-section {\n    padding: 34px 0;\n  }\n\n  .gku-pr-inner {\n    width: min(100% - 24px, 1320px);\n  }\n\n  .gku-pr-title {\n    margin-bottom: 24px;\n    font-size: 22px;\n    letter-spacing: 3px;\n  }\n\n  .gku-pr-group {\n    gap: 34px;\n    padding-right: 34px;\n  }\n\n  .gku-pr-logo {\n    width: 125px;\n    height: 58px;\n  }\n\n  .gku-pr-logo img {\n    max-width: 118px;\n    max-height: 34px;\n  }\n\n  .gku-pr-track {\n    animation-duration: 26s;\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .gku-pr-track {\n    animation: none;\n  }\n\n  .gku-pr-marquee {\n    overflow-x: auto;\n  }\n}\n</style>\n\n<script>\n(function () {\n  const track = document.getElementById('gkuPrTrack');\n  if (!track || track.dataset.ready === 'true') return;\n\n  const firstGroup = track.querySelector('.gku-pr-group');\n  if (!firstGroup) return;\n\n  const secondGroup = firstGroup.cloneNode(true);\n  secondGroup.setAttribute('aria-hidden', 'true');\n  track.appendChild(secondGroup);\n\n  track.dataset.ready = 'true';\n})();\n</script>",
+        "background_color": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "xtu_blog_featured_HVVj7d": {
+      "type": "xtu-blog-featured",
+      "blocks": {
+        "post_TdxYPt": {
+          "type": "post",
+          "settings": {
+            "article": "gku-news-insights/meet-the-gku-c600-a-4g-lte-dash-cam-with-remote-viewing"
+          }
+        },
+        "post_AVx7fP": {
+          "type": "post",
+          "settings": {
+            "article": "guides/what-does-wi-fi-do-on-a-dash-cam-a-simple-guide-for-drivers"
+          }
+        },
+        "post_phmEbH": {
+          "type": "post",
+          "settings": {
+            "article": "guides/dash-cam-connectivity-faqs-wi-fi-gps-apps-more"
+          }
+        },
+        "post_hAwwJp": {
+          "type": "post",
+          "settings": {
+            "article": "guides/dash-cam-mobile-apps-what-can-you-do-with-them"
+          }
+        },
+        "post_bkMRgT": {
+          "type": "post",
+          "settings": {
+            "article": "guides/do-you-need-gps-on-a-dash-cam-what-it-does-and-when-it-matters"
+          }
+        }
+      },
+      "block_order": [
+        "post_TdxYPt",
+        "post_AVx7fP",
+        "post_phmEbH",
+        "post_hAwwJp",
+        "post_bkMRgT"
+      ],
+      "name": "XTU Blog Featured",
+      "settings": {
+        "heading": "Dash Cam Guides",
+        "latest_label": "Latest Blogs",
+        "button_label": "Read More",
+        "show_button_arrow": true,
+        "accent_color": "{{ settings.color_palette.color5 }}",
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "{{ settings.color_palette.foreground }}",
+        "card_background": "#ffffff",
+        "placeholder_bg": "#e8e8ea",
+        "button_bg": "{{ settings.color_palette.color7 }}",
+        "button_color": "{{ settings.color_palette.foreground }}",
+        "button_bg_hover": "{{ settings.color_palette.color2 }}",
+        "button_color_hover": "{{ settings.color_palette.color1 }}",
+        "card_radius": 16,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_NBkdmw",
+    "section_AwNjn3",
+    "xtu_image_text_L3TBxn",
+    "xtu_activity_slider_t6n7VC",
+    "section_p8ggWa",
+    "xtu_feature_slider_Hxahfc",
+    "xtu_hero_banner_qmXrw4",
+    "section_fi8ghg",
+    "xtu_product_nav_kF9979",
+    "xtu_rich_content_HUtbqt",
+    "xtu_feature_slider_zE4Kac",
+    "xtu_feature_slider_EUDrcr",
+    "xtu_rich_content_LymVe8",
+    "xtu_faq_VqQPMd",
+    "custom_liquid_qrfALQ",
+    "xtu_blog_featured_HVVj7d"
+  ]
+}

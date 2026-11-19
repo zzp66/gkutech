@@ -1,0 +1,15 @@
+<script>
+  (() => {
+    const root = document.currentScript.closest('[data-seo-author]');
+    {% render 'seo-author-route-validation' %}
+    const source = validateArticle(new URLSearchParams(location.search).get('author_article')) || validateArticle(document.referrer);
+    if (!source) return;
+    root._seoAuthorSource = source;
+    root.classList.add('is-loading');
+    root._seoAuthorRecovery = setTimeout(() => {
+      root._seoAuthorSourceExpired = true;
+      root.classList.remove('is-loading');
+      root.querySelector('[data-author-library]')?.removeAttribute('aria-busy');
+    }, 8500);
+  })();
+</script>
