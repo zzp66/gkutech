@@ -1,35 +1,53 @@
-/* XTU Product PDP — layout + gallery + zoom + sticky ATC */
+/* XTU Product PDP — layout + gallery + zoom + sticky ATC
+ *
+ * Breakpoints (content grid):
+ * - <750: stacked (mobile)
+ * - 750–989: stacked full-width (tablet portrait / small mid) — avoids fixed 640px crushing details
+ * - 990–1199: fluid equal columns (tablet landscape / mid)
+ * - ≥1200: media capped at 640px + 60px gap (desktop design)
+ */
 
 .product-information.xtu-product-pdp {
   --xtu-pdp-max-width: 1200px;
   --xtu-pdp-media-max: 640px;
-  --xtu-pdp-gap: 60px;
+  --xtu-pdp-gap: 28px;
   --xtu-thumb-size: 50px;
+  --xtu-pdp-grid-cols: minmax(0, 1fr);
+  --xtu-pdp-row-gap: 20px;
 }
 
-/* ---- Layout: 1200px content, 640px media, 48px gap only ---- */
-@media screen and (min-width: 750px) {
-  .product-information.xtu-product-pdp .product-information__grid:not(.product-information--media-none) {
-    grid-column: 2;
-    width: 100%;
-    max-width: var(--xtu-pdp-max-width);
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: var(--xtu-pdp-media-max) minmax(0, 1fr);
-    column-gap: var(--xtu-pdp-gap);
-    row-gap: 0;
-    align-items: start;
+@media screen and (min-width: 990px) {
+  .product-information.xtu-product-pdp {
+    --xtu-pdp-grid-cols: minmax(0, 1fr) minmax(0, 1fr);
+    --xtu-pdp-row-gap: 0;
   }
+}
 
-  .product-information.xtu-product-pdp .product-information__grid.product-information__grid--half:not(.product-information--media-none),
+@media screen and (min-width: 1200px) {
+  .product-information.xtu-product-pdp {
+    --xtu-pdp-gap: 60px;
+    --xtu-pdp-grid-cols: minmax(0, var(--xtu-pdp-media-max)) minmax(0, 1fr);
+  }
+}
+
+/* ---- Shared two-region grid shell (≥750) ---- */
+@media screen and (min-width: 750px) {
+  .product-information.xtu-product-pdp .product-information__grid:not(.product-information--media-none),
+  .product-information.xtu-product-pdp
+    .product-information__grid.product-information__grid--half:not(.product-information--media-none),
   .product-information.xtu-product-pdp
     .product-information__grid.product-information__grid--half:not(.product-information--media-none):has(
       .media-gallery--extend
     ) {
     grid-column: 2;
-    grid-template-columns: var(--xtu-pdp-media-max) minmax(0, 1fr);
+    width: 100%;
+    max-width: var(--xtu-pdp-max-width);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: var(--xtu-pdp-grid-cols);
     column-gap: var(--xtu-pdp-gap);
-    row-gap: 0;
+    row-gap: var(--xtu-pdp-row-gap);
+    align-items: start;
   }
 
   /* Spacing between columns is column-gap only — no side padding */
@@ -60,6 +78,7 @@
     padding-right: 0 !important;
   }
 
+  /* Media fills its grid track (never locked to 640px on mid widths) */
   .product-information.xtu-product-pdp .product-information--media-left .product-information__media,
   .product-information.xtu-product-pdp
     .product-information__grid--half.product-information--media-left
@@ -68,8 +87,8 @@
     .product-information__grid--half.product-information--media-left
     .product-information__media:has(.media-gallery--extend) {
     grid-column: 1;
-    width: var(--xtu-pdp-media-max);
-    max-width: var(--xtu-pdp-media-max);
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
   }
 
@@ -86,8 +105,8 @@
     .product-information__grid--half.product-information--media-right
     .product-information__media {
     grid-column: 2;
-    width: var(--xtu-pdp-media-max);
-    max-width: var(--xtu-pdp-media-max);
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
     order: 1;
   }
@@ -98,13 +117,77 @@
     .product-details {
     grid-column: 1;
     order: 0;
+    min-width: 0;
   }
 
   .product-information.xtu-product-pdp .product-information__grid--limit-details .product-details > .group-block {
     max-width: none;
   }
 
-  /* Sticky the media column under sticky header when enabled */
+  .product-information.xtu-product-pdp .product-information__media media-gallery,
+  .product-information.xtu-product-pdp .product-information__media .xtu-media-gallery {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tablet portrait / small mid (750–989): stack — both regions full width */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .product-information.xtu-product-pdp .product-information--media-left .product-information__media,
+  .product-information.xtu-product-pdp
+    .product-information__grid--half.product-information--media-left
+    .product-information__media,
+  .product-information.xtu-product-pdp
+    .product-information__grid--half.product-information--media-left
+    .product-information__media:has(.media-gallery--extend),
+  .product-information.xtu-product-pdp .product-information--media-left .product-details,
+  .product-information.xtu-product-pdp
+    .product-information__grid--half.product-information--media-left
+    .product-details,
+  .product-information.xtu-product-pdp .product-information--media-right .product-information__media,
+  .product-information.xtu-product-pdp
+    .product-information__grid--half.product-information--media-right
+    .product-information__media,
+  .product-information.xtu-product-pdp .product-information--media-right .product-details,
+  .product-information.xtu-product-pdp
+    .product-information__grid--half.product-information--media-right
+    .product-details {
+    grid-column: 1;
+    order: initial;
+  }
+
+  .product-information.xtu-product-pdp .product-information__media {
+    position: static;
+    top: auto;
+  }
+
+  .product-information.xtu-product-pdp .product-information__media .sticky-content,
+  .product-information.xtu-product-pdp media-gallery.sticky-content {
+    position: static;
+    top: auto;
+    --sticky-header-offset: 0px;
+  }
+}
+
+/* Mid two-column (990–1199): keep details readable, tighten dense UI */
+@media screen and (min-width: 990px) and (max-width: 1199px) {
+  .product-information.xtu-product-pdp .product-details {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .xtu-product-pdp .variant-option__card {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .xtu-product-pdp .variant-option--xtu-cols-2 {
+    gap: 10px;
+  }
+}
+
+/* Two-column sticky media (≥990) */
+@media screen and (min-width: 990px) {
   .product-information.xtu-product-pdp .product-information__media {
     --xtu-pdp-media-sticky-top: 24px;
     position: sticky;
@@ -126,12 +209,6 @@
     position: static;
     top: auto;
     --sticky-header-offset: 0px;
-  }
-
-  .product-information.xtu-product-pdp .product-information__media media-gallery,
-  .product-information.xtu-product-pdp .product-information__media .xtu-media-gallery {
-    width: 100%;
-    max-width: 100%;
   }
 }
 
